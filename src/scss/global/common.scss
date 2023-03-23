@@ -1,0 +1,10 @@
+@use "../util/" as *;
+
+.container {
+  max-width: rem(1400);
+  margin-inline: rem(15);
+
+  @include breakpoint-up(containerBreakpoint) { // container content width + margin inline offset x2
+    margin-inline: auto;
+  }
+}

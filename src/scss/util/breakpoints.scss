@@ -1,0 +1,26 @@
+// 640px, 1150px, 1440px
+$breakpoints-up: (
+  "medium": "40em",
+  "large": "71.875em",
+  "xlarge": "87.5em",
+  "containerBreakpoint": "89.375em", // container width + margin inline offset x2
+);
+
+// 639px, 1149px, 1439p
+$breakpoints-down: (
+  "small": "39.9375em",
+  "medium": "71.8125em",
+  "large": "87.4375em",
+);
+
+@mixin breakpoint-up($size) {
+  @media (min-width: map-get($breakpoints-up, $size)) {
+    @content;
+  }
+}
+
+@mixin breakpoint-down($size) {
+  @media (max-width: map-get($breakpoints-down, $size)) {
+    @content;
+  }
+}
