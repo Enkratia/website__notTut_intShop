@@ -1,0 +1,239 @@
+@use "../../util/" as *;
+
+.header-top {
+  padding-top: rem(9);
+  padding-bottom: rem(10);
+  font: var(--small-regular);
+  color: var(--graywhite-color);
+  background-color: var(--gray900-color);
+
+  &__container {
+    display: grid;
+    align-items: center;
+    justify-items: center;
+    grid-template-columns: 1.54fr 4.9fr 1fr 1fr;
+  }
+
+  &__available {
+    justify-self: self-start;
+    white-space: nowrap;
+  }
+
+  &__nav {
+    white-space: nowrap;
+  }
+
+  &__currency {
+    white-space: nowrap;
+  }
+
+  &__login {
+    justify-self: self-end;
+    white-space: nowrap;
+  }
+}
+
+// Available
+.available {
+  transition: color 0.3s ease;
+
+  &__text {
+    margin-right: rem(3);
+  }
+
+  &__tel {
+    font: var(--small-bold);
+  }
+
+  &:hover {
+    color: var(--white-color);
+  }
+}
+
+// Top-nav
+.top-nav {
+  &__list {
+    display: flex;
+    column-gap: rem(32);
+  }
+
+  &__link {
+    transition: color 0.3s ease;
+
+    &:hover {
+      color: var(--white-color);
+    }
+  }
+}
+
+// Currency && custom-select
+.currency {
+  display: flex;
+  column-gap: rem(6.5);
+  align-items: center;
+  width: rem(105);
+  word-spacing: rem(1.4);
+
+  &__flag {
+    width: rem(20);
+    height: rem(12);
+  }
+}
+
+.custom-select {
+  position: relative;
+  overflow: hidden;
+  user-select: none;
+
+  &__head {
+    display: flex;
+    align-items: center;
+    padding: rem(2) rem(2);
+    transition: color 0.3s ease;
+    cursor: pointer;
+
+    &:hover {
+      color: var(--white-color);
+    }
+  }
+
+  &__selected {
+    padding-inline: rem(3);
+    line-height: rem(21);
+    cursor: pointer;
+  }
+
+  &__inner-wrapper {
+    position: absolute;
+    right: 0;
+    top: 110%;
+    z-index: var(--z-tooltip);
+    border-radius: rem(4);
+    padding-right: rem(5);
+    padding-left: rem(15);
+    padding-block: rem(10);
+    width: rem(120);
+    box-shadow: 0 5px 10px rgb(0 0 0 / 15%);
+    background-color: var(--white-color);
+  }
+
+  &__list {
+    overflow-y: auto;
+    border-radius: rem(4);
+    width: 100%;
+    max-height: rem(200);
+    color: var(--gray900-color);
+    background-color: var(--white-color);
+  }
+
+  &__item {
+    padding: rem(4) rem(5);
+    width: 100%;
+    transition: color 0.3s ease;
+    cursor: pointer;
+
+    &:hover {
+      color: var(--primary-color);
+    }
+
+    &--active {
+      color: var(--primary-color);
+    }
+  }
+
+  svg {
+    position: relative;
+    top: rem(0.5);
+    width: rem(9);
+    height: rem(5);
+    fill: currentcolor;
+    transition: transform 0.1s, rotate 0.1s;
+  }
+
+  &--open {
+    overflow: visible;
+
+    svg {
+      top: 0;
+      transform: rotate(180deg);
+    }
+  }
+}
+
+// Login
+.login {
+  position: relative;
+  display: flex;
+  align-items: center;
+  color: inherit;
+
+  &::before {
+    content: "/";
+    position: absolute;
+    left: 61px;
+    top: 47%;
+    transform: translateY(-50%);
+  }
+
+  &__icon {
+    order: -1;
+    margin-right: rem(9.5);
+    width: rem(13);
+    height: rem(14);
+    fill: currentcolor;
+    transition: fill 0.3s ease;
+  }
+
+  &__btn {
+    transition: color 0.3s ease;
+    user-select: none;
+
+    &:hover {
+      color: var(--white-color);
+
+      &::after {
+        color: var(--graywhite-color);
+        pointer-events: none;
+      }
+    }
+
+    &:hover ~ .login__icon {
+      fill: var(--white-color);
+    }
+
+    &:first-child {
+      margin-right: rem(10);
+    }
+  }
+}
+
+// OverlayScrollbars
+.os-scrollbar {
+  --os-size: 5px;
+  --os-padding-perpendicular: 0;
+  --os-padding-axis: 0;
+
+  // **
+  --os-track-border-radius: 0;
+  --os-track-bg: var(--gray300-color);
+  --os-track-bg-hover: var(--gray300-color);
+  --os-track-bg-active: var(--gray300-color);
+  --os-track-border: none;
+  --os-track-border-hover: none;
+  --os-track-border-active: none;
+
+  // **
+  --os-handle-border-radius: 4px;
+  --os-handle-bg: var(--gray700-color);
+  --os-handle-bg-hover: var(--gray800-color);
+  --os-handle-bg-active: var(--gray900-color);
+  --os-handle-border: none;
+  --os-handle-border-hover: none;
+  --os-handle-border-active: none;
+  --os-handle-min-size: 33px;
+  --os-handle-max-size: none;
+  --os-handle-perpendicular-size: 100%;
+  --os-handle-perpendicular-size-hover: 100%;
+  --os-handle-perpendicular-size-active: 100%;
+  --os-handle-interactive-area-offset: 0;
+}

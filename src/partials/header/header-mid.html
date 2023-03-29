@@ -1,0 +1,86 @@
+<div class="header-mid header__mid">
+  <div class="header-mid__container container">
+    <a href="#" class="header-mid__logo logo">
+      <img src="./img/logo.svg" alt="logo">
+    </a>
+
+    <nav class="header-mid__nav nav" id="nav">
+      <ul class="nav__list">
+        <li class="nav__item">
+          <a href="#" class="nav__link nav__link--active" data-category="women">
+            Women
+          </a>
+
+          @include("./nav__megamenu-women.html")
+        </li>
+
+        <li class="nav__item">
+          <a href="#" class="nav__link">
+            Men
+          </a>
+
+          @include("./nav__megamenu-men.html")
+        </li>
+
+        <li class="nav__item">
+          <a href="#" class="nav__link">
+            Girls
+          </a>
+          
+          @include("./nav__megamenu-girls.html")
+        </li>
+
+        <li class="nav__item">
+          <a href="#" class="nav__link">
+            Boys
+          </a>
+
+          @include("./nav__megamenu-boys.html")
+        </li>
+
+        <li class="nav__item">
+          <a href="#" class="nav__link nav__link--sale">
+            Sale
+          </a>
+        </li>    
+      </ul>
+
+    </nav>
+
+    <form class="header-mid__search-form search-form">
+      <input type="text" class="search-form__input input" placeholder="Search for products...">
+
+      <button class="search-form__btn" aria-label="Search">
+        <svg class='search-form__icon' xmlns='http://www.w3.org/2000/svg' aria-hidden="true">
+          <use href='./img/sprite.svg#search'></use>
+        </svg>
+      </button>
+    </form>
+
+    <div class="header-mid__choice">
+      <div class="header-mid__choice-favorite favorite">
+        <button class="favorite__btn" aria-label="Observe favorites">
+          <svg class='favorite__icon' xmlns='http://www.w3.org/2000/svg' aria-hidden="true">
+            <use href='./img/sprite.svg#heart'></use>
+          </svg>
+        </button>
+
+        <div class="favorite__count">
+          2
+        </div>
+      </div>
+
+      <div class="header-mid__choice-cart cart">
+        <button class="cart__btn" aria-label="Observe cart">
+          <svg class='cart__icon' xmlns='http://www.w3.org/2000/svg' aria-hidden="true">
+            <use href='./img/sprite.svg#cart'></use>
+          </svg>
+        </button>
+
+        <div class="cart__count">
+          4
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

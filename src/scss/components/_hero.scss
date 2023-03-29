@@ -1,0 +1,11 @@
+@use "../util/" as *;
+
+.hero {
+  padding-top: rem(162);
+  width: 100%;
+  height: rem(800);
+  background-image: url("../img/hero1.jpg");
+  background-position: center center;
+  background-size: cover;
+  background-repeat: no-repeat;
+}

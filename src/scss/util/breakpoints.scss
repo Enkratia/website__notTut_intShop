@@ -1,15 +1,15 @@
-// 640px, 1150px, 1440px
+// 1230px
 $breakpoints-up: (
-  "medium": "40em",
-  "large": "71.875em",
-  "xlarge": "87.5em",
-  "containerBreakpoint": "89.375em", // container width + margin inline offset x2
+  /* "medium": "40em",*/
+  "large": "76.875em",
+  /* "xlarge": "87.5em",*/
+  "containerBreakpoint": "80.625em", /* container width + margin inline offset x2*/
 );
 
-// 639px, 1149px, 1439p
+// 1229px
 $breakpoints-down: (
-  "small": "39.9375em",
-  "medium": "71.8125em",
+  /* "small": "39.9375em",*/
+  /* "medium": "71.8125em",*/
   "large": "87.4375em",
 );
 
