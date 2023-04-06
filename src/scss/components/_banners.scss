@@ -1,0 +1,178 @@
+@use "../util/" as *;
+
+.banners {
+  padding-top: calc(rem(64.16) + 5.83vw); // 176>86
+
+  &__container {
+    display: grid;
+    grid-template-columns: repeat(10, 1fr);
+    grid-template-rows: repeat(2, auto);
+    gap: rem(16);
+
+    @include bp-down("1024") {
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+    }
+  }
+
+  &__banner {
+    overflow: hidden;
+    border-radius: rem(4);
+    padding: rem(60);
+    height: rem(500);
+    background-position: left calc(rem(-42.86) + 2.23vw) center; // 0>-20(1920>1024)
+    background-size: cover;
+    background-repeat: no-repeat;
+
+    &:nth-child(1) {
+      grid-column: 1 / 5;
+      grid-row: 1 / 2;
+      background-image: url("../img/banners-1.png");
+
+      @include bp-down("1024") {
+        height: calc(rem(247.4) + 24.69vw); // 500>340
+      }
+    }
+
+    &:nth-child(2) {
+      grid-column: 5 / 11;
+      grid-row: 1 / 2;
+      background-image: url("../img/banners-2.png");
+
+      @include bp-down("1024") {
+        height: calc(rem(350.02) + 14.66vw); // 500>405
+      }
+    }
+
+    &:nth-child(3) {
+      grid-column: 1 / 7;
+      grid-row: 2 / 3;
+      background-image: url("../img/banners-3.png");
+
+      @include bp-down("1024") {
+        height: calc(rem(338.45) + 8.41vw); // 500>370
+      }
+    }
+
+    &:nth-child(4) {
+      grid-column: 7 / 11;
+      grid-row: 2 / 3;
+      background-image: url("../img/banners-4-2.png"), url("../img/banners-4.png");
+      background-position: right calc(rem(-792.86) + 41.29vw) bottom, center; // (1920>1024)
+      background-size: auto, cover;
+      background-repeat: no-repeat, no-repeat;
+
+      @include bp-down("1024") {
+        height: calc(rem(357.92) + 13.89vw);
+        background-position: right calc(rem(-536.76) + 52.47vw) bottom, center;
+      }
+    }
+
+    @include bp-down("1024") {
+      background-position: left center;
+
+      &:not(:last-child) {
+        margin-bottom: rem(20);
+      }
+    }
+
+    @include bp-down("768") {
+      padding-block: rem(48);
+      padding-inline: rem(24);
+    }
+  }
+
+  &__subtitle {
+    display: block;
+    margin-bottom: rem(12);
+    font: var(--small-bold);
+    letter-spacing: rem(1);
+    text-transform: uppercase;
+    color: var(--gray900-color);
+  }
+
+  &__title {
+    margin-bottom: rem(40);
+    font: var(--h2-font);
+    font-size: calc(rem(22.06) + 0.52vw); // 32>24
+    color: var(--gray900-color);
+  }
+
+  &__form {
+    margin-bottom: rem(20);
+  }
+
+  &__details {
+    max-width: rem(350);
+    font: var(--small-regular);
+    color: var(--gray800-color);
+  }
+}
+
+// Banner individual css
+.banner-1 {
+  &__button {
+    padding-inline: rem(30.5);
+  }
+}
+
+.banner-2 {
+  &__title {
+    max-width: calc(rem(202.08) + 7.44vw);
+  }
+
+  &__button {
+    margin-bottom: rem(81);
+
+    @include bp-down("768") {
+      margin-bottom: rem(48);
+    }
+  }
+}
+
+.banner-3 {
+  &__title {
+    max-width: calc(rem(219.83) + 5.11vw); // 318>239(чтобы текст не переносился)
+  }
+}
+
+.banner-4 {
+  &__title {
+    margin-bottom: rem(32);
+  }
+
+  &__button {
+    padding-inline: rem(30);
+  }
+}
+
+// Timer
+.timer {
+  display: flex;
+  align-items: center;
+  text-align: center;
+
+  &__box {
+    &:not(:last-child) {
+      margin-right: rem(24);
+    }
+  }
+
+  &__count {
+    display: block;
+    margin-bottom: rem(4);
+    font: var(--h3-font);
+    font-size: calc(rem(21.79) + 0.32vw); // 28>23
+    color: var(--gray900-color);
+
+    @include bp-down("768") {
+      margin-bottom: rem(2);
+    }
+  }
+
+  &__text {
+    font: var(--small-regular);
+    color: var(--gray900-color);
+  }
+}

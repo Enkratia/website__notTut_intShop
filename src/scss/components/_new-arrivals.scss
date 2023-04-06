@@ -1,0 +1,53 @@
+@use "../util/" as *;
+
+.new-arrivals {
+  padding-top: calc(rem(45.54) + 7.05vw); // 181>72
+
+  &__title {
+    margin-bottom: rem(23);
+  }
+
+  &__subtitle {
+    margin-bottom: rem(60);
+    text-align: center;
+  }
+
+  &__descr {
+    font: var(--large-regular);
+    color: var(--gray700-color);
+  }
+
+  &__more {
+    position: relative;
+    font: var(--large-regular);
+    color: var(--primary-color);
+
+    &::before {
+      content: "";
+      position: absolute;
+      left: 0;
+      bottom: 0;
+      width: 100%;
+      height: rem(1);
+      background-color: currentcolor;
+    }
+
+    &:hover {
+      &::before {
+        opacity: 0;
+      }
+    }
+  }
+
+  &__slider {
+    overflow-x: hidden;
+  }
+
+  &__wrapper {
+    padding-bottom: calc(rem(29.8) + 2.72vw); // 82>40
+  }
+
+  &__pagination {
+    display: block;
+  }
+}

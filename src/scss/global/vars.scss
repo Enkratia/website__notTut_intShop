@@ -28,33 +28,46 @@
   // **
   --input-hover-color: rgb(23 105 106 / 40%);
   --button-hover-color: #145c5d;
+  --overlay-color: rgb(0 0 0 / 60%);
+  --white-05-color: rgb(255 255 255 / 50%);
 
   // Fonts
-  --display1: 900 4.5rem / 130%  "Lato", sans-serif; // 72
-  --display2: 900 4rem / 130%  "Lato", sans-serif; // 64
-  --display3: 900 3.5rem / 130%  "Lato", sans-serif; // 56
-  --display4: 900 3rem / 130%  "Lato", sans-serif; // 48
+  --h1-font: 900 2.875rem / 130% "Lato", sans-serif; // 46
+  --h2-font: 900 2rem / 130% "Lato", sans-serif; // 32
+  --h3-font: 700 1.75rem / 150% "Lato", sans-serif; // 28
+  --h4-font: 700 1.5rem / 130% "Lato", sans-serif; // 24
+  --h5-font: 700 1.25rem / 130% "Lato", sans-serif; // 20
+  --h6-font: 700 1rem / 150% "Lato", sans-serif; // 16
 
   // **
-  --lead-regular: 400 1.25rem / 150%  "Lato", sans-serif; // 20
-  --lead-bold: 700 1.25rem / 150%  "Lato", sans-serif; // 20
-  --large-regular: 400 1.125rem / 150%  "Lato", sans-serif; // 18
-  --large-bold: 700 1.125rem / 150%  "Lato", sans-serif; // 18
+  --display1: 900 4.5rem / 130% "Lato", sans-serif; // 72
+  --display2: 900 4rem / 130% "Lato", sans-serif; // 64
+  --display3: 900 3.5rem / 130% "Lato", sans-serif; // 56
+  --display4: 900 3rem / 130% "Lato", sans-serif; // 48
 
   // **
-  --base-regular: 400 1rem / 160%  "Lato", sans-serif; // 16
-  --base-bold: 700 1rem / 160%  "Lato", sans-serif; // 16
-  --small-regular: 400 0.875rem / 150%  "Lato", sans-serif; // 14
-  --small-bold: 700 0.875rem / 150%  "Lato", sans-serif; // 14
+  --lead-regular: 400 1.25rem / 150% "Lato", sans-serif; // 20
+  --lead-bold: 700 1.25rem / 150% "Lato", sans-serif; // 20
+  --large-regular: 400 1.125rem / 150% "Lato", sans-serif; // 18
+  --large-bold: 700 1.125rem / 150% "Lato", sans-serif; // 18
 
   // **
-  --extrasmall-regular: 400 0.75rem / 150%  "Lato", sans-serif; // 12
-  --extrasmall-bold: 700 0.75rem / 150%  "Lato", sans-serif; // 12
-  --extra2small-regular: 400 0.625rem / 150%  "Lato", sans-serif; // 10
-  --extra2small-bold: 900 0.625rem / 150%  "Lato", sans-serif; // 10
+  --base-regular: 400 1rem / 160% "Lato", sans-serif; // 16
+  --base-bold: 700 1rem / 160% "Lato", sans-serif; // 16
+  --small-regular: 400 0.875rem / 150% "Lato", sans-serif; // 14
+  --small-bold: 700 0.875rem / 150% "Lato", sans-serif; // 14
 
-  // Linear-gradient
-  --divider-gradient: linear-gradient(rgb(218 219 221 / 0%)  0%, rgb(218 219 221 / 50%) 12.33%, #dadbdd 51.91%, rgb(218 219 221 / 50%) 87.85%, rgb(218 219 221 / 0%) 100%);
+  // **
+  --extrasmall-regular: 400 0.75rem / 150% "Lato", sans-serif; // 12
+  --extrasmall-bold: 700 0.75rem / 150% "Lato", sans-serif; // 12
+  --extra2small-regular: 400 0.625rem / 150% "Lato", sans-serif; // 10
+  --extra2small-bold: 900 0.625rem / 150% "Lato", sans-serif; // 10
+
+  // **
+  --ubuntu-bold: 700 calc(0.97rem + 0.65vw) / 150% "Ubuntu", sans-serif; // 28>18
+
+  // Linear-gradients
+  --divider-gradient: linear-gradient(rgb(218 219 221 / 0%) 0%, rgb(218 219 221 / 50%) 12.33%, #dadbdd 51.91%, rgb(218 219 221 / 50%) 87.85%, rgb(218 219 221 / 0%) 100%);
 
   // Drop-shadows
   --small-shadow: 0 4px 4px rgb(30 33 44 / 3%), 0 12px 10px rgb(154 156 165 / 4%), 0 30px 24px rgb(154 156 165 / 5%), 0 80px 80px rgb(154 156 165 / 8%);
@@ -64,8 +77,91 @@
   // **
   --main-shadow: 0 4px 4px rgb(0 0 0 / 25%);
 
-  // Z-index
+  // Z-indexes
   --z-modal: 1000;
   --z-tooltip: 100;
   --z-fixed: 10;
+  --z-up: 1;
+  --z-down: -1;
+
+  // Animations
+  --to-right-05-animation: to-right 0.4s ease-in-out forwards 0.5s;
+  --to-right-03-animation: to-right 0.4s ease-in-out forwards 0.3s;
+  --to-bottom-animation: to-bottom 0.4s ease-in-out forwards 0.5s;
+  --scale-in-animation: scale-in 0.4s ease-in-out forwards 0.3s;
+  --scale-in-left-animation: scale-in-left 0.4s ease-in-out forwards 0.7s;
+  --scale-out-right-animation: scale-out-right 0.4s ease-in-out forwards 0.3s;
+}
+
+@keyframes to-right {
+  from {
+    opacity: 0;
+    visibility: hidden;
+    transform: translateX(rem(-36));
+  }
+
+  to {
+    opacity: 1;
+    visibility: visible;
+    transform: translateX(0);
+  }
+}
+
+@keyframes to-bottom {
+  from {
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(rem(-36));
+  }
+
+  to {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+  }
+}
+
+@keyframes scale-in {
+  from {
+    opacity: 0;
+    visibility: hidden;
+    transform: scale(1.15);
+    transform-origin: center;
+  }
+
+  to {
+    opacity: 1;
+    visibility: visible;
+    transform: scale(1);
+  }
+}
+
+@keyframes scale-in-left {
+  from {
+    opacity: 0;
+    visibility: hidden;
+    transform: scale(1.15);
+    transform-origin: right center;
+  }
+
+  to {
+    opacity: 1;
+    visibility: visible;
+    transform: scale(1);
+  }
+}
+
+@keyframes scale-out-right {
+  from {
+    opacity: 0;
+    visibility: hidden;
+    transform: scale(0.85);
+    transform-origin: right top;
+  }
+
+  to {
+    opacity: 1;
+    visibility: visible;
+    transform: scale(1);
+  }
 }

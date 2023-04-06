@@ -1,6 +1,6 @@
-@use "../../util/" as *;
+@use "../util/" as *;
 
-.header-bot {
+.special-offers {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -8,7 +8,7 @@
   padding-bottom: rem(8);
   background-color: var(--primary-color);
 
-  &__header-container {
+  &__special-offers-container {
     display: flex;
     align-items: center;
     justify-content: center;

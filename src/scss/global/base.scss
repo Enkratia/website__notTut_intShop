@@ -12,10 +12,11 @@ html {
 }
 
 body {
+  overflow-x: hidden;
   margin: 0;
   padding: 0;
-  padding-top: rem(162);
-  min-height: 100vh;
+  padding-top: rem(128);
+  min-height: 1000vh; // TMP
   font-family: sans-serif;
   font-weight: 400;
   color: var(--black-color);

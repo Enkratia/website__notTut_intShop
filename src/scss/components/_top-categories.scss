@@ -1,0 +1,81 @@
+@use "../util/" as *;
+
+.top-categories {
+  padding-top: rem(60);
+  background-color: var(--white-color);
+
+  &__slider {
+    position: relative;
+    top: rem(-120);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow-x: hidden;
+    margin-bottom: rem(-120);
+
+    @include bp-down ("1024") {
+      top: 0;
+      margin-bottom: 0;
+    }
+
+    @include bp-down ("768") {
+      padding-bottom: rem(40);
+    }
+  }
+
+  &__wrapper {
+    display: flex;
+  }
+
+  &__category {
+    position: relative;
+    width: calc(100% / 3);
+
+    &:hover {
+      .top-categories__image {
+        transform: scale(1.08);
+      }
+    }
+  }
+
+  &__box {
+    overflow: hidden;
+    margin-bottom: rem(16);
+    border-radius: rem(4);
+    width: 100%;
+    height: 100%;
+  }
+
+  &__image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.3s;
+  }
+
+  &__link {
+    display: inline-block;
+    width: 100%;
+    font: var(--lead-bold);
+    text-align: center;
+    color: var(--gray800-color);
+
+    &::before {
+      content: "";
+      position: absolute;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+    }
+
+    &:hover {
+      color: var(--primary-color);
+    }
+  }
+
+  &__pagination {
+    position: absolute;
+    bottom: 0 !important;
+  }
+}

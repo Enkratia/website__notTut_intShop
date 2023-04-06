@@ -54,7 +54,12 @@
 .top-nav {
   &__list {
     display: flex;
-    column-gap: rem(32);
+  }
+
+  &__item {
+    &:not(:last-child) {
+      margin-right: rem(32);
+    }
   }
 
   &__link {
@@ -69,12 +74,12 @@
 // Currency && custom-select
 .currency {
   display: flex;
-  column-gap: rem(6.5);
   align-items: center;
   width: rem(105);
   word-spacing: rem(1.4);
 
   &__flag {
+    margin-right: rem(6.5);
     width: rem(20);
     height: rem(12);
   }

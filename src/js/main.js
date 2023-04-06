@@ -1,7 +1,8 @@
 // Components
-import "./components/custom-select";
-import "./components/marketing-slider";
-import "./components/sliders";
+import "./components/currency";
+import "./components/special-offers";
+import "./components/timer";
+import "./components/swiper";
 
 // Libraries
 // **OverlayScrollbars

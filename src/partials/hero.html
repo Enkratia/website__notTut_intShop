@@ -1,23 +1,111 @@
 <section class="hero">
-  <div class="hero__container container">
-    <div class="hero__content">
-      <p class="hero__desc">
-        New Collection
-      </p>
+  <div class="hero__container" id="hero-swiper">
+    <div class="hero__wrapper swiper-wrapper">
+      <div class="hero__slide hero__slide--1 swiper-slide" data-even>
+        <div class="hero__content container">
+          <span class="hero__subtitle">
+            New Collection
+          </span>
 
-      <h1 class="hero__title">
-        Menswear 2020
-      </h1>
+          <h1 class="hero__title">  
+            Menswear 2020
+          </h1>
 
-      <div class="hero__btns">
-        <button class="hero__button btn btn--lg btn--outline">
-          Shop sale
-        </button>
+          <div class="hero__btns">
+            <a href="#" class="hero__button btn btn--lg btn--outline">
+              Shop sale
+            </a>
 
-        <button class="hero__button btn btn--lg">
-          Shop the menswear
-        </button>
+            <a href="#" class="hero__button btn btn--lg">
+              Shop the menswear
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <div class="hero__slide hero__slide--2 swiper-slide" data-odd>
+        <div class="hero__content container">
+          <span class="hero__subtitle">
+            New in
+          </span>
+
+          <h1 class="hero__title">
+            Fall-Winter 2021
+          </h1>
+
+          <div class="hero__btns">
+            <a href="#" class="hero__button btn btn--lg btn--outline">
+              Shop sale
+            </a>
+
+            <a href="#" class="hero__button btn btn--lg">
+              Shop the menswear
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <div class="hero__slide hero__slide--3 swiper-slide" data-even>
+        <div class="hero__content container">
+          <span class="hero__subtitle">
+            Limited edition
+          </span>
+
+          <h1 class="hero__title">
+            Leather Issue
+          </h1>
+
+          <div class="hero__btns">
+            <a href="#" class="hero__button btn btn--lg btn--outline">
+              Shop sale
+            </a>
+
+            <a href="#" class="hero__button btn btn--lg">
+              Shop the menswear
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <div class="hero__slide hero__slide--4 swiper-slide" data-odd>
+        <div class="hero__content container">
+          <span class="hero__subtitle">
+            Hottest prices
+          </span>
+
+          <h1 class="hero__title">
+            Kidswear sales
+          </h1>
+
+          <div class="hero__btns">
+            <a href="#" class="hero__button btn btn--lg btn--outline">
+              Shop sale
+            </a>
+
+            <a href="#" class="hero__button btn btn--lg">
+              Shop the menswear
+            </a>
+          </div>
+        </div>
       </div>
     </div>
+    
+    <!-- Pagination -->
+    <div class="hero__pagination-wrapper">
+      <div class="hero__pagination container" id="hero-pagination"></div>
+    </div>
+
+    <!-- Navigation -->
+    <button class="hero__button-prev arrow" id="hero-button-prev" aria-label="Choose previous slide.">
+      <svg xmlns='http://www.w3.org/2000/svg' aria-hidden="true">
+        <use href='./img/sprite.svg#arrow'></use>
+      </svg>
+    </button>
+
+    <button class="hero__button-next arrow" id="hero-button-next" aria-label="Choose next slide.">
+      <svg xmlns='http://www.w3.org/2000/svg' aria-hidden="true">
+        <use href='./img/sprite.svg#arrow'></use>
+      </svg>
+    </button>
   </div>
 </section>

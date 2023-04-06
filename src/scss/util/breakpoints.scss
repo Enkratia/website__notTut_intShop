@@ -1,25 +1,32 @@
-// 1230px
+// Min-width
 $breakpoints-up: (
-  /* "medium": "40em",*/
-  "large": "76.875em",
-  /* "xlarge": "87.5em",*/
-  "containerBreakpoint": "80.625em", /* container width + margin inline offset x2*/
+  "576": "36em",
+  "768": "48em",
+  "1024": "64em",
+  "1400": "87.5em",
+  "1920": "120em",
+  "container": "80.625em", /* container max-width + margin-inline = 1230 + 30*2 */
+  "container-wide": "120em", /* container max-width + margin-inline = 1860 + 30*2 */
 );
 
-// 1229px
+// Max-width
 $breakpoints-down: (
-  /* "small": "39.9375em",*/
-  /* "medium": "71.8125em",*/
-  "large": "87.4375em",
+  "576": "35.9375em",
+  "768": "47.9375em",
+  "1024": "63.9375em",
+  "1400": "87.4375em",
+  "1920": "119.9375em",
+  "container": "80.5625em", /* container max-width + margin-inline = 1230 + 30*2 - 1px*/
+  "container-wide": "119.9375em", /* container max-width + margin-inline = 1860 + 30*2 - 1px */
 );
 
-@mixin breakpoint-up($size) {
+@mixin bp-up($size) {
   @media (min-width: map-get($breakpoints-up, $size)) {
     @content;
   }
 }
 
-@mixin breakpoint-down($size) {
+@mixin bp-down($size) {
   @media (max-width: map-get($breakpoints-down, $size)) {
     @content;
   }

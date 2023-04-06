@@ -1,0 +1,59 @@
+@use "../util/" as *;
+
+.trending-now {
+  padding-top: calc(rem(55.15) + 1.29vw); // 80>60
+  padding-bottom: calc(rem(55.15) + 1.29vw); // 80>60
+  background-color: var(--gray300-color);
+
+  &__container {
+    position: relative;
+
+    @include bp-down("1400") {
+      margin-inline: rem(40);
+    }
+
+    @include bp-down("1024") {
+      margin-inline: rem(30);
+    }
+
+    @include bp-down("768") {
+      margin-inline: rem(20);
+    }
+  }
+
+  &__title {
+    margin-bottom: rem(60);
+    text-align: initial;
+  }
+
+  &__slider {
+    overflow-x: hidden;
+    margin-bottom: calc(rem(33.38) + 3.37vw); // 96>48
+  }
+
+  &__button-prev {
+    position: absolute;
+    right: rem(36);
+    top: rem(24);
+
+    svg {
+      transform: rotate(180deg);
+    }
+  }
+
+  &__button-next {
+    position: absolute;
+    right: rem(-13);
+    top: rem(24);
+  }
+
+  &__price {
+    font-size: calc(rem(19.03) + 0.26vw); // 24>20
+  }
+
+  &__button {
+    position: relative;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+}
