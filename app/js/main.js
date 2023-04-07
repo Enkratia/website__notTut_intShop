@@ -70,6 +70,38 @@ customSelect.addEventListener("keydown", selectCurrencyWithKeyboard);
 
 /***/ }),
 
+/***/ "./src/js/components/product-bottom.js":
+/*!*********************************************!*\
+  !*** ./src/js/components/product-bottom.js ***!
+  \*********************************************/
+/***/ (() => {
+
+/* Hover effect on sale__product */
+const products = document.querySelectorAll(".sale__product");
+
+// Functions
+function showProductBottom(product) {
+  const productBottom = product.querySelector(".product__bottom");
+  productBottom.classList.add("product__bottom--visible");
+  const productBottomHeight = product.querySelector(".product__bottom").offsetHeight;
+  const saleSlider = document.querySelector(".sale__slider");
+  const saleSliderMargin = window.getComputedStyle(saleSlider).getPropertyValue("margin-bottom");
+  saleSlider.style.marginBottom = parseInt(saleSliderMargin) - productBottomHeight + "px";
+  product.addEventListener("mouseleave", () => hideProductBottom(product, productBottom, saleSlider, saleSliderMargin));
+}
+function hideProductBottom(product, productBottom, saleSlider, saleSliderMargin) {
+  productBottom.classList.remove("product__bottom--visible");
+  saleSlider.style.marginBottom = saleSliderMargin;
+  product.removeEventListener("mouseleave", () => hideProductBottom(product, productBottom, saleSlider, saleSliderMargin));
+}
+
+// Listener
+products.forEach(product => {
+  product.addEventListener("mouseenter", () => showProductBottom(product));
+});
+
+/***/ }),
+
 /***/ "./src/js/components/special-offers.js":
 /*!*********************************************!*\
   !*** ./src/js/components/special-offers.js ***!
@@ -293,7 +325,33 @@ const trendingNowSwiper = new swiper__WEBPACK_IMPORTED_MODULE_0__["default"]("#t
     },
     768: {
       slidesPerView: 3,
+      spaceBetween: 30
+    },
+    480: {
+      slidesPerView: 2,
       spaceBetween: 20
+    }
+  }
+});
+
+// SALE SWIPER
+const saleSwiper = new swiper__WEBPACK_IMPORTED_MODULE_0__["default"]("#sale-slider", {
+  modules: [swiper__WEBPACK_IMPORTED_MODULE_0__.Navigation],
+  slidesPerView: 1,
+  spaceBetween: 20,
+  loop: true,
+  navigation: {
+    nextEl: '#sale-button-next',
+    prevEl: '#sale-button-prev'
+  },
+  breakpoints: {
+    900: {
+      slidesPerView: 3,
+      spaceBetween: 30
+    },
+    768: {
+      slidesPerView: 3,
+      spaceBetween: 30
     },
     480: {
       slidesPerView: 2,
@@ -16400,8 +16458,11 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _components_timer__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./components/timer */ "./src/js/components/timer.js");
 /* harmony import */ var _components_timer__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_components_timer__WEBPACK_IMPORTED_MODULE_2__);
 /* harmony import */ var _components_swiper__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./components/swiper */ "./src/js/components/swiper.js");
-/* harmony import */ var overlayscrollbars__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! overlayscrollbars */ "./node_modules/overlayscrollbars/overlayscrollbars.mjs");
+/* harmony import */ var _components_product_bottom__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./components/product-bottom */ "./src/js/components/product-bottom.js");
+/* harmony import */ var _components_product_bottom__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(_components_product_bottom__WEBPACK_IMPORTED_MODULE_4__);
+/* harmony import */ var overlayscrollbars__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! overlayscrollbars */ "./node_modules/overlayscrollbars/overlayscrollbars.mjs");
 // Components
+
 
 
 
@@ -16410,8 +16471,8 @@ __webpack_require__.r(__webpack_exports__);
 // Libraries
 // **OverlayScrollbars
 
-overlayscrollbars__WEBPACK_IMPORTED_MODULE_4__.OverlayScrollbars.plugin([overlayscrollbars__WEBPACK_IMPORTED_MODULE_4__.ScrollbarsHidingPlugin, overlayscrollbars__WEBPACK_IMPORTED_MODULE_4__.SizeObserverPlugin]);
-const osInstance = (0,overlayscrollbars__WEBPACK_IMPORTED_MODULE_4__.OverlayScrollbars)(document.querySelector('#custom-select-list'), {});
+overlayscrollbars__WEBPACK_IMPORTED_MODULE_5__.OverlayScrollbars.plugin([overlayscrollbars__WEBPACK_IMPORTED_MODULE_5__.ScrollbarsHidingPlugin, overlayscrollbars__WEBPACK_IMPORTED_MODULE_5__.SizeObserverPlugin]);
+const osInstance = (0,overlayscrollbars__WEBPACK_IMPORTED_MODULE_5__.OverlayScrollbars)(document.querySelector('#custom-select-list'), {});
 })();
 
 /******/ })()

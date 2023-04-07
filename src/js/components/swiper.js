@@ -171,7 +171,33 @@ const trendingNowSwiper = new Swiper("#trending-now-slider", {
     },
     768: {
       slidesPerView: 3,
+      spaceBetween: 30,
+    },
+    480: {
+      slidesPerView: 2,
       spaceBetween: 20,
+    }
+   }
+});
+
+// SALE SWIPER
+const saleSwiper = new Swiper("#sale-slider", {
+  modules: [Navigation],
+  slidesPerView: 1,
+  spaceBetween: 20,
+  loop: true,
+  navigation: {
+    nextEl: '#sale-button-next',
+    prevEl: '#sale-button-prev',
+  },
+   breakpoints: {
+    900: {
+      slidesPerView: 3,
+      spaceBetween: 30,
+    },
+    768: {
+      slidesPerView: 3,
+      spaceBetween: 30,
     },
     480: {
       slidesPerView: 2,

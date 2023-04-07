@@ -1,9 +1,8 @@
 @use "../util/" as *;
 
-.trending-now {
-  padding-top: calc(rem(55.15) + 1.29vw); // 80>60
-  padding-bottom: calc(rem(55.6) + 1.17vw); // 78>60
-  background-color: var(--gray300-color);
+.sale {
+  padding-top: rem(100);
+  background-color: var(--white-color);
 
   &__container {
     position: relative;
