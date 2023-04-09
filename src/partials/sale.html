@@ -12,7 +12,7 @@
           <!-- test, помещая артикл внутрь -->
           <article class="sale__product product">
             <div class="product__look">
-              <a href="#" class="sale__image-link">
+              <a href="#" class="sale__image-wrapper">
                 <img src="./img/sale-bag.png" alt="Product image." class="product__image">
               </a>
   
@@ -159,7 +159,7 @@
         <!-- Slide2 -->
         <article class="sale__product product swiper-slide">
           <div class="product__look">
-            <a href="#" class="sale__image-link">
+            <a href="#" class="sale__image-wrapper">
               <img src="./img/sale-jeans.png" alt="Product image." class="product__image">
             </a>
 
@@ -252,15 +252,23 @@
   
                 <ul class="product__colors colors">
                   <li class="colors__item">
-                    <button class="colors__button colors__button--active" data-color="black" aria-label="Choose black color.">1</button>
+                    <button class="colors__button colors__button--active" data-color="black" aria-label="Choose black color."></button>
                   </li>
   
                   <li class="sizes__item">
-                    <button class="colors__button" data-color="brown" aria-label="Choose brown color.">2</button>
+                    <button class="colors__button" data-color="brown" aria-label="Choose brown color."></button>
                   </li>
   
                   <li class="sizes__item">
-                    <button class="colors__button" data-color="light-blue" aria-label="Choose light-blue color.">3</button>
+                    <button class="colors__button" data-color="light-blue" aria-label="Choose light-blue color."></button>
+                  </li>
+
+                  <li class="sizes__item">
+                    <button class="colors__button" data-color="dark-blue" aria-label="Choose dark-blue color."></button>
+                  </li>
+
+                  <li class="sizes__item">
+                    <button class="colors__button" data-color="green" aria-label="Choose green color."></button>
                   </li>
                 </ul>
               </div>
@@ -281,9 +289,31 @@
         <!-- Slide3 -->
         <article class="sale__product product swiper-slide">
           <div class="product__look">
-            <a href="#" class="sale__image-link">
-              <img src="./img/sale-boots.png" alt="Product image." class="product__image">
-            </a>
+            <div class="product__image-wrapper microslider">
+              <img src="./img/sale-boots.png" alt="Product image." class="product__image microslider__image" id="microslider-image">
+
+              <ul class="microslider__srcs" aria-hidden="true">
+                <li class="microslider__src" data-src="./img/sale-boots.png"></li>
+                <li class="microslider__src" data-src="./img/sale-boots-2.jpg"></li>
+                <li class="microslider__src" data-src="./img/sale-boots-3.jpg"></li>
+              </ul>
+
+              <div class="microslider__btns">
+                <button class="microslider__button microslider__button--left" aria-label="Previous image of the product.">
+                  <svg xmlns='http://www.w3.org/2000/svg' aria-hidden="true">
+                    <use href='./img/sprite.svg#angle-down'></use>
+                  </svg>
+                </button>
+
+                <button class="microslider__button microslider__button--right" aria-label="Next image of the product.">
+                  <svg xmlns='http://www.w3.org/2000/svg' aria-hidden="true">
+                    <use href='./img/sprite.svg#angle-down'></use>
+                  </svg>
+                </button>
+              </div>
+
+              <a href="#" class="product__image-link"></a>
+            </div>
 
             <div class="product__rating">
               <svg class="product__rating-icon" xmlns='http://www.w3.org/2000/svg' aria-label="Star for rating one.">

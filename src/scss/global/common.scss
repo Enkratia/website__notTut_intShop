@@ -234,10 +234,23 @@
     cursor: pointer;
   }
 
+  &__image-wrapper {
+    position: relative;
+  }
+
+  &__image-link {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+  }
+
   &__image {
     margin-bottom: rem(16);
     width: 100%;
     height: 100%;
+    max-height: 100%;
     object-fit: cover;
   }
 
@@ -354,6 +367,7 @@
 
   &__info {
     padding-inline: rem(16);
+    background-color: var(--white-color);
   }
 
   &__name {
@@ -400,7 +414,10 @@
   }
 
   &__bottom {
+    position: relative;
     display: none;
+    padding-bottom: rem(16);
+    background-color: var(--white-color);
 
     &--visible {
       display: block;
@@ -428,9 +445,11 @@
   }
 
   // Inner blocks
+  // **
   .sizes {
     display: flex;
-    align-items: center;
+    flex-wrap: wrap;
+    align-items: flex-start;
     margin-right: rem(20);
     max-width: 60%;
     gap: rem(8);
@@ -454,9 +473,12 @@
     }
   }
 
+  // **
   .colors {
     display: flex;
-    align-items: center;
+    flex-wrap: wrap;
+    align-items: flex-start;
+    justify-content: flex-end;
     max-width: 40%;
     gap: rem(5.5);
 
@@ -485,7 +507,7 @@
         border-color: var(--primary-color);
       }
 
-      // All product colors
+      // Color classes
       &[data-color="black"] {
         &::before {
           background-color: var(--black-color);
@@ -504,9 +526,50 @@
         }
       }
 
+      &[data-color="dark-blue"] {
+        &::before {
+          background-color: var(--dark-blue-color);
+        }
+      }
+
+      &[data-color="green"] {
+        &::before {
+          background-color: var(--green-color);
+        }
+      }
+
       // Active class
       &--active {
         border-color: var(--primary-color);
+      }
+    }
+  }
+
+  // **
+  .microslider {
+    &__button {
+      position: absolute;
+      top: 50%;
+      z-index: var(--z-up);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transform: translateY(-50%);
+
+      svg {
+        width: rem(17);
+        height: rem(10);
+        fill: var(--gray800-color);
+      }
+
+      &--left {
+        left: 4.5%;
+        transform: translateY(-50%) rotate(90deg);
+      }
+
+      &--right {
+        right: 4.5%;
+        transform: translateY(-50%) rotate(-90deg);
       }
     }
   }

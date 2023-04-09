@@ -70,14 +70,15 @@ customSelect.addEventListener("keydown", selectCurrencyWithKeyboard);
 
 /***/ }),
 
-/***/ "./src/js/components/product-bottom.js":
-/*!*********************************************!*\
-  !*** ./src/js/components/product-bottom.js ***!
-  \*********************************************/
+/***/ "./src/js/components/product.js":
+/*!**************************************!*\
+  !*** ./src/js/components/product.js ***!
+  \**************************************/
 /***/ (() => {
 
-/* Hover effect on sale__product */
+// HOVER EFFECT FOR SHOWING PRODUCT__BOTTOM 
 const products = document.querySelectorAll(".sale__product");
+const marginForBoxShadow = 80; // window.getComputedStyle(products[0]).getPropertyValue("margin-bottom");
 
 // Functions
 function showProductBottom(product) {
@@ -86,7 +87,7 @@ function showProductBottom(product) {
   const productBottomHeight = product.querySelector(".product__bottom").offsetHeight;
   const saleSlider = document.querySelector(".sale__slider");
   const saleSliderMargin = window.getComputedStyle(saleSlider).getPropertyValue("margin-bottom");
-  saleSlider.style.marginBottom = parseInt(saleSliderMargin) - productBottomHeight + "px";
+  saleSlider.style.marginBottom = parseInt(saleSliderMargin) - marginForBoxShadow - productBottomHeight + "px";
   product.addEventListener("mouseleave", () => hideProductBottom(product, productBottom, saleSlider, saleSliderMargin));
 }
 function hideProductBottom(product, productBottom, saleSlider, saleSliderMargin) {
@@ -95,9 +96,41 @@ function hideProductBottom(product, productBottom, saleSlider, saleSliderMargin)
   product.removeEventListener("mouseleave", () => hideProductBottom(product, productBottom, saleSlider, saleSliderMargin));
 }
 
-// Listener
+// Listeners
 products.forEach(product => {
   product.addEventListener("mouseenter", () => showProductBottom(product));
+});
+
+// MICROSLIDER
+const looks = document.querySelectorAll(".sale .product__look");
+let currentIdx = 0;
+
+// Functions
+function chooseImage(e) {
+  const image = this.querySelector("#microslider-image");
+  const srcs = this.querySelectorAll(".microslider__src");
+  if (e.target.closest(".microslider__button--left")) {
+    if (currentIdx < 1) {
+      currentIdx = srcs.length - 1;
+      image.src = srcs[currentIdx].dataset.src;
+      return;
+    }
+    currentIdx -= 1;
+    image.src = srcs[currentIdx].dataset.src;
+  } else if (e.target.closest(".microslider__button--right")) {
+    if (currentIdx >= srcs.length - 1) {
+      currentIdx = 0;
+      image.src = srcs[currentIdx].dataset.src;
+      return;
+    }
+    currentIdx += 1;
+    image.src = srcs[currentIdx].dataset.src;
+  }
+}
+
+// Listeners
+looks.forEach(look => {
+  look.addEventListener("click", chooseImage);
 });
 
 /***/ }),
@@ -148,10 +181,10 @@ marketingSlider.addEventListener("click", changeSlide);
 
 /***/ }),
 
-/***/ "./src/js/components/swiper.js":
-/*!*************************************!*\
-  !*** ./src/js/components/swiper.js ***!
-  \*************************************/
+/***/ "./src/js/components/swipers.js":
+/*!**************************************!*\
+  !*** ./src/js/components/swipers.js ***!
+  \**************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
@@ -16457,9 +16490,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _components_special_offers__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_components_special_offers__WEBPACK_IMPORTED_MODULE_1__);
 /* harmony import */ var _components_timer__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./components/timer */ "./src/js/components/timer.js");
 /* harmony import */ var _components_timer__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_components_timer__WEBPACK_IMPORTED_MODULE_2__);
-/* harmony import */ var _components_swiper__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./components/swiper */ "./src/js/components/swiper.js");
-/* harmony import */ var _components_product_bottom__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./components/product-bottom */ "./src/js/components/product-bottom.js");
-/* harmony import */ var _components_product_bottom__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(_components_product_bottom__WEBPACK_IMPORTED_MODULE_4__);
+/* harmony import */ var _components_swipers__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./components/swipers */ "./src/js/components/swipers.js");
+/* harmony import */ var _components_product__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./components/product */ "./src/js/components/product.js");
+/* harmony import */ var _components_product__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(_components_product__WEBPACK_IMPORTED_MODULE_4__);
 /* harmony import */ var overlayscrollbars__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! overlayscrollbars */ "./node_modules/overlayscrollbars/overlayscrollbars.mjs");
 // Components
 

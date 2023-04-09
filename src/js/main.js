@@ -2,8 +2,8 @@
 import "./components/currency";
 import "./components/special-offers";
 import "./components/timer";
-import "./components/swiper";
-import "./components/product-bottom";
+import "./components/swipers";
+import "./components/product";
 
 // Libraries
 // **OverlayScrollbars

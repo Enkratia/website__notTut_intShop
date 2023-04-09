@@ -30,6 +30,10 @@
     margin-bottom: calc(rem(33.38) + 3.37vw); // 96>48
   }
 
+  // &__wrapper {
+  //   padding-bottom: rem(80);
+  // }
+
   &__button-prev {
     position: absolute;
     right: rem(36);
@@ -60,6 +64,16 @@
 
     @include bp-down ("576") {
       right: rem(-8);
+    }
+  }
+
+  &__product {
+    position: relative;
+    z-index: var(--z-up);
+
+    &:hover {
+      margin-bottom: rem(80); // For box-shadow
+      box-shadow: var(--product-shadow);
     }
   }
 
