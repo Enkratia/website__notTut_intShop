@@ -70,38 +70,12 @@ customSelect.addEventListener("keydown", selectCurrencyWithKeyboard);
 
 /***/ }),
 
-/***/ "./src/js/components/product.js":
-/*!**************************************!*\
-  !*** ./src/js/components/product.js ***!
-  \**************************************/
+/***/ "./src/js/components/microslider.js":
+/*!******************************************!*\
+  !*** ./src/js/components/microslider.js ***!
+  \******************************************/
 /***/ (() => {
 
-// HOVER EFFECT FOR SHOWING PRODUCT__BOTTOM 
-const products = document.querySelectorAll(".sale__product");
-const marginForBoxShadow = 80; // window.getComputedStyle(products[0]).getPropertyValue("margin-bottom");
-
-// Functions
-function showProductBottom(product) {
-  const productBottom = product.querySelector(".product__bottom");
-  productBottom.classList.add("product__bottom--visible");
-  const productBottomHeight = product.querySelector(".product__bottom").offsetHeight;
-  const saleSlider = document.querySelector(".sale__slider");
-  const saleSliderMargin = window.getComputedStyle(saleSlider).getPropertyValue("margin-bottom");
-  saleSlider.style.marginBottom = parseInt(saleSliderMargin) - marginForBoxShadow - productBottomHeight + "px";
-  product.addEventListener("mouseleave", () => hideProductBottom(product, productBottom, saleSlider, saleSliderMargin));
-}
-function hideProductBottom(product, productBottom, saleSlider, saleSliderMargin) {
-  productBottom.classList.remove("product__bottom--visible");
-  saleSlider.style.marginBottom = saleSliderMargin;
-  product.removeEventListener("mouseleave", () => hideProductBottom(product, productBottom, saleSlider, saleSliderMargin));
-}
-
-// Listeners
-products.forEach(product => {
-  product.addEventListener("mouseenter", () => showProductBottom(product));
-});
-
-// MICROSLIDER
 const looks = document.querySelectorAll(".sale .product__look");
 let currentIdx = 0;
 
@@ -131,6 +105,86 @@ function chooseImage(e) {
 // Listeners
 looks.forEach(look => {
   look.addEventListener("click", chooseImage);
+});
+
+/***/ }),
+
+/***/ "./src/js/components/product__bottom.js":
+/*!**********************************************!*\
+  !*** ./src/js/components/product__bottom.js ***!
+  \**********************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var swiper__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! swiper */ "./node_modules/swiper/swiper.esm.js");
+
+
+// SALE SWIPER
+const saleSwiper = new swiper__WEBPACK_IMPORTED_MODULE_0__["default"]("#sale-slider", {
+  modules: [swiper__WEBPACK_IMPORTED_MODULE_0__.Navigation],
+  slidesPerView: 1,
+  spaceBetween: 20,
+  loop: true,
+  navigation: {
+    nextEl: '#sale-button-next',
+    prevEl: '#sale-button-prev'
+  },
+  breakpoints: {
+    900: {
+      slidesPerView: 3,
+      spaceBetween: 30
+    },
+    768: {
+      slidesPerView: 3,
+      spaceBetween: 30
+    },
+    480: {
+      slidesPerView: 2,
+      spaceBetween: 20
+    }
+  }
+});
+
+// HOVER EFFECT FOR SHOWING PRODUCT__BOTTOM 
+let products = document.querySelectorAll(".sale__product");
+let saleSlider = document.querySelector(".sale__slider");
+const marginForBoxShadow = 80; // window.getComputedStyle(products[0]).getPropertyValue("margin-bottom");
+
+window.onresize = () => {
+  setTimeout(() => {
+    // Чтобы swiper успел прогрузить свой js
+    products = document.querySelectorAll(".sale__product");
+    saleSlider = document.querySelector(".sale__slider");
+    products.forEach(product => {
+      product.removeEventListener("mouseenter", showProductBottom);
+      product.removeEventListener("mouseleave", hideProductBottom);
+    });
+    products.forEach(product => {
+      product.addEventListener("mouseenter", showProductBottom);
+      product.addEventListener("mouseleave", hideProductBottom);
+    });
+  }, 50);
+};
+
+// Functions
+function showProductBottom() {
+  const productBottom = this.querySelector(".product__bottom");
+  productBottom.classList.add("product__bottom--visible");
+  const productBottomHeight = this.querySelector(".product__bottom").offsetHeight;
+  const saleSliderMargin = window.getComputedStyle(saleSlider).getPropertyValue("margin-bottom");
+  saleSlider.style.marginBottom = parseFloat(saleSliderMargin) - marginForBoxShadow - productBottomHeight + "px";
+  console.log(saleSliderMargin, marginForBoxShadow, productBottomHeight);
+}
+function hideProductBottom() {
+  this.querySelector(".product__bottom").classList.remove("product__bottom--visible");
+  saleSlider.style.marginBottom = "";
+}
+
+// Listeners
+products.forEach(product => {
+  product.addEventListener("mouseenter", showProductBottom);
+  product.addEventListener("mouseleave", hideProductBottom);
 });
 
 /***/ }),
@@ -367,31 +421,7 @@ const trendingNowSwiper = new swiper__WEBPACK_IMPORTED_MODULE_0__["default"]("#t
   }
 });
 
-// SALE SWIPER
-const saleSwiper = new swiper__WEBPACK_IMPORTED_MODULE_0__["default"]("#sale-slider", {
-  modules: [swiper__WEBPACK_IMPORTED_MODULE_0__.Navigation],
-  slidesPerView: 1,
-  spaceBetween: 20,
-  loop: true,
-  navigation: {
-    nextEl: '#sale-button-next',
-    prevEl: '#sale-button-prev'
-  },
-  breakpoints: {
-    900: {
-      slidesPerView: 3,
-      spaceBetween: 30
-    },
-    768: {
-      slidesPerView: 3,
-      spaceBetween: 30
-    },
-    480: {
-      slidesPerView: 2,
-      spaceBetween: 20
-    }
-  }
-});
+// SALE SWIPER - в другом файле
 
 /***/ }),
 
@@ -16491,10 +16521,12 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _components_timer__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./components/timer */ "./src/js/components/timer.js");
 /* harmony import */ var _components_timer__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_components_timer__WEBPACK_IMPORTED_MODULE_2__);
 /* harmony import */ var _components_swipers__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./components/swipers */ "./src/js/components/swipers.js");
-/* harmony import */ var _components_product__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./components/product */ "./src/js/components/product.js");
-/* harmony import */ var _components_product__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(_components_product__WEBPACK_IMPORTED_MODULE_4__);
-/* harmony import */ var overlayscrollbars__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! overlayscrollbars */ "./node_modules/overlayscrollbars/overlayscrollbars.mjs");
+/* harmony import */ var _components_product_bottom__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./components/product__bottom */ "./src/js/components/product__bottom.js");
+/* harmony import */ var _components_microslider__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./components/microslider */ "./src/js/components/microslider.js");
+/* harmony import */ var _components_microslider__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(_components_microslider__WEBPACK_IMPORTED_MODULE_5__);
+/* harmony import */ var overlayscrollbars__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! overlayscrollbars */ "./node_modules/overlayscrollbars/overlayscrollbars.mjs");
 // Components
+
 
 
 
@@ -16504,8 +16536,8 @@ __webpack_require__.r(__webpack_exports__);
 // Libraries
 // **OverlayScrollbars
 
-overlayscrollbars__WEBPACK_IMPORTED_MODULE_5__.OverlayScrollbars.plugin([overlayscrollbars__WEBPACK_IMPORTED_MODULE_5__.ScrollbarsHidingPlugin, overlayscrollbars__WEBPACK_IMPORTED_MODULE_5__.SizeObserverPlugin]);
-const osInstance = (0,overlayscrollbars__WEBPACK_IMPORTED_MODULE_5__.OverlayScrollbars)(document.querySelector('#custom-select-list'), {});
+overlayscrollbars__WEBPACK_IMPORTED_MODULE_6__.OverlayScrollbars.plugin([overlayscrollbars__WEBPACK_IMPORTED_MODULE_6__.ScrollbarsHidingPlugin, overlayscrollbars__WEBPACK_IMPORTED_MODULE_6__.SizeObserverPlugin]);
+const osInstance = (0,overlayscrollbars__WEBPACK_IMPORTED_MODULE_6__.OverlayScrollbars)(document.querySelector('#custom-select-list'), {});
 })();
 
 /******/ })()

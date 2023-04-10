@@ -3,7 +3,8 @@ import "./components/currency";
 import "./components/special-offers";
 import "./components/timer";
 import "./components/swipers";
-import "./components/product";
+import "./components/product__bottom";
+import "./components/microslider";
 
 // Libraries
 // **OverlayScrollbars
