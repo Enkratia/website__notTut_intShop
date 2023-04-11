@@ -53,14 +53,10 @@ window.onresize = () => {
 function showProductBottom() {
   const productBottom = this.querySelector(".product__bottom");
   productBottom.classList.add("product__bottom--visible");
-
-  const productBottomHeight = this.querySelector(".product__bottom").offsetHeight;
+  const productBottomHeight = productBottom.getBoundingClientRect().height;
 
   const saleSliderMargin = window.getComputedStyle(saleSlider).getPropertyValue("margin-bottom");
-
   saleSlider.style.marginBottom = parseFloat(saleSliderMargin) - marginForBoxShadow - productBottomHeight + "px";
-
-  console.log(saleSliderMargin, marginForBoxShadow, productBottomHeight)
 }
 
 function hideProductBottom() {

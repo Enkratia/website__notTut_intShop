@@ -77,34 +77,36 @@ customSelect.addEventListener("keydown", selectCurrencyWithKeyboard);
 /***/ (() => {
 
 const looks = document.querySelectorAll(".sale .product__look");
-let currentIdx = 0;
 
 // Functions
-function chooseImage(e) {
-  const image = this.querySelector("#microslider-image");
-  const srcs = this.querySelectorAll(".microslider__src");
-  if (e.target.closest(".microslider__button--left")) {
-    if (currentIdx < 1) {
-      currentIdx = srcs.length - 1;
+function chooseImage() {
+  let currentIdx = 0;
+  return function (e) {
+    const image = this.querySelector("#microslider-image");
+    const srcs = this.querySelectorAll(".microslider__src");
+    if (e.target.closest(".microslider__button--left")) {
+      currentIdx -= 1;
+      if (currentIdx < 0) {
+        currentIdx = srcs.length - 1;
+        image.src = srcs[currentIdx].dataset.src;
+        return;
+      }
       image.src = srcs[currentIdx].dataset.src;
-      return;
-    }
-    currentIdx -= 1;
-    image.src = srcs[currentIdx].dataset.src;
-  } else if (e.target.closest(".microslider__button--right")) {
-    if (currentIdx >= srcs.length - 1) {
-      currentIdx = 0;
+    } else if (e.target.closest(".microslider__button--right")) {
+      currentIdx += 1;
+      if (currentIdx > srcs.length - 1) {
+        currentIdx = 0;
+        image.src = srcs[currentIdx].dataset.src;
+        return;
+      }
       image.src = srcs[currentIdx].dataset.src;
-      return;
     }
-    currentIdx += 1;
-    image.src = srcs[currentIdx].dataset.src;
-  }
+  };
 }
 
 // Listeners
 looks.forEach(look => {
-  look.addEventListener("click", chooseImage);
+  look.addEventListener("click", chooseImage());
 });
 
 /***/ }),
@@ -171,10 +173,9 @@ window.onresize = () => {
 function showProductBottom() {
   const productBottom = this.querySelector(".product__bottom");
   productBottom.classList.add("product__bottom--visible");
-  const productBottomHeight = this.querySelector(".product__bottom").offsetHeight;
+  const productBottomHeight = productBottom.getBoundingClientRect().height;
   const saleSliderMargin = window.getComputedStyle(saleSlider).getPropertyValue("margin-bottom");
   saleSlider.style.marginBottom = parseFloat(saleSliderMargin) - marginForBoxShadow - productBottomHeight + "px";
-  console.log(saleSliderMargin, marginForBoxShadow, productBottomHeight);
 }
 function hideProductBottom() {
   this.querySelector(".product__bottom").classList.remove("product__bottom--visible");
