@@ -1,0 +1,34 @@
+@use "../util/" as *;
+
+.brands {
+  padding-top: calc(rem(88.93) + 1.62vw); // 120>95
+  padding-bottom: calc(rem(88.93) + 1.62vw); // 120>95
+
+  &__container {
+    overflow-x: hidden;
+
+    @include bp-down("1310") {
+      margin-inline: rem(40);
+    }
+
+    @include bp-down("768") {
+      margin-inline: rem(30);
+    }
+  }
+
+  &__brand {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  &__image {
+    width: rem(120) !important;
+    height: rem(64) !important;
+    transition: filter 0.3s;
+
+    &:hover {
+      filter: brightness(0%);
+    }
+  }
+}

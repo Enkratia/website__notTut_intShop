@@ -72,6 +72,7 @@
 
   // Linear-gradients
   --divider-gradient: linear-gradient(rgb(218 219 221 / 0%) 0%, rgb(218 219 221 / 50%) 12.33%, #dadbdd 51.91%, rgb(218 219 221 / 50%) 87.85%, rgb(218 219 221 / 0%) 100%);
+  --app-store-gradient: linear-gradient(0deg, rgb(26 26 26 / 10%) -0.24%, rgb(33 33 33 / 15.1%) 177.23%, rgb(53 53 53 / 22.7%) 444.15%, rgb(87 87 87 / 31.8%) 767.35%, rgb(133 133 133 / 42.1%) 1129.49%, rgb(179 179 179 / 51%) 1442.59%);
 
   // Drop-shadows
   --small-shadow: 0 4px 4px rgb(30 33 44 / 3%), 0 12px 10px rgb(154 156 165 / 4%), 0 30px 24px rgb(154 156 165 / 5%), 0 80px 80px rgb(154 156 165 / 8%);
@@ -81,6 +82,8 @@
 
   // **
   --main-shadow: 0 4px 4px rgb(0 0 0 / 25%);
+  --custom-shadow: 0 8px 4px 4px rgb(0 0 0 / 3%), 0 20px 20px 13px rgb(0 0 0 / 3%);
+  --custom-hover-shadow: 0 8px 4px 4px rgb(0 0 0 / 3%), 0 20px 20px 13px rgb(0 0 0 / 3%), 0 20px 20px 13px rgb(0 0 0 / 3%);
 
   // Z-indexes
   --z-modal: 1000;

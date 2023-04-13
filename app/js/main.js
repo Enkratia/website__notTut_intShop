@@ -424,6 +424,116 @@ const trendingNowSwiper = new swiper__WEBPACK_IMPORTED_MODULE_0__["default"]("#t
 
 // SALE SWIPER - в другом файле
 
+// INSTAGRAM SWIPER
+const instagramSwiper = new swiper__WEBPACK_IMPORTED_MODULE_0__["default"]("#instagram-slider", {
+  modules: [swiper__WEBPACK_IMPORTED_MODULE_0__.Pagination],
+  loop: true,
+  enabled: true,
+  slidesPerView: 2,
+  slidesPerGroup: 2,
+  spaceBetween: 15,
+  pagination: {
+    el: '#instagram-pagination',
+    clickable: true
+  },
+  breakpoints: {
+    576: {
+      enabled: false,
+      slidesPerView: 3,
+      slidesPerGroup: 2
+    }
+  }
+});
+function resetProgressInstagramSwiper() {
+  if (mediaquery767.matches) {
+    instagramSwiper.setProgress(0, 0);
+  }
+}
+mediaquery767.addEventListener("change", resetProgressInstagramSwiper);
+instagramSwiper.setProgress(0, 0); // (Изначально неверный порядок слайдов)
+
+// BLOG SWIPER
+const blogSwiper = new swiper__WEBPACK_IMPORTED_MODULE_0__["default"]("#blog-slider", {
+  modules: [swiper__WEBPACK_IMPORTED_MODULE_0__.Pagination],
+  loop: true,
+  enabled: true,
+  slidesPerView: 1,
+  spaceBetween: 20,
+  pagination: {
+    el: '#blog-pagination',
+    clickable: true
+  },
+  breakpoints: {
+    600: {
+      enabled: false,
+      slidesPerView: 2,
+      spaceBetween: 30
+    },
+    576: {
+      enabled: false,
+      slidesPerView: 2,
+      spaceBetween: 20
+    }
+  }
+});
+function resetBlogSwiper() {
+  if (mediaquery767.matches) {
+    blogSwiper.setProgress(0, 0);
+  }
+}
+mediaquery767.addEventListener("change", resetBlogSwiper);
+
+// BRAND SWIPER
+const brandSwiper = new swiper__WEBPACK_IMPORTED_MODULE_0__["default"]("#brands-slider", {
+  loop: true,
+  slidesPerView: 2,
+  spaceBetween: 20,
+  breakpoints: {
+    1280: {
+      slidesPerView: 6,
+      spaceBetween: 100
+    },
+    1220: {
+      slidesPerView: 6,
+      spaceBetween: 80
+    },
+    1120: {
+      slidesPerView: 6,
+      spaceBetween: 60
+    },
+    1024: {
+      slidesPerView: 6,
+      spaceBetween: 40
+    },
+    860: {
+      slidesPerView: 5,
+      spaceBetween: 40
+    },
+    700: {
+      slidesPerView: 4,
+      spaceBetween: 40
+    },
+    650: {
+      slidesPerView: 4,
+      spaceBetween: 30
+    },
+    500: {
+      slidesPerView: 3,
+      spaceBetween: 30
+    },
+    480: {
+      slidesPerView: 3,
+      spaceBetween: 20
+    }
+  }
+});
+function resetBrandSwiper() {
+  if (mediaquery767.matches) {
+    blogSwiper.setProgress(0, 0);
+  }
+}
+mediaquery767.addEventListener("change", resetBrandSwiper);
+
 /***/ }),
 
 /***/ "./src/js/components/timer.js":

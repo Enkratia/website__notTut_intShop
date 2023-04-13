@@ -1,0 +1,112 @@
+@use "../util/" as *;
+
+.services {
+  padding-top: calc(rem(57.86) + 3.24vw); // 120>70
+  padding-bottom: calc(rem(57.86) + 3.24vw); // 120>70
+
+  &__container {
+    display: grid;
+    grid-template-columns: 1fr minmax(rem(1), rem(90)) 1fr minmax(rem(1), rem(90)) 1fr minmax(rem(1), rem(90)) 1fr;
+
+    @include bp-down("1290") {
+      margin-inline: rem(20);
+    }
+
+    @include bp-down("1024") {
+      grid-template-columns: 1fr minmax(rem(1), rem(30)) 1fr minmax(rem(1), rem(30)) 1fr minmax(rem(1), rem(30)) 1fr;
+    }
+
+    @include bp-down("768") {
+      grid-template-columns: 1fr minmax(rem(1), rem(90)) 1fr;
+      grid-template-rows: repeat(2, auto);
+      row-gap: rem(60);
+    }
+
+    @include bp-down("576") {
+      grid-template-columns: 1fr;
+      grid-template-rows: auto;
+      row-gap: rem(45);
+    }
+  }
+
+  &__content {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  &__icon {
+    margin-bottom: rem(24);
+    width: rem(48);
+    height: rem(48);
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+
+    &--car {
+      background-image: url("../img/services-car.svg");
+    }
+
+    &--woman {
+      background-image: url("../img/services-woman.svg");
+    }
+
+    &--shield {
+      background-image: url("../img/services-shield.svg");
+    }
+
+    &--cards {
+      background-image: url("../img/services-cards.svg");
+    }
+  }
+
+  &__name {
+    margin-bottom: rem(8);
+    font: var(--lead-bold);
+    white-space: nowrap;
+    text-align: center;
+    color: var(--gray900-color);
+
+    @include bp-down("1024") {
+      white-space: normal;
+    }
+
+    @include bp-down("768") {
+      white-space: nowrap;
+    }
+  }
+
+  &__descr {
+    font: var(--base-regular);
+    white-space: nowrap;
+    text-align: center;
+    color: var(--gray700-color);
+
+    @include bp-down("1024") {
+      white-space: normal;
+    }
+
+    @include bp-down("768") {
+      white-space: nowrap;
+    }
+  }
+
+  &__divider {
+    max-width: rem(90);
+    background-image: var(--divider-gradient);
+    background-position: center center;
+    background-size: rem(1) rem(136);
+    background-repeat: no-repeat;
+
+    &--2 {
+      @include bp-down("768") {
+        display: none;
+      }
+    }
+
+    @include bp-down("576") {
+      display: none;
+    }
+  }
+}
