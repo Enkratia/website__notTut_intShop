@@ -164,7 +164,7 @@ const trendingNowSwiper = new Swiper("#trending-now-slider", {
     nextEl: '#trending-now-button-next',
     prevEl: '#trending-now-button-prev',
   },
-   breakpoints: {
+  breakpoints: {
     900: {
       slidesPerView: 3,
       spaceBetween: 30,
@@ -177,7 +177,7 @@ const trendingNowSwiper = new Swiper("#trending-now-slider", {
       slidesPerView: 2,
       spaceBetween: 20,
     }
-   }
+  }
 });
 
 // SALE SWIPER - в другом файле
@@ -225,7 +225,7 @@ const blogSwiper = new Swiper("#blog-slider", {
     el: '#blog-pagination',
     clickable: true,
   },
-    breakpoints: {
+  breakpoints: {
     600: {
       enabled: false,
       slidesPerView: 2,
@@ -250,42 +250,52 @@ mediaquery767.addEventListener("change", resetBlogSwiper);
 // BRAND SWIPER
 const brandSwiper = new Swiper("#brands-slider", {
   loop: true,
+  enabled: true,
   slidesPerView: 2,
   spaceBetween: 20,
   breakpoints: {
     1280: {
+      enabled: false,
       slidesPerView: 6,
       spaceBetween: 100,
     },
     1220: {
+      enabled: false,
       slidesPerView: 6,
       spaceBetween: 80,
     },
     1120: {
+      enabled: false,
       slidesPerView: 6,
       spaceBetween: 60,
     },
     1024: {
+      enabled: false,
       slidesPerView: 6,
       spaceBetween: 40,
     },
     860: {
+      enabled: true,
       slidesPerView: 5,
       spaceBetween: 40,
     },
     700: {
+      enabled: true,
       slidesPerView: 4,
       spaceBetween: 40,
     },
     650: {
+      enabled: true,
       slidesPerView: 4,
       spaceBetween: 30,
     },
     500: {
+      enabled: true,
       slidesPerView: 3,
       spaceBetween: 30,
     },
     480: {
+      enabled: true,
       slidesPerView: 3,
       spaceBetween: 20,
     }
@@ -294,7 +304,7 @@ const brandSwiper = new Swiper("#brands-slider", {
 
 function resetBrandSwiper() {
   if (mediaquery767.matches) {
-    blogSwiper.setProgress(0, 0);
+    brandSwiper.setProgress(0, 0);
   }
 }
 

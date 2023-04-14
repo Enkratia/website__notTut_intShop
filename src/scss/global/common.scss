@@ -679,7 +679,7 @@
 
 .email-form {
   &__label {
-    display: block;
+    display: inline-block;
     margin-bottom: rem(8);
     font: var(--small-regular);
     color: var(--gray800-color);
@@ -701,5 +701,132 @@
   &__button {
     border-top-left-radius: 0;
     border-bottom-left-radius: 0;
+  }
+}
+
+.custom-checkbox {
+  display: flex;
+  flex-shrink: 0;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid var(--gray500-color);
+  border-radius: rem(3);
+  width: rem(16);
+  height: rem(16);
+  background-color: transparent;
+  transition: border-color 0.3s background-color 0.3s;
+
+  svg {
+    width: rem(10);
+    height: rem(8);
+    fill: var(--white-color);
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.2s;
+  }
+
+  &__input {
+    display: none;
+  }
+
+  &--checked {
+    border-color: var(--primary-color);
+    background-color: var(--primary-color);
+
+    svg {
+      opacity: 1;
+      visibility: visible;
+    }
+  }
+}
+
+.social {
+  display: flex;
+  align-items: center;
+
+  &__item {
+    &:not(:last-child) {
+      margin-right: rem(12);
+    }
+  }
+
+  &__link {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: rem(4);
+    width: rem(32);
+    height: rem(32);
+    background-color: var(--white-012-color);
+    transition: background-color 0.25s ease-in-out;
+
+    svg {
+      width: rem(16);
+      height: rem(16);
+      fill: var(--white-color);
+      transition: fill 0.25s ease-in-out;
+    }
+
+    &:hover {
+      background-color: var(--white-color);
+
+      svg {
+        fill: var(--primary-color);
+      }
+    }
+  }
+}
+
+.scroll-top {
+  position: fixed;
+  right: rem(20);
+  bottom: rem(20);
+  z-index: var(--z-tooltip);
+  border-radius: 50%;
+  width: rem(42);
+  height: rem(42);
+  background-color: var(--primary-color);
+  opacity: 0;
+  transform: scale(0.5);
+  transition: transform 0.25s ease-in-out, opacity 0.25s ease-in-out, background-color 0.25s ease-in-out;
+  cursor: pointer;
+  pointer-events: none;
+
+  &::before {
+    content: "Top";
+    position: absolute;
+    left: -80%;
+    top: 50%;
+    font: var(--small-regular);
+    color: var(--gray800-color);
+    opacity: 0;
+    transform: translateY(-50%);
+    transition: opacity 0.25s ease-in-out;
+    pointer-events: none;
+  }
+
+  svg {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    width: rem(14);
+    height: rem(11);
+    fill: var(--white-color);
+    transform: translate(-50%, -63%) rotate(180deg);
+  }
+
+  &:hover {
+    background-color: var(--primary-hover-color);
+
+    &::before {
+      opacity: 1;
+      pointer-events: auto;
+    }
+  }
+
+  &--active {
+    opacity: 1;
+    transform: scale(1);
+    pointer-events: auto;
   }
 }

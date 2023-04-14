@@ -70,6 +70,34 @@ customSelect.addEventListener("keydown", selectCurrencyWithKeyboard);
 
 /***/ }),
 
+/***/ "./src/js/components/custom-checkbox.js":
+/*!**********************************************!*\
+  !*** ./src/js/components/custom-checkbox.js ***!
+  \**********************************************/
+/***/ (() => {
+
+const customCheckboxes = document.querySelectorAll(".custom-checkbox");
+
+// Function(s)
+function checkCustomCheckbox() {
+  const checkbox = this.parentElement;
+  checkbox.classList.toggle("custom-checkbox--checked");
+  const isAriaChecked = checkbox.getAttribute("aria-checked");
+  if (isAriaChecked === "false") {
+    checkbox.setAttribute("aria-checked", "true");
+  } else {
+    checkbox.setAttribute("aria-checked", "false");
+  }
+}
+
+// Listener(s)
+customCheckboxes.forEach(el => {
+  const nativeCheckbox = el.querySelector(".custom-checkbox__input");
+  nativeCheckbox.addEventListener("change", checkCustomCheckbox);
+});
+
+/***/ }),
+
 /***/ "./src/js/components/microslider.js":
 /*!******************************************!*\
   !*** ./src/js/components/microslider.js ***!
@@ -233,6 +261,34 @@ function changeSlide(e) {
   }
 }
 marketingSlider.addEventListener("click", changeSlide);
+
+/***/ }),
+
+/***/ "./src/js/components/subscribe__categories.js":
+/*!****************************************************!*\
+  !*** ./src/js/components/subscribe__categories.js ***!
+  \****************************************************/
+/***/ (() => {
+
+const subscribeCategories = document.querySelector(".subscribe__categories");
+const nativeCheckBoxes = subscribeCategories.querySelectorAll(".categories__btn-checkbox");
+
+// Function(s)
+function checkSubscribeCategoriesCheckbox() {
+  const checkbox = this.parentElement;
+  checkbox.classList.toggle("categories__btn--checked");
+  const isAriaChecked = checkbox.getAttribute("aria-checked");
+  if (isAriaChecked === "false") {
+    checkbox.setAttribute("aria-checked", "true");
+  } else {
+    checkbox.setAttribute("aria-checked", "false");
+  }
+}
+
+// Listener(s)
+nativeCheckBoxes.forEach(el => {
+  el.addEventListener("change", checkSubscribeCategoriesCheckbox);
+});
 
 /***/ }),
 
@@ -486,42 +542,52 @@ mediaquery767.addEventListener("change", resetBlogSwiper);
 // BRAND SWIPER
 const brandSwiper = new swiper__WEBPACK_IMPORTED_MODULE_0__["default"]("#brands-slider", {
   loop: true,
+  enabled: true,
   slidesPerView: 2,
   spaceBetween: 20,
   breakpoints: {
     1280: {
+      enabled: false,
       slidesPerView: 6,
       spaceBetween: 100
     },
     1220: {
+      enabled: false,
       slidesPerView: 6,
       spaceBetween: 80
     },
     1120: {
+      enabled: false,
       slidesPerView: 6,
       spaceBetween: 60
     },
     1024: {
+      enabled: false,
       slidesPerView: 6,
       spaceBetween: 40
     },
     860: {
+      enabled: true,
       slidesPerView: 5,
       spaceBetween: 40
     },
     700: {
+      enabled: true,
       slidesPerView: 4,
       spaceBetween: 40
     },
     650: {
+      enabled: true,
       slidesPerView: 4,
       spaceBetween: 30
     },
     500: {
+      enabled: true,
       slidesPerView: 3,
       spaceBetween: 30
     },
     480: {
+      enabled: true,
       slidesPerView: 3,
       spaceBetween: 20
     }
@@ -529,7 +595,7 @@ const brandSwiper = new swiper__WEBPACK_IMPORTED_MODULE_0__["default"]("#brands-
 });
 function resetBrandSwiper() {
   if (mediaquery767.matches) {
-    blogSwiper.setProgress(0, 0);
+    brandSwiper.setProgress(0, 0);
   }
 }
 mediaquery767.addEventListener("change", resetBrandSwiper);
@@ -16635,8 +16701,14 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _components_product_bottom__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./components/product__bottom */ "./src/js/components/product__bottom.js");
 /* harmony import */ var _components_microslider__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./components/microslider */ "./src/js/components/microslider.js");
 /* harmony import */ var _components_microslider__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(_components_microslider__WEBPACK_IMPORTED_MODULE_5__);
-/* harmony import */ var overlayscrollbars__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! overlayscrollbars */ "./node_modules/overlayscrollbars/overlayscrollbars.mjs");
+/* harmony import */ var _components_custom_checkbox__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./components/custom-checkbox */ "./src/js/components/custom-checkbox.js");
+/* harmony import */ var _components_custom_checkbox__WEBPACK_IMPORTED_MODULE_6___default = /*#__PURE__*/__webpack_require__.n(_components_custom_checkbox__WEBPACK_IMPORTED_MODULE_6__);
+/* harmony import */ var _components_subscribe_categories__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./components/subscribe__categories */ "./src/js/components/subscribe__categories.js");
+/* harmony import */ var _components_subscribe_categories__WEBPACK_IMPORTED_MODULE_7___default = /*#__PURE__*/__webpack_require__.n(_components_subscribe_categories__WEBPACK_IMPORTED_MODULE_7__);
+/* harmony import */ var overlayscrollbars__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! overlayscrollbars */ "./node_modules/overlayscrollbars/overlayscrollbars.mjs");
 // Components
+
+
 
 
 
@@ -16647,8 +16719,23 @@ __webpack_require__.r(__webpack_exports__);
 // Libraries
 // **OverlayScrollbars
 
-overlayscrollbars__WEBPACK_IMPORTED_MODULE_6__.OverlayScrollbars.plugin([overlayscrollbars__WEBPACK_IMPORTED_MODULE_6__.ScrollbarsHidingPlugin, overlayscrollbars__WEBPACK_IMPORTED_MODULE_6__.SizeObserverPlugin]);
-const osInstance = (0,overlayscrollbars__WEBPACK_IMPORTED_MODULE_6__.OverlayScrollbars)(document.querySelector('#custom-select-list'), {});
+overlayscrollbars__WEBPACK_IMPORTED_MODULE_8__.OverlayScrollbars.plugin([overlayscrollbars__WEBPACK_IMPORTED_MODULE_8__.ScrollbarsHidingPlugin, overlayscrollbars__WEBPACK_IMPORTED_MODULE_8__.SizeObserverPlugin]);
+const osInstance = (0,overlayscrollbars__WEBPACK_IMPORTED_MODULE_8__.OverlayScrollbars)(document.querySelector('#custom-select-list'), {});
+
+// Scroll-top
+const scrollTop = document.querySelector(".scroll-top");
+
+// F(s)
+function showScrollTop() {
+  scrollTop.classList.toggle("scroll-top--active", window.pageYOffset > 250);
+}
+function scrollToTop() {
+  window.scrollTo(0, 0);
+}
+
+// L(s)
+window.addEventListener("scroll", showScrollTop);
+scrollTop.addEventListener("click", scrollToTop);
 })();
 
 /******/ })()
