@@ -45,6 +45,7 @@ const topCategoriesSwiper = new Swiper("#top-categories-swiper", {
 // To enable controls on small displays
 const mediaquery767 = window.matchMedia("(min-width: 768px)");
 const mediaquery768 = window.matchMedia("(max-width: 767px)");
+const mediaquery1024 = window.matchMedia("(min-width: 1024px)");
 
 function enableTopCategoriesSwiper() {
   if (mediaquery767.matches) {
@@ -303,9 +304,9 @@ const brandSwiper = new Swiper("#brands-slider", {
 });
 
 function resetBrandSwiper() {
-  if (mediaquery767.matches) {
+  if (mediaquery1024.matches) {
     brandSwiper.setProgress(0, 0);
   }
 }
 
-mediaquery767.addEventListener("change", resetBrandSwiper);
+mediaquery1024.addEventListener("change", resetBrandSwiper);

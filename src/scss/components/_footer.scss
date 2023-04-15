@@ -3,28 +3,37 @@
 .footer {
   background-color: var(--gray900-color);
 
+  &__container {
+    @include bp-down("1310") {
+      margin-inline: rem(30);
+    }
+  }
+
   // Main
   &__main {
     display: grid;
     column-gap: rem(20);
     grid-template-columns: 1fr 0.87fr 1.31fr auto;
-    padding-top: rem(60);
+    padding-top: calc(rem(35.15) + 1.29vw); // 60>40
     padding-bottom: rem(38);
 
-    &:nth-child(1) {
-      justify-self: self-start;
+    @include bp-down("1024") {
+      grid-template-columns: repeat(4, 1fr);
+      grid-template-rows: repeat(2, auto);
+      row-gap: rem(30);
     }
 
-    &:nth-child(2) {
-      justify-self: self-start;
+    @include bp-down("768") {
+      grid-template-columns: repeat(3, 1fr);
     }
 
-    &:nth-child(3) {
-      justify-self: self-start;
+    @include bp-down("576") {
+      grid-template-columns: repeat(2, 1fr);
+      grid-template-rows: repeat(3, auto);
     }
 
-    &:nth-child(4) {
-      justify-self: self-end;
+    @include bp-down("414") {
+      column-gap: rem(35);
     }
   }
 
@@ -46,6 +55,7 @@
 
   &__link {
     font: var(--base-regular);
+    white-space: nowrap;
     color: var(--white-color);
     opacity: 0.6;
     transition: opacity 0.3s ease-in-out;
@@ -56,6 +66,13 @@
   }
 
   // Communication
+  &__communication {
+    @include bp-down("576") {
+      grid-column: 1 / 4;
+      grid-row: 2 / 3;
+    }
+  }
+
   &__contacts {
     margin-bottom: rem(24);
   }
@@ -87,9 +104,36 @@
   }
 
   // Apps
+  &__apps {
+    @include bp-down("1024") {
+      grid-column: 1 / 4;
+      grid-row: 2 / 3;
+    }
+
+    @include bp-down("576") {
+      grid-column: 1 / 4;
+      grid-row: 3 / 4;
+    }
+  }
+
+  &__btns {
+    display: flex;
+    align-items: center;
+
+    @include bp-down("414") {
+      flex-direction: column;
+      align-items: flex-start;
+    }
+  }
+
   &__button {
     &:first-child {
       margin-right: rem(15);
+
+      @include bp-down("414") {
+        margin-right: 0;
+        margin-bottom: rem(15);
+      }
     }
   }
 
@@ -112,6 +156,10 @@
       width: rem(16);
       height: rem(16);
       fill: var(--primary-color);
+    }
+
+    @include bp-down("1310") {
+      margin-inline: rem(30);
     }
   }
 }

@@ -7,6 +7,7 @@ import "./components/product__bottom";
 import "./components/microslider";
 import "./components/custom-checkbox";
 import "./components/subscribe__categories";
+import "./components/menu-btn";
 
 
 // Libraries

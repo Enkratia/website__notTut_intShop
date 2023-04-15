@@ -11,6 +11,10 @@
     column-gap: rem(20);
     align-items: center;
     grid-template-columns: 1.08fr 2.91fr minmax(auto, rem(380)) 1fr;
+
+    @include bp-down("992") {
+      grid-template-columns: 1fr auto auto;
+    }
   }
 
   &__logo {
@@ -40,6 +44,15 @@
       background-image: var(--divider-gradient);
       transform: translateY(-50%);
     }
+
+    @include bp-down("992") {
+      margin-right: rem(15);
+
+      &::before {
+        left: revert;
+        right: rem(-20);
+      }
+    }
   }
 }
 
@@ -51,6 +64,8 @@
 
 // Nav
 .nav {
+  display: none; //tmp
+
   &__list {
     display: flex;
     align-items: center;
@@ -109,6 +124,7 @@
 
 // Search-form
 .search-form {
+  display: none; //tmp
   position: relative;
   width: 100%;
 
@@ -152,6 +168,10 @@
     font: var(--base-regular);
     user-select: none;
   }
+
+  @include bp-down("992") {
+    display: none;
+  }
 }
 
 // Cart
@@ -181,5 +201,76 @@
     color: var(--white-color);
     background-color: var(--success-color);
     user-select: none;
+  }
+}
+
+// Menu btn
+.menu-btn {
+  overflow: hidden;
+  padding: rem(5);
+
+  &__inner-wrapper {
+    position: relative;
+    width: rem(21);
+    height: rem(14);
+  }
+
+  &__line {
+    position: absolute;
+    width: rem(21);
+    height: rem(2);
+    background-color: var(--black-color);
+    transition: transform 0.3s ease-in-out, opacity 0.3s ease-in-out;
+
+    &:nth-child(1) {
+      left: 0;
+      top: 0;
+      transform: rotate(0);
+      transform-origin: center;
+    }
+
+    &:nth-child(2) {
+      left: 0;
+      bottom: 50%;
+      transform: translateY(50%);
+    }
+
+    &:nth-child(3) {
+      left: 0;
+      bottom: 0;
+      transform: rotate(0);
+      transform-origin: center;
+    }
+  }
+
+  &--show {
+    overflow: visible;
+
+    &__inner-wrapper {
+      position: relative;
+      overflow: hidden;
+      width: rem(21);
+      height: rem(14);
+    }
+
+    .menu-btn__line:nth-child(1) {
+      top: 50%;
+      opacity: 1;
+      transform: translateY(-50%) rotate(45deg);
+      transform-origin: center;
+    }
+
+    .menu-btn__line:nth-child(2) {
+      opacity: 0;
+      visibility: hidden;
+      transform: translateX(-100%);
+    }
+
+    .menu-btn__line:nth-child(3) {
+      top: 50%;
+      opacity: 1;
+      transform: translateY(-50%) rotate(-45deg);
+      transform-origin: center;
+    }
   }
 }
