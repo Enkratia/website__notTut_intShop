@@ -8,6 +8,7 @@ import "./components/microslider";
 import "./components/custom-checkbox";
 import "./components/subscribe__categories";
 import "./components/menu-btn";
+import "./components/megamenu";
 
 
 // Libraries

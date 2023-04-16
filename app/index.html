@@ -173,16 +173,22 @@
   </div>
 </div>
   <div class="header-main header__mid">
-  <div class="header-main__container container">
+  <div class="header-main__container container container--30" id="header-main-container">
     <a href="#" class="header-main__logo logo">
       <img src="./img/logo.svg" alt="Logo.">
     </a>
 
     <nav class="header-main__nav nav" id="nav">
-      <ul class="nav__list">
+      <ul class="nav__list" id="nav-list">
         <li class="nav__item">
           <a href="#" class="nav__link nav__link--active" data-category="women">
             Women
+
+            <button class="nav__btn-dropdown" aria-label="Show categories.">
+              <svg xmlns='http://www.w3.org/2000/svg' aria-hidden="true">
+                <use href='./img/sprite.svg#angle-down' aria-hidden="true"></use>
+              </svg>
+            </button>
           </a>
 
           <div class="nav__megamenu megamenu megamenu-women">
@@ -218,8 +224,8 @@
         </ul>
       </div>
 
-      <!-- Women categories -->
-      <div class="megamenu__clothes">
+      <!-- Category1 (Clothes) -->
+      <div class="megamenu__category">
         <h3 class="megamenu__title">
           <a href="#" class="megamenu__title-link">
             Clothes
@@ -313,7 +319,8 @@
         </ul>
       </div>
 
-      <div class="megamenu__shoes">
+      <!-- Category2 (Shoes) -->
+      <div class="megamenu__category">
         <h3 class="megamenu__title">
           <a href="#" class="megamenu__title-link">
             Shoes
@@ -377,7 +384,8 @@
         </ul>
       </div>
 
-      <div class="megamenu__accessories">
+      <!-- Category3 (Accessories) -->
+      <div class="megamenu__category">
         <h3 class="megamenu__title">
           <a href="#" class="megamenu__title-link">
             Accessories
@@ -473,6 +481,12 @@
         <li class="nav__item">
           <a href="#" class="nav__link">
             Men
+
+            <button class="nav__btn-dropdown" aria-label="Show categories.">
+              <svg xmlns='http://www.w3.org/2000/svg' aria-hidden="true">
+                <use href='./img/sprite.svg#angle-down' aria-hidden="true"></use>
+              </svg>
+            </button>
           </a>
 
           <div class="nav__megamenu megamenu megamenu-men">
@@ -508,8 +522,8 @@
         </ul>
       </div>
 
-      <!-- Men categories -->
-      <div class="megamenu__clothes">
+      <!-- Category1 (Clothes) -->
+      <div class="megamenu__category">
         <h3 class="megamenu__title">
           <a href="#" class="megamenu__title-link">
             Clothes
@@ -537,7 +551,8 @@
         </ul>
       </div>
 
-      <div class="megamenu__shoes">
+      <!-- Category2 (Shoes) -->
+      <div class="megamenu__category">
         <h3 class="megamenu__title">
           <a href="#" class="megamenu__title-link">
             Shoes
@@ -583,7 +598,8 @@
         </ul>
       </div>
 
-      <div class="megamenu__accessories">
+      <!-- Category3 (Accessories) -->
+      <div class="megamenu__category">
         <h3 class="megamenu__title">
           <a href="#" class="megamenu__title-link">
             Accessories
@@ -649,6 +665,12 @@
         <li class="nav__item">
           <a href="#" class="nav__link">
             Girls
+
+            <button class="nav__btn-dropdown" aria-label="Show categories.">
+              <svg xmlns='http://www.w3.org/2000/svg' aria-hidden="true">
+                <use href='./img/sprite.svg#angle-down' aria-hidden="true"></use>
+              </svg>
+            </button>
           </a>
 
           <div class="nav__megamenu megamenu megamenu-girls">
@@ -684,8 +706,8 @@
         </ul>
       </div>
 
-      <!-- Girls categories -->
-      <div class="megamenu__clothes">
+      <!-- Category1 (Clothes) -->
+      <div class="megamenu__category">
         <h3 class="megamenu__title">
           <a href="#" class="megamenu__title-link">
             Clothes
@@ -731,7 +753,8 @@
         </ul>
       </div>
 
-      <div class="megamenu__shoes">
+      <!-- Category2 (Shoes) -->
+      <div class="megamenu__category">
         <h3 class="megamenu__title">
           <a href="#" class="megamenu__title-link">
             Shoes
@@ -759,7 +782,8 @@
         </ul>
       </div>
 
-      <div class="megamenu__accessories">
+      <!-- Category3 (Accessories) -->
+      <div class="megamenu__category">
         <h3 class="megamenu__title">
           <a href="#" class="megamenu__title-link">
             Accessories
@@ -819,6 +843,12 @@
         <li class="nav__item">
           <a href="#" class="nav__link">
             Boys
+
+            <button class="nav__btn-dropdown" aria-label="Show categories.">
+              <svg xmlns='http://www.w3.org/2000/svg' aria-hidden="true">
+                <use href='./img/sprite.svg#angle-down' aria-hidden="true"></use>
+              </svg>
+            </button>
           </a>
 
           <div class="nav__megamenu megamenu megamenu-boys">
@@ -854,8 +884,8 @@
         </ul>
       </div>
 
-      <!-- Boys categories -->
-      <div class="megamenu__clothes">
+      <!-- Category1 (Clothes) -->
+      <div class="megamenu__category">
         <h3 class="megamenu__title">
           <a href="#" class="megamenu__title-link">
             Clothes
@@ -883,7 +913,8 @@
         </ul>
       </div>
 
-      <div class="megamenu__shoes">
+      <!-- Category2 (Shoes)-->
+      <div class="megamenu__category">
         <h3 class="megamenu__title">
           <a href="#" class="megamenu__title-link">
             Shoes
@@ -911,7 +942,8 @@
         </ul>
       </div>
 
-      <div class="megamenu__accessories">
+      <!-- Category3 (Accessories)-->
+      <div class="megamenu__category">
         <h3 class="megamenu__title">
           <a href="#" class="megamenu__title-link">
             Accessories
@@ -974,10 +1006,9 @@
           </a>
         </li>
       </ul>
-
     </nav>
 
-    <form class="header-main__search-form search-form">
+    <form class="header-main__search-form search-form" id="search-form">
       <input type="text" class="search-form__input input" placeholder="Search for products...">
 
       <button class="search-form__btn" aria-label="Search.">
@@ -1013,7 +1044,7 @@
       </div>
     </div>
 
-    <button class="header__menu-btn menu-btn menu-btn--show" id="menu-btn" aria-label="Menu button.">
+    <button class="header__menu-btn menu-btn" id="menu-btn" aria-label="Menu button.">
       <div class="menu-btn__inner-wrapper">
         <span class="menu-btn__line" aria-hidden="true"></span>
         <span class="menu-btn__line" aria-hidden="true"></span>

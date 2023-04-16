@@ -98,6 +98,85 @@ customCheckboxes.forEach(el => {
 
 /***/ }),
 
+/***/ "./src/js/components/megamenu.js":
+/*!***************************************!*\
+  !*** ./src/js/components/megamenu.js ***!
+  \***************************************/
+/***/ (() => {
+
+const navLinksAll = document.querySelectorAll(".nav__link");
+const navItems = document.querySelectorAll(".nav__item");
+mediaquery991 = window.matchMedia("(max-width: 991px)");
+mediaquery992 = window.matchMedia("(min-width: 992px)");
+const hoverCount = 3; // Количество элементов главного меню с ховером
+
+// F(s)
+function showDropdown(e) {
+  console.log("h");
+  e.preventDefault();
+  const openMegamenu = document.querySelector(".megamenu--show");
+  const megamenu = this.nextElementSibling;
+  if (megamenu === openMegamenu) {
+    megamenu.classList.toggle("megamenu--show");
+  } else {
+    openMegamenu?.classList.remove("megamenu--show");
+    megamenu.classList.add("megamenu--show");
+  }
+  const openLink = document.querySelector(".nav__link--open");
+  if (this === openLink) {
+    this.classList.toggle("nav__link--open");
+    return;
+  }
+  openLink?.classList.remove("nav__link--open");
+  this.classList.add("nav__link--open");
+}
+function addShowDropdown() {
+  if (mediaquery991.matches) {
+    navLinksAll.forEach((el, idx) => {
+      if (idx > hoverCount) return;
+      el.addEventListener("click", showDropdown);
+    });
+  }
+}
+addShowDropdown();
+function removeShowDropdown() {
+  if (mediaquery992.matches) {
+    navLinksAll.forEach((el, idx) => {
+      if (idx > hoverCount) return;
+      el.removeEventListener("click", showDropdown);
+    });
+    document.querySelector(".megamenu--show")?.classList.remove("megamenu--show");
+    document.querySelector(".nav__link--open")?.classList.remove("nav__link--open");
+    document.querySelector("#menu-btn").click();
+  }
+}
+function removeNavItemsHover() {
+  if (mediaquery991.matches) {
+    navItems.forEach((item, idx) => {
+      if (idx > hoverCount) return;
+      item.classList.remove("nav__item--hover");
+    });
+  }
+}
+removeNavItemsHover();
+function addNavItemsHover() {
+  if (mediaquery992.matches) {
+    navItems.forEach((item, idx) => {
+      if (idx > hoverCount) return;
+      item.classList.add("nav__item--hover");
+    });
+  }
+}
+addNavItemsHover();
+
+// L(s)
+mediaquery991.addEventListener("change", removeNavItemsHover);
+mediaquery992.addEventListener("change", addNavItemsHover);
+mediaquery991.addEventListener("change", addShowDropdown);
+mediaquery992.addEventListener("change", removeShowDropdown);
+
+/***/ }),
+
 /***/ "./src/js/components/menu-btn.js":
 /*!***************************************!*\
   !*** ./src/js/components/menu-btn.js ***!
@@ -105,9 +184,19 @@ customCheckboxes.forEach(el => {
 /***/ (() => {
 
 const menuBtn = document.querySelector("#menu-btn");
+const headerMainContainer = document.querySelector("#header-main-container");
+const searchForm = headerMainContainer.querySelector("#search-form");
+const navList = headerMainContainer.querySelector("#nav-list");
+
+// F(s)
 function showMenu() {
   this.classList.toggle("menu-btn--show");
+  headerMainContainer.classList.toggle("header-main__container--show");
+  searchForm.classList.toggle("search-form--show");
+  navList.classList.toggle("nav__list--show");
 }
+
+// L(s)
 menuBtn.addEventListener("click", showMenu);
 
 /***/ }),
@@ -16722,8 +16811,11 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _components_subscribe_categories__WEBPACK_IMPORTED_MODULE_7___default = /*#__PURE__*/__webpack_require__.n(_components_subscribe_categories__WEBPACK_IMPORTED_MODULE_7__);
 /* harmony import */ var _components_menu_btn__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./components/menu-btn */ "./src/js/components/menu-btn.js");
 /* harmony import */ var _components_menu_btn__WEBPACK_IMPORTED_MODULE_8___default = /*#__PURE__*/__webpack_require__.n(_components_menu_btn__WEBPACK_IMPORTED_MODULE_8__);
-/* harmony import */ var overlayscrollbars__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! overlayscrollbars */ "./node_modules/overlayscrollbars/overlayscrollbars.mjs");
+/* harmony import */ var _components_megamenu__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./components/megamenu */ "./src/js/components/megamenu.js");
+/* harmony import */ var _components_megamenu__WEBPACK_IMPORTED_MODULE_9___default = /*#__PURE__*/__webpack_require__.n(_components_megamenu__WEBPACK_IMPORTED_MODULE_9__);
+/* harmony import */ var overlayscrollbars__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! overlayscrollbars */ "./node_modules/overlayscrollbars/overlayscrollbars.mjs");
 // Components
+
 
 
 
@@ -16737,8 +16829,8 @@ __webpack_require__.r(__webpack_exports__);
 // Libraries
 // **OverlayScrollbars
 
-overlayscrollbars__WEBPACK_IMPORTED_MODULE_9__.OverlayScrollbars.plugin([overlayscrollbars__WEBPACK_IMPORTED_MODULE_9__.ScrollbarsHidingPlugin, overlayscrollbars__WEBPACK_IMPORTED_MODULE_9__.SizeObserverPlugin]);
-const osInstance = (0,overlayscrollbars__WEBPACK_IMPORTED_MODULE_9__.OverlayScrollbars)(document.querySelector('#custom-select-list'), {});
+overlayscrollbars__WEBPACK_IMPORTED_MODULE_10__.OverlayScrollbars.plugin([overlayscrollbars__WEBPACK_IMPORTED_MODULE_10__.ScrollbarsHidingPlugin, overlayscrollbars__WEBPACK_IMPORTED_MODULE_10__.SizeObserverPlugin]);
+const osInstance = (0,overlayscrollbars__WEBPACK_IMPORTED_MODULE_10__.OverlayScrollbars)(document.querySelector('#custom-select-list'), {});
 
 // Scroll-top
 const scrollTop = document.querySelector(".scroll-top");
