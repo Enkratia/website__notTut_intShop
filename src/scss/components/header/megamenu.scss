@@ -1,6 +1,7 @@
 @use "../../util/" as *;
 
 .megamenu {
+  overflow: hidden;
   border-top: 1px solid var(--gray300-color);
   border-radius: 0 0 rem(4) rem(4);
   padding-top: rem(21);
@@ -32,7 +33,12 @@
     grid-template-columns: 7.15fr 2.85fr;
 
     @include bp-down("992") {
+      grid-template-columns: 7.15fr minmax(0, 2.85fr);
       margin-inline: 0;
+    }
+
+    @include bp-down("576") {
+      grid-template-columns: 1fr;
     }
   }
 
@@ -57,12 +63,29 @@
         display: none;
       }
     }
+
+    @include bp-down("992") {
+      column-gap: rem(60);
+    }
+
+    @include bp-down("678") {
+      column-gap: rem(40);
+    }
+
+    @include bp-down("576") {
+      column-gap: rem(50);
+      grid-template-columns: repeat(2, 1fr);
+      row-gap: rem(30);
+    }
   }
 
   &__non-category {
     @include bp-down("992") {
       order: 1;
     }
+  }
+
+  &__category {
   }
 
   &__title {
@@ -77,6 +100,12 @@
         color: var(--primary-color);
       }
     }
+  }
+
+  &__list {
+    // position: relative;
+    overflow: hidden;
+    transition: height 0.3s;
   }
 
   &__item {
@@ -104,13 +133,32 @@
     }
   }
 
+  &__more {
+    position: relative;
+    bottom: rem(15);
+    display: flex;
+    align-items: center;
+    margin-right: rem(5);
+    margin-bottom: rem(-20);
+    font: var(--extrasmall-bold);
+    font-size: rem(26);
+    color: var(--primary-color);
+
+    svg {
+      position: relative;
+      top: rem(2);
+      width: rem(9);
+      height: rem(9);
+      fill: currentcolor;
+    }
+  }
+
   &__offer {
     justify-self: self-end;
     padding-left: rem(25);
   }
 
   @include bp-down("992") {
-    display: block;
     margin-inline: rem(5);
     border-top: none;
     border-radius: none;
@@ -121,6 +169,7 @@
   }
 
   &--show {
+    overflow: visible;
     width: 100%;
     height: auto;
     opacity: 1;

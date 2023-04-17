@@ -106,13 +106,12 @@ customCheckboxes.forEach(el => {
 
 const navLinksAll = document.querySelectorAll(".nav__link");
 const navItems = document.querySelectorAll(".nav__item");
-mediaquery991 = window.matchMedia("(max-width: 991px)");
-mediaquery992 = window.matchMedia("(min-width: 992px)");
+const mediaquery991 = window.matchMedia("(max-width: 991px)");
+const mediaquery992 = window.matchMedia("(min-width: 992px)");
 const hoverCount = 3; // Количество элементов главного меню с ховером
 
 // F(s)
 function showDropdown(e) {
-  console.log("h");
   e.preventDefault();
   const openMegamenu = document.querySelector(".megamenu--show");
   const megamenu = this.nextElementSibling;
@@ -187,8 +186,44 @@ const menuBtn = document.querySelector("#menu-btn");
 const headerMainContainer = document.querySelector("#header-main-container");
 const searchForm = headerMainContainer.querySelector("#search-form");
 const navList = headerMainContainer.querySelector("#nav-list");
+const mq991 = window.matchMedia("(max-width: 991px)");
+const mq992 = window.matchMedia("(min-width: 992px)");
+const childCount = 5;
+let isFalse = false;
 
 // F(s)
+function showHideCategories() {
+  if (isFalse) return;
+  const listsAll = headerMainContainer.querySelectorAll(".megamenu__list");
+  const li = listsAll[0].firstElementChild;
+  const liHeight = li.offsetHeight;
+  const liMargin = window.getComputedStyle(li).getPropertyValue("margin-bottom");
+  listsAll.forEach(el => {
+    const listChildren = el.children;
+    if (listChildren.length > childCount) {
+      const listHeight = (liHeight + parseFloat(liMargin)) * childCount + "px";
+      el.style.height = listHeight;
+      el.classList.add("megamenu__list--active");
+      el.insertAdjacentHTML("afterend", `
+        <button class="megamenu__more" aria-label="Show more categories.">
+          ...
+        </button>
+      `);
+      el.nextElementSibling.addEventListener("click", function () {
+        if (el.classList.contains("megamenu__list--active")) {
+          this.textContent = "..";
+          el.style.height = "auto";
+          el.classList.remove("megamenu__list--active");
+          return;
+        }
+        this.textContent = "...";
+        el.style.height = listHeight;
+        el.classList.add("megamenu__list--active");
+      });
+    }
+  });
+  isFalse = true;
+}
 function showMenu() {
   this.classList.toggle("menu-btn--show");
   headerMainContainer.classList.toggle("header-main__container--show");
@@ -198,6 +233,23 @@ function showMenu() {
 
 // L(s)
 menuBtn.addEventListener("click", showMenu);
+menuBtn.addEventListener("click", showHideCategories);
+mq992.addEventListener("change", () => {
+  if (mq992.matches) {
+    navList.querySelectorAll(".megamenu__list").forEach(el => {
+      el.classList.remove("megamenu__list--active");
+      el.style.height = "auto";
+    });
+    navList.querySelectorAll(".megamenu__more").forEach(el => el.remove());
+    menuBtn.removeEventListener("click", showHideCategories);
+  }
+});
+mq991.addEventListener("change", () => {
+  if (mq991.matches) {
+    isFalse = false;
+    menuBtn.addEventListener("click", showHideCategories);
+  }
+});
 
 /***/ }),
 
@@ -16830,7 +16882,36 @@ __webpack_require__.r(__webpack_exports__);
 // **OverlayScrollbars
 
 overlayscrollbars__WEBPACK_IMPORTED_MODULE_10__.OverlayScrollbars.plugin([overlayscrollbars__WEBPACK_IMPORTED_MODULE_10__.ScrollbarsHidingPlugin, overlayscrollbars__WEBPACK_IMPORTED_MODULE_10__.SizeObserverPlugin]);
-const osInstance = (0,overlayscrollbars__WEBPACK_IMPORTED_MODULE_10__.OverlayScrollbars)(document.querySelector('#custom-select-list'), {});
+const cslScrollbar = (0,overlayscrollbars__WEBPACK_IMPORTED_MODULE_10__.OverlayScrollbars)(document.querySelector('#custom-select-list'), {});
+let navScrollBar;
+const mediaq991 = window.matchMedia("(max-width: 991px)");
+const mediaq992 = window.matchMedia("(min-width: 992px)");
+
+// F(s)
+function setNavScrollbar() {
+  if (mediaq991.matches) {
+    navScrollBar = (0,overlayscrollbars__WEBPACK_IMPORTED_MODULE_10__.OverlayScrollbars)(document.querySelector('#nav'), {
+      overflow: {
+        x: 'hidden'
+      },
+      scrollbars: {
+        theme: 'os-theme-my'
+      }
+    });
+  }
+}
+setNavScrollbar();
+function removetNavScrollbar() {
+  if (mediaq992.matches) {
+    navScrollBar = null;
+  }
+}
+
+// L(s)
+mediaq991.addEventListener("change", setNavScrollbar);
+mediaq992.addEventListener("change", removetNavScrollbar);
+
+//------------------------------------------
 
 // Scroll-top
 const scrollTop = document.querySelector(".scroll-top");

@@ -3081,8 +3081,7 @@ button {
 .login__btn:first-child {
   margin-right: 0.625rem;
 }
-
-.os-scrollbar {
+.login .os-scrollbar {
   --os-size: 5px;
   --os-padding-perpendicular: 0;
   --os-padding-axis: 0;
@@ -3134,6 +3133,11 @@ button {
     -ms-grid-rows: (auto)[3];
     grid-template-rows: repeat(3, auto);
     row-gap: 0;
+  }
+}
+@media (max-width: 35.9375em) {
+  .header-main__container {
+    margin-inline: 1.875rem;
   }
 }
 .header-main__container--show {
@@ -3188,6 +3192,10 @@ button {
   height: 1.375rem;
 }
 
+.nav {
+  width: 100%;
+  max-height: 80vh;
+}
 .nav__list {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -3195,9 +3203,6 @@ button {
   -webkit-box-align: center;
   -ms-flex-align: center;
   align-items: center;
-  -webkit-box-pack: justify;
-  -ms-flex-pack: justify;
-  justify-content: space-between;
   -webkit-transition: opacity 0.25s, height 0.25s ease-in-out;
   -o-transition: opacity 0.25s, height 0.25s ease-in-out;
   transition: opacity 0.25s, height 0.25s ease-in-out;
@@ -3548,7 +3553,34 @@ button {
   }
 }
 
+.os-theme-my {
+  --os-size: 0;
+  --os-padding-perpendicular: 0;
+  --os-padding-axis: 0;
+  --os-track-border-radius: 0;
+  --os-track-bg: none;
+  --os-track-bg-hover: none;
+  --os-track-bg-active: none;
+  --os-track-border: none;
+  --os-track-border-hover: none;
+  --os-track-border-active: none;
+  --os-handle-border-radius: 0;
+  --os-handle-bg: none;
+  --os-handle-bg-hover: none;
+  --os-handle-bg-active: none;
+  --os-handle-border: none;
+  --os-handle-border-hover: none;
+  --os-handle-border-active: none;
+  --os-handle-min-size: 0;
+  --os-handle-max-size: none;
+  --os-handle-perpendicular-size: 0;
+  --os-handle-perpendicular-size-hover: 0;
+  --os-handle-perpendicular-size-active: 0;
+  --os-handle-interactive-area-offset: 0;
+}
+
 .megamenu {
+  overflow: hidden;
   border-top: 1px solid var(--gray300-color);
   border-radius: 0 0 0.25rem 0.25rem;
   padding-top: 1.3125rem;
@@ -3584,7 +3616,15 @@ button {
 }
 @media (max-width: 61.9375em) {
   .megamenu__container {
+    -ms-grid-columns: 7.15fr minmax(0, 2.85fr);
+    grid-template-columns: 7.15fr minmax(0, 2.85fr);
     margin-inline: 0;
+  }
+}
+@media (max-width: 35.9375em) {
+  .megamenu__container {
+    -ms-grid-columns: 1fr;
+    grid-template-columns: 1fr;
   }
 }
 .megamenu__categories {
@@ -3616,6 +3656,30 @@ button {
   }
 }
 @media (max-width: 61.9375em) {
+  .megamenu__categories {
+    -webkit-column-gap: 3.75rem;
+    -moz-column-gap: 3.75rem;
+    column-gap: 3.75rem;
+  }
+}
+@media (max-width: 42.3125em) {
+  .megamenu__categories {
+    -webkit-column-gap: 2.5rem;
+    -moz-column-gap: 2.5rem;
+    column-gap: 2.5rem;
+  }
+}
+@media (max-width: 35.9375em) {
+  .megamenu__categories {
+    -webkit-column-gap: 3.125rem;
+    -moz-column-gap: 3.125rem;
+    column-gap: 3.125rem;
+    -ms-grid-columns: (1fr)[2];
+    grid-template-columns: repeat(2, 1fr);
+    row-gap: 1.875rem;
+  }
+}
+@media (max-width: 61.9375em) {
   .megamenu__non-category {
     -webkit-box-ordinal-group: 2;
     -ms-flex-order: 1;
@@ -3631,6 +3695,12 @@ button {
 }
 .megamenu__title-link:hover {
   color: var(--primary-color);
+}
+.megamenu__list {
+  overflow: hidden;
+  -webkit-transition: height 0.3s;
+  -o-transition: height 0.3s;
+  transition: height 0.3s;
 }
 .megamenu__item:not(:last-child) {
   margin-bottom: 0.5rem;
@@ -3650,6 +3720,28 @@ button {
 .megamenu__link--sale:hover {
   color: var(--danger-color);
 }
+.megamenu__more {
+  position: relative;
+  bottom: 0.9375rem;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  margin-right: 0.3125rem;
+  margin-bottom: -1.25rem;
+  font: var(--extrasmall-bold);
+  font-size: 1.625rem;
+  color: var(--primary-color);
+}
+.megamenu__more svg {
+  position: relative;
+  top: 0.125rem;
+  width: 0.5625rem;
+  height: 0.5625rem;
+  fill: currentcolor;
+}
 .megamenu__offer {
   -ms-grid-column-align: self-end;
   justify-self: self-end;
@@ -3657,7 +3749,6 @@ button {
 }
 @media (max-width: 61.9375em) {
   .megamenu {
-    display: block;
     margin-inline: 0.3125rem;
     border-top: none;
     border-radius: none;
@@ -3671,6 +3762,7 @@ button {
   }
 }
 .megamenu--show {
+  overflow: visible;
   width: 100%;
   height: auto;
   opacity: 1;

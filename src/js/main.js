@@ -13,14 +13,46 @@ import "./components/megamenu";
 
 // Libraries
 // **OverlayScrollbars
-import { 
-  OverlayScrollbars, 
-  ScrollbarsHidingPlugin, 
+import {
+  OverlayScrollbars,
+  ScrollbarsHidingPlugin,
   SizeObserverPlugin
 } from 'overlayscrollbars';
 
 OverlayScrollbars.plugin([ScrollbarsHidingPlugin, SizeObserverPlugin]);
-const osInstance = OverlayScrollbars(document.querySelector('#custom-select-list'), {});
+const cslScrollbar = OverlayScrollbars(document.querySelector('#custom-select-list'), {});
+let navScrollBar;
+
+const mediaq991 = window.matchMedia("(max-width: 991px)");
+const mediaq992 = window.matchMedia("(min-width: 992px)");
+
+// F(s)
+function setNavScrollbar() {
+  if (mediaq991.matches) {
+    navScrollBar = OverlayScrollbars(document.querySelector('#nav'), {
+      overflow: {
+        x: 'hidden',
+      },
+      scrollbars: {
+        theme: 'os-theme-my',
+      },
+    });
+  }
+}
+setNavScrollbar();
+
+function removetNavScrollbar() {
+  if (mediaq992.matches) {
+    navScrollBar = null;
+  }
+}
+
+// L(s)
+mediaq991.addEventListener("change", setNavScrollbar);
+mediaq992.addEventListener("change", removetNavScrollbar);
+
+//------------------------------------------
+
 
 // Scroll-top
 const scrollTop = document.querySelector(".scroll-top");

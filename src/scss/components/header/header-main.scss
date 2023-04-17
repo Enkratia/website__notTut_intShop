@@ -18,6 +18,10 @@
       row-gap: 0;
     }
 
+    @include bp-down("576") {
+      margin-inline: rem(30);
+    }
+
     &--show {
       row-gap: rem(20);
     }
@@ -70,10 +74,13 @@
 
 // Nav
 .nav {
+  width: 100%;
+  max-height: 80vh;
+
   &__list {
     display: flex;
     align-items: center;
-    justify-content: space-between;
+    // justify-content: space-between;
     transition: opacity 0.25s, height 0.25s ease-in-out;
 
     @include bp-down("992") {
@@ -385,4 +392,35 @@
   @include bp-down("992") {
     display: block;
   }
+}
+
+// OverlayScrollbars
+.os-theme-my {
+  --os-size: 0;
+  --os-padding-perpendicular: 0;
+  --os-padding-axis: 0;
+
+  // **
+  --os-track-border-radius: 0;
+  --os-track-bg: none;
+  --os-track-bg-hover: none;
+  --os-track-bg-active: none;
+  --os-track-border: none;
+  --os-track-border-hover: none;
+  --os-track-border-active: none;
+
+  // **
+  --os-handle-border-radius: 0;
+  --os-handle-bg: none;
+  --os-handle-bg-hover: none;
+  --os-handle-bg-active: none;
+  --os-handle-border: none;
+  --os-handle-border-hover: none;
+  --os-handle-border-active: none;
+  --os-handle-min-size: 0;
+  --os-handle-max-size: none;
+  --os-handle-perpendicular-size: 0;
+  --os-handle-perpendicular-size-hover: 0;
+  --os-handle-perpendicular-size-active: 0;
+  --os-handle-interactive-area-offset: 0;
 }

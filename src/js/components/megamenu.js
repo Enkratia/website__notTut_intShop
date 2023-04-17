@@ -1,14 +1,13 @@
 const navLinksAll = document.querySelectorAll(".nav__link");
 const navItems = document.querySelectorAll(".nav__item");
 
-mediaquery991 = window.matchMedia("(max-width: 991px)");
-mediaquery992 = window.matchMedia("(min-width: 992px)");
+const mediaquery991 = window.matchMedia("(max-width: 991px)");
+const mediaquery992 = window.matchMedia("(min-width: 992px)");
 
 const hoverCount = 3; // Количество элементов главного меню с ховером
 
 // F(s)
 function showDropdown(e) {
-  console.log("h")
   e.preventDefault();
   const openMegamenu = document.querySelector(".megamenu--show");
   const megamenu = this.nextElementSibling;
