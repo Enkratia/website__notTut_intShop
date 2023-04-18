@@ -14,12 +14,12 @@
 
     @include bp-down("992") {
       grid-template-columns: 1fr auto auto;
-      grid-template-rows: repeat(3, auto);
+      grid-template-rows: repeat(4, auto);
       row-gap: 0;
     }
 
     @include bp-down("576") {
-      margin-inline: rem(30);
+      margin-inline: rem(15);
     }
 
     &--show {
@@ -75,12 +75,10 @@
 // Nav
 .nav {
   width: 100%;
-  max-height: 80vh;
 
   &__list {
     display: flex;
     align-items: center;
-    // justify-content: space-between;
     transition: opacity 0.25s, height 0.25s ease-in-out;
 
     @include bp-down("992") {
@@ -207,6 +205,7 @@
     grid-column: 1 / 4;
     grid-row: 3 / 4;
     margin-top: rem(-10);
+    max-height: calc(100vh - rem(176));
   }
 }
 

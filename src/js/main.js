@@ -1,4 +1,5 @@
 // Components
+import "./vars";
 import "./components/currency";
 import "./components/special-offers";
 import "./components/timer";
@@ -9,6 +10,8 @@ import "./components/custom-checkbox";
 import "./components/subscribe__categories";
 import "./components/menu-btn";
 import "./components/megamenu";
+import "./components/login";
+import "./components/top-nav";
 
 
 // Libraries
@@ -43,7 +46,7 @@ setNavScrollbar();
 
 function removetNavScrollbar() {
   if (mediaq992.matches) {
-    navScrollBar = null;
+    navScrollBar.destroy();
   }
 }
 

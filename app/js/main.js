@@ -5,11 +5,12 @@
 /*!***************************************!*\
   !*** ./src/js/components/currency.js ***!
   \***************************************/
-/***/ (() => {
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
-const customSelect = document.querySelector("#custom-select");
-const customSelectList = customSelect.querySelector("#custom-select-list");
-let selected = document.querySelector("#custom-select-selected");
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _vars__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../vars */ "./src/js/vars.js");
+
 let isOpen = false;
 function closeSelect() {
   this.classList.remove("custom-select--open");
@@ -24,7 +25,7 @@ function removeAddClass(el) {
 function selectCurrency(e) {
   function changeSelectValue() {
     if (e.target.classList.contains("custom-select__item")) {
-      selected.textContent = e.target.textContent;
+      _vars__WEBPACK_IMPORTED_MODULE_0__.$selected.textContent = e.target.textContent;
       document.querySelector(".custom-select__item--active").classList.remove("custom-select__item--active");
       e.target.classList.add("custom-select__item--active");
     }
@@ -33,7 +34,7 @@ function selectCurrency(e) {
   changeSelectValue();
   this.addEventListener("blur", closeSelect.bind(this));
 }
-customSelect.addEventListener("click", selectCurrency);
+_vars__WEBPACK_IMPORTED_MODULE_0__.$customSelect.addEventListener("click", selectCurrency);
 
 // SELECT WITH KEYBOARD
 function selectCurrencyWithKeyboard(e) {
@@ -46,27 +47,27 @@ function selectCurrencyWithKeyboard(e) {
   } else if (e.key === "ArrowUp" && isOpen) {
     let prevSibling = document.querySelector(".custom-select__item--active").previousElementSibling;
     if (!prevSibling) return;
-    selected.textContent = prevSibling.textContent;
+    _vars__WEBPACK_IMPORTED_MODULE_0__.$selected.textContent = prevSibling.textContent;
     removeAddClass(prevSibling);
   } else if (e.key === "ArrowDown" && isOpen) {
     let nextSibling = document.querySelector(".custom-select__item--active").nextElementSibling;
     if (!nextSibling) return;
-    selected.textContent = nextSibling.textContent;
+    _vars__WEBPACK_IMPORTED_MODULE_0__.$selected.textContent = nextSibling.textContent;
     removeAddClass(nextSibling);
   } else if ((e.key === "PageUp" || e.key === "Home") && isOpen) {
-    const firstSibling = customSelectList.firstElementChild;
-    selected.textContent = firstSibling.textContent;
+    const firstSibling = _vars__WEBPACK_IMPORTED_MODULE_0__.$customSelectList.firstElementChild;
+    _vars__WEBPACK_IMPORTED_MODULE_0__.$selected.textContent = firstSibling.textContent;
     removeAddClass(firstSibling);
   } else if ((e.key === "PageDown" || e.key === "End") && isOpen) {
-    const lastSibling = customSelectList.lastElementChild;
-    selected.textContent = lastSibling.textContent;
+    const lastSibling = _vars__WEBPACK_IMPORTED_MODULE_0__.$customSelectList.lastElementChild;
+    _vars__WEBPACK_IMPORTED_MODULE_0__.$selected.textContent = lastSibling.textContent;
     removeAddClass(lastSibling);
   } else if (isOpen) {
     this.classList.remove("custom-select--open");
   }
   this.addEventListener("blur", closeSelect.bind(this));
 }
-customSelect.addEventListener("keydown", selectCurrencyWithKeyboard);
+_vars__WEBPACK_IMPORTED_MODULE_0__.$customSelect.addEventListener("keydown", selectCurrencyWithKeyboard);
 
 /***/ }),
 
@@ -74,9 +75,12 @@ customSelect.addEventListener("keydown", selectCurrencyWithKeyboard);
 /*!**********************************************!*\
   !*** ./src/js/components/custom-checkbox.js ***!
   \**********************************************/
-/***/ (() => {
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
-const customCheckboxes = document.querySelectorAll(".custom-checkbox");
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _vars__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../vars */ "./src/js/vars.js");
+
 
 // Function(s)
 function checkCustomCheckbox() {
@@ -91,10 +95,40 @@ function checkCustomCheckbox() {
 }
 
 // Listener(s)
-customCheckboxes.forEach(el => {
+_vars__WEBPACK_IMPORTED_MODULE_0__.$customCheckboxes.forEach(el => {
   const nativeCheckbox = el.querySelector(".custom-checkbox__input");
   nativeCheckbox.addEventListener("change", checkCustomCheckbox);
 });
+
+/***/ }),
+
+/***/ "./src/js/components/login.js":
+/*!************************************!*\
+  !*** ./src/js/components/login.js ***!
+  \************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _vars__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../vars */ "./src/js/vars.js");
+
+
+// F(s)
+function replaceLogin() {
+  if (_vars__WEBPACK_IMPORTED_MODULE_0__.$mdq991.matches) {
+    _vars__WEBPACK_IMPORTED_MODULE_0__.$headerMainContainer.appendChild(_vars__WEBPACK_IMPORTED_MODULE_0__.$login);
+  }
+}
+replaceLogin();
+function returnLogin() {
+  if (_vars__WEBPACK_IMPORTED_MODULE_0__.$mdq992.matches) {
+    _vars__WEBPACK_IMPORTED_MODULE_0__.$headerTopContainer.appendChild(_vars__WEBPACK_IMPORTED_MODULE_0__.$login);
+  }
+}
+
+// L(s)
+_vars__WEBPACK_IMPORTED_MODULE_0__.$mdq991.addEventListener("change", replaceLogin);
+_vars__WEBPACK_IMPORTED_MODULE_0__.$mdq992.addEventListener("change", returnLogin);
 
 /***/ }),
 
@@ -102,13 +136,13 @@ customCheckboxes.forEach(el => {
 /*!***************************************!*\
   !*** ./src/js/components/megamenu.js ***!
   \***************************************/
-/***/ (() => {
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
-const navLinksAll = document.querySelectorAll(".nav__link");
-const navItems = document.querySelectorAll(".nav__item");
-const mediaquery991 = window.matchMedia("(max-width: 991px)");
-const mediaquery992 = window.matchMedia("(min-width: 992px)");
-const hoverCount = 3; // Количество элементов главного меню с ховером
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _vars__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../vars */ "./src/js/vars.js");
+
+const hoverCount = 3; // (Количество элементов главного меню с ховером)
 
 // F(s)
 function showDropdown(e) {
@@ -130,8 +164,8 @@ function showDropdown(e) {
   this.classList.add("nav__link--open");
 }
 function addShowDropdown() {
-  if (mediaquery991.matches) {
-    navLinksAll.forEach((el, idx) => {
+  if (_vars__WEBPACK_IMPORTED_MODULE_0__.$mdq991.matches) {
+    _vars__WEBPACK_IMPORTED_MODULE_0__.$navLinksAll.forEach((el, idx) => {
       if (idx > hoverCount) return;
       el.addEventListener("click", showDropdown);
     });
@@ -139,19 +173,18 @@ function addShowDropdown() {
 }
 addShowDropdown();
 function removeShowDropdown() {
-  if (mediaquery992.matches) {
-    navLinksAll.forEach((el, idx) => {
+  if (_vars__WEBPACK_IMPORTED_MODULE_0__.$mdq992.matches) {
+    _vars__WEBPACK_IMPORTED_MODULE_0__.$navLinksAll.forEach((el, idx) => {
       if (idx > hoverCount) return;
       el.removeEventListener("click", showDropdown);
     });
     document.querySelector(".megamenu--show")?.classList.remove("megamenu--show");
     document.querySelector(".nav__link--open")?.classList.remove("nav__link--open");
-    document.querySelector("#menu-btn").click();
   }
 }
 function removeNavItemsHover() {
-  if (mediaquery991.matches) {
-    navItems.forEach((item, idx) => {
+  if (_vars__WEBPACK_IMPORTED_MODULE_0__.$mdq991.matches) {
+    _vars__WEBPACK_IMPORTED_MODULE_0__.$navItems.forEach((item, idx) => {
       if (idx > hoverCount) return;
       item.classList.remove("nav__item--hover");
     });
@@ -159,8 +192,8 @@ function removeNavItemsHover() {
 }
 removeNavItemsHover();
 function addNavItemsHover() {
-  if (mediaquery992.matches) {
-    navItems.forEach((item, idx) => {
+  if (_vars__WEBPACK_IMPORTED_MODULE_0__.$mdq992.matches) {
+    _vars__WEBPACK_IMPORTED_MODULE_0__.$navItems.forEach((item, idx) => {
       if (idx > hoverCount) return;
       item.classList.add("nav__item--hover");
     });
@@ -169,10 +202,10 @@ function addNavItemsHover() {
 addNavItemsHover();
 
 // L(s)
-mediaquery991.addEventListener("change", removeNavItemsHover);
-mediaquery992.addEventListener("change", addNavItemsHover);
-mediaquery991.addEventListener("change", addShowDropdown);
-mediaquery992.addEventListener("change", removeShowDropdown);
+_vars__WEBPACK_IMPORTED_MODULE_0__.$mdq991.addEventListener("change", removeNavItemsHover);
+_vars__WEBPACK_IMPORTED_MODULE_0__.$mdq992.addEventListener("change", addNavItemsHover);
+_vars__WEBPACK_IMPORTED_MODULE_0__.$mdq991.addEventListener("change", addShowDropdown);
+_vars__WEBPACK_IMPORTED_MODULE_0__.$mdq992.addEventListener("change", removeShowDropdown);
 
 /***/ }),
 
@@ -180,21 +213,19 @@ mediaquery992.addEventListener("change", removeShowDropdown);
 /*!***************************************!*\
   !*** ./src/js/components/menu-btn.js ***!
   \***************************************/
-/***/ (() => {
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
-const menuBtn = document.querySelector("#menu-btn");
-const headerMainContainer = document.querySelector("#header-main-container");
-const searchForm = headerMainContainer.querySelector("#search-form");
-const navList = headerMainContainer.querySelector("#nav-list");
-const mq991 = window.matchMedia("(max-width: 991px)");
-const mq992 = window.matchMedia("(min-width: 992px)");
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _vars__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../vars */ "./src/js/vars.js");
+
 const childCount = 5;
 let isFalse = false;
 
 // F(s)
 function showHideCategories() {
   if (isFalse) return;
-  const listsAll = headerMainContainer.querySelectorAll(".megamenu__list");
+  const listsAll = _vars__WEBPACK_IMPORTED_MODULE_0__.$headerMainContainer.querySelectorAll(".megamenu__list");
   const li = listsAll[0].firstElementChild;
   const liHeight = li.offsetHeight;
   const liMargin = window.getComputedStyle(li).getPropertyValue("margin-bottom");
@@ -226,28 +257,33 @@ function showHideCategories() {
 }
 function showMenu() {
   this.classList.toggle("menu-btn--show");
-  headerMainContainer.classList.toggle("header-main__container--show");
-  searchForm.classList.toggle("search-form--show");
-  navList.classList.toggle("nav__list--show");
+  _vars__WEBPACK_IMPORTED_MODULE_0__.$headerMainContainer.classList.toggle("header-main__container--show");
+  _vars__WEBPACK_IMPORTED_MODULE_0__.$searchForm.classList.toggle("search-form--show");
+  _vars__WEBPACK_IMPORTED_MODULE_0__.$navList.classList.toggle("nav__list--show");
+  _vars__WEBPACK_IMPORTED_MODULE_0__.$login.classList.toggle("login--show");
+  document.body.classList.toggle("overflow-hidden");
 }
 
 // L(s)
-menuBtn.addEventListener("click", showMenu);
-menuBtn.addEventListener("click", showHideCategories);
-mq992.addEventListener("change", () => {
-  if (mq992.matches) {
-    navList.querySelectorAll(".megamenu__list").forEach(el => {
+_vars__WEBPACK_IMPORTED_MODULE_0__.$menuBtn.addEventListener("click", showMenu);
+_vars__WEBPACK_IMPORTED_MODULE_0__.$menuBtn.addEventListener("click", showHideCategories);
+_vars__WEBPACK_IMPORTED_MODULE_0__.$mdq992.addEventListener("change", () => {
+  if (_vars__WEBPACK_IMPORTED_MODULE_0__.$mdq992.matches) {
+    if (_vars__WEBPACK_IMPORTED_MODULE_0__.$menuBtn.classList.contains("menu-btn--show")) {
+      _vars__WEBPACK_IMPORTED_MODULE_0__.$menuBtn.click();
+    }
+    _vars__WEBPACK_IMPORTED_MODULE_0__.$navList.querySelectorAll(".megamenu__list").forEach(el => {
       el.classList.remove("megamenu__list--active");
       el.style.height = "auto";
     });
-    navList.querySelectorAll(".megamenu__more").forEach(el => el.remove());
-    menuBtn.removeEventListener("click", showHideCategories);
+    _vars__WEBPACK_IMPORTED_MODULE_0__.$navList.querySelectorAll(".megamenu__more").forEach(el => el.remove());
+    _vars__WEBPACK_IMPORTED_MODULE_0__.$menuBtn.removeEventListener("click", showHideCategories);
   }
 });
-mq991.addEventListener("change", () => {
-  if (mq991.matches) {
+_vars__WEBPACK_IMPORTED_MODULE_0__.$mdq991.addEventListener("change", () => {
+  if (_vars__WEBPACK_IMPORTED_MODULE_0__.$mdq991.matches) {
     isFalse = false;
-    menuBtn.addEventListener("click", showHideCategories);
+    _vars__WEBPACK_IMPORTED_MODULE_0__.$menuBtn.addEventListener("click", showHideCategories);
   }
 });
 
@@ -257,9 +293,41 @@ mq991.addEventListener("change", () => {
 /*!******************************************!*\
   !*** ./src/js/components/microslider.js ***!
   \******************************************/
-/***/ (() => {
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
-const looks = document.querySelectorAll(".sale .product__look");
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var swiper__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! swiper */ "./node_modules/swiper/swiper.esm.js");
+
+
+// SALE SWIPER
+const saleSwiper = new swiper__WEBPACK_IMPORTED_MODULE_0__["default"]("#sale-slider", {
+  modules: [swiper__WEBPACK_IMPORTED_MODULE_0__.Navigation],
+  slidesPerView: 1,
+  spaceBetween: 20,
+  loop: true,
+  on: {
+    init: addListeners
+  },
+  navigation: {
+    nextEl: '#sale-button-next',
+    prevEl: '#sale-button-prev'
+  },
+  breakpoints: {
+    900: {
+      slidesPerView: 3,
+      spaceBetween: 30
+    },
+    768: {
+      slidesPerView: 3,
+      spaceBetween: 30
+    },
+    480: {
+      slidesPerView: 2,
+      spaceBetween: 20
+    }
+  }
+});
 
 // Functions
 function chooseImage() {
@@ -288,59 +356,25 @@ function chooseImage() {
 }
 
 // Listeners
-looks.forEach(look => {
-  look.addEventListener("click", chooseImage());
-});
-
-/***/ }),
-
-/***/ "./src/js/components/product__bottom.js":
-/*!**********************************************!*\
-  !*** ./src/js/components/product__bottom.js ***!
-  \**********************************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony import */ var swiper__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! swiper */ "./node_modules/swiper/swiper.esm.js");
-
-
-// SALE SWIPER
-const saleSwiper = new swiper__WEBPACK_IMPORTED_MODULE_0__["default"]("#sale-slider", {
-  modules: [swiper__WEBPACK_IMPORTED_MODULE_0__.Navigation],
-  slidesPerView: 1,
-  spaceBetween: 20,
-  loop: true,
-  navigation: {
-    nextEl: '#sale-button-next',
-    prevEl: '#sale-button-prev'
-  },
-  breakpoints: {
-    900: {
-      slidesPerView: 3,
-      spaceBetween: 30
-    },
-    768: {
-      slidesPerView: 3,
-      spaceBetween: 30
-    },
-    480: {
-      slidesPerView: 2,
-      spaceBetween: 20
-    }
-  }
-});
+function addListeners() {
+  const looks = document.querySelectorAll(".sale .product__look");
+  looks.forEach(look => {
+    console.log(look);
+    look.addEventListener("click", chooseImage());
+  });
+}
 
 // HOVER EFFECT FOR SHOWING PRODUCT__BOTTOM 
-let products = document.querySelectorAll(".sale__product");
-let saleSlider = document.querySelector(".sale__slider");
+let saleSlider = document.querySelector(".sale__slider"); // Не добавлять в vars
+let products = saleSlider.querySelectorAll(".sale__product"); // Не добавлять в vars
+
 const marginForBoxShadow = 80; // window.getComputedStyle(products[0]).getPropertyValue("margin-bottom");
 
 window.onresize = () => {
   setTimeout(() => {
     // Чтобы swiper успел прогрузить свой js
-    products = document.querySelectorAll(".sale__product");
     saleSlider = document.querySelector(".sale__slider");
+    products = saleSlider.querySelectorAll(".sale__product");
     products.forEach(product => {
       product.removeEventListener("mouseenter", showProductBottom);
       product.removeEventListener("mouseleave", hideProductBottom);
@@ -373,15 +407,26 @@ products.forEach(product => {
 
 /***/ }),
 
+/***/ "./src/js/components/product__bottom.js":
+/*!**********************************************!*\
+  !*** ./src/js/components/product__bottom.js ***!
+  \**********************************************/
+/***/ (() => {
+
+
+
+/***/ }),
+
 /***/ "./src/js/components/special-offers.js":
 /*!*********************************************!*\
   !*** ./src/js/components/special-offers.js ***!
   \*********************************************/
-/***/ (() => {
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
-const marketingSlider = document.querySelector("#marketing-slider");
-const marketingSliderList = marketingSlider.querySelector("#marketing-slider-list");
-const marketingSliderItems = marketingSlider.querySelectorAll(".marketing-slider__slide");
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _vars__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../vars */ "./src/js/vars.js");
+
 let count = 0;
 function removeVisibleClass() {
   document.querySelector(".marketing-slider__slide--visible").classList.remove("marketing-slider__slide--visible");
@@ -390,32 +435,32 @@ function addVisibleClass(elem) {
   return elem.classList.add("marketing-slider__slide--visible");
 }
 function changeSlide(e) {
-  const itemsAmount = marketingSliderItems.length;
+  const itemsAmount = _vars__WEBPACK_IMPORTED_MODULE_0__.$marketingSliderItems.length;
   if (e.target.tagName === "BUTTON") {
     if (e.target.classList.contains("marketing-slider__btn--left")) {
       if (count <= 0) {
         removeVisibleClass();
-        addVisibleClass(marketingSliderItems[itemsAmount - 1]);
+        addVisibleClass(_vars__WEBPACK_IMPORTED_MODULE_0__.$marketingSliderItems[itemsAmount - 1]);
         count = itemsAmount - 1;
         return;
       }
       count -= 1;
       removeVisibleClass();
-      addVisibleClass(marketingSliderItems[count]);
+      addVisibleClass(_vars__WEBPACK_IMPORTED_MODULE_0__.$marketingSliderItems[count]);
     } else {
       if (count >= itemsAmount - 1) {
         removeVisibleClass();
-        addVisibleClass(marketingSliderItems[0]);
+        addVisibleClass(_vars__WEBPACK_IMPORTED_MODULE_0__.$marketingSliderItems[0]);
         count = 0;
         return;
       }
       count += 1;
       removeVisibleClass();
-      addVisibleClass(marketingSliderItems[count]);
+      addVisibleClass(_vars__WEBPACK_IMPORTED_MODULE_0__.$marketingSliderItems[count]);
     }
   }
 }
-marketingSlider.addEventListener("click", changeSlide);
+_vars__WEBPACK_IMPORTED_MODULE_0__.$marketingSlider.addEventListener("click", changeSlide);
 
 /***/ }),
 
@@ -423,10 +468,12 @@ marketingSlider.addEventListener("click", changeSlide);
 /*!****************************************************!*\
   !*** ./src/js/components/subscribe__categories.js ***!
   \****************************************************/
-/***/ (() => {
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
-const subscribeCategories = document.querySelector(".subscribe__categories");
-const nativeCheckBoxes = subscribeCategories.querySelectorAll(".categories__btn-checkbox");
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _vars__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../vars */ "./src/js/vars.js");
+
 
 // Function(s)
 function checkSubscribeCategoriesCheckbox() {
@@ -441,7 +488,7 @@ function checkSubscribeCategoriesCheckbox() {
 }
 
 // Listener(s)
-nativeCheckBoxes.forEach(el => {
+_vars__WEBPACK_IMPORTED_MODULE_0__.$nativeCheckBoxes.forEach(el => {
   el.addEventListener("change", checkSubscribeCategoriesCheckbox);
 });
 
@@ -762,14 +809,16 @@ mediaquery1024.addEventListener("change", resetBrandSwiper);
 /*!************************************!*\
   !*** ./src/js/components/timer.js ***!
   \************************************/
-/***/ (() => {
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
-const timer = document.querySelector("#timer");
-const counters = timer.querySelectorAll(".timer__count");
-const daysElem = counters[0];
-const hoursElem = counters[1];
-const minsElem = counters[2];
-const secElem = counters[3];
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _vars__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../vars */ "./src/js/vars.js");
+
+const daysElem = _vars__WEBPACK_IMPORTED_MODULE_0__.$counters[0];
+const hoursElem = _vars__WEBPACK_IMPORTED_MODULE_0__.$counters[1];
+const minsElem = _vars__WEBPACK_IMPORTED_MODULE_0__.$counters[2];
+const secElem = _vars__WEBPACK_IMPORTED_MODULE_0__.$counters[3];
 const initDays = 6;
 let timerCount;
 function turnOnTimer(initDays) {
@@ -833,6 +882,100 @@ function turnOnTimer(initDays) {
   }, 1000);
 }
 turnOnTimer(initDays);
+
+/***/ }),
+
+/***/ "./src/js/components/top-nav.js":
+/*!**************************************!*\
+  !*** ./src/js/components/top-nav.js ***!
+  \**************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _vars__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../vars */ "./src/js/vars.js");
+
+
+// F(s)
+function toggleTopNav() {
+  const topNavList = this.nextElementSibling;
+  topNavList.classList.toggle("top-nav__list--show");
+  setTimeout(() => {
+    document.documentElement.addEventListener("click", hideTopNavList);
+    function hideTopNavList(e) {
+      if (!e.target.closest(".top-nav__list")) {
+        topNavList.classList.remove("top-nav__list--show");
+        document.documentElement.removeEventListener("click", hideTopNavList);
+      }
+    }
+  }, 0);
+}
+
+// L(s)
+_vars__WEBPACK_IMPORTED_MODULE_0__.$topNavBtn.addEventListener("click", toggleTopNav);
+
+/***/ }),
+
+/***/ "./src/js/vars.js":
+/*!************************!*\
+  !*** ./src/js/vars.js ***!
+  \************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "$counters": () => (/* binding */ $counters),
+/* harmony export */   "$customCheckboxes": () => (/* binding */ $customCheckboxes),
+/* harmony export */   "$customSelect": () => (/* binding */ $customSelect),
+/* harmony export */   "$customSelectList": () => (/* binding */ $customSelectList),
+/* harmony export */   "$headerMainContainer": () => (/* binding */ $headerMainContainer),
+/* harmony export */   "$headerTopContainer": () => (/* binding */ $headerTopContainer),
+/* harmony export */   "$login": () => (/* binding */ $login),
+/* harmony export */   "$looks": () => (/* binding */ $looks),
+/* harmony export */   "$marketingSlider": () => (/* binding */ $marketingSlider),
+/* harmony export */   "$marketingSliderItems": () => (/* binding */ $marketingSliderItems),
+/* harmony export */   "$mdq991": () => (/* binding */ $mdq991),
+/* harmony export */   "$mdq992": () => (/* binding */ $mdq992),
+/* harmony export */   "$menuBtn": () => (/* binding */ $menuBtn),
+/* harmony export */   "$nativeCheckBoxes": () => (/* binding */ $nativeCheckBoxes),
+/* harmony export */   "$navItems": () => (/* binding */ $navItems),
+/* harmony export */   "$navLinksAll": () => (/* binding */ $navLinksAll),
+/* harmony export */   "$navList": () => (/* binding */ $navList),
+/* harmony export */   "$products": () => (/* binding */ $products),
+/* harmony export */   "$saleSlider": () => (/* binding */ $saleSlider),
+/* harmony export */   "$searchForm": () => (/* binding */ $searchForm),
+/* harmony export */   "$selected": () => (/* binding */ $selected),
+/* harmony export */   "$subscribeCategories": () => (/* binding */ $subscribeCategories),
+/* harmony export */   "$timer": () => (/* binding */ $timer),
+/* harmony export */   "$topNavBtn": () => (/* binding */ $topNavBtn)
+/* harmony export */ });
+const $customSelect = document.querySelector("#custom-select");
+const $customSelectList = $customSelect.querySelector("#custom-select-list");
+const $selected = $customSelect.querySelector("#custom-select-selected");
+const $customCheckboxes = document.querySelectorAll(".custom-checkbox");
+const $login = document.querySelector("#login");
+const $headerMainContainer = document.querySelector("#header-main-container");
+const $headerTopContainer = document.querySelector("#header-top-container");
+const $navLinksAll = document.querySelectorAll(".nav__link");
+const $navItems = document.querySelectorAll(".nav__item");
+const $menuBtn = document.querySelector("#menu-btn");
+const $searchForm = $headerMainContainer.querySelector("#search-form");
+const $navList = $headerMainContainer.querySelector("#nav-list");
+const $looks = document.querySelectorAll(".sale .product__look");
+let $products = document.querySelectorAll(".sale__product");
+let $saleSlider = document.querySelector(".sale__slider");
+const $marketingSlider = document.querySelector("#marketing-slider");
+const $marketingSliderItems = $marketingSlider.querySelectorAll(".marketing-slider__slide");
+const $subscribeCategories = document.querySelector(".subscribe__categories");
+const $nativeCheckBoxes = $subscribeCategories.querySelectorAll(".categories__btn-checkbox");
+const $timer = document.querySelector("#timer");
+const $counters = $timer.querySelectorAll(".timer__count");
+const $topNavBtn = document.querySelector("#top-nav-button");
+
+// **
+const $mdq991 = window.matchMedia("(max-width:991px)");
+const $mdq992 = window.matchMedia("(min-width:992px)");
 
 /***/ }),
 
@@ -16847,26 +16990,25 @@ var __webpack_exports__ = {};
   !*** ./src/js/main.js ***!
   \************************/
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _components_currency__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./components/currency */ "./src/js/components/currency.js");
-/* harmony import */ var _components_currency__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_components_currency__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _components_special_offers__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./components/special-offers */ "./src/js/components/special-offers.js");
-/* harmony import */ var _components_special_offers__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_components_special_offers__WEBPACK_IMPORTED_MODULE_1__);
-/* harmony import */ var _components_timer__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./components/timer */ "./src/js/components/timer.js");
-/* harmony import */ var _components_timer__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_components_timer__WEBPACK_IMPORTED_MODULE_2__);
-/* harmony import */ var _components_swipers__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./components/swipers */ "./src/js/components/swipers.js");
-/* harmony import */ var _components_product_bottom__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./components/product__bottom */ "./src/js/components/product__bottom.js");
-/* harmony import */ var _components_microslider__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./components/microslider */ "./src/js/components/microslider.js");
-/* harmony import */ var _components_microslider__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(_components_microslider__WEBPACK_IMPORTED_MODULE_5__);
-/* harmony import */ var _components_custom_checkbox__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./components/custom-checkbox */ "./src/js/components/custom-checkbox.js");
-/* harmony import */ var _components_custom_checkbox__WEBPACK_IMPORTED_MODULE_6___default = /*#__PURE__*/__webpack_require__.n(_components_custom_checkbox__WEBPACK_IMPORTED_MODULE_6__);
-/* harmony import */ var _components_subscribe_categories__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./components/subscribe__categories */ "./src/js/components/subscribe__categories.js");
-/* harmony import */ var _components_subscribe_categories__WEBPACK_IMPORTED_MODULE_7___default = /*#__PURE__*/__webpack_require__.n(_components_subscribe_categories__WEBPACK_IMPORTED_MODULE_7__);
-/* harmony import */ var _components_menu_btn__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./components/menu-btn */ "./src/js/components/menu-btn.js");
-/* harmony import */ var _components_menu_btn__WEBPACK_IMPORTED_MODULE_8___default = /*#__PURE__*/__webpack_require__.n(_components_menu_btn__WEBPACK_IMPORTED_MODULE_8__);
-/* harmony import */ var _components_megamenu__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./components/megamenu */ "./src/js/components/megamenu.js");
-/* harmony import */ var _components_megamenu__WEBPACK_IMPORTED_MODULE_9___default = /*#__PURE__*/__webpack_require__.n(_components_megamenu__WEBPACK_IMPORTED_MODULE_9__);
-/* harmony import */ var overlayscrollbars__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! overlayscrollbars */ "./node_modules/overlayscrollbars/overlayscrollbars.mjs");
+/* harmony import */ var _vars__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./vars */ "./src/js/vars.js");
+/* harmony import */ var _components_currency__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./components/currency */ "./src/js/components/currency.js");
+/* harmony import */ var _components_special_offers__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./components/special-offers */ "./src/js/components/special-offers.js");
+/* harmony import */ var _components_timer__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./components/timer */ "./src/js/components/timer.js");
+/* harmony import */ var _components_swipers__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./components/swipers */ "./src/js/components/swipers.js");
+/* harmony import */ var _components_product_bottom__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./components/product__bottom */ "./src/js/components/product__bottom.js");
+/* harmony import */ var _components_product_bottom__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(_components_product_bottom__WEBPACK_IMPORTED_MODULE_5__);
+/* harmony import */ var _components_microslider__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./components/microslider */ "./src/js/components/microslider.js");
+/* harmony import */ var _components_custom_checkbox__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./components/custom-checkbox */ "./src/js/components/custom-checkbox.js");
+/* harmony import */ var _components_subscribe_categories__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./components/subscribe__categories */ "./src/js/components/subscribe__categories.js");
+/* harmony import */ var _components_menu_btn__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./components/menu-btn */ "./src/js/components/menu-btn.js");
+/* harmony import */ var _components_megamenu__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ./components/megamenu */ "./src/js/components/megamenu.js");
+/* harmony import */ var _components_login__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ./components/login */ "./src/js/components/login.js");
+/* harmony import */ var _components_top_nav__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ./components/top-nav */ "./src/js/components/top-nav.js");
+/* harmony import */ var overlayscrollbars__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! overlayscrollbars */ "./node_modules/overlayscrollbars/overlayscrollbars.mjs");
 // Components
+
+
+
 
 
 
@@ -16881,8 +17023,8 @@ __webpack_require__.r(__webpack_exports__);
 // Libraries
 // **OverlayScrollbars
 
-overlayscrollbars__WEBPACK_IMPORTED_MODULE_10__.OverlayScrollbars.plugin([overlayscrollbars__WEBPACK_IMPORTED_MODULE_10__.ScrollbarsHidingPlugin, overlayscrollbars__WEBPACK_IMPORTED_MODULE_10__.SizeObserverPlugin]);
-const cslScrollbar = (0,overlayscrollbars__WEBPACK_IMPORTED_MODULE_10__.OverlayScrollbars)(document.querySelector('#custom-select-list'), {});
+overlayscrollbars__WEBPACK_IMPORTED_MODULE_13__.OverlayScrollbars.plugin([overlayscrollbars__WEBPACK_IMPORTED_MODULE_13__.ScrollbarsHidingPlugin, overlayscrollbars__WEBPACK_IMPORTED_MODULE_13__.SizeObserverPlugin]);
+const cslScrollbar = (0,overlayscrollbars__WEBPACK_IMPORTED_MODULE_13__.OverlayScrollbars)(document.querySelector('#custom-select-list'), {});
 let navScrollBar;
 const mediaq991 = window.matchMedia("(max-width: 991px)");
 const mediaq992 = window.matchMedia("(min-width: 992px)");
@@ -16890,7 +17032,7 @@ const mediaq992 = window.matchMedia("(min-width: 992px)");
 // F(s)
 function setNavScrollbar() {
   if (mediaq991.matches) {
-    navScrollBar = (0,overlayscrollbars__WEBPACK_IMPORTED_MODULE_10__.OverlayScrollbars)(document.querySelector('#nav'), {
+    navScrollBar = (0,overlayscrollbars__WEBPACK_IMPORTED_MODULE_13__.OverlayScrollbars)(document.querySelector('#nav'), {
       overflow: {
         x: 'hidden'
       },
@@ -16903,7 +17045,7 @@ function setNavScrollbar() {
 setNavScrollbar();
 function removetNavScrollbar() {
   if (mediaq992.matches) {
-    navScrollBar = null;
+    navScrollBar.destroy();
   }
 }
 

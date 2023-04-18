@@ -1,6 +1,4 @@
-const marketingSlider = document.querySelector("#marketing-slider");
-const marketingSliderList = marketingSlider.querySelector("#marketing-slider-list");
-const marketingSliderItems = marketingSlider.querySelectorAll(".marketing-slider__slide");
+import * as v from "../vars";
 
 let count = 0;
 
@@ -13,13 +11,13 @@ function addVisibleClass(elem) {
 }
 
 function changeSlide(e) {
-  const itemsAmount = marketingSliderItems.length;
+  const itemsAmount = v.$marketingSliderItems.length;
 
   if (e.target.tagName === "BUTTON") {
     if (e.target.classList.contains("marketing-slider__btn--left")) {
       if (count <= 0) {
         removeVisibleClass();
-        addVisibleClass(marketingSliderItems[itemsAmount - 1]);
+        addVisibleClass(v.$marketingSliderItems[itemsAmount - 1]);
         count = itemsAmount - 1;
         return;
       }
@@ -27,12 +25,12 @@ function changeSlide(e) {
       count -= 1;
       
       removeVisibleClass();
-      addVisibleClass(marketingSliderItems[count]);
+      addVisibleClass(v.$marketingSliderItems[count]);
 
     } else {
       if (count >= itemsAmount - 1) {
         removeVisibleClass();
-        addVisibleClass(marketingSliderItems[0]);
+        addVisibleClass(v.$marketingSliderItems[0]);
         count = 0;
         return;
       }
@@ -40,9 +38,9 @@ function changeSlide(e) {
       count += 1;
 
       removeVisibleClass();
-      addVisibleClass(marketingSliderItems[count]);
+      addVisibleClass(v.$marketingSliderItems[count]);
     }
   }
 }
 
-marketingSlider.addEventListener("click", changeSlide);
+v.$marketingSlider.addEventListener("click", changeSlide);

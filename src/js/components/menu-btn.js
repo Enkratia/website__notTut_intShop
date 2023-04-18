@@ -1,19 +1,13 @@
-const menuBtn = document.querySelector("#menu-btn");
-const headerMainContainer = document.querySelector("#header-main-container");
-const searchForm = headerMainContainer.querySelector("#search-form");
-const navList = headerMainContainer.querySelector("#nav-list");
+import * as v from "../vars";
 
-const mq991 = window.matchMedia("(max-width: 991px)");
-const mq992 = window.matchMedia("(min-width: 992px)");
-
-const childCount = 5;
+const childCount = 5; 
 let isFalse = false;
 
 // F(s)
 function showHideCategories() {
   if (isFalse) return;
 
-  const listsAll = headerMainContainer.querySelectorAll(".megamenu__list");
+  const listsAll = v.$headerMainContainer.querySelectorAll(".megamenu__list");
   const li = listsAll[0].firstElementChild;
   const liHeight = li.offsetHeight;
   const liMargin = window.getComputedStyle(li).getPropertyValue("margin-bottom");
@@ -53,31 +47,37 @@ function showHideCategories() {
 function showMenu() {
   this.classList.toggle("menu-btn--show");
 
-  headerMainContainer.classList.toggle("header-main__container--show");
-  searchForm.classList.toggle("search-form--show");
-  navList.classList.toggle("nav__list--show");
+  v.$headerMainContainer.classList.toggle("header-main__container--show");
+  v.$searchForm.classList.toggle("search-form--show");
+  v.$navList.classList.toggle("nav__list--show");
+  v.$login.classList.toggle("login--show");
+  document.body.classList.toggle("overflow-hidden");
 }
 
 // L(s)
-menuBtn.addEventListener("click", showMenu);
-menuBtn.addEventListener("click", showHideCategories);
+v.$menuBtn.addEventListener("click", showMenu);
+v.$menuBtn.addEventListener("click", showHideCategories);
 
-mq992.addEventListener("change", () => {
-  if (mq992.matches) {
-    navList.querySelectorAll(".megamenu__list").forEach(el =>  {
+v.$mdq992.addEventListener("change", () => {
+  if (v.$mdq992.matches) {
+    if (v.$menuBtn.classList.contains("menu-btn--show")) {
+      v.$menuBtn.click();
+    }
+
+    v.$navList.querySelectorAll(".megamenu__list").forEach(el =>  {
       el.classList.remove("megamenu__list--active");
       el.style.height = "auto";
     });
 
-    navList.querySelectorAll(".megamenu__more").forEach(el => el.remove());
+    v.$navList.querySelectorAll(".megamenu__more").forEach(el => el.remove());
 
-    menuBtn.removeEventListener("click", showHideCategories);
+    v.$menuBtn.removeEventListener("click", showHideCategories);
   }
 });
 
-mq991.addEventListener("change", () => {
-  if (mq991.matches) {
+v.$mdq991.addEventListener("change", () => {
+  if (v.$mdq991.matches) {
     isFalse = false;
-    menuBtn.addEventListener("click", showHideCategories);
+    v.$menuBtn.addEventListener("click", showHideCategories);
   }
 });

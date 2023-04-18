@@ -1,6 +1,4 @@
-const customSelect = document.querySelector("#custom-select");
-const customSelectList = customSelect.querySelector("#custom-select-list");
-let selected = document.querySelector("#custom-select-selected");
+import * as v from "../vars";
 let isOpen = false;
 
 function closeSelect() {
@@ -18,7 +16,7 @@ function selectCurrency(e) {
 
   function changeSelectValue() {
     if (e.target.classList.contains("custom-select__item")) {
-      selected.textContent = e.target.textContent;
+      v.$selected.textContent = e.target.textContent;
       document.querySelector(".custom-select__item--active").classList.remove("custom-select__item--active");
       e.target.classList.add("custom-select__item--active");
     }
@@ -31,7 +29,7 @@ function selectCurrency(e) {
   this.addEventListener("blur", closeSelect.bind(this));
 }
 
-customSelect.addEventListener("click", selectCurrency);
+v.$customSelect.addEventListener("click", selectCurrency);
 
 // SELECT WITH KEYBOARD
 function selectCurrencyWithKeyboard(e) {
@@ -48,26 +46,26 @@ function selectCurrencyWithKeyboard(e) {
     let prevSibling = document.querySelector(".custom-select__item--active").previousElementSibling;
     if (!prevSibling) return;
 
-    selected.textContent = prevSibling.textContent;
+    v.$selected.textContent = prevSibling.textContent;
     removeAddClass(prevSibling)
 
   } else if (e.key === "ArrowDown" && isOpen) {
     let nextSibling = document.querySelector(".custom-select__item--active").nextElementSibling;
     if (!nextSibling) return;
 
-    selected.textContent = nextSibling.textContent;
+    v.$selected.textContent = nextSibling.textContent;
     removeAddClass(nextSibling)
 
   } else if ((e.key === "PageUp" || e.key === "Home") && isOpen) {
-    const firstSibling = customSelectList.firstElementChild;
+    const firstSibling = v.$customSelectList.firstElementChild;
 
-    selected.textContent = firstSibling.textContent;
+    v.$selected.textContent = firstSibling.textContent;
     removeAddClass(firstSibling)
 
   } else if ((e.key === "PageDown" || e.key === "End") && isOpen) {
-    const lastSibling = customSelectList.lastElementChild;
+    const lastSibling = v.$customSelectList.lastElementChild;
 
-    selected.textContent = lastSibling.textContent;
+    v.$selected.textContent = lastSibling.textContent;
     removeAddClass(lastSibling)
 
   } else if (isOpen) {
@@ -77,4 +75,4 @@ function selectCurrencyWithKeyboard(e) {
   this.addEventListener("blur", closeSelect.bind(this));
 }
 
-customSelect.addEventListener("keydown", selectCurrencyWithKeyboard);
+v.$customSelect.addEventListener("keydown", selectCurrencyWithKeyboard);

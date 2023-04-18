@@ -1,10 +1,6 @@
-const navLinksAll = document.querySelectorAll(".nav__link");
-const navItems = document.querySelectorAll(".nav__item");
+import * as v from "../vars";
 
-const mediaquery991 = window.matchMedia("(max-width: 991px)");
-const mediaquery992 = window.matchMedia("(min-width: 992px)");
-
-const hoverCount = 3; // Количество элементов главного меню с ховером
+const hoverCount = 3; // (Количество элементов главного меню с ховером)
 
 // F(s)
 function showDropdown(e) {
@@ -31,8 +27,8 @@ function showDropdown(e) {
 }
 
 function addShowDropdown() {
-  if (mediaquery991.matches) {
-    navLinksAll.forEach((el, idx) => {
+  if (v.$mdq991.matches) {
+    v.$navLinksAll.forEach((el, idx) => {
       if (idx > hoverCount) return;
       el.addEventListener("click", showDropdown);
     });
@@ -41,21 +37,20 @@ function addShowDropdown() {
 addShowDropdown();
 
 function removeShowDropdown() {
-  if (mediaquery992.matches) {
-    navLinksAll.forEach((el, idx) => {
+  if (v.$mdq992.matches) {
+    v.$navLinksAll.forEach((el, idx) => {
       if (idx > hoverCount) return;
       el.removeEventListener("click", showDropdown);
     });
 
     document.querySelector(".megamenu--show")?.classList.remove("megamenu--show");
     document.querySelector(".nav__link--open")?.classList.remove("nav__link--open");
-    document.querySelector("#menu-btn").click();
   }
 }
 
 function removeNavItemsHover() {
-  if (mediaquery991.matches) {
-    navItems.forEach((item, idx) => {
+  if (v.$mdq991.matches) {
+    v.$navItems.forEach((item, idx) => {
       if (idx > hoverCount) return;
       item.classList.remove("nav__item--hover");
     });
@@ -64,8 +59,8 @@ function removeNavItemsHover() {
 removeNavItemsHover();
 
 function addNavItemsHover() {
-  if (mediaquery992.matches) {
-    navItems.forEach((item, idx) => {
+  if (v.$mdq992.matches) {
+    v.$navItems.forEach((item, idx) => {
       if (idx > hoverCount) return;
       item.classList.add("nav__item--hover");
     });
@@ -74,10 +69,10 @@ function addNavItemsHover() {
 addNavItemsHover();
 
 // L(s)
-mediaquery991.addEventListener("change", removeNavItemsHover);
-mediaquery992.addEventListener("change", addNavItemsHover);
+v.$mdq991.addEventListener("change", removeNavItemsHover);
+v.$mdq992.addEventListener("change", addNavItemsHover);
 
-mediaquery991.addEventListener("change", addShowDropdown);
-mediaquery992.addEventListener("change", removeShowDropdown);
+v.$mdq991.addEventListener("change", addShowDropdown);
+v.$mdq992.addEventListener("change", removeShowDropdown);
 
 

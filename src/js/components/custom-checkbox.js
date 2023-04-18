@@ -1,4 +1,4 @@
-const customCheckboxes = document.querySelectorAll(".custom-checkbox");
+import * as v from "../vars";
 
 // Function(s)
 function checkCustomCheckbox() {
@@ -15,7 +15,7 @@ function checkCustomCheckbox() {
 }
 
 // Listener(s)
-customCheckboxes.forEach(el => {
+v.$customCheckboxes.forEach(el => {
   const nativeCheckbox = el.querySelector(".custom-checkbox__input");
   nativeCheckbox.addEventListener("change", checkCustomCheckbox);
 });

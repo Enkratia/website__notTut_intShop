@@ -1,5 +1,4 @@
-const subscribeCategories = document.querySelector(".subscribe__categories");
-const nativeCheckBoxes = subscribeCategories.querySelectorAll(".categories__btn-checkbox");
+import * as v from "../vars";
 
 // Function(s)
 function checkSubscribeCategoriesCheckbox() {
@@ -16,6 +15,6 @@ function checkSubscribeCategoriesCheckbox() {
 }
 
 // Listener(s)
-nativeCheckBoxes.forEach(el => {
+v.$nativeCheckBoxes.forEach(el => {
   el.addEventListener("change", checkSubscribeCategoriesCheckbox);
 });

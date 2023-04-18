@@ -1,10 +1,9 @@
-const timer = document.querySelector("#timer");
-const counters = timer.querySelectorAll(".timer__count");
+import * as v from "../vars";
 
-const daysElem = counters[0];
-const hoursElem = counters[1];
-const minsElem = counters[2];
-const secElem = counters[3];
+const daysElem = v.$counters[0];
+const hoursElem = v.$counters[1];
+const minsElem = v.$counters[2];
+const secElem = v.$counters[3];
 
 const initDays = 6;
 let timerCount;

@@ -1,9 +1,15 @@
 <div class="header-top header__top">
-  <div class="header-top__container container">
+  <div class="header-top__container container" id="header-top-container">
     <div class="header-top__available available">
       <a class="available__link" href="tel:+74055550128">
         <span class="available__text">
           Available 24/7 at
+        </span>
+
+        <span class="available__icon" aria-label="hidden">
+          <svg xmlns='http://www.w3.org/2000/svg' aria-label="hidden">
+            <use href='./img/sprite.svg#phone' aria-label="hidden"></use>
+          </svg>
         </span>
 
         <span class="available__tel">
@@ -12,7 +18,17 @@
       </a>
     </div>
 
-    <nav class="header-top__nav top-nav">
+    <nav class="header-top__nav top-nav" id="top-nav">
+      <button class="top-nav__button" id="top-nav-button">
+        <svg xmlns='http://www.w3.org/2000/svg'>
+          <use href='./img/sprite.svg#layouts'></use>
+        </svg>
+
+        <span class="top-nav__button-text">
+          Info
+        </span>
+      </button>
+
       <ul class="top-nav__list">
         <li class="top-nav__item">
           <a href="#" class="top-nav__link">
@@ -142,7 +158,7 @@
       </select> -->
     </div>
 
-    <div class="header-top__login login">
+    <div class="header-top__login login" id="login">
       <button class="login__btn">
         Log in
       </button>
