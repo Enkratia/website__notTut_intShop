@@ -38,6 +38,7 @@
 
     svg {
       transform: rotate(180deg);
+      pointer-events: none;
     }
 
     @include bp-down ("1024") {
@@ -54,6 +55,10 @@
     position: absolute;
     right: rem(-13);
     top: rem(24);
+
+    svg {
+      pointer-events: none;
+    }
 
     @include bp-down ("1024") {
       top: rem(4);

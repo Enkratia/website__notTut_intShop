@@ -4,14 +4,14 @@ import "./components/currency";
 import "./components/special-offers";
 import "./components/timer";
 import "./components/swipers";
-import "./components/product__bottom";
-import "./components/microslider";
 import "./components/custom-checkbox";
 import "./components/subscribe__categories";
 import "./components/menu-btn";
 import "./components/megamenu";
 import "./components/login";
 import "./components/top-nav";
+import "./components/product__bottom";
+import "./components/microslider";
 
 
 // Libraries

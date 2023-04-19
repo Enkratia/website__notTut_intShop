@@ -1,3 +1,4 @@
+import * as v from "../vars";
 import Swiper, { Pagination, Navigation, EffectFade } from 'swiper';
 
 // HERO SWIPER
@@ -43,26 +44,22 @@ const topCategoriesSwiper = new Swiper("#top-categories-swiper", {
 });
 
 // To enable controls on small displays
-const mediaquery767 = window.matchMedia("(min-width: 768px)");
-const mediaquery768 = window.matchMedia("(max-width: 767px)");
-const mediaquery1024 = window.matchMedia("(min-width: 1024px)");
-
-function enableTopCategoriesSwiper() {
-  if (mediaquery767.matches) {
+function disableTopCategoriesSwiper() {
+  if (v.$mdq768.matches) {
     topCategoriesSwiper.disable();
     topCategoriesSwiper.setProgress(0, 0);
   }
 }
 
-function disableTopCategoriesSwiper() {
-  if (mediaquery768.matches) {
+function enableTopCategoriesSwiper() {
+  if (v.$mdq767.matches) {
     topCategoriesSwiper.enable();
   }
 }
 
-mediaquery767.addEventListener("change", enableTopCategoriesSwiper);
-mediaquery767.addEventListener("change", disableTopCategoriesSwiper);
-enableTopCategoriesSwiper();
+v.$mdq768.addEventListener("change", disableTopCategoriesSwiper);
+v.$mdq767.addEventListener("change", enableTopCategoriesSwiper);
+disableTopCategoriesSwiper();
 
 // NEW ARRIVALS SWIPER
 const newArrivalsSwiper = new Swiper("#new-arrivals-slider", {
@@ -148,12 +145,12 @@ const popularCategoriesSwiper = new Swiper("#popular-categories-slider", {
 });
 
 function resetProgressPopularCategoriesSwiper() {
-  if (mediaquery767.matches) {
+  if (v.$mdq768.matches) {
     popularCategoriesSwiper.setProgress(0, 0);
   }
 }
 
-mediaquery767.addEventListener("change", resetProgressPopularCategoriesSwiper);
+v.$mdq768.addEventListener("change", resetProgressPopularCategoriesSwiper);
 
 // TRENDING NOW SWIPER
 const trendingNowSwiper = new Swiper("#trending-now-slider", {
@@ -181,7 +178,31 @@ const trendingNowSwiper = new Swiper("#trending-now-slider", {
   }
 });
 
-// SALE SWIPER - в другом файле
+// SALE SWIPER
+const saleSwiper = new Swiper("#sale-slider", {
+  modules: [Navigation],
+  slidesPerView: 1,
+  spaceBetween: 20,
+  loop: true,
+  navigation: {
+    nextEl: '#sale-button-next',
+    prevEl: '#sale-button-prev',
+  },
+  breakpoints: {
+    900: {
+      slidesPerView: 3,
+      spaceBetween: 30,
+    },
+    768: {
+      slidesPerView: 3,
+      spaceBetween: 30,
+    },
+    480: {
+      slidesPerView: 2,
+      spaceBetween: 20,
+    }
+  }
+});
 
 // INSTAGRAM SWIPER
 const instagramSwiper = new Swiper("#instagram-slider", {
@@ -205,15 +226,14 @@ const instagramSwiper = new Swiper("#instagram-slider", {
 });
 
 function resetProgressInstagramSwiper() {
-  if (mediaquery767.matches) {
+  if (v.$mdq768.matches) {
     instagramSwiper.setProgress(0, 0);
   }
 }
 
-mediaquery767.addEventListener("change", resetProgressInstagramSwiper);
+v.$mdq768.addEventListener("change", resetProgressInstagramSwiper);
 
 instagramSwiper.setProgress(0, 0); // (Изначально неверный порядок слайдов)
-
 
 // BLOG SWIPER
 const blogSwiper = new Swiper("#blog-slider", {
@@ -241,12 +261,12 @@ const blogSwiper = new Swiper("#blog-slider", {
 });
 
 function resetBlogSwiper() {
-  if (mediaquery767.matches) {
+  if (v.$mdq768.matches) {
     blogSwiper.setProgress(0, 0);
   }
 }
 
-mediaquery767.addEventListener("change", resetBlogSwiper);
+v.$mdq768.addEventListener("change", resetBlogSwiper);
 
 // BRAND SWIPER
 const brandSwiper = new Swiper("#brands-slider", {
@@ -304,9 +324,9 @@ const brandSwiper = new Swiper("#brands-slider", {
 });
 
 function resetBrandSwiper() {
-  if (mediaquery1024.matches) {
+  if (v.$mdq1024.matches) {
     brandSwiper.setProgress(0, 0);
   }
 }
 
-mediaquery1024.addEventListener("change", resetBrandSwiper);
+v.$mdq1024.addEventListener("change", resetBrandSwiper);

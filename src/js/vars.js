@@ -22,7 +22,10 @@ export const $counters = $timer.querySelectorAll(".timer__count");
 export const $topNavBtn = document.querySelector("#top-nav-button");
 
 // **
+export const $mdq767 = window.matchMedia("(max-width: 767px)");
+export const $mdq768 = window.matchMedia("(min-width: 768px)");
 export const $mdq991 = window.matchMedia("(max-width:991px)");
 export const $mdq992 = window.matchMedia("(min-width:992px)");
+export const $mdq1024 = window.matchMedia("(min-width: 1024px)");
 
 
