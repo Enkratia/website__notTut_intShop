@@ -23,9 +23,10 @@ function removeAddClass(el) {
 
 // SELECT WITH MOUSE
 function selectCurrency(e) {
+  const selected = this.querySelector(".custom-select__selected");
   function changeSelectValue() {
     if (e.target.classList.contains("custom-select__item")) {
-      _vars__WEBPACK_IMPORTED_MODULE_0__.$selected.textContent = e.target.textContent;
+      selected.textContent = e.target.textContent;
       document.querySelector(".custom-select__item--active").classList.remove("custom-select__item--active");
       e.target.classList.add("custom-select__item--active");
     }
@@ -34,10 +35,14 @@ function selectCurrency(e) {
   changeSelectValue();
   this.addEventListener("blur", closeSelect.bind(this));
 }
-_vars__WEBPACK_IMPORTED_MODULE_0__.$customSelect.addEventListener("click", selectCurrency);
+_vars__WEBPACK_IMPORTED_MODULE_0__.$customSelects.forEach(el => {
+  el.addEventListener("click", selectCurrency);
+});
 
 // SELECT WITH KEYBOARD
 function selectCurrencyWithKeyboard(e) {
+  const selected = this.querySelector(".custom-select__selected");
+  const selectList = this.querySelector(".custom-select__list");
   if (e.key === "Enter") {
     this.classList.toggle("custom-select--open");
     isOpen = this.classList.contains("custom-select--open");
@@ -47,27 +52,29 @@ function selectCurrencyWithKeyboard(e) {
   } else if (e.key === "ArrowUp" && isOpen) {
     let prevSibling = document.querySelector(".custom-select__item--active").previousElementSibling;
     if (!prevSibling) return;
-    _vars__WEBPACK_IMPORTED_MODULE_0__.$selected.textContent = prevSibling.textContent;
+    selected.textContent = prevSibling.textContent;
     removeAddClass(prevSibling);
   } else if (e.key === "ArrowDown" && isOpen) {
     let nextSibling = document.querySelector(".custom-select__item--active").nextElementSibling;
     if (!nextSibling) return;
-    _vars__WEBPACK_IMPORTED_MODULE_0__.$selected.textContent = nextSibling.textContent;
+    selected.textContent = nextSibling.textContent;
     removeAddClass(nextSibling);
   } else if ((e.key === "PageUp" || e.key === "Home") && isOpen) {
-    const firstSibling = _vars__WEBPACK_IMPORTED_MODULE_0__.$customSelectList.firstElementChild;
-    _vars__WEBPACK_IMPORTED_MODULE_0__.$selected.textContent = firstSibling.textContent;
+    const firstSibling = selectList.firstElementChild;
+    selected.textContent = firstSibling.textContent;
     removeAddClass(firstSibling);
   } else if ((e.key === "PageDown" || e.key === "End") && isOpen) {
-    const lastSibling = _vars__WEBPACK_IMPORTED_MODULE_0__.$customSelectList.lastElementChild;
-    _vars__WEBPACK_IMPORTED_MODULE_0__.$selected.textContent = lastSibling.textContent;
+    const lastSibling = selectList.lastElementChild;
+    selected.textContent = lastSibling.textContent;
     removeAddClass(lastSibling);
   } else if (isOpen) {
     this.classList.remove("custom-select--open");
   }
   this.addEventListener("blur", closeSelect.bind(this));
 }
-_vars__WEBPACK_IMPORTED_MODULE_0__.$customSelect.addEventListener("keydown", selectCurrencyWithKeyboard);
+_vars__WEBPACK_IMPORTED_MODULE_0__.$customSelects.forEach(el => {
+  el.addEventListener("keydown", selectCurrencyWithKeyboard);
+});
 
 /***/ }),
 
@@ -359,51 +366,52 @@ window.addEventListener("resize", () => {
   \**********************************************/
 /***/ (() => {
 
-// PRODUCT__BOTTOM (HOVER)
 let saleSlider = document.querySelector(".sale__slider"); // (Не убирать в vars)
-let products = saleSlider.querySelectorAll(".sale__product"); // (Не убирать в vars)
 
-const marginForBoxShadow = 80; // (Тоже самое: window.getComputedStyle(products[0]).getPropertyValue("margin-bottom"))
+if (saleSlider) {
+  let products = saleSlider.querySelectorAll(".sale__product"); // (Не убирать в vars)
+  const marginForBoxShadow = 80; // (Тоже самое: window.getComputedStyle(products[0]).getPropertyValue("margin-bottom"))
 
-// F(s)
-// **
-function showProductBottom() {
-  const productBottom = this.querySelector(".product__bottom");
-  productBottom.classList.add("product__bottom--visible");
-  const productBottomHeight = productBottom.getBoundingClientRect().height;
-  const saleSliderMargin = window.getComputedStyle(saleSlider).getPropertyValue("margin-bottom");
-  saleSlider.style.marginBottom = parseFloat(saleSliderMargin) - marginForBoxShadow - productBottomHeight + "px";
+  // F(s)
+  // **
+  function showProductBottom() {
+    const productBottom = this.querySelector(".product__bottom");
+    productBottom.classList.add("product__bottom--visible");
+    const productBottomHeight = productBottom.getBoundingClientRect().height;
+    const saleSliderMargin = window.getComputedStyle(saleSlider).getPropertyValue("margin-bottom");
+    saleSlider.style.marginBottom = parseFloat(saleSliderMargin) - marginForBoxShadow - productBottomHeight + "px";
+  }
+
+  // **
+  function hideProductBottom() {
+    this.querySelector(".product__bottom").classList.remove("product__bottom--visible");
+    saleSlider.style.marginBottom = "";
+  }
+
+  // L(s)
+  // **
+  products.forEach(product => {
+    product.addEventListener("mouseenter", showProductBottom);
+    product.addEventListener("mouseleave", hideProductBottom);
+  });
+
+  // **
+  window.addEventListener("resize", () => {
+    setTimeout(() => {
+      // (Чтобы swiper успел прогрузить свой js)
+      saleSlider = document.querySelector(".sale__slider");
+      products = saleSlider.querySelectorAll(".sale__product");
+      products.forEach(product => {
+        product.removeEventListener("mouseenter", showProductBottom);
+        product.removeEventListener("mouseleave", hideProductBottom);
+      });
+      products.forEach(product => {
+        product.addEventListener("mouseenter", showProductBottom);
+        product.addEventListener("mouseleave", hideProductBottom);
+      });
+    }, 50);
+  });
 }
-
-// **
-function hideProductBottom() {
-  this.querySelector(".product__bottom").classList.remove("product__bottom--visible");
-  saleSlider.style.marginBottom = "";
-}
-
-// L(s)
-// **
-products.forEach(product => {
-  product.addEventListener("mouseenter", showProductBottom);
-  product.addEventListener("mouseleave", hideProductBottom);
-});
-
-// **
-window.addEventListener("resize", () => {
-  setTimeout(() => {
-    // (Чтобы swiper успел прогрузить свой js)
-    saleSlider = document.querySelector(".sale__slider");
-    products = saleSlider.querySelectorAll(".sale__product");
-    products.forEach(product => {
-      product.removeEventListener("mouseenter", showProductBottom);
-      product.removeEventListener("mouseleave", hideProductBottom);
-    });
-    products.forEach(product => {
-      product.addEventListener("mouseenter", showProductBottom);
-      product.addEventListener("mouseleave", hideProductBottom);
-    });
-  }, 50);
-});
 
 /***/ }),
 
@@ -464,23 +472,24 @@ _vars__WEBPACK_IMPORTED_MODULE_0__.$marketingSlider.addEventListener("click", ch
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _vars__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../vars */ "./src/js/vars.js");
 
-
-// Function(s)
-function checkSubscribeCategoriesCheckbox() {
-  const checkbox = this.parentElement;
-  checkbox.classList.toggle("categories__btn--checked");
-  const isAriaChecked = checkbox.getAttribute("aria-checked");
-  if (isAriaChecked === "false") {
-    checkbox.setAttribute("aria-checked", "true");
-  } else {
-    checkbox.setAttribute("aria-checked", "false");
+if (_vars__WEBPACK_IMPORTED_MODULE_0__.$nativeCheckBoxes) {
+  // Function(s)
+  function checkSubscribeCategoriesCheckbox() {
+    const checkbox = this.parentElement;
+    checkbox.classList.toggle("categories__btn--checked");
+    const isAriaChecked = checkbox.getAttribute("aria-checked");
+    if (isAriaChecked === "false") {
+      checkbox.setAttribute("aria-checked", "true");
+    } else {
+      checkbox.setAttribute("aria-checked", "false");
+    }
   }
-}
 
-// Listener(s)
-_vars__WEBPACK_IMPORTED_MODULE_0__.$nativeCheckBoxes.forEach(el => {
-  el.addEventListener("change", checkSubscribeCategoriesCheckbox);
-});
+  // Listener(s)
+  _vars__WEBPACK_IMPORTED_MODULE_0__.$nativeCheckBoxes.forEach(el => {
+    el.addEventListener("change", checkSubscribeCategoriesCheckbox);
+  });
+}
 
 /***/ }),
 
@@ -516,44 +525,46 @@ const heroSwiper = new swiper__WEBPACK_IMPORTED_MODULE_1__["default"]("#hero-swi
 });
 
 // TOP-CATEGORIES SWIPER
-const topCategoriesSwiper = new swiper__WEBPACK_IMPORTED_MODULE_1__["default"]("#top-categories-swiper", {
-  modules: [swiper__WEBPACK_IMPORTED_MODULE_1__.Pagination],
-  loop: true,
-  slidesPerView: 1,
-  slidesPerGroup: 1,
-  spaceBetween: 20,
-  pagination: {
-    el: '#top-categories-pagination',
-    clickable: true
-  },
-  breakpoints: {
-    768: {
-      slidesPerView: 3,
-      spaceBetween: 30
+if (document.querySelector("#top-categories-swiper")) {
+  const topCategoriesSwiper = new swiper__WEBPACK_IMPORTED_MODULE_1__["default"]("#top-categories-swiper", {
+    modules: [swiper__WEBPACK_IMPORTED_MODULE_1__.Pagination],
+    loop: true,
+    slidesPerView: 1,
+    slidesPerGroup: 1,
+    spaceBetween: 20,
+    pagination: {
+      el: '#top-categories-pagination',
+      clickable: true
     },
-    400: {
-      slidesPerView: 2,
-      slidesPerGroup: 2,
-      spaceBetween: 20
+    breakpoints: {
+      768: {
+        slidesPerView: 3,
+        spaceBetween: 30
+      },
+      400: {
+        slidesPerView: 2,
+        slidesPerGroup: 2,
+        spaceBetween: 20
+      }
+    }
+  });
+
+  // To enable controls on small displays
+  function disableTopCategoriesSwiper() {
+    if (_vars__WEBPACK_IMPORTED_MODULE_0__.$mdq768.matches) {
+      topCategoriesSwiper.disable();
+      topCategoriesSwiper.setProgress(0, 0);
     }
   }
-});
-
-// To enable controls on small displays
-function disableTopCategoriesSwiper() {
-  if (_vars__WEBPACK_IMPORTED_MODULE_0__.$mdq768.matches) {
-    topCategoriesSwiper.disable();
-    topCategoriesSwiper.setProgress(0, 0);
+  function enableTopCategoriesSwiper() {
+    if (_vars__WEBPACK_IMPORTED_MODULE_0__.$mdq767.matches) {
+      topCategoriesSwiper.enable();
+    }
   }
+  _vars__WEBPACK_IMPORTED_MODULE_0__.$mdq768.addEventListener("change", disableTopCategoriesSwiper);
+  _vars__WEBPACK_IMPORTED_MODULE_0__.$mdq767.addEventListener("change", enableTopCategoriesSwiper);
+  disableTopCategoriesSwiper();
 }
-function enableTopCategoriesSwiper() {
-  if (_vars__WEBPACK_IMPORTED_MODULE_0__.$mdq767.matches) {
-    topCategoriesSwiper.enable();
-  }
-}
-_vars__WEBPACK_IMPORTED_MODULE_0__.$mdq768.addEventListener("change", disableTopCategoriesSwiper);
-_vars__WEBPACK_IMPORTED_MODULE_0__.$mdq767.addEventListener("change", enableTopCategoriesSwiper);
-disableTopCategoriesSwiper();
 
 // NEW ARRIVALS SWIPER
 const newArrivalsSwiper = new swiper__WEBPACK_IMPORTED_MODULE_1__["default"]("#new-arrivals-slider", {
@@ -697,32 +708,34 @@ const saleSwiper = new swiper__WEBPACK_IMPORTED_MODULE_1__["default"]("#sale-sli
 });
 
 // INSTAGRAM SWIPER
-const instagramSwiper = new swiper__WEBPACK_IMPORTED_MODULE_1__["default"]("#instagram-slider", {
-  modules: [swiper__WEBPACK_IMPORTED_MODULE_1__.Pagination],
-  loop: true,
-  enabled: true,
-  slidesPerView: 2,
-  slidesPerGroup: 2,
-  spaceBetween: 15,
-  pagination: {
-    el: '#instagram-pagination',
-    clickable: true
-  },
-  breakpoints: {
-    576: {
-      enabled: false,
-      slidesPerView: 3,
-      slidesPerGroup: 2
+if (document.querySelector("#instagram-slider")) {
+  const instagramSwiper = new swiper__WEBPACK_IMPORTED_MODULE_1__["default"]("#instagram-slider", {
+    modules: [swiper__WEBPACK_IMPORTED_MODULE_1__.Pagination],
+    loop: true,
+    enabled: true,
+    slidesPerView: 2,
+    slidesPerGroup: 2,
+    spaceBetween: 15,
+    pagination: {
+      el: '#instagram-pagination',
+      clickable: true
+    },
+    breakpoints: {
+      576: {
+        enabled: false,
+        slidesPerView: 3,
+        slidesPerGroup: 2
+      }
+    }
+  });
+  function resetProgressInstagramSwiper() {
+    if (_vars__WEBPACK_IMPORTED_MODULE_0__.$mdq768.matches) {
+      instagramSwiper.setProgress(0, 0);
     }
   }
-});
-function resetProgressInstagramSwiper() {
-  if (_vars__WEBPACK_IMPORTED_MODULE_0__.$mdq768.matches) {
-    instagramSwiper.setProgress(0, 0);
-  }
+  _vars__WEBPACK_IMPORTED_MODULE_0__.$mdq768.addEventListener("change", resetProgressInstagramSwiper);
+  instagramSwiper.setProgress(0, 0); // (Изначально неверный порядок слайдов)
 }
-_vars__WEBPACK_IMPORTED_MODULE_0__.$mdq768.addEventListener("change", resetProgressInstagramSwiper);
-instagramSwiper.setProgress(0, 0); // (Изначально неверный порядок слайдов)
 
 // BLOG SWIPER
 const blogSwiper = new swiper__WEBPACK_IMPORTED_MODULE_1__["default"]("#blog-slider", {
@@ -828,73 +841,75 @@ _vars__WEBPACK_IMPORTED_MODULE_0__.$mdq1024.addEventListener("change", resetBran
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _vars__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../vars */ "./src/js/vars.js");
 
-const daysElem = _vars__WEBPACK_IMPORTED_MODULE_0__.$counters[0];
-const hoursElem = _vars__WEBPACK_IMPORTED_MODULE_0__.$counters[1];
-const minsElem = _vars__WEBPACK_IMPORTED_MODULE_0__.$counters[2];
-const secElem = _vars__WEBPACK_IMPORTED_MODULE_0__.$counters[3];
-const initDays = 6;
-let timerCount;
-function turnOnTimer(initDays) {
-  // Init numbers
-  let days = initDays;
-  let hours = 0;
-  let mins = 0;
-  let sec = 0;
+if (_vars__WEBPACK_IMPORTED_MODULE_0__.$counters) {
+  const daysElem = _vars__WEBPACK_IMPORTED_MODULE_0__.$counters[0];
+  const hoursElem = _vars__WEBPACK_IMPORTED_MODULE_0__.$counters[1];
+  const minsElem = _vars__WEBPACK_IMPORTED_MODULE_0__.$counters[2];
+  const secElem = _vars__WEBPACK_IMPORTED_MODULE_0__.$counters[3];
+  const initDays = 6;
+  let timerCount;
+  function turnOnTimer(initDays) {
+    // Init numbers
+    let days = initDays;
+    let hours = 0;
+    let mins = 0;
+    let sec = 0;
 
-  // Starting text
-  daysElem.textContent = amendTime(initDays);
-  hoursElem.textContent = "00";
-  minsElem.textContent = "00";
-  secElem.textContent = "00";
+    // Starting text
+    daysElem.textContent = amendTime(initDays);
+    hoursElem.textContent = "00";
+    minsElem.textContent = "00";
+    secElem.textContent = "00";
 
-  // Functions
-  function amendTime(time) {
-    return time > 9 ? time : "0" + time;
-  }
-  function changeTime() {
-    if (sec > 0) {
-      sec -= 1;
-      secElem.textContent = amendTime(sec);
-      return;
+    // Functions
+    function amendTime(time) {
+      return time > 9 ? time : "0" + time;
     }
-    if (sec == 0) {
-      if (mins > 0) {
-        mins -= 1;
-        minsElem.textContent = amendTime(mins);
-        sec = 59;
-        secElem.textContent = sec;
-      } else {
-        if (hours > 0) {
-          hours -= 1;
-          hoursElem.textContent = amendTime(hours);
-          mins = 59;
-          minsElem.textContent = mins;
+    function changeTime() {
+      if (sec > 0) {
+        sec -= 1;
+        secElem.textContent = amendTime(sec);
+        return;
+      }
+      if (sec == 0) {
+        if (mins > 0) {
+          mins -= 1;
+          minsElem.textContent = amendTime(mins);
           sec = 59;
           secElem.textContent = sec;
         } else {
-          if (days > 0) {
-            days -= 1;
-            daysElem.textContent = amendTime(days);
-            hours = 23;
-            hoursElem.textContent = hours;
+          if (hours > 0) {
+            hours -= 1;
+            hoursElem.textContent = amendTime(hours);
             mins = 59;
             minsElem.textContent = mins;
             sec = 59;
             secElem.textContent = sec;
           } else {
-            clearInterval(timerCount);
+            if (days > 0) {
+              days -= 1;
+              daysElem.textContent = amendTime(days);
+              hours = 23;
+              hoursElem.textContent = hours;
+              mins = 59;
+              minsElem.textContent = mins;
+              sec = 59;
+              secElem.textContent = sec;
+            } else {
+              clearInterval(timerCount);
+            }
           }
         }
       }
     }
-  }
 
-  // Start functions after starting text
-  setTimeout(() => {
-    timerCount = setInterval(changeTime, 1000);
-  }, 1000);
+    // Start functions after starting text
+    setTimeout(() => {
+      timerCount = setInterval(changeTime, 1000);
+    }, 1000);
+  }
+  turnOnTimer(initDays);
 }
-turnOnTimer(initDays);
 
 /***/ }),
 
@@ -940,8 +955,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "$counters": () => (/* binding */ $counters),
 /* harmony export */   "$customCheckboxes": () => (/* binding */ $customCheckboxes),
-/* harmony export */   "$customSelect": () => (/* binding */ $customSelect),
-/* harmony export */   "$customSelectList": () => (/* binding */ $customSelectList),
+/* harmony export */   "$customSelects": () => (/* binding */ $customSelects),
 /* harmony export */   "$headerMainContainer": () => (/* binding */ $headerMainContainer),
 /* harmony export */   "$headerTopContainer": () => (/* binding */ $headerTopContainer),
 /* harmony export */   "$login": () => (/* binding */ $login),
@@ -961,14 +975,11 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "$products": () => (/* binding */ $products),
 /* harmony export */   "$saleSlider": () => (/* binding */ $saleSlider),
 /* harmony export */   "$searchForm": () => (/* binding */ $searchForm),
-/* harmony export */   "$selected": () => (/* binding */ $selected),
 /* harmony export */   "$subscribeCategories": () => (/* binding */ $subscribeCategories),
 /* harmony export */   "$timer": () => (/* binding */ $timer),
 /* harmony export */   "$topNavBtn": () => (/* binding */ $topNavBtn)
 /* harmony export */ });
-const $customSelect = document.querySelector("#custom-select");
-const $customSelectList = $customSelect.querySelector("#custom-select-list");
-const $selected = $customSelect.querySelector("#custom-select-selected");
+const $customSelects = document.querySelectorAll(".custom-select");
 const $customCheckboxes = document.querySelectorAll(".custom-checkbox");
 const $login = document.querySelector("#login");
 const $headerMainContainer = document.querySelector("#header-main-container");
@@ -982,11 +993,11 @@ const $looks = document.querySelectorAll(".sale .product__look");
 let $products = document.querySelectorAll(".sale__product");
 let $saleSlider = document.querySelector(".sale__slider");
 const $marketingSlider = document.querySelector("#marketing-slider");
-const $marketingSliderItems = $marketingSlider.querySelectorAll(".marketing-slider__slide");
+const $marketingSliderItems = $marketingSlider?.querySelectorAll(".marketing-slider__slide");
 const $subscribeCategories = document.querySelector(".subscribe__categories");
-const $nativeCheckBoxes = $subscribeCategories.querySelectorAll(".categories__btn-checkbox");
+const $nativeCheckBoxes = $subscribeCategories?.querySelectorAll(".categories__btn-checkbox");
 const $timer = document.querySelector("#timer");
-const $counters = $timer.querySelectorAll(".timer__count");
+const $counters = $timer?.querySelectorAll(".timer__count");
 const $topNavBtn = document.querySelector("#top-nav-button");
 
 // **

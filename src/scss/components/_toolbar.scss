@@ -1,0 +1,31 @@
+@use "../util/" as *;
+
+.toolbar {
+  &__title {
+    margin-right: rem(12);
+    font: var(--base-bold);
+    color: var(--gray900-color);
+  }
+
+  // Sort by
+  &__sort {
+    display: flex;
+    align-items: center;
+    margin-block: rem(100); // tmp
+  }
+
+  // Show
+  &__show {
+    display: flex;
+    align-items: center;
+  }
+
+  &__input-number {
+    margin-right: rem(12);
+  }
+
+  &__text {
+    font: var(--small-regular);
+    color: var(--gray700-color);
+  }
+}

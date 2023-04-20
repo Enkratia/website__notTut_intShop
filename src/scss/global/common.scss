@@ -856,3 +856,151 @@
     pointer-events: auto;
   }
 }
+
+.custom-select {
+  position: relative;
+  overflow: hidden;
+  transition: border-color 0.3s;
+  user-select: none;
+
+  &__head {
+    display: flex;
+    align-items: center;
+    padding: rem(2) rem(2);
+    transition: color 0.3s ease, border-color 0.3s;
+    cursor: pointer;
+
+    &:hover {
+      color: var(--white-color);
+    }
+
+    &--light {
+      border: rem(1) solid var(--gray400-color);
+      border-radius: rem(4);
+      padding-top: rem(10);
+      padding-bottom: rem(11);
+      padding-inline: rem(16);
+
+      &:hover {
+        color: currentcolor;
+      }
+    }
+  }
+
+  &__selected {
+    padding-inline: rem(3);
+    line-height: rem(21);
+    cursor: pointer;
+  }
+
+  &__inner-wrapper {
+    position: absolute;
+    right: 0;
+    top: calc(100% + rem(4));
+    z-index: var(--z-tooltip);
+    border-radius: rem(4);
+    padding-right: rem(5);
+    padding-left: rem(15);
+    padding-block: rem(10);
+    width: rem(120);
+    box-shadow: 0 5px 10px rgb(0 0 0 / 15%);
+    background-color: var(--white-color);
+  }
+
+  &__list {
+    overflow-y: auto;
+    border-radius: rem(4);
+    width: 100%;
+    max-height: rem(200);
+    color: var(--black-color);
+    background-color: var(--white-color);
+  }
+
+  &__item {
+    padding: rem(4) rem(5);
+    width: 100%;
+    transition: color 0.3s ease;
+    cursor: pointer;
+
+    &:hover {
+      color: var(--primary-color);
+    }
+
+    &--active {
+      color: var(--primary-color);
+    }
+  }
+
+  svg {
+    position: relative;
+    top: rem(0.5);
+    width: rem(9);
+    height: rem(5);
+    fill: currentcolor;
+    transition: transform 0.1s, rotate 0.1s;
+  }
+
+  &--open {
+    overflow: visible;
+
+    svg {
+      top: 0;
+      transform: rotate(180deg);
+    }
+  }
+
+  &--light {
+    outline: none;
+    font: var(--small-regular);
+    color: var(--gray800-color);
+
+    svg {
+      top: rem(0.5);
+      width: rem(10.67);
+      height: rem(6);
+    }
+  }
+
+  &:focus>.custom-select__head {
+    border-color: var(--primary-color);
+  }
+}
+
+.input-number {
+  position: relative;
+  border: rem(1) solid var(--gray400-color);
+  border-radius: rem(4);
+  padding-top: rem(11);
+  padding-right: rem(30);
+  padding-bottom: rem(12);
+  padding-left: rem(16);
+
+  &__input {
+    font: var(--small-regular);
+    color: var(--gray800-color);
+  }
+
+  &__btns {
+    position: absolute;
+    right: rem(19);
+    top: 50%;
+    transform: translateY(-50%);
+  }
+
+  &__btn {
+    display: block;
+    width: 0;
+    height: 0;
+    border-style: solid;
+    border-width: 0 rem(5) rem(7.5) rem(5);
+    border-color: transparent transparent var(--gray900-color) transparent;
+  }
+
+  &__btn:first-child {
+    margin-bottom: rem(2);
+  }
+
+  &__btn:last-child {
+    transform: rotate(180deg);
+  }
+}

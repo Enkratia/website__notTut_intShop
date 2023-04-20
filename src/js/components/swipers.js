@@ -20,46 +20,49 @@ const heroSwiper = new Swiper("#hero-swiper", {
 });
 
 // TOP-CATEGORIES SWIPER
-const topCategoriesSwiper = new Swiper("#top-categories-swiper", {
-  modules: [Pagination],
-  loop: true,
-  slidesPerView: 1,
-  slidesPerGroup: 1,
-  spaceBetween: 20,
-  pagination: {
-    el: '#top-categories-pagination',
-    clickable: true,
-  },
-  breakpoints: {
-    768: {
-      slidesPerView: 3,
-      spaceBetween: 30
+if (document.querySelector("#top-categories-swiper")) {
+  const topCategoriesSwiper = new Swiper("#top-categories-swiper", {
+    modules: [Pagination],
+    loop: true,
+    slidesPerView: 1,
+    slidesPerGroup: 1,
+    spaceBetween: 20,
+    pagination: {
+      el: '#top-categories-pagination',
+      clickable: true,
     },
-    400: {
-      slidesPerView: 2,
-      slidesPerGroup: 2,
-      spaceBetween: 20
+    breakpoints: {
+      768: {
+        slidesPerView: 3,
+        spaceBetween: 30
+      },
+      400: {
+        slidesPerView: 2,
+        slidesPerGroup: 2,
+        spaceBetween: 20
+      }
+    }
+  });
+
+  // To enable controls on small displays
+  function disableTopCategoriesSwiper() {
+    if (v.$mdq768.matches) {
+      topCategoriesSwiper.disable();
+      topCategoriesSwiper.setProgress(0, 0);
     }
   }
-});
 
-// To enable controls on small displays
-function disableTopCategoriesSwiper() {
-  if (v.$mdq768.matches) {
-    topCategoriesSwiper.disable();
-    topCategoriesSwiper.setProgress(0, 0);
+  function enableTopCategoriesSwiper() {
+    if (v.$mdq767.matches) {
+      topCategoriesSwiper.enable();
+    }
   }
-}
 
-function enableTopCategoriesSwiper() {
-  if (v.$mdq767.matches) {
-    topCategoriesSwiper.enable();
-  }
-}
+  v.$mdq768.addEventListener("change", disableTopCategoriesSwiper);
+  v.$mdq767.addEventListener("change", enableTopCategoriesSwiper);
 
-v.$mdq768.addEventListener("change", disableTopCategoriesSwiper);
-v.$mdq767.addEventListener("change", enableTopCategoriesSwiper);
-disableTopCategoriesSwiper();
+  disableTopCategoriesSwiper();
+}
 
 // NEW ARRIVALS SWIPER
 const newArrivalsSwiper = new Swiper("#new-arrivals-slider", {
@@ -205,35 +208,37 @@ const saleSwiper = new Swiper("#sale-slider", {
 });
 
 // INSTAGRAM SWIPER
-const instagramSwiper = new Swiper("#instagram-slider", {
-  modules: [Pagination],
-  loop: true,
-  enabled: true,
-  slidesPerView: 2,
-  slidesPerGroup: 2,
-  spaceBetween: 15,
-  pagination: {
-    el: '#instagram-pagination',
-    clickable: true,
-  },
-  breakpoints: {
-    576: {
-      enabled: false,
-      slidesPerView: 3,
-      slidesPerGroup: 2,
+if (document.querySelector("#instagram-slider")) {
+  const instagramSwiper = new Swiper("#instagram-slider", {
+    modules: [Pagination],
+    loop: true,
+    enabled: true,
+    slidesPerView: 2,
+    slidesPerGroup: 2,
+    spaceBetween: 15,
+    pagination: {
+      el: '#instagram-pagination',
+      clickable: true,
+    },
+    breakpoints: {
+      576: {
+        enabled: false,
+        slidesPerView: 3,
+        slidesPerGroup: 2,
+      }
+    }
+  });
+
+  function resetProgressInstagramSwiper() {
+    if (v.$mdq768.matches) {
+      instagramSwiper.setProgress(0, 0);
     }
   }
-});
 
-function resetProgressInstagramSwiper() {
-  if (v.$mdq768.matches) {
-    instagramSwiper.setProgress(0, 0);
-  }
+  v.$mdq768.addEventListener("change", resetProgressInstagramSwiper);
+
+  instagramSwiper.setProgress(0, 0); // (Изначально неверный порядок слайдов)
 }
-
-v.$mdq768.addEventListener("change", resetProgressInstagramSwiper);
-
-instagramSwiper.setProgress(0, 0); // (Изначально неверный порядок слайдов)
 
 // BLOG SWIPER
 const blogSwiper = new Swiper("#blog-slider", {

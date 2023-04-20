@@ -1,62 +1,50 @@
 import * as v from "../vars";
 
-const daysElem = v.$counters[0];
-const hoursElem = v.$counters[1];
-const minsElem = v.$counters[2];
-const secElem = v.$counters[3];
+if (v.$counters) {
+  const daysElem = v.$counters[0];
+  const hoursElem = v.$counters[1];
+  const minsElem = v.$counters[2];
+  const secElem = v.$counters[3];
 
-const initDays = 6;
-let timerCount;
+  const initDays = 6;
+  let timerCount;
 
-function turnOnTimer(initDays) {
-  // Init numbers
-  let days = initDays;
-  let hours = 0;
-  let mins = 0
-  let sec = 0;
+  function turnOnTimer(initDays) {
+    // Init numbers
+    let days = initDays;
+    let hours = 0;
+    let mins = 0
+    let sec = 0;
 
-  // Starting text
-  daysElem.textContent = amendTime(initDays);
-  hoursElem.textContent = "00";
-  minsElem.textContent = "00";
-  secElem.textContent = "00";
+    // Starting text
+    daysElem.textContent = amendTime(initDays);
+    hoursElem.textContent = "00";
+    minsElem.textContent = "00";
+    secElem.textContent = "00";
 
-  // Functions
-  function amendTime(time) {
-    return (time > 9) ? time : "0" + time;
-  }
-
-  function changeTime() {
-    if (sec > 0) {
-      sec -= 1;
-      secElem.textContent = amendTime(sec);
-      return;
+    // Functions
+    function amendTime(time) {
+      return (time > 9) ? time : "0" + time;
     }
 
-    if (sec == 0) {
-      if (mins > 0) {
-        mins -= 1;
-        minsElem.textContent = amendTime(mins);
+    function changeTime() {
+      if (sec > 0) {
+        sec -= 1;
+        secElem.textContent = amendTime(sec);
+        return;
+      }
 
-        sec = 59;
-        secElem.textContent = sec;
-      } else {
-        if (hours > 0) {
-          hours -= 1;
-          hoursElem.textContent = amendTime(hours);
-
-          mins = 59;
-          minsElem.textContent = mins;
+      if (sec == 0) {
+        if (mins > 0) {
+          mins -= 1;
+          minsElem.textContent = amendTime(mins);
 
           sec = 59;
           secElem.textContent = sec;
         } else {
-          if (days > 0) {
-            days -= 1;
-            daysElem.textContent = amendTime(days);
-
-            hours = 23;
-            hoursElem.textContent = hours;
+          if (hours > 0) {
+            hours -= 1;
+            hoursElem.textContent = amendTime(hours);
 
             mins = 59;
             minsElem.textContent = mins;
@@ -64,20 +52,35 @@ function turnOnTimer(initDays) {
             sec = 59;
             secElem.textContent = sec;
           } else {
-            clearInterval(timerCount);
+            if (days > 0) {
+              days -= 1;
+              daysElem.textContent = amendTime(days);
+
+              hours = 23;
+              hoursElem.textContent = hours;
+
+              mins = 59;
+              minsElem.textContent = mins;
+
+              sec = 59;
+              secElem.textContent = sec;
+            } else {
+              clearInterval(timerCount);
+            }
           }
         }
       }
     }
+
+    // Start functions after starting text
+    setTimeout(() => {
+      timerCount = setInterval(changeTime, 1000);
+    }, 1000);
   }
 
-  // Start functions after starting text
-  setTimeout(() => {
-    timerCount = setInterval(changeTime, 1000);
-  }, 1000);
+  turnOnTimer(initDays);
 }
 
-turnOnTimer(initDays);
 
 
 

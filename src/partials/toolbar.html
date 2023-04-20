@@ -1,0 +1,84 @@
+<section class="toolbar">
+  <div class="toolbar__container container">
+
+    <!-- Button hide filters -->
+    <button class="toolbar__button btn btn--mid">
+      <svg xmlns='http://www.w3.org/2000/svg' aria-hidden="true">
+        <use href='./img/sprite.svg#filter' aria-hidden="true"></use>
+      </svg>
+
+      <span class="btn__text">
+        Hide filters
+      </span>
+    </button>
+
+    <!-- Select Sort -->
+    <div class="toolbar__sort">
+      <span class="toolbar__title">
+        Sort by
+      </span>
+
+      <div class="custom-select custom-select--light" role="listbox" tabindex="0">
+        <div class="custom-select__head custom-select__head--light">
+          <span class="custom-select__selected">
+            popularity
+          </span>
+
+          <svg class="custom-select__icon" xmlns='http://www.w3.org/2000/svg'>
+            <use href='./img/sprite.svg#angle-down'></use>
+          </svg>
+        </div>
+
+        <div class="custom-select__inner-wrapper">
+          <ul class="custom-select__list" data-overlayscrollbars-initialize>
+            <li class="custom-select__item custom-select__item--active toolbar__sort-item">
+              Popularity
+            </li>
+
+            <li class="custom-select__item">
+              Low - High Price
+            </li>
+
+            <li class="custom-select__item">
+              High - Low Price
+            </li>
+
+            <li class="custom-select__item">
+              Average Rating
+            </li>
+
+            <li class="custom-select__item">
+              A - Z order
+            </li>
+
+            <li class="custom-select__item">
+              Z - A order
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <!-- Select Show -->
+    <div class="toolbar__show">
+      <span class="toolbar__title">
+        Show
+      </span>
+
+      <div class="input-number toolbar__input-number" role="spinbutton" tab-index="0">
+        <div class="input-number__input">
+          12
+        </div>
+
+        <div class="input-number__btns">
+          <button class="input-number__btn" aria-label="To rise the number of products on page."></button>
+          <button class="input-number__btn" aria-label="To reduce the number of products on page."></button>
+        </div>
+      </div>
+
+      <span class="toolbar__text">
+        products per page
+      </span>
+    </div>
+  </div>
+</section>
