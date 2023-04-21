@@ -989,11 +989,11 @@
 
   &__btn {
     display: block;
-    width: 0;
-    height: 0;
     border-style: solid;
     border-width: 0 rem(5) rem(7.5) rem(5);
     border-color: transparent transparent var(--gray900-color) transparent;
+    width: 0;
+    height: 0;
   }
 
   &__btn:first-child {
@@ -1002,5 +1002,31 @@
 
   &__btn:last-child {
     transform: rotate(180deg);
+  }
+}
+
+.tool-pag {
+  display: flex;
+  align-items: center;
+
+  &__item {
+    &:not(:last-child) {
+      margin-right: rem(20);
+    }
+  }
+
+  &__link {
+    font: var(--small-bold);
+    color: var(--gray800-color);
+  }
+
+  &__arrow {
+    width: rem(18);
+    height: rem(11);
+    fill: currentcolor;
+
+    &--left {
+      transform: rotate(180deg);
+    }
   }
 }

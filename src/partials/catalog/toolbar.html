@@ -1,17 +1,6 @@
 <section class="toolbar">
   <div class="toolbar__container container">
 
-    <!-- Button hide filters -->
-    <button class="toolbar__button btn btn--mid">
-      <svg xmlns='http://www.w3.org/2000/svg' aria-hidden="true">
-        <use href='./img/sprite.svg#filter' aria-hidden="true"></use>
-      </svg>
-
-      <span class="btn__text">
-        Hide filters
-      </span>
-    </button>
-
     <!-- Select Sort -->
     <div class="toolbar__sort">
       <span class="toolbar__title">
@@ -80,5 +69,55 @@
         products per page
       </span>
     </div>
+
+
+    <!-- Pagination -->
+    <ul class="toolbar__pagination tool-pag">
+      <li class="tool-pag__item">
+        <a href="#" class="tool-pag__link" aria-label="Go to the previous page.">
+          <svg class="tool-pag__arrow tool-pag__arrow--left" xmlns='http://www.w3.org/2000/svg' aria-hidden="true">
+            <use href='./img/sprite.svg#arrow' aria-hidden="true"></use>
+          </svg>
+        </a>
+      </li>
+
+      <li class="tool-pag__item">
+        <a href="#" class="tool-pag__link">
+          1
+        </a>
+      </li>
+
+      <li class="tool-pag__item">
+        <a href="#" class="tool-pag__link">
+          2
+        </a>
+      </li>
+
+      <li class="tool-pag__item">
+        <a href="#" class="tool-pag__link">
+          3
+        </a>
+      </li>
+
+      <li class="tool-pag__item">
+        <a href="#" class="tool-pag__link">
+          ...
+        </a>
+      </li>
+
+      <li class="tool-pag__item">
+        <a href="#" class="tool-pag__link">
+          10
+        </a>
+      </li>
+
+      <li class="tool-pag__item">
+        <a href="#" class="tool-pag__link" aria-label="Go to the next page.">
+          <svg class="tool-pag__arrow tool-pag__arrow--right" xmlns='http://www.w3.org/2000/svg' aria-hidden="true">
+            <use href='./img/sprite.svg#arrow' aria-hidden="true"></use>
+          </svg>
+        </a>
+      </li>
+    </ul>
   </div>
 </section>

@@ -1,17 +1,24 @@
-@use "../util/" as *;
+@use "../../util/" as *;
 
 .toolbar {
+  grid-column: 2 / 3;
+  grid-row: 1 / 2;
+
+  &__container {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+  }
+
   &__title {
     margin-right: rem(12);
     font: var(--base-bold);
     color: var(--gray900-color);
   }
 
-  // Sort by
+  // Sort
   &__sort {
     display: flex;
     align-items: center;
-    margin-block: rem(100); // tmp
   }
 
   // Show

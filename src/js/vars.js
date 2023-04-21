@@ -18,6 +18,7 @@ export const $nativeCheckBoxes = $subscribeCategories?.querySelectorAll(".catego
 export const $timer = document.querySelector("#timer");
 export const $counters = $timer?.querySelectorAll(".timer__count");
 export const $topNavBtn = document.querySelector("#top-nav-button");
+export const $sidebarFilterTops = document.querySelectorAll(".sidebar-filters .filter__top");
 
 // **
 export const $mdq767 = window.matchMedia("(max-width: 767px)");

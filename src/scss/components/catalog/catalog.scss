@@ -1,0 +1,13 @@
+@use "../../util/" as *;
+
+.catalog {
+  padding-top: rem(32);
+
+  &__container {
+    display: grid;
+    column-gap: rem(60);
+    grid-template-columns: 1fr 3.58fr;
+    grid-template-rows: repeat(2, auto);
+    row-gap: rem(30);
+  }
+}

@@ -3,7 +3,6 @@ import "./vars";
 import "./components/currency";
 import "./components/special-offers";
 import "./components/timer";
-import "./components/swipers";
 import "./components/custom-checkbox";
 import "./components/subscribe__categories";
 import "./components/menu-btn";
@@ -12,49 +11,11 @@ import "./components/login";
 import "./components/top-nav";
 import "./components/product__bottom";
 import "./components/microslider";
+import "./components/filter";
 
-
-// Libraries
-// **OverlayScrollbars
-import {
-  OverlayScrollbars,
-  ScrollbarsHidingPlugin,
-  SizeObserverPlugin
-} from 'overlayscrollbars';
-
-OverlayScrollbars.plugin([ScrollbarsHidingPlugin, SizeObserverPlugin]);
-const cslScrollbar = OverlayScrollbars(document.querySelector('#custom-select-list'), {});
-let navScrollBar;
-
-const mediaq991 = window.matchMedia("(max-width: 991px)");
-const mediaq992 = window.matchMedia("(min-width: 992px)");
-
-// F(s)
-function setNavScrollbar() {
-  if (mediaq991.matches) {
-    navScrollBar = OverlayScrollbars(document.querySelector('#nav'), {
-      overflow: {
-        x: 'hidden',
-      },
-      scrollbars: {
-        theme: 'os-theme-my',
-      },
-    });
-  }
-}
-setNavScrollbar();
-
-function removetNavScrollbar() {
-  if (mediaq992.matches) {
-    navScrollBar.destroy();
-  }
-}
-
-// L(s)
-mediaq991.addEventListener("change", setNavScrollbar);
-mediaq992.addEventListener("change", removetNavScrollbar);
-
-//------------------------------------------
+// Components multiple in one
+import "./components/$swipers";
+import "./components/$overlayScrollbars";
 
 
 // Scroll-top

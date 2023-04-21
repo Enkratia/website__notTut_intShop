@@ -1,0 +1,15 @@
+@use "../../util/" as *;
+
+.product-grid {
+  display: grid;
+  column-gap: rem(30);
+  grid-column: 2 / 3;
+  grid-row: 2 / 3;
+  grid-template-columns: repeat(3, minmax(rem(1), 1fr));
+  width: 100%;
+  row-gap: rem(60);
+
+  &__price {
+    font-size: calc(rem(19.03) + 0.26vw); // 24>20
+  }
+}

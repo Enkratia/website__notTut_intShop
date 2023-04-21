@@ -273,65 +273,68 @@ function resetBlogSwiper() {
 
 v.$mdq768.addEventListener("change", resetBlogSwiper);
 
+
 // BRAND SWIPER
-const brandSwiper = new Swiper("#brands-slider", {
-  loop: true,
-  enabled: true,
-  slidesPerView: 2,
-  spaceBetween: 20,
-  breakpoints: {
-    1280: {
-      enabled: false,
-      slidesPerView: 6,
-      spaceBetween: 100,
-    },
-    1220: {
-      enabled: false,
-      slidesPerView: 6,
-      spaceBetween: 80,
-    },
-    1120: {
-      enabled: false,
-      slidesPerView: 6,
-      spaceBetween: 60,
-    },
-    1024: {
-      enabled: false,
-      slidesPerView: 6,
-      spaceBetween: 40,
-    },
-    860: {
-      enabled: true,
-      slidesPerView: 5,
-      spaceBetween: 40,
-    },
-    700: {
-      enabled: true,
-      slidesPerView: 4,
-      spaceBetween: 40,
-    },
-    650: {
-      enabled: true,
-      slidesPerView: 4,
-      spaceBetween: 30,
-    },
-    500: {
-      enabled: true,
-      slidesPerView: 3,
-      spaceBetween: 30,
-    },
-    480: {
-      enabled: true,
-      slidesPerView: 3,
-      spaceBetween: 20,
+if (document.querySelector("#brands-slider")) {
+  const brandSwiper = new Swiper("#brands-slider", {
+    loop: true,
+    enabled: true,
+    slidesPerView: 2,
+    spaceBetween: 20,
+    breakpoints: {
+      1280: {
+        enabled: false,
+        slidesPerView: 6,
+        spaceBetween: 100,
+      },
+      1220: {
+        enabled: false,
+        slidesPerView: 6,
+        spaceBetween: 80,
+      },
+      1120: {
+        enabled: false,
+        slidesPerView: 6,
+        spaceBetween: 60,
+      },
+      1024: {
+        enabled: false,
+        slidesPerView: 6,
+        spaceBetween: 40,
+      },
+      860: {
+        enabled: true,
+        slidesPerView: 5,
+        spaceBetween: 40,
+      },
+      700: {
+        enabled: true,
+        slidesPerView: 4,
+        spaceBetween: 40,
+      },
+      650: {
+        enabled: true,
+        slidesPerView: 4,
+        spaceBetween: 30,
+      },
+      500: {
+        enabled: true,
+        slidesPerView: 3,
+        spaceBetween: 30,
+      },
+      480: {
+        enabled: true,
+        slidesPerView: 3,
+        spaceBetween: 20,
+      }
+    }
+  });
+
+  function resetBrandSwiper() {
+    if (v.$mdq1024.matches) {
+      brandSwiper.setProgress(0, 0);
     }
   }
-});
 
-function resetBrandSwiper() {
-  if (v.$mdq1024.matches) {
-    brandSwiper.setProgress(0, 0);
-  }
+  v.$mdq1024.addEventListener("change", resetBrandSwiper);
 }
-
-v.$mdq1024.addEventListener("change", resetBrandSwiper);
