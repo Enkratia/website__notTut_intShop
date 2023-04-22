@@ -9,7 +9,7 @@ import {
 // Add plugins
 OverlayScrollbars.plugin([ScrollbarsHidingPlugin, SizeObserverPlugin]);
 
-// CUSTOM SELECT LIST SCROLLBAR
+// CUSTOM-SELECT-LIST SCROLLBAR
 const customSelectListScrollbar = OverlayScrollbars(document.querySelector('#custom-select-list'), {});
 
 // NAV SCROLLBAR
@@ -40,9 +40,25 @@ function removetNavScrollbar() {
 v.$mdq991.addEventListener("change", setNavScrollbar);
 v.$mdq992.addEventListener("change", removetNavScrollbar);
 
-// CUSTOM SELECT LIST SCROLLBAR
-const sidebarListScrollbar = OverlayScrollbars(document.querySelector('.filter__list'), {
-  scrollbars: {
-    theme: 'os-theme-sidebar-list',
-  }
-});
+
+// SIDEBAR BOTTOM SCROLLBAR
+if (v.$sidebarFilterTops[0]) {
+  
+  // For filter list
+  const filterLists = document.querySelectorAll('.filter__list');
+
+  filterLists.forEach(el => {
+    let sidebarBottomListScrollbar = OverlayScrollbars(el, {
+      scrollbars: {
+        theme: 'os-theme-sidebar-bottom',
+      }
+    });
+  });
+
+  // For filter colors
+  let sidebarBottomColorsScrollbar = OverlayScrollbars(document.querySelector('.filter__colors'), {
+    scrollbars: {
+      theme: 'os-theme-sidebar-bottom',
+    }
+  });
+}

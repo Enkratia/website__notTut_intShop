@@ -1187,7 +1187,7 @@
   <!-- Filters -->
   <div class="sidebar-filters__wrapper">
 
-    <!-- Filter1 (clothes) -->
+    <!-- Filter1 (Clothes) -->
     <div class="sidebar-filters__filter filter filter--show">
 
       <!-- Filter-top -->
@@ -1196,7 +1196,8 @@
           Clothes
         </h6>
 
-        <button class="filter__toggle filter__toggle--show" aria-label="Show or hide the list of the category."></button>
+        <button class="filter__toggle filter__toggle--show"
+          aria-label="Show or hide the list of the categories."></button>
       </div>
 
       <!-- Filter-bottom -->
@@ -1384,16 +1385,16 @@
       </div>
     </div>
 
-    <!-- Filter2 (sizes) -->
+    <!-- Filter2 (Size) -->
     <div class="sidebar-filters__filter filter">
 
       <!-- Filter-top -->
       <div class="filter__top">
         <h6 class="filter__title">
-          Sizes
+          Size
         </h6>
 
-        <button class="filter__toggle" aria-label="Show or hide the list of the category."></button>
+        <button class="filter__toggle" aria-label="Show or hide the list of the categories."></button>
       </div>
 
       <!-- Filter-bottom -->
@@ -1525,12 +1526,179 @@
               </span>
             </label>
           </li>
+
+          <!-- Item6 -->
+          <li class="filter__item">
+            <label class="filter__label">
+              <label class="filter__checkbox custom-checkbox" role="checkbox" aria-checked="false">
+                <svg xmlns='http://www.w3.org/2000/svg'>
+                  <use href='./img/sprite.svg#check'></use>
+                </svg>
+
+                <input type="checkbox" class="custom-checkbox__input">
+              </label>
+
+              <span class="filter__name">
+                Plus size
+              </span>
+
+              <span class="filter__count">
+                (21)
+              </span>
+            </label>
+          </li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- Filter3 (Color) -->
+    <div class="sidebar-filters__filter filter">
+
+      <!-- Filter-top -->
+      <div class="filter__top">
+        <h6 class="filter__title">
+          Color
+        </h6>
+
+        <button class="filter__toggle" aria-label="Show or hide the list of the categories."></button>
+      </div>
+
+      <!-- Filter-bottom -->
+      <div class="filter__bottom">
+        <ul class="filter__colors colors" data-overlayscrollbars-initialize>
+
+          <!-- Item1-->
+          <li class="filter__color colors__item">
+            <button class="filter__color-btn colors__button colors__button--active" data-color="black"
+              aria-label="Choose black color."></button>
+
+            <span class="filter__color-name">
+              Black
+            </span>
+          </li>
+
+          <!-- Item2-->
+          <li class="filter__color colors__item">
+            <button class="filter__color-btn colors__button" data-color="blue-gray"
+              aria-label="Choose blue-gray color."></button>
+
+            <span class="filter__color-name">
+              Blue-gray
+            </span>
+          </li>
+
+          <!-- Item3-->
+          <li class="filter__color colors__item">
+            <button class="filter__color-btn colors__button" data-color="yellow"
+              aria-label="Choose yellow color."></button>
+
+            <span class="filter__color-name">
+              Yellow
+            </span>
+          </li>
+
+          <!-- Item4-->
+          <li class="filter__color colors__item">
+            <button class="filter__color-btn colors__button" data-color="red" aria-label="Choose red color."></button>
+
+            <span class="filter__color-name">
+              Red
+            </span>
+          </li>
+
+          <!-- Item5-->
+          <li class="filter__color colors__item">
+            <button class="filter__color-btn colors__button" data-color="dark-blue"
+              aria-label="Choose dark-blue color."></button>
+
+            <span class="filter__color-name">
+              Dark blue
+            </span>
+          </li>
+
+          <!-- Item6-->
+          <li class="filter__color colors__item">
+            <button class="filter__color-btn colors__button" data-color="beige"
+              aria-label="Choose beige color."></button>
+
+            <span class="filter__color-name">
+              Beige
+            </span>
+          </li>
+
+          <!-- Item7-->
+          <li class="filter__color colors__item">
+            <button class="filter__color-btn colors__button" data-color="brown"
+              aria-label="Choose brown color."></button>
+
+            <span class="filter__color-name">
+              Brown
+            </span>
+          </li>
+
+          <!-- Item8-->
+          <li class="filter__color colors__item">
+            <button class="filter__color-btn colors__button" data-color="gray" aria-label="Choose gray color."></button>
+
+            <span class="filter__color-name">
+              Gray
+            </span>
+          </li>
+
+          <!-- Item9-->
+          <li class="filter__color colors__item">
+            <button class="filter__color-btn colors__button" data-color="purple"
+              aria-label="Choose purple color."></button>
+
+            <span class="filter__color-name">
+              Purple
+            </span>
+          </li>
+
+          <!-- Item10-->
+          <li class="filter__color colors__item">
+            <button class="filter__color-btn colors__button" data-color="green"
+              aria-label="Choose green color."></button>
+
+            <span class="filter__color-name">
+              Green
+            </span>
+          </li>
+
+          <!-- Item11-->
+          <li class="filter__color colors__item">
+            <button class="filter__color-btn colors__button" data-color="orange"
+              aria-label="Choose orange color."></button>
+
+            <span class="filter__color-name">
+              Orange
+            </span>
+          </li>
+
+          <!-- Item12-->
+          <li class="filter__color colors__item">
+            <button class="filter__color-btn colors__button" data-color="white"
+              aria-label="Choose white color."></button>
+
+            <span class="filter__color-name">
+              White
+            </span>
+          </li>
+
+          <!-- Item13-->
+          <li class="filter__color colors__item">
+            <button class="filter__color-btn colors__button" data-color="pink" aria-label="Choose pink color."></button>
+
+            <span class="filter__color-name">
+              Pink
+            </span>
+          </li>
         </ul>
       </div>
     </div>
   </div>
 </div>
-    <section class="toolbar">
+    <div class="toolbar">
   <div class="toolbar__container container">
 
     <!-- Select Sort -->
@@ -1651,7 +1819,7 @@
       </li>
     </ul>
   </div>
-</section>
+</div>
     <div class="product-grid">
     <article class="product-grid__product product">
       <div class="product__look">

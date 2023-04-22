@@ -83,6 +83,12 @@
     font-size: calc(rem(19.03) + 0.26vw); // 24>20
   }
 
+  &__colors {
+    flex-basis: 40%;
+    align-items: center;
+    justify-content: flex-end;
+  }
+
   &__button {
     position: relative;
     left: 50%;

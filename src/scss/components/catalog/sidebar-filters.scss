@@ -20,7 +20,7 @@
   // Filter
   .filter {
     overflow: hidden;
-    margin-bottom: rem(19);
+    margin-bottom: rem(17);
     border-bottom: rem(1) solid var(--gray300-color);
     transition: padding-bottom 0.3s;
 
@@ -28,7 +28,7 @@
       display: flex;
       align-items: center;
       justify-content: space-between;
-      margin-bottom: rem(17);
+      margin-bottom: rem(16);
     }
 
     &__title {
@@ -40,10 +40,6 @@
       padding-bottom: 0;
       height: 0;
       transition: height 0.3s;
-
-      &--show-init {
-        height: auto;
-      }
     }
 
     // Toggle
@@ -73,12 +69,6 @@
         height: 100%;
         background-color: var(--primary-color);
         transform: translate(-50%, -50%);
-      }
-
-      &--show {
-        &::after {
-          display: block;
-        }
       }
     }
 
@@ -115,7 +105,7 @@
       }
     }
 
-    // Label list
+    // List
     &__list {
       height: rem(166);
       font: var(--small-regular);
@@ -145,15 +135,54 @@
       color: var(--gray600-color);
     }
 
+    // Colors
+    &__colors {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      padding-right: rem(16);
+      padding-left: rem(-2);
+      height: rem(172);
+      gap: rem(8) rem(8);
+    }
+
+    &__color {
+      display: inline-flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+    }
+
+    &__color-btn {
+      margin-bottom: rem(2.5);
+      width: rem(32);
+      height: rem(32);
+
+      &::before {
+        width: rem(24);
+        height: rem(24);
+      }
+    }
+
+    &__color-name {
+      font: var(--extrasmall-regular);
+      color: var(--gray700-color);
+    }
+
     // Show class
     &--show {
       padding-bottom: rem(20);
+
+      .filter__toggle {
+        &::after {
+          display: block;
+        }
+      }
     }
   }
 }
 
 // OverlayScrollbars
-.os-theme-sidebar-list {
+.os-theme-sidebar-bottom {
   --os-size: 3px;
   --os-padding-perpendicular: 0;
   --os-padding-axis: 0;
@@ -176,7 +205,7 @@
   --os-handle-border-hover: none;
   --os-handle-border-active: none;
   --os-handle-min-size: 60px;
-  --os-handle-max-size: 120px;
+  --os-handle-max-size: 90px;
   --os-handle-perpendicular-size: 100%;
   --os-handle-perpendicular-size-hover: 100%;
   --os-handle-perpendicular-size-active: 100%;

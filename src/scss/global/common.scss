@@ -572,78 +572,6 @@
   }
 
   // **
-  .colors {
-    display: flex;
-    flex-basis: 40%;
-    flex-wrap: wrap;
-    align-items: center;
-    justify-content: flex-end;
-    gap: rem(5.5);
-
-    &__button {
-      position: relative;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      border: rem(1.5) solid var(--gray400-color);
-      border-radius: 50%;
-      width: rem(24);
-      height: rem(24);
-      background-color: var(--white-color);
-      transition: border-color 0.3s;
-
-      &::before {
-        content: "";
-        position: absolute;
-        z-index: var(--z-up);
-        border-radius: 50%;
-        width: rem(16);
-        height: rem(16);
-      }
-
-      &:hover {
-        border-color: var(--primary-color);
-      }
-
-      // Color classes
-      &[data-color="black"] {
-        &::before {
-          background-color: var(--black-color);
-        }
-      }
-
-      &[data-color="brown"] {
-        &::before {
-          background-color: var(--brown-color);
-        }
-      }
-
-      &[data-color="light-blue"] {
-        &::before {
-          background-color: var(--light-blue-color);
-        }
-      }
-
-      &[data-color="dark-blue"] {
-        &::before {
-          background-color: var(--dark-blue-color);
-        }
-      }
-
-      &[data-color="green"] {
-        &::before {
-          background-color: var(--green-color);
-        }
-      }
-
-      // Active class
-      &--active {
-        border-color: var(--primary-color);
-      }
-    }
-  }
-
-  // **
   .microslider {
     position: relative;
     padding-top: 112.8%;
@@ -699,6 +627,122 @@
     .microslider__button {
       opacity: 1;
       visibility: visible;
+    }
+  }
+}
+
+.colors {
+  display: flex;
+  flex-wrap: wrap;
+  gap: rem(5.5);
+
+  &__button {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: rem(1.5) solid var(--gray400-color);
+    border-radius: 50%;
+    width: rem(24);
+    height: rem(24);
+    background-color: var(--white-color);
+    transition: border-color 0.3s;
+
+    &::before {
+      content: "";
+      position: absolute;
+      z-index: var(--z-up);
+      border-radius: 50%;
+      width: rem(16);
+      height: rem(16);
+    }
+
+    &:hover {
+      border-color: var(--primary-color);
+    }
+
+    // Color classes
+    &[data-color="black"] {
+      &::before {
+        background-color: var(--black-color);
+      }
+    }
+
+    &[data-color="brown"] {
+      &::before {
+        background-color: var(--brown-color);
+      }
+    }
+
+    &[data-color="blue-gray"] {
+      &::before {
+        background-color: var(--blue-gray-color);
+      }
+    }
+
+    &[data-color="dark-blue"] {
+      &::before {
+        background-color: var(--dark-blue-color);
+      }
+    }
+
+    &[data-color="green"] {
+      &::before {
+        background-color: var(--green-color);
+      }
+    }
+
+    &[data-color="yellow"] {
+      &::before {
+        background-color: var(--yellow-color);
+      }
+    }
+
+    &[data-color="red"] {
+      &::before {
+        background-color: var(--red-color);
+      }
+    }
+
+    &[data-color="beige"] {
+      &::before {
+        background-color: var(--beige-color);
+      }
+    }
+
+    &[data-color="gray"] {
+      &::before {
+        background-color: var(--gray-color);
+      }
+    }
+
+    &[data-color="purple"] {
+      &::before {
+        background-color: var(--purple-color);
+      }
+    }
+
+    &[data-color="orange"] {
+      &::before {
+        background-color: var(--orange-color);
+      }
+    }
+
+    &[data-color="white"] {
+      &::before {
+        background-color: var(--dummy-white-color);
+      }
+    }
+
+    &[data-color="pink"] {
+      &::before {
+        background-color: var(--pink-color);
+      }
+    }
+
+    // Active class
+    &--active {
+      border-color: var(--primary-color);
     }
   }
 }

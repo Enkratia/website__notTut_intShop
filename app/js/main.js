@@ -17,7 +17,7 @@ __webpack_require__.r(__webpack_exports__);
 // Add plugins
 overlayscrollbars__WEBPACK_IMPORTED_MODULE_1__.OverlayScrollbars.plugin([overlayscrollbars__WEBPACK_IMPORTED_MODULE_1__.ScrollbarsHidingPlugin, overlayscrollbars__WEBPACK_IMPORTED_MODULE_1__.SizeObserverPlugin]);
 
-// CUSTOM SELECT LIST SCROLLBAR
+// CUSTOM-SELECT-LIST SCROLLBAR
 const customSelectListScrollbar = (0,overlayscrollbars__WEBPACK_IMPORTED_MODULE_1__.OverlayScrollbars)(document.querySelector('#custom-select-list'), {});
 
 // NAV SCROLLBAR
@@ -47,12 +47,25 @@ function removetNavScrollbar() {
 _vars__WEBPACK_IMPORTED_MODULE_0__.$mdq991.addEventListener("change", setNavScrollbar);
 _vars__WEBPACK_IMPORTED_MODULE_0__.$mdq992.addEventListener("change", removetNavScrollbar);
 
-// CUSTOM SELECT LIST SCROLLBAR
-const sidebarListScrollbar = (0,overlayscrollbars__WEBPACK_IMPORTED_MODULE_1__.OverlayScrollbars)(document.querySelector('.filter__list'), {
-  scrollbars: {
-    theme: 'os-theme-sidebar-list'
-  }
-});
+// SIDEBAR BOTTOM SCROLLBAR
+if (_vars__WEBPACK_IMPORTED_MODULE_0__.$sidebarFilterTops[0]) {
+  // For filter list
+  const filterLists = document.querySelectorAll('.filter__list');
+  filterLists.forEach(el => {
+    let sidebarBottomListScrollbar = (0,overlayscrollbars__WEBPACK_IMPORTED_MODULE_1__.OverlayScrollbars)(el, {
+      scrollbars: {
+        theme: 'os-theme-sidebar-bottom'
+      }
+    });
+  });
+
+  // For filter colors
+  let sidebarBottomColorsScrollbar = (0,overlayscrollbars__WEBPACK_IMPORTED_MODULE_1__.OverlayScrollbars)(document.querySelector('.filter__colors'), {
+    scrollbars: {
+      theme: 'os-theme-sidebar-bottom'
+    }
+  });
+}
 
 /***/ }),
 
@@ -514,27 +527,35 @@ _vars__WEBPACK_IMPORTED_MODULE_0__.$customCheckboxes.forEach(el => {
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _vars__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../vars */ "./src/js/vars.js");
 
-
-// F(s)
-function showHideFilters(e) {
-  if (e.target.tagName !== "BUTTON") return;
-  const filter = this.parentElement;
-  const filterBottom = this.nextElementSibling;
-  filter.classList.toggle("filter--show");
-  e.target.classList.toggle("filter__toggle--show");
-  if (!filter.classList.contains("filter--show")) {
-    filterBottom.style.height = "";
-    filterBottom.classList.remove("filter__bottom--show-init");
-    return;
+if (_vars__WEBPACK_IMPORTED_MODULE_0__.$sidebarFilterTops[0]) {
+  // F(s)
+  function showHideFilters(e) {
+    if (e.target.tagName !== "BUTTON") return;
+    const filter = this.parentElement;
+    const filterBottom = this.nextElementSibling;
+    const filterBottomHeight = filterBottom.scrollHeight;
+    filter.classList.toggle("filter--show");
+    filterBottom.style.height = filterBottomHeight + "px";
+    if (!filter.classList.contains("filter--show")) {
+      filterBottom.style.height = "";
+      return;
+    }
   }
-  const filterBottomHeight = filterBottom.scrollHeight;
-  filterBottom.style.height = filterBottomHeight + "px";
-}
+  function showHideFiltersInit() {
+    const activeFilter = document.querySelector(".filter--show");
+    const activeFilterBottom = activeFilter.querySelector(".filter__bottom");
+    if (activeFilter) {
+      const activeFilterBottomHeight = activeFilterBottom.scrollHeight;
+      activeFilterBottom.style.height = activeFilterBottomHeight + "px";
+    }
+  }
+  showHideFiltersInit();
 
-// L(s)
-_vars__WEBPACK_IMPORTED_MODULE_0__.$sidebarFilterTops.forEach(el => {
-  el.addEventListener("click", showHideFilters);
-});
+  // L(s)
+  _vars__WEBPACK_IMPORTED_MODULE_0__.$sidebarFilterTops.forEach(el => {
+    el.addEventListener("click", showHideFilters);
+  });
+}
 
 /***/ }),
 
