@@ -1,3 +1,5 @@
+import * as v from "./vars";
+
 // Components
 import "./vars";
 import "./components/currency";
@@ -16,6 +18,28 @@ import "./components/filter";
 // Components multiple in one
 import "./components/$swipers";
 import "./components/$overlayScrollbars";
+
+
+// Filter price slider
+import noUiSlider from "nouislider";
+
+const filterPriceSlider = noUiSlider.create(v.$filterSliderRange, {
+  start: [480, 800],
+  connect: true,
+  range: {
+    'min': 0,
+    'max': 1000
+  },
+  step: 1,
+  tooltips: {
+    to: function (value) {
+      return "$" + parseInt(value);
+    },
+    from: function (value) {
+      return "$" + parseInt(value);
+    }
+  }
+});
 
 
 // Scroll-top

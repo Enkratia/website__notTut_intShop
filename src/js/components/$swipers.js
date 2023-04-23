@@ -103,57 +103,60 @@ const newArrivalsSwiper = new Swiper("#new-arrivals-slider", {
 });
 
 // POPULAR CATEGORIES SWIPER
-const popularCategoriesSwiper = new Swiper("#popular-categories-slider", {
-  modules: [Pagination],
-  enabled: true,
-  loop: true,
-  speed: 700,
-  slidesPerView: 1,
-  spaceBetween: 30,
-  pagination: {
-    el: '#popular-categories-pagination',
-    clickable: true,
-  },
-  breakpoints: {
-    1290: {
-      enabled: false,
-      slidesPerView: 6,
-      spaceBetween: 30,
+if (document.querySelector("#popular-categories-slider")) {
+
+  const popularCategoriesSwiper = new Swiper("#popular-categories-slider", {
+    modules: [Pagination],
+    enabled: true,
+    loop: true,
+    speed: 700,
+    slidesPerView: 1,
+    spaceBetween: 30,
+    pagination: {
+      el: '#popular-categories-pagination',
+      clickable: true,
     },
-    1075: {
-      enabled: true,
-      slidesPerView: 5,
-      slidesPerGroup: 4,
-      spaceBetween: 30,
-    },
-    860: {
-      enabled: true,
-      slidesPerView: 4,
-      slidesPerGroup: 3,
-      spaceBetween: 30,
-    },
-    635: {
-      enabled: true,
-      slidesPerView: 3,
-      slidesPerGroup: 3,
-      spaceBetween: 20,
-    },
-    430: {
-      enabled: true,
-      slidesPerView: 2,
-      slidesPerGroup: 2,
-      spaceBetween: 20,
+    breakpoints: {
+      1290: {
+        enabled: false,
+        slidesPerView: 6,
+        spaceBetween: 30,
+      },
+      1075: {
+        enabled: true,
+        slidesPerView: 5,
+        slidesPerGroup: 4,
+        spaceBetween: 30,
+      },
+      860: {
+        enabled: true,
+        slidesPerView: 4,
+        slidesPerGroup: 3,
+        spaceBetween: 30,
+      },
+      635: {
+        enabled: true,
+        slidesPerView: 3,
+        slidesPerGroup: 3,
+        spaceBetween: 20,
+      },
+      430: {
+        enabled: true,
+        slidesPerView: 2,
+        slidesPerGroup: 2,
+        spaceBetween: 20,
+      }
+    }
+  });
+  
+  function resetProgressPopularCategoriesSwiper() {
+    if (v.$mdq768.matches) {
+      popularCategoriesSwiper.setProgress(0, 0);
     }
   }
-});
-
-function resetProgressPopularCategoriesSwiper() {
-  if (v.$mdq768.matches) {
-    popularCategoriesSwiper.setProgress(0, 0);
-  }
+  
+  v.$mdq768.addEventListener("change", resetProgressPopularCategoriesSwiper);
 }
-
-v.$mdq768.addEventListener("change", resetProgressPopularCategoriesSwiper);
 
 // TRENDING NOW SWIPER
 const trendingNowSwiper = new Swiper("#trending-now-slider", {
@@ -241,37 +244,40 @@ if (document.querySelector("#instagram-slider")) {
 }
 
 // BLOG SWIPER
-const blogSwiper = new Swiper("#blog-slider", {
-  modules: [Pagination],
-  loop: true,
-  enabled: true,
-  slidesPerView: 1,
-  spaceBetween: 20,
-  pagination: {
-    el: '#blog-pagination',
-    clickable: true,
-  },
-  breakpoints: {
-    600: {
-      enabled: false,
-      slidesPerView: 2,
-      spaceBetween: 30,
+if (document.querySelector("#blog-slider")) {
+
+  const blogSwiper = new Swiper("#blog-slider", {
+    modules: [Pagination],
+    loop: true,
+    enabled: true,
+    slidesPerView: 1,
+    spaceBetween: 20,
+    pagination: {
+      el: '#blog-pagination',
+      clickable: true,
     },
-    576: {
-      enabled: false,
-      slidesPerView: 2,
-      spaceBetween: 20,
+    breakpoints: {
+      600: {
+        enabled: false,
+        slidesPerView: 2,
+        spaceBetween: 30,
+      },
+      576: {
+        enabled: false,
+        slidesPerView: 2,
+        spaceBetween: 20,
+      }
+    }
+  });
+  
+  function resetBlogSwiper() {
+    if (v.$mdq768.matches) {
+      blogSwiper.setProgress(0, 0);
     }
   }
-});
-
-function resetBlogSwiper() {
-  if (v.$mdq768.matches) {
-    blogSwiper.setProgress(0, 0);
-  }
+  
+  v.$mdq768.addEventListener("change", resetBlogSwiper);
 }
-
-v.$mdq768.addEventListener("change", resetBlogSwiper);
 
 
 // BRAND SWIPER

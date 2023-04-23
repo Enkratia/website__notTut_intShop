@@ -44,10 +44,10 @@ v.$mdq992.addEventListener("change", removetNavScrollbar);
 // SIDEBAR BOTTOM SCROLLBAR
 if (v.$sidebarFilterTops[0]) {
   
-  // For filter list
-  const filterLists = document.querySelectorAll('.filter__list');
+  // *For filter__list
+  // const filterLists = document.querySelectorAll('.filter__list');
 
-  filterLists.forEach(el => {
+  v.$sidebarFilterLists.forEach(el => {
     let sidebarBottomListScrollbar = OverlayScrollbars(el, {
       scrollbars: {
         theme: 'os-theme-sidebar-bottom',
@@ -55,8 +55,8 @@ if (v.$sidebarFilterTops[0]) {
     });
   });
 
-  // For filter colors
-  let sidebarBottomColorsScrollbar = OverlayScrollbars(document.querySelector('.filter__colors'), {
+  // *For filter__colors
+  let sidebarBottomColorsScrollbar = OverlayScrollbars(document.querySelector('.filter__colors-wrapper'), {
     scrollbars: {
       theme: 'os-theme-sidebar-bottom',
     }

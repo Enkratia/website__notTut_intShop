@@ -12,11 +12,12 @@ if (v.$sidebarFilterTops[0]) {
 
     filter.classList.toggle("filter--show");
     filterBottom.style.height = filterBottomHeight + "px";
-
+    
     if (!filter.classList.contains("filter--show")) {
       filterBottom.style.height = "";
       return;
     }
+    
   }
 
   function showHideFiltersInit() {

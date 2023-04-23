@@ -19,6 +19,8 @@ export const $timer = document.querySelector("#timer");
 export const $counters = $timer?.querySelectorAll(".timer__count");
 export const $topNavBtn = document.querySelector("#top-nav-button");
 export const $sidebarFilterTops = document.querySelectorAll(".sidebar-filters .filter__top");
+export const $sidebarFilterLists = document.querySelectorAll(".sidebar-filters .filter__list");
+export const $filterSliderRange = document.querySelector("#filter-slider-range");
 
 // **
 export const $mdq767 = window.matchMedia("(max-width: 767px)");
