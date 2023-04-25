@@ -1,517 +1,2282 @@
-<div class="product-grid">
-    <article class="product-grid__product product">
-      <div class="product__look">
-        <div class="product__image-wrapper microslider">
-          <img src="./img/sale-bag.png" alt="Product image." class="product__image microslider__image"
-            id="microslider-image">
-  
-          <ul class="microslider__srcs" aria-hidden="true">
-            <li class="microslider__src" data-src="./img/sale-bag.png"></li>
-            <li class="microslider__src" data-src="./img/sale-bag-2.jpg"></li>
-            <li class="microslider__src" data-src="./img/sale-bag-3.jpg"></li>
+<div class="product-grid catalog__product-grid">
+
+  <!-- Product 1 -->
+  <article class="product-grid__product product">
+
+    <!-- Look -->
+    <div class="product__look">
+
+      <!-- Microslider -->
+      <div class="product__image-wrapper microslider">
+
+        <!-- Image -->
+        <img src="./img/sale-bag.png" alt="Product image." class="product__image microslider__image"
+          id="microslider-image">
+
+        <!-- Sources for images -->
+        <ul class="microslider__srcs" aria-hidden="true">
+          <li class="microslider__src" data-src="./img/sale-bag.png"></li>
+          <li class="microslider__src" data-src="./img/sale-bag-2.jpg"></li>
+          <li class="microslider__src" data-src="./img/sale-bag-3.jpg"></li>
+        </ul>
+
+        <!-- Btns for microslider -->
+        <div class="microslider__btns">
+          <button class="microslider__button microslider__button--left" aria-label="Previous image of the product.">
+            <svg xmlns='http://www.w3.org/2000/svg' aria-hidden="true">
+              <use href='./img/sprite.svg#angle-down'></use>
+            </svg>
+          </button>
+
+          <button class="microslider__button microslider__button--right" aria-label="Next image of the product.">
+            <svg xmlns='http://www.w3.org/2000/svg' aria-hidden="true">
+              <use href='./img/sprite.svg#angle-down'></use>
+            </svg>
+          </button>
+        </div>
+
+        <!-- Link -->
+        <a href="#" class="product__image-link"></a>
+      </div>
+
+      <!-- Rating -->
+      <div class="product__rating product__rating--visible">
+        <svg class="product__rating-icon product__rating-icon--active" xmlns='http://www.w3.org/2000/svg'
+          aria-label="Star for rating one.">
+          <use href='./img/sprite.svg#star2'></use>
+        </svg>
+
+        <svg class="product__rating-icon product__rating-icon--active" xmlns='http://www.w3.org/2000/svg'
+          aria-label="Star for rating two.">
+          <use href='./img/sprite.svg#star2'></use>
+        </svg>
+
+        <svg class="product__rating-icon product__rating-icon--active" xmlns='http://www.w3.org/2000/svg'
+          aria-label="Star for rating three.">
+          <use href='./img/sprite.svg#star2'></use>
+        </svg>
+
+        <svg class="product__rating-icon product__rating-icon--active" xmlns='http://www.w3.org/2000/svg'
+          aria-label="Star for rating four.">
+          <use href='./img/sprite.svg#star2'></use>
+        </svg>
+
+        <svg class="product__rating-icon product__rating-icon--active" xmlns='http://www.w3.org/2000/svg'
+          aria-label="Star for rating five.">
+          <use href='./img/sprite.svg#star2'></use>
+        </svg>
+      </div>
+
+      <!-- Favorite -->
+      <button class="product__favorite" aria-label="Add to favorite.">
+        <svg xmlns='http://www.w3.org/2000/svg' aria-hidden="true">
+          <use href='./img/sprite.svg#heart'></use>
+        </svg>
+      </button>
+
+      <div class="product__discount">
+        -50%
+      </div>
+    </div>
+
+    <!-- Info -->
+    <div class="product__info product__info--white">
+
+      <!-- Product name -->
+      <a href="#" class="product__name">
+        Leather crossbody bag with gold hardware
+      </a>
+
+      <!-- Product prices -->
+      <div class="product__prices">
+        <span class="product__price product__price--h4 product__price--red product-grid__price">
+          $89.50
+        </span>
+
+        <span class="product__old-price">
+          $179.00
+        </span>
+      </div>
+
+      <!-- Product bottom -->
+      <div class="product__bottom">
+        <div class="product__details">
+
+          <!-- Sizes -->
+          <ul class="product__sizes sizes">
+            <li class="sizes__item">
+              <button class="sizes__button">
+                36
+              </button>
+            </li>
+
+            <li class="sizes__item">
+              <button class="sizes__button sizes__button--active">
+                37
+              </button>
+            </li>
+
+            <li class="sizes__item">
+              <button class="sizes__button">
+                42
+              </button>
+            </li>
+
+            <li class="sizes__item">
+              <button class="sizes__button">
+                43
+              </button>
+            </li>
+
+            <li class="sizes__item">
+              <button class="sizes__button">
+                44
+              </button>
+            </li>
+
+            <li class="sizes__item">
+              <button class="sizes__button">
+                45
+              </button>
+            </li>
+
+            <li class="sizes__item">
+              <button class="sizes__button">
+                46
+              </button>
+            </li>
+
+            <li class="sizes__item">
+              <button class="sizes__button">
+                47
+              </button>
+            </li>
+
+            <li class="sizes__item">
+              <button class="sizes__button">
+                48
+              </button>
+            </li>
           </ul>
-  
-          <div class="microslider__btns">
-            <button class="microslider__button microslider__button--left"
-              aria-label="Previous image of the product.">
-              <svg xmlns='http://www.w3.org/2000/svg' aria-hidden="true">
-                <use href='./img/sprite.svg#angle-down'></use>
-              </svg>
-            </button>
-  
-            <button class="microslider__button microslider__button--right" aria-label="Next image of the product.">
-              <svg xmlns='http://www.w3.org/2000/svg' aria-hidden="true">
-                <use href='./img/sprite.svg#angle-down'></use>
-              </svg>
-            </button>
-          </div>
-  
-          <a href="#" class="product__image-link"></a>
-        </div>
-  
-        <div class="product__rating product__rating--visible">
-          <svg class="product__rating-icon product__rating-icon--active" xmlns='http://www.w3.org/2000/svg'
-            aria-label="Star for rating one.">
-            <use href='./img/sprite.svg#star2'></use>
-          </svg>
-  
-          <svg class="product__rating-icon product__rating-icon--active" xmlns='http://www.w3.org/2000/svg'
-            aria-label="Star for rating two.">
-            <use href='./img/sprite.svg#star2'></use>
-          </svg>
-  
-          <svg class="product__rating-icon product__rating-icon--active" xmlns='http://www.w3.org/2000/svg'
-            aria-label="Star for rating three.">
-            <use href='./img/sprite.svg#star2'></use>
-          </svg>
-  
-          <svg class="product__rating-icon product__rating-icon--active" xmlns='http://www.w3.org/2000/svg'
-            aria-label="Star for rating four.">
-            <use href='./img/sprite.svg#star2'></use>
-          </svg>
-  
-          <svg class="product__rating-icon product__rating-icon--active" xmlns='http://www.w3.org/2000/svg'
-            aria-label="Star for rating five.">
-            <use href='./img/sprite.svg#star2'></use>
-          </svg>
-        </div>
-  
-        <button class="product__favorite" aria-label="Add to favorite.">
-          <svg xmlns='http://www.w3.org/2000/svg' aria-hidden="true">
-            <use href='./img/sprite.svg#heart'></use>
-          </svg>
-        </button>
-  
-        <div class="product__discount">
-          -50%
-        </div>
-      </div>
-  
-      <div class="product__info product__info--white">
-        <a href="#" class="product__name">
-          Leather crossbody bag with gold hardware
-        </a>
-  
-        <div class="product__prices">
-          <span class="product__price product__price--h4 product__price--red product-grid__price">
-            $89.50
-          </span>
-  
-          <span class="product__old-price">
-            $179.00
-          </span>
-        </div>
-  
-        <div class="product__bottom">
-          <div class="product__details">
-            <ul class="product__sizes sizes">
-              <li class="sizes__item">
-                <button class="sizes__button">
-                  36
-                </button>
-              </li>
-  
-              <li class="sizes__item">
-                <button class="sizes__button sizes__button--active">
-                  37
-                </button>
-              </li>
-  
-              <li class="sizes__item">
-                <button class="sizes__button">
-                  42
-                </button>
-              </li>
-  
-              <li class="sizes__item">
-                <button class="sizes__button">
-                  43
-                </button>
-              </li>
-  
-              <li class="sizes__item">
-                <button class="sizes__button">
-                  44
-                </button>
-              </li>
-  
-              <li class="sizes__item">
-                <button class="sizes__button">
-                  45
-                </button>
-              </li>
-  
-              <li class="sizes__item">
-                <button class="sizes__button">
-                  46
-                </button>
-              </li>
-  
-              <li class="sizes__item">
-                <button class="sizes__button">
-                  47
-                </button>
-              </li>
-  
-  
-              <li class="sizes__item">
-                <button class="sizes__button">
-                  48
-                </button>
-              </li>
-            </ul>
-  
-            <ul class="product__colors colors">
-              <li class="colors__item">
-                <button class="colors__button colors__button--active" data-color="black"
-                  aria-label="Choose black color.">1</button>
-              </li>
-  
-              <li class="colors__item">
-                <button class="colors__button" data-color="brown" aria-label="Choose brown color.">2</button>
-              </li>
-  
-              <li class="colors__item">
-                <button class="colors__button" data-color="light-blue"
-                  aria-label="Choose light-blue color.">3</button>
-              </li>
-            </ul>
-          </div>
-  
-          <div class="product__button-wrapper">
-            <button class="product__button-cart btn btn--mid">
-              <svg xmlns='http://www.w3.org/2000/svg'>
-                <use href='./img/sprite.svg#cart'></use>
-              </svg>
-  
-              Add to cart
-            </button>
-          </div>
-        </div>
-      </div>
-    </article>
-  
-    <article class="product-grid__product product">
-      <div class="product__look">
-        <div class="product__image-wrapper microslider">
-          <img src="./img/sale-bag.png" alt="Product image." class="product__image microslider__image"
-            id="microslider-image">
-  
-          <ul class="microslider__srcs" aria-hidden="true">
-            <li class="microslider__src" data-src="./img/sale-bag.png"></li>
-            <li class="microslider__src" data-src="./img/sale-bag-2.jpg"></li>
-            <li class="microslider__src" data-src="./img/sale-bag-3.jpg"></li>
+
+          <!-- Colors -->
+          <ul class="product__colors colors">
+            <li class="colors__item">
+              <button class="colors__button colors__button--active" data-color="black"
+                aria-label="Choose black color.">1</button>
+            </li>
+
+            <li class="colors__item">
+              <button class="colors__button" data-color="brown" aria-label="Choose brown color.">2</button>
+            </li>
+
+            <li class="colors__item">
+              <button class="colors__button" data-color="light-blue" aria-label="Choose light-blue color.">3</button>
+            </li>
           </ul>
-  
-          <div class="microslider__btns">
-            <button class="microslider__button microslider__button--left"
-              aria-label="Previous image of the product.">
-              <svg xmlns='http://www.w3.org/2000/svg' aria-hidden="true">
-                <use href='./img/sprite.svg#angle-down'></use>
-              </svg>
-            </button>
-  
-            <button class="microslider__button microslider__button--right" aria-label="Next image of the product.">
-              <svg xmlns='http://www.w3.org/2000/svg' aria-hidden="true">
-                <use href='./img/sprite.svg#angle-down'></use>
-              </svg>
-            </button>
-          </div>
-  
-          <a href="#" class="product__image-link"></a>
         </div>
-  
-        <div class="product__rating product__rating--visible">
-          <svg class="product__rating-icon product__rating-icon--active" xmlns='http://www.w3.org/2000/svg'
-            aria-label="Star for rating one.">
-            <use href='./img/sprite.svg#star2'></use>
-          </svg>
-  
-          <svg class="product__rating-icon product__rating-icon--active" xmlns='http://www.w3.org/2000/svg'
-            aria-label="Star for rating two.">
-            <use href='./img/sprite.svg#star2'></use>
-          </svg>
-  
-          <svg class="product__rating-icon product__rating-icon--active" xmlns='http://www.w3.org/2000/svg'
-            aria-label="Star for rating three.">
-            <use href='./img/sprite.svg#star2'></use>
-          </svg>
-  
-          <svg class="product__rating-icon product__rating-icon--active" xmlns='http://www.w3.org/2000/svg'
-            aria-label="Star for rating four.">
-            <use href='./img/sprite.svg#star2'></use>
-          </svg>
-  
-          <svg class="product__rating-icon product__rating-icon--active" xmlns='http://www.w3.org/2000/svg'
-            aria-label="Star for rating five.">
-            <use href='./img/sprite.svg#star2'></use>
-          </svg>
-        </div>
-  
-        <button class="product__favorite" aria-label="Add to favorite.">
-          <svg xmlns='http://www.w3.org/2000/svg' aria-hidden="true">
-            <use href='./img/sprite.svg#heart'></use>
-          </svg>
-        </button>
-  
-        <div class="product__discount">
-          -50%
+
+        <!-- Button-cart -->
+        <div class="product__button-wrapper">
+          <button class="product__button-cart btn btn--mid">
+            <svg xmlns='http://www.w3.org/2000/svg'>
+              <use href='./img/sprite.svg#cart'></use>
+            </svg>
+
+            Add to cart
+          </button>
         </div>
       </div>
-  
-      <div class="product__info product__info--white">
-        <a href="#" class="product__name">
-          Leather crossbody bag with gold hardware
-        </a>
-  
-        <div class="product__prices">
-          <span class="product__price product__price--h4 product__price--red product-grid__price">
-            $89.50
-          </span>
-  
-          <span class="product__old-price">
-            $179.00
-          </span>
+    </div>
+  </article>
+
+  <!-- Product 2 -->
+  <article class="product-grid__product product">
+
+    <!-- Look -->
+    <div class="product__look">
+
+      <!-- Microslider -->
+      <div class="product__image-wrapper microslider">
+
+        <!-- Image -->
+        <img src="./img/sale-bag.png" alt="Product image." class="product__image microslider__image"
+          id="microslider-image">
+
+        <!-- Sources for images -->
+        <ul class="microslider__srcs" aria-hidden="true">
+          <li class="microslider__src" data-src="./img/sale-bag.png"></li>
+          <li class="microslider__src" data-src="./img/sale-bag-2.jpg"></li>
+          <li class="microslider__src" data-src="./img/sale-bag-3.jpg"></li>
+        </ul>
+
+        <!-- Btns for microslider -->
+        <div class="microslider__btns">
+          <button class="microslider__button microslider__button--left" aria-label="Previous image of the product.">
+            <svg xmlns='http://www.w3.org/2000/svg' aria-hidden="true">
+              <use href='./img/sprite.svg#angle-down'></use>
+            </svg>
+          </button>
+
+          <button class="microslider__button microslider__button--right" aria-label="Next image of the product.">
+            <svg xmlns='http://www.w3.org/2000/svg' aria-hidden="true">
+              <use href='./img/sprite.svg#angle-down'></use>
+            </svg>
+          </button>
         </div>
-  
-        <div class="product__bottom">
-          <div class="product__details">
-            <ul class="product__sizes sizes">
-              <li class="sizes__item">
-                <button class="sizes__button">
-                  36
-                </button>
-              </li>
-  
-              <li class="sizes__item">
-                <button class="sizes__button sizes__button--active">
-                  37
-                </button>
-              </li>
-  
-              <li class="sizes__item">
-                <button class="sizes__button">
-                  42
-                </button>
-              </li>
-  
-              <li class="sizes__item">
-                <button class="sizes__button">
-                  43
-                </button>
-              </li>
-  
-              <li class="sizes__item">
-                <button class="sizes__button">
-                  44
-                </button>
-              </li>
-  
-              <li class="sizes__item">
-                <button class="sizes__button">
-                  45
-                </button>
-              </li>
-  
-              <li class="sizes__item">
-                <button class="sizes__button">
-                  46
-                </button>
-              </li>
-  
-              <li class="sizes__item">
-                <button class="sizes__button">
-                  47
-                </button>
-              </li>
-  
-  
-              <li class="sizes__item">
-                <button class="sizes__button">
-                  48
-                </button>
-              </li>
-            </ul>
-  
-            <ul class="product__colors colors">
-              <li class="colors__item">
-                <button class="colors__button colors__button--active" data-color="black"
-                  aria-label="Choose black color.">1</button>
-              </li>
-  
-              <li class="colors__item">
-                <button class="colors__button" data-color="brown" aria-label="Choose brown color.">2</button>
-              </li>
-  
-              <li class="colors__item">
-                <button class="colors__button" data-color="light-blue"
-                  aria-label="Choose light-blue color.">3</button>
-              </li>
-            </ul>
-          </div>
-  
-          <div class="product__button-wrapper">
-            <button class="product__button-cart btn btn--mid">
-              <svg xmlns='http://www.w3.org/2000/svg'>
-                <use href='./img/sprite.svg#cart'></use>
-              </svg>
-  
-              Add to cart
-            </button>
-          </div>
-        </div>
+
+        <!-- Link -->
+        <a href="#" class="product__image-link"></a>
       </div>
-    </article>
-  
-    <article class="product-grid__product product">
-      <div class="product__look">
-        <div class="product__image-wrapper microslider">
-          <img src="./img/sale-bag.png" alt="Product image." class="product__image microslider__image"
-            id="microslider-image">
-  
-          <ul class="microslider__srcs" aria-hidden="true">
-            <li class="microslider__src" data-src="./img/sale-bag.png"></li>
-            <li class="microslider__src" data-src="./img/sale-bag-2.jpg"></li>
-            <li class="microslider__src" data-src="./img/sale-bag-3.jpg"></li>
+
+      <!-- Rating -->
+      <div class="product__rating product__rating--visible">
+        <svg class="product__rating-icon product__rating-icon--active" xmlns='http://www.w3.org/2000/svg'
+          aria-label="Star for rating one.">
+          <use href='./img/sprite.svg#star2'></use>
+        </svg>
+
+        <svg class="product__rating-icon product__rating-icon--active" xmlns='http://www.w3.org/2000/svg'
+          aria-label="Star for rating two.">
+          <use href='./img/sprite.svg#star2'></use>
+        </svg>
+
+        <svg class="product__rating-icon product__rating-icon--active" xmlns='http://www.w3.org/2000/svg'
+          aria-label="Star for rating three.">
+          <use href='./img/sprite.svg#star2'></use>
+        </svg>
+
+        <svg class="product__rating-icon product__rating-icon--active" xmlns='http://www.w3.org/2000/svg'
+          aria-label="Star for rating four.">
+          <use href='./img/sprite.svg#star2'></use>
+        </svg>
+
+        <svg class="product__rating-icon product__rating-icon--active" xmlns='http://www.w3.org/2000/svg'
+          aria-label="Star for rating five.">
+          <use href='./img/sprite.svg#star2'></use>
+        </svg>
+      </div>
+
+      <!-- Favorite -->
+      <button class="product__favorite" aria-label="Add to favorite.">
+        <svg xmlns='http://www.w3.org/2000/svg' aria-hidden="true">
+          <use href='./img/sprite.svg#heart'></use>
+        </svg>
+      </button>
+
+      <div class="product__discount">
+        -50%
+      </div>
+    </div>
+
+    <!-- Info -->
+    <div class="product__info product__info--white">
+
+      <!-- Product name -->
+      <a href="#" class="product__name">
+        Leather crossbody bag with gold hardware
+      </a>
+
+      <!-- Product prices -->
+      <div class="product__prices">
+        <span class="product__price product__price--h4 product__price--red product-grid__price">
+          $89.50
+        </span>
+
+        <span class="product__old-price">
+          $179.00
+        </span>
+      </div>
+
+      <!-- Product bottom -->
+      <div class="product__bottom">
+        <div class="product__details">
+
+          <!-- Sizes -->
+          <ul class="product__sizes sizes">
+            <li class="sizes__item">
+              <button class="sizes__button">
+                36
+              </button>
+            </li>
+
+            <li class="sizes__item">
+              <button class="sizes__button sizes__button--active">
+                37
+              </button>
+            </li>
+
+            <li class="sizes__item">
+              <button class="sizes__button">
+                42
+              </button>
+            </li>
+
+            <li class="sizes__item">
+              <button class="sizes__button">
+                43
+              </button>
+            </li>
+
+            <li class="sizes__item">
+              <button class="sizes__button">
+                44
+              </button>
+            </li>
+
+            <li class="sizes__item">
+              <button class="sizes__button">
+                45
+              </button>
+            </li>
+
+            <li class="sizes__item">
+              <button class="sizes__button">
+                46
+              </button>
+            </li>
+
+            <li class="sizes__item">
+              <button class="sizes__button">
+                47
+              </button>
+            </li>
+
+            <li class="sizes__item">
+              <button class="sizes__button">
+                48
+              </button>
+            </li>
           </ul>
-  
-          <div class="microslider__btns">
-            <button class="microslider__button microslider__button--left"
-              aria-label="Previous image of the product.">
-              <svg xmlns='http://www.w3.org/2000/svg' aria-hidden="true">
-                <use href='./img/sprite.svg#angle-down'></use>
-              </svg>
-            </button>
-  
-            <button class="microslider__button microslider__button--right" aria-label="Next image of the product.">
-              <svg xmlns='http://www.w3.org/2000/svg' aria-hidden="true">
-                <use href='./img/sprite.svg#angle-down'></use>
-              </svg>
-            </button>
-          </div>
-  
-          <a href="#" class="product__image-link"></a>
+
+          <!-- Colors -->
+          <ul class="product__colors colors">
+            <li class="colors__item">
+              <button class="colors__button colors__button--active" data-color="black"
+                aria-label="Choose black color.">1</button>
+            </li>
+
+            <li class="colors__item">
+              <button class="colors__button" data-color="brown" aria-label="Choose brown color.">2</button>
+            </li>
+
+            <li class="colors__item">
+              <button class="colors__button" data-color="light-blue" aria-label="Choose light-blue color.">3</button>
+            </li>
+          </ul>
         </div>
-  
-        <div class="product__rating product__rating--visible">
-          <svg class="product__rating-icon product__rating-icon--active" xmlns='http://www.w3.org/2000/svg'
-            aria-label="Star for rating one.">
-            <use href='./img/sprite.svg#star2'></use>
-          </svg>
-  
-          <svg class="product__rating-icon product__rating-icon--active" xmlns='http://www.w3.org/2000/svg'
-            aria-label="Star for rating two.">
-            <use href='./img/sprite.svg#star2'></use>
-          </svg>
-  
-          <svg class="product__rating-icon product__rating-icon--active" xmlns='http://www.w3.org/2000/svg'
-            aria-label="Star for rating three.">
-            <use href='./img/sprite.svg#star2'></use>
-          </svg>
-  
-          <svg class="product__rating-icon product__rating-icon--active" xmlns='http://www.w3.org/2000/svg'
-            aria-label="Star for rating four.">
-            <use href='./img/sprite.svg#star2'></use>
-          </svg>
-  
-          <svg class="product__rating-icon product__rating-icon--active" xmlns='http://www.w3.org/2000/svg'
-            aria-label="Star for rating five.">
-            <use href='./img/sprite.svg#star2'></use>
-          </svg>
-        </div>
-  
-        <button class="product__favorite" aria-label="Add to favorite.">
-          <svg xmlns='http://www.w3.org/2000/svg' aria-hidden="true">
-            <use href='./img/sprite.svg#heart'></use>
-          </svg>
-        </button>
-  
-        <div class="product__discount">
-          -50%
+
+        <!-- Button-cart -->
+        <div class="product__button-wrapper">
+          <button class="product__button-cart btn btn--mid">
+            <svg xmlns='http://www.w3.org/2000/svg'>
+              <use href='./img/sprite.svg#cart'></use>
+            </svg>
+
+            Add to cart
+          </button>
         </div>
       </div>
-  
-      <div class="product__info product__info--white">
-        <a href="#" class="product__name">
-          Leather crossbody bag with gold hardware
-        </a>
-  
-        <div class="product__prices">
-          <span class="product__price product__price--h4 product__price--red product-grid__price">
-            $89.50
-          </span>
-  
-          <span class="product__old-price">
-            $179.00
-          </span>
+    </div>
+  </article>
+
+  <!-- Product 3 -->
+  <article class="product-grid__product product">
+
+    <!-- Look -->
+    <div class="product__look">
+
+      <!-- Microslider -->
+      <div class="product__image-wrapper microslider">
+
+        <!-- Image -->
+        <img src="./img/sale-bag.png" alt="Product image." class="product__image microslider__image"
+          id="microslider-image">
+
+        <!-- Sources for images -->
+        <ul class="microslider__srcs" aria-hidden="true">
+          <li class="microslider__src" data-src="./img/sale-bag.png"></li>
+          <li class="microslider__src" data-src="./img/sale-bag-2.jpg"></li>
+          <li class="microslider__src" data-src="./img/sale-bag-3.jpg"></li>
+        </ul>
+
+        <!-- Btns for microslider -->
+        <div class="microslider__btns">
+          <button class="microslider__button microslider__button--left" aria-label="Previous image of the product.">
+            <svg xmlns='http://www.w3.org/2000/svg' aria-hidden="true">
+              <use href='./img/sprite.svg#angle-down'></use>
+            </svg>
+          </button>
+
+          <button class="microslider__button microslider__button--right" aria-label="Next image of the product.">
+            <svg xmlns='http://www.w3.org/2000/svg' aria-hidden="true">
+              <use href='./img/sprite.svg#angle-down'></use>
+            </svg>
+          </button>
         </div>
-  
-        <div class="product__bottom">
-          <div class="product__details">
-            <ul class="product__sizes sizes">
-              <li class="sizes__item">
-                <button class="sizes__button">
-                  36
-                </button>
-              </li>
-  
-              <li class="sizes__item">
-                <button class="sizes__button sizes__button--active">
-                  37
-                </button>
-              </li>
-  
-              <li class="sizes__item">
-                <button class="sizes__button">
-                  42
-                </button>
-              </li>
-  
-              <li class="sizes__item">
-                <button class="sizes__button">
-                  43
-                </button>
-              </li>
-  
-              <li class="sizes__item">
-                <button class="sizes__button">
-                  44
-                </button>
-              </li>
-  
-              <li class="sizes__item">
-                <button class="sizes__button">
-                  45
-                </button>
-              </li>
-  
-              <li class="sizes__item">
-                <button class="sizes__button">
-                  46
-                </button>
-              </li>
-  
-              <li class="sizes__item">
-                <button class="sizes__button">
-                  47
-                </button>
-              </li>
-  
-  
-              <li class="sizes__item">
-                <button class="sizes__button">
-                  48
-                </button>
-              </li>
-            </ul>
-  
-            <ul class="product__colors colors">
-              <li class="colors__item">
-                <button class="colors__button colors__button--active" data-color="black"
-                  aria-label="Choose black color.">1</button>
-              </li>
-  
-              <li class="colors__item">
-                <button class="colors__button" data-color="brown" aria-label="Choose brown color.">2</button>
-              </li>
-  
-              <li class="colors__item">
-                <button class="colors__button" data-color="light-blue"
-                  aria-label="Choose light-blue color.">3</button>
-              </li>
-            </ul>
-          </div>
-  
-          <div class="product__button-wrapper">
-            <button class="product__button-cart btn btn--mid">
-              <svg xmlns='http://www.w3.org/2000/svg'>
-                <use href='./img/sprite.svg#cart'></use>
-              </svg>
-  
-              Add to cart
-            </button>
-          </div>
+
+        <!-- Link -->
+        <a href="#" class="product__image-link"></a>
+      </div>
+
+      <!-- Rating -->
+      <div class="product__rating product__rating--visible">
+        <svg class="product__rating-icon product__rating-icon--active" xmlns='http://www.w3.org/2000/svg'
+          aria-label="Star for rating one.">
+          <use href='./img/sprite.svg#star2'></use>
+        </svg>
+
+        <svg class="product__rating-icon product__rating-icon--active" xmlns='http://www.w3.org/2000/svg'
+          aria-label="Star for rating two.">
+          <use href='./img/sprite.svg#star2'></use>
+        </svg>
+
+        <svg class="product__rating-icon product__rating-icon--active" xmlns='http://www.w3.org/2000/svg'
+          aria-label="Star for rating three.">
+          <use href='./img/sprite.svg#star2'></use>
+        </svg>
+
+        <svg class="product__rating-icon product__rating-icon--active" xmlns='http://www.w3.org/2000/svg'
+          aria-label="Star for rating four.">
+          <use href='./img/sprite.svg#star2'></use>
+        </svg>
+
+        <svg class="product__rating-icon product__rating-icon--active" xmlns='http://www.w3.org/2000/svg'
+          aria-label="Star for rating five.">
+          <use href='./img/sprite.svg#star2'></use>
+        </svg>
+      </div>
+
+      <!-- Favorite -->
+      <button class="product__favorite" aria-label="Add to favorite.">
+        <svg xmlns='http://www.w3.org/2000/svg' aria-hidden="true">
+          <use href='./img/sprite.svg#heart'></use>
+        </svg>
+      </button>
+
+      <div class="product__discount">
+        -50%
+      </div>
+    </div>
+
+    <!-- Info -->
+    <div class="product__info product__info--white">
+
+      <!-- Product name -->
+      <a href="#" class="product__name">
+        Leather crossbody bag with gold hardware
+      </a>
+
+      <!-- Product prices -->
+      <div class="product__prices">
+        <span class="product__price product__price--h4 product__price--red product-grid__price">
+          $89.50
+        </span>
+
+        <span class="product__old-price">
+          $179.00
+        </span>
+      </div>
+
+      <!-- Product bottom -->
+      <div class="product__bottom">
+        <div class="product__details">
+
+          <!-- Sizes -->
+          <ul class="product__sizes sizes">
+            <li class="sizes__item">
+              <button class="sizes__button">
+                36
+              </button>
+            </li>
+
+            <li class="sizes__item">
+              <button class="sizes__button sizes__button--active">
+                37
+              </button>
+            </li>
+
+            <li class="sizes__item">
+              <button class="sizes__button">
+                42
+              </button>
+            </li>
+
+            <li class="sizes__item">
+              <button class="sizes__button">
+                43
+              </button>
+            </li>
+
+            <li class="sizes__item">
+              <button class="sizes__button">
+                44
+              </button>
+            </li>
+
+            <li class="sizes__item">
+              <button class="sizes__button">
+                45
+              </button>
+            </li>
+
+            <li class="sizes__item">
+              <button class="sizes__button">
+                46
+              </button>
+            </li>
+
+            <li class="sizes__item">
+              <button class="sizes__button">
+                47
+              </button>
+            </li>
+
+            <li class="sizes__item">
+              <button class="sizes__button">
+                48
+              </button>
+            </li>
+          </ul>
+
+          <!-- Colors -->
+          <ul class="product__colors colors">
+            <li class="colors__item">
+              <button class="colors__button colors__button--active" data-color="black"
+                aria-label="Choose black color.">1</button>
+            </li>
+
+            <li class="colors__item">
+              <button class="colors__button" data-color="brown" aria-label="Choose brown color.">2</button>
+            </li>
+
+            <li class="colors__item">
+              <button class="colors__button" data-color="light-blue" aria-label="Choose light-blue color.">3</button>
+            </li>
+          </ul>
+        </div>
+
+        <!-- Button-cart -->
+        <div class="product__button-wrapper">
+          <button class="product__button-cart btn btn--mid">
+            <svg xmlns='http://www.w3.org/2000/svg'>
+              <use href='./img/sprite.svg#cart'></use>
+            </svg>
+
+            Add to cart
+          </button>
         </div>
       </div>
-    </article>
+    </div>
+  </article>
+
+  <!-- Product 4 -->
+  <article class="product-grid__product product">
+
+    <!-- Look -->
+    <div class="product__look">
+
+      <!-- Microslider -->
+      <div class="product__image-wrapper microslider">
+
+        <!-- Image -->
+        <img src="./img/sale-bag.png" alt="Product image." class="product__image microslider__image"
+          id="microslider-image">
+
+        <!-- Sources for images -->
+        <ul class="microslider__srcs" aria-hidden="true">
+          <li class="microslider__src" data-src="./img/sale-bag.png"></li>
+          <li class="microslider__src" data-src="./img/sale-bag-2.jpg"></li>
+          <li class="microslider__src" data-src="./img/sale-bag-3.jpg"></li>
+        </ul>
+
+        <!-- Btns for microslider -->
+        <div class="microslider__btns">
+          <button class="microslider__button microslider__button--left" aria-label="Previous image of the product.">
+            <svg xmlns='http://www.w3.org/2000/svg' aria-hidden="true">
+              <use href='./img/sprite.svg#angle-down'></use>
+            </svg>
+          </button>
+
+          <button class="microslider__button microslider__button--right" aria-label="Next image of the product.">
+            <svg xmlns='http://www.w3.org/2000/svg' aria-hidden="true">
+              <use href='./img/sprite.svg#angle-down'></use>
+            </svg>
+          </button>
+        </div>
+
+        <!-- Link -->
+        <a href="#" class="product__image-link"></a>
+      </div>
+
+      <!-- Rating -->
+      <div class="product__rating product__rating--visible">
+        <svg class="product__rating-icon product__rating-icon--active" xmlns='http://www.w3.org/2000/svg'
+          aria-label="Star for rating one.">
+          <use href='./img/sprite.svg#star2'></use>
+        </svg>
+
+        <svg class="product__rating-icon product__rating-icon--active" xmlns='http://www.w3.org/2000/svg'
+          aria-label="Star for rating two.">
+          <use href='./img/sprite.svg#star2'></use>
+        </svg>
+
+        <svg class="product__rating-icon product__rating-icon--active" xmlns='http://www.w3.org/2000/svg'
+          aria-label="Star for rating three.">
+          <use href='./img/sprite.svg#star2'></use>
+        </svg>
+
+        <svg class="product__rating-icon product__rating-icon--active" xmlns='http://www.w3.org/2000/svg'
+          aria-label="Star for rating four.">
+          <use href='./img/sprite.svg#star2'></use>
+        </svg>
+
+        <svg class="product__rating-icon product__rating-icon--active" xmlns='http://www.w3.org/2000/svg'
+          aria-label="Star for rating five.">
+          <use href='./img/sprite.svg#star2'></use>
+        </svg>
+      </div>
+
+      <!-- Favorite -->
+      <button class="product__favorite" aria-label="Add to favorite.">
+        <svg xmlns='http://www.w3.org/2000/svg' aria-hidden="true">
+          <use href='./img/sprite.svg#heart'></use>
+        </svg>
+      </button>
+
+      <div class="product__discount">
+        -50%
+      </div>
+    </div>
+
+    <!-- Info -->
+    <div class="product__info product__info--white">
+
+      <!-- Product name -->
+      <a href="#" class="product__name">
+        Leather crossbody bag with gold hardware
+      </a>
+
+      <!-- Product prices -->
+      <div class="product__prices">
+        <span class="product__price product__price--h4 product__price--red product-grid__price">
+          $89.50
+        </span>
+
+        <span class="product__old-price">
+          $179.00
+        </span>
+      </div>
+
+      <!-- Product bottom -->
+      <div class="product__bottom">
+        <div class="product__details">
+
+          <!-- Sizes -->
+          <ul class="product__sizes sizes">
+            <li class="sizes__item">
+              <button class="sizes__button">
+                36
+              </button>
+            </li>
+
+            <li class="sizes__item">
+              <button class="sizes__button sizes__button--active">
+                37
+              </button>
+            </li>
+
+            <li class="sizes__item">
+              <button class="sizes__button">
+                42
+              </button>
+            </li>
+
+            <li class="sizes__item">
+              <button class="sizes__button">
+                43
+              </button>
+            </li>
+
+            <li class="sizes__item">
+              <button class="sizes__button">
+                44
+              </button>
+            </li>
+
+            <li class="sizes__item">
+              <button class="sizes__button">
+                45
+              </button>
+            </li>
+
+            <li class="sizes__item">
+              <button class="sizes__button">
+                46
+              </button>
+            </li>
+
+            <li class="sizes__item">
+              <button class="sizes__button">
+                47
+              </button>
+            </li>
+
+            <li class="sizes__item">
+              <button class="sizes__button">
+                48
+              </button>
+            </li>
+          </ul>
+
+          <!-- Colors -->
+          <ul class="product__colors colors">
+            <li class="colors__item">
+              <button class="colors__button colors__button--active" data-color="black"
+                aria-label="Choose black color.">1</button>
+            </li>
+
+            <li class="colors__item">
+              <button class="colors__button" data-color="brown" aria-label="Choose brown color.">2</button>
+            </li>
+
+            <li class="colors__item">
+              <button class="colors__button" data-color="light-blue" aria-label="Choose light-blue color.">3</button>
+            </li>
+          </ul>
+        </div>
+
+        <!-- Button-cart -->
+        <div class="product__button-wrapper">
+          <button class="product__button-cart btn btn--mid">
+            <svg xmlns='http://www.w3.org/2000/svg'>
+              <use href='./img/sprite.svg#cart'></use>
+            </svg>
+
+            Add to cart
+          </button>
+        </div>
+      </div>
+    </div>
+  </article>
+
+  <!-- Product 5 -->
+  <article class="product-grid__product product">
+
+    <!-- Look -->
+    <div class="product__look">
+
+      <!-- Microslider -->
+      <div class="product__image-wrapper microslider">
+
+        <!-- Image -->
+        <img src="./img/sale-bag.png" alt="Product image." class="product__image microslider__image"
+          id="microslider-image">
+
+        <!-- Sources for images -->
+        <ul class="microslider__srcs" aria-hidden="true">
+          <li class="microslider__src" data-src="./img/sale-bag.png"></li>
+          <li class="microslider__src" data-src="./img/sale-bag-2.jpg"></li>
+          <li class="microslider__src" data-src="./img/sale-bag-3.jpg"></li>
+        </ul>
+
+        <!-- Btns for microslider -->
+        <div class="microslider__btns">
+          <button class="microslider__button microslider__button--left" aria-label="Previous image of the product.">
+            <svg xmlns='http://www.w3.org/2000/svg' aria-hidden="true">
+              <use href='./img/sprite.svg#angle-down'></use>
+            </svg>
+          </button>
+
+          <button class="microslider__button microslider__button--right" aria-label="Next image of the product.">
+            <svg xmlns='http://www.w3.org/2000/svg' aria-hidden="true">
+              <use href='./img/sprite.svg#angle-down'></use>
+            </svg>
+          </button>
+        </div>
+
+        <!-- Link -->
+        <a href="#" class="product__image-link"></a>
+      </div>
+
+      <!-- Rating -->
+      <div class="product__rating product__rating--visible">
+        <svg class="product__rating-icon product__rating-icon--active" xmlns='http://www.w3.org/2000/svg'
+          aria-label="Star for rating one.">
+          <use href='./img/sprite.svg#star2'></use>
+        </svg>
+
+        <svg class="product__rating-icon product__rating-icon--active" xmlns='http://www.w3.org/2000/svg'
+          aria-label="Star for rating two.">
+          <use href='./img/sprite.svg#star2'></use>
+        </svg>
+
+        <svg class="product__rating-icon product__rating-icon--active" xmlns='http://www.w3.org/2000/svg'
+          aria-label="Star for rating three.">
+          <use href='./img/sprite.svg#star2'></use>
+        </svg>
+
+        <svg class="product__rating-icon product__rating-icon--active" xmlns='http://www.w3.org/2000/svg'
+          aria-label="Star for rating four.">
+          <use href='./img/sprite.svg#star2'></use>
+        </svg>
+
+        <svg class="product__rating-icon product__rating-icon--active" xmlns='http://www.w3.org/2000/svg'
+          aria-label="Star for rating five.">
+          <use href='./img/sprite.svg#star2'></use>
+        </svg>
+      </div>
+
+      <!-- Favorite -->
+      <button class="product__favorite" aria-label="Add to favorite.">
+        <svg xmlns='http://www.w3.org/2000/svg' aria-hidden="true">
+          <use href='./img/sprite.svg#heart'></use>
+        </svg>
+      </button>
+
+      <div class="product__discount">
+        -50%
+      </div>
+    </div>
+
+    <!-- Info -->
+    <div class="product__info product__info--white">
+
+      <!-- Product name -->
+      <a href="#" class="product__name">
+        Leather crossbody bag with gold hardware
+      </a>
+
+      <!-- Product prices -->
+      <div class="product__prices">
+        <span class="product__price product__price--h4 product__price--red product-grid__price">
+          $89.50
+        </span>
+
+        <span class="product__old-price">
+          $179.00
+        </span>
+      </div>
+
+      <!-- Product bottom -->
+      <div class="product__bottom">
+        <div class="product__details">
+
+          <!-- Sizes -->
+          <ul class="product__sizes sizes">
+            <li class="sizes__item">
+              <button class="sizes__button">
+                36
+              </button>
+            </li>
+
+            <li class="sizes__item">
+              <button class="sizes__button sizes__button--active">
+                37
+              </button>
+            </li>
+
+            <li class="sizes__item">
+              <button class="sizes__button">
+                42
+              </button>
+            </li>
+
+            <li class="sizes__item">
+              <button class="sizes__button">
+                43
+              </button>
+            </li>
+
+            <li class="sizes__item">
+              <button class="sizes__button">
+                44
+              </button>
+            </li>
+
+            <li class="sizes__item">
+              <button class="sizes__button">
+                45
+              </button>
+            </li>
+
+            <li class="sizes__item">
+              <button class="sizes__button">
+                46
+              </button>
+            </li>
+
+            <li class="sizes__item">
+              <button class="sizes__button">
+                47
+              </button>
+            </li>
+
+            <li class="sizes__item">
+              <button class="sizes__button">
+                48
+              </button>
+            </li>
+          </ul>
+
+          <!-- Colors -->
+          <ul class="product__colors colors">
+            <li class="colors__item">
+              <button class="colors__button colors__button--active" data-color="black"
+                aria-label="Choose black color.">1</button>
+            </li>
+
+            <li class="colors__item">
+              <button class="colors__button" data-color="brown" aria-label="Choose brown color.">2</button>
+            </li>
+
+            <li class="colors__item">
+              <button class="colors__button" data-color="light-blue" aria-label="Choose light-blue color.">3</button>
+            </li>
+          </ul>
+        </div>
+
+        <!-- Button-cart -->
+        <div class="product__button-wrapper">
+          <button class="product__button-cart btn btn--mid">
+            <svg xmlns='http://www.w3.org/2000/svg'>
+              <use href='./img/sprite.svg#cart'></use>
+            </svg>
+
+            Add to cart
+          </button>
+        </div>
+      </div>
+    </div>
+  </article>
+
+  <!-- Product 6 -->
+  <article class="product-grid__product product">
+
+    <!-- Look -->
+    <div class="product__look">
+
+      <!-- Microslider -->
+      <div class="product__image-wrapper microslider">
+
+        <!-- Image -->
+        <img src="./img/sale-bag.png" alt="Product image." class="product__image microslider__image"
+          id="microslider-image">
+
+        <!-- Sources for images -->
+        <ul class="microslider__srcs" aria-hidden="true">
+          <li class="microslider__src" data-src="./img/sale-bag.png"></li>
+          <li class="microslider__src" data-src="./img/sale-bag-2.jpg"></li>
+          <li class="microslider__src" data-src="./img/sale-bag-3.jpg"></li>
+        </ul>
+
+        <!-- Btns for microslider -->
+        <div class="microslider__btns">
+          <button class="microslider__button microslider__button--left" aria-label="Previous image of the product.">
+            <svg xmlns='http://www.w3.org/2000/svg' aria-hidden="true">
+              <use href='./img/sprite.svg#angle-down'></use>
+            </svg>
+          </button>
+
+          <button class="microslider__button microslider__button--right" aria-label="Next image of the product.">
+            <svg xmlns='http://www.w3.org/2000/svg' aria-hidden="true">
+              <use href='./img/sprite.svg#angle-down'></use>
+            </svg>
+          </button>
+        </div>
+
+        <!-- Link -->
+        <a href="#" class="product__image-link"></a>
+      </div>
+
+      <!-- Rating -->
+      <div class="product__rating product__rating--visible">
+        <svg class="product__rating-icon product__rating-icon--active" xmlns='http://www.w3.org/2000/svg'
+          aria-label="Star for rating one.">
+          <use href='./img/sprite.svg#star2'></use>
+        </svg>
+
+        <svg class="product__rating-icon product__rating-icon--active" xmlns='http://www.w3.org/2000/svg'
+          aria-label="Star for rating two.">
+          <use href='./img/sprite.svg#star2'></use>
+        </svg>
+
+        <svg class="product__rating-icon product__rating-icon--active" xmlns='http://www.w3.org/2000/svg'
+          aria-label="Star for rating three.">
+          <use href='./img/sprite.svg#star2'></use>
+        </svg>
+
+        <svg class="product__rating-icon product__rating-icon--active" xmlns='http://www.w3.org/2000/svg'
+          aria-label="Star for rating four.">
+          <use href='./img/sprite.svg#star2'></use>
+        </svg>
+
+        <svg class="product__rating-icon product__rating-icon--active" xmlns='http://www.w3.org/2000/svg'
+          aria-label="Star for rating five.">
+          <use href='./img/sprite.svg#star2'></use>
+        </svg>
+      </div>
+
+      <!-- Favorite -->
+      <button class="product__favorite" aria-label="Add to favorite.">
+        <svg xmlns='http://www.w3.org/2000/svg' aria-hidden="true">
+          <use href='./img/sprite.svg#heart'></use>
+        </svg>
+      </button>
+
+      <div class="product__discount">
+        -50%
+      </div>
+    </div>
+
+    <!-- Info -->
+    <div class="product__info product__info--white">
+
+      <!-- Product name -->
+      <a href="#" class="product__name">
+        Leather crossbody bag with gold hardware
+      </a>
+
+      <!-- Product prices -->
+      <div class="product__prices">
+        <span class="product__price product__price--h4 product__price--red product-grid__price">
+          $89.50
+        </span>
+
+        <span class="product__old-price">
+          $179.00
+        </span>
+      </div>
+
+      <!-- Product bottom -->
+      <div class="product__bottom">
+        <div class="product__details">
+
+          <!-- Sizes -->
+          <ul class="product__sizes sizes">
+            <li class="sizes__item">
+              <button class="sizes__button">
+                36
+              </button>
+            </li>
+
+            <li class="sizes__item">
+              <button class="sizes__button sizes__button--active">
+                37
+              </button>
+            </li>
+
+            <li class="sizes__item">
+              <button class="sizes__button">
+                42
+              </button>
+            </li>
+
+            <li class="sizes__item">
+              <button class="sizes__button">
+                43
+              </button>
+            </li>
+
+            <li class="sizes__item">
+              <button class="sizes__button">
+                44
+              </button>
+            </li>
+
+            <li class="sizes__item">
+              <button class="sizes__button">
+                45
+              </button>
+            </li>
+
+            <li class="sizes__item">
+              <button class="sizes__button">
+                46
+              </button>
+            </li>
+
+            <li class="sizes__item">
+              <button class="sizes__button">
+                47
+              </button>
+            </li>
+
+            <li class="sizes__item">
+              <button class="sizes__button">
+                48
+              </button>
+            </li>
+          </ul>
+
+          <!-- Colors -->
+          <ul class="product__colors colors">
+            <li class="colors__item">
+              <button class="colors__button colors__button--active" data-color="black"
+                aria-label="Choose black color.">1</button>
+            </li>
+
+            <li class="colors__item">
+              <button class="colors__button" data-color="brown" aria-label="Choose brown color.">2</button>
+            </li>
+
+            <li class="colors__item">
+              <button class="colors__button" data-color="light-blue" aria-label="Choose light-blue color.">3</button>
+            </li>
+          </ul>
+        </div>
+
+        <!-- Button-cart -->
+        <div class="product__button-wrapper">
+          <button class="product__button-cart btn btn--mid">
+            <svg xmlns='http://www.w3.org/2000/svg'>
+              <use href='./img/sprite.svg#cart'></use>
+            </svg>
+
+            Add to cart
+          </button>
+        </div>
+      </div>
+    </div>
+  </article>
+
+  <!-- Product 7 -->
+  <article class="product-grid__product product">
+
+    <!-- Look -->
+    <div class="product__look">
+
+      <!-- Microslider -->
+      <div class="product__image-wrapper microslider">
+
+        <!-- Image -->
+        <img src="./img/sale-bag.png" alt="Product image." class="product__image microslider__image"
+          id="microslider-image">
+
+        <!-- Sources for images -->
+        <ul class="microslider__srcs" aria-hidden="true">
+          <li class="microslider__src" data-src="./img/sale-bag.png"></li>
+          <li class="microslider__src" data-src="./img/sale-bag-2.jpg"></li>
+          <li class="microslider__src" data-src="./img/sale-bag-3.jpg"></li>
+        </ul>
+
+        <!-- Btns for microslider -->
+        <div class="microslider__btns">
+          <button class="microslider__button microslider__button--left" aria-label="Previous image of the product.">
+            <svg xmlns='http://www.w3.org/2000/svg' aria-hidden="true">
+              <use href='./img/sprite.svg#angle-down'></use>
+            </svg>
+          </button>
+
+          <button class="microslider__button microslider__button--right" aria-label="Next image of the product.">
+            <svg xmlns='http://www.w3.org/2000/svg' aria-hidden="true">
+              <use href='./img/sprite.svg#angle-down'></use>
+            </svg>
+          </button>
+        </div>
+
+        <!-- Link -->
+        <a href="#" class="product__image-link"></a>
+      </div>
+
+      <!-- Rating -->
+      <div class="product__rating product__rating--visible">
+        <svg class="product__rating-icon product__rating-icon--active" xmlns='http://www.w3.org/2000/svg'
+          aria-label="Star for rating one.">
+          <use href='./img/sprite.svg#star2'></use>
+        </svg>
+
+        <svg class="product__rating-icon product__rating-icon--active" xmlns='http://www.w3.org/2000/svg'
+          aria-label="Star for rating two.">
+          <use href='./img/sprite.svg#star2'></use>
+        </svg>
+
+        <svg class="product__rating-icon product__rating-icon--active" xmlns='http://www.w3.org/2000/svg'
+          aria-label="Star for rating three.">
+          <use href='./img/sprite.svg#star2'></use>
+        </svg>
+
+        <svg class="product__rating-icon product__rating-icon--active" xmlns='http://www.w3.org/2000/svg'
+          aria-label="Star for rating four.">
+          <use href='./img/sprite.svg#star2'></use>
+        </svg>
+
+        <svg class="product__rating-icon product__rating-icon--active" xmlns='http://www.w3.org/2000/svg'
+          aria-label="Star for rating five.">
+          <use href='./img/sprite.svg#star2'></use>
+        </svg>
+      </div>
+
+      <!-- Favorite -->
+      <button class="product__favorite" aria-label="Add to favorite.">
+        <svg xmlns='http://www.w3.org/2000/svg' aria-hidden="true">
+          <use href='./img/sprite.svg#heart'></use>
+        </svg>
+      </button>
+
+      <div class="product__discount">
+        -50%
+      </div>
+    </div>
+
+    <!-- Info -->
+    <div class="product__info product__info--white">
+
+      <!-- Product name -->
+      <a href="#" class="product__name">
+        Leather crossbody bag with gold hardware
+      </a>
+
+      <!-- Product prices -->
+      <div class="product__prices">
+        <span class="product__price product__price--h4 product__price--red product-grid__price">
+          $89.50
+        </span>
+
+        <span class="product__old-price">
+          $179.00
+        </span>
+      </div>
+
+      <!-- Product bottom -->
+      <div class="product__bottom">
+        <div class="product__details">
+
+          <!-- Sizes -->
+          <ul class="product__sizes sizes">
+            <li class="sizes__item">
+              <button class="sizes__button">
+                36
+              </button>
+            </li>
+
+            <li class="sizes__item">
+              <button class="sizes__button sizes__button--active">
+                37
+              </button>
+            </li>
+
+            <li class="sizes__item">
+              <button class="sizes__button">
+                42
+              </button>
+            </li>
+
+            <li class="sizes__item">
+              <button class="sizes__button">
+                43
+              </button>
+            </li>
+
+            <li class="sizes__item">
+              <button class="sizes__button">
+                44
+              </button>
+            </li>
+
+            <li class="sizes__item">
+              <button class="sizes__button">
+                45
+              </button>
+            </li>
+
+            <li class="sizes__item">
+              <button class="sizes__button">
+                46
+              </button>
+            </li>
+
+            <li class="sizes__item">
+              <button class="sizes__button">
+                47
+              </button>
+            </li>
+
+            <li class="sizes__item">
+              <button class="sizes__button">
+                48
+              </button>
+            </li>
+          </ul>
+
+          <!-- Colors -->
+          <ul class="product__colors colors">
+            <li class="colors__item">
+              <button class="colors__button colors__button--active" data-color="black"
+                aria-label="Choose black color.">1</button>
+            </li>
+
+            <li class="colors__item">
+              <button class="colors__button" data-color="brown" aria-label="Choose brown color.">2</button>
+            </li>
+
+            <li class="colors__item">
+              <button class="colors__button" data-color="light-blue" aria-label="Choose light-blue color.">3</button>
+            </li>
+          </ul>
+        </div>
+
+        <!-- Button-cart -->
+        <div class="product__button-wrapper">
+          <button class="product__button-cart btn btn--mid">
+            <svg xmlns='http://www.w3.org/2000/svg'>
+              <use href='./img/sprite.svg#cart'></use>
+            </svg>
+
+            Add to cart
+          </button>
+        </div>
+      </div>
+    </div>
+  </article>
+
+  <!-- Product 8 -->
+  <article class="product-grid__product product">
+
+    <!-- Look -->
+    <div class="product__look">
+
+      <!-- Microslider -->
+      <div class="product__image-wrapper microslider">
+
+        <!-- Image -->
+        <img src="./img/sale-bag.png" alt="Product image." class="product__image microslider__image"
+          id="microslider-image">
+
+        <!-- Sources for images -->
+        <ul class="microslider__srcs" aria-hidden="true">
+          <li class="microslider__src" data-src="./img/sale-bag.png"></li>
+          <li class="microslider__src" data-src="./img/sale-bag-2.jpg"></li>
+          <li class="microslider__src" data-src="./img/sale-bag-3.jpg"></li>
+        </ul>
+
+        <!-- Btns for microslider -->
+        <div class="microslider__btns">
+          <button class="microslider__button microslider__button--left" aria-label="Previous image of the product.">
+            <svg xmlns='http://www.w3.org/2000/svg' aria-hidden="true">
+              <use href='./img/sprite.svg#angle-down'></use>
+            </svg>
+          </button>
+
+          <button class="microslider__button microslider__button--right" aria-label="Next image of the product.">
+            <svg xmlns='http://www.w3.org/2000/svg' aria-hidden="true">
+              <use href='./img/sprite.svg#angle-down'></use>
+            </svg>
+          </button>
+        </div>
+
+        <!-- Link -->
+        <a href="#" class="product__image-link"></a>
+      </div>
+
+      <!-- Rating -->
+      <div class="product__rating product__rating--visible">
+        <svg class="product__rating-icon product__rating-icon--active" xmlns='http://www.w3.org/2000/svg'
+          aria-label="Star for rating one.">
+          <use href='./img/sprite.svg#star2'></use>
+        </svg>
+
+        <svg class="product__rating-icon product__rating-icon--active" xmlns='http://www.w3.org/2000/svg'
+          aria-label="Star for rating two.">
+          <use href='./img/sprite.svg#star2'></use>
+        </svg>
+
+        <svg class="product__rating-icon product__rating-icon--active" xmlns='http://www.w3.org/2000/svg'
+          aria-label="Star for rating three.">
+          <use href='./img/sprite.svg#star2'></use>
+        </svg>
+
+        <svg class="product__rating-icon product__rating-icon--active" xmlns='http://www.w3.org/2000/svg'
+          aria-label="Star for rating four.">
+          <use href='./img/sprite.svg#star2'></use>
+        </svg>
+
+        <svg class="product__rating-icon product__rating-icon--active" xmlns='http://www.w3.org/2000/svg'
+          aria-label="Star for rating five.">
+          <use href='./img/sprite.svg#star2'></use>
+        </svg>
+      </div>
+
+      <!-- Favorite -->
+      <button class="product__favorite" aria-label="Add to favorite.">
+        <svg xmlns='http://www.w3.org/2000/svg' aria-hidden="true">
+          <use href='./img/sprite.svg#heart'></use>
+        </svg>
+      </button>
+
+      <div class="product__discount">
+        -50%
+      </div>
+    </div>
+
+    <!-- Info -->
+    <div class="product__info product__info--white">
+
+      <!-- Product name -->
+      <a href="#" class="product__name">
+        Leather crossbody bag with gold hardware
+      </a>
+
+      <!-- Product prices -->
+      <div class="product__prices">
+        <span class="product__price product__price--h4 product__price--red product-grid__price">
+          $89.50
+        </span>
+
+        <span class="product__old-price">
+          $179.00
+        </span>
+      </div>
+
+      <!-- Product bottom -->
+      <div class="product__bottom">
+        <div class="product__details">
+
+          <!-- Sizes -->
+          <ul class="product__sizes sizes">
+            <li class="sizes__item">
+              <button class="sizes__button">
+                36
+              </button>
+            </li>
+
+            <li class="sizes__item">
+              <button class="sizes__button sizes__button--active">
+                37
+              </button>
+            </li>
+
+            <li class="sizes__item">
+              <button class="sizes__button">
+                42
+              </button>
+            </li>
+
+            <li class="sizes__item">
+              <button class="sizes__button">
+                43
+              </button>
+            </li>
+
+            <li class="sizes__item">
+              <button class="sizes__button">
+                44
+              </button>
+            </li>
+
+            <li class="sizes__item">
+              <button class="sizes__button">
+                45
+              </button>
+            </li>
+
+            <li class="sizes__item">
+              <button class="sizes__button">
+                46
+              </button>
+            </li>
+
+            <li class="sizes__item">
+              <button class="sizes__button">
+                47
+              </button>
+            </li>
+
+            <li class="sizes__item">
+              <button class="sizes__button">
+                48
+              </button>
+            </li>
+          </ul>
+
+          <!-- Colors -->
+          <ul class="product__colors colors">
+            <li class="colors__item">
+              <button class="colors__button colors__button--active" data-color="black"
+                aria-label="Choose black color.">1</button>
+            </li>
+
+            <li class="colors__item">
+              <button class="colors__button" data-color="brown" aria-label="Choose brown color.">2</button>
+            </li>
+
+            <li class="colors__item">
+              <button class="colors__button" data-color="light-blue" aria-label="Choose light-blue color.">3</button>
+            </li>
+          </ul>
+        </div>
+
+        <!-- Button-cart -->
+        <div class="product__button-wrapper">
+          <button class="product__button-cart btn btn--mid">
+            <svg xmlns='http://www.w3.org/2000/svg'>
+              <use href='./img/sprite.svg#cart'></use>
+            </svg>
+
+            Add to cart
+          </button>
+        </div>
+      </div>
+    </div>
+  </article>
+
+  <!-- Product 9 -->
+  <article class="product-grid__product product">
+
+    <!-- Look -->
+    <div class="product__look">
+
+      <!-- Microslider -->
+      <div class="product__image-wrapper microslider">
+
+        <!-- Image -->
+        <img src="./img/sale-bag.png" alt="Product image." class="product__image microslider__image"
+          id="microslider-image">
+
+        <!-- Sources for images -->
+        <ul class="microslider__srcs" aria-hidden="true">
+          <li class="microslider__src" data-src="./img/sale-bag.png"></li>
+          <li class="microslider__src" data-src="./img/sale-bag-2.jpg"></li>
+          <li class="microslider__src" data-src="./img/sale-bag-3.jpg"></li>
+        </ul>
+
+        <!-- Btns for microslider -->
+        <div class="microslider__btns">
+          <button class="microslider__button microslider__button--left" aria-label="Previous image of the product.">
+            <svg xmlns='http://www.w3.org/2000/svg' aria-hidden="true">
+              <use href='./img/sprite.svg#angle-down'></use>
+            </svg>
+          </button>
+
+          <button class="microslider__button microslider__button--right" aria-label="Next image of the product.">
+            <svg xmlns='http://www.w3.org/2000/svg' aria-hidden="true">
+              <use href='./img/sprite.svg#angle-down'></use>
+            </svg>
+          </button>
+        </div>
+
+        <!-- Link -->
+        <a href="#" class="product__image-link"></a>
+      </div>
+
+      <!-- Rating -->
+      <div class="product__rating product__rating--visible">
+        <svg class="product__rating-icon product__rating-icon--active" xmlns='http://www.w3.org/2000/svg'
+          aria-label="Star for rating one.">
+          <use href='./img/sprite.svg#star2'></use>
+        </svg>
+
+        <svg class="product__rating-icon product__rating-icon--active" xmlns='http://www.w3.org/2000/svg'
+          aria-label="Star for rating two.">
+          <use href='./img/sprite.svg#star2'></use>
+        </svg>
+
+        <svg class="product__rating-icon product__rating-icon--active" xmlns='http://www.w3.org/2000/svg'
+          aria-label="Star for rating three.">
+          <use href='./img/sprite.svg#star2'></use>
+        </svg>
+
+        <svg class="product__rating-icon product__rating-icon--active" xmlns='http://www.w3.org/2000/svg'
+          aria-label="Star for rating four.">
+          <use href='./img/sprite.svg#star2'></use>
+        </svg>
+
+        <svg class="product__rating-icon product__rating-icon--active" xmlns='http://www.w3.org/2000/svg'
+          aria-label="Star for rating five.">
+          <use href='./img/sprite.svg#star2'></use>
+        </svg>
+      </div>
+
+      <!-- Favorite -->
+      <button class="product__favorite" aria-label="Add to favorite.">
+        <svg xmlns='http://www.w3.org/2000/svg' aria-hidden="true">
+          <use href='./img/sprite.svg#heart'></use>
+        </svg>
+      </button>
+
+      <div class="product__discount">
+        -50%
+      </div>
+    </div>
+
+    <!-- Info -->
+    <div class="product__info product__info--white">
+
+      <!-- Product name -->
+      <a href="#" class="product__name">
+        Leather crossbody bag with gold hardware
+      </a>
+
+      <!-- Product prices -->
+      <div class="product__prices">
+        <span class="product__price product__price--h4 product__price--red product-grid__price">
+          $89.50
+        </span>
+
+        <span class="product__old-price">
+          $179.00
+        </span>
+      </div>
+
+      <!-- Product bottom -->
+      <div class="product__bottom">
+        <div class="product__details">
+
+          <!-- Sizes -->
+          <ul class="product__sizes sizes">
+            <li class="sizes__item">
+              <button class="sizes__button">
+                36
+              </button>
+            </li>
+
+            <li class="sizes__item">
+              <button class="sizes__button sizes__button--active">
+                37
+              </button>
+            </li>
+
+            <li class="sizes__item">
+              <button class="sizes__button">
+                42
+              </button>
+            </li>
+
+            <li class="sizes__item">
+              <button class="sizes__button">
+                43
+              </button>
+            </li>
+
+            <li class="sizes__item">
+              <button class="sizes__button">
+                44
+              </button>
+            </li>
+
+            <li class="sizes__item">
+              <button class="sizes__button">
+                45
+              </button>
+            </li>
+
+            <li class="sizes__item">
+              <button class="sizes__button">
+                46
+              </button>
+            </li>
+
+            <li class="sizes__item">
+              <button class="sizes__button">
+                47
+              </button>
+            </li>
+
+            <li class="sizes__item">
+              <button class="sizes__button">
+                48
+              </button>
+            </li>
+          </ul>
+
+          <!-- Colors -->
+          <ul class="product__colors colors">
+            <li class="colors__item">
+              <button class="colors__button colors__button--active" data-color="black"
+                aria-label="Choose black color.">1</button>
+            </li>
+
+            <li class="colors__item">
+              <button class="colors__button" data-color="brown" aria-label="Choose brown color.">2</button>
+            </li>
+
+            <li class="colors__item">
+              <button class="colors__button" data-color="light-blue" aria-label="Choose light-blue color.">3</button>
+            </li>
+          </ul>
+        </div>
+
+        <!-- Button-cart -->
+        <div class="product__button-wrapper">
+          <button class="product__button-cart btn btn--mid">
+            <svg xmlns='http://www.w3.org/2000/svg'>
+              <use href='./img/sprite.svg#cart'></use>
+            </svg>
+
+            Add to cart
+          </button>
+        </div>
+      </div>
+    </div>
+  </article>
+
+  <!-- Product 10 -->
+  <article class="product-grid__product product">
+
+    <!-- Look -->
+    <div class="product__look">
+
+      <!-- Microslider -->
+      <div class="product__image-wrapper microslider">
+
+        <!-- Image -->
+        <img src="./img/sale-bag.png" alt="Product image." class="product__image microslider__image"
+          id="microslider-image">
+
+        <!-- Sources for images -->
+        <ul class="microslider__srcs" aria-hidden="true">
+          <li class="microslider__src" data-src="./img/sale-bag.png"></li>
+          <li class="microslider__src" data-src="./img/sale-bag-2.jpg"></li>
+          <li class="microslider__src" data-src="./img/sale-bag-3.jpg"></li>
+        </ul>
+
+        <!-- Btns for microslider -->
+        <div class="microslider__btns">
+          <button class="microslider__button microslider__button--left" aria-label="Previous image of the product.">
+            <svg xmlns='http://www.w3.org/2000/svg' aria-hidden="true">
+              <use href='./img/sprite.svg#angle-down'></use>
+            </svg>
+          </button>
+
+          <button class="microslider__button microslider__button--right" aria-label="Next image of the product.">
+            <svg xmlns='http://www.w3.org/2000/svg' aria-hidden="true">
+              <use href='./img/sprite.svg#angle-down'></use>
+            </svg>
+          </button>
+        </div>
+
+        <!-- Link -->
+        <a href="#" class="product__image-link"></a>
+      </div>
+
+      <!-- Rating -->
+      <div class="product__rating product__rating--visible">
+        <svg class="product__rating-icon product__rating-icon--active" xmlns='http://www.w3.org/2000/svg'
+          aria-label="Star for rating one.">
+          <use href='./img/sprite.svg#star2'></use>
+        </svg>
+
+        <svg class="product__rating-icon product__rating-icon--active" xmlns='http://www.w3.org/2000/svg'
+          aria-label="Star for rating two.">
+          <use href='./img/sprite.svg#star2'></use>
+        </svg>
+
+        <svg class="product__rating-icon product__rating-icon--active" xmlns='http://www.w3.org/2000/svg'
+          aria-label="Star for rating three.">
+          <use href='./img/sprite.svg#star2'></use>
+        </svg>
+
+        <svg class="product__rating-icon product__rating-icon--active" xmlns='http://www.w3.org/2000/svg'
+          aria-label="Star for rating four.">
+          <use href='./img/sprite.svg#star2'></use>
+        </svg>
+
+        <svg class="product__rating-icon product__rating-icon--active" xmlns='http://www.w3.org/2000/svg'
+          aria-label="Star for rating five.">
+          <use href='./img/sprite.svg#star2'></use>
+        </svg>
+      </div>
+
+      <!-- Favorite -->
+      <button class="product__favorite" aria-label="Add to favorite.">
+        <svg xmlns='http://www.w3.org/2000/svg' aria-hidden="true">
+          <use href='./img/sprite.svg#heart'></use>
+        </svg>
+      </button>
+
+      <div class="product__discount">
+        -50%
+      </div>
+    </div>
+
+    <!-- Info -->
+    <div class="product__info product__info--white">
+
+      <!-- Product name -->
+      <a href="#" class="product__name">
+        Leather crossbody bag with gold hardware
+      </a>
+
+      <!-- Product prices -->
+      <div class="product__prices">
+        <span class="product__price product__price--h4 product__price--red product-grid__price">
+          $89.50
+        </span>
+
+        <span class="product__old-price">
+          $179.00
+        </span>
+      </div>
+
+      <!-- Product bottom -->
+      <div class="product__bottom">
+        <div class="product__details">
+
+          <!-- Sizes -->
+          <ul class="product__sizes sizes">
+            <li class="sizes__item">
+              <button class="sizes__button">
+                36
+              </button>
+            </li>
+
+            <li class="sizes__item">
+              <button class="sizes__button sizes__button--active">
+                37
+              </button>
+            </li>
+
+            <li class="sizes__item">
+              <button class="sizes__button">
+                42
+              </button>
+            </li>
+
+            <li class="sizes__item">
+              <button class="sizes__button">
+                43
+              </button>
+            </li>
+
+            <li class="sizes__item">
+              <button class="sizes__button">
+                44
+              </button>
+            </li>
+
+            <li class="sizes__item">
+              <button class="sizes__button">
+                45
+              </button>
+            </li>
+
+            <li class="sizes__item">
+              <button class="sizes__button">
+                46
+              </button>
+            </li>
+
+            <li class="sizes__item">
+              <button class="sizes__button">
+                47
+              </button>
+            </li>
+
+            <li class="sizes__item">
+              <button class="sizes__button">
+                48
+              </button>
+            </li>
+          </ul>
+
+          <!-- Colors -->
+          <ul class="product__colors colors">
+            <li class="colors__item">
+              <button class="colors__button colors__button--active" data-color="black"
+                aria-label="Choose black color.">1</button>
+            </li>
+
+            <li class="colors__item">
+              <button class="colors__button" data-color="brown" aria-label="Choose brown color.">2</button>
+            </li>
+
+            <li class="colors__item">
+              <button class="colors__button" data-color="light-blue" aria-label="Choose light-blue color.">3</button>
+            </li>
+          </ul>
+        </div>
+
+        <!-- Button-cart -->
+        <div class="product__button-wrapper">
+          <button class="product__button-cart btn btn--mid">
+            <svg xmlns='http://www.w3.org/2000/svg'>
+              <use href='./img/sprite.svg#cart'></use>
+            </svg>
+
+            Add to cart
+          </button>
+        </div>
+      </div>
+    </div>
+  </article>
+
+  <!-- Product 11 -->
+  <article class="product-grid__product product">
+
+    <!-- Look -->
+    <div class="product__look">
+
+      <!-- Microslider -->
+      <div class="product__image-wrapper microslider">
+
+        <!-- Image -->
+        <img src="./img/sale-bag.png" alt="Product image." class="product__image microslider__image"
+          id="microslider-image">
+
+        <!-- Sources for images -->
+        <ul class="microslider__srcs" aria-hidden="true">
+          <li class="microslider__src" data-src="./img/sale-bag.png"></li>
+          <li class="microslider__src" data-src="./img/sale-bag-2.jpg"></li>
+          <li class="microslider__src" data-src="./img/sale-bag-3.jpg"></li>
+        </ul>
+
+        <!-- Btns for microslider -->
+        <div class="microslider__btns">
+          <button class="microslider__button microslider__button--left" aria-label="Previous image of the product.">
+            <svg xmlns='http://www.w3.org/2000/svg' aria-hidden="true">
+              <use href='./img/sprite.svg#angle-down'></use>
+            </svg>
+          </button>
+
+          <button class="microslider__button microslider__button--right" aria-label="Next image of the product.">
+            <svg xmlns='http://www.w3.org/2000/svg' aria-hidden="true">
+              <use href='./img/sprite.svg#angle-down'></use>
+            </svg>
+          </button>
+        </div>
+
+        <!-- Link -->
+        <a href="#" class="product__image-link"></a>
+      </div>
+
+      <!-- Rating -->
+      <div class="product__rating product__rating--visible">
+        <svg class="product__rating-icon product__rating-icon--active" xmlns='http://www.w3.org/2000/svg'
+          aria-label="Star for rating one.">
+          <use href='./img/sprite.svg#star2'></use>
+        </svg>
+
+        <svg class="product__rating-icon product__rating-icon--active" xmlns='http://www.w3.org/2000/svg'
+          aria-label="Star for rating two.">
+          <use href='./img/sprite.svg#star2'></use>
+        </svg>
+
+        <svg class="product__rating-icon product__rating-icon--active" xmlns='http://www.w3.org/2000/svg'
+          aria-label="Star for rating three.">
+          <use href='./img/sprite.svg#star2'></use>
+        </svg>
+
+        <svg class="product__rating-icon product__rating-icon--active" xmlns='http://www.w3.org/2000/svg'
+          aria-label="Star for rating four.">
+          <use href='./img/sprite.svg#star2'></use>
+        </svg>
+
+        <svg class="product__rating-icon product__rating-icon--active" xmlns='http://www.w3.org/2000/svg'
+          aria-label="Star for rating five.">
+          <use href='./img/sprite.svg#star2'></use>
+        </svg>
+      </div>
+
+      <!-- Favorite -->
+      <button class="product__favorite" aria-label="Add to favorite.">
+        <svg xmlns='http://www.w3.org/2000/svg' aria-hidden="true">
+          <use href='./img/sprite.svg#heart'></use>
+        </svg>
+      </button>
+
+      <div class="product__discount">
+        -50%
+      </div>
+    </div>
+
+    <!-- Info -->
+    <div class="product__info product__info--white">
+
+      <!-- Product name -->
+      <a href="#" class="product__name">
+        Leather crossbody bag with gold hardware
+      </a>
+
+      <!-- Product prices -->
+      <div class="product__prices">
+        <span class="product__price product__price--h4 product__price--red product-grid__price">
+          $89.50
+        </span>
+
+        <span class="product__old-price">
+          $179.00
+        </span>
+      </div>
+
+      <!-- Product bottom -->
+      <div class="product__bottom">
+        <div class="product__details">
+
+          <!-- Sizes -->
+          <ul class="product__sizes sizes">
+            <li class="sizes__item">
+              <button class="sizes__button">
+                36
+              </button>
+            </li>
+
+            <li class="sizes__item">
+              <button class="sizes__button sizes__button--active">
+                37
+              </button>
+            </li>
+
+            <li class="sizes__item">
+              <button class="sizes__button">
+                42
+              </button>
+            </li>
+
+            <li class="sizes__item">
+              <button class="sizes__button">
+                43
+              </button>
+            </li>
+
+            <li class="sizes__item">
+              <button class="sizes__button">
+                44
+              </button>
+            </li>
+
+            <li class="sizes__item">
+              <button class="sizes__button">
+                45
+              </button>
+            </li>
+
+            <li class="sizes__item">
+              <button class="sizes__button">
+                46
+              </button>
+            </li>
+
+            <li class="sizes__item">
+              <button class="sizes__button">
+                47
+              </button>
+            </li>
+
+            <li class="sizes__item">
+              <button class="sizes__button">
+                48
+              </button>
+            </li>
+          </ul>
+
+          <!-- Colors -->
+          <ul class="product__colors colors">
+            <li class="colors__item">
+              <button class="colors__button colors__button--active" data-color="black"
+                aria-label="Choose black color.">1</button>
+            </li>
+
+            <li class="colors__item">
+              <button class="colors__button" data-color="brown" aria-label="Choose brown color.">2</button>
+            </li>
+
+            <li class="colors__item">
+              <button class="colors__button" data-color="light-blue" aria-label="Choose light-blue color.">3</button>
+            </li>
+          </ul>
+        </div>
+
+        <!-- Button-cart -->
+        <div class="product__button-wrapper">
+          <button class="product__button-cart btn btn--mid">
+            <svg xmlns='http://www.w3.org/2000/svg'>
+              <use href='./img/sprite.svg#cart'></use>
+            </svg>
+
+            Add to cart
+          </button>
+        </div>
+      </div>
+    </div>
+  </article>
+
+  <!-- Product 12 -->
+  <article class="product-grid__product product">
+
+    <!-- Look -->
+    <div class="product__look">
+
+      <!-- Microslider -->
+      <div class="product__image-wrapper microslider">
+
+        <!-- Image -->
+        <img src="./img/sale-bag.png" alt="Product image." class="product__image microslider__image"
+          id="microslider-image">
+
+        <!-- Sources for images -->
+        <ul class="microslider__srcs" aria-hidden="true">
+          <li class="microslider__src" data-src="./img/sale-bag.png"></li>
+          <li class="microslider__src" data-src="./img/sale-bag-2.jpg"></li>
+          <li class="microslider__src" data-src="./img/sale-bag-3.jpg"></li>
+        </ul>
+
+        <!-- Btns for microslider -->
+        <div class="microslider__btns">
+          <button class="microslider__button microslider__button--left" aria-label="Previous image of the product.">
+            <svg xmlns='http://www.w3.org/2000/svg' aria-hidden="true">
+              <use href='./img/sprite.svg#angle-down'></use>
+            </svg>
+          </button>
+
+          <button class="microslider__button microslider__button--right" aria-label="Next image of the product.">
+            <svg xmlns='http://www.w3.org/2000/svg' aria-hidden="true">
+              <use href='./img/sprite.svg#angle-down'></use>
+            </svg>
+          </button>
+        </div>
+
+        <!-- Link -->
+        <a href="#" class="product__image-link"></a>
+      </div>
+
+      <!-- Rating -->
+      <div class="product__rating product__rating--visible">
+        <svg class="product__rating-icon product__rating-icon--active" xmlns='http://www.w3.org/2000/svg'
+          aria-label="Star for rating one.">
+          <use href='./img/sprite.svg#star2'></use>
+        </svg>
+
+        <svg class="product__rating-icon product__rating-icon--active" xmlns='http://www.w3.org/2000/svg'
+          aria-label="Star for rating two.">
+          <use href='./img/sprite.svg#star2'></use>
+        </svg>
+
+        <svg class="product__rating-icon product__rating-icon--active" xmlns='http://www.w3.org/2000/svg'
+          aria-label="Star for rating three.">
+          <use href='./img/sprite.svg#star2'></use>
+        </svg>
+
+        <svg class="product__rating-icon product__rating-icon--active" xmlns='http://www.w3.org/2000/svg'
+          aria-label="Star for rating four.">
+          <use href='./img/sprite.svg#star2'></use>
+        </svg>
+
+        <svg class="product__rating-icon product__rating-icon--active" xmlns='http://www.w3.org/2000/svg'
+          aria-label="Star for rating five.">
+          <use href='./img/sprite.svg#star2'></use>
+        </svg>
+      </div>
+
+      <!-- Favorite -->
+      <button class="product__favorite" aria-label="Add to favorite.">
+        <svg xmlns='http://www.w3.org/2000/svg' aria-hidden="true">
+          <use href='./img/sprite.svg#heart'></use>
+        </svg>
+      </button>
+
+      <div class="product__discount">
+        -50%
+      </div>
+    </div>
+
+    <!-- Info -->
+    <div class="product__info product__info--white">
+
+      <!-- Product name -->
+      <a href="#" class="product__name">
+        Leather crossbody bag with gold hardware
+      </a>
+
+      <!-- Product prices -->
+      <div class="product__prices">
+        <span class="product__price product__price--h4 product__price--red product-grid__price">
+          $89.50
+        </span>
+
+        <span class="product__old-price">
+          $179.00
+        </span>
+      </div>
+
+      <!-- Product bottom -->
+      <div class="product__bottom">
+        <div class="product__details">
+
+          <!-- Sizes -->
+          <ul class="product__sizes sizes">
+            <li class="sizes__item">
+              <button class="sizes__button">
+                36
+              </button>
+            </li>
+
+            <li class="sizes__item">
+              <button class="sizes__button sizes__button--active">
+                37
+              </button>
+            </li>
+
+            <li class="sizes__item">
+              <button class="sizes__button">
+                42
+              </button>
+            </li>
+
+            <li class="sizes__item">
+              <button class="sizes__button">
+                43
+              </button>
+            </li>
+
+            <li class="sizes__item">
+              <button class="sizes__button">
+                44
+              </button>
+            </li>
+
+            <li class="sizes__item">
+              <button class="sizes__button">
+                45
+              </button>
+            </li>
+
+            <li class="sizes__item">
+              <button class="sizes__button">
+                46
+              </button>
+            </li>
+
+            <li class="sizes__item">
+              <button class="sizes__button">
+                47
+              </button>
+            </li>
+
+            <li class="sizes__item">
+              <button class="sizes__button">
+                48
+              </button>
+            </li>
+          </ul>
+
+          <!-- Colors -->
+          <ul class="product__colors colors">
+            <li class="colors__item">
+              <button class="colors__button colors__button--active" data-color="black"
+                aria-label="Choose black color.">1</button>
+            </li>
+
+            <li class="colors__item">
+              <button class="colors__button" data-color="brown" aria-label="Choose brown color.">2</button>
+            </li>
+
+            <li class="colors__item">
+              <button class="colors__button" data-color="light-blue" aria-label="Choose light-blue color.">3</button>
+            </li>
+          </ul>
+        </div>
+
+        <!-- Button-cart -->
+        <div class="product__button-wrapper">
+          <button class="product__button-cart btn btn--mid">
+            <svg xmlns='http://www.w3.org/2000/svg'>
+              <use href='./img/sprite.svg#cart'></use>
+            </svg>
+
+            Add to cart
+          </button>
+        </div>
+      </div>
+    </div>
+  </article>
 </div>

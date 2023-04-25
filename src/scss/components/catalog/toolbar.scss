@@ -1,25 +1,44 @@
 @use "../../util/" as *;
 
 .toolbar {
-  grid-column: 2 / 3;
-  grid-row: 1 / 2;
   height: auto;
 
   &__container {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: 1fr 1.12fr 1fr;
   }
 
   &__title {
     margin-right: rem(12);
     font: var(--base-bold);
+    white-space: nowrap;
     color: var(--gray900-color);
   }
 
-  // Sort
+  // Sort by
   &__sort {
     display: flex;
     align-items: center;
+
+    &-select {
+      width: 100%;
+      max-width: rem(170);
+    }
+
+    &-head {
+      justify-content: space-between;
+      padding-right: rem(17);
+      padding-left: rem(12);
+
+      svg {
+        width: rem(11);
+        height: rem(10);
+      }
+    }
+
+    &-wrapper {
+      width: 100%;
+    }
   }
 
   // Show
@@ -28,6 +47,7 @@
     align-items: center;
   }
 
+  // Input number
   &__input-number {
     margin-right: rem(12);
   }
@@ -35,5 +55,11 @@
   &__text {
     font: var(--small-regular);
     color: var(--gray700-color);
+  }
+
+  // Pagination
+  &__pagination {
+    justify-self: end;
+    padding-right: rem(1.5);
   }
 }

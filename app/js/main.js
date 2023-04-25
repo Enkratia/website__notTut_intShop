@@ -564,6 +564,60 @@ if (_vars__WEBPACK_IMPORTED_MODULE_0__.$sidebarFilterTops[0]) {
 
 /***/ }),
 
+/***/ "./src/js/components/input-number.js":
+/*!*******************************************!*\
+  !*** ./src/js/components/input-number.js ***!
+  \*******************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _vars__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../vars */ "./src/js/vars.js");
+
+
+// F(s)
+// **
+function isInputValid(e) {
+  if (e.key === "PageUp" || e.key === "ArrowUp") {
+    if (this.value > 998) return;
+    this.value = parseInt(this.value) + 1;
+    return;
+  }
+  if (e.key === "PageDown" || e.key === "ArrowDown") {
+    if (this.value < 1) return;
+    this.value = parseInt(this.value) - 1;
+    return;
+  }
+  if (!this.value.match(/^\d*$/)) {
+    this.value = this.value.replace(/\D/g, "");
+  }
+}
+
+// **
+function changeInputValue() {
+  const input = this.parentElement.previousElementSibling;
+  if (this.classList.contains("input-number__btn--upper")) {
+    if (input.value > 998) return;
+    input.value = parseInt(input.value) + 1;
+    return;
+  }
+  if (input.value < 1) return;
+  input.value = parseInt(input.value) - 1;
+}
+
+// L(s)
+// **
+_vars__WEBPACK_IMPORTED_MODULE_0__.$inputNumberInputs.forEach(el => {
+  el.addEventListener("keyup", isInputValid);
+});
+
+// **
+_vars__WEBPACK_IMPORTED_MODULE_0__.$inputNumberBtns.forEach(el => {
+  el.addEventListener("click", changeInputValue);
+});
+
+/***/ }),
+
 /***/ "./src/js/components/login.js":
 /*!************************************!*\
   !*** ./src/js/components/login.js ***!
@@ -1030,6 +1084,317 @@ if (_vars__WEBPACK_IMPORTED_MODULE_0__.$counters) {
 
 /***/ }),
 
+/***/ "./src/js/components/tool-pag.js":
+/*!***************************************!*\
+  !*** ./src/js/components/tool-pag.js ***!
+  \***************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _vars__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../vars */ "./src/js/vars.js");
+
+let page = 1;
+let totalPages = 10;
+let activePag;
+let chosenPag;
+const leftArrows = document.querySelectorAll("[data-toolpag='arrow-left']");
+const rightArrows = document.querySelectorAll("[data-toolpag='arrow-right']");
+const rightDots = document.querySelector("[data-toolpag='dots-right']");
+if (rightDots) {
+  // F(s)
+  // **
+  function goFarAhead() {
+    rightArrows.forEach(el => {
+      for (let i = 0; i < 5; i++) {
+        el.click();
+        if (page === totalPages) break;
+      }
+    });
+  }
+
+  // **
+  function goFarBack() {
+    leftArrows.forEach(el => {
+      for (let i = 0; i < 5; i++) {
+        el.click();
+        if (page === 1) break;
+      }
+    });
+  }
+
+  // **
+  function createRightDots(el) {
+    const penultEl = el.querySelector(`[data-toolpag='${totalPages - 1}']`);
+    penultEl.querySelector(".tool-pag__link").textContent = "...";
+    penultEl.setAttribute("data-toolpag", "dots-right");
+    const rightDots = el.querySelector("[data-toolpag='dots-right']");
+    rightDots.addEventListener("click", goFarAhead);
+    rightDots.removeEventListener("click", changePag);
+  }
+
+  // **
+  function destroyRightDots(el) {
+    const dotsRight = el.querySelector(`[data-toolpag='dots-right']`);
+    if (!dotsRight) return;
+    dotsRight.querySelector(".tool-pag__link").textContent = `${totalPages - 1}`;
+    dotsRight.setAttribute("data-toolpag", `${totalPages - 1}`);
+    const penultPag = el.querySelector(`[data-toolpag='${totalPages - 1}']`);
+    penultPag.addEventListener("click", changePag);
+    penultPag.removeEventListener("click", goFarAhead);
+  }
+
+  // **
+  function createLeftDots(el) {
+    const secondEl = el.querySelector(`[data-toolpag='2']`);
+    secondEl.querySelector(".tool-pag__link").textContent = "...";
+    secondEl.setAttribute("data-toolpag", "dots-left");
+    const leftDots = el.querySelector("[data-toolpag='dots-left']");
+    leftDots.addEventListener("click", goFarBack);
+    leftDots.removeEventListener("click", changePag);
+  }
+
+  // **
+  function destroyLeftDots(el) {
+    const dotsLeft = el.querySelector(`[data-toolpag='dots-left']`);
+    if (!dotsLeft) return;
+    dotsLeft.querySelector(".tool-pag__link").textContent = '2';
+    dotsLeft.setAttribute("data-toolpag", '2');
+    const secondPag = el.querySelector(`[data-toolpag='2']`);
+    secondPag.addEventListener("click", changePag);
+    secondPag.removeEventListener("click", goFarBack);
+  }
+
+  // **
+  function rearrangeActiveClass() {
+    _vars__WEBPACK_IMPORTED_MODULE_0__.$toolPags.forEach(el => {
+      el.querySelector(".tool-pag__item--active")?.classList.remove("tool-pag__item--active");
+      el.querySelector(`[data-toolpag='${page}']`).classList.add("tool-pag__item--active");
+    });
+  }
+
+  // **
+  function createPrevPag(el, page) {
+    el.querySelector(`[data-toolpag='${page}']`).insertAdjacentHTML("beforebegin", `
+    <li class="tool-pag__item" data-toolpag="${page - 1}">
+      <a href="#" class="tool-pag__link">
+      ${page - 1}
+      </a>
+    </li>
+  `);
+    const prevPag = el.parentElement.querySelector(`[data-toolpag='${page - 1}']`);
+    prevPag.addEventListener("click", changePag);
+  }
+
+  // **
+  function createNextPag(el, page) {
+    el.querySelector(`[data-toolpag='${page}']`).insertAdjacentHTML("afterend", `
+    <li class="tool-pag__item" data-toolpag="${page + 1}">
+      <a href="#" class="tool-pag__link">
+      ${page + 1}
+      </a>
+    </li>
+  `);
+    const nextPag = el.parentElement.querySelector(`[data-toolpag='${page + 1}']`);
+    nextPag.addEventListener("click", changePag);
+  }
+
+  // **
+  function destroyLeftPage(el) {
+    el.querySelector(`[data-toolpag='${page - 2}']`)?.remove();
+  }
+
+  // **
+  function destroyRightPage(el) {
+    el.querySelector(`[data-toolpag='${page + 2}']`)?.remove();
+  }
+
+  // ***
+  function changePag() {
+    page = parseInt(this.dataset.toolpag);
+    _vars__WEBPACK_IMPORTED_MODULE_0__.$toolPags.forEach(el => {
+      activePag = el.querySelector(".tool-pag__item--active");
+      chosenPag = el.querySelector(`[data-toolpag='${page}']`);
+    });
+    if (chosenPag === activePag) return;
+    rightArrows.forEach(el => el.classList.toggle("tool-pag__item--inactive", page === totalPages));
+    leftArrows.forEach(el => el.classList.toggle("tool-pag__item--inactive", page === 1));
+    if (page === 1) {
+      _vars__WEBPACK_IMPORTED_MODULE_0__.$toolPags.forEach(el => {
+        const liElems = el.children;
+        const liElemsLength = liElems.length;
+        for (let i = 0; i < liElemsLength - 4; i++) {
+          liElems[2].remove();
+        }
+        for (let i = 0; i < 2; i++) {
+          createNextPag(el, 1 + i);
+        }
+        liElems[3].insertAdjacentHTML("afterend", `
+        <li class="tool-pag__item" data-toolpag="dots-right">
+          <a href="#" class="tool-pag__link">
+            ...
+          </a>
+        </li>
+      `);
+      });
+      rearrangeActiveClass();
+      return;
+    }
+    if (page === totalPages) {
+      _vars__WEBPACK_IMPORTED_MODULE_0__.$toolPags.forEach(el => {
+        const liElems = el.children;
+        const liElemsLength = liElems.length;
+        for (let i = 0; i < liElemsLength - 4; i++) {
+          liElems[2].remove();
+        }
+        for (let i = 0; i < 2; i++) {
+          createPrevPag(el, totalPages - i);
+        }
+        liElems[1].insertAdjacentHTML("afterend", `
+        <li class="tool-pag__item" data-toolpag="dots-left">
+          <a href="#" class="tool-pag__link">
+            ...
+          </a>
+        </li>
+      `);
+      });
+      rearrangeActiveClass();
+      return;
+    }
+    _vars__WEBPACK_IMPORTED_MODULE_0__.$toolPags.forEach(el => {
+      if (chosenPag === activePag.previousElementSibling) {
+        leftArrows.forEach(el => {
+          ++page;
+          el.click();
+        });
+      } else if (chosenPag === activePag.nextElementSibling) {
+        rightArrows.forEach(el => {
+          --page;
+          el.click();
+        });
+      } else if (page === 3) {
+        _vars__WEBPACK_IMPORTED_MODULE_0__.$toolPags.forEach(el => {
+          createNextPag(el, page);
+        });
+      } else if (page === totalPages - 2) {
+        _vars__WEBPACK_IMPORTED_MODULE_0__.$toolPags.forEach(el => {
+          createPrevPag(el, page);
+        });
+      }
+      ;
+      rearrangeActiveClass();
+    });
+  }
+
+  // ***
+  function toNextPag() {
+    page += 1;
+    leftArrows.forEach(el => el.classList.remove("tool-pag__item--inactive"));
+    rearrangeActiveClass();
+    if (page === totalPages) {
+      rightArrows.forEach(el => el.classList.add("tool-pag__item--inactive"));
+      return;
+    }
+    if (page === 3) {
+      _vars__WEBPACK_IMPORTED_MODULE_0__.$toolPags.forEach(el => {
+        createNextPag(el, page);
+      });
+      return;
+    }
+    if (page === 4) {
+      _vars__WEBPACK_IMPORTED_MODULE_0__.$toolPags.forEach(el => {
+        createNextPag(el, page);
+        createLeftDots(el);
+      });
+      return;
+    }
+    if (page > totalPages - 2) {
+      _vars__WEBPACK_IMPORTED_MODULE_0__.$toolPags.forEach(el => {
+        destroyLeftPage(el);
+      });
+      return;
+    }
+    if (page > 4) {
+      _vars__WEBPACK_IMPORTED_MODULE_0__.$toolPags.forEach(el => {
+        if (page <= totalPages - 3) createNextPag(el, page);
+        destroyLeftPage(el);
+        if (page === totalPages - 2) {
+          destroyRightDots(el);
+        }
+      });
+    }
+  }
+
+  // ***
+  function toPrevPag() {
+    page -= 1;
+    rightArrows.forEach(el => el.classList.remove("tool-pag__item--inactive"));
+    rearrangeActiveClass();
+    if (page === 1) {
+      leftArrows.forEach(el => el.classList.add("tool-pag__item--inactive"));
+      return;
+    }
+    if (page === totalPages - 2) {
+      _vars__WEBPACK_IMPORTED_MODULE_0__.$toolPags.forEach(el => {
+        createPrevPag(el, page);
+      });
+      return;
+    }
+    if (page === totalPages - 3) {
+      _vars__WEBPACK_IMPORTED_MODULE_0__.$toolPags.forEach(el => {
+        createPrevPag(el, page);
+        createRightDots(el);
+      });
+      return;
+    }
+    if (page === 2) {
+      _vars__WEBPACK_IMPORTED_MODULE_0__.$toolPags.forEach(el => {
+        destroyRightPage(el);
+      });
+      return;
+    }
+    if (page === 3) {
+      _vars__WEBPACK_IMPORTED_MODULE_0__.$toolPags.forEach(el => {
+        destroyLeftDots(el);
+        destroyRightPage(el);
+      });
+      return;
+    }
+    if (page < totalPages - 3) {
+      _vars__WEBPACK_IMPORTED_MODULE_0__.$toolPags.forEach(el => {
+        createPrevPag(el, page);
+        destroyRightPage(el);
+      });
+    }
+  }
+
+  // L(s)
+  // **
+  _vars__WEBPACK_IMPORTED_MODULE_0__.$toolPags.forEach(el => {
+    for (let i = 0; i < el.children.length; i++) {
+      if (i == 1 || i == 2 || i == 3 || i == 5) {
+        let numPag = el.children[i];
+        numPag.addEventListener("click", changePag);
+      }
+    }
+  });
+
+  // **
+  rightArrows.forEach(el => {
+    el.addEventListener("click", toNextPag);
+  });
+
+  // **
+  leftArrows.forEach(el => {
+    el.addEventListener("click", toPrevPag);
+  });
+
+  // **
+  rightDots.addEventListener("click", goFarAhead);
+}
+
+/***/ }),
+
 /***/ "./src/js/components/top-nav.js":
 /*!**************************************!*\
   !*** ./src/js/components/top-nav.js ***!
@@ -1073,9 +1438,12 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "$counters": () => (/* binding */ $counters),
 /* harmony export */   "$customCheckboxes": () => (/* binding */ $customCheckboxes),
 /* harmony export */   "$customSelects": () => (/* binding */ $customSelects),
+/* harmony export */   "$filterSliderInputs": () => (/* binding */ $filterSliderInputs),
 /* harmony export */   "$filterSliderRange": () => (/* binding */ $filterSliderRange),
 /* harmony export */   "$headerMainContainer": () => (/* binding */ $headerMainContainer),
 /* harmony export */   "$headerTopContainer": () => (/* binding */ $headerTopContainer),
+/* harmony export */   "$inputNumberBtns": () => (/* binding */ $inputNumberBtns),
+/* harmony export */   "$inputNumberInputs": () => (/* binding */ $inputNumberInputs),
 /* harmony export */   "$login": () => (/* binding */ $login),
 /* harmony export */   "$looks": () => (/* binding */ $looks),
 /* harmony export */   "$marketingSlider": () => (/* binding */ $marketingSlider),
@@ -1097,6 +1465,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "$sidebarFilterTops": () => (/* binding */ $sidebarFilterTops),
 /* harmony export */   "$subscribeCategories": () => (/* binding */ $subscribeCategories),
 /* harmony export */   "$timer": () => (/* binding */ $timer),
+/* harmony export */   "$toolPags": () => (/* binding */ $toolPags),
 /* harmony export */   "$topNavBtn": () => (/* binding */ $topNavBtn)
 /* harmony export */ });
 const $customSelects = document.querySelectorAll(".custom-select");
@@ -1122,6 +1491,10 @@ const $topNavBtn = document.querySelector("#top-nav-button");
 const $sidebarFilterTops = document.querySelectorAll(".sidebar-filters .filter__top");
 const $sidebarFilterLists = document.querySelectorAll(".sidebar-filters .filter__list");
 const $filterSliderRange = document.querySelector("#filter-slider-range");
+const $filterSliderInputs = document.querySelectorAll(".filter__slider-input");
+const $inputNumberInputs = document.querySelectorAll(".input-number__input");
+const $inputNumberBtns = document.querySelectorAll(".input-number__btn");
+const $toolPags = document.querySelectorAll(".tool-pag");
 
 // **
 const $mdq767 = window.matchMedia("(max-width: 767px)");
@@ -19449,13 +19822,17 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _components_microslider__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ./components/microslider */ "./src/js/components/microslider.js");
 /* harmony import */ var _components_microslider__WEBPACK_IMPORTED_MODULE_11___default = /*#__PURE__*/__webpack_require__.n(_components_microslider__WEBPACK_IMPORTED_MODULE_11__);
 /* harmony import */ var _components_filter__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ./components/filter */ "./src/js/components/filter.js");
-/* harmony import */ var _components_$swipers__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! ./components/$swipers */ "./src/js/components/$swipers.js");
-/* harmony import */ var _components_$overlayScrollbars__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! ./components/$overlayScrollbars */ "./src/js/components/$overlayScrollbars.js");
-/* harmony import */ var nouislider__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(/*! nouislider */ "./node_modules/nouislider/dist/nouislider.js");
-/* harmony import */ var nouislider__WEBPACK_IMPORTED_MODULE_15___default = /*#__PURE__*/__webpack_require__.n(nouislider__WEBPACK_IMPORTED_MODULE_15__);
+/* harmony import */ var _components_input_number__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! ./components/input-number */ "./src/js/components/input-number.js");
+/* harmony import */ var _components_tool_pag__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! ./components/tool-pag */ "./src/js/components/tool-pag.js");
+/* harmony import */ var _components_$swipers__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(/*! ./components/$swipers */ "./src/js/components/$swipers.js");
+/* harmony import */ var _components_$overlayScrollbars__WEBPACK_IMPORTED_MODULE_16__ = __webpack_require__(/*! ./components/$overlayScrollbars */ "./src/js/components/$overlayScrollbars.js");
+/* harmony import */ var nouislider__WEBPACK_IMPORTED_MODULE_17__ = __webpack_require__(/*! nouislider */ "./node_modules/nouislider/dist/nouislider.js");
+/* harmony import */ var nouislider__WEBPACK_IMPORTED_MODULE_17___default = /*#__PURE__*/__webpack_require__.n(nouislider__WEBPACK_IMPORTED_MODULE_17__);
 
 
 // Components
+
+
 
 
 
@@ -19476,7 +19853,7 @@ __webpack_require__.r(__webpack_exports__);
 
 // Filter price slider
 
-const filterPriceSlider = nouislider__WEBPACK_IMPORTED_MODULE_15___default().create(_vars__WEBPACK_IMPORTED_MODULE_0__.$filterSliderRange, {
+const filterPriceSlider = nouislider__WEBPACK_IMPORTED_MODULE_17___default().create(_vars__WEBPACK_IMPORTED_MODULE_0__.$filterSliderRange, {
   start: [480, 800],
   connect: true,
   range: {
@@ -19492,6 +19869,31 @@ const filterPriceSlider = nouislider__WEBPACK_IMPORTED_MODULE_15___default().cre
       return "$" + parseInt(value);
     }
   }
+});
+
+// F(s)
+// **
+function changeInputsValues() {
+  const rangeValues = filterPriceSlider.get();
+  _vars__WEBPACK_IMPORTED_MODULE_0__.$filterSliderInputs.forEach((el, idx) => {
+    el.value = parseInt(rangeValues[idx]);
+  });
+}
+changeInputsValues();
+
+// **
+function changeRangeValues(idx) {
+  const currentInputValue = ~~_vars__WEBPACK_IMPORTED_MODULE_0__.$filterSliderInputs[idx].value;
+  filterPriceSlider.setHandle(idx, currentInputValue);
+}
+
+// L(s)
+// **
+filterPriceSlider.on("slide", changeInputsValues);
+
+// **
+_vars__WEBPACK_IMPORTED_MODULE_0__.$filterSliderInputs.forEach((el, idx) => {
+  el.addEventListener("keyup", () => changeRangeValues(idx));
 });
 
 // Scroll-top

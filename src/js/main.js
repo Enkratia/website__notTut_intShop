@@ -14,6 +14,8 @@ import "./components/top-nav";
 import "./components/product__bottom";
 import "./components/microslider";
 import "./components/filter";
+import "./components/input-number";
+import "./components/tool-pag";
 
 // Components multiple in one
 import "./components/$swipers";
@@ -39,6 +41,32 @@ const filterPriceSlider = noUiSlider.create(v.$filterSliderRange, {
       return "$" + parseInt(value);
     }
   }
+});
+
+// F(s)
+// **
+function changeInputsValues() {
+  const rangeValues = filterPriceSlider.get();
+
+  v.$filterSliderInputs.forEach((el, idx) => {
+    el.value = parseInt(rangeValues[idx]);
+  });
+}
+changeInputsValues();
+
+// **
+function changeRangeValues(idx) {
+  const currentInputValue = ~~v.$filterSliderInputs[idx].value;
+  filterPriceSlider.setHandle(idx, currentInputValue);
+}
+
+// L(s)
+// **
+filterPriceSlider.on("slide", changeInputsValues);
+
+// **
+v.$filterSliderInputs.forEach((el, idx) => {
+  el.addEventListener("keyup", () => changeRangeValues(idx));
 });
 
 

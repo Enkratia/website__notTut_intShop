@@ -21,6 +21,10 @@ export const $topNavBtn = document.querySelector("#top-nav-button");
 export const $sidebarFilterTops = document.querySelectorAll(".sidebar-filters .filter__top");
 export const $sidebarFilterLists = document.querySelectorAll(".sidebar-filters .filter__list");
 export const $filterSliderRange = document.querySelector("#filter-slider-range");
+export const $filterSliderInputs = document.querySelectorAll(".filter__slider-input");
+export const $inputNumberInputs = document.querySelectorAll(".input-number__input");
+export const $inputNumberBtns = document.querySelectorAll(".input-number__btn");
+export const $toolPags = document.querySelectorAll(".tool-pag");
 
 // **
 export const $mdq767 = window.matchMedia("(max-width: 767px)");

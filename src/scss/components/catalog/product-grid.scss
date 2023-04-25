@@ -3,8 +3,6 @@
 .product-grid {
   display: grid;
   column-gap: rem(30);
-  grid-column: 2 / 3;
-  grid-row: 2 / 3;
   grid-template-columns: repeat(3, minmax(rem(1), 1fr));
   width: 100%;
   row-gap: rem(60);
