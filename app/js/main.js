@@ -414,83 +414,6 @@ if (document.querySelector("#brands-slider")) {
 
 /***/ }),
 
-/***/ "./src/js/components/currency.js":
-/*!***************************************!*\
-  !*** ./src/js/components/currency.js ***!
-  \***************************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _vars__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../vars */ "./src/js/vars.js");
-
-let isOpen = false;
-function closeSelect() {
-  this.classList.remove("custom-select--open");
-  this.removeEventListener("blur", closeSelect);
-}
-function removeAddClass(el) {
-  document.querySelector(".custom-select__item--active").classList.remove("custom-select__item--active");
-  return el.classList.add("custom-select__item--active");
-}
-
-// SELECT WITH MOUSE
-function selectCurrency(e) {
-  const selected = this.querySelector(".custom-select__selected");
-  function changeSelectValue() {
-    if (e.target.classList.contains("custom-select__item")) {
-      selected.textContent = e.target.textContent;
-      document.querySelector(".custom-select__item--active").classList.remove("custom-select__item--active");
-      e.target.classList.add("custom-select__item--active");
-    }
-  }
-  this.classList.toggle("custom-select--open");
-  changeSelectValue();
-  this.addEventListener("blur", closeSelect.bind(this));
-}
-_vars__WEBPACK_IMPORTED_MODULE_0__.$customSelects.forEach(el => {
-  el.addEventListener("click", selectCurrency);
-});
-
-// SELECT WITH KEYBOARD
-function selectCurrencyWithKeyboard(e) {
-  const selected = this.querySelector(".custom-select__selected");
-  const selectList = this.querySelector(".custom-select__list");
-  if (e.key === "Enter") {
-    this.classList.toggle("custom-select--open");
-    isOpen = this.classList.contains("custom-select--open");
-  } else if (e.key === " ") {
-    this.classList.add("custom-select--open");
-    isOpen = this.classList.contains("custom-select--open");
-  } else if (e.key === "ArrowUp" && isOpen) {
-    let prevSibling = document.querySelector(".custom-select__item--active").previousElementSibling;
-    if (!prevSibling) return;
-    selected.textContent = prevSibling.textContent;
-    removeAddClass(prevSibling);
-  } else if (e.key === "ArrowDown" && isOpen) {
-    let nextSibling = document.querySelector(".custom-select__item--active").nextElementSibling;
-    if (!nextSibling) return;
-    selected.textContent = nextSibling.textContent;
-    removeAddClass(nextSibling);
-  } else if ((e.key === "PageUp" || e.key === "Home") && isOpen) {
-    const firstSibling = selectList.firstElementChild;
-    selected.textContent = firstSibling.textContent;
-    removeAddClass(firstSibling);
-  } else if ((e.key === "PageDown" || e.key === "End") && isOpen) {
-    const lastSibling = selectList.lastElementChild;
-    selected.textContent = lastSibling.textContent;
-    removeAddClass(lastSibling);
-  } else if (isOpen) {
-    this.classList.remove("custom-select--open");
-  }
-  this.addEventListener("blur", closeSelect.bind(this));
-}
-_vars__WEBPACK_IMPORTED_MODULE_0__.$customSelects.forEach(el => {
-  el.addEventListener("keydown", selectCurrencyWithKeyboard);
-});
-
-/***/ }),
-
 /***/ "./src/js/components/custom-checkbox.js":
 /*!**********************************************!*\
   !*** ./src/js/components/custom-checkbox.js ***!
@@ -518,6 +441,119 @@ function checkCustomCheckbox() {
 _vars__WEBPACK_IMPORTED_MODULE_0__.$customCheckboxes.forEach(el => {
   const nativeCheckbox = el.querySelector(".custom-checkbox__input");
   nativeCheckbox.addEventListener("change", checkCustomCheckbox);
+});
+
+/***/ }),
+
+/***/ "./src/js/components/custom-select.js":
+/*!********************************************!*\
+  !*** ./src/js/components/custom-select.js ***!
+  \********************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _vars__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../vars */ "./src/js/vars.js");
+
+let isOpen = false;
+
+// F(s)
+// **
+function closeSelect() {
+  this.classList.remove("custom-select--open");
+}
+
+// **
+function rearrangeClass(el) {
+  document.querySelector(".custom-select__item--active").classList.remove("custom-select__item--active");
+  return el.classList.add("custom-select__item--active");
+}
+
+// **
+function changeSelectValue(e, selected, thisSelect) {
+  // For duplicted selects (toolbar selects)
+  if (e.target.classList.contains("toolbar__sort-item")) {
+    // Find active item idx in list
+    const thisSortListChildren = thisSelect.querySelector(".toolbar__sort-list").children;
+    const thisSortItemIdx = Array.from(thisSortListChildren).indexOf(e.target);
+    _vars__WEBPACK_IMPORTED_MODULE_0__.$toolbarSortSelects.forEach(el => {
+      // Rearrange class
+      el.querySelector(".custom-select__item--active").classList.remove("custom-select__item--active");
+      const toolbarSortListChildren = el.querySelector(".toolbar__sort-list").children;
+      toolbarSortListChildren[thisSortItemIdx].classList.add("custom-select__item--active");
+
+      // Change text in selected
+      const toolbarSortSelected = el.querySelector(".toolbar__sort-selected");
+      toolbarSortSelected.textContent = e.target.textContent;
+    });
+    return;
+  }
+
+  // For ordinary selects
+  if (e.target.classList.contains("custom-select__item")) {
+    selected.textContent = e.target.textContent;
+    rearrangeClass(e.target);
+  }
+}
+
+// SELECT WITH MOUSE
+// ***
+function select(e) {
+  const thisSelect = this;
+  const selected = this.querySelector(".custom-select__selected");
+  this.classList.toggle("custom-select--open");
+  this.addEventListener("blur", closeSelect.bind(this), {
+    once: true
+  });
+  changeSelectValue(e, selected, thisSelect);
+}
+
+// SELECT WITH KEYBOARD
+// ***
+function selectWithKeyboard(e) {
+  const selected = this.querySelector(".custom-select__selected");
+  const selectList = this.querySelector(".custom-select__list");
+  if (e.key === "Enter") {
+    this.classList.toggle("custom-select--open");
+    isOpen = this.classList.contains("custom-select--open");
+  } else if (e.key === " ") {
+    this.classList.add("custom-select--open");
+    isOpen = this.classList.contains("custom-select--open");
+  } else if (e.key === "ArrowUp" && isOpen) {
+    let prevSibling = document.querySelector(".custom-select__item--active").previousElementSibling;
+    if (!prevSibling) return;
+    selected.textContent = prevSibling.textContent;
+    rearrangeClass(prevSibling);
+  } else if (e.key === "ArrowDown" && isOpen) {
+    let nextSibling = document.querySelector(".custom-select__item--active").nextElementSibling;
+    if (!nextSibling) return;
+    selected.textContent = nextSibling.textContent;
+    rearrangeClass(nextSibling);
+  } else if ((e.key === "PageUp" || e.key === "Home") && isOpen) {
+    const firstSibling = selectList.firstElementChild;
+    selected.textContent = firstSibling.textContent;
+    rearrangeClass(firstSibling);
+  } else if ((e.key === "PageDown" || e.key === "End") && isOpen) {
+    const lastSibling = selectList.lastElementChild;
+    selected.textContent = lastSibling.textContent;
+    rearrangeClass(lastSibling);
+  } else if (isOpen) {
+    this.classList.remove("custom-select--open");
+  }
+  this.addEventListener("blur", closeSelect.bind(this), {
+    once: true
+  });
+}
+
+// L(s)
+// **
+_vars__WEBPACK_IMPORTED_MODULE_0__.$customSelects.forEach(el => {
+  el.addEventListener("click", select);
+});
+
+// **
+_vars__WEBPACK_IMPORTED_MODULE_0__.$customSelects.forEach(el => {
+  el.addEventListener("keydown", selectWithKeyboard);
 });
 
 /***/ }),
@@ -574,46 +610,67 @@ if (_vars__WEBPACK_IMPORTED_MODULE_0__.$sidebarFilterTops[0]) {
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _vars__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../vars */ "./src/js/vars.js");
 
+let newValue;
 
 // F(s)
 // **
-function isInputValid(e) {
+function changeInputValue(e) {
   if (e.key === "PageUp" || e.key === "ArrowUp") {
     if (this.value > 998) return;
-    this.value = parseInt(this.value) + 1;
+    newValue = parseInt(this.value) + 1;
+    _vars__WEBPACK_IMPORTED_MODULE_0__.$toolbarInputNumberInputs.forEach(el => {
+      el.value = newValue || 0;
+    });
     return;
   }
   if (e.key === "PageDown" || e.key === "ArrowDown") {
-    if (this.value < 1) return;
-    this.value = parseInt(this.value) - 1;
+    if (this.value < 1 && this.value) return;
+    newValue = parseInt(this.value) - 1;
+    _vars__WEBPACK_IMPORTED_MODULE_0__.$toolbarInputNumberInputs.forEach(el => {
+      el.value = newValue || 0;
+    });
     return;
   }
   if (!this.value.match(/^\d*$/)) {
-    this.value = this.value.replace(/\D/g, "");
+    newValue = this.value.replace(/\D/g, "");
+    _vars__WEBPACK_IMPORTED_MODULE_0__.$toolbarInputNumberInputs.forEach(el => {
+      el.value = newValue;
+    });
+  } else {
+    newValue = this.value;
+    _vars__WEBPACK_IMPORTED_MODULE_0__.$toolbarInputNumberInputs.forEach(el => {
+      el.value = newValue;
+    });
   }
 }
 
 // **
-function changeInputValue() {
+function changeInputValueWithBtn() {
   const input = this.parentElement.previousElementSibling;
   if (this.classList.contains("input-number__btn--upper")) {
     if (input.value > 998) return;
-    input.value = parseInt(input.value) + 1;
-    return;
+    newValue = parseInt(input.value) + 1;
+    _vars__WEBPACK_IMPORTED_MODULE_0__.$toolbarInputNumberInputs.forEach(el => {
+      el.value = newValue || 0;
+    });
+  } else {
+    if (input.value < 1 && input.value) return;
+    newValue = parseInt(input.value) - 1;
+    _vars__WEBPACK_IMPORTED_MODULE_0__.$toolbarInputNumberInputs.forEach(el => {
+      el.value = newValue || 0;
+    });
   }
-  if (input.value < 1) return;
-  input.value = parseInt(input.value) - 1;
 }
 
 // L(s)
 // **
 _vars__WEBPACK_IMPORTED_MODULE_0__.$inputNumberInputs.forEach(el => {
-  el.addEventListener("keyup", isInputValid);
+  el.addEventListener("keyup", changeInputValue);
 });
 
 // **
 _vars__WEBPACK_IMPORTED_MODULE_0__.$inputNumberBtns.forEach(el => {
-  el.addEventListener("click", changeInputValue);
+  el.addEventListener("click", changeInputValueWithBtn);
 });
 
 /***/ }),
@@ -809,12 +866,18 @@ _vars__WEBPACK_IMPORTED_MODULE_0__.$mdq991.addEventListener("change", () => {
 /*!******************************************!*\
   !*** ./src/js/components/microslider.js ***!
   \******************************************/
-/***/ (() => {
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _vars__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../vars */ "./src/js/vars.js");
+
 
 // MICROSLIDER
-let looks = document.querySelectorAll(".sale .product__look");
+let looks = document.querySelectorAll(".product__look"); // Не переносить в vars
 
 // F(s)
+// ***
 function chooseImage() {
   let currentIdx = 0;
   let thisLook = this;
@@ -826,7 +889,9 @@ function chooseImage() {
     const srcs = image.nextElementSibling;
     image.src = srcs.firstElementChild.dataset.src;
   }
-  window.addEventListener("resize", resetChooseImage);
+  if (_vars__WEBPACK_IMPORTED_MODULE_0__.$saleSlider) {
+    window.addEventListener("resize", resetChooseImage);
+  }
 
   // **
   function chooseImageInner(e) {
@@ -854,18 +919,23 @@ function chooseImage() {
 }
 
 // L(s)
+// **
 looks.forEach(look => {
   look.addEventListener("click", chooseImage.bind(look)());
 });
-window.addEventListener("resize", () => {
-  setTimeout(() => {
-    // (Чтобы swiper успел прогрузить свой js)
-    let looks = document.querySelectorAll(".sale .product__look");
-    looks.forEach(look => {
-      look.addEventListener("click", chooseImage.bind(look)());
-    });
-  }, 50);
-});
+
+// **
+if (_vars__WEBPACK_IMPORTED_MODULE_0__.$saleSlider) {
+  window.addEventListener("resize", () => {
+    setTimeout(() => {
+      // (Чтобы swiper успел прогрузить свой js) // Сделать нормально позже
+      let looks = document.querySelectorAll(".product__look");
+      looks.forEach(look => {
+        look.addEventListener("click", chooseImage.bind(look)());
+      });
+    }, 300);
+  });
+}
 
 /***/ }),
 
@@ -1105,22 +1175,18 @@ if (rightDots) {
   // F(s)
   // **
   function goFarAhead() {
-    rightArrows.forEach(el => {
-      for (let i = 0; i < 5; i++) {
-        el.click();
-        if (page === totalPages) break;
-      }
-    });
+    for (let i = 0; i < 5; i++) {
+      rightArrows[0].click();
+      if (page === totalPages) break;
+    }
   }
 
   // **
   function goFarBack() {
-    leftArrows.forEach(el => {
-      for (let i = 0; i < 5; i++) {
-        el.click();
-        if (page === 1) break;
-      }
-    });
+    for (let i = 0; i < 5; i++) {
+      leftArrows[0].click();
+      if (page === 1) break;
+    }
   }
 
   // **
@@ -1261,29 +1327,23 @@ if (rightDots) {
       rearrangeActiveClass();
       return;
     }
-    _vars__WEBPACK_IMPORTED_MODULE_0__.$toolPags.forEach(el => {
-      if (chosenPag === activePag.previousElementSibling) {
-        leftArrows.forEach(el => {
-          ++page;
-          el.click();
-        });
-      } else if (chosenPag === activePag.nextElementSibling) {
-        rightArrows.forEach(el => {
-          --page;
-          el.click();
-        });
-      } else if (page === 3) {
-        _vars__WEBPACK_IMPORTED_MODULE_0__.$toolPags.forEach(el => {
-          createNextPag(el, page);
-        });
-      } else if (page === totalPages - 2) {
-        _vars__WEBPACK_IMPORTED_MODULE_0__.$toolPags.forEach(el => {
-          createPrevPag(el, page);
-        });
-      }
-      ;
-      rearrangeActiveClass();
-    });
+    if (chosenPag === activePag.previousElementSibling) {
+      page++;
+      leftArrows[0].click();
+    } else if (chosenPag === activePag.nextElementSibling) {
+      page--;
+      rightArrows[0].click();
+    } else if (page === 3) {
+      _vars__WEBPACK_IMPORTED_MODULE_0__.$toolPags.forEach(el => {
+        createNextPag(el, page);
+      });
+    } else if (page === totalPages - 2) {
+      _vars__WEBPACK_IMPORTED_MODULE_0__.$toolPags.forEach(el => {
+        createPrevPag(el, page);
+      });
+    }
+    ;
+    rearrangeActiveClass();
   }
 
   // ***
@@ -1466,8 +1526,11 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "$subscribeCategories": () => (/* binding */ $subscribeCategories),
 /* harmony export */   "$timer": () => (/* binding */ $timer),
 /* harmony export */   "$toolPags": () => (/* binding */ $toolPags),
+/* harmony export */   "$toolbarInputNumberInputs": () => (/* binding */ $toolbarInputNumberInputs),
+/* harmony export */   "$toolbarSortSelects": () => (/* binding */ $toolbarSortSelects),
 /* harmony export */   "$topNavBtn": () => (/* binding */ $topNavBtn)
 /* harmony export */ });
+// Header ** Special-offers
 const $customSelects = document.querySelectorAll(".custom-select");
 const $customCheckboxes = document.querySelectorAll(".custom-checkbox");
 const $login = document.querySelector("#login");
@@ -1478,16 +1541,18 @@ const $navItems = document.querySelectorAll(".nav__item");
 const $menuBtn = document.querySelector("#menu-btn");
 const $searchForm = $headerMainContainer.querySelector("#search-form");
 const $navList = $headerMainContainer.querySelector("#nav-list");
-const $looks = document.querySelectorAll(".sale .product__look");
-let $products = document.querySelectorAll(".sale__product");
-let $saleSlider = document.querySelector(".sale__slider");
+const $topNavBtn = document.querySelector("#top-nav-button");
 const $marketingSlider = document.querySelector("#marketing-slider");
 const $marketingSliderItems = $marketingSlider?.querySelectorAll(".marketing-slider__slide");
+
+// Sale ** Subscribe ** Banners ** Catalog
+let $looks = document.querySelectorAll(".product__look");
+let $products = document.querySelectorAll(".sale__product");
+let $saleSlider = document.querySelector(".sale__slider");
 const $subscribeCategories = document.querySelector(".subscribe__categories");
 const $nativeCheckBoxes = $subscribeCategories?.querySelectorAll(".categories__btn-checkbox");
 const $timer = document.querySelector("#timer");
 const $counters = $timer?.querySelectorAll(".timer__count");
-const $topNavBtn = document.querySelector("#top-nav-button");
 const $sidebarFilterTops = document.querySelectorAll(".sidebar-filters .filter__top");
 const $sidebarFilterLists = document.querySelectorAll(".sidebar-filters .filter__list");
 const $filterSliderRange = document.querySelector("#filter-slider-range");
@@ -1495,7 +1560,8 @@ const $filterSliderInputs = document.querySelectorAll(".filter__slider-input");
 const $inputNumberInputs = document.querySelectorAll(".input-number__input");
 const $inputNumberBtns = document.querySelectorAll(".input-number__btn");
 const $toolPags = document.querySelectorAll(".tool-pag");
-
+const $toolbarSortSelects = document.querySelectorAll(".toolbar__sort-select");
+const $toolbarInputNumberInputs = document.querySelectorAll(".toolbar__input-number-input");
 // **
 const $mdq767 = window.matchMedia("(max-width: 767px)");
 const $mdq768 = window.matchMedia("(min-width: 768px)");
@@ -19808,7 +19874,7 @@ var __webpack_exports__ = {};
   \************************/
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _vars__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./vars */ "./src/js/vars.js");
-/* harmony import */ var _components_currency__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./components/currency */ "./src/js/components/currency.js");
+/* harmony import */ var _components_custom_select__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./components/custom-select */ "./src/js/components/custom-select.js");
 /* harmony import */ var _components_special_offers__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./components/special-offers */ "./src/js/components/special-offers.js");
 /* harmony import */ var _components_timer__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./components/timer */ "./src/js/components/timer.js");
 /* harmony import */ var _components_custom_checkbox__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./components/custom-checkbox */ "./src/js/components/custom-checkbox.js");
@@ -19820,7 +19886,6 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _components_product_bottom__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ./components/product__bottom */ "./src/js/components/product__bottom.js");
 /* harmony import */ var _components_product_bottom__WEBPACK_IMPORTED_MODULE_10___default = /*#__PURE__*/__webpack_require__.n(_components_product_bottom__WEBPACK_IMPORTED_MODULE_10__);
 /* harmony import */ var _components_microslider__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ./components/microslider */ "./src/js/components/microslider.js");
-/* harmony import */ var _components_microslider__WEBPACK_IMPORTED_MODULE_11___default = /*#__PURE__*/__webpack_require__.n(_components_microslider__WEBPACK_IMPORTED_MODULE_11__);
 /* harmony import */ var _components_filter__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ./components/filter */ "./src/js/components/filter.js");
 /* harmony import */ var _components_input_number__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! ./components/input-number */ "./src/js/components/input-number.js");
 /* harmony import */ var _components_tool_pag__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! ./components/tool-pag */ "./src/js/components/tool-pag.js");
@@ -19846,55 +19911,56 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-
 // Components multiple in one
 
 
 
 // Filter price slider
 
-const filterPriceSlider = nouislider__WEBPACK_IMPORTED_MODULE_17___default().create(_vars__WEBPACK_IMPORTED_MODULE_0__.$filterSliderRange, {
-  start: [480, 800],
-  connect: true,
-  range: {
-    'min': 0,
-    'max': 1000
-  },
-  step: 1,
-  tooltips: {
-    to: function (value) {
-      return "$" + parseInt(value);
+if (_vars__WEBPACK_IMPORTED_MODULE_0__.$filterSliderRange) {
+  const filterPriceSlider = nouislider__WEBPACK_IMPORTED_MODULE_17___default().create(_vars__WEBPACK_IMPORTED_MODULE_0__.$filterSliderRange, {
+    start: [480, 800],
+    connect: true,
+    range: {
+      'min': 0,
+      'max': 1000
     },
-    from: function (value) {
-      return "$" + parseInt(value);
+    step: 1,
+    tooltips: {
+      to: function (value) {
+        return "$" + parseInt(value);
+      },
+      from: function (value) {
+        return "$" + parseInt(value);
+      }
     }
-  }
-});
+  });
 
-// F(s)
-// **
-function changeInputsValues() {
-  const rangeValues = filterPriceSlider.get();
+  // F(s)
+  // **
+  function changeInputsValues() {
+    const rangeValues = filterPriceSlider.get();
+    _vars__WEBPACK_IMPORTED_MODULE_0__.$filterSliderInputs.forEach((el, idx) => {
+      el.value = parseInt(rangeValues[idx]);
+    });
+  }
+  changeInputsValues();
+
+  // **
+  function changeRangeValues(idx) {
+    const currentInputValue = ~~_vars__WEBPACK_IMPORTED_MODULE_0__.$filterSliderInputs[idx].value;
+    filterPriceSlider.setHandle(idx, currentInputValue);
+  }
+
+  // L(s)
+  // **
+  filterPriceSlider.on("slide", changeInputsValues);
+
+  // **
   _vars__WEBPACK_IMPORTED_MODULE_0__.$filterSliderInputs.forEach((el, idx) => {
-    el.value = parseInt(rangeValues[idx]);
+    el.addEventListener("keyup", () => changeRangeValues(idx));
   });
 }
-changeInputsValues();
-
-// **
-function changeRangeValues(idx) {
-  const currentInputValue = ~~_vars__WEBPACK_IMPORTED_MODULE_0__.$filterSliderInputs[idx].value;
-  filterPriceSlider.setHandle(idx, currentInputValue);
-}
-
-// L(s)
-// **
-filterPriceSlider.on("slide", changeInputsValues);
-
-// **
-_vars__WEBPACK_IMPORTED_MODULE_0__.$filterSliderInputs.forEach((el, idx) => {
-  el.addEventListener("keyup", () => changeRangeValues(idx));
-});
 
 // Scroll-top
 const scrollTop = document.querySelector(".scroll-top");

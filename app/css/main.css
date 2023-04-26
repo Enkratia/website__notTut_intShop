@@ -2647,11 +2647,8 @@ button {
   position: absolute;
   right: 1.03125rem;
   top: 1.03125rem;
-  display: none;
-  cursor: default;
-}
-.product__rating--visible {
   display: block;
+  cursor: default;
 }
 .product__rating-icon {
   width: 0.8125rem;
@@ -2809,11 +2806,23 @@ button {
 }
 .product__bottom {
   position: relative;
-  display: none;
-  padding-bottom: 1rem;
+  overflow: hidden;
+  padding-bottom: 0rem;
+  width: 0;
+  height: 0;
+  opacity: 0;
+  visibility: hidden;
+  -webkit-transition: opacity 0.3s;
+  -o-transition: opacity 0.3s;
+  transition: opacity 0.3s;
 }
 .product__bottom--visible {
-  display: block;
+  overflow: visible;
+  padding-bottom: 1rem;
+  width: auto;
+  height: auto;
+  opacity: 1;
+  visibility: visible;
 }
 .product__details {
   display: -webkit-box;
@@ -2933,6 +2942,45 @@ button {
   }
 }
 .product:hover .microslider__button {
+  opacity: 1;
+  visibility: visible;
+}
+.product--noJs-hover {
+  position: relative;
+}
+.product--noJs-hover .product__bottom {
+  position: absolute;
+  left: 0;
+  top: 100%;
+  overflow: visible;
+  padding-bottom: 1rem;
+  padding-inline: inherit;
+  width: 100%;
+  height: auto;
+  background-color: var(--white-color);
+  -webkit-transition: -webkit-box-shadow 0.3s ease-in-out opacity 0.3s;
+  transition: -webkit-box-shadow 0.3s ease-in-out opacity 0.3s;
+  -o-transition: box-shadow 0.3s ease-in-out opacity 0.3s;
+  transition: box-shadow 0.3s ease-in-out opacity 0.3s;
+  transition: box-shadow 0.3s ease-in-out opacity 0.3s, -webkit-box-shadow 0.3s ease-in-out opacity 0.3s;
+}
+.product--noJs-hover:hover {
+  z-index: var(--z-up);
+  -webkit-box-shadow: var(--regular-shadow);
+  box-shadow: var(--regular-shadow);
+  -webkit-transition: -webkit-box-shadow 0.3s ease-in-out;
+  transition: -webkit-box-shadow 0.3s ease-in-out;
+  -o-transition: box-shadow 0.3s ease-in-out;
+  transition: box-shadow 0.3s ease-in-out;
+  transition: box-shadow 0.3s ease-in-out, -webkit-box-shadow 0.3s ease-in-out;
+}
+.product--noJs-hover:hover .product__info {
+  position: relative;
+  z-index: var(--z-up);
+}
+.product--noJs-hover:hover .product__bottom {
+  -webkit-box-shadow: var(--regular-shadow);
+  box-shadow: var(--regular-shadow);
   opacity: 1;
   visibility: visible;
 }
@@ -6895,8 +6943,5 @@ button {
   grid-template-columns: repeat(3, minmax(0.0625rem, 1fr));
   width: 100%;
   row-gap: 3.75rem;
-}
-.product-grid__price {
-  font-size: calc(1.189375rem + 0.26vw);
 }
 /*# sourceMappingURL=main.css.map */

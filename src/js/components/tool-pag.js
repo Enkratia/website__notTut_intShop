@@ -14,22 +14,18 @@ if (rightDots) {
   // F(s)
   // **
   function goFarAhead() {
-    rightArrows.forEach(el => {
-      for (let i = 0; i < 5; i++) {
-        el.click();
-        if (page === totalPages) break;
-      }
-    });
+    for (let i = 0; i < 5; i++) {
+      rightArrows[0].click();
+      if (page === totalPages) break;
+    }
   }
 
   // **
   function goFarBack() {
-    leftArrows.forEach(el => {
-      for (let i = 0; i < 5; i++) {
-        el.click();
-        if (page === 1) break;
-      }
-    });
+    for (let i = 0; i < 5; i++) {
+      leftArrows[0].click();
+      if (page === 1) break;
+    }
   }
 
   // **
@@ -194,33 +190,26 @@ if (rightDots) {
       return;
     }
 
-    v.$toolPags.forEach(el => {
+    if (chosenPag === activePag.previousElementSibling) {
+      page++;
+      leftArrows[0].click();
 
-      if (chosenPag === activePag.previousElementSibling) {
-        leftArrows.forEach(el => {
-          ++page;
-          el.click();
-        });
+    } else if (chosenPag === activePag.nextElementSibling) {
+      page--;
+      rightArrows[0].click();
 
-      } else if (chosenPag === activePag.nextElementSibling) {
-        rightArrows.forEach(el => {
-          --page;
-          el.click();
-        });
+    } else if (page === 3) {
+      v.$toolPags.forEach(el => {
+        createNextPag(el, page);
+      });
 
-      } else if (page === 3) {
-        v.$toolPags.forEach(el => {
-          createNextPag(el, page);
-        });
+    } else if (page === totalPages - 2) {
+      v.$toolPags.forEach(el => {
+        createPrevPag(el, page);
+      });
+    };
 
-      } else if (page === totalPages - 2) {
-        v.$toolPags.forEach(el => {
-          createPrevPag(el, page);
-        });
-      };
-
-      rearrangeActiveClass();
-    });
+    rearrangeActiveClass();
   }
 
   // ***

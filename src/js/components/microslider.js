@@ -1,7 +1,10 @@
+import * as v from "../vars";
+
 // MICROSLIDER
-let looks = document.querySelectorAll(".sale .product__look");
+let looks = document.querySelectorAll(".product__look"); // Не переносить в vars
 
 // F(s)
+// ***
 function chooseImage() {
   let currentIdx = 0;
   let thisLook = this;
@@ -15,7 +18,9 @@ function chooseImage() {
     image.src = srcs.firstElementChild.dataset.src;
   }
 
-  window.addEventListener("resize", resetChooseImage);
+  if (v.$saleSlider) {
+    window.addEventListener("resize", resetChooseImage);
+  }
 
   // **
   function chooseImageInner(e) {
@@ -46,20 +51,24 @@ function chooseImage() {
     }
   }
 
-  return chooseImageInner;  
+  return chooseImageInner;
 }
 
 // L(s)
+// **
 looks.forEach(look => {
   look.addEventListener("click", chooseImage.bind(look)());
 });
 
-window.addEventListener("resize", () => {
-  setTimeout(() => { // (Чтобы swiper успел прогрузить свой js)
-    let looks = document.querySelectorAll(".sale .product__look");
+// **
+if (v.$saleSlider) {
+  window.addEventListener("resize", () => {
+    setTimeout(() => { // (Чтобы swiper успел прогрузить свой js) // Сделать нормально позже
+      let looks = document.querySelectorAll(".product__look");
 
-    looks.forEach(look => {
-      look.addEventListener("click", chooseImage.bind(look)());
-    });
-  }, 50);
-})
+      looks.forEach(look => {
+        look.addEventListener("click", chooseImage.bind(look)());
+      });
+    }, 300);
+  })
+}

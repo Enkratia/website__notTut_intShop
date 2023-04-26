@@ -1,8 +1,7 @@
 import * as v from "./vars";
 
 // Components
-import "./vars";
-import "./components/currency";
+import "./components/custom-select";
 import "./components/special-offers";
 import "./components/timer";
 import "./components/custom-checkbox";
@@ -25,49 +24,51 @@ import "./components/$overlayScrollbars";
 // Filter price slider
 import noUiSlider from "nouislider";
 
-const filterPriceSlider = noUiSlider.create(v.$filterSliderRange, {
-  start: [480, 800],
-  connect: true,
-  range: {
-    'min': 0,
-    'max': 1000
-  },
-  step: 1,
-  tooltips: {
-    to: function (value) {
-      return "$" + parseInt(value);
+if (v.$filterSliderRange) {
+  const filterPriceSlider = noUiSlider.create(v.$filterSliderRange, {
+    start: [480, 800],
+    connect: true,
+    range: {
+      'min': 0,
+      'max': 1000
     },
-    from: function (value) {
-      return "$" + parseInt(value);
+    step: 1,
+    tooltips: {
+      to: function (value) {
+        return "$" + parseInt(value);
+      },
+      from: function (value) {
+        return "$" + parseInt(value);
+      }
     }
+  });
+
+  // F(s)
+  // **
+  function changeInputsValues() {
+    const rangeValues = filterPriceSlider.get();
+
+    v.$filterSliderInputs.forEach((el, idx) => {
+      el.value = parseInt(rangeValues[idx]);
+    });
   }
-});
+  changeInputsValues();
 
-// F(s)
-// **
-function changeInputsValues() {
-  const rangeValues = filterPriceSlider.get();
+  // **
+  function changeRangeValues(idx) {
+    const currentInputValue = ~~v.$filterSliderInputs[idx].value;
+    filterPriceSlider.setHandle(idx, currentInputValue);
+  }
 
+  // L(s)
+  // **
+  filterPriceSlider.on("slide", changeInputsValues);
+
+  // **
   v.$filterSliderInputs.forEach((el, idx) => {
-    el.value = parseInt(rangeValues[idx]);
+    el.addEventListener("keyup", () => changeRangeValues(idx));
   });
 }
-changeInputsValues();
-
-// **
-function changeRangeValues(idx) {
-  const currentInputValue = ~~v.$filterSliderInputs[idx].value;
-  filterPriceSlider.setHandle(idx, currentInputValue);
-}
-
-// L(s)
-// **
-filterPriceSlider.on("slide", changeInputsValues);
-
-// **
-v.$filterSliderInputs.forEach((el, idx) => {
-  el.addEventListener("keyup", () => changeRangeValues(idx));
-});
 
 
 // Scroll-top

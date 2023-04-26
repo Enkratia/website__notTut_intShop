@@ -353,12 +353,8 @@
     position: absolute;
     right: rem(16.5);
     top: rem(16.5);
-    display: none;
+    display: block;
     cursor: default;
-
-    &--visible {
-      display: block;
-    }
   }
 
   &__rating-icon {
@@ -513,11 +509,21 @@
 
   &__bottom {
     position: relative;
-    display: none;
-    padding-bottom: rem(16);
+    overflow: hidden;
+    padding-bottom: rem(0);
+    width: 0;
+    height: 0;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s;
 
     &--visible {
-      display: block;
+      overflow: visible;
+      padding-bottom: rem(16);
+      width: auto;
+      height: auto;
+      opacity: 1;
+      visibility: visible;
     }
   }
 
@@ -627,6 +633,41 @@
     .microslider__button {
       opacity: 1;
       visibility: visible;
+    }
+  }
+
+  // Product hover (no swiper)
+  &--noJs-hover {
+    position: relative;
+
+    .product__bottom {
+      position: absolute;
+      left: 0;
+      top: 100%;
+      overflow: visible;
+      padding-bottom: rem(16);
+      padding-inline: inherit;
+      width: 100%;
+      height: auto;
+      background-color: var(--white-color);
+      transition: box-shadow 0.3s ease-in-out opacity 0.3s;
+    }
+
+    &:hover {
+      z-index: var(--z-up);
+      box-shadow: var(--regular-shadow);
+      transition: box-shadow 0.3s ease-in-out;
+
+      .product__info {
+        position: relative;
+        z-index: var(--z-up);
+      }
+
+      .product__bottom {
+        box-shadow: var(--regular-shadow);
+        opacity: 1;
+        visibility: visible;
+      }
     }
   }
 }
@@ -1005,7 +1046,7 @@
     }
   }
 
-  &:focus > .custom-select__head {
+  &:focus>.custom-select__head {
     border-color: var(--primary-color);
   }
 }
