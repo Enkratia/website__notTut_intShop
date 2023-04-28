@@ -30,6 +30,11 @@ export const $inputNumberBtns = document.querySelectorAll(".input-number__btn");
 export const $toolPags = document.querySelectorAll(".tool-pag");
 export const $toolbarSortSelects = document.querySelectorAll(".toolbar__sort-select");
 export const $toolbarInputNumberInputs = document.querySelectorAll(".toolbar__input-number-input");
+export const $sidebarFiltersButton = document.querySelector("#sidebar-filters__button");
+export const $catalog = document.querySelector("#catalog");
+export const $sidebarFiltersFilters = document.querySelectorAll(".sidebar-filters__filter");
+export const $productColorsBtns = document.querySelectorAll(".product .colors__button");
+
 // **
 export const $mdq767 = window.matchMedia("(max-width: 767px)");
 export const $mdq768 = window.matchMedia("(min-width: 768px)");

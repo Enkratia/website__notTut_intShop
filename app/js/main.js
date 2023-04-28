@@ -414,6 +414,31 @@ if (document.querySelector("#brands-slider")) {
 
 /***/ }),
 
+/***/ "./src/js/components/colors__button.js":
+/*!*********************************************!*\
+  !*** ./src/js/components/colors__button.js ***!
+  \*********************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _vars__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../vars */ "./src/js/vars.js");
+
+
+// For product
+// F(s)
+function toggleActiveClass() {
+  this.closest(".colors").querySelector(".colors__button--active").classList.remove("colors__button--active");
+  this.classList.add("colors__button--active");
+}
+
+// L(s)
+_vars__WEBPACK_IMPORTED_MODULE_0__.$productColorsBtns.forEach(el => {
+  el.addEventListener("click", toggleActiveClass);
+});
+
+/***/ }),
+
 /***/ "./src/js/components/custom-checkbox.js":
 /*!**********************************************!*\
   !*** ./src/js/components/custom-checkbox.js ***!
@@ -567,9 +592,186 @@ _vars__WEBPACK_IMPORTED_MODULE_0__.$customSelects.forEach(el => {
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _vars__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../vars */ "./src/js/vars.js");
+/* harmony import */ var nouislider__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! nouislider */ "./node_modules/nouislider/dist/nouislider.js");
+/* harmony import */ var nouislider__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(nouislider__WEBPACK_IMPORTED_MODULE_1__);
+
 
 if (_vars__WEBPACK_IMPORTED_MODULE_0__.$sidebarFilterTops[0]) {
+  // ==== FILTER PRICE SLIDER ==== //
+  const filterPriceSlider = nouislider__WEBPACK_IMPORTED_MODULE_1___default().create(_vars__WEBPACK_IMPORTED_MODULE_0__.$filterSliderRange, {
+    start: [480, 800],
+    connect: true,
+    range: {
+      'min': 0,
+      'max': 1000
+    },
+    step: 1,
+    tooltips: {
+      to: function (value) {
+        return "$" + parseInt(value);
+      },
+      from: function (value) {
+        return "$" + parseInt(value);
+      }
+    }
+  });
+
   // F(s)
+  // **
+  function changeInputsValues() {
+    const rangeValues = filterPriceSlider.get();
+    _vars__WEBPACK_IMPORTED_MODULE_0__.$filterSliderInputs.forEach((el, idx) => {
+      el.value = parseInt(rangeValues[idx]);
+    });
+  }
+  changeInputsValues();
+
+  // **
+  function changeRangeValues(idx) {
+    const currentInputValue = ~~_vars__WEBPACK_IMPORTED_MODULE_0__.$filterSliderInputs[idx].value;
+    filterPriceSlider.setHandle(idx, currentInputValue);
+  }
+
+  // L(s)
+  // **
+  filterPriceSlider.on("slide", changeInputsValues);
+
+  // **
+  _vars__WEBPACK_IMPORTED_MODULE_0__.$filterSliderInputs.forEach((el, idx) => {
+    el.addEventListener("keyup", () => changeRangeValues(idx));
+  });
+
+  // ==== ADD FILTER CATEGORIES TO BREADCRUMBS ==== //
+  const filterMap = new Map();
+  let ul;
+  let prevPrice;
+  let isUlExist = false;
+  let isTwo = 0;
+  const filterWrapper = document.querySelector(".sidebar-filters__wrapper"); // add to vars
+  const sidebarFiltersShowBtn = filterWrapper.querySelector(".sidebar-filters__show"); // add to vars
+  const breadcrumbsContainer = document.querySelector(".breadcrumbs__container"); // add to vars
+
+  // F(s)
+  // **
+  function confirmChoice() {}
+
+  // **
+  function activateShowButton() {
+    filterWrapper.classList.toggle("sidebar-filters__wrapper--confirm", filterMap.size);
+  }
+
+  // **
+  function addFilterInArray(text) {
+    let name = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : text;
+    text = text.trim();
+    name = name.trim();
+    if (filterMap.has(text)) {
+      filterMap.delete(text);
+      console.log(filterMap);
+      return;
+    }
+    filterMap.set(name, text);
+    console.log(filterMap);
+  }
+
+  // **
+  function makeColorActive() {
+    elem.classList.toggle("colors__button--active");
+  }
+
+  // **
+  function addInBreadcrumbs() {
+    if (!isUlExist) {
+      ul = document.createElement("ul");
+      ul.className = "breadcrumbs__active-filters active-filters";
+      breadcrumbsContainer.appendChild(ul);
+      isUlExist = true;
+    }
+    let liTags = "";
+    let clearAllTag = `
+    <li class="active-filters__item">
+        <label class="active-filters__label active-filters__label--active">
+          <button class="active-filters__btn" aria-label="Delete all filters.">
+            <svg xmlns='http://www.w3.org/2000/svg' aria-hidden="true">
+              <use href='./img/sprite.svg#cross' aria-hidden="true"></use>
+            </svg>
+          </button>
+  
+          <span class="active-filters__name">
+            Clear all
+          </span>
+        </label>
+      </li>
+    `;
+    filterMap.forEach(el => {
+      liTags += `
+        <li class="active-filters__item">
+          <label class="active-filters__label">
+            <button class="active-filters__btn" aria-label="Delete this filter.">
+              <svg xmlns='http://www.w3.org/2000/svg' aria-hidden="true">
+               <use href='./img/sprite.svg#cross' aria-hidden="true"></use>
+              </svg>
+            </button>
+
+            <span class="active-filters__name">
+             ${el}
+            </span>
+          </label>
+        </li>`;
+    });
+    liTags += clearAllTag;
+    ul.innerHTML = liTags;
+  }
+
+  // ***
+  function initPrice() {
+    const prevPriceArray = filterPriceSlider.get();
+    prevPrice = `Price: ${~~prevPriceArray[0]} - ${~~prevPriceArray[1]}`;
+  }
+  initPrice();
+
+  // ***
+  function getPrice() {
+    const currentPriceArray = filterPriceSlider.get();
+    const currentPrice = "Price" + ` ${~~currentPriceArray[0]} - ${~~currentPriceArray[1]}`;
+    if (prevPrice !== currentPrice) {
+      addFilterInArray(currentPrice, "price");
+    } else {
+      filterMap.delete("price");
+    }
+    activateShowButton();
+  }
+
+  // ***
+  function getCategories(e) {
+    if (e.target.classList.contains("filter__color-btn")) {
+      makeColorActive(e.target);
+      addFilterInArray(e.target.dataset.color);
+    } else if (e.target.closest(".filter__label") && e.target.tagName !== "INPUT") {
+      const filterLabel = e.target.closest(".filter__label");
+      const filterName = filterLabel.querySelector(".filter__name").textContent;
+      addFilterInArray(filterName);
+    }
+    activateShowButton();
+  }
+
+  // L(s)
+  //**
+  _vars__WEBPACK_IMPORTED_MODULE_0__.$sidebarFiltersFilters.forEach(el => {
+    el.addEventListener("click", getCategories);
+  });
+
+  // **
+  sidebarFiltersShowBtn.addEventListener("click", addInBreadcrumbs);
+  filterPriceSlider.on("update", () => {
+    isTwo++; // (2 inits from start)
+    if (isTwo <= 2) return;
+    getPrice();
+  });
+
+  // ==== SHOW-HIDE FILTERS (ACCORDION) ==== //
+  // F(s)
+  // **
   function showHideFilters(e) {
     if (e.target.tagName !== "BUTTON") return;
     const filter = this.parentElement;
@@ -582,6 +784,8 @@ if (_vars__WEBPACK_IMPORTED_MODULE_0__.$sidebarFilterTops[0]) {
       return;
     }
   }
+
+  // **
   function showHideFiltersInit() {
     const activeFilter = document.querySelector(".filter--show");
     const activeFilterBottom = activeFilter.querySelector(".filter__bottom");
@@ -590,9 +794,10 @@ if (_vars__WEBPACK_IMPORTED_MODULE_0__.$sidebarFilterTops[0]) {
       activeFilterBottom.style.height = activeFilterBottomHeight + "px";
     }
   }
-  showHideFiltersInit();
+  showHideFiltersInit(undefined);
 
   // L(s)
+  // **
   _vars__WEBPACK_IMPORTED_MODULE_0__.$sidebarFilterTops.forEach(el => {
     el.addEventListener("click", showHideFilters);
   });
@@ -990,6 +1195,40 @@ if (saleSlider) {
       });
     }, 50);
   });
+}
+
+/***/ }),
+
+/***/ "./src/js/components/sidebar-filters__button.js":
+/*!******************************************************!*\
+  !*** ./src/js/components/sidebar-filters__button.js ***!
+  \******************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _vars__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../vars */ "./src/js/vars.js");
+
+let isFalse = true;
+if (_vars__WEBPACK_IMPORTED_MODULE_0__.$sidebarFiltersButton) {
+  // F(s)
+  function toggleSidebarFilters() {
+    const filters = this.nextElementSibling;
+    let btnText = this.querySelector(".btn__text");
+    filters.classList.toggle("sidebar-filters__wrapper--hide");
+    this.classList.toggle("sidebar-filters__button--hide");
+    _vars__WEBPACK_IMPORTED_MODULE_0__.$catalog.classList.toggle("catalog--hide");
+    if (isFalse) {
+      btnText.textContent = "Show filters";
+      isFalse = false;
+    } else {
+      btnText.textContent = "Hide filters";
+      isFalse = true;
+    }
+  }
+
+  // L(s)
+  _vars__WEBPACK_IMPORTED_MODULE_0__.$sidebarFiltersButton.addEventListener("click", toggleSidebarFilters);
 }
 
 /***/ }),
@@ -1495,6 +1734,7 @@ _vars__WEBPACK_IMPORTED_MODULE_0__.$topNavBtn.addEventListener("click", toggleTo
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "$catalog": () => (/* binding */ $catalog),
 /* harmony export */   "$counters": () => (/* binding */ $counters),
 /* harmony export */   "$customCheckboxes": () => (/* binding */ $customCheckboxes),
 /* harmony export */   "$customSelects": () => (/* binding */ $customSelects),
@@ -1518,11 +1758,14 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "$navItems": () => (/* binding */ $navItems),
 /* harmony export */   "$navLinksAll": () => (/* binding */ $navLinksAll),
 /* harmony export */   "$navList": () => (/* binding */ $navList),
+/* harmony export */   "$productColorsBtns": () => (/* binding */ $productColorsBtns),
 /* harmony export */   "$products": () => (/* binding */ $products),
 /* harmony export */   "$saleSlider": () => (/* binding */ $saleSlider),
 /* harmony export */   "$searchForm": () => (/* binding */ $searchForm),
 /* harmony export */   "$sidebarFilterLists": () => (/* binding */ $sidebarFilterLists),
 /* harmony export */   "$sidebarFilterTops": () => (/* binding */ $sidebarFilterTops),
+/* harmony export */   "$sidebarFiltersButton": () => (/* binding */ $sidebarFiltersButton),
+/* harmony export */   "$sidebarFiltersFilters": () => (/* binding */ $sidebarFiltersFilters),
 /* harmony export */   "$subscribeCategories": () => (/* binding */ $subscribeCategories),
 /* harmony export */   "$timer": () => (/* binding */ $timer),
 /* harmony export */   "$toolPags": () => (/* binding */ $toolPags),
@@ -1562,6 +1805,11 @@ const $inputNumberBtns = document.querySelectorAll(".input-number__btn");
 const $toolPags = document.querySelectorAll(".tool-pag");
 const $toolbarSortSelects = document.querySelectorAll(".toolbar__sort-select");
 const $toolbarInputNumberInputs = document.querySelectorAll(".toolbar__input-number-input");
+const $sidebarFiltersButton = document.querySelector("#sidebar-filters__button");
+const $catalog = document.querySelector("#catalog");
+const $sidebarFiltersFilters = document.querySelectorAll(".sidebar-filters__filter");
+const $productColorsBtns = document.querySelectorAll(".product .colors__button");
+
 // **
 const $mdq767 = window.matchMedia("(max-width: 767px)");
 const $mdq768 = window.matchMedia("(min-width: 768px)");
@@ -19889,10 +20137,10 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _components_filter__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ./components/filter */ "./src/js/components/filter.js");
 /* harmony import */ var _components_input_number__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! ./components/input-number */ "./src/js/components/input-number.js");
 /* harmony import */ var _components_tool_pag__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! ./components/tool-pag */ "./src/js/components/tool-pag.js");
-/* harmony import */ var _components_$swipers__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(/*! ./components/$swipers */ "./src/js/components/$swipers.js");
-/* harmony import */ var _components_$overlayScrollbars__WEBPACK_IMPORTED_MODULE_16__ = __webpack_require__(/*! ./components/$overlayScrollbars */ "./src/js/components/$overlayScrollbars.js");
-/* harmony import */ var nouislider__WEBPACK_IMPORTED_MODULE_17__ = __webpack_require__(/*! nouislider */ "./node_modules/nouislider/dist/nouislider.js");
-/* harmony import */ var nouislider__WEBPACK_IMPORTED_MODULE_17___default = /*#__PURE__*/__webpack_require__.n(nouislider__WEBPACK_IMPORTED_MODULE_17__);
+/* harmony import */ var _components_sidebar_filters_button__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(/*! ./components/sidebar-filters__button */ "./src/js/components/sidebar-filters__button.js");
+/* harmony import */ var _components_colors_button__WEBPACK_IMPORTED_MODULE_16__ = __webpack_require__(/*! ./components/colors__button */ "./src/js/components/colors__button.js");
+/* harmony import */ var _components_$swipers__WEBPACK_IMPORTED_MODULE_17__ = __webpack_require__(/*! ./components/$swipers */ "./src/js/components/$swipers.js");
+/* harmony import */ var _components_$overlayScrollbars__WEBPACK_IMPORTED_MODULE_18__ = __webpack_require__(/*! ./components/$overlayScrollbars */ "./src/js/components/$overlayScrollbars.js");
 
 
 // Components
@@ -19911,56 +20159,11 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
+
+
 // Components multiple in one
 
 
-
-// Filter price slider
-
-if (_vars__WEBPACK_IMPORTED_MODULE_0__.$filterSliderRange) {
-  const filterPriceSlider = nouislider__WEBPACK_IMPORTED_MODULE_17___default().create(_vars__WEBPACK_IMPORTED_MODULE_0__.$filterSliderRange, {
-    start: [480, 800],
-    connect: true,
-    range: {
-      'min': 0,
-      'max': 1000
-    },
-    step: 1,
-    tooltips: {
-      to: function (value) {
-        return "$" + parseInt(value);
-      },
-      from: function (value) {
-        return "$" + parseInt(value);
-      }
-    }
-  });
-
-  // F(s)
-  // **
-  function changeInputsValues() {
-    const rangeValues = filterPriceSlider.get();
-    _vars__WEBPACK_IMPORTED_MODULE_0__.$filterSliderInputs.forEach((el, idx) => {
-      el.value = parseInt(rangeValues[idx]);
-    });
-  }
-  changeInputsValues();
-
-  // **
-  function changeRangeValues(idx) {
-    const currentInputValue = ~~_vars__WEBPACK_IMPORTED_MODULE_0__.$filterSliderInputs[idx].value;
-    filterPriceSlider.setHandle(idx, currentInputValue);
-  }
-
-  // L(s)
-  // **
-  filterPriceSlider.on("slide", changeInputsValues);
-
-  // **
-  _vars__WEBPACK_IMPORTED_MODULE_0__.$filterSliderInputs.forEach((el, idx) => {
-    el.addEventListener("keyup", () => changeRangeValues(idx));
-  });
-}
 
 // Scroll-top
 const scrollTop = document.querySelector(".scroll-top");

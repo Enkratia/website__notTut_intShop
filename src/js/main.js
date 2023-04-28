@@ -15,60 +15,12 @@ import "./components/microslider";
 import "./components/filter";
 import "./components/input-number";
 import "./components/tool-pag";
+import "./components/sidebar-filters__button";
+import "./components/colors__button";
 
 // Components multiple in one
 import "./components/$swipers";
 import "./components/$overlayScrollbars";
-
-
-// Filter price slider
-import noUiSlider from "nouislider";
-
-if (v.$filterSliderRange) {
-  const filterPriceSlider = noUiSlider.create(v.$filterSliderRange, {
-    start: [480, 800],
-    connect: true,
-    range: {
-      'min': 0,
-      'max': 1000
-    },
-    step: 1,
-    tooltips: {
-      to: function (value) {
-        return "$" + parseInt(value);
-      },
-      from: function (value) {
-        return "$" + parseInt(value);
-      }
-    }
-  });
-
-  // F(s)
-  // **
-  function changeInputsValues() {
-    const rangeValues = filterPriceSlider.get();
-
-    v.$filterSliderInputs.forEach((el, idx) => {
-      el.value = parseInt(rangeValues[idx]);
-    });
-  }
-  changeInputsValues();
-
-  // **
-  function changeRangeValues(idx) {
-    const currentInputValue = ~~v.$filterSliderInputs[idx].value;
-    filterPriceSlider.setHandle(idx, currentInputValue);
-  }
-
-  // L(s)
-  // **
-  filterPriceSlider.on("slide", changeInputsValues);
-
-  // **
-  v.$filterSliderInputs.forEach((el, idx) => {
-    el.addEventListener("keyup", () => changeRangeValues(idx));
-  });
-}
 
 
 // Scroll-top

@@ -1110,7 +1110,7 @@
     </ul>
 
     <!-- Active filters -->
-    <ul class="breadcrumbs__active-filters active-filters">
+    <!-- <ul class="breadcrumbs__active-filters active-filters">
       <li class="active-filters__item">
         <label class="active-filters__label">
           <button class="active-filters__btn" aria-label="Delete this filter.">
@@ -1118,7 +1118,7 @@
               <use href='./img/sprite.svg#cross' aria-hidden="true"></use>
             </svg>
           </button>
-
+  
           <span class="active-filters__name">
             Dresses
           </span>
@@ -1132,7 +1132,7 @@
               <use href='./img/sprite.svg#cross' aria-hidden="true"></use>
             </svg>
           </button>
-
+  
           <span class="active-filters__name">
             Yellow
           </span>
@@ -1146,7 +1146,7 @@
               <use href='./img/sprite.svg#cross' aria-hidden="true"></use>
             </svg>
           </button>
-
+  
           <span class="active-filters__name">
             Cotton
           </span>
@@ -1160,22 +1160,21 @@
               <use href='./img/sprite.svg#cross' aria-hidden="true"></use>
             </svg>
           </button>
-
+  
           <span class="active-filters__name">
             Clear all
           </span>
         </label>
       </li>
-    </ul>
+    </ul> -->
   </div>
 </section>
-  <section class="catalog">
-
+  <section class="catalog" id="catalog">
   <div class="catalog__container container">
     <div class="sidebar-filters catalog__sidebar-filters">
 
   <!-- Button -->
-  <button class="sidebar-filters__button btn btn--mid">
+  <button class="sidebar-filters__button btn btn--mid" id="sidebar-filters__button">
     <svg xmlns='http://www.w3.org/2000/svg' aria-hidden="true">
       <use href='./img/sprite.svg#filter' aria-hidden="true"></use>
     </svg>
@@ -1550,7 +1549,7 @@
 
             <!-- Item1-->
             <li class="filter__color colors__item">
-              <button class="filter__color-btn colors__button colors__button--active" data-color="black"
+              <button class="filter__color-btn colors__button" data-color="black"
                 aria-label="Choose black color."></button>
 
               <span class="filter__color-name">
@@ -2316,6 +2315,16 @@
         </div>
       </div>
     </div>
+
+    <!-- Show button -->
+    <button class="sidebar-filters__show" aria-label="Show all chosen categories.">
+      Show
+    </button>
+
+    <!-- Apply filters button -->
+    <button class="sidebar-filters__apply btn btn--mid btn--outline">
+      Apply filters
+    </button>
   </div>
 </div>
     <div class="toolbar catalog__toolbar">
@@ -2448,7 +2457,7 @@
       <div class="product__image-wrapper microslider">
 
         <!-- Image -->
-        <img src="./img/sale-bag.png" alt="Product image." class="product__image microslider__image"
+        <img src="./img/product-shirt.jpg" alt="Product image." class="product__image microslider__image"
           id="microslider-image">
 
         <!-- Sources for images -->
@@ -2593,15 +2602,15 @@
           <ul class="product__colors colors">
             <li class="colors__item">
               <button class="colors__button colors__button--active" data-color="black"
-                aria-label="Choose black color.">1</button>
+                aria-label="Choose black color."></button>
             </li>
 
             <li class="colors__item">
-              <button class="colors__button" data-color="brown" aria-label="Choose brown color.">2</button>
+              <button class="colors__button" data-color="brown" aria-label="Choose brown color."></button>
             </li>
 
             <li class="colors__item">
-              <button class="colors__button" data-color="light-blue" aria-label="Choose light-blue color.">3</button>
+              <button class="colors__button" data-color="blue-gray" aria-label="Choose blue-gray color."></button>
             </li>
           </ul>
         </div>
@@ -2630,7 +2639,7 @@
       <div class="product__image-wrapper microslider">
 
         <!-- Image -->
-        <img src="./img/sale-bag.png" alt="Product image." class="product__image microslider__image"
+        <img src="./img/product-jeans.jpg" alt="Product image." class="product__image microslider__image"
           id="microslider-image">
 
         <!-- Sources for images -->
@@ -2747,15 +2756,19 @@
           <ul class="product__colors colors">
             <li class="colors__item">
               <button class="colors__button colors__button--active" data-color="black"
-                aria-label="Choose black color.">1</button>
+                aria-label="Choose black color."></button>
             </li>
 
             <li class="colors__item">
-              <button class="colors__button" data-color="brown" aria-label="Choose brown color.">2</button>
+              <button class="colors__button" data-color="brown" aria-label="Choose brown color."></button>
             </li>
 
             <li class="colors__item">
-              <button class="colors__button" data-color="light-blue" aria-label="Choose light-blue color.">3</button>
+              <button class="colors__button" data-color="blue-gray" aria-label="Choose blue-gray color."></button>
+            </li>
+
+            <li class="colors__item">
+              <button class="colors__button" data-color="white" aria-label="Choose white color."></button>
             </li>
           </ul>
         </div>
@@ -2784,7 +2797,7 @@
       <div class="product__image-wrapper microslider">
 
         <!-- Image -->
-        <img src="./img/sale-bag.png" alt="Product image." class="product__image microslider__image"
+        <img src="./img/product-cap.jpg" alt="Product image." class="product__image microslider__image"
           id="microslider-image">
 
         <!-- Sources for images -->
@@ -2929,15 +2942,15 @@
           <ul class="product__colors colors">
             <li class="colors__item">
               <button class="colors__button colors__button--active" data-color="black"
-                aria-label="Choose black color.">1</button>
+                aria-label="Choose black color."></button>
             </li>
 
             <li class="colors__item">
-              <button class="colors__button" data-color="brown" aria-label="Choose brown color.">2</button>
+              <button class="colors__button" data-color="brown" aria-label="Choose brown color."></button>
             </li>
 
             <li class="colors__item">
-              <button class="colors__button" data-color="light-blue" aria-label="Choose light-blue color.">3</button>
+              <button class="colors__button" data-color="blue-gray" aria-label="Choose blue-gray color."></button>
             </li>
           </ul>
         </div>
@@ -2966,7 +2979,7 @@
       <div class="product__image-wrapper microslider">
 
         <!-- Image -->
-        <img src="./img/sale-bag.png" alt="Product image." class="product__image microslider__image"
+        <img src="./img/product-blouse.jpg" alt="Product image." class="product__image microslider__image"
           id="microslider-image">
 
         <!-- Sources for images -->
@@ -3110,15 +3123,15 @@
           <ul class="product__colors colors">
             <li class="colors__item">
               <button class="colors__button colors__button--active" data-color="black"
-                aria-label="Choose black color.">1</button>
+                aria-label="Choose black color."></button>
             </li>
 
             <li class="colors__item">
-              <button class="colors__button" data-color="brown" aria-label="Choose brown color.">2</button>
+              <button class="colors__button" data-color="brown" aria-label="Choose brown color."></button>
             </li>
 
             <li class="colors__item">
-              <button class="colors__button" data-color="light-blue" aria-label="Choose light-blue color.">3</button>
+              <button class="colors__button" data-color="blue-gray" aria-label="Choose blue-gray color."></button>
             </li>
           </ul>
         </div>
@@ -3147,7 +3160,7 @@
       <div class="product__image-wrapper microslider">
 
         <!-- Image -->
-        <img src="./img/sale-bag.png" alt="Product image." class="product__image microslider__image"
+        <img src="./img/product-coat.jpg" alt="Product image." class="product__image microslider__image"
           id="microslider-image">
 
         <!-- Sources for images -->
@@ -3264,15 +3277,15 @@
           <ul class="product__colors colors">
             <li class="colors__item">
               <button class="colors__button colors__button--active" data-color="black"
-                aria-label="Choose black color.">1</button>
+                aria-label="Choose black color."></button>
             </li>
 
             <li class="colors__item">
-              <button class="colors__button" data-color="brown" aria-label="Choose brown color.">2</button>
+              <button class="colors__button" data-color="brown" aria-label="Choose brown color."></button>
             </li>
 
             <li class="colors__item">
-              <button class="colors__button" data-color="light-blue" aria-label="Choose light-blue color.">3</button>
+              <button class="colors__button" data-color="blue-gray" aria-label="Choose blue-gray color."></button>
             </li>
           </ul>
         </div>
@@ -3301,7 +3314,7 @@
       <div class="product__image-wrapper microslider">
 
         <!-- Image -->
-        <img src="./img/sale-bag.png" alt="Product image." class="product__image microslider__image"
+        <img src="./img/product-earring.jpg" alt="Product image." class="product__image microslider__image"
           id="microslider-image">
 
         <!-- Sources for images -->
@@ -3446,15 +3459,15 @@
           <ul class="product__colors colors">
             <li class="colors__item">
               <button class="colors__button colors__button--active" data-color="black"
-                aria-label="Choose black color.">1</button>
+                aria-label="Choose black color."></button>
             </li>
 
             <li class="colors__item">
-              <button class="colors__button" data-color="brown" aria-label="Choose brown color.">2</button>
+              <button class="colors__button" data-color="brown" aria-label="Choose brown color."></button>
             </li>
 
             <li class="colors__item">
-              <button class="colors__button" data-color="light-blue" aria-label="Choose light-blue color.">3</button>
+              <button class="colors__button" data-color="blue-gray" aria-label="Choose blue-gray color."></button>
             </li>
           </ul>
         </div>
@@ -3483,7 +3496,7 @@
       <div class="product__image-wrapper microslider">
 
         <!-- Image -->
-        <img src="./img/sale-bag.png" alt="Product image." class="product__image microslider__image"
+        <img src="./img/product-watch.jpg" alt="Product image." class="product__image microslider__image"
           id="microslider-image">
 
         <!-- Sources for images -->
@@ -3627,15 +3640,15 @@
           <ul class="product__colors colors">
             <li class="colors__item">
               <button class="colors__button colors__button--active" data-color="black"
-                aria-label="Choose black color.">1</button>
+                aria-label="Choose black color."></button>
             </li>
 
             <li class="colors__item">
-              <button class="colors__button" data-color="brown" aria-label="Choose brown color.">2</button>
+              <button class="colors__button" data-color="brown" aria-label="Choose brown color."></button>
             </li>
 
             <li class="colors__item">
-              <button class="colors__button" data-color="light-blue" aria-label="Choose light-blue color.">3</button>
+              <button class="colors__button" data-color="blue-gray" aria-label="Choose blue-gray color."></button>
             </li>
           </ul>
         </div>
@@ -3664,7 +3677,7 @@
       <div class="product__image-wrapper microslider">
 
         <!-- Image -->
-        <img src="./img/sale-bag.png" alt="Product image." class="product__image microslider__image"
+        <img src="./img/product-shoes.jpg" alt="Product image." class="product__image microslider__image"
           id="microslider-image">
 
         <!-- Sources for images -->
@@ -3781,15 +3794,15 @@
           <ul class="product__colors colors">
             <li class="colors__item">
               <button class="colors__button colors__button--active" data-color="black"
-                aria-label="Choose black color.">1</button>
+                aria-label="Choose black color."></button>
             </li>
 
             <li class="colors__item">
-              <button class="colors__button" data-color="brown" aria-label="Choose brown color.">2</button>
+              <button class="colors__button" data-color="brown" aria-label="Choose brown color."></button>
             </li>
 
             <li class="colors__item">
-              <button class="colors__button" data-color="light-blue" aria-label="Choose light-blue color.">3</button>
+              <button class="colors__button" data-color="blue-gray" aria-label="Choose blue-gray color."></button>
             </li>
           </ul>
         </div>
@@ -3818,7 +3831,7 @@
       <div class="product__image-wrapper microslider">
 
         <!-- Image -->
-        <img src="./img/sale-bag.png" alt="Product image." class="product__image microslider__image"
+        <img src="./img/product-sweatshirt.jpg" alt="Product image." class="product__image microslider__image"
           id="microslider-image">
 
         <!-- Sources for images -->
@@ -3900,7 +3913,7 @@
           $15.50
         </span>
 
-        <span class="product__old-price">
+        <span class="product__old-price product__old-price--base">
           $31.00
         </span>
       </div>
@@ -3970,15 +3983,15 @@
           <ul class="product__colors colors">
             <li class="colors__item">
               <button class="colors__button colors__button--active" data-color="black"
-                aria-label="Choose black color.">1</button>
+                aria-label="Choose black color."></button>
             </li>
 
             <li class="colors__item">
-              <button class="colors__button" data-color="brown" aria-label="Choose brown color.">2</button>
+              <button class="colors__button" data-color="brown" aria-label="Choose brown color."></button>
             </li>
 
             <li class="colors__item">
-              <button class="colors__button" data-color="light-blue" aria-label="Choose light-blue color.">3</button>
+              <button class="colors__button" data-color="blue-gray" aria-label="Choose blue-gray color."></button>
             </li>
           </ul>
         </div>
@@ -4007,7 +4020,7 @@
       <div class="product__image-wrapper microslider">
 
         <!-- Image -->
-        <img src="./img/sale-bag.png" alt="Product image." class="product__image microslider__image"
+        <img src="./img/product-jeans-2.jpg" alt="Product image." class="product__image microslider__image"
           id="microslider-image">
 
         <!-- Sources for images -->
@@ -4062,7 +4075,7 @@
           $40.00
         </span>
 
-        <span class="product__old-price">
+        <span class="product__old-price product__old-price--base">
           $80.00
         </span>
       </div>
@@ -4132,15 +4145,15 @@
           <ul class="product__colors colors">
             <li class="colors__item">
               <button class="colors__button colors__button--active" data-color="black"
-                aria-label="Choose black color.">1</button>
+                aria-label="Choose black color."></button>
             </li>
 
             <li class="colors__item">
-              <button class="colors__button" data-color="brown" aria-label="Choose brown color.">2</button>
+              <button class="colors__button" data-color="brown" aria-label="Choose brown color."></button>
             </li>
 
             <li class="colors__item">
-              <button class="colors__button" data-color="light-blue" aria-label="Choose light-blue color.">3</button>
+              <button class="colors__button" data-color="blue-gray" aria-label="Choose blue-gray color."></button>
             </li>
           </ul>
         </div>
@@ -4169,7 +4182,7 @@
       <div class="product__image-wrapper microslider">
 
         <!-- Image -->
-        <img src="./img/sale-bag.png" alt="Product image." class="product__image microslider__image"
+        <img src="./img/product-bag.jpg" alt="Product image." class="product__image microslider__image"
           id="microslider-image">
 
         <!-- Sources for images -->
@@ -4252,7 +4265,7 @@
           $89.50
         </span>
 
-        <span class="product__old-price">
+        <span class="product__old-price product__old-price--base">
           $179.00
         </span>
       </div>
@@ -4322,15 +4335,15 @@
           <ul class="product__colors colors">
             <li class="colors__item">
               <button class="colors__button colors__button--active" data-color="black"
-                aria-label="Choose black color.">1</button>
+                aria-label="Choose black color."></button>
             </li>
 
             <li class="colors__item">
-              <button class="colors__button" data-color="brown" aria-label="Choose brown color.">2</button>
+              <button class="colors__button" data-color="brown" aria-label="Choose brown color."></button>
             </li>
 
             <li class="colors__item">
-              <button class="colors__button" data-color="light-blue" aria-label="Choose light-blue color.">3</button>
+              <button class="colors__button" data-color="blue-gray" aria-label="Choose blue-gray color."></button>
             </li>
           </ul>
         </div>
@@ -4359,7 +4372,7 @@
       <div class="product__image-wrapper microslider">
 
         <!-- Image -->
-        <img src="./img/sale-bag.png" alt="Product image." class="product__image microslider__image"
+        <img src="./img/product-shoes-2.jpg" alt="Product image." class="product__image microslider__image"
           id="microslider-image">
 
         <!-- Sources for images -->
@@ -4476,15 +4489,15 @@
           <ul class="product__colors colors">
             <li class="colors__item">
               <button class="colors__button colors__button--active" data-color="black"
-                aria-label="Choose black color.">1</button>
+                aria-label="Choose black color."></button>
             </li>
 
             <li class="colors__item">
-              <button class="colors__button" data-color="brown" aria-label="Choose brown color.">2</button>
+              <button class="colors__button" data-color="brown" aria-label="Choose brown color."></button>
             </li>
 
             <li class="colors__item">
-              <button class="colors__button" data-color="light-blue" aria-label="Choose light-blue color.">3</button>
+              <button class="colors__button" data-color="blue-gray" aria-label="Choose blue-gray color."></button>
             </li>
           </ul>
         </div>
@@ -4622,8 +4635,9 @@
   </div>
 </div>
   </div>
+</section>
 
-  <section class="subscribe">
+<section class="subscribe">
   <div class="subscribe__container container">
 
     <!-- Left -->
@@ -4718,7 +4732,7 @@
     <div class="subscribe__right"></div>
   </div>
 </section>
-  <section class="footer">
+<section class="footer">
   <div class="footer__container container">
 
     <!-- Footer main -->
@@ -4910,7 +4924,6 @@
         by Createx Studio
       </small>
     </div>
-</section>
 </section>
 
   <a class="scroll-top" aria-label="Scroll to top.">

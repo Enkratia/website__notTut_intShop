@@ -20,7 +20,7 @@ const notify = require('gulp-notify');
 const image = require('gulp-imagemin');
 const {readFileSync} = require('fs');
 const typograf = require('gulp-typograf');
-// const webp = require('gulp-webp');
+const webp = require('gulp-webp');
 const mainSass = gulpSass(sass);
 const webpackStream = require('webpack-stream');
 const plumber = require('gulp-plumber');
@@ -184,6 +184,13 @@ const images = () => {
     .pipe(dest(paths.buildImgFolder))
 };
 
+// WebpImages
+const webpImages = () => {
+  return src([`${paths.srcImgFolder}/**/**.{jpg,jpeg,png}`])
+    .pipe(webp())
+    .pipe(dest(paths.buildImgFolder))
+};
+
 // Html Includes
 const htmlInclude = () => {
   return src([`${srcFolder}/*.html`])
@@ -215,7 +222,7 @@ const watchFiles = () => {
 
   watch(`${paths.resourcesFolder}/**`, resources);
   watch(`${paths.srcImgFolder}/**/**.{jpg,jpeg,png,svg}`, images);
-  // watch(`${paths.srcImgFolder}/**/**.{jpg,jpeg,png}`, webpImages);
+  watch(`${paths.srcImgFolder}/**/**.{jpg,jpeg,png}`, webpImages);
   watch(`${paths.srcFontsFolder}/**.{woff2}`, fonts);
   watch(paths.srcSvg, svgSprites);
 }
@@ -274,9 +281,9 @@ const toProd = (done) => {
 };
 
 
-exports.default = series(clean, htmlInclude, scripts, styles, resources, fonts, images, svgSprites, watchFiles);
+exports.default = series(clean, htmlInclude, scripts, styles, resources, fonts, images, webpImages, svgSprites, watchFiles);
 
-exports.build = series(toProd, clean, htmlInclude, scripts, styles, resources, fonts, images, htmlMinify);
+exports.build = series(toProd, clean, htmlInclude, scripts, styles, resources, fonts, images, webpImages, svgSprites, htmlMinify);
 
 exports.cache = series(cache, rewrite);
 

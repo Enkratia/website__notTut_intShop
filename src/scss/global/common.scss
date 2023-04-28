@@ -377,7 +377,7 @@
   &__favorite {
     position: absolute;
     right: rem(16);
-    bottom: rem(32);
+    bottom: rem(16);
     display: flex;
     align-items: center;
     justify-content: center;
@@ -505,6 +505,11 @@
     font: var(--large-regular);
     text-decoration: line-through;
     color: var(--gray700-color);
+
+    &--base {
+      padding-top: rem(1);
+      font: var(--base-regular);
+    }
   }
 
   &__bottom {
@@ -654,7 +659,7 @@
     }
 
     &:hover {
-      z-index: var(--z-up);
+      // z-index: var(--z-up);
       box-shadow: var(--regular-shadow);
       transition: box-shadow 0.3s ease-in-out;
 

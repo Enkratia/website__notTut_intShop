@@ -1,7 +1,7 @@
 <div class="sidebar-filters catalog__sidebar-filters">
 
   <!-- Button -->
-  <button class="sidebar-filters__button btn btn--mid">
+  <button class="sidebar-filters__button btn btn--mid" id="sidebar-filters__button">
     <svg xmlns='http://www.w3.org/2000/svg' aria-hidden="true">
       <use href='./img/sprite.svg#filter' aria-hidden="true"></use>
     </svg>
@@ -376,7 +376,7 @@
 
             <!-- Item1-->
             <li class="filter__color colors__item">
-              <button class="filter__color-btn colors__button colors__button--active" data-color="black"
+              <button class="filter__color-btn colors__button" data-color="black"
                 aria-label="Choose black color."></button>
 
               <span class="filter__color-name">
@@ -1142,5 +1142,15 @@
         </div>
       </div>
     </div>
+
+    <!-- Show button -->
+    <button class="sidebar-filters__show" aria-label="Show all chosen categories.">
+      Show
+    </button>
+    
+    <!-- Apply filters button -->
+    <button class="sidebar-filters__apply btn btn--mid btn--outline">
+      Apply filters
+    </button>
   </div>
 </div>
