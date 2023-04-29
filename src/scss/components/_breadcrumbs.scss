@@ -63,19 +63,19 @@
   .active-filters {
     display: flex;
     align-items: center;
+    transition: opacity 0.3s;
 
     &__item {
-      &:not(:last-child) {
-        margin-right: rem(20.5);
-      }
-    }
-
-    &__label {
+      position: relative;
       display: flex;
       align-items: center;
       color: var(--gray600-color);
       transition: color 0.3s;
       cursor: pointer;
+
+      &:not(:last-child) {
+        margin-right: rem(20.5);
+      }
 
       &:hover {
         color: var(--gray800-color);
@@ -92,6 +92,15 @@
       justify-content: center;
       margin-right: rem(8);
 
+      &::before {
+        content: "";
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+      }
+
       svg {
         width: rem(16);
         height: rem(16);
@@ -102,6 +111,11 @@
     &__name {
       font: var(--small-regular);
       color: currentcolor;
+    }
+
+    &--invisible {
+      opacity: 0;
+      visibility: hidden;
     }
   }
 }

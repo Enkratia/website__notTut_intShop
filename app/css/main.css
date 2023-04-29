@@ -3027,43 +3027,43 @@ button {
 .colors__button:hover {
   border-color: var(--primary-color);
 }
-.colors__button[data-color=black]::before {
+.colors__button[data-color=Black]::before {
   background-color: var(--black-color);
 }
-.colors__button[data-color=brown]::before {
+.colors__button[data-color=Brown]::before {
   background-color: var(--brown-color);
 }
-.colors__button[data-color=blue-gray]::before {
+.colors__button[data-color=Blue-gray]::before {
   background-color: var(--blue-gray-color);
 }
-.colors__button[data-color=dark-blue]::before {
+.colors__button[data-color=Dark-blue]::before {
   background-color: var(--dark-blue-color);
 }
-.colors__button[data-color=green]::before {
+.colors__button[data-color=Green]::before {
   background-color: var(--green-color);
 }
-.colors__button[data-color=yellow]::before {
+.colors__button[data-color=Yellow]::before {
   background-color: var(--yellow-color);
 }
-.colors__button[data-color=red]::before {
+.colors__button[data-color=Red]::before {
   background-color: var(--red-color);
 }
-.colors__button[data-color=beige]::before {
+.colors__button[data-color=Beige]::before {
   background-color: var(--beige-color);
 }
-.colors__button[data-color=gray]::before {
+.colors__button[data-color=Gray]::before {
   background-color: var(--gray-color);
 }
-.colors__button[data-color=purple]::before {
+.colors__button[data-color=Purple]::before {
   background-color: var(--purple-color);
 }
-.colors__button[data-color=orange]::before {
+.colors__button[data-color=Orange]::before {
   background-color: var(--orange-color);
 }
-.colors__button[data-color=white]::before {
+.colors__button[data-color=White]::before {
   background-color: var(--dummy-white-color);
 }
-.colors__button[data-color=pink]::before {
+.colors__button[data-color=Pink]::before {
   background-color: var(--pink-color);
 }
 .colors__button--active {
@@ -6439,11 +6439,12 @@ button {
   -webkit-box-align: center;
   -ms-flex-align: center;
   align-items: center;
+  -webkit-transition: opacity 0.3s;
+  -o-transition: opacity 0.3s;
+  transition: opacity 0.3s;
 }
-.breadcrumbs .active-filters__item:not(:last-child) {
-  margin-right: 1.28125rem;
-}
-.breadcrumbs .active-filters__label {
+.breadcrumbs .active-filters__item {
+  position: relative;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -6456,10 +6457,13 @@ button {
   transition: color 0.3s;
   cursor: pointer;
 }
-.breadcrumbs .active-filters__label:hover {
+.breadcrumbs .active-filters__item:not(:last-child) {
+  margin-right: 1.28125rem;
+}
+.breadcrumbs .active-filters__item:hover {
   color: var(--gray800-color);
 }
-.breadcrumbs .active-filters__label--active {
+.breadcrumbs .active-filters__item--active {
   color: var(--gray800-color);
 }
 .breadcrumbs .active-filters__btn {
@@ -6474,6 +6478,14 @@ button {
   justify-content: center;
   margin-right: 0.5rem;
 }
+.breadcrumbs .active-filters__btn::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+}
 .breadcrumbs .active-filters__btn svg {
   width: 1rem;
   height: 1rem;
@@ -6482,6 +6494,10 @@ button {
 .breadcrumbs .active-filters__name {
   font: var(--small-regular);
   color: currentcolor;
+}
+.breadcrumbs .active-filters--invisible {
+  opacity: 0;
+  visibility: hidden;
 }
 
 .catalog {
@@ -6805,19 +6821,32 @@ button {
   font: var(--small-regular);
   color: var(--gray800-color);
 }
-.sidebar-filters .filter__item:not(:last-child) {
-  margin-bottom: 0.40625rem;
-}
-.sidebar-filters .filter__label {
-  display: -webkit-inline-box;
-  display: -ms-inline-flexbox;
-  display: inline-flex;
+.sidebar-filters .filter__item {
+  position: relative;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
   -webkit-box-align: center;
   -ms-flex-align: center;
   align-items: center;
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
+}
+.sidebar-filters .filter__item:not(:last-child) {
+  margin-bottom: 0.5rem;
 }
 .sidebar-filters .filter__checkbox {
   margin-right: 0.75rem;
+}
+.sidebar-filters .filter__checkbox::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  cursor: pointer;
 }
 .sidebar-filters .filter__name {
   margin-right: 0.25rem;

@@ -642,6 +642,7 @@ if (_vars__WEBPACK_IMPORTED_MODULE_0__.$sidebarFilterTops[0]) {
   });
 
   // ==== ADD FILTER CATEGORIES TO BREADCRUMBS ==== //
+  const prevFilterMap = new Map();
   const filterMap = new Map();
   let ul;
   let prevPrice;
@@ -653,11 +654,40 @@ if (_vars__WEBPACK_IMPORTED_MODULE_0__.$sidebarFilterTops[0]) {
 
   // F(s)
   // **
-  function confirmChoice() {}
+  function resetSlider() {
+    filterPriceSlider.reset();
+    changeInputsValues();
+  }
 
   // **
-  function activateShowButton() {
-    filterWrapper.classList.toggle("sidebar-filters__wrapper--confirm", filterMap.size);
+  function deleteBtn() {
+    const categoryText = this.innerText;
+    const checkedCheckboxes = filterWrapper.querySelectorAll(".custom-checkbox--checked");
+    if (categoryText.startsWith("Price")) {
+      resetSlider();
+      filterMap.delete("price");
+    }
+    for (let i = 0; i < checkedCheckboxes.length; i++) {
+      if (checkedCheckboxes[i].nextElementSibling.innerText === categoryText) {
+        checkedCheckboxes[i].click();
+        break;
+      }
+    }
+    filterMap.delete(categoryText);
+    this.remove();
+    if (ul.children.length <= 1) {
+      ul.classList.add("active-filters--invisible");
+    }
+    prevFilterMap.clear();
+    for (let filter of filterMap) {
+      prevFilterMap.set(filter[0], filter[1]);
+    }
+    toggleShowButton();
+  }
+
+  // **
+  function toggleShowButton() {
+    filterWrapper.classList.toggle("sidebar-filters__wrapper--confirm", prevFilterMap.size || filterMap.size);
   }
 
   // **
@@ -667,16 +697,17 @@ if (_vars__WEBPACK_IMPORTED_MODULE_0__.$sidebarFilterTops[0]) {
     name = name.trim();
     if (filterMap.has(text)) {
       filterMap.delete(text);
-      console.log(filterMap);
       return;
     }
     filterMap.set(name, text);
-    console.log(filterMap);
   }
 
   // **
-  function makeColorActive() {
+  function makeColorActive(elem) {
     elem.classList.toggle("colors__button--active");
+  }
+  function makeColorInactive(elem) {
+    elem.classList.remove("colors__button--active");
   }
 
   // **
@@ -686,41 +717,64 @@ if (_vars__WEBPACK_IMPORTED_MODULE_0__.$sidebarFilterTops[0]) {
       ul.className = "breadcrumbs__active-filters active-filters";
       breadcrumbsContainer.appendChild(ul);
       isUlExist = true;
-    }
-    let liTags = "";
-    let clearAllTag = `
-    <li class="active-filters__item">
-        <label class="active-filters__label active-filters__label--active">
-          <button class="active-filters__btn" aria-label="Delete all filters.">
+      let clearAllTag = `
+        <li class="active-filters__item active-filters__item--active">
+          <button class="active-filters__btn active-filters__btn--clearall" aria-label="Delete all filters.">
             <svg xmlns='http://www.w3.org/2000/svg' aria-hidden="true">
-              <use href='./img/sprite.svg#cross' aria-hidden="true"></use>
+             <use href='./img/sprite.svg#cross' aria-hidden="true"></use>
             </svg>
           </button>
   
           <span class="active-filters__name">
             Clear all
           </span>
-        </label>
-      </li>
-    `;
-    filterMap.forEach(el => {
+        </li>
+      `;
+      ul.insertAdjacentHTML("afterbegin", clearAllTag);
+    }
+    let liTags = "";
+    const prevFilterMapValues = Array.from(prevFilterMap.values());
+    const filterMapValues = Array.from(filterMap.values());
+    for (let filter of prevFilterMap) {
+      if (!filterMapValues.includes(filter[1])) {
+        const filterNames = ul.querySelectorAll(".active-filters__name");
+        filterNames.forEach(el => {
+          if (el.innerText === filter[1]) {
+            el.parentElement.remove();
+          }
+        });
+      }
+    }
+    for (let filter of filterMap) {
+      if (prevFilterMapValues.includes(filter[1])) {
+        continue;
+      }
       liTags += `
-        <li class="active-filters__item">
-          <label class="active-filters__label">
+          <li class="active-filters__item active-filters__btn--regular">
             <button class="active-filters__btn" aria-label="Delete this filter.">
-              <svg xmlns='http://www.w3.org/2000/svg' aria-hidden="true">
-               <use href='./img/sprite.svg#cross' aria-hidden="true"></use>
+               <svg xmlns='http://www.w3.org/2000/svg' aria-hidden="true">
+                <use href='./img/sprite.svg#cross' aria-hidden="true"></use>
               </svg>
             </button>
-
+  
             <span class="active-filters__name">
-             ${el}
+             ${filter[1]}
             </span>
-          </label>
-        </li>`;
+          </li>`;
+    }
+    ul.insertAdjacentHTML("afterbegin", liTags);
+    ul.classList.remove("active-filters--invisible");
+    const regularBtns = ul.querySelectorAll(".active-filters__btn--regular");
+    regularBtns.forEach(el => {
+      el.addEventListener("click", deleteBtn, {
+        once: true
+      });
     });
-    liTags += clearAllTag;
-    ul.innerHTML = liTags;
+    prevFilterMap.clear();
+    for (let filter of filterMap) {
+      prevFilterMap.set(filter[0], filter[1]);
+    }
+    toggleShowButton();
   }
 
   // ***
@@ -732,6 +786,7 @@ if (_vars__WEBPACK_IMPORTED_MODULE_0__.$sidebarFilterTops[0]) {
 
   // ***
   function getPrice() {
+    console.log('h2');
     const currentPriceArray = filterPriceSlider.get();
     const currentPrice = "Price" + ` ${~~currentPriceArray[0]} - ${~~currentPriceArray[1]}`;
     if (prevPrice !== currentPrice) {
@@ -739,7 +794,7 @@ if (_vars__WEBPACK_IMPORTED_MODULE_0__.$sidebarFilterTops[0]) {
     } else {
       filterMap.delete("price");
     }
-    activateShowButton();
+    toggleShowButton();
   }
 
   // ***
@@ -747,12 +802,12 @@ if (_vars__WEBPACK_IMPORTED_MODULE_0__.$sidebarFilterTops[0]) {
     if (e.target.classList.contains("filter__color-btn")) {
       makeColorActive(e.target);
       addFilterInArray(e.target.dataset.color);
-    } else if (e.target.closest(".filter__label") && e.target.tagName !== "INPUT") {
-      const filterLabel = e.target.closest(".filter__label");
-      const filterName = filterLabel.querySelector(".filter__name").textContent;
+    } else if (e.target.classList.contains("filter__checkbox")) {
+      const filterCheckbox = e.target;
+      const filterName = filterCheckbox.nextElementSibling.textContent;
       addFilterInArray(filterName);
     }
-    activateShowButton();
+    toggleShowButton();
   }
 
   // L(s)
@@ -764,7 +819,8 @@ if (_vars__WEBPACK_IMPORTED_MODULE_0__.$sidebarFilterTops[0]) {
   // **
   sidebarFiltersShowBtn.addEventListener("click", addInBreadcrumbs);
   filterPriceSlider.on("update", () => {
-    isTwo++; // (2 inits from start)
+    console.log(isTwo);
+    isTwo++; // (2 inits from the start)
     if (isTwo <= 2) return;
     getPrice();
   });
