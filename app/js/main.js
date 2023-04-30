@@ -653,6 +653,19 @@ if (_vars__WEBPACK_IMPORTED_MODULE_0__.$sidebarFilterTops[0]) {
   const breadcrumbsContainer = document.querySelector(".breadcrumbs__container"); // add to vars
 
   // F(s)
+  //
+  function toggleCategoriesVisibility() {
+    ul.classList.toggle("active-filters--invisible", ul.children.length <= 1);
+  }
+
+  // **
+  function rewriteMap() {
+    prevFilterMap.clear();
+    for (let filter of filterMap) {
+      prevFilterMap.set(filter[0], filter[1]);
+    }
+  }
+
   // **
   function resetSlider() {
     filterPriceSlider.reset();
@@ -662,26 +675,31 @@ if (_vars__WEBPACK_IMPORTED_MODULE_0__.$sidebarFilterTops[0]) {
   // **
   function deleteBtn() {
     const categoryText = this.innerText;
-    const checkedCheckboxes = filterWrapper.querySelectorAll(".custom-checkbox--checked");
     if (categoryText.startsWith("Price")) {
       resetSlider();
       filterMap.delete("price");
-    }
-    for (let i = 0; i < checkedCheckboxes.length; i++) {
-      if (checkedCheckboxes[i].nextElementSibling.innerText === categoryText) {
-        checkedCheckboxes[i].click();
-        break;
+    } else if (this.dataset.tag.startsWith("color")) {
+      const activeColorBtns = filterWrapper.querySelectorAll(".colors__button--active");
+      for (let i = 0; i < activeColorBtns.length; i++) {
+        if (activeColorBtns[i].dataset.color === categoryText) {
+          makeColorInactive(activeColorBtns[i]);
+          filterMap.delete(this.dataset.tag);
+          break;
+        }
+      }
+    } else {
+      const checkedCheckboxes = filterWrapper.querySelectorAll(".custom-checkbox--checked");
+      for (let i = 0; i < checkedCheckboxes.length; i++) {
+        if (checkedCheckboxes[i].nextElementSibling.innerText === categoryText) {
+          checkedCheckboxes[i].click();
+          filterMap.delete(categoryText);
+          break;
+        }
       }
     }
-    filterMap.delete(categoryText);
     this.remove();
-    if (ul.children.length <= 1) {
-      ul.classList.add("active-filters--invisible");
-    }
-    prevFilterMap.clear();
-    for (let filter of filterMap) {
-      prevFilterMap.set(filter[0], filter[1]);
-    }
+    toggleCategoriesVisibility();
+    rewriteMap();
     toggleShowButton();
   }
 
@@ -703,7 +721,7 @@ if (_vars__WEBPACK_IMPORTED_MODULE_0__.$sidebarFilterTops[0]) {
   }
 
   // **
-  function makeColorActive(elem) {
+  function toggleActiveColor(elem) {
     elem.classList.toggle("colors__button--active");
   }
   function makeColorInactive(elem) {
@@ -736,6 +754,7 @@ if (_vars__WEBPACK_IMPORTED_MODULE_0__.$sidebarFilterTops[0]) {
     const prevFilterMapValues = Array.from(prevFilterMap.values());
     const filterMapValues = Array.from(filterMap.values());
     for (let filter of prevFilterMap) {
+      console.log(filter);
       if (!filterMapValues.includes(filter[1])) {
         const filterNames = ul.querySelectorAll(".active-filters__name");
         filterNames.forEach(el => {
@@ -750,7 +769,7 @@ if (_vars__WEBPACK_IMPORTED_MODULE_0__.$sidebarFilterTops[0]) {
         continue;
       }
       liTags += `
-          <li class="active-filters__item active-filters__btn--regular">
+          <li class="active-filters__item active-filters__btn--regular" data-tag="${filter[0]}">
             <button class="active-filters__btn" aria-label="Delete this filter.">
                <svg xmlns='http://www.w3.org/2000/svg' aria-hidden="true">
                 <use href='./img/sprite.svg#cross' aria-hidden="true"></use>
@@ -763,7 +782,7 @@ if (_vars__WEBPACK_IMPORTED_MODULE_0__.$sidebarFilterTops[0]) {
           </li>`;
     }
     ul.insertAdjacentHTML("afterbegin", liTags);
-    ul.classList.remove("active-filters--invisible");
+    toggleCategoriesVisibility();
     const regularBtns = ul.querySelectorAll(".active-filters__btn--regular");
     regularBtns.forEach(el => {
       el.addEventListener("click", deleteBtn, {
@@ -786,7 +805,6 @@ if (_vars__WEBPACK_IMPORTED_MODULE_0__.$sidebarFilterTops[0]) {
 
   // ***
   function getPrice() {
-    console.log('h2');
     const currentPriceArray = filterPriceSlider.get();
     const currentPrice = "Price" + ` ${~~currentPriceArray[0]} - ${~~currentPriceArray[1]}`;
     if (prevPrice !== currentPrice) {
@@ -800,8 +818,8 @@ if (_vars__WEBPACK_IMPORTED_MODULE_0__.$sidebarFilterTops[0]) {
   // ***
   function getCategories(e) {
     if (e.target.classList.contains("filter__color-btn")) {
-      makeColorActive(e.target);
-      addFilterInArray(e.target.dataset.color);
+      toggleActiveColor(e.target);
+      addFilterInArray(e.target.dataset.color, `color${e.target.dataset.color}`);
     } else if (e.target.classList.contains("filter__checkbox")) {
       const filterCheckbox = e.target;
       const filterName = filterCheckbox.nextElementSibling.textContent;
