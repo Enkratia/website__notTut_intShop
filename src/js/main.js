@@ -1,26 +1,24 @@
-import * as v from "./vars";
-
 // Components
-import "./components/custom-select";
-import "./components/special-offers";
-import "./components/timer";
-import "./components/custom-checkbox";
-import "./components/subscribe__categories";
-import "./components/menu-btn";
-import "./components/megamenu";
-import "./components/login";
-import "./components/top-nav";
-import "./components/product__bottom";
-import "./components/microslider";
-import "./components/filter";
-import "./components/input-number";
-import "./components/tool-pag";
-import "./components/sidebar-filters__button";
-import "./components/colors__button";
+import "./components/custom-select.js";
+import "./components/special-offers.js";
+import "./components/timer.js";
+import "./components/custom-checkbox.js";
+import "./components/subscribe__categories.js";
+import "./components/menu-btn.js";
+import "./components/megamenu.js";
+import "./components/login.js";
+import "./components/top-nav.js";
+import "./components/product__bottom.js";
+import "./components/microslider.js";
+import "./components/filter.js";
+import "./components/input-number.js";
+import "./components/tool-pag.js";
+import "./components/sidebar-filters__button.js";
+import "./components/colors__button.js";
 
 // Components multiple in one
-import "./components/$swipers";
-import "./components/$overlayScrollbars";
+import "./components/$swipers.js";
+import "./components/$overlayScrollbars.js";
 
 
 // Scroll-top

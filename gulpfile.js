@@ -1,34 +1,35 @@
-const {src, dest, series, watch} = require('gulp');
-
-const autoprefixer = require('gulp-autoprefixer');
-const cleanCSS = require('gulp-clean-css');
-const del = require('del');
-const browserSync = require('browser-sync').create();
-const sass = require('sass');
-const gulpSass = require('gulp-sass');
-const svgSprite = require('gulp-svg-sprite');
-const svgmin = require('gulp-svgmin');
-const cheerio = require('gulp-cheerio');
-const replace = require('gulp-replace');
-const fileInclude = require('gulp-file-include');
-const rev = require('gulp-rev');
-const revRewrite = require('gulp-rev-rewrite');
-const revDel = require('gulp-rev-delete-original');
-const htmlmin = require('gulp-htmlmin');
-const gulpif = require('gulp-if');
-const notify = require('gulp-notify');
-const image = require('gulp-imagemin');
-const {readFileSync} = require('fs');
-const typograf = require('gulp-typograf');
-const webp = require('gulp-webp');
+import gulp from 'gulp';
+const { src, dest, series, watch } = gulp;
+import autoprefixer from 'gulp-autoprefixer';
+import cleanCSS from 'gulp-clean-css';
+import del from 'del';
+import sync from 'browser-sync';
+const browserSync = sync.create();
+import sass from 'sass';
+import gulpSass from 'gulp-sass';
 const mainSass = gulpSass(sass);
-const webpackStream = require('webpack-stream');
-const plumber = require('gulp-plumber');
-const path = require('path');
-const zip = require('gulp-zip');
+import svgSprite from 'gulp-svg-sprite';
+import svgmin from 'gulp-svgmin';
+import cheerio from 'gulp-cheerio';
+import replace from 'gulp-replace';
+import fileInclude from 'gulp-file-include';
+import rev from 'gulp-rev';
+import revRewrite from 'gulp-rev-rewrite';
+import revDel from 'gulp-rev-delete-original';
+import htmlmin from 'gulp-htmlmin';
+import gulpif from 'gulp-if';
+import notify from 'gulp-notify';
+// import imagemin from 'imagemin';
+// import imageminJpegtran from 'imagemin-jpegtran';
+import imagemin, { mozjpeg } from 'gulp-imagemin';
+import { readFileSync } from 'fs';
+import typograf from 'gulp-typograf';
+import webp from 'gulp-webp';
+import webpackStream from 'webpack-stream';
+import plumber from 'gulp-plumber';
+import path from 'path';
+import zip from 'gulp-zip';
 const rootFolder = path.basename(path.resolve());
-
-const gulp = require('gulp');
 
 // Paths
 const srcFolder = './src';
@@ -53,19 +54,20 @@ const paths = {
 };
 
 // Dev by default
-let isProd = false; 
+let isProd = false;
 
+// Clean
 const clean = () => {
   return del([buildFolder])
 }
 
-// Fonts(mine)
+// Fonts
 const fonts = () => {
   return src([`${paths.srcFontsFolder}/**.woff2`])
     .pipe(dest(paths.buildFontsFolder));
 };
 
-// Svg sprite
+// SVG sprite
 const svgSprites = () => {
   return src(paths.srcSvg)
     .pipe(
@@ -98,7 +100,7 @@ const svgSprites = () => {
     .pipe(dest(paths.buildImgFolder));
 }
 
-// Scss styles
+// SCSS
 const styles = () => {
   return src(`${paths.srcScss}/main.scss`, { sourcemaps: !isProd })
     .pipe(plumber(
@@ -122,7 +124,7 @@ const styles = () => {
 
 
 
-// JavaScript
+// JS
 const scripts = () => {
   return src(paths.srcMainJs)
     .pipe(plumber(
@@ -171,15 +173,9 @@ const resources = () => {
 
 // Images
 const images = () => {
-  return src([`${paths.srcImgFolder}/**/**.{jpg,jpeg,png,svg}`])
-    .pipe(gulpif(isProd, image([
-      image.mozjpeg({
-        quality: 80,
-        progressive: true
-      }),
-      // image.optipng({
-      //   optimizationLevel: 2
-      // }),
+  return src([`${paths.srcImgFolder}/**/**.{jpg,jpeg,svg}`])
+    .pipe(gulpif(isProd, imagemin([
+      mozjpeg({quality: 80, progressive: true}),
     ])))
     .pipe(dest(paths.buildImgFolder))
 };
@@ -231,8 +227,8 @@ const watchFiles = () => {
 // Cache
 const cache = () => {
   return src(`${buildFolder}/**/*.{css,js,svg,png,jpg,jpeg,webp,woff2}`, {
-      base: buildFolder
-    })
+    base: buildFolder
+  })
     .pipe(rev())
     .pipe(revDel())
     .pipe(dest(buildFolder))
@@ -281,13 +277,19 @@ const toProd = (done) => {
 };
 
 
-exports.default = series(clean, htmlInclude, scripts, styles, resources, fonts, images, webpImages, svgSprites, watchFiles);
+// task('default', parallel(clean, htmlInclude, scripts, styles, resources, fonts, images, webpImages, svgSprites, watchFiles));
+// task('build', series(toProd, clean, htmlInclude, scripts, styles, resources, fonts, images, webpImages, svgSprites, htmlMinify));
+// task('cache', series(cache, rewrite));
+// task('zip', series(zipFiles));
 
-exports.build = series(toProd, clean, htmlInclude, scripts, styles, resources, fonts, images, webpImages, svgSprites, htmlMinify);
+// exports.default = series(clean, htmlInclude, scripts, styles, resources, fonts, images, webpImages, svgSprites, watchFiles);
+export default series(clean, htmlInclude, scripts, styles, resources, fonts, images, webpImages, svgSprites, watchFiles);
 
-exports.cache = series(cache, rewrite);
+// exports.build = series(toProd, clean, htmlInclude, scripts, styles, resources, fonts, images, webpImages, svgSprites, htmlMinify);
 
-exports.zip = zipFiles;
+// exports.cache = series(cache, rewrite);
+
+// exports.zip = zipFiles;
 
 
 

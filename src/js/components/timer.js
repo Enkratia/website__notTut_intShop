@@ -1,4 +1,4 @@
-import * as v from "../vars";
+import * as v from "../vars.js";
 
 if (v.$counters) {
   const daysElem = v.$counters[0];

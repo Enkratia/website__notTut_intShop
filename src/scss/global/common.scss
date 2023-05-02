@@ -194,7 +194,7 @@
 
   &--apple {
     position: relative;
-    background-image: url("../img/cta-apple.png");
+    background-image: url("../img/cta-apple.jpg");
     background-position: left rem(14.23) center;
     background-size: rem(24.91) rem(30.61);
 
@@ -213,7 +213,7 @@
   &--google {
     padding-left: rem(50);
     font-family: "Roboto", sans-serif;
-    background-image: url("../img/cta-google.png");
+    background-image: url("../img/cta-google.jpg");
     background-position: left rem(12.23) center;
     background-size: rem(27.66) rem(30.88);
   }
@@ -659,7 +659,6 @@
     }
 
     &:hover {
-      // z-index: var(--z-up);
       box-shadow: var(--regular-shadow);
       transition: box-shadow 0.3s ease-in-out;
 
@@ -672,6 +671,7 @@
         box-shadow: var(--regular-shadow);
         opacity: 1;
         visibility: visible;
+        transition: box-shadow 0.3s ease-in-out opacity 0.3s;
       }
     }
   }
@@ -680,6 +680,7 @@
 .colors {
   display: flex;
   flex-wrap: wrap;
+  justify-content: flex-end;
   gap: rem(5.5);
 
   &__button {

@@ -1,4 +1,4 @@
-import * as v from "../vars";
+import * as v from "../vars.js";
 
 const hoverCount = 3; // (Количество элементов главного меню с ховером)
 

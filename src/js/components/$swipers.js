@@ -1,4 +1,4 @@
-import * as v from "../vars";
+import * as v from "../vars.js";
 import Swiper, { Pagination, Navigation, EffectFade } from 'swiper';
 
 // HERO SWIPER

@@ -1,6 +1,9 @@
 @use "../../util/" as *;
 
 .sidebar-filters {
+  position: relative;
+  z-index: var(--z-prefixed);
+
   &__button {
     width: 100%;
 
@@ -46,8 +49,8 @@
     display: flex;
     align-items: center;
     border-radius: rem(4);
-    padding-inline: rem(10);
-    height: rem(28);
+    padding-inline: rem(11);
+    height: rem(30);
     font: var(--small-regular);
     line-height: 1;
     white-space: nowrap;
@@ -56,7 +59,6 @@
     background-color: var(--primary-color);
     opacity: 0;
     visibility: hidden;
-    transform: translateY(-50%);
     transition: opacity 0.3s;
     cursor: pointer;
 
@@ -84,11 +86,16 @@
     border-bottom: rem(1) solid var(--gray300-color);
     transition: padding-bottom 0.3s;
 
+    &:last-of-type {
+      border-bottom: none;
+    }
+
     &__top {
       display: flex;
       align-items: center;
       justify-content: space-between;
       margin-bottom: rem(16);
+      cursor: pointer;
     }
 
     &__title {
@@ -311,6 +318,11 @@
         }
       }
     }
+  }
+
+  // Apply btn
+  &__apply {
+    width: 100%;
   }
 
   // OverlayScrollbars

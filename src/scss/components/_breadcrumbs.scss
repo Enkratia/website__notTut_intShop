@@ -7,7 +7,7 @@
 
   &__container {
     display: flex;
-    align-items: center;
+    align-items: flex-start;
     justify-content: space-between;
   }
 
@@ -62,8 +62,14 @@
   // Active filters
   .active-filters {
     display: flex;
+    column-gap: rem(20.5);
+    flex-wrap: wrap;
     align-items: center;
+    justify-content: flex-end;
+    width: 100%;
+    max-width: 74%;
     transition: opacity 0.3s;
+    row-gap: rem(8);
 
     &__item {
       position: relative;
@@ -74,7 +80,7 @@
       cursor: pointer;
 
       &:not(:last-child) {
-        margin-right: rem(20.5);
+        // margin-right: rem(20.5);
       }
 
       &:hover {
@@ -110,6 +116,7 @@
 
     &__name {
       font: var(--small-regular);
+      white-space: nowrap;
       color: currentcolor;
     }
 

@@ -191,86 +191,6 @@
     }
   }
 
-  // .custom-select {
-  //   position: relative;
-  //   overflow: hidden;
-  //   user-select: none;
-
-  //   &__head {
-  //     display: flex;
-  //     align-items: center;
-  //     padding: rem(2) rem(2);
-  //     transition: color 0.3s ease;
-  //     cursor: pointer;
-
-  //     &:hover {
-  //       color: var(--white-color);
-  //     }
-  //   }
-
-  //   &__selected {
-  //     padding-inline: rem(3);
-  //     line-height: rem(21);
-  //     cursor: pointer;
-  //   }
-
-  //   &__inner-wrapper {
-  //     position: absolute;
-  //     right: 0;
-  //     top: calc(100% + rem(4));
-  //     z-index: var(--z-tooltip);
-  //     border-radius: rem(4);
-  //     padding-right: rem(5);
-  //     padding-left: rem(15);
-  //     padding-block: rem(10);
-  //     width: rem(120);
-  //     box-shadow: 0 5px 10px rgb(0 0 0 / 15%);
-  //     background-color: var(--white-color);
-  //   }
-
-  //   &__list {
-  //     overflow-y: auto;
-  //     border-radius: rem(4);
-  //     width: 100%;
-  //     max-height: rem(200);
-  //     color: var(--black-color);
-  //     background-color: var(--white-color);
-  //   }
-
-  //   &__item {
-  //     padding: rem(4) rem(5);
-  //     width: 100%;
-  //     transition: color 0.3s ease;
-  //     cursor: pointer;
-
-  //     &:hover {
-  //       color: var(--primary-color);
-  //     }
-
-  //     &--active {
-  //       color: var(--primary-color);
-  //     }
-  //   }
-
-  //   svg {
-  //     position: relative;
-  //     top: rem(0.5);
-  //     width: rem(9);
-  //     height: rem(5);
-  //     fill: currentcolor;
-  //     transition: transform 0.1s, rotate 0.1s;
-  //   }
-
-  //   &--open {
-  //     overflow: visible;
-
-  //     svg {
-  //       top: 0;
-  //       transform: rotate(180deg);
-  //     }
-  //   }
-  // }
-
   // Login
   .login {
     position: relative;
@@ -309,7 +229,7 @@
         }
       }
 
-      &:hover~.login__icon {
+      &:hover ~ .login__icon {
         fill: var(--white-color);
       }
 
@@ -319,10 +239,10 @@
     }
 
     @include bp-down("992") {
-      font: var(--base-bold);
-      color: var(--gray800-color);
       width: 0;
       height: 0;
+      font: var(--base-bold);
+      color: var(--gray800-color);
       opacity: 0;
       visibility: hidden;
 

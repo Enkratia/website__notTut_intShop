@@ -1,4 +1,4 @@
-import * as v from "../vars";
+import * as v from "../vars.js";
 
 // MICROSLIDER
 let looks = document.querySelectorAll(".product__look"); // Не переносить в vars

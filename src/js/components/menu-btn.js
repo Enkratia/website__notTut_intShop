@@ -1,4 +1,4 @@
-import * as v from "../vars";
+import * as v from "../vars.js";
 
 const childCount = 5; 
 let isFalse = false;
@@ -48,7 +48,7 @@ function showMenu() {
   this.classList.toggle("menu-btn--show");
 
   v.$headerMainContainer.classList.toggle("header-main__container--show");
-  v.$searchForm.classList.toggle("header-main__search-form--show");
+  v.$searchForm.classList.toggle("search-form--show");
   v.$navList.classList.toggle("nav__list--show");
   v.$login.classList.toggle("login--show");
   document.body.classList.toggle("overflow-hidden");

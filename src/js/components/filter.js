@@ -1,4 +1,4 @@
-import * as v from "../vars";
+import * as v from "../vars.js";
 import noUiSlider from "nouislider";
 
 if (v.$sidebarFilterTops[0]) {
@@ -54,17 +54,39 @@ if (v.$sidebarFilterTops[0]) {
   const filterMap = new Map();
   let ul;
   let prevPrice;
+  let currentPrice;
   let isUlExist = false;
   let isTwo = 0;
 
-  const filterWrapper = document.querySelector(".sidebar-filters__wrapper"); // add to vars
-  const sidebarFiltersShowBtn = filterWrapper.querySelector(".sidebar-filters__show"); // add to vars
-  const breadcrumbsContainer = document.querySelector(".breadcrumbs__container"); // add to vars
-
   // F(s)
-  //
+  // **
+  function deleteAllBtn() {
+    const allActiveFilters = ul.querySelectorAll(".active-filters__btn--regular");
+    
+    allActiveFilters.forEach(el => {
+      deleteBtn.call(el);
+    });
+  }
+
+  // **
   function toggleCategoriesVisibility() {
     ul.classList.toggle("active-filters--invisible", ul.children.length <= 1);
+  }
+
+  // **
+  function isMapsEqual() {
+    if (filterMap.size !== prevFilterMap.size) {
+      return true;
+    }
+
+    const prevFilterMapValues = Array.from(prevFilterMap.values());
+    for (let[a, b] of filterMap) {
+      if (!prevFilterMapValues.includes(b)) {
+        return true;
+      }
+    }
+
+    return false;
   }
 
   // **
@@ -90,18 +112,18 @@ if (v.$sidebarFilterTops[0]) {
       filterMap.delete("price");
 
     } else if (this.dataset.tag.startsWith("color")) {
-      const activeColorBtns = filterWrapper.querySelectorAll(".colors__button--active");
+      const activeColorBtns = v.$filterWrapper.querySelectorAll(".colors__button--active");
 
       for (let i = 0; i < activeColorBtns.length; i++) {
         if (activeColorBtns[i].dataset.color === categoryText) {
-          makeColorInactive(activeColorBtns[i]);
+          toggleActiveColor(activeColorBtns[i]);
           filterMap.delete(this.dataset.tag);
           break;
         }
       }
 
     } else {
-      const checkedCheckboxes = filterWrapper.querySelectorAll(".custom-checkbox--checked");
+      const checkedCheckboxes = v.$filterWrapper.querySelectorAll(".custom-checkbox--checked");
 
       for (let i = 0; i < checkedCheckboxes.length; i++) {
         if (checkedCheckboxes[i].nextElementSibling.innerText === categoryText) {
@@ -110,7 +132,6 @@ if (v.$sidebarFilterTops[0]) {
           break;
         }
       }
-
     }
 
     this.remove();
@@ -121,8 +142,14 @@ if (v.$sidebarFilterTops[0]) {
   }
 
   // **
-  function toggleShowButton() {
-    filterWrapper.classList.toggle("sidebar-filters__wrapper--confirm", prevFilterMap.size || filterMap.size);
+  function toggleShowButton(elem) {
+    v.$filterWrapper.classList.toggle("sidebar-filters__wrapper--confirm", isMapsEqual());
+
+    if (elem) {
+      const wrapperTop = v.$filterWrapper.getBoundingClientRect().top;
+      const top = elem.getBoundingClientRect().top;
+      v.$sidebarFiltersShowBtn.style.top = top - wrapperTop + "px";
+    }
   }
 
   // **
@@ -130,8 +157,14 @@ if (v.$sidebarFilterTops[0]) {
     text = text.trim();
     name = name.trim();
 
-    if (filterMap.has(text)) {
-      filterMap.delete(text);
+    
+    if (name === "price") {
+      filterMap.set(name, text);
+      return;
+    }
+
+    if (filterMap.has(name)) {
+      filterMap.delete(name);
       return;
     }
 
@@ -143,16 +176,12 @@ if (v.$sidebarFilterTops[0]) {
     elem.classList.toggle("colors__button--active");
   }
 
-  function makeColorInactive(elem) {
-    elem.classList.remove("colors__button--active");
-  }
-
   // **
   function addInBreadcrumbs() {
     if (!isUlExist) {
       ul = document.createElement("ul");
       ul.className = "breadcrumbs__active-filters active-filters";
-      breadcrumbsContainer.appendChild(ul);
+      v.$breadcrumbsContainer.appendChild(ul);
       isUlExist = true;
 
       let clearAllTag = `
@@ -170,6 +199,7 @@ if (v.$sidebarFilterTops[0]) {
       `;
 
       ul.insertAdjacentHTML("afterbegin", clearAllTag);
+      ul.querySelector(".active-filters__item").addEventListener("click", deleteAllBtn);
     }
 
     let liTags = "";
@@ -178,7 +208,6 @@ if (v.$sidebarFilterTops[0]) {
     const filterMapValues = Array.from(filterMap.values());
 
     for (let filter of prevFilterMap) {
-      console.log(filter)
       if (!filterMapValues.includes(filter[1])) {
         const filterNames = ul.querySelectorAll(".active-filters__name");
 
@@ -220,11 +249,7 @@ if (v.$sidebarFilterTops[0]) {
     });
 
 
-    prevFilterMap.clear();
-    for (let filter of filterMap) {
-      prevFilterMap.set(filter[0], filter[1]);
-    }
-
+    rewriteMap();
     toggleShowButton();
   }
 
@@ -238,7 +263,7 @@ if (v.$sidebarFilterTops[0]) {
   // ***
   function getPrice() {
     const currentPriceArray = filterPriceSlider.get();
-    const currentPrice = "Price" + ` ${~~currentPriceArray[0]} - ${~~currentPriceArray[1]}`;
+    currentPrice = "Price: " + `${~~currentPriceArray[0]} - ${~~currentPriceArray[1]}`;
 
     if (prevPrice !== currentPrice) {
       addFilterInArray(currentPrice, "price");
@@ -246,8 +271,8 @@ if (v.$sidebarFilterTops[0]) {
     } else {
       filterMap.delete("price");
     }
-
-    toggleShowButton();
+    
+    toggleShowButton(v.$filterSliderRange);
   }
 
   // ***
@@ -255,14 +280,14 @@ if (v.$sidebarFilterTops[0]) {
     if (e.target.classList.contains("filter__color-btn")) {
       toggleActiveColor(e.target);
       addFilterInArray(e.target.dataset.color, `color${e.target.dataset.color}`);
+      toggleShowButton(e.target);
 
     } else if (e.target.classList.contains("filter__checkbox")) {
       const filterCheckbox = e.target;
       const filterName = filterCheckbox.nextElementSibling.textContent;
       addFilterInArray(filterName);
+      toggleShowButton(e.target);
     }
-
-    toggleShowButton();
   }
 
   // L(s)
@@ -272,10 +297,10 @@ if (v.$sidebarFilterTops[0]) {
   });
 
   // **
-  sidebarFiltersShowBtn.addEventListener("click", addInBreadcrumbs);
+  v.$sidebarFiltersShowBtn.addEventListener("click", addInBreadcrumbs);
+  v.$sidebarFiltersApplyBtn.addEventListener("click", () => v.$sidebarFiltersShowBtn.click());
 
   filterPriceSlider.on("update", () => {
-    console.log(isTwo)
     isTwo++; // (2 inits from the start)
     if (isTwo <= 2) return;
     getPrice();
@@ -285,9 +310,7 @@ if (v.$sidebarFilterTops[0]) {
   // ==== SHOW-HIDE FILTERS (ACCORDION) ==== //
   // F(s)
   // **
-  function showHideFilters(e) {
-    if (e.target.tagName !== "BUTTON") return;
-
+  function showHideFilters() {
     const filter = this.parentElement;
     const filterBottom = this.nextElementSibling;
     const filterBottomHeight = filterBottom.scrollHeight;
@@ -311,7 +334,7 @@ if (v.$sidebarFilterTops[0]) {
       activeFilterBottom.style.height = activeFilterBottomHeight + "px";
     }
   }
-  showHideFiltersInit(this);
+  showHideFiltersInit();
 
   // L(s)
   // **

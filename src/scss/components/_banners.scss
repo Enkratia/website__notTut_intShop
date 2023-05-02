@@ -28,7 +28,7 @@
     &:nth-child(1) {
       grid-column: 1 / 5;
       grid-row: 1 / 2;
-      background-image: url("../img/banners-1.png");
+      background-image: url("../img/banners-1.jpg");
 
       @include bp-down("1024") {
         height: calc(rem(247.4) + 24.69vw); // 500>340
@@ -38,7 +38,7 @@
     &:nth-child(2) {
       grid-column: 5 / 11;
       grid-row: 1 / 2;
-      background-image: url("../img/banners-2.png");
+      background-image: url("../img/banners-2.jpg");
 
       @include bp-down("1024") {
         height: calc(rem(350.02) + 14.66vw); // 500>405
@@ -48,7 +48,7 @@
     &:nth-child(3) {
       grid-column: 1 / 7;
       grid-row: 2 / 3;
-      background-image: url("../img/banners-3.png");
+      background-image: url("../img/banners-3.jpg");
 
       @include bp-down("1024") {
         height: calc(rem(338.45) + 8.41vw); // 500>370
@@ -58,7 +58,7 @@
     &:nth-child(4) {
       grid-column: 7 / 11;
       grid-row: 2 / 3;
-      background-image: url("../img/banners-4-2.png"), url("../img/banners-4.png");
+      background-image: url("../img/banners-4-2.jpg"), url("../img/banners-4.jpg");
       background-position: right calc(rem(-792.86) + 41.29vw) bottom, center; // (1920>1024)
       background-size: auto, cover;
       background-repeat: no-repeat, no-repeat;
