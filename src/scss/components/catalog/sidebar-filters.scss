@@ -2,10 +2,10 @@
 
 .sidebar-filters {
   position: relative;
-  z-index: var(--z-prefixed);
 
   &__button {
     width: 100%;
+    white-space: nowrap;
 
     svg {
       width: rem(17);
@@ -22,9 +22,54 @@
   &__wrapper {
     position: relative;
     padding-top: rem(32);
+    background-color: var(--white-color);
+    transition: left 0.3s linear;
 
-    &--hide {
+    &-inner {
+      height: 100vh;
+    }
+
+    &-top {
       display: none;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: rem(40);
+      padding-block: rem(23);
+
+      &::before {
+        content: "";
+        position: absolute;
+        left: 0;
+        top: rem(75);
+        width: 100%;
+        height: rem(1);
+        background-color: var(--gray300-color);
+      }
+    }
+
+    &-title {
+      font: var(--lead-bold);
+      color: var(--gray900-color);
+      cursor: default;
+    }
+
+    &-close {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      svg {
+        width: rem(20);
+        height: rem(20);
+        fill: var(--gray800-color);
+        transition: fill 0.3s;
+      }
+
+      &:hover {
+        svg {
+          fill: var(--gray900-color);
+        }
+      }
     }
 
     &--confirm {
@@ -36,6 +81,62 @@
           opacity: 1;
           visibility: visible;
         }
+      }
+    }
+
+    @include bp-down("1120") {
+      position: fixed;
+      left: rem(-300);
+      top: 0;
+      z-index: var(--z-postfixed);
+      padding-top: 0;
+      height: 100vh;
+
+      &::before {
+        content: "";
+        position: absolute;
+        left: 100%;
+        top: 0;
+        width: 100vw;
+        height: 100%;
+        background-color: var(--overlay-color);
+        opacity: 0;
+        visibility: visible;
+        transition: opacity 0.3s ease;
+        pointer-events: none;
+      }
+
+      &-inner {
+        padding-bottom: rem(20);
+        padding-inline: rem(25);
+      }
+
+      .sidebar-filters__wrapper-top {
+        display: flex;
+      }
+    }
+
+    // Wrapper hide class
+    &--hide {
+      display: none;
+
+      &::before {
+        content: "";
+        position: absolute;
+        left: 100%;
+        top: 0;
+        width: 100vw;
+        height: 100%;
+        background-color: var(--overlay-color);
+        opacity: 1;
+        visibility: visible;
+        transition: opacity 0.3s ease;
+      }
+
+      @include bp-down("1120") {
+        left: 0;
+        top: 0;
+        display: block;
       }
     }
   }
@@ -326,6 +427,7 @@
   }
 
   // OverlayScrollbars
+  // **
   .os-theme-sidebar-bottom {
     --os-size: 3px;
     --os-padding-perpendicular: 0;
@@ -350,6 +452,37 @@
     --os-handle-border-active: none;
     --os-handle-min-size: 60px;
     --os-handle-max-size: 120px;
+    --os-handle-perpendicular-size: 100%;
+    --os-handle-perpendicular-size-hover: 100%;
+    --os-handle-perpendicular-size-active: 100%;
+    --os-handle-interactive-area-offset: 0;
+  }
+
+  // **
+  .os-theme-sidebar-filters {
+    --os-size: 3px;
+    --os-padding-perpendicular: 0;
+    --os-padding-axis: 0;
+
+    // **
+    --os-track-border-radius: 0;
+    --os-track-bg: var(--gray300-color);
+    --os-track-bg-hover: var(--gray300-color);
+    --os-track-bg-active: var(--gray300-color);
+    --os-track-border: none;
+    --os-track-border-hover: none;
+    --os-track-border-active: none;
+
+    // **
+    --os-handle-border-radius: 4px;
+    --os-handle-bg: var(--gray500-color);
+    --os-handle-bg-hover: var(--gray600-color);
+    --os-handle-bg-active: var(--gray700-color);
+    --os-handle-border: none;
+    --os-handle-border-hover: none;
+    --os-handle-border-active: none;
+    --os-handle-min-size: 240px;
+    --os-handle-max-size: 480px;
     --os-handle-perpendicular-size: 100%;
     --os-handle-perpendicular-size-hover: 100%;
     --os-handle-perpendicular-size-active: 100%;

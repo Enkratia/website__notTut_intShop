@@ -13,6 +13,7 @@ import "./components/microslider.js";
 import "./components/filter.js";
 import "./components/input-number.js";
 import "./components/tool-pag.js";
+import "./components/tool-pag-mini.js";
 import "./components/sidebar-filters__button.js";
 import "./components/colors__button.js";
 

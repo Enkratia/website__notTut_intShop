@@ -1,17 +1,68 @@
 import * as v from "../vars.js";
+import { currentPage, total } from "./tool-pag-mini.js";
+
+let testObj = {
+  data: 0,
+  change: function() {
+    this.data = page;
+  }
+}
 
 let page = 1;
 let totalPages = 10;
 let activePag;
 let chosenPag;
+export {page, totalPages}
 
-const leftArrows = document.querySelectorAll("[data-toolpag='arrow-left']");
-const rightArrows = document.querySelectorAll("[data-toolpag='arrow-right']");
-const rightDots = document.querySelector("[data-toolpag='dots-right']");
+// console.log(currentPage, total)
+// setInterval(() => {
+//   console.log(testObj.data);
+// }, 2000);
+
+
+console.log(currentPage, total);
+
+class TestClass {
+  leftArrows = document.querySelectorAll(".tool-pag [data-toolpag='arrow-left']");
+
+  testFunc () {
+    console.log(leftArrows[0]);
+  }
+}
+
+const leftArrows = document.querySelectorAll(".tool-pag [data-toolpag='arrow-left']");
+const rightArrows = document.querySelectorAll(".tool-pag [data-toolpag='arrow-right']");
+const rightDots = document.querySelector(".tool-pag [data-toolpag='dots-right']");
 
 if (rightDots) {
 
   // F(s)
+  // **
+  // function initPages1() {
+  //   if (!v.$mdq875.matches) {
+  //     page = currentPage || 1;
+  //     totalPages = total || 10;
+
+  //     if (page > 1) {
+  //       page--;
+
+  //       for (let i = 0; i < page; i++) {
+  //         rightArrows[0].click();
+  //         if (page === totalPages) break;
+  //       }
+
+  //     } else {
+  //       page++;
+
+  //       for (let i = 0; i < page; i++) {
+  //         leftArrows[0].click();
+  //         if (page === 1) break;
+  //       }
+  //     }
+  //   }
+  // }
+  // initPages1();
+
   // **
   function goFarAhead() {
     for (let i = 0; i < 5; i++) {

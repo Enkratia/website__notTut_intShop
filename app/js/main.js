@@ -2308,7 +2308,7 @@ __webpack_require__.r(__webpack_exports__);
 // Add plugins
 overlayscrollbars__WEBPACK_IMPORTED_MODULE_1__.OverlayScrollbars.plugin([overlayscrollbars__WEBPACK_IMPORTED_MODULE_1__.ScrollbarsHidingPlugin, overlayscrollbars__WEBPACK_IMPORTED_MODULE_1__.SizeObserverPlugin]);
 
-// CUSTOM-SELECT-LIST SCROLLBAR
+// ==== CUSTOM-SELECT-LIST SCROLLBAR ==== //
 const customSelectListScrollbar = (0,overlayscrollbars__WEBPACK_IMPORTED_MODULE_1__.OverlayScrollbars)(document.querySelector('#custom-select-list'), {});
 
 // NAV SCROLLBAR
@@ -2338,11 +2338,9 @@ function removetNavScrollbar() {
 _vars_js__WEBPACK_IMPORTED_MODULE_0__.$mdq991.addEventListener("change", setNavScrollbar);
 _vars_js__WEBPACK_IMPORTED_MODULE_0__.$mdq992.addEventListener("change", removetNavScrollbar);
 
-// SIDEBAR BOTTOM SCROLLBAR
+// ==== SIDEBAR BOTTOM SCROLLBAR ==== //
 if (_vars_js__WEBPACK_IMPORTED_MODULE_0__.$sidebarFilterTops[0]) {
   // *For filter__list
-  // const filterLists = document.querySelectorAll('.filter__list');
-
   _vars_js__WEBPACK_IMPORTED_MODULE_0__.$sidebarFilterLists.forEach(el => {
     let sidebarBottomListScrollbar = (0,overlayscrollbars__WEBPACK_IMPORTED_MODULE_1__.OverlayScrollbars)(el, {
       scrollbars: {
@@ -2357,6 +2355,22 @@ if (_vars_js__WEBPACK_IMPORTED_MODULE_0__.$sidebarFilterTops[0]) {
       theme: 'os-theme-sidebar-bottom'
     }
   });
+
+  // *For sidebar-filters__wrapper
+  let sidebarFiltersWrapper;
+  function toggleSidebarFiltersWrapper() {
+    if (_vars_js__WEBPACK_IMPORTED_MODULE_0__.$mdq1119.matches) {
+      sidebarFiltersWrapper = (0,overlayscrollbars__WEBPACK_IMPORTED_MODULE_1__.OverlayScrollbars)(document.querySelector('.sidebar-filters__wrapper-inner'), {
+        scrollbars: {
+          theme: 'os-theme-sidebar-filters'
+        }
+      });
+    } else {
+      sidebarFiltersWrapper?.destroy();
+    }
+  }
+  toggleSidebarFiltersWrapper();
+  _vars_js__WEBPACK_IMPORTED_MODULE_0__.$mdq1119.addEventListener("change", toggleSidebarFiltersWrapper);
 }
 
 /***/ }),
@@ -2742,6 +2756,14 @@ __webpack_require__.r(__webpack_exports__);
 
 
 // Function(s)
+// **
+function checkCustomCheckboxWithKey(e) {
+  if (e.key === "Enter") {
+    this.click();
+  }
+}
+
+// **
 function checkCustomCheckbox() {
   const checkbox = this.parentElement;
   checkbox.classList.toggle("custom-checkbox--checked");
@@ -2757,6 +2779,7 @@ function checkCustomCheckbox() {
 _vars_js__WEBPACK_IMPORTED_MODULE_0__.$customCheckboxes.forEach(el => {
   const nativeCheckbox = el.querySelector(".custom-checkbox__input");
   nativeCheckbox.addEventListener("change", checkCustomCheckbox);
+  el.addEventListener("keyup", checkCustomCheckboxWithKey);
 });
 
 /***/ }),
@@ -3107,6 +3130,10 @@ if (_vars_js__WEBPACK_IMPORTED_MODULE_0__.$sidebarFilterTops[0]) {
     });
     rewriteMap();
     toggleShowButton();
+    if (_vars_js__WEBPACK_IMPORTED_MODULE_0__.$mdq1119.matches) {
+      _vars_js__WEBPACK_IMPORTED_MODULE_0__.$sidebarFiltersButton.click();
+      document.body.classList.remove("overflow-hidden");
+    }
   }
 
   // ***
@@ -3151,11 +3178,34 @@ if (_vars_js__WEBPACK_IMPORTED_MODULE_0__.$sidebarFilterTops[0]) {
   // **
   _vars_js__WEBPACK_IMPORTED_MODULE_0__.$sidebarFiltersShowBtn.addEventListener("click", addInBreadcrumbs);
   _vars_js__WEBPACK_IMPORTED_MODULE_0__.$sidebarFiltersApplyBtn.addEventListener("click", () => _vars_js__WEBPACK_IMPORTED_MODULE_0__.$sidebarFiltersShowBtn.click());
+
+  // **
   filterPriceSlider.on("update", () => {
     isTwo++; // (2 inits from the start)
     if (isTwo <= 2) return;
     getPrice();
   });
+
+  // ===== Same ("add filter categories to breadcrumbs"), but for keyboard ===== //
+  const keySet = new Set();
+
+  // F(s)
+  // **
+  function showCategoriesWithKeyboard(e) {
+    keySet.add(e.key);
+    if (keySet.has("+") && keySet.has("-")) {
+      _vars_js__WEBPACK_IMPORTED_MODULE_0__.$sidebarFiltersShowBtn.click();
+    }
+  }
+
+  // **
+  function clearKeySet() {
+    keySet.clear();
+  }
+
+  // L(s)
+  _vars_js__WEBPACK_IMPORTED_MODULE_0__.$filterWrapper.addEventListener("keydown", showCategoriesWithKeyboard);
+  _vars_js__WEBPACK_IMPORTED_MODULE_0__.$filterWrapper.addEventListener("keyup", clearKeySet);
 
   // ==== SHOW-HIDE FILTERS (ACCORDION) ==== //
   // F(s)
@@ -3188,6 +3238,16 @@ if (_vars_js__WEBPACK_IMPORTED_MODULE_0__.$sidebarFilterTops[0]) {
   _vars_js__WEBPACK_IMPORTED_MODULE_0__.$sidebarFilterTops.forEach(el => {
     el.addEventListener("click", showHideFilters);
   });
+
+  // ==== CLOSE FILTER SIDEBAR (ON SMALL DISPLAYS) ==== //
+  // F(S)
+  function closeFilterSidebar() {
+    _vars_js__WEBPACK_IMPORTED_MODULE_0__.$sidebarFiltersButton.click();
+    document.body.classList.remove("overflow-hidden");
+  }
+
+  // L(s) 
+  _vars_js__WEBPACK_IMPORTED_MODULE_0__.$sidebarFiltersWrapperClose.addEventListener("click", closeFilterSidebar);
 }
 
 /***/ }),
@@ -3598,15 +3658,34 @@ if (saleSlider) {
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _vars_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../vars.js */ "./src/js/vars.js");
 
+let isFirst = true;
 let isFalse = true;
+let isSmallDisplay = false;
 if (_vars_js__WEBPACK_IMPORTED_MODULE_0__.$sidebarFiltersButton) {
   // F(s)
-  function toggleSidebarFilters() {
-    const filters = this.nextElementSibling;
-    let btnText = this.querySelector(".btn__text");
-    filters.classList.toggle("sidebar-filters__wrapper--hide");
-    this.classList.toggle("sidebar-filters__button--hide");
-    _vars_js__WEBPACK_IMPORTED_MODULE_0__.$catalog.classList.toggle("catalog--hide");
+  // **
+  function reverseText() {
+    if (isFirst) {
+      if (_vars_js__WEBPACK_IMPORTED_MODULE_0__.$mdq1119.matches) {
+        isFalse === true ? false : true;
+        changeText();
+      }
+      isFirst = false;
+      return;
+    }
+    if (_vars_js__WEBPACK_IMPORTED_MODULE_0__.$mdq1119.matches) {
+      isFalse === true ? false : true;
+      changeText();
+    } else {
+      isFalse === true ? false : true;
+      changeText();
+    }
+  }
+  reverseText();
+
+  // **
+  function changeText() {
+    let btnText = _vars_js__WEBPACK_IMPORTED_MODULE_0__.$sidebarFiltersButton.querySelector(".btn__text");
     if (isFalse) {
       btnText.textContent = "Show filters";
       isFalse = false;
@@ -3616,8 +3695,35 @@ if (_vars_js__WEBPACK_IMPORTED_MODULE_0__.$sidebarFiltersButton) {
     }
   }
 
+  // **
+  function toggleSidebarFilters() {
+    const filters = this.nextElementSibling;
+    filters.classList.toggle("sidebar-filters__wrapper--hide");
+    this.classList.toggle("sidebar-filters__button--hide");
+    _vars_js__WEBPACK_IMPORTED_MODULE_0__.$catalog.classList.toggle("catalog--hide");
+    changeText();
+    if (isSmallDisplay) {
+      document.body.classList.add("overflow-hidden");
+    } else {
+      document.body.classList.remove("overflow-hidden");
+    }
+  }
+
+  // **
+  function stallBody() {
+    if (_vars_js__WEBPACK_IMPORTED_MODULE_0__.$mdq1119.matches) {
+      isSmallDisplay = true;
+    } else {
+      isSmallDisplay = false;
+      document.body.classList.remove("overflow-hidden");
+    }
+  }
+  stallBody();
+
   // L(s)
   _vars_js__WEBPACK_IMPORTED_MODULE_0__.$sidebarFiltersButton.addEventListener("click", toggleSidebarFilters);
+  _vars_js__WEBPACK_IMPORTED_MODULE_0__.$mdq1119.addEventListener("change", stallBody);
+  _vars_js__WEBPACK_IMPORTED_MODULE_0__.$mdq1119.addEventListener("change", reverseText);
 }
 
 /***/ }),
@@ -3782,6 +3888,102 @@ if (_vars_js__WEBPACK_IMPORTED_MODULE_0__.$counters) {
 
 /***/ }),
 
+/***/ "./src/js/components/tool-pag-mini.js":
+/*!********************************************!*\
+  !*** ./src/js/components/tool-pag-mini.js ***!
+  \********************************************/
+/***/ ((__unused_webpack___webpack_module__, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "currentPage": () => (/* binding */ currentPage),
+/* harmony export */   "total": () => (/* binding */ total)
+/* harmony export */ });
+/* harmony import */ var _vars_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../vars.js */ "./src/js/vars.js");
+/* harmony import */ var _tool_pag_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./tool-pag.js */ "./src/js/components/tool-pag.js");
+
+
+const leftMiniArrows = document.querySelectorAll(".tool-pag-mini [data-toolpag='arrow-left']");
+const rightMiniArrows = document.querySelectorAll(".tool-pag-mini [data-toolpag='arrow-right']");
+let currentPage;
+let total;
+
+
+// testObj.data = currentPage;
+// console.log(page, totalPages);
+
+// if (leftMiniArrows[0]) {
+
+//   // F(s)
+//   // ** 
+//   function writePageNumber() {
+//     v.$toolPagsMini.forEach(el => {
+//       const currentPageText = el.querySelector("[data-toolpag='current'] .tool-pag__link");
+//       currentPageText.textContent = currentPage;
+//     });
+//   }
+
+//   // **
+//   // function initPages() {
+//   //   if (v.$mdq875.matches) {
+//   //     currentPage = page || 1;
+//   //     total = totalPages || 10;
+
+//   //     if (currentPage > 1) {
+//   //       currentPage--;
+//   //       toNextPage();
+
+//   //     } else {
+//   //       currentPage++;
+//   //       toPrevPage();
+//   //     }
+//   //   }
+//   // }
+//   // initPages();
+
+//   // **
+//   function toNextPage() {
+//     if (currentPage === total) return;
+//     if (currentPage === total - 1) {
+//       rightMiniArrows.forEach(el => el.classList.add("tool-pag-mini__item--inactive"));
+//     }
+
+//     currentPage++;
+//     leftMiniArrows.forEach(el => el.classList.remove("tool-pag-mini__item--inactive"));
+
+//     writePageNumber();
+//   }
+
+//   // **
+//   function toPrevPage() {
+//     if (currentPage === 1) return;
+//     if (currentPage === 2) {
+//       leftMiniArrows.forEach(el => el.classList.add("tool-pag-mini__item--inactive"));
+//     }
+
+//     currentPage--;
+//     rightMiniArrows.forEach(el => el.classList.remove("tool-pag-mini__item--inactive"));
+
+//     writePageNumber();
+//   }
+
+//   // L(s)
+//   // **
+//   rightMiniArrows.forEach(el => {
+//     el.addEventListener("click", toNextPage);
+//   });
+
+//   // // **
+//   leftMiniArrows.forEach(el => {
+//     el.addEventListener("click", toPrevPage);
+//   });
+
+//   // v.$mdq875.addEventListener("change", initPages);
+// }
+
+/***/ }),
+
 /***/ "./src/js/components/tool-pag.js":
 /*!***************************************!*\
   !*** ./src/js/components/tool-pag.js ***!
@@ -3790,17 +3992,69 @@ if (_vars_js__WEBPACK_IMPORTED_MODULE_0__.$counters) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "page": () => (/* binding */ page),
+/* harmony export */   "totalPages": () => (/* binding */ totalPages)
+/* harmony export */ });
 /* harmony import */ var _vars_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../vars.js */ "./src/js/vars.js");
+/* harmony import */ var _tool_pag_mini_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./tool-pag-mini.js */ "./src/js/components/tool-pag-mini.js");
 
+
+let testObj = {
+  data: 0,
+  change: function () {
+    this.data = page;
+  }
+};
 let page = 1;
 let totalPages = 10;
 let activePag;
 let chosenPag;
-const leftArrows = document.querySelectorAll("[data-toolpag='arrow-left']");
-const rightArrows = document.querySelectorAll("[data-toolpag='arrow-right']");
-const rightDots = document.querySelector("[data-toolpag='dots-right']");
+
+
+// console.log(currentPage, total)
+// setInterval(() => {
+//   console.log(testObj.data);
+// }, 2000);
+
+console.log(_tool_pag_mini_js__WEBPACK_IMPORTED_MODULE_1__.currentPage, _tool_pag_mini_js__WEBPACK_IMPORTED_MODULE_1__.total);
+class TestClass {
+  leftArrows = document.querySelectorAll(".tool-pag [data-toolpag='arrow-left']");
+  testFunc() {
+    console.log(leftArrows[0]);
+  }
+}
+const leftArrows = document.querySelectorAll(".tool-pag [data-toolpag='arrow-left']");
+const rightArrows = document.querySelectorAll(".tool-pag [data-toolpag='arrow-right']");
+const rightDots = document.querySelector(".tool-pag [data-toolpag='dots-right']");
 if (rightDots) {
   // F(s)
+  // **
+  // function initPages1() {
+  //   if (!v.$mdq875.matches) {
+  //     page = currentPage || 1;
+  //     totalPages = total || 10;
+
+  //     if (page > 1) {
+  //       page--;
+
+  //       for (let i = 0; i < page; i++) {
+  //         rightArrows[0].click();
+  //         if (page === totalPages) break;
+  //       }
+
+  //     } else {
+  //       page++;
+
+  //       for (let i = 0; i < page; i++) {
+  //         leftArrows[0].click();
+  //         if (page === 1) break;
+  //       }
+  //     }
+  //   }
+  // }
+  // initPages1();
+
   // **
   function goFarAhead() {
     for (let i = 0; i < 5; i++) {
@@ -4140,8 +4394,10 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "$marketingSlider": () => (/* binding */ $marketingSlider),
 /* harmony export */   "$marketingSliderItems": () => (/* binding */ $marketingSliderItems),
 /* harmony export */   "$mdq1024": () => (/* binding */ $mdq1024),
+/* harmony export */   "$mdq1119": () => (/* binding */ $mdq1119),
 /* harmony export */   "$mdq767": () => (/* binding */ $mdq767),
 /* harmony export */   "$mdq768": () => (/* binding */ $mdq768),
+/* harmony export */   "$mdq875": () => (/* binding */ $mdq875),
 /* harmony export */   "$mdq991": () => (/* binding */ $mdq991),
 /* harmony export */   "$mdq992": () => (/* binding */ $mdq992),
 /* harmony export */   "$menuBtn": () => (/* binding */ $menuBtn),
@@ -4159,9 +4415,11 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "$sidebarFiltersButton": () => (/* binding */ $sidebarFiltersButton),
 /* harmony export */   "$sidebarFiltersFilters": () => (/* binding */ $sidebarFiltersFilters),
 /* harmony export */   "$sidebarFiltersShowBtn": () => (/* binding */ $sidebarFiltersShowBtn),
+/* harmony export */   "$sidebarFiltersWrapperClose": () => (/* binding */ $sidebarFiltersWrapperClose),
 /* harmony export */   "$subscribeCategories": () => (/* binding */ $subscribeCategories),
 /* harmony export */   "$timer": () => (/* binding */ $timer),
 /* harmony export */   "$toolPags": () => (/* binding */ $toolPags),
+/* harmony export */   "$toolPagsMini": () => (/* binding */ $toolPagsMini),
 /* harmony export */   "$toolbarInputNumberInputs": () => (/* binding */ $toolbarInputNumberInputs),
 /* harmony export */   "$toolbarSortSelects": () => (/* binding */ $toolbarSortSelects),
 /* harmony export */   "$topNavBtn": () => (/* binding */ $topNavBtn)
@@ -4205,6 +4463,7 @@ const $catalog = document.querySelector("#catalog");
 
 // Toolbar
 const $toolPags = document.querySelectorAll(".tool-pag");
+const $toolPagsMini = document.querySelectorAll(".tool-pag-mini");
 const $toolbarSortSelects = document.querySelectorAll(".toolbar__sort-select");
 
 // Input-number
@@ -4222,13 +4481,16 @@ const $filterSliderRange = document.querySelector("#filter-slider-range");
 const $filterSliderInputs = document.querySelectorAll(".filter__slider-input");
 const $sidebarFiltersShowBtn = $filterWrapper?.querySelector(".sidebar-filters__show");
 const $sidebarFiltersApplyBtn = $filterWrapper?.querySelector(".sidebar-filters__apply");
+const $sidebarFiltersWrapperClose = $filterWrapper?.querySelector(".sidebar-filters__wrapper-close");
 
 // Media
 const $mdq767 = window.matchMedia("(max-width: 767px)");
 const $mdq768 = window.matchMedia("(min-width: 768px)");
+const $mdq875 = window.matchMedia("(max-width: 875px)");
 const $mdq991 = window.matchMedia("(max-width:991px)");
 const $mdq992 = window.matchMedia("(min-width:992px)");
 const $mdq1024 = window.matchMedia("(min-width: 1024px)");
+const $mdq1119 = window.matchMedia("(max-width: 1120px)");
 
 /***/ }),
 
@@ -20245,11 +20507,13 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _components_filter_js__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ./components/filter.js */ "./src/js/components/filter.js");
 /* harmony import */ var _components_input_number_js__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ./components/input-number.js */ "./src/js/components/input-number.js");
 /* harmony import */ var _components_tool_pag_js__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! ./components/tool-pag.js */ "./src/js/components/tool-pag.js");
-/* harmony import */ var _components_sidebar_filters_button_js__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! ./components/sidebar-filters__button.js */ "./src/js/components/sidebar-filters__button.js");
-/* harmony import */ var _components_colors_button_js__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(/*! ./components/colors__button.js */ "./src/js/components/colors__button.js");
-/* harmony import */ var _components_$swipers_js__WEBPACK_IMPORTED_MODULE_16__ = __webpack_require__(/*! ./components/$swipers.js */ "./src/js/components/$swipers.js");
-/* harmony import */ var _components_$overlayScrollbars_js__WEBPACK_IMPORTED_MODULE_17__ = __webpack_require__(/*! ./components/$overlayScrollbars.js */ "./src/js/components/$overlayScrollbars.js");
+/* harmony import */ var _components_tool_pag_mini_js__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! ./components/tool-pag-mini.js */ "./src/js/components/tool-pag-mini.js");
+/* harmony import */ var _components_sidebar_filters_button_js__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(/*! ./components/sidebar-filters__button.js */ "./src/js/components/sidebar-filters__button.js");
+/* harmony import */ var _components_colors_button_js__WEBPACK_IMPORTED_MODULE_16__ = __webpack_require__(/*! ./components/colors__button.js */ "./src/js/components/colors__button.js");
+/* harmony import */ var _components_$swipers_js__WEBPACK_IMPORTED_MODULE_17__ = __webpack_require__(/*! ./components/$swipers.js */ "./src/js/components/$swipers.js");
+/* harmony import */ var _components_$overlayScrollbars_js__WEBPACK_IMPORTED_MODULE_18__ = __webpack_require__(/*! ./components/$overlayScrollbars.js */ "./src/js/components/$overlayScrollbars.js");
 // Components
+
 
 
 

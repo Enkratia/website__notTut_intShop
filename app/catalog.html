@@ -1178,1064 +1178,1085 @@
 
   <!-- Filters -->
   <div class="sidebar-filters__wrapper">
+    <div class="sidebar-filters__wrapper-inner" data-overlayscrollbars-initialize>
 
-    <!-- Filter1 (Clothes) -->
-    <div class="sidebar-filters__filter filter filter--show">
+      <!-- For screen reader -->
+      <h1 class="sr-only">
+        To apply filters click on the button «Show» or «Apply filters» or press keys «+» and «-» simultaneuosly.
+      </h1>
 
-      <!-- Filter-top -->
-      <div class="filter__top">
-        <h6 class="filter__title">
-          Clothes
-        </h6>
+      <!-- Wrapper top -->
+      <div class="sidebar-filters__wrapper-top">
+        <span class="sidebar-filters__wrapper-title">
+          Shop filters
+        </span>
 
-        <button class="filter__toggle filter__toggle--show"
-          aria-label="Show or hide the list of the categories."></button>
+        <button class="sidebar-filters__wrapper-close" aria-label="Close shop filters menu.">
+          <svg xmlns='http://www.w3.org/2000/svg' aria-hidden='true'>
+            <use href='./img/sprite.svg#cross' aria-hidden='true'></use>
+          </svg>
+        </button>
       </div>
 
-      <!-- Filter-bottom -->
-      <div class="filter__bottom">
-        <div class="filter__search">
-          <input type="text" class="filter__search-input input" placeholder="Search the clothes type">
+      <!-- Filter1 (Clothes) -->
+      <div class="sidebar-filters__filter filter filter--show">
 
-          <button class="filter__search-btn">
-            <svg xmlns='http://www.w3.org/2000/svg' aria-hidden='true'>
-              <use href='./img/sprite.svg#search' aria-hidden='true'></use>
-            </svg>
-          </button>
+        <!-- Filter-top -->
+        <div class="filter__top">
+          <h6 class="filter__title">
+            Clothes
+          </h6>
+
+          <button class="filter__toggle filter__toggle--show"
+            aria-label="Show or hide the list of the categories."></button>
         </div>
 
-        <ul class="filter__list" data-overlayscrollbars-initialize>
+        <!-- Filter-bottom -->
+        <div class="filter__bottom">
+          <div class="filter__search">
+            <input type="text" class="filter__search-input input" placeholder="Search the clothes type">
 
-          <!-- Item1-->
-          <li class="filter__item">
-            <label class="filter__checkbox custom-checkbox" role="checkbox" aria-checked="false">
-              <svg xmlns='http://www.w3.org/2000/svg'>
-                <use href='./img/sprite.svg#check'></use>
+            <button class="filter__search-btn">
+              <svg xmlns='http://www.w3.org/2000/svg' aria-hidden='true'>
+                <use href='./img/sprite.svg#search' aria-hidden='true'></use>
               </svg>
+            </button>
+          </div>
 
-              <input type="checkbox" class="custom-checkbox__input">
-            </label>
-
-            <span class="filter__name">
-              Coats
-            </span>
-
-            <span class="filter__count">
-              (16)
-            </span>
-          </li>
-
-          <!-- Item2 -->
-          <li class="filter__item">
-            <label class="filter__checkbox custom-checkbox" role="checkbox" aria-checked="false">
-              <svg xmlns='http://www.w3.org/2000/svg'>
-                <use href='./img/sprite.svg#check'></use>
-              </svg>
-
-              <input type="checkbox" class="custom-checkbox__input">
-            </label>
-
-            <span class="filter__name">
-              Jackets
-            </span>
-
-            <span class="filter__count">
-              (12)
-            </span>
-          </li>
-
-          <!-- Item3 -->
-          <li class="filter__item">
-            <label class="filter__checkbox custom-checkbox" role="checkbox" aria-checked="false">
-              <svg xmlns='http://www.w3.org/2000/svg'>
-                <use href='./img/sprite.svg#check'></use>
-              </svg>
-
-              <input type="checkbox" class="custom-checkbox__input">
-            </label>
-
-            <span class="filter__name">
-              Suits
-            </span>
-
-            <span class="filter__count">
-              (5)
-            </span>
-          </li>
-
-          <!-- Item4 -->
-          <li class="filter__item">
-            <label class="filter__checkbox custom-checkbox" role="checkbox" aria-checked="false">
-              <svg xmlns='http://www.w3.org/2000/svg'>
-                <use href='./img/sprite.svg#check'></use>
-              </svg>
-
-              <input type="checkbox" class="custom-checkbox__input">
-            </label>
-
-            <span class="filter__name">
-              Dresses
-            </span>
-
-            <span class="filter__count">
-              (11)
-            </span>
-          </li>
-
-          <!-- Item5 -->
-          <li class="filter__item">
-            <label class="filter__checkbox custom-checkbox" role="checkbox" aria-checked="false">
-              <svg xmlns='http://www.w3.org/2000/svg'>
-                <use href='./img/sprite.svg#check'></use>
-              </svg>
-
-              <input type="checkbox" class="custom-checkbox__input">
-            </label>
-
-            <span class="filter__name">
-              Cardigans & sweaters
-            </span>
-
-            <span class="filter__count">
-              (18)
-            </span>
-          </li>
-
-          <!-- Item6 -->
-          <li class="filter__item">
-            <label class="filter__checkbox custom-checkbox" role="checkbox" aria-checked="false">
-              <svg xmlns='http://www.w3.org/2000/svg'>
-                <use href='./img/sprite.svg#check'></use>
-              </svg>
-
-              <input type="checkbox" class="custom-checkbox__input">
-            </label>
-
-            <span class="filter__name">
-              Sweatshirts & hoodies
-            </span>
-
-            <span class="filter__count">
-              (21)
-            </span>
-          </li>
-
-          <!-- Item7 -->
-          <li class="filter__item">
-            <label class="filter__checkbox custom-checkbox" role="checkbox" aria-checked="false">
-              <svg xmlns='http://www.w3.org/2000/svg'>
-                <use href='./img/sprite.svg#check'></use>
-              </svg>
-
-              <input type="checkbox" class="custom-checkbox__input">
-            </label>
-
-            <span class="filter__name">
-              T-shirts & tops
-            </span>
-
-            <span class="filter__count">
-              (17)
-            </span>
-          </li>
-
-          <!-- Item8 -->
-          <li class="filter__item">
-            <label class="filter__checkbox custom-checkbox" role="checkbox" aria-checked="false">
-              <svg xmlns='http://www.w3.org/2000/svg'>
-                <use href='./img/sprite.svg#check'></use>
-              </svg>
-
-              <input type="checkbox" class="custom-checkbox__input">
-            </label>
-
-            <span class="filter__name">
-              Pants
-            </span>
-
-            <span class="filter__count">
-              (14)
-            </span>
-          </li>
-        </ul>
-      </div>
-    </div>
-
-    <!-- Filter2 (Size) -->
-    <div class="sidebar-filters__filter filter">
-
-      <!-- Filter-top -->
-      <div class="filter__top">
-        <h6 class="filter__title">
-          Size
-        </h6>
-
-        <button class="filter__toggle" aria-label="Show or hide the list of the categories."></button>
-      </div>
-
-      <!-- Filter-bottom -->
-      <div class="filter__bottom">
-        <ul class="filter__list" data-overlayscrollbars-initialize>
-
-          <!-- Item1-->
-          <li class="filter__item">
-            <label class="filter__checkbox custom-checkbox" role="checkbox" aria-checked="false">
-              <svg xmlns='http://www.w3.org/2000/svg'>
-                <use href='./img/sprite.svg#check'></use>
-              </svg>
-
-              <input type="checkbox" class="custom-checkbox__input">
-            </label>
-
-            <span class="filter__name">
-              XS
-            </span>
-
-            <span class="filter__count">
-              (16)
-            </span>
-          </li>
-
-          <!-- Item2 -->
-          <li class="filter__item">
-            <label class="filter__checkbox custom-checkbox" role="checkbox" aria-checked="false">
-              <svg xmlns='http://www.w3.org/2000/svg'>
-                <use href='./img/sprite.svg#check'></use>
-              </svg>
-
-              <input type="checkbox" class="custom-checkbox__input">
-            </label>
-
-            <span class="filter__name">
-              S
-            </span>
-
-            <span class="filter__count">
-              (12)
-            </span>
-          </li>
-
-          <!-- Item3 -->
-          <li class="filter__item">
-            <label class="filter__checkbox custom-checkbox" role="checkbox" aria-checked="false">
-              <svg xmlns='http://www.w3.org/2000/svg'>
-                <use href='./img/sprite.svg#check'></use>
-              </svg>
-
-              <input type="checkbox" class="custom-checkbox__input">
-            </label>
-
-            <span class="filter__name">
-              M
-            </span>
-
-            <span class="filter__count">
-              (5)
-            </span>
-          </li>
-
-          <!-- Item4 -->
-          <li class="filter__item">
-            <label class="filter__checkbox custom-checkbox" role="checkbox" aria-checked="false">
-              <svg xmlns='http://www.w3.org/2000/svg'>
-                <use href='./img/sprite.svg#check'></use>
-              </svg>
-
-              <input type="checkbox" class="custom-checkbox__input">
-            </label>
-
-            <span class="filter__name">
-              L
-            </span>
-
-            <span class="filter__count">
-              (11)
-            </span>
-          </li>
-
-          <!-- Item5 -->
-          <li class="filter__item">
-            <label class="filter__checkbox custom-checkbox" role="checkbox" aria-checked="false">
-              <svg xmlns='http://www.w3.org/2000/svg'>
-                <use href='./img/sprite.svg#check'></use>
-              </svg>
-
-              <input type="checkbox" class="custom-checkbox__input">
-            </label>
-
-            <span class="filter__name">
-              XL
-            </span>
-
-            <span class="filter__count">
-              (18)
-            </span>
-          </li>
-
-          <!-- Item6 -->
-          <li class="filter__item">
-            <label class="filter__checkbox custom-checkbox" role="checkbox" aria-checked="false">
-              <svg xmlns='http://www.w3.org/2000/svg'>
-                <use href='./img/sprite.svg#check'></use>
-              </svg>
-
-              <input type="checkbox" class="custom-checkbox__input">
-            </label>
-
-            <span class="filter__name">
-              Plus size
-            </span>
-
-            <span class="filter__count">
-              (21)
-            </span>
-          </li>
-        </ul>
-      </div>
-    </div>
-
-    <!-- Filter3 (Color) -->
-    <div class="sidebar-filters__filter filter">
-
-      <!-- Filter-top -->
-      <div class="filter__top">
-        <h6 class="filter__title">
-          Color
-        </h6>
-
-        <button class="filter__toggle" aria-label="Show or hide the list of the categories."></button>
-      </div>
-
-      <!-- Filter-bottom -->
-      <div class="filter__bottom">
-        <div class="filter__colors-wrapper" data-overlayscrollbars-initialize>
-          <ul class="filter__colors colors">
+          <ul class="filter__list" data-overlayscrollbars-initialize>
 
             <!-- Item1-->
-            <li class="filter__color colors__item">
-              <button class="filter__color-btn colors__button" data-color="Black"
-                aria-label="Choose black color."></button>
+            <li class="filter__item">
+              <label class="filter__checkbox custom-checkbox" tabindex="0" role="checkbox" aria-checked="false">
+                <svg xmlns='http://www.w3.org/2000/svg'>
+                  <use href='./img/sprite.svg#check'></use>
+                </svg>
 
-              <span class="filter__color-name">
-                Black
+                <input type="checkbox" class="custom-checkbox__input">
+              </label>
+
+              <span class="filter__name">
+                Coats
+              </span>
+
+              <span class="filter__count">
+                (16)
               </span>
             </li>
 
-            <!-- Item2-->
-            <li class="filter__color colors__item">
-              <button class="filter__color-btn colors__button" data-color="Blue-gray"
-                aria-label="Choose blue-gray color."></button>
+            <!-- Item2 -->
+            <li class="filter__item">
+              <label class="filter__checkbox custom-checkbox" tabindex="0" role="checkbox" aria-checked="false">
+                <svg xmlns='http://www.w3.org/2000/svg'>
+                  <use href='./img/sprite.svg#check'></use>
+                </svg>
 
-              <span class="filter__color-name">
-                Blue-gray
+                <input type="checkbox" class="custom-checkbox__input">
+              </label>
+
+              <span class="filter__name">
+                Jackets
+              </span>
+
+              <span class="filter__count">
+                (12)
               </span>
             </li>
 
-            <!-- Item3-->
-            <li class="filter__color colors__item">
-              <button class="filter__color-btn colors__button" data-color="Yellow"
-                aria-label="Choose yellow color."></button>
+            <!-- Item3 -->
+            <li class="filter__item">
+              <label class="filter__checkbox custom-checkbox" tabindex="0" role="checkbox" aria-checked="false">
+                <svg xmlns='http://www.w3.org/2000/svg'>
+                  <use href='./img/sprite.svg#check'></use>
+                </svg>
 
-              <span class="filter__color-name">
-                Yellow
+                <input type="checkbox" class="custom-checkbox__input">
+              </label>
+
+              <span class="filter__name">
+                Suits
+              </span>
+
+              <span class="filter__count">
+                (5)
               </span>
             </li>
 
-            <!-- Item4-->
-            <li class="filter__color colors__item">
-              <button class="filter__color-btn colors__button" data-color="Red" aria-label="Choose red color."></button>
+            <!-- Item4 -->
+            <li class="filter__item">
+              <label class="filter__checkbox custom-checkbox" tabindex="0" role="checkbox" aria-checked="false">
+                <svg xmlns='http://www.w3.org/2000/svg'>
+                  <use href='./img/sprite.svg#check'></use>
+                </svg>
 
-              <span class="filter__color-name">
-                Red
+                <input type="checkbox" class="custom-checkbox__input">
+              </label>
+
+              <span class="filter__name">
+                Dresses
+              </span>
+
+              <span class="filter__count">
+                (11)
               </span>
             </li>
 
-            <!-- Item5-->
-            <li class="filter__color colors__item">
-              <button class="filter__color-btn colors__button" data-color="Dark-blue"
-                aria-label="Choose dark-blue color."></button>
+            <!-- Item5 -->
+            <li class="filter__item">
+              <label class="filter__checkbox custom-checkbox" tabindex="0" role="checkbox" aria-checked="false">
+                <svg xmlns='http://www.w3.org/2000/svg'>
+                  <use href='./img/sprite.svg#check'></use>
+                </svg>
 
-              <span class="filter__color-name">
-                Dark blue
+                <input type="checkbox" class="custom-checkbox__input">
+              </label>
+
+              <span class="filter__name">
+                Cardigans & sweaters
+              </span>
+
+              <span class="filter__count">
+                (18)
               </span>
             </li>
 
-            <!-- Item6-->
-            <li class="filter__color colors__item">
-              <button class="filter__color-btn colors__button" data-color="Beige"
-                aria-label="Choose beige color."></button>
+            <!-- Item6 -->
+            <li class="filter__item">
+              <label class="filter__checkbox custom-checkbox" tabindex="0" role="checkbox" aria-checked="false">
+                <svg xmlns='http://www.w3.org/2000/svg'>
+                  <use href='./img/sprite.svg#check'></use>
+                </svg>
 
-              <span class="filter__color-name">
-                Beige
+                <input type="checkbox" class="custom-checkbox__input">
+              </label>
+
+              <span class="filter__name">
+                Sweatshirts & hoodies
+              </span>
+
+              <span class="filter__count">
+                (21)
               </span>
             </li>
 
-            <!-- Item7-->
-            <li class="filter__color colors__item">
-              <button class="filter__color-btn colors__button" data-color="Brown"
-                aria-label="Choose brown color."></button>
+            <!-- Item7 -->
+            <li class="filter__item">
+              <label class="filter__checkbox custom-checkbox" tabindex="0" role="checkbox" aria-checked="false">
+                <svg xmlns='http://www.w3.org/2000/svg'>
+                  <use href='./img/sprite.svg#check'></use>
+                </svg>
 
-              <span class="filter__color-name">
-                Brown
+                <input type="checkbox" class="custom-checkbox__input">
+              </label>
+
+              <span class="filter__name">
+                T-shirts & tops
+              </span>
+
+              <span class="filter__count">
+                (17)
               </span>
             </li>
 
-            <!-- Item8-->
-            <li class="filter__color colors__item">
-              <button class="filter__color-btn colors__button" data-color="Gray"
-                aria-label="Choose gray color."></button>
+            <!-- Item8 -->
+            <li class="filter__item">
+              <label class="filter__checkbox custom-checkbox" tabindex="0" role="checkbox" aria-checked="false">
+                <svg xmlns='http://www.w3.org/2000/svg'>
+                  <use href='./img/sprite.svg#check'></use>
+                </svg>
 
-              <span class="filter__color-name">
-                Gray
+                <input type="checkbox" class="custom-checkbox__input">
+              </label>
+
+              <span class="filter__name">
+                Pants
               </span>
-            </li>
 
-            <!-- Item9-->
-            <li class="filter__color colors__item">
-              <button class="filter__color-btn colors__button" data-color="Purple"
-                aria-label="Choose purple color."></button>
-
-              <span class="filter__color-name">
-                Purple
-              </span>
-            </li>
-
-            <!-- Item10-->
-            <li class="filter__color colors__item">
-              <button class="filter__color-btn colors__button" data-color="Green"
-                aria-label="Choose green color."></button>
-
-              <span class="filter__color-name">
-                Green
-              </span>
-            </li>
-
-            <!-- Item11-->
-            <li class="filter__color colors__item">
-              <button class="filter__color-btn colors__button" data-color="Orange"
-                aria-label="Choose orange color."></button>
-
-              <span class="filter__color-name">
-                Orange
-              </span>
-            </li>
-
-            <!-- Item12-->
-            <li class="filter__color colors__item">
-              <button class="filter__color-btn colors__button" data-color="White"
-                aria-label="Choose white color."></button>
-
-              <span class="filter__color-name">
-                White
-              </span>
-            </li>
-
-            <!-- Item13-->
-            <li class="filter__color colors__item">
-              <button class="filter__color-btn colors__button" data-color="Pink"
-                aria-label="Choose pink color."></button>
-
-              <span class="filter__color-name">
-                Pink
+              <span class="filter__count">
+                (14)
               </span>
             </li>
           </ul>
         </div>
       </div>
-    </div>
 
-    <!-- Filter4 (Material) -->
-    <div class="sidebar-filters__filter filter">
+      <!-- Filter2 (Size) -->
+      <div class="sidebar-filters__filter filter">
 
-      <!-- Filter-top -->
-      <div class="filter__top">
-        <h6 class="filter__title">
-          Material
-        </h6>
+        <!-- Filter-top -->
+        <div class="filter__top">
+          <h6 class="filter__title">
+            Size
+          </h6>
 
-        <button class="filter__toggle filter__toggle--show"
-          aria-label="Show or hide the list of the categories."></button>
-      </div>
-
-      <!-- Filter-bottom -->
-      <div class="filter__bottom">
-        <div class="filter__search">
-          <input type="text" class="filter__search-input input" placeholder="Search the clothes type">
-
-          <button class="filter__search-btn">
-            <svg xmlns='http://www.w3.org/2000/svg' aria-hidden='true'>
-              <use href='./img/sprite.svg#search' aria-hidden='true'></use>
-            </svg>
-          </button>
+          <button class="filter__toggle" aria-label="Show or hide the list of the categories."></button>
         </div>
 
-        <ul class="filter__list" data-overlayscrollbars-initialize>
+        <!-- Filter-bottom -->
+        <div class="filter__bottom">
+          <ul class="filter__list" data-overlayscrollbars-initialize>
 
-          <!-- Item1-->
-          <li class="filter__item">
-            <label class="filter__checkbox custom-checkbox" role="checkbox" aria-checked="false">
-              <svg xmlns='http://www.w3.org/2000/svg'>
-                <use href='./img/sprite.svg#check'></use>
-              </svg>
+            <!-- Item1-->
+            <li class="filter__item">
+              <label class="filter__checkbox custom-checkbox" tabindex="0" role="checkbox" aria-checked="false">
+                <svg xmlns='http://www.w3.org/2000/svg'>
+                  <use href='./img/sprite.svg#check'></use>
+                </svg>
 
-              <input type="checkbox" class="custom-checkbox__input">
-            </label>
+                <input type="checkbox" class="custom-checkbox__input">
+              </label>
 
-            <span class="filter__name">
-              Cotton
-            </span>
+              <span class="filter__name">
+                XS
+              </span>
 
-            <span class="filter__count">
-              (162)
-            </span>
-          </li>
+              <span class="filter__count">
+                (16)
+              </span>
+            </li>
 
-          <!-- Item2 -->
-          <li class="filter__item">
-            <label class="filter__checkbox custom-checkbox" role="checkbox" aria-checked="false">
-              <svg xmlns='http://www.w3.org/2000/svg'>
-                <use href='./img/sprite.svg#check'></use>
-              </svg>
+            <!-- Item2 -->
+            <li class="filter__item">
+              <label class="filter__checkbox custom-checkbox" tabindex="0" role="checkbox" aria-checked="false">
+                <svg xmlns='http://www.w3.org/2000/svg'>
+                  <use href='./img/sprite.svg#check'></use>
+                </svg>
 
-              <input type="checkbox" class="custom-checkbox__input">
-            </label>
+                <input type="checkbox" class="custom-checkbox__input">
+              </label>
 
-            <span class="filter__name">
-              Synthetics
-            </span>
+              <span class="filter__name">
+                S
+              </span>
 
-            <span class="filter__count">
-              (12)
-            </span>
-          </li>
+              <span class="filter__count">
+                (12)
+              </span>
+            </li>
 
-          <!-- Item3 -->
-          <li class="filter__item">
-            <label class="filter__checkbox custom-checkbox" role="checkbox" aria-checked="false">
-              <svg xmlns='http://www.w3.org/2000/svg'>
-                <use href='./img/sprite.svg#check'></use>
-              </svg>
+            <!-- Item3 -->
+            <li class="filter__item">
+              <label class="filter__checkbox custom-checkbox" tabindex="0" role="checkbox" aria-checked="false">
+                <svg xmlns='http://www.w3.org/2000/svg'>
+                  <use href='./img/sprite.svg#check'></use>
+                </svg>
 
-              <input type="checkbox" class="custom-checkbox__input">
-            </label>
+                <input type="checkbox" class="custom-checkbox__input">
+              </label>
 
-            <span class="filter__name">
-              Nappa leather
-            </span>
+              <span class="filter__name">
+                M
+              </span>
 
-            <span class="filter__count">
-              (26)
-            </span>
-          </li>
+              <span class="filter__count">
+                (5)
+              </span>
+            </li>
 
-          <!-- Item4 -->
-          <li class="filter__item">
-            <label class="filter__checkbox custom-checkbox" role="checkbox" aria-checked="false">
-              <svg xmlns='http://www.w3.org/2000/svg'>
-                <use href='./img/sprite.svg#check'></use>
-              </svg>
+            <!-- Item4 -->
+            <li class="filter__item">
+              <label class="filter__checkbox custom-checkbox" tabindex="0" role="checkbox" aria-checked="false">
+                <svg xmlns='http://www.w3.org/2000/svg'>
+                  <use href='./img/sprite.svg#check'></use>
+                </svg>
 
-              <input type="checkbox" class="custom-checkbox__input">
-            </label>
+                <input type="checkbox" class="custom-checkbox__input">
+              </label>
 
-            <span class="filter__name">
-              Leather
-            </span>
+              <span class="filter__name">
+                L
+              </span>
 
-            <span class="filter__count">
-              (5)
-            </span>
-          </li>
+              <span class="filter__count">
+                (11)
+              </span>
+            </li>
 
-          <!-- Item5 -->
-          <li class="filter__item">
-            <label class="filter__checkbox custom-checkbox" role="checkbox" aria-checked="false">
-              <svg xmlns='http://www.w3.org/2000/svg'>
-                <use href='./img/sprite.svg#check'></use>
-              </svg>
+            <!-- Item5 -->
+            <li class="filter__item">
+              <label class="filter__checkbox custom-checkbox" tabindex="0" role="checkbox" aria-checked="false">
+                <svg xmlns='http://www.w3.org/2000/svg'>
+                  <use href='./img/sprite.svg#check'></use>
+                </svg>
 
-              <input type="checkbox" class="custom-checkbox__input">
-            </label>
+                <input type="checkbox" class="custom-checkbox__input">
+              </label>
 
-            <span class="filter__name">
-              Cashmere
-            </span>
+              <span class="filter__name">
+                XL
+              </span>
 
-            <span class="filter__count">
-              (41)
-            </span>
-          </li>
+              <span class="filter__count">
+                (18)
+              </span>
+            </li>
 
-          <!-- Item6 -->
-          <li class="filter__item">
-            <label class="filter__checkbox custom-checkbox" role="checkbox" aria-checked="false">
-              <svg xmlns='http://www.w3.org/2000/svg'>
-                <use href='./img/sprite.svg#check'></use>
-              </svg>
+            <!-- Item6 -->
+            <li class="filter__item">
+              <label class="filter__checkbox custom-checkbox" tabindex="0" role="checkbox" aria-checked="false">
+                <svg xmlns='http://www.w3.org/2000/svg'>
+                  <use href='./img/sprite.svg#check'></use>
+                </svg>
 
-              <input type="checkbox" class="custom-checkbox__input">
-            </label>
+                <input type="checkbox" class="custom-checkbox__input">
+              </label>
 
-            <span class="filter__name">
-              Denim
-            </span>
+              <span class="filter__name">
+                Plus size
+              </span>
 
-            <span class="filter__count">
-              (48)
-            </span>
-          </li>
-
-          <!-- Item7 -->
-          <li class="filter__item">
-            <label class="filter__checkbox custom-checkbox" role="checkbox" aria-checked="false">
-              <svg xmlns='http://www.w3.org/2000/svg'>
-                <use href='./img/sprite.svg#check'></use>
-              </svg>
-
-              <input type="checkbox" class="custom-checkbox__input">
-            </label>
-
-            <span class="filter__name">
-              Batiste
-            </span>
-
-            <span class="filter__count">
-              (17)
-            </span>
-          </li>
-
-          <!-- Item8 -->
-          <li class="filter__item">
-            <label class="filter__checkbox custom-checkbox" role="checkbox" aria-checked="false">
-              <svg xmlns='http://www.w3.org/2000/svg'>
-                <use href='./img/sprite.svg#check'></use>
-              </svg>
-
-              <input type="checkbox" class="custom-checkbox__input">
-            </label>
-
-            <span class="filter__name">
-              Velours
-            </span>
-
-            <span class="filter__count">
-              (3)
-            </span>
-          </li>
-
-          <!-- Item9 -->
-          <li class="filter__item">
-            <label class="filter__checkbox custom-checkbox" role="checkbox" aria-checked="false">
-              <svg xmlns='http://www.w3.org/2000/svg'>
-                <use href='./img/sprite.svg#check'></use>
-              </svg>
-
-              <input type="checkbox" class="custom-checkbox__input">
-            </label>
-
-            <span class="filter__name">
-              Veil
-            </span>
-
-            <span class="filter__count">
-              (9)
-            </span>
-          </li>
-
-          <!-- Item10 -->
-          <li class="filter__item">
-            <label class="filter__checkbox custom-checkbox" role="checkbox" aria-checked="false">
-              <svg xmlns='http://www.w3.org/2000/svg'>
-                <use href='./img/sprite.svg#check'></use>
-              </svg>
-
-              <input type="checkbox" class="custom-checkbox__input">
-            </label>
-
-            <span class="filter__name">
-              Suede
-            </span>
-
-            <span class="filter__count">
-              (4)
-            </span>
-          </li>
-
-          <!-- Item11 -->
-          <li class="filter__item">
-            <label class="filter__checkbox custom-checkbox" role="checkbox" aria-checked="false">
-              <svg xmlns='http://www.w3.org/2000/svg'>
-                <use href='./img/sprite.svg#check'></use>
-              </svg>
-
-              <input type="checkbox" class="custom-checkbox__input">
-            </label>
-
-            <span class="filter__name">
-              Organza
-            </span>
-
-            <span class="filter__count">
-              (1)
-            </span>
-          </li>
-        </ul>
-      </div>
-    </div>
-
-    <!-- Filter5 (Brand) -->
-    <div class="sidebar-filters__filter filter">
-
-      <!-- Filter-top -->
-      <div class="filter__top">
-        <h6 class="filter__title">
-          Brand
-        </h6>
-
-        <button class="filter__toggle filter__toggle--show"
-          aria-label="Show or hide the list of the categories."></button>
+              <span class="filter__count">
+                (21)
+              </span>
+            </li>
+          </ul>
+        </div>
       </div>
 
-      <!-- Filter-bottom -->
-      <div class="filter__bottom">
-        <div class="filter__search">
-          <input type="text" class="filter__search-input input" placeholder="Search the clothes type">
+      <!-- Filter3 (Color) -->
+      <div class="sidebar-filters__filter filter">
 
-          <button class="filter__search-btn">
-            <svg xmlns='http://www.w3.org/2000/svg' aria-hidden='true'>
-              <use href='./img/sprite.svg#search' aria-hidden='true'></use>
-            </svg>
-          </button>
+        <!-- Filter-top -->
+        <div class="filter__top">
+          <h6 class="filter__title">
+            Color
+          </h6>
+
+          <button class="filter__toggle" aria-label="Show or hide the list of the categories."></button>
         </div>
 
-        <ul class="filter__list" data-overlayscrollbars-initialize>
-
-          <!-- Item1-->
-          <li class="filter__item">
-            <label class="filter__checkbox custom-checkbox" role="checkbox" aria-checked="false">
-              <svg xmlns='http://www.w3.org/2000/svg'>
-                <use href='./img/sprite.svg#check'></use>
-              </svg>
-
-              <input type="checkbox" class="custom-checkbox__input">
-            </label>
-
-            <span class="filter__name">
-              Adidas
-            </span>
-
-            <span class="filter__count">
-              (162)
-            </span>
-          </li>
-
-          <!-- Item2 -->
-          <li class="filter__item">
-            <label class="filter__checkbox custom-checkbox" role="checkbox" aria-checked="false">
-              <svg xmlns='http://www.w3.org/2000/svg'>
-                <use href='./img/sprite.svg#check'></use>
-              </svg>
-
-              <input type="checkbox" class="custom-checkbox__input">
-            </label>
-
-            <span class="filter__name">
-              Ann Taylor
-            </span>
-
-            <span class="filter__count">
-              (12)
-            </span>
-          </li>
-
-          <!-- Item3 -->
-          <li class="filter__item">
-            <label class="filter__checkbox custom-checkbox" role="checkbox" aria-checked="false">
-              <svg xmlns='http://www.w3.org/2000/svg'>
-                <use href='./img/sprite.svg#check'></use>
-              </svg>
-
-              <input type="checkbox" class="custom-checkbox__input">
-            </label>
-
-            <span class="filter__name">
-              Armani
-            </span>
-
-            <span class="filter__count">
-              (26)
-            </span>
-          </li>
-
-          <!-- Item4 -->
-          <li class="filter__item">
-            <label class="filter__checkbox custom-checkbox" role="checkbox" aria-checked="false">
-              <svg xmlns='http://www.w3.org/2000/svg'>
-                <use href='./img/sprite.svg#check'></use>
-              </svg>
-
-              <input type="checkbox" class="custom-checkbox__input">
-            </label>
-
-            <span class="filter__name">
-              Banana Republic
-            </span>
-
-            <span class="filter__count">
-              (5)
-            </span>
-          </li>
-
-          <!-- Item5 -->
-          <li class="filter__item">
-            <label class="filter__checkbox custom-checkbox" role="checkbox" aria-checked="false">
-              <svg xmlns='http://www.w3.org/2000/svg'>
-                <use href='./img/sprite.svg#check'></use>
-              </svg>
-
-              <input type="checkbox" class="custom-checkbox__input">
-            </label>
-
-            <span class="filter__name">
-              Calvin Klein
-            </span>
-
-            <span class="filter__count">
-              (41)
-            </span>
-          </li>
-
-          <!-- Item6 -->
-          <li class="filter__item">
-            <label class="filter__checkbox custom-checkbox" role="checkbox" aria-checked="false">
-              <svg xmlns='http://www.w3.org/2000/svg'>
-                <use href='./img/sprite.svg#check'></use>
-              </svg>
-
-              <input type="checkbox" class="custom-checkbox__input">
-            </label>
-
-            <span class="filter__name">
-              Columbia
-            </span>
-
-            <span class="filter__count">
-              (48)
-            </span>
-          </li>
-
-          <!-- Item7 -->
-          <li class="filter__item">
-            <label class="filter__checkbox custom-checkbox" role="checkbox" aria-checked="false">
-              <svg xmlns='http://www.w3.org/2000/svg'>
-                <use href='./img/sprite.svg#check'></use>
-              </svg>
-
-              <input type="checkbox" class="custom-checkbox__input">
-            </label>
-
-            <span class="filter__name">
-              Bilabong
-            </span>
-
-            <span class="filter__count">
-              (27)
-            </span>
-          </li>
-
-          <!-- Item8 -->
-          <li class="filter__item">
-            <label class="filter__checkbox custom-checkbox" role="checkbox" aria-checked="false">
-              <svg xmlns='http://www.w3.org/2000/svg'>
-                <use href='./img/sprite.svg#check'></use>
-              </svg>
-
-              <input type="checkbox" class="custom-checkbox__input">
-            </label>
-
-            <span class="filter__name">
-              Birkenstock
-            </span>
-
-            <span class="filter__count">
-              (10)
-            </span>
-          </li>
-
-          <!-- Item9 -->
-          <li class="filter__item">
-            <label class="filter__checkbox custom-checkbox" role="checkbox" aria-checked="false">
-              <svg xmlns='http://www.w3.org/2000/svg'>
-                <use href='./img/sprite.svg#check'></use>
-              </svg>
-
-              <input type="checkbox" class="custom-checkbox__input">
-            </label>
-
-            <span class="filter__name">
-              Converse
-            </span>
-
-            <span class="filter__count">
-              (176)
-            </span>
-          </li>
-
-          <!-- Item10 -->
-          <li class="filter__item">
-            <label class="filter__checkbox custom-checkbox" role="checkbox" aria-checked="false">
-              <svg xmlns='http://www.w3.org/2000/svg'>
-                <use href='./img/sprite.svg#check'></use>
-              </svg>
-
-              <input type="checkbox" class="custom-checkbox__input">
-            </label>
-
-            <span class="filter__name">
-              Dockers
-            </span>
-
-            <span class="filter__count">
-              (54)
-            </span>
-          </li>
-
-          <!-- Item11 -->
-          <li class="filter__item">
-            <label class="filter__checkbox custom-checkbox" role="checkbox" aria-checked="false">
-              <svg xmlns='http://www.w3.org/2000/svg'>
-                <use href='./img/sprite.svg#check'></use>
-              </svg>
-
-              <input type="checkbox" class="custom-checkbox__input">
-            </label>
-
-            <span class="filter__name">
-              Fruit of the loom
-            </span>
-
-            <span class="filter__count">
-              (239)
-            </span>
-          </li>
-
-          <!-- Item12 -->
-          <li class="filter__item">
-            <label class="filter__checkbox custom-checkbox" role="checkbox" aria-checked="false">
-              <svg xmlns='http://www.w3.org/2000/svg'>
-                <use href='./img/sprite.svg#check'></use>
-              </svg>
-
-              <input type="checkbox" class="custom-checkbox__input">
-            </label>
-
-            <span class="filter__name">
-              Hanes
-            </span>
-
-            <span class="filter__count">
-              (92)
-            </span>
-          </li>
-
-          <!-- Item13 -->
-          <li class="filter__item">
-            <label class="filter__checkbox custom-checkbox" role="checkbox" aria-checked="false">
-              <svg xmlns='http://www.w3.org/2000/svg'>
-                <use href='./img/sprite.svg#check'></use>
-              </svg>
-
-              <input type="checkbox" class="custom-checkbox__input">
-            </label>
-
-            <span class="filter__name">
-              Jimmy Choo
-            </span>
-
-            <span class="filter__count">
-              (17)
-            </span>
-          </li>
-
-          <!-- Item14 -->
-          <li class="filter__item">
-            <label class="filter__checkbox custom-checkbox" role="checkbox" aria-checked="false">
-              <svg xmlns='http://www.w3.org/2000/svg'>
-                <use href='./img/sprite.svg#check'></use>
-              </svg>
-
-              <input type="checkbox" class="custom-checkbox__input">
-            </label>
-
-            <span class="filter__name">
-              Levi’s
-            </span>
-
-            <span class="filter__count">
-              (361)
-            </span>
-          </li>
-
-          <!-- Item15 -->
-          <li class="filter__item">
-            <label class="filter__checkbox custom-checkbox" role="checkbox" aria-checked="false">
-              <svg xmlns='http://www.w3.org/2000/svg'>
-                <use href='./img/sprite.svg#check'></use>
-              </svg>
-
-              <input type="checkbox" class="custom-checkbox__input">
-            </label>
-
-            <span class="filter__name">
-              New Balance
-            </span>
-
-            <span class="filter__count">
-              (218)
-            </span>
-          </li>
-        </ul>
-      </div>
-    </div>
-
-    <!-- Filter6 (Price) -->
-    <div class="sidebar-filters__filter filter">
-
-      <!-- Filter-top -->
-      <div class="filter__top">
-        <h6 class="filter__title">
-          Price
-        </h6>
-
-        <button class="filter__toggle filter__toggle--show"
-          aria-label="Show or hide the list of the categories."></button>
-      </div>
-
-      <!-- Filter-bottom -->
-      <div class="filter__bottom">
-        <div class="filter__slider">
-
-          <!--Slider range -->
-          <div class="filter__slider-range" id="filter-slider-range"></div>
-
-          <!-- Slider inputs -->
-          <div class="filter__slider-inputs">
-            <input type="text" class="filter__slider-input input">
-            <div class="filter__slider-divider"></div>
-            <input type="text" class="filter__slider-input input">
+        <!-- Filter-bottom -->
+        <div class="filter__bottom">
+          <div class="filter__colors-wrapper" data-overlayscrollbars-initialize>
+            <ul class="filter__colors colors">
+
+              <!-- Item1-->
+              <li class="filter__color colors__item">
+                <button class="filter__color-btn colors__button" data-color="Black"
+                  aria-label="Choose black color."></button>
+
+                <span class="filter__color-name">
+                  Black
+                </span>
+              </li>
+
+              <!-- Item2-->
+              <li class="filter__color colors__item">
+                <button class="filter__color-btn colors__button" data-color="Blue-gray"
+                  aria-label="Choose blue-gray color."></button>
+
+                <span class="filter__color-name">
+                  Blue-gray
+                </span>
+              </li>
+
+              <!-- Item3-->
+              <li class="filter__color colors__item">
+                <button class="filter__color-btn colors__button" data-color="Yellow"
+                  aria-label="Choose yellow color."></button>
+
+                <span class="filter__color-name">
+                  Yellow
+                </span>
+              </li>
+
+              <!-- Item4-->
+              <li class="filter__color colors__item">
+                <button class="filter__color-btn colors__button" data-color="Red"
+                  aria-label="Choose red color."></button>
+
+                <span class="filter__color-name">
+                  Red
+                </span>
+              </li>
+
+              <!-- Item5-->
+              <li class="filter__color colors__item">
+                <button class="filter__color-btn colors__button" data-color="Dark-blue"
+                  aria-label="Choose dark-blue color."></button>
+
+                <span class="filter__color-name">
+                  Dark blue
+                </span>
+              </li>
+
+              <!-- Item6-->
+              <li class="filter__color colors__item">
+                <button class="filter__color-btn colors__button" data-color="Beige"
+                  aria-label="Choose beige color."></button>
+
+                <span class="filter__color-name">
+                  Beige
+                </span>
+              </li>
+
+              <!-- Item7-->
+              <li class="filter__color colors__item">
+                <button class="filter__color-btn colors__button" data-color="Brown"
+                  aria-label="Choose brown color."></button>
+
+                <span class="filter__color-name">
+                  Brown
+                </span>
+              </li>
+
+              <!-- Item8-->
+              <li class="filter__color colors__item">
+                <button class="filter__color-btn colors__button" data-color="Gray"
+                  aria-label="Choose gray color."></button>
+
+                <span class="filter__color-name">
+                  Gray
+                </span>
+              </li>
+
+              <!-- Item9-->
+              <li class="filter__color colors__item">
+                <button class="filter__color-btn colors__button" data-color="Purple"
+                  aria-label="Choose purple color."></button>
+
+                <span class="filter__color-name">
+                  Purple
+                </span>
+              </li>
+
+              <!-- Item10-->
+              <li class="filter__color colors__item">
+                <button class="filter__color-btn colors__button" data-color="Green"
+                  aria-label="Choose green color."></button>
+
+                <span class="filter__color-name">
+                  Green
+                </span>
+              </li>
+
+              <!-- Item11-->
+              <li class="filter__color colors__item">
+                <button class="filter__color-btn colors__button" data-color="Orange"
+                  aria-label="Choose orange color."></button>
+
+                <span class="filter__color-name">
+                  Orange
+                </span>
+              </li>
+
+              <!-- Item12-->
+              <li class="filter__color colors__item">
+                <button class="filter__color-btn colors__button" data-color="White"
+                  aria-label="Choose white color."></button>
+
+                <span class="filter__color-name">
+                  White
+                </span>
+              </li>
+
+              <!-- Item13-->
+              <li class="filter__color colors__item">
+                <button class="filter__color-btn colors__button" data-color="Pink"
+                  aria-label="Choose pink color."></button>
+
+                <span class="filter__color-name">
+                  Pink
+                </span>
+              </li>
+            </ul>
           </div>
         </div>
       </div>
+
+      <!-- Filter4 (Material) -->
+      <div class="sidebar-filters__filter filter">
+
+        <!-- Filter-top -->
+        <div class="filter__top">
+          <h6 class="filter__title">
+            Material
+          </h6>
+
+          <button class="filter__toggle filter__toggle--show"
+            aria-label="Show or hide the list of the categories."></button>
+        </div>
+
+        <!-- Filter-bottom -->
+        <div class="filter__bottom">
+          <div class="filter__search">
+            <input type="text" class="filter__search-input input" placeholder="Search the clothes type">
+
+            <button class="filter__search-btn">
+              <svg xmlns='http://www.w3.org/2000/svg' aria-hidden='true'>
+                <use href='./img/sprite.svg#search' aria-hidden='true'></use>
+              </svg>
+            </button>
+          </div>
+
+          <ul class="filter__list" data-overlayscrollbars-initialize>
+
+            <!-- Item1-->
+            <li class="filter__item">
+              <label class="filter__checkbox custom-checkbox" tabindex="0" role="checkbox" aria-checked="false">
+                <svg xmlns='http://www.w3.org/2000/svg'>
+                  <use href='./img/sprite.svg#check'></use>
+                </svg>
+
+                <input type="checkbox" class="custom-checkbox__input">
+              </label>
+
+              <span class="filter__name">
+                Cotton
+              </span>
+
+              <span class="filter__count">
+                (162)
+              </span>
+            </li>
+
+            <!-- Item2 -->
+            <li class="filter__item">
+              <label class="filter__checkbox custom-checkbox" tabindex="0" role="checkbox" aria-checked="false">
+                <svg xmlns='http://www.w3.org/2000/svg'>
+                  <use href='./img/sprite.svg#check'></use>
+                </svg>
+
+                <input type="checkbox" class="custom-checkbox__input">
+              </label>
+
+              <span class="filter__name">
+                Synthetics
+              </span>
+
+              <span class="filter__count">
+                (12)
+              </span>
+            </li>
+
+            <!-- Item3 -->
+            <li class="filter__item">
+              <label class="filter__checkbox custom-checkbox" tabindex="0" role="checkbox" aria-checked="false">
+                <svg xmlns='http://www.w3.org/2000/svg'>
+                  <use href='./img/sprite.svg#check'></use>
+                </svg>
+
+                <input type="checkbox" class="custom-checkbox__input">
+              </label>
+
+              <span class="filter__name">
+                Nappa leather
+              </span>
+
+              <span class="filter__count">
+                (26)
+              </span>
+            </li>
+
+            <!-- Item4 -->
+            <li class="filter__item">
+              <label class="filter__checkbox custom-checkbox" tabindex="0" role="checkbox" aria-checked="false">
+                <svg xmlns='http://www.w3.org/2000/svg'>
+                  <use href='./img/sprite.svg#check'></use>
+                </svg>
+
+                <input type="checkbox" class="custom-checkbox__input">
+              </label>
+
+              <span class="filter__name">
+                Leather
+              </span>
+
+              <span class="filter__count">
+                (5)
+              </span>
+            </li>
+
+            <!-- Item5 -->
+            <li class="filter__item">
+              <label class="filter__checkbox custom-checkbox" tabindex="0" role="checkbox" aria-checked="false">
+                <svg xmlns='http://www.w3.org/2000/svg'>
+                  <use href='./img/sprite.svg#check'></use>
+                </svg>
+
+                <input type="checkbox" class="custom-checkbox__input">
+              </label>
+
+              <span class="filter__name">
+                Cashmere
+              </span>
+
+              <span class="filter__count">
+                (41)
+              </span>
+            </li>
+
+            <!-- Item6 -->
+            <li class="filter__item">
+              <label class="filter__checkbox custom-checkbox" tabindex="0" role="checkbox" aria-checked="false">
+                <svg xmlns='http://www.w3.org/2000/svg'>
+                  <use href='./img/sprite.svg#check'></use>
+                </svg>
+
+                <input type="checkbox" class="custom-checkbox__input">
+              </label>
+
+              <span class="filter__name">
+                Denim
+              </span>
+
+              <span class="filter__count">
+                (48)
+              </span>
+            </li>
+
+            <!-- Item7 -->
+            <li class="filter__item">
+              <label class="filter__checkbox custom-checkbox" tabindex="0" role="checkbox" aria-checked="false">
+                <svg xmlns='http://www.w3.org/2000/svg'>
+                  <use href='./img/sprite.svg#check'></use>
+                </svg>
+
+                <input type="checkbox" class="custom-checkbox__input">
+              </label>
+
+              <span class="filter__name">
+                Batiste
+              </span>
+
+              <span class="filter__count">
+                (17)
+              </span>
+            </li>
+
+            <!-- Item8 -->
+            <li class="filter__item">
+              <label class="filter__checkbox custom-checkbox" tabindex="0" role="checkbox" aria-checked="false">
+                <svg xmlns='http://www.w3.org/2000/svg'>
+                  <use href='./img/sprite.svg#check'></use>
+                </svg>
+
+                <input type="checkbox" class="custom-checkbox__input">
+              </label>
+
+              <span class="filter__name">
+                Velours
+              </span>
+
+              <span class="filter__count">
+                (3)
+              </span>
+            </li>
+
+            <!-- Item9 -->
+            <li class="filter__item">
+              <label class="filter__checkbox custom-checkbox" tabindex="0" role="checkbox" aria-checked="false">
+                <svg xmlns='http://www.w3.org/2000/svg'>
+                  <use href='./img/sprite.svg#check'></use>
+                </svg>
+
+                <input type="checkbox" class="custom-checkbox__input">
+              </label>
+
+              <span class="filter__name">
+                Veil
+              </span>
+
+              <span class="filter__count">
+                (9)
+              </span>
+            </li>
+
+            <!-- Item10 -->
+            <li class="filter__item">
+              <label class="filter__checkbox custom-checkbox" tabindex="0" role="checkbox" aria-checked="false">
+                <svg xmlns='http://www.w3.org/2000/svg'>
+                  <use href='./img/sprite.svg#check'></use>
+                </svg>
+
+                <input type="checkbox" class="custom-checkbox__input">
+              </label>
+
+              <span class="filter__name">
+                Suede
+              </span>
+
+              <span class="filter__count">
+                (4)
+              </span>
+            </li>
+
+            <!-- Item11 -->
+            <li class="filter__item">
+              <label class="filter__checkbox custom-checkbox" tabindex="0" role="checkbox" aria-checked="false">
+                <svg xmlns='http://www.w3.org/2000/svg'>
+                  <use href='./img/sprite.svg#check'></use>
+                </svg>
+
+                <input type="checkbox" class="custom-checkbox__input">
+              </label>
+
+              <span class="filter__name">
+                Organza
+              </span>
+
+              <span class="filter__count">
+                (1)
+              </span>
+            </li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Filter5 (Brand) -->
+      <div class="sidebar-filters__filter filter">
+
+        <!-- Filter-top -->
+        <div class="filter__top">
+          <h6 class="filter__title">
+            Brand
+          </h6>
+
+          <button class="filter__toggle filter__toggle--show"
+            aria-label="Show or hide the list of the categories."></button>
+        </div>
+
+        <!-- Filter-bottom -->
+        <div class="filter__bottom">
+          <div class="filter__search">
+            <input type="text" class="filter__search-input input" placeholder="Search the clothes type">
+
+            <button class="filter__search-btn">
+              <svg xmlns='http://www.w3.org/2000/svg' aria-hidden='true'>
+                <use href='./img/sprite.svg#search' aria-hidden='true'></use>
+              </svg>
+            </button>
+          </div>
+
+          <ul class="filter__list" data-overlayscrollbars-initialize>
+
+            <!-- Item1-->
+            <li class="filter__item">
+              <label class="filter__checkbox custom-checkbox" tabindex="0" role="checkbox" aria-checked="false">
+                <svg xmlns='http://www.w3.org/2000/svg'>
+                  <use href='./img/sprite.svg#check'></use>
+                </svg>
+
+                <input type="checkbox" class="custom-checkbox__input">
+              </label>
+
+              <span class="filter__name">
+                Adidas
+              </span>
+
+              <span class="filter__count">
+                (162)
+              </span>
+            </li>
+
+            <!-- Item2 -->
+            <li class="filter__item">
+              <label class="filter__checkbox custom-checkbox" tabindex="0" role="checkbox" aria-checked="false">
+                <svg xmlns='http://www.w3.org/2000/svg'>
+                  <use href='./img/sprite.svg#check'></use>
+                </svg>
+
+                <input type="checkbox" class="custom-checkbox__input">
+              </label>
+
+              <span class="filter__name">
+                Ann Taylor
+              </span>
+
+              <span class="filter__count">
+                (12)
+              </span>
+            </li>
+
+            <!-- Item3 -->
+            <li class="filter__item">
+              <label class="filter__checkbox custom-checkbox" tabindex="0" role="checkbox" aria-checked="false">
+                <svg xmlns='http://www.w3.org/2000/svg'>
+                  <use href='./img/sprite.svg#check'></use>
+                </svg>
+
+                <input type="checkbox" class="custom-checkbox__input">
+              </label>
+
+              <span class="filter__name">
+                Armani
+              </span>
+
+              <span class="filter__count">
+                (26)
+              </span>
+            </li>
+
+            <!-- Item4 -->
+            <li class="filter__item">
+              <label class="filter__checkbox custom-checkbox" tabindex="0" role="checkbox" aria-checked="false">
+                <svg xmlns='http://www.w3.org/2000/svg'>
+                  <use href='./img/sprite.svg#check'></use>
+                </svg>
+
+                <input type="checkbox" class="custom-checkbox__input">
+              </label>
+
+              <span class="filter__name">
+                Banana Republic
+              </span>
+
+              <span class="filter__count">
+                (5)
+              </span>
+            </li>
+
+            <!-- Item5 -->
+            <li class="filter__item">
+              <label class="filter__checkbox custom-checkbox" tabindex="0" role="checkbox" aria-checked="false">
+                <svg xmlns='http://www.w3.org/2000/svg'>
+                  <use href='./img/sprite.svg#check'></use>
+                </svg>
+
+                <input type="checkbox" class="custom-checkbox__input">
+              </label>
+
+              <span class="filter__name">
+                Calvin Klein
+              </span>
+
+              <span class="filter__count">
+                (41)
+              </span>
+            </li>
+
+            <!-- Item6 -->
+            <li class="filter__item">
+              <label class="filter__checkbox custom-checkbox" tabindex="0" role="checkbox" aria-checked="false">
+                <svg xmlns='http://www.w3.org/2000/svg'>
+                  <use href='./img/sprite.svg#check'></use>
+                </svg>
+
+                <input type="checkbox" class="custom-checkbox__input">
+              </label>
+
+              <span class="filter__name">
+                Columbia
+              </span>
+
+              <span class="filter__count">
+                (48)
+              </span>
+            </li>
+
+            <!-- Item7 -->
+            <li class="filter__item">
+              <label class="filter__checkbox custom-checkbox" tabindex="0" role="checkbox" aria-checked="false">
+                <svg xmlns='http://www.w3.org/2000/svg'>
+                  <use href='./img/sprite.svg#check'></use>
+                </svg>
+
+                <input type="checkbox" class="custom-checkbox__input">
+              </label>
+
+              <span class="filter__name">
+                Bilabong
+              </span>
+
+              <span class="filter__count">
+                (27)
+              </span>
+            </li>
+
+            <!-- Item8 -->
+            <li class="filter__item">
+              <label class="filter__checkbox custom-checkbox" tabindex="0" role="checkbox" aria-checked="false">
+                <svg xmlns='http://www.w3.org/2000/svg'>
+                  <use href='./img/sprite.svg#check'></use>
+                </svg>
+
+                <input type="checkbox" class="custom-checkbox__input">
+              </label>
+
+              <span class="filter__name">
+                Birkenstock
+              </span>
+
+              <span class="filter__count">
+                (10)
+              </span>
+            </li>
+
+            <!-- Item9 -->
+            <li class="filter__item">
+              <label class="filter__checkbox custom-checkbox" tabindex="0" role="checkbox" aria-checked="false">
+                <svg xmlns='http://www.w3.org/2000/svg'>
+                  <use href='./img/sprite.svg#check'></use>
+                </svg>
+
+                <input type="checkbox" class="custom-checkbox__input">
+              </label>
+
+              <span class="filter__name">
+                Converse
+              </span>
+
+              <span class="filter__count">
+                (176)
+              </span>
+            </li>
+
+            <!-- Item10 -->
+            <li class="filter__item">
+              <label class="filter__checkbox custom-checkbox" tabindex="0" role="checkbox" aria-checked="false">
+                <svg xmlns='http://www.w3.org/2000/svg'>
+                  <use href='./img/sprite.svg#check'></use>
+                </svg>
+
+                <input type="checkbox" class="custom-checkbox__input">
+              </label>
+
+              <span class="filter__name">
+                Dockers
+              </span>
+
+              <span class="filter__count">
+                (54)
+              </span>
+            </li>
+
+            <!-- Item11 -->
+            <li class="filter__item">
+              <label class="filter__checkbox custom-checkbox" tabindex="0" role="checkbox" aria-checked="false">
+                <svg xmlns='http://www.w3.org/2000/svg'>
+                  <use href='./img/sprite.svg#check'></use>
+                </svg>
+
+                <input type="checkbox" class="custom-checkbox__input">
+              </label>
+
+              <span class="filter__name">
+                Fruit of the loom
+              </span>
+
+              <span class="filter__count">
+                (239)
+              </span>
+            </li>
+
+            <!-- Item12 -->
+            <li class="filter__item">
+              <label class="filter__checkbox custom-checkbox" tabindex="0" role="checkbox" aria-checked="false">
+                <svg xmlns='http://www.w3.org/2000/svg'>
+                  <use href='./img/sprite.svg#check'></use>
+                </svg>
+
+                <input type="checkbox" class="custom-checkbox__input">
+              </label>
+
+              <span class="filter__name">
+                Hanes
+              </span>
+
+              <span class="filter__count">
+                (92)
+              </span>
+            </li>
+
+            <!-- Item13 -->
+            <li class="filter__item">
+              <label class="filter__checkbox custom-checkbox" tabindex="0" role="checkbox" aria-checked="false">
+                <svg xmlns='http://www.w3.org/2000/svg'>
+                  <use href='./img/sprite.svg#check'></use>
+                </svg>
+
+                <input type="checkbox" class="custom-checkbox__input">
+              </label>
+
+              <span class="filter__name">
+                Jimmy Choo
+              </span>
+
+              <span class="filter__count">
+                (17)
+              </span>
+            </li>
+
+            <!-- Item14 -->
+            <li class="filter__item">
+              <label class="filter__checkbox custom-checkbox" tabindex="0" role="checkbox" aria-checked="false">
+                <svg xmlns='http://www.w3.org/2000/svg'>
+                  <use href='./img/sprite.svg#check'></use>
+                </svg>
+
+                <input type="checkbox" class="custom-checkbox__input">
+              </label>
+
+              <span class="filter__name">
+                Levi’s
+              </span>
+
+              <span class="filter__count">
+                (361)
+              </span>
+            </li>
+
+            <!-- Item15 -->
+            <li class="filter__item">
+              <label class="filter__checkbox custom-checkbox" tabindex="0" role="checkbox" aria-checked="false">
+                <svg xmlns='http://www.w3.org/2000/svg'>
+                  <use href='./img/sprite.svg#check'></use>
+                </svg>
+
+                <input type="checkbox" class="custom-checkbox__input">
+              </label>
+
+              <span class="filter__name">
+                New Balance
+              </span>
+
+              <span class="filter__count">
+                (218)
+              </span>
+            </li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Filter6 (Price) -->
+      <div class="sidebar-filters__filter filter">
+
+        <!-- Filter-top -->
+        <div class="filter__top">
+          <h6 class="filter__title">
+            Price
+          </h6>
+
+          <button class="filter__toggle filter__toggle--show"
+            aria-label="Show or hide the list of the categories."></button>
+        </div>
+
+        <!-- Filter-bottom -->
+        <div class="filter__bottom">
+          <div class="filter__slider">
+
+            <!--Slider range -->
+            <div class="filter__slider-range" id="filter-slider-range"></div>
+
+            <!-- Slider inputs -->
+            <div class="filter__slider-inputs">
+              <input type="text" class="filter__slider-input input">
+              <div class="filter__slider-divider"></div>
+              <input type="text" class="filter__slider-input input">
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Apply filters button -->
+      <button class="sidebar-filters__apply btn btn--mid btn--outline">
+        Apply filters
+      </button>
     </div>
 
     <!-- Show button -->
     <button class="sidebar-filters__show" aria-label="Show all chosen categories.">
       Show
-    </button>
-
-    <!-- Apply filters button -->
-    <button class="sidebar-filters__apply btn btn--mid btn--outline">
-      Apply filters
     </button>
   </div>
 </div>
@@ -2296,11 +2317,14 @@
       </span>
 
       <div class="input-number toolbar__input-number">
-        <input type="text" class="input-number__input input toolbar__input-number-input" value="12" aria-label="To write the number of products on page." maxlength="3">
+        <input type="text" class="input-number__input input toolbar__input-number-input" value="12"
+          aria-label="To write the number of products on page." maxlength="3">
 
         <div class="input-number__btns">
-          <button class="input-number__btn input-number__btn--upper" aria-label="To rise the number of products on page."></button>
-          <button class="input-number__btn input-number__btn--lower" aria-label="To reduce the number of products on page."></button>
+          <button class="input-number__btn input-number__btn--upper"
+            aria-label="To rise the number of products on page."></button>
+          <button class="input-number__btn input-number__btn--lower"
+            aria-label="To reduce the number of products on page."></button>
         </div>
       </div>
 
@@ -2350,6 +2374,42 @@
       <li class="tool-pag__item" data-toolpag="arrow-right">
         <a href="#" class="tool-pag__link" aria-label="Go to the next page.">
           <svg class="tool-pag__arrow tool-pag__arrow--right" xmlns='http://www.w3.org/2000/svg' aria-hidden="true">
+            <use href='./img/sprite.svg#arrow' aria-hidden="true"></use>
+          </svg>
+        </a>
+      </li>
+    </ul>
+
+    <!-- Pagination mini (for small devices) -->
+    <ul class="toolbar__pagination-mini tool-pag-mini">
+      <li class="tool-pag-mini__item tool-pag-mini__item--inactive" data-toolpag="arrow-left">
+        <a href="#" class="tool-pag-mini__link" aria-label="Go to the previous page.">
+          <svg class="tool-pag-mini__arrow tool-pag__arrow--left" xmlns='http://www.w3.org/2000/svg' aria-hidden="true">
+            <use href='./img/sprite.svg#arrow' aria-hidden="true"></use>
+          </svg>
+        </a>
+      </li>
+
+      <li class="tool-pag-mini__item" data-toolpag="current">
+        <a href="#" class="tool-pag__link">
+          1
+        </a>
+      </li>
+
+      <li class="tool-pag-mini__item">
+        /
+      </li>
+
+      <li class="tool-pag-mini__item" data-toolpag="total">
+        <a href="#" class="tool-pag__link">
+          10
+        </a>
+      </li>
+
+      <li class="tool-pag-mini__item" data-toolpag="arrow-right">
+        <a href="#" class="tool-pag-mini__link" aria-label="Go to the next page.">
+          <svg class="tool-pag-mini__arrow tool-pag-mini__arrow--right" xmlns='http://www.w3.org/2000/svg'
+            aria-hidden="true">
             <use href='./img/sprite.svg#arrow' aria-hidden="true"></use>
           </svg>
         </a>
@@ -2450,7 +2510,7 @@
       </div>
 
       <!-- Product bottom -->
-      <div class="product__bottom">
+      <div class="product__bottom product-grid__bottom">
         <div class="product__details">
 
           <!-- Sizes -->
@@ -2550,14 +2610,15 @@
       <!-- Microslider -->
       <div class="product__image-wrapper microslider">
 
-        <picture>
+        <!-- Image -->
+        <!-- <picture>
           <source srcset="/img/product-jeans.webp">
           <img src="/img/product-jeans.jpg" alt="Product image." class="product__image microslider__image"
-          id="microslider-image">
-        </picture>
-        <!-- Image -->
-        <!-- <img src="./img/product-jeans.jpg" alt="Product image." class="product__image microslider__image"
-          id="microslider-image"> -->
+            id="microslider-image">
+        </picture> -->
+
+        <img src="/img/product-jeans.jpg" alt="Product image." class="product__image microslider__image"
+        id="microslider-image">
 
         <!-- Sources for images -->
         <ul class="microslider__srcs" aria-hidden="true">
@@ -2585,6 +2646,34 @@
         <a href="#" class="product__image-link"></a>
       </div>
 
+      <!-- Rating -->
+      <div class="product__rating">
+        <svg class="product__rating-icon product__rating-icon--active" xmlns='http://www.w3.org/2000/svg'
+          aria-label="Star for rating one.">
+          <use href='./img/sprite.svg#star2'></use>
+        </svg>
+
+        <svg class="product__rating-icon product__rating-icon--active" xmlns='http://www.w3.org/2000/svg'
+          aria-label="Star for rating two.">
+          <use href='./img/sprite.svg#star2'></use>
+        </svg>
+
+        <svg class="product__rating-icon product__rating-icon--active" xmlns='http://www.w3.org/2000/svg'
+          aria-label="Star for rating three.">
+          <use href='./img/sprite.svg#star2'></use>
+        </svg>
+
+        <svg class="product__rating-icon product__rating-icon--active" xmlns='http://www.w3.org/2000/svg'
+          aria-label="Star for rating four.">
+          <use href='./img/sprite.svg#star2'></use>
+        </svg>
+
+        <svg class="product__rating-icon product__rating-icon--active" xmlns='http://www.w3.org/2000/svg'
+          aria-label="Star for rating five.">
+          <use href='./img/sprite.svg#star2'></use>
+        </svg>
+      </div>
+
       <!-- Favorite -->
       <button class="product__favorite" aria-label="Add to favorite.">
         <svg xmlns='http://www.w3.org/2000/svg' aria-hidden="true">
@@ -2598,18 +2687,18 @@
 
       <!-- Product name -->
       <a href="#" class="product__name">
-        Mid-rise slim cropped fit jeans
+        Black and white sport cap
       </a>
 
       <!-- Product prices -->
       <div class="product__prices">
         <span class="product__price">
-          $40.00
+          $18.15
         </span>
       </div>
 
       <!-- Product bottom -->
-      <div class="product__bottom">
+      <div class="product__bottom product-grid__bottom">
         <div class="product__details">
 
           <!-- Sizes -->
@@ -2682,10 +2771,6 @@
 
             <li class="colors__item">
               <button class="colors__button" data-color="Blue-gray" aria-label="Choose blue-gray color."></button>
-            </li>
-
-            <li class="colors__item">
-              <button class="colors__button" data-color="White" aria-label="Choose white color."></button>
             </li>
           </ul>
         </div>
@@ -2795,7 +2880,7 @@
       </div>
 
       <!-- Product bottom -->
-      <div class="product__bottom">
+      <div class="product__bottom product-grid__bottom">
         <div class="product__details">
 
           <!-- Sizes -->
@@ -2976,7 +3061,7 @@
       </div>
 
       <!-- Product bottom -->
-      <div class="product__bottom">
+      <div class="product__bottom product-grid__bottom">
         <div class="product__details">
 
           <!-- Sizes -->
@@ -3130,7 +3215,7 @@
       </div>
 
       <!-- Product bottom -->
-      <div class="product__bottom">
+      <div class="product__bottom product-grid__bottom">
         <div class="product__details">
 
           <!-- Sizes -->
@@ -3312,7 +3397,7 @@
       </div>
 
       <!-- Product bottom -->
-      <div class="product__bottom">
+      <div class="product__bottom product-grid__bottom">
         <div class="product__details">
 
           <!-- Sizes -->
@@ -3493,7 +3578,7 @@
       </div>
 
       <!-- Product bottom -->
-      <div class="product__bottom">
+      <div class="product__bottom product-grid__bottom">
         <div class="product__details">
 
           <!-- Sizes -->
@@ -3647,7 +3732,7 @@
       </div>
 
       <!-- Product bottom -->
-      <div class="product__bottom">
+      <div class="product__bottom product-grid__bottom">
         <div class="product__details">
 
           <!-- Sizes -->
@@ -3836,7 +3921,7 @@
       </div>
 
       <!-- Product bottom -->
-      <div class="product__bottom">
+      <div class="product__bottom product-grid__bottom">
         <div class="product__details">
 
           <!-- Sizes -->
@@ -3998,7 +4083,7 @@
       </div>
 
       <!-- Product bottom -->
-      <div class="product__bottom">
+      <div class="product__bottom product-grid__bottom">
         <div class="product__details">
 
           <!-- Sizes -->
@@ -4188,7 +4273,7 @@
       </div>
 
       <!-- Product bottom -->
-      <div class="product__bottom">
+      <div class="product__bottom product-grid__bottom">
         <div class="product__details">
 
           <!-- Sizes -->
@@ -4342,7 +4427,7 @@
       </div>
 
       <!-- Product bottom -->
-      <div class="product__bottom">
+      <div class="product__bottom product-grid__bottom">
         <div class="product__details">
 
           <!-- Sizes -->
@@ -4490,11 +4575,14 @@
       </span>
 
       <div class="input-number toolbar__input-number">
-        <input type="text" class="input-number__input input toolbar__input-number-input" value="12" aria-label="To write the number of products on page." maxlength="3">
+        <input type="text" class="input-number__input input toolbar__input-number-input" value="12"
+          aria-label="To write the number of products on page." maxlength="3">
 
         <div class="input-number__btns">
-          <button class="input-number__btn input-number__btn--upper" aria-label="To rise the number of products on page."></button>
-          <button class="input-number__btn input-number__btn--lower" aria-label="To reduce the number of products on page."></button>
+          <button class="input-number__btn input-number__btn--upper"
+            aria-label="To rise the number of products on page."></button>
+          <button class="input-number__btn input-number__btn--lower"
+            aria-label="To reduce the number of products on page."></button>
         </div>
       </div>
 
@@ -4544,6 +4632,42 @@
       <li class="tool-pag__item" data-toolpag="arrow-right">
         <a href="#" class="tool-pag__link" aria-label="Go to the next page.">
           <svg class="tool-pag__arrow tool-pag__arrow--right" xmlns='http://www.w3.org/2000/svg' aria-hidden="true">
+            <use href='./img/sprite.svg#arrow' aria-hidden="true"></use>
+          </svg>
+        </a>
+      </li>
+    </ul>
+
+    <!-- Pagination mini (for small devices) -->
+    <ul class="toolbar__pagination-mini tool-pag-mini">
+      <li class="tool-pag-mini__item tool-pag-mini__item--inactive" data-toolpag="arrow-left">
+        <a href="#" class="tool-pag-mini__link" aria-label="Go to the previous page.">
+          <svg class="tool-pag-mini__arrow tool-pag__arrow--left" xmlns='http://www.w3.org/2000/svg' aria-hidden="true">
+            <use href='./img/sprite.svg#arrow' aria-hidden="true"></use>
+          </svg>
+        </a>
+      </li>
+
+      <li class="tool-pag-mini__item" data-toolpag="current">
+        <a href="#" class="tool-pag__link">
+          1
+        </a>
+      </li>
+
+      <li class="tool-pag-mini__item">
+        /
+      </li>
+
+      <li class="tool-pag-mini__item" data-toolpag="total">
+        <a href="#" class="tool-pag__link">
+          10
+        </a>
+      </li>
+
+      <li class="tool-pag-mini__item" data-toolpag="arrow-right">
+        <a href="#" class="tool-pag-mini__link" aria-label="Go to the next page.">
+          <svg class="tool-pag-mini__arrow tool-pag-mini__arrow--right" xmlns='http://www.w3.org/2000/svg'
+            aria-hidden="true">
             <use href='./img/sprite.svg#arrow' aria-hidden="true"></use>
           </svg>
         </a>
@@ -4630,7 +4754,7 @@
 
         <!-- Agreement -->
         <label class="subscribe__agreement">
-          <label class="subscribe__checkbox custom-checkbox" role="checkbox" aria-checked="false">
+          <label class="subscribe__checkbox custom-checkbox" tabindex="0" role="checkbox" aria-checked="false">
             <svg xmlns='http://www.w3.org/2000/svg'>
               <use href='./img/sprite.svg#check'></use>
             </svg>

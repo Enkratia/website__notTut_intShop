@@ -9,7 +9,7 @@ import {
 // Add plugins
 OverlayScrollbars.plugin([ScrollbarsHidingPlugin, SizeObserverPlugin]);
 
-// CUSTOM-SELECT-LIST SCROLLBAR
+// ==== CUSTOM-SELECT-LIST SCROLLBAR ==== //
 const customSelectListScrollbar = OverlayScrollbars(document.querySelector('#custom-select-list'), {});
 
 // NAV SCROLLBAR
@@ -41,12 +41,10 @@ v.$mdq991.addEventListener("change", setNavScrollbar);
 v.$mdq992.addEventListener("change", removetNavScrollbar);
 
 
-// SIDEBAR BOTTOM SCROLLBAR
+// ==== SIDEBAR BOTTOM SCROLLBAR ==== //
 if (v.$sidebarFilterTops[0]) {
-  
-  // *For filter__list
-  // const filterLists = document.querySelectorAll('.filter__list');
 
+  // *For filter__list
   v.$sidebarFilterLists.forEach(el => {
     let sidebarBottomListScrollbar = OverlayScrollbars(el, {
       scrollbars: {
@@ -61,4 +59,23 @@ if (v.$sidebarFilterTops[0]) {
       theme: 'os-theme-sidebar-bottom',
     }
   });
+
+  // *For sidebar-filters__wrapper
+  let sidebarFiltersWrapper;
+
+  function toggleSidebarFiltersWrapper() {
+    if (v.$mdq1119.matches) {
+      sidebarFiltersWrapper = OverlayScrollbars(document.querySelector('.sidebar-filters__wrapper-inner'), {
+        scrollbars: {
+          theme: 'os-theme-sidebar-filters',
+        }
+      });
+
+    } else {
+      sidebarFiltersWrapper?.destroy();
+    }
+  }
+  toggleSidebarFiltersWrapper();
+
+  v.$mdq1119.addEventListener("change", toggleSidebarFiltersWrapper);
 }

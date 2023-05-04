@@ -1,5 +1,14 @@
 @use "../util/" as *;
 
+.sr-only {
+  position: absolute;
+  left: -10000px;
+  top: auto;
+  overflow: hidden;
+  width: 1px;
+  height: 1px;
+}
+
 .overflow-hidden {
   overflow: hidden;
 }
@@ -557,7 +566,7 @@
   // **
   .sizes {
     display: flex;
-    flex-basis: 60%;
+    flex-basis: 70%;
     flex-wrap: wrap;
     align-items: center;
     margin-right: rem(20);
@@ -1120,6 +1129,51 @@
 
     &--active {
       color: var(--primary-color);
+    }
+  }
+
+  &__arrow {
+    width: rem(21);
+    height: rem(12);
+    fill: currentcolor;
+
+    &--left {
+      transform: rotate(180deg);
+    }
+  }
+}
+
+.tool-pag-mini {
+  display: flex;
+  align-items: center;
+
+  &__item {
+    font: var(--base-bold);
+    color: var(--gray800-color);
+    opacity: 1;
+    visibility: visible;
+    transition: color 0.3s, opacity 0.3s;
+
+    &:not(:last-child) {
+      margin-right: rem(21);
+    }
+
+    &:nth-child(2) {
+      margin-right: rem(3);
+    }
+
+    &:nth-child(3) {
+      margin-right: rem(3);
+      cursor: default;
+    }
+
+    &:hover {
+      color: var(--primary-color);
+    }
+
+    &--inactive {
+      opacity: 0;
+      visibility: hidden;
     }
   }
 

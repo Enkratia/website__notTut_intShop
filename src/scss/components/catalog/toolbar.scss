@@ -5,7 +5,8 @@
 
   &__container {
     display: grid;
-    grid-template-columns: 1fr 1.12fr 1fr;
+    column-gap: rem(20);
+    grid-template-columns: 1fr 1.2fr 1fr;
     margin-inline: auto;
   }
 
@@ -14,6 +15,10 @@
     font: var(--base-bold);
     white-space: nowrap;
     color: var(--gray900-color);
+
+    @include bp-down("992") {
+      display: none;
+    }
   }
 
   // Sort by
@@ -22,8 +27,7 @@
     align-items: center;
 
     &-select {
-      width: 100%;
-      max-width: rem(170);
+      width: rem(170);
     }
 
     &-head {
@@ -50,17 +54,36 @@
 
   // Input number
   &__input-number {
+    flex-shrink: 0;
     margin-right: rem(12);
   }
 
   &__text {
     font: var(--small-regular);
     color: var(--gray700-color);
+
+    @include bp-down("1200") {
+      display: none;
+    }
   }
 
   // Pagination
   &__pagination {
     justify-self: end;
     padding-right: rem(1.5);
+
+    @include bp-down("876") {
+      display: none;
+    }
+  }
+
+  // Pagination-mini
+  &__pagination-mini {
+    display: none;
+    justify-self: end;
+
+    @include bp-down("876") {
+      display: flex;
+    }
   }
 }

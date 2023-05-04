@@ -7,4 +7,26 @@
   padding-bottom: rem(35);
   width: 100%;
   row-gap: rem(74);
+
+  &__product {
+    &:hover {
+      @include bp-down("992") {
+        box-shadow: none;
+      }
+    }
+  }
+
+  &__bottom {
+    @include bp-down("992") {
+      display: none;
+    }
+  }
+
+  @include bp-down("1120") {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+
+  @include bp-down("876") {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
 }

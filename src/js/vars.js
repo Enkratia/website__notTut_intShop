@@ -37,6 +37,7 @@ export const $catalog = document.querySelector("#catalog");
 
 // Toolbar
 export const $toolPags = document.querySelectorAll(".tool-pag");
+export const $toolPagsMini = document.querySelectorAll(".tool-pag-mini");
 export const $toolbarSortSelects = document.querySelectorAll(".toolbar__sort-select");
 
 // Input-number
@@ -54,12 +55,15 @@ export const $filterSliderRange = document.querySelector("#filter-slider-range")
 export const $filterSliderInputs = document.querySelectorAll(".filter__slider-input");
 export const $sidebarFiltersShowBtn = $filterWrapper?.querySelector(".sidebar-filters__show");
 export const $sidebarFiltersApplyBtn = $filterWrapper?.querySelector(".sidebar-filters__apply");
+export const $sidebarFiltersWrapperClose = $filterWrapper?.querySelector(".sidebar-filters__wrapper-close");
 
 // Media
 export const $mdq767 = window.matchMedia("(max-width: 767px)");
 export const $mdq768 = window.matchMedia("(min-width: 768px)");
+export const $mdq875 = window.matchMedia("(max-width: 875px)");
 export const $mdq991 = window.matchMedia("(max-width:991px)");
 export const $mdq992 = window.matchMedia("(min-width:992px)");
 export const $mdq1024 = window.matchMedia("(min-width: 1024px)");
+export const $mdq1119 = window.matchMedia("(max-width: 1120px)");
 
 

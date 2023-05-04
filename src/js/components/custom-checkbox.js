@@ -1,6 +1,14 @@
 import * as v from "../vars.js";
 
 // Function(s)
+// **
+function checkCustomCheckboxWithKey(e) {
+  if(e.key === "Enter") {
+    this.click();
+  }
+}
+
+// **
 function checkCustomCheckbox() {
   const checkbox = this.parentElement;
 
@@ -18,4 +26,6 @@ function checkCustomCheckbox() {
 v.$customCheckboxes.forEach(el => {
   const nativeCheckbox = el.querySelector(".custom-checkbox__input");
   nativeCheckbox.addEventListener("change", checkCustomCheckbox);
+
+  el.addEventListener("keyup", checkCustomCheckboxWithKey);
 });

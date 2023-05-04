@@ -55,11 +55,14 @@
       </span>
 
       <div class="input-number toolbar__input-number">
-        <input type="text" class="input-number__input input toolbar__input-number-input" value="12" aria-label="To write the number of products on page." maxlength="3">
+        <input type="text" class="input-number__input input toolbar__input-number-input" value="12"
+          aria-label="To write the number of products on page." maxlength="3">
 
         <div class="input-number__btns">
-          <button class="input-number__btn input-number__btn--upper" aria-label="To rise the number of products on page."></button>
-          <button class="input-number__btn input-number__btn--lower" aria-label="To reduce the number of products on page."></button>
+          <button class="input-number__btn input-number__btn--upper"
+            aria-label="To rise the number of products on page."></button>
+          <button class="input-number__btn input-number__btn--lower"
+            aria-label="To reduce the number of products on page."></button>
         </div>
       </div>
 
@@ -109,6 +112,42 @@
       <li class="tool-pag__item" data-toolpag="arrow-right">
         <a href="#" class="tool-pag__link" aria-label="Go to the next page.">
           <svg class="tool-pag__arrow tool-pag__arrow--right" xmlns='http://www.w3.org/2000/svg' aria-hidden="true">
+            <use href='./img/sprite.svg#arrow' aria-hidden="true"></use>
+          </svg>
+        </a>
+      </li>
+    </ul>
+
+    <!-- Pagination mini (for small devices) -->
+    <ul class="toolbar__pagination-mini tool-pag-mini">
+      <li class="tool-pag-mini__item tool-pag-mini__item--inactive" data-toolpag="arrow-left">
+        <a href="#" class="tool-pag-mini__link" aria-label="Go to the previous page.">
+          <svg class="tool-pag-mini__arrow tool-pag__arrow--left" xmlns='http://www.w3.org/2000/svg' aria-hidden="true">
+            <use href='./img/sprite.svg#arrow' aria-hidden="true"></use>
+          </svg>
+        </a>
+      </li>
+
+      <li class="tool-pag-mini__item" data-toolpag="current">
+        <a href="#" class="tool-pag__link">
+          1
+        </a>
+      </li>
+
+      <li class="tool-pag-mini__item">
+        /
+      </li>
+
+      <li class="tool-pag-mini__item" data-toolpag="total">
+        <a href="#" class="tool-pag__link">
+          10
+        </a>
+      </li>
+
+      <li class="tool-pag-mini__item" data-toolpag="arrow-right">
+        <a href="#" class="tool-pag-mini__link" aria-label="Go to the next page.">
+          <svg class="tool-pag-mini__arrow tool-pag-mini__arrow--right" xmlns='http://www.w3.org/2000/svg'
+            aria-hidden="true">
             <use href='./img/sprite.svg#arrow' aria-hidden="true"></use>
           </svg>
         </a>

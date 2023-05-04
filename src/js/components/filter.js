@@ -62,7 +62,7 @@ if (v.$sidebarFilterTops[0]) {
   // **
   function deleteAllBtn() {
     const allActiveFilters = ul.querySelectorAll(".active-filters__btn--regular");
-    
+
     allActiveFilters.forEach(el => {
       deleteBtn.call(el);
     });
@@ -80,7 +80,7 @@ if (v.$sidebarFilterTops[0]) {
     }
 
     const prevFilterMapValues = Array.from(prevFilterMap.values());
-    for (let[a, b] of filterMap) {
+    for (let [a, b] of filterMap) {
       if (!prevFilterMapValues.includes(b)) {
         return true;
       }
@@ -157,7 +157,7 @@ if (v.$sidebarFilterTops[0]) {
     text = text.trim();
     name = name.trim();
 
-    
+
     if (name === "price") {
       filterMap.set(name, text);
       return;
@@ -219,7 +219,6 @@ if (v.$sidebarFilterTops[0]) {
       }
     }
 
-
     for (let filter of filterMap) {
       if (prevFilterMapValues.includes(filter[1])) {
         continue;
@@ -251,6 +250,11 @@ if (v.$sidebarFilterTops[0]) {
 
     rewriteMap();
     toggleShowButton();
+
+    if (v.$mdq1119.matches) {
+      v.$sidebarFiltersButton.click();
+      document.body.classList.remove("overflow-hidden");
+    }
   }
 
   // ***
@@ -271,7 +275,7 @@ if (v.$sidebarFilterTops[0]) {
     } else {
       filterMap.delete("price");
     }
-    
+
     toggleShowButton(v.$filterSliderRange);
   }
 
@@ -300,11 +304,34 @@ if (v.$sidebarFilterTops[0]) {
   v.$sidebarFiltersShowBtn.addEventListener("click", addInBreadcrumbs);
   v.$sidebarFiltersApplyBtn.addEventListener("click", () => v.$sidebarFiltersShowBtn.click());
 
+  // **
   filterPriceSlider.on("update", () => {
     isTwo++; // (2 inits from the start)
     if (isTwo <= 2) return;
     getPrice();
   });
+
+  // ===== Same ("add filter categories to breadcrumbs"), but for keyboard ===== //
+  const keySet = new Set();
+
+  // F(s)
+  // **
+  function showCategoriesWithKeyboard(e) {
+    keySet.add(e.key);
+
+    if (keySet.has("+") && keySet.has("-")) {
+      v.$sidebarFiltersShowBtn.click();
+    }
+  }
+
+  // **
+  function clearKeySet() {
+    keySet.clear();
+  }
+
+  // L(s)
+  v.$filterWrapper.addEventListener("keydown", showCategoriesWithKeyboard);
+  v.$filterWrapper.addEventListener("keyup", clearKeySet);
 
 
   // ==== SHOW-HIDE FILTERS (ACCORDION) ==== //
@@ -341,5 +368,14 @@ if (v.$sidebarFilterTops[0]) {
   v.$sidebarFilterTops.forEach(el => {
     el.addEventListener("click", showHideFilters);
   });
-}
 
+  // ==== CLOSE FILTER SIDEBAR (ON SMALL DISPLAYS) ==== //
+  // F(S)
+  function closeFilterSidebar() {
+    v.$sidebarFiltersButton.click();
+    document.body.classList.remove("overflow-hidden");
+  }
+
+  // L(s) 
+  v.$sidebarFiltersWrapperClose.addEventListener("click", closeFilterSidebar);
+}
