@@ -26,7 +26,7 @@
     transition: left 0.3s linear;
 
     &-inner {
-      height: 100vh;
+      height: 100%;
     }
 
     &-top {
@@ -131,6 +131,7 @@
         opacity: 1;
         visibility: visible;
         transition: opacity 0.3s ease;
+        pointer-events: auto;
       }
 
       @include bp-down("1120") {
@@ -177,6 +178,10 @@
       visibility: hidden;
       transform: translateY(-50%);
       transition: opacity 0.3s;
+    }
+
+    @include bp-down("414") {
+      right: rem(-50);
     }
   }
 

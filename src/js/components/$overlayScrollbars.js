@@ -59,23 +59,24 @@ if (v.$sidebarFilterTops[0]) {
       theme: 'os-theme-sidebar-bottom',
     }
   });
-
-  // *For sidebar-filters__wrapper
-  let sidebarFiltersWrapper;
-
-  function toggleSidebarFiltersWrapper() {
-    if (v.$mdq1119.matches) {
-      sidebarFiltersWrapper = OverlayScrollbars(document.querySelector('.sidebar-filters__wrapper-inner'), {
-        scrollbars: {
-          theme: 'os-theme-sidebar-filters',
-        }
-      });
-
-    } else {
-      sidebarFiltersWrapper?.destroy();
-    }
-  }
-  toggleSidebarFiltersWrapper();
-
-  v.$mdq1119.addEventListener("change", toggleSidebarFiltersWrapper);
 }
+
+
+// *For sidebar-filters__wrapper
+let sidebarFiltersWrapper;
+
+function toggleSidebarFiltersWrapper() {
+  if (v.$mdq1119.matches) {
+    sidebarFiltersWrapper = OverlayScrollbars(document.querySelector('.sidebar-filters__wrapper-inner'), {
+      scrollbars: {
+        theme: 'os-theme-sidebar-filters',
+      }
+    });
+
+  } else {
+    sidebarFiltersWrapper?.destroy();
+  }
+}
+toggleSidebarFiltersWrapper();
+
+v.$mdq1119.addEventListener("change", toggleSidebarFiltersWrapper);

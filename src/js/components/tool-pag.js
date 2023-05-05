@@ -1,34 +1,10 @@
 import * as v from "../vars.js";
-import { currentPage, total } from "./tool-pag-mini.js";
 
-let testObj = {
-  data: 0,
-  change: function() {
-    this.data = page;
-  }
-}
-
+// ==== PAGINATION ==== //
 let page = 1;
 let totalPages = 10;
 let activePag;
 let chosenPag;
-export {page, totalPages}
-
-// console.log(currentPage, total)
-// setInterval(() => {
-//   console.log(testObj.data);
-// }, 2000);
-
-
-console.log(currentPage, total);
-
-class TestClass {
-  leftArrows = document.querySelectorAll(".tool-pag [data-toolpag='arrow-left']");
-
-  testFunc () {
-    console.log(leftArrows[0]);
-  }
-}
 
 const leftArrows = document.querySelectorAll(".tool-pag [data-toolpag='arrow-left']");
 const rightArrows = document.querySelectorAll(".tool-pag [data-toolpag='arrow-right']");
@@ -38,30 +14,34 @@ if (rightDots) {
 
   // F(s)
   // **
-  // function initPages1() {
-  //   if (!v.$mdq875.matches) {
-  //     page = currentPage || 1;
-  //     totalPages = total || 10;
+  function initPags() {
+    if (!v.$mdq875.matches) {
+      const activePag = v.$toolPags[0].querySelector(".tool-pag__item--active").dataset.toolpag;
+      let diff;
 
-  //     if (page > 1) {
-  //       page--;
+      if (activePag > page) {
+        diff = activePag - page;
+        page = +activePag;
 
-  //       for (let i = 0; i < page; i++) {
-  //         rightArrows[0].click();
-  //         if (page === totalPages) break;
-  //       }
+        for (let i = 0; i < diff; i++) {
+          leftArrows[0].click();
+          if (page === 1) break;
+        }
 
-  //     } else {
-  //       page++;
+      } else if (activePag < page) {
+        diff = page - activePag;
+        page = +activePag;
 
-  //       for (let i = 0; i < page; i++) {
-  //         leftArrows[0].click();
-  //         if (page === 1) break;
-  //       }
-  //     }
-  //   }
-  // }
-  // initPages1();
+        for (let i = 0; i < diff; i++) {
+          rightArrows[0].click();
+          if (page === totalPages) break;
+        }
+      }
+    }
+  }
+  initPags();
+
+  v.$mdq875.addEventListener("change", initPags);
 
   // **
   function goFarAhead() {
@@ -133,6 +113,7 @@ if (rightDots) {
   function rearrangeActiveClass() {
     v.$toolPags.forEach(el => {
       el.querySelector(".tool-pag__item--active")?.classList.remove("tool-pag__item--active");
+      console.log(page)
       el.querySelector(`[data-toolpag='${page}']`).classList.add("tool-pag__item--active");
     });
   }
@@ -392,3 +373,92 @@ if (rightDots) {
   // **
   rightDots.addEventListener("click", goFarAhead);
 }
+
+
+// ==== MINI PAGINATION (ON SMALL WIDTH DEVICES) ==== //
+const leftMiniArrows = document.querySelectorAll(".tool-pag-mini [data-toolpag='arrow-left']");
+const rightMiniArrows = document.querySelectorAll(".tool-pag-mini [data-toolpag='arrow-right']");
+
+// F(s)
+function toLastPage() {
+  rightMiniArrows.forEach(el => el.classList.add("tool-pag-mini__item--inactive"));
+  leftMiniArrows.forEach(el => el.classList.remove("tool-pag-mini__item--inactive"));
+
+  page = totalPages;
+  writePageNumber();
+}
+
+// ** 
+function writePageNumber() {
+  v.$toolPagsMini.forEach(el => {
+    const currentPageText = el.querySelector("[data-toolpag='current'] .tool-pag__link");
+    currentPageText.textContent = page;
+  });
+}
+
+// **
+function initMiniPags() {
+  if (v.$mdq875.matches) {
+    if (page > 1) {
+      page--;
+      toNextPage();
+
+    } else {
+      page++;
+      toPrevPage();
+    }
+  }
+}
+initMiniPags();
+
+// **
+function toNextPage() {
+  if (page === totalPages) return;
+  if (page === totalPages - 1) {
+    rightMiniArrows.forEach(el => el.classList.add("tool-pag-mini__item--inactive"));
+  }
+
+  page++;
+  leftMiniArrows.forEach(el => el.classList.remove("tool-pag-mini__item--inactive"));
+
+  writePageNumber();
+}
+
+// **
+function toPrevPage() {
+  if (page === 1) return;
+  if (page === 2) {
+    leftMiniArrows.forEach(el => el.classList.add("tool-pag-mini__item--inactive"));
+  }
+
+  page--;
+  rightMiniArrows.forEach(el => el.classList.remove("tool-pag-mini__item--inactive"));
+
+  writePageNumber();
+}
+
+// L(s)
+// **
+function addListeners() {
+  if (v.$mdq875.matches) {
+    rightMiniArrows.forEach(el => {
+      el.addEventListener("click", toNextPage);
+    });
+
+    leftMiniArrows.forEach(el => {
+      el.addEventListener("click", toPrevPage);
+    });
+
+    v.$toolPagsMini.forEach(el => {
+      const totalPagesPag = el.querySelector("[data-toolpag='total']");
+      totalPagesPag.addEventListener("click", toLastPage);
+    });
+  }
+}
+addListeners();
+
+// **
+v.$mdq875.addEventListener("change", () => {
+  addListeners();
+  initMiniPags();
+});
