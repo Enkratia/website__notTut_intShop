@@ -7053,7 +7053,7 @@ button {
     top: 0;
     z-index: var(--z-postfixed);
     padding-top: 0;
-    height: 100vh;
+    height: calc(100vh - (100vh - 100%));
   }
   .sidebar-filters__wrapper::before {
     content: "";
@@ -7071,7 +7071,7 @@ button {
     pointer-events: none;
   }
   .sidebar-filters__wrapper-inner {
-    padding-bottom: 1.25rem;
+    padding-bottom: 1.5625rem;
     padding-inline: 1.5625rem;
   }
   .sidebar-filters__wrapper .sidebar-filters__wrapper-top {

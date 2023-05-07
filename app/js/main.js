@@ -2311,7 +2311,7 @@ overlayscrollbars__WEBPACK_IMPORTED_MODULE_1__.OverlayScrollbars.plugin([overlay
 // ==== CUSTOM-SELECT-LIST SCROLLBAR ==== //
 const customSelectListScrollbar = (0,overlayscrollbars__WEBPACK_IMPORTED_MODULE_1__.OverlayScrollbars)(document.querySelector('#custom-select-list'), {});
 
-// NAV SCROLLBAR
+// ==== NAV SCROLLBAR ==== //
 let navScrollBar;
 
 // F(s)
@@ -2357,21 +2357,34 @@ if (_vars_js__WEBPACK_IMPORTED_MODULE_0__.$sidebarFilterTops[0]) {
   });
 }
 
-// *For sidebar-filters__wrapper
+// ==== SIDEBAR FILTERS WRAPPER SCROLLBAR ==== //
 let sidebarFiltersWrapper;
-function toggleSidebarFiltersWrapper() {
+
+// F(s)
+// **
+function overflowHiddenBody() {
+  if (_vars_js__WEBPACK_IMPORTED_MODULE_0__.$filterWrapper.classList.contains("sidebar-filters__wrapper--hide")) {
+    document.body.classList.add("overflow-hidden");
+  }
+}
+
+// **
+function toggleSidebarFiltersWrapperOS() {
   if (_vars_js__WEBPACK_IMPORTED_MODULE_0__.$mdq1119.matches) {
     sidebarFiltersWrapper = (0,overlayscrollbars__WEBPACK_IMPORTED_MODULE_1__.OverlayScrollbars)(document.querySelector('.sidebar-filters__wrapper-inner'), {
       scrollbars: {
         theme: 'os-theme-sidebar-filters'
       }
     });
+    overflowHiddenBody();
   } else {
     sidebarFiltersWrapper?.destroy();
   }
 }
-toggleSidebarFiltersWrapper();
-_vars_js__WEBPACK_IMPORTED_MODULE_0__.$mdq1119.addEventListener("change", toggleSidebarFiltersWrapper);
+toggleSidebarFiltersWrapperOS();
+
+// L(s)
+_vars_js__WEBPACK_IMPORTED_MODULE_0__.$mdq1119.addEventListener("change", toggleSidebarFiltersWrapperOS);
 
 /***/ }),
 
@@ -2565,31 +2578,7 @@ const trendingNowSwiper = new swiper__WEBPACK_IMPORTED_MODULE_1__["default"]("#t
   }
 });
 
-// SALE SWIPER
-const saleSwiper = new swiper__WEBPACK_IMPORTED_MODULE_1__["default"]("#sale-slider", {
-  modules: [swiper__WEBPACK_IMPORTED_MODULE_1__.Navigation],
-  slidesPerView: 1,
-  spaceBetween: 20,
-  loop: true,
-  navigation: {
-    nextEl: '#sale-button-next',
-    prevEl: '#sale-button-prev'
-  },
-  breakpoints: {
-    900: {
-      slidesPerView: 3,
-      spaceBetween: 30
-    },
-    768: {
-      slidesPerView: 3,
-      spaceBetween: 30
-    },
-    480: {
-      slidesPerView: 2,
-      spaceBetween: 20
-    }
-  }
-});
+// SALE SWIPER (in ./product__bottom.js)
 
 // INSTAGRAM SWIPER
 if (document.querySelector("#instagram-slider")) {
@@ -3186,7 +3175,7 @@ if (_vars_js__WEBPACK_IMPORTED_MODULE_0__.$sidebarFilterTops[0]) {
     getPrice();
   });
 
-  // ===== Same ("add filter categories to breadcrumbs"), but for keyboard ===== //
+  // ===== Same (add filter categories to breadcrumbs), but for keyboard ===== //
   const keySet = new Set();
 
   // F(s)
@@ -3208,7 +3197,29 @@ if (_vars_js__WEBPACK_IMPORTED_MODULE_0__.$sidebarFilterTops[0]) {
   _vars_js__WEBPACK_IMPORTED_MODULE_0__.$filterWrapper.addEventListener("keyup", clearKeySet);
 
   // ==== SHOW-HIDE FILTERS (ACCORDION) ==== //
+  let isElementCreated = false;
+  let osBagElement;
+
   // F(s)
+  // **
+  function fixOSBag(bottom) {
+    // overlay scrollbars не умеет реагировать на изменение height из js (так сделано для bottom)
+    if (!isElementCreated) {
+      osBagElement = document.createElement("span");
+      isElementCreated = true;
+    }
+    setTimeout(() => {
+      // чтобы overlay scrollbars observer успел за кликом
+      bottom.appendChild(osBagElement);
+      osBagElement.addEventListener("click", function () {
+        this.classList.toggle("active");
+      }, {
+        once: true
+      });
+      osBagElement.click();
+    }, 100);
+  }
+
   // **
   function showHideFilters() {
     const filter = this.parentElement;
@@ -3218,8 +3229,8 @@ if (_vars_js__WEBPACK_IMPORTED_MODULE_0__.$sidebarFilterTops[0]) {
     filterBottom.style.height = filterBottomHeight + "px";
     if (!filter.classList.contains("filter--show")) {
       filterBottom.style.height = "";
-      return;
     }
+    fixOSBag(filterBottom);
   }
 
   // **
@@ -3599,11 +3610,41 @@ if (_vars_js__WEBPACK_IMPORTED_MODULE_0__.$saleSlider) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
+/* harmony import */ var swiper__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! swiper */ "./node_modules/swiper/swiper.esm.js");
+
 let saleSlider = document.querySelector(".sale__slider"); // (Не убирать в vars)
+let products = saleSlider?.querySelectorAll(".sale__product"); // (Не убирать в vars)
+const marginForBoxShadow = 80; // (Тоже самое: window.getComputedStyle(products[0]).getPropertyValue("margin-bottom"))
 
 if (saleSlider) {
-  let products = saleSlider.querySelectorAll(".sale__product"); // (Не убирать в vars)
-  const marginForBoxShadow = 80; // (Тоже самое: window.getComputedStyle(products[0]).getPropertyValue("margin-bottom"))
+  // SALE SWIPER
+  const saleSwiper = new swiper__WEBPACK_IMPORTED_MODULE_0__["default"]("#sale-slider", {
+    modules: [swiper__WEBPACK_IMPORTED_MODULE_0__.Navigation],
+    slidesPerView: 1,
+    spaceBetween: 20,
+    loop: true,
+    on: {
+      init: addListeners
+    },
+    navigation: {
+      nextEl: '#sale-button-next',
+      prevEl: '#sale-button-prev'
+    },
+    breakpoints: {
+      900: {
+        slidesPerView: 3,
+        spaceBetween: 30
+      },
+      768: {
+        slidesPerView: 3,
+        spaceBetween: 30
+      },
+      480: {
+        slidesPerView: 2,
+        spaceBetween: 20
+      }
+    }
+  });
 
   // F(s)
   // **
@@ -3623,10 +3664,14 @@ if (saleSlider) {
 
   // L(s)
   // **
-  products.forEach(product => {
-    product.addEventListener("mouseenter", showProductBottom);
-    product.addEventListener("mouseleave", hideProductBottom);
-  });
+  function addListeners() {
+    saleSlider = document.querySelector(".sale__slider");
+    products = saleSlider.querySelectorAll(".sale__product");
+    products.forEach(product => {
+      product.addEventListener("mouseenter", showProductBottom);
+      product.addEventListener("mouseleave", hideProductBottom);
+    });
+  }
 
   // **
   window.addEventListener("resize", () => {
@@ -4064,6 +4109,8 @@ if (rightDots) {
           </a>
         </li>
       `);
+        const rightDots = el.querySelector("[data-toolpag='dots-right']");
+        rightDots.addEventListener("click", goFarAhead);
       });
       rearrangeActiveClass();
       return;
@@ -4079,12 +4126,14 @@ if (rightDots) {
           createPrevPag(el, totalPages - i);
         }
         liElems[1].insertAdjacentHTML("afterend", `
-        <li class="tool-pag__item" data-toolpag="dots-left">
-          <a href="#" class="tool-pag__link">
-            ...
-          </a>
-        </li>
-      `);
+          <li class="tool-pag__item" data-toolpag="dots-left">
+            <a href="#" class="tool-pag__link">
+             ...
+            </a>
+          </li>
+        `);
+        const leftDots = el.querySelector("[data-toolpag='dots-left']");
+        leftDots.addEventListener("click", goFarBack);
       });
       rearrangeActiveClass();
       return;
@@ -4345,6 +4394,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "$filterSliderInputs": () => (/* binding */ $filterSliderInputs),
 /* harmony export */   "$filterSliderRange": () => (/* binding */ $filterSliderRange),
 /* harmony export */   "$filterWrapper": () => (/* binding */ $filterWrapper),
+/* harmony export */   "$filterWrapperInner": () => (/* binding */ $filterWrapperInner),
 /* harmony export */   "$headerMainContainer": () => (/* binding */ $headerMainContainer),
 /* harmony export */   "$headerTopContainer": () => (/* binding */ $headerTopContainer),
 /* harmony export */   "$inputNumberBtns": () => (/* binding */ $inputNumberBtns),
@@ -4437,6 +4487,7 @@ const $sidebarFiltersFilters = document.querySelectorAll(".sidebar-filters__filt
 const $sidebarFilterTops = document.querySelectorAll(".sidebar-filters .filter__top");
 const $sidebarFilterLists = document.querySelectorAll(".sidebar-filters .filter__list");
 const $filterWrapper = document.querySelector(".sidebar-filters__wrapper");
+const $filterWrapperInner = document.querySelector(".sidebar-filters__wrapper-inner");
 const $filterSliderRange = document.querySelector("#filter-slider-range");
 const $filterSliderInputs = document.querySelectorAll(".filter__slider-input");
 const $sidebarFiltersShowBtn = $filterWrapper?.querySelector(".sidebar-filters__show");

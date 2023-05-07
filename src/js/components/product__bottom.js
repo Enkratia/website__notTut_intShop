@@ -1,8 +1,39 @@
+import Swiper, { Navigation } from 'swiper';
+
 let saleSlider = document.querySelector(".sale__slider"); // (Не убирать в vars)
+let products = saleSlider?.querySelectorAll(".sale__product"); // (Не убирать в vars)
+const marginForBoxShadow = 80; // (Тоже самое: window.getComputedStyle(products[0]).getPropertyValue("margin-bottom"))
 
 if (saleSlider) {
-  let products = saleSlider.querySelectorAll(".sale__product"); // (Не убирать в vars)
-  const marginForBoxShadow = 80; // (Тоже самое: window.getComputedStyle(products[0]).getPropertyValue("margin-bottom"))
+
+  // SALE SWIPER
+  const saleSwiper = new Swiper("#sale-slider", {
+    modules: [Navigation],
+    slidesPerView: 1,
+    spaceBetween: 20,
+    loop: true,
+    on: {
+      init: addListeners,
+    },
+    navigation: {
+      nextEl: '#sale-button-next',
+      prevEl: '#sale-button-prev',
+    },
+    breakpoints: {
+      900: {
+        slidesPerView: 3,
+        spaceBetween: 30,
+      },
+      768: {
+        slidesPerView: 3,
+        spaceBetween: 30,
+      },
+      480: {
+        slidesPerView: 2,
+        spaceBetween: 20,
+      }
+    }
+  });
 
   // F(s)
   // **
@@ -23,10 +54,15 @@ if (saleSlider) {
 
   // L(s)
   // **
-  products.forEach(product => {
-    product.addEventListener("mouseenter", showProductBottom);
-    product.addEventListener("mouseleave", hideProductBottom);
-  });
+  function addListeners() {
+    saleSlider = document.querySelector(".sale__slider");
+    products = saleSlider.querySelectorAll(".sale__product");
+
+    products.forEach(product => {
+      product.addEventListener("mouseenter", showProductBottom);
+      product.addEventListener("mouseleave", hideProductBottom);
+    });
+  }
 
   // **
   window.addEventListener("resize", () => {

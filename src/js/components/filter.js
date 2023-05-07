@@ -311,7 +311,7 @@ if (v.$sidebarFilterTops[0]) {
     getPrice();
   });
 
-  // ===== Same ("add filter categories to breadcrumbs"), but for keyboard ===== //
+  // ===== Same (add filter categories to breadcrumbs), but for keyboard ===== //
   const keySet = new Set();
 
   // F(s)
@@ -333,9 +333,25 @@ if (v.$sidebarFilterTops[0]) {
   v.$filterWrapper.addEventListener("keydown", showCategoriesWithKeyboard);
   v.$filterWrapper.addEventListener("keyup", clearKeySet);
 
-
   // ==== SHOW-HIDE FILTERS (ACCORDION) ==== //
+  let isElementCreated = false;
+  let osBagElement;
+
   // F(s)
+  // **
+  function fixOSBag(bottom) { // overlay scrollbars не умеет реагировать на изменение height из js (так сделано для bottom)
+    if (!isElementCreated) {
+      osBagElement = document.createElement("span");
+      isElementCreated = true;
+    }
+
+    setTimeout(() => { // чтобы overlay scrollbars observer успел за кликом
+      bottom.appendChild(osBagElement);
+      osBagElement.addEventListener("click", function() {this.classList.toggle("active")}, { once: true });
+      osBagElement.click();
+    }, 100);
+  }
+
   // **
   function showHideFilters() {
     const filter = this.parentElement;
@@ -347,8 +363,9 @@ if (v.$sidebarFilterTops[0]) {
 
     if (!filter.classList.contains("filter--show")) {
       filterBottom.style.height = "";
-      return;
     }
+
+    fixOSBag(filterBottom);
   }
 
   // **
@@ -368,6 +385,7 @@ if (v.$sidebarFilterTops[0]) {
   v.$sidebarFilterTops.forEach(el => {
     el.addEventListener("click", showHideFilters);
   });
+
 
   // ==== CLOSE FILTER SIDEBAR (ON SMALL DISPLAYS) ==== //
   // F(S)

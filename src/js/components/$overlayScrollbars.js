@@ -12,7 +12,7 @@ OverlayScrollbars.plugin([ScrollbarsHidingPlugin, SizeObserverPlugin]);
 // ==== CUSTOM-SELECT-LIST SCROLLBAR ==== //
 const customSelectListScrollbar = OverlayScrollbars(document.querySelector('#custom-select-list'), {});
 
-// NAV SCROLLBAR
+// ==== NAV SCROLLBAR ==== //
 let navScrollBar;
 
 // F(s)
@@ -61,11 +61,19 @@ if (v.$sidebarFilterTops[0]) {
   });
 }
 
-
-// *For sidebar-filters__wrapper
+// ==== SIDEBAR FILTERS WRAPPER SCROLLBAR ==== //
 let sidebarFiltersWrapper;
 
-function toggleSidebarFiltersWrapper() {
+// F(s)
+// **
+function overflowHiddenBody() {
+  if (v.$filterWrapper.classList.contains("sidebar-filters__wrapper--hide")) {
+    document.body.classList.add("overflow-hidden");
+  }
+}
+
+// **
+function toggleSidebarFiltersWrapperOS() {
   if (v.$mdq1119.matches) {
     sidebarFiltersWrapper = OverlayScrollbars(document.querySelector('.sidebar-filters__wrapper-inner'), {
       scrollbars: {
@@ -73,10 +81,14 @@ function toggleSidebarFiltersWrapper() {
       }
     });
 
+    overflowHiddenBody();
+
   } else {
     sidebarFiltersWrapper?.destroy();
   }
 }
-toggleSidebarFiltersWrapper();
+toggleSidebarFiltersWrapperOS();
 
-v.$mdq1119.addEventListener("change", toggleSidebarFiltersWrapper);
+
+// L(s)
+v.$mdq1119.addEventListener("change", toggleSidebarFiltersWrapperOS);

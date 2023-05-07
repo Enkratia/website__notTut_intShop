@@ -190,6 +190,9 @@ if (rightDots) {
           </a>
         </li>
       `);
+
+        const rightDots = el.querySelector("[data-toolpag='dots-right']");
+        rightDots.addEventListener("click", goFarAhead);
       });
 
       rearrangeActiveClass();
@@ -210,12 +213,15 @@ if (rightDots) {
         }
 
         liElems[1].insertAdjacentHTML("afterend", `
-        <li class="tool-pag__item" data-toolpag="dots-left">
-          <a href="#" class="tool-pag__link">
-            ...
-          </a>
-        </li>
-      `);
+          <li class="tool-pag__item" data-toolpag="dots-left">
+            <a href="#" class="tool-pag__link">
+             ...
+            </a>
+          </li>
+        `);
+
+        const leftDots = el.querySelector("[data-toolpag='dots-left']");
+        leftDots.addEventListener("click", goFarBack);
       });
 
       rearrangeActiveClass();

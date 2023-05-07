@@ -51,6 +51,7 @@ export const $sidebarFiltersFilters = document.querySelectorAll(".sidebar-filter
 export const $sidebarFilterTops = document.querySelectorAll(".sidebar-filters .filter__top");
 export const $sidebarFilterLists = document.querySelectorAll(".sidebar-filters .filter__list");
 export const $filterWrapper = document.querySelector(".sidebar-filters__wrapper");
+export const $filterWrapperInner = document.querySelector(".sidebar-filters__wrapper-inner");
 export const $filterSliderRange = document.querySelector("#filter-slider-range");
 export const $filterSliderInputs = document.querySelectorAll(".filter__slider-input");
 export const $sidebarFiltersShowBtn = $filterWrapper?.querySelector(".sidebar-filters__show");
