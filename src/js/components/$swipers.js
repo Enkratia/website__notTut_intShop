@@ -320,3 +320,21 @@ if (document.querySelector("#brands-slider")) {
 
   v.$mdq1024.addEventListener("change", resetBrandSwiper);
 }
+
+// PRODUCT CARD SLIDER SWIPER
+const productCardSwiper = new Swiper("#product-card-swiper", {
+  modules: [Navigation],
+  loop: true,
+  slidesPerView: 1,
+  spaceBetween: 30,
+  navigation: {
+    nextEl: '#pcs-button-next',
+    prevEl: '#pcs-button-prev',
+  }
+});
+
+// PRODUCT CARD MINISLIDER SWIPER
+const productCardMiniSwiper = new Swiper("#pcm-swiper", {
+  slidesPerView: 5,
+  spaceBetween: 20,
+});

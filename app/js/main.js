@@ -2706,6 +2706,24 @@ if (document.querySelector("#brands-slider")) {
   _vars_js__WEBPACK_IMPORTED_MODULE_0__.$mdq1024.addEventListener("change", resetBrandSwiper);
 }
 
+// PRODUCT CARD SLIDER SWIPER
+const productCardSwiper = new swiper__WEBPACK_IMPORTED_MODULE_1__["default"]("#product-card-swiper", {
+  modules: [swiper__WEBPACK_IMPORTED_MODULE_1__.Navigation],
+  loop: true,
+  slidesPerView: 1,
+  spaceBetween: 30,
+  navigation: {
+    nextEl: '#pcs-button-next',
+    prevEl: '#pcs-button-prev'
+  }
+});
+
+// PRODUCT CARD MINISLIDER SWIPER
+const productCardMiniSwiper = new swiper__WEBPACK_IMPORTED_MODULE_1__["default"]("#pcm-swiper", {
+  slidesPerView: 5,
+  spaceBetween: 20
+});
+
 /***/ }),
 
 /***/ "./src/js/components/colors__button.js":

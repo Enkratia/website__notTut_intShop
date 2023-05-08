@@ -21,6 +21,7 @@ body {
   font-weight: 400;
   color: var(--black-color);
   background-color: var(--white-color);
+  min-height: 200vh; // TMP
 
   @include bp-down("992") {
     padding-top: rem(108);
