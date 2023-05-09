@@ -1,34 +1,58 @@
-import gulp from 'gulp';
-const { src, dest, series, watch } = gulp;
-import autoprefixer from 'gulp-autoprefixer';
-import cleanCSS from 'gulp-clean-css';
-import del from 'del';
-import sync from 'browser-sync';
-const browserSync = sync.create();
-import sass from 'sass';
-import gulpSass from 'gulp-sass';
-const mainSass = gulpSass(sass);
-import svgSprite from 'gulp-svg-sprite';
-import svgmin from 'gulp-svgmin';
-import cheerio from 'gulp-cheerio';
-import replace from 'gulp-replace';
-import fileInclude from 'gulp-file-include';
-import rev from 'gulp-rev';
-import revRewrite from 'gulp-rev-rewrite';
-import revDel from 'gulp-rev-delete-original';
-import htmlmin from 'gulp-htmlmin';
-import gulpif from 'gulp-if';
-import notify from 'gulp-notify';
-// import imagemin from 'imagemin';
-// import imageminJpegtran from 'imagemin-jpegtran';
-import imagemin, { mozjpeg } from 'gulp-imagemin';
-import { readFileSync } from 'fs';
-import typograf from 'gulp-typograf';
-import webp from 'gulp-webp';
-import webpackStream from 'webpack-stream';
-import plumber from 'gulp-plumber';
-import path from 'path';
-import zip from 'gulp-zip';
+// import gulp from 'gulp';
+// const { src, dest, series, watch } = gulp;
+const { src, dest, series, watch } = require("gulp");
+// import autoprefixer from 'gulp-autoprefixer';
+const autoprefixer = require("gulp-autoprefixer");
+// import cleanCSS from 'gulp-clean-css';
+const cleanCSS = require("gulp-clean-css");
+// import del from 'del';
+const del = require("del");
+// import sync from 'browser-sync';
+// const browserSync = sync.create();
+const browserSync = require("browser-sync").create();
+// import sass from 'sass';
+// import gulpSass from 'gulp-sass';
+// const mainSass = gulpSass(sass);
+const mainSass = require("gulp-sass")(require("sass"));
+// import svgSprite from 'gulp-svg-sprite';
+const svgSprite = require("gulp-svg-sprite");
+// import svgmin from 'gulp-svgmin';
+const svgmin = require("gulp-svgmin");
+// import cheerio from 'gulp-cheerio';
+const cheerio = require("gulp-cheerio");
+// import replace from 'gulp-replace';
+const replace = require("gulp-replace");
+// import fileInclude from 'gulp-file-include';
+const fileInclude = require("gulp-file-include");
+// import rev from 'gulp-rev';
+const rev = require("gulp-rev");
+// import revRewrite from 'gulp-rev-rewrite';
+const revRewrite = require("gulp-rev-rewrite");
+// import revDel from 'gulp-rev-delete-original';
+const revDel = require("gulp-rev-delete-original");
+// import htmlmin from 'gulp-htmlmin';
+const htmlmin = require("gulp-htmlmin");
+// import gulpif from 'gulp-if';
+const gulpif = require("gulp-if");
+// import notify from 'gulp-notify';
+const notify = require("gulp-notify");
+// import imagemin from 'gulp-imagemin';
+const image = require('gulp-imagemin');
+// import { readFileSync } from 'fs';
+const { readFileSync } = require("fs");
+// import typograf from 'gulp-typograf';
+const typograf = require('gulp-typograf');
+// import webp from 'gulp-webp';
+const webp = require('gulp-webp');
+// import webpackStream from 'webpack-stream';
+const webpackStream = require('webpack-stream');
+// import plumber from 'gulp-plumber';
+const plumber = require('gulp-plumber');
+// import path from 'path';
+const path = require('path');
+// import zip from 'gulp-zip';
+const zip = require('gulp-zip');
+
 const rootFolder = path.basename(path.resolve());
 
 // Paths
@@ -173,12 +197,16 @@ const resources = () => {
 
 // Images
 const images = () => {
-  return src([`${paths.srcImgFolder}/**/**.{jpg,jpeg,svg}`])
-    .pipe(gulpif(isProd, imagemin([
-      mozjpeg({quality: 80, progressive: true}),
+  return src([`${paths.srcImgFolder}/**/**.{jpg,jpeg,png,svg}`])
+    .pipe(gulpif(isProd, image([
+      image.mozjpeg({
+        quality: 80,
+        progressive: true
+      })
     ])))
     .pipe(dest(paths.buildImgFolder))
 };
+
 
 // WebpImages
 const webpImages = () => {
@@ -276,37 +304,19 @@ const toProd = (done) => {
   done();
 };
 
-
-// task('default', parallel(clean, htmlInclude, scripts, styles, resources, fonts, images, webpImages, svgSprites, watchFiles));
-// task('build', series(toProd, clean, htmlInclude, scripts, styles, resources, fonts, images, webpImages, svgSprites, htmlMinify));
-// task('cache', series(cache, rewrite));
-// task('zip', series(zipFiles));
-
-// exports.default = series(clean, htmlInclude, scripts, styles, resources, fonts, images, webpImages, svgSprites, watchFiles);
-export default series(clean, htmlInclude, scripts, styles, resources, fonts, images, webpImages, svgSprites, watchFiles);
-
-// exports.build = series(toProd, clean, htmlInclude, scripts, styles, resources, fonts, images, webpImages, svgSprites, htmlMinify);
-
-// exports.cache = series(cache, rewrite);
-
-// exports.zip = zipFiles;
+exports.default = series(clean, htmlInclude, scripts, styles, resources, fonts, images, webpImages, svgSprites, watchFiles);
+exports.build = series(toProd, clean, htmlInclude, scripts, styles, resources, fonts, images, webpImages, svgSprites, htmlMinify);
+exports.cache = series(cache, rewrite);
+exports.zip = zipFiles;
 
 
 
 //======================//
+// export default series(clean, htmlInclude, scripts, styles, resources, fonts, images, webpImages, svgSprites, watchFiles);
 // OLD SERIES (?)
 // exports.default = series(clean, htmlInclude, scripts, styles, resources, fonts, images, webpImages, svgSprites, watchFiles);
 // exports.backend = series(clean, htmlInclude, scriptsBackend, stylesBackend, resources, images, webpImages, svgSprites)
 // exports.build = series(toProd, clean, htmlInclude, scripts, styles, resources, images, webpImages, svgSprites, htmlMinify);
-
-
-// WebpImages (?)
-// const webpImages = () => {
-//   return src([`${paths.srcImgFolder}/**/**.{jpg,jpeg,png}`])
-//     .pipe(webp())
-//     .pipe(dest(paths.buildImgFolder))
-// };
-
 
 // SCRIPTS BACKEND (?)
 // const scriptsBackend = () => {

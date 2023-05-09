@@ -15,6 +15,7 @@ import "./components/input-number.js";
 import "./components/tool-pag.js";
 import "./components/sidebar-filters__button.js";
 import "./components/colors__button.js";
+import "./components/product-card__slider.js";
 
 // Components multiple in one
 import "./components/$swipers.js";

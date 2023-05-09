@@ -58,6 +58,10 @@ export const $sidebarFiltersShowBtn = $filterWrapper?.querySelector(".sidebar-fi
 export const $sidebarFiltersApplyBtn = $filterWrapper?.querySelector(".sidebar-filters__apply");
 export const $sidebarFiltersWrapperClose = $filterWrapper?.querySelector(".sidebar-filters__wrapper-close");
 
+// Product-card
+export const $productCardSwiper = document.querySelector("#product-card-swiper");
+export const $pcmSwiper = document.querySelector("#pcm-swiper");
+
 // Media
 export const $mdq767 = window.matchMedia("(max-width: 767px)");
 export const $mdq768 = window.matchMedia("(min-width: 768px)");
