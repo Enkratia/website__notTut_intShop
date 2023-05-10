@@ -1092,6 +1092,10 @@
     border-color: transparent transparent var(--gray900-color) transparent;
     width: 0;
     height: 0;
+
+    &--small {
+      border-width: 0 rem(4.9) rem(6.5) rem(4.9);
+    }
   }
 
   &__btn:first-child {

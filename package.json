@@ -3,6 +3,7 @@
   "version": "2.1.0",
   "description": "gulp-builder for weblayout",
   "main": "gulpfile.js",
+  "type": "module",
   "scripts": {
     "stylefix": "npx stylelint src/scss/*.scss src/scss/**/*.scss src/scss/**/**/*.scss --fix",
     "html": "node-w3c-validator -f lint -evH -i app/**/*.html",
@@ -43,6 +44,7 @@
     "gulp-webp": "^4.0.1",
     "gulp-zip": "^5.1.0",
     "node-w3c-validator": "^2.0.2",
+    "pngquant": "^4.1.0",
     "postcss": "^8.4.5",
     "postcss-scss": "^4.0.2",
     "sass": "^1.45.1",

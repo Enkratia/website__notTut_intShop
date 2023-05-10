@@ -115,7 +115,259 @@
 
       <!-- Right -->
       <div class="product-card__right">
+        <div class="product-card__details product" data-vendor="183260098">
 
+          <!-- Prices -->
+          <div class="product__prices product-card__price">
+            <span class="product__price product__price--h4 product__price--red">
+              $15.50
+            </span>
+
+            <span class="product__old-price">
+              $31.00
+            </span>
+          </div>
+
+          <!-- Discount -->
+          <div class="product__discount product-card__discount">
+            -50%
+          </div>
+
+          <!-- Feedback -->
+          <div class="product-card__feedback">
+
+            <!-- Rating -->
+            <div class="product__rating product__rating--visible product-card__rating">
+              <svg class="product__rating-icon product__rating-icon--active" xmlns='http://www.w3.org/2000/svg'
+                aria-label="Star for rating one.">
+                <use href='./img/sprite.svg#star2'></use>
+              </svg>
+
+              <svg class="product__rating-icon product__rating-icon--active" xmlns='http://www.w3.org/2000/svg'
+                aria-label="Star for rating two.">
+                <use href='./img/sprite.svg#star2'></use>
+              </svg>
+
+              <svg class="product__rating-icon product__rating-icon--active" xmlns='http://www.w3.org/2000/svg'
+                aria-label="Star for rating three.">
+                <use href='./img/sprite.svg#star2'></use>
+              </svg>
+
+              <svg class="product__rating-icon product__rating-icon--active" xmlns='http://www.w3.org/2000/svg'
+                aria-label="Star for rating four.">
+                <use href='./img/sprite.svg#star2'></use>
+              </svg>
+
+              <svg class="product__rating-icon" xmlns='http://www.w3.org/2000/svg' aria-label="Star for rating five.">
+                <use href='./img/sprite.svg#star2'></use>
+              </svg>
+            </div>
+
+            <!-- Reviews -->
+            <span class="product-card__reviews">
+              12 reviews
+            </span>
+          </div>
+        </div>
+
+        <!-- Color -->
+        <div class="product-card__colors-wrapper">
+          <label class="product-card__label">
+            Color
+          </label>
+
+          <ul class="product-card__colors colors">
+            <li class="colors__item product-card__colors-item">
+              <button class="colors__button colors__button--active" data-color="Pink"
+                aria-label="Choose pink color."></button>
+            </li>
+
+            <li class="colors__item product-card__colors-item">
+              <button class="colors__button" data-color="Blue-gray" aria-label="Choose blue-gray color."></button>
+            </li>
+
+            <li class="colors__item product-card__colors-item">
+              <button class="colors__button" data-color="Yellow" aria-label="Choose yellow color."></button>
+            </li>
+
+            <li class="colors__item product-card__colors-item product-card__colors-item--name">
+              Pink
+            </li>
+          </ul>
+        </div>
+
+        <!-- Size -->
+        <div class="product-card__sizes-wrapper">
+          <label class="product-card__label product-card__label--size">
+            Size
+          </label>
+
+          <div class="product-card__sizes">
+
+            <!-- Size select -->
+            <div class="custom-select custom-select--light product-card__sort-select" role="listbox" tabindex="0">
+              <div class="custom-select__head custom-select__head--light product-card__sort-head">
+                <span class="custom-select__selected product-card__sort-selected">
+                  Please select
+                </span>
+
+                <svg class="custom-select__icon" xmlns='http://www.w3.org/2000/svg'>
+                  <use href='./img/sprite.svg#angle-down'></use>
+                </svg>
+              </div>
+
+              <div class="custom-select__inner-wrapper product-card__sort-wrapper">
+                <ul class="custom-select__list product-card__sort-list" data-overlayscrollbars-initialize>
+                  <li class="custom-select__item custom-select__item--active product-card__sort-item">
+                    Please select
+                  </li>
+
+                  <li class="custom-select__item product-card__sort-item">
+                    Size S
+                  </li>
+
+                  <li class="custom-select__item product-card__sort-item">
+                    Size M
+                  </li>
+
+                  <li class="custom-select__item product-card__sort-item">
+                    Size L
+                  </li>
+
+                  <li class="custom-select__item product-card__sort-item">
+                    Size XL
+                  </li>
+
+                  <li class="custom-select__item product-card__sort-item">
+                    Size XXL
+                  </li>
+                </ul>
+              </div>
+            </div>
+
+            <!-- Size chart button -->
+            <button class="product-card__size-btn">
+              <svg xmlns='http://www.w3.org/2000/svg' aria-hidden='true'>
+                <use href='./img/sprite.svg#hanger' aria-hidden='true'></use>
+              </svg>
+
+              Size chart
+            </button>
+          </div>
+        </div>
+
+        <!-- CTA -->
+        <div class="product-card__cta">
+
+          <!-- Input-number -->
+          <div class="input-number product-card__input-number">
+            <input type="text" class="input-number__input input product-card__input-number-input" value="1"
+              aria-label="To write the number of products on page." maxlength="3">
+
+            <div class="input-number__btns product-card__input-number-btns">
+              <button class="input-number__btn input-number__btn--small input-number__btn--upper"
+                aria-label="To rise the number of products on page."></button>
+
+              <button class="input-number__btn input-number__btn--small input-number__btn--lower"
+                aria-label="To reduce the number of products on page."></button>
+            </div>
+          </div>
+
+          <!-- Button-cart -->
+          <div class="product__button-wrapper product-card__cart-btn-wrapper">
+            <button class="product__button-cart btn btn--mid">
+              <svg xmlns='http://www.w3.org/2000/svg' aria-hidden="true">
+                <use href='./img/sprite.svg#cart' aria-hidden="true"></use>
+              </svg>
+
+              Add to cart
+            </button>
+          </div>
+
+          <!-- Favorite -->
+          <button class="product__favorite product-card__favorite btn btn--mid btn--outline"
+            aria-label="Add to favorite.">
+            <svg xmlns='http://www.w3.org/2000/svg' aria-hidden="true">
+              <use href='./img/sprite.svg#heart' aria-hidden="true"></use>
+            </svg>
+
+            Favourite
+          </button>
+        </div>
+
+        <!-- Accordion -->
+        <div class="product-card__accordion accordion">
+          <div class="accordion__top">
+            <h6 class="accordion__title">
+              Delivery
+            </h6>
+
+            <button class="accordion__toggle accordion__toggle--show"
+              aria-label="Show or hide the list of the categories."></button>
+          </div>
+
+          <p class="accordion__descr">
+            Free standard shipping on orders over $35 before tax, plus free returns.
+          </p>
+
+          <table class="accordion__table">
+            <tr class="accordion__table-top">
+              <th class="accordion__table-title">
+                Type
+              </th>
+
+              <th class="accordion__table-title">
+                How long
+              </th>
+
+              <th class="accordion__table-title">
+                How much
+              </th>
+            </tr>
+
+            <tr class="accordion__table-row">
+              <td class="accordion__table-cell">
+                Standard delivery
+              </td>
+
+              <td class="accordion__table-cell">
+                1-4 business days
+              </td>
+
+              <td class="accordion__table-cell">
+                $4.50
+              </td>
+            </tr>
+
+            <tr class="accordion__table-row">
+              <td class="accordion__table-cell">
+                Express delivery  
+              </td>
+
+              <td class="accordion__table-cell">
+                1 business day
+              </td>
+
+              <td class="accordion__table-cell">
+                $10.00
+              </td>
+            </tr>
+
+            <tr class="accordion__table-row">
+              <td class="accordion__table-cell">
+                Pick up in store
+              </td>
+
+              <td class="accordion__table-cell">
+                1-3 business days
+              </td>
+
+              <td class="accordion__table-cell">
+                Free
+              </td>
+            </tr>
+          </table>
+        </div>
       </div>
     </div>
   </div>

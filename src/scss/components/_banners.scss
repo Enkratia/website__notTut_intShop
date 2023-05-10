@@ -108,71 +108,71 @@
     font: var(--small-regular);
     color: var(--gray800-color);
   }
-}
 
-// Banner individual css
-.banner-1 {
-  &__button {
-    padding-inline: rem(30.5);
-  }
-}
-
-.banner-2 {
-  &__title {
-    max-width: calc(rem(202.08) + 7.44vw);
-  }
-
-  &__button {
-    margin-bottom: rem(81);
-
-    @include bp-down("768") {
-      margin-bottom: rem(48);
-    }
-  }
-}
-
-.banner-3 {
-  &__title {
-    max-width: calc(rem(219.83) + 5.11vw); // 318>239(чтобы текст не переносился)
-  }
-}
-
-.banner-4 {
-  &__title {
-    margin-bottom: rem(32);
-  }
-
-  &__button {
-    padding-inline: rem(30);
-  }
-}
-
-// Timer
-.timer {
-  display: flex;
-  align-items: center;
-  text-align: center;
-
-  &__box {
-    &:not(:last-child) {
-      margin-right: rem(24);
+  // Banner individual css
+  .banner-1 {
+    &__button {
+      padding-inline: rem(30.5);
     }
   }
 
-  &__count {
-    display: block;
-    margin-bottom: rem(4);
-    font: var(--h3-font);
-    font-size: calc(rem(21.79) + 0.32vw); // 28>23
-    color: var(--gray900-color);
+  .banner-2 {
+    &__title {
+      max-width: calc(rem(202.08) + 7.44vw);
+    }
 
-    @include bp-down("768") {
-      margin-bottom: rem(2);
+    &__button {
+      margin-bottom: rem(81);
+
+      @include bp-down("768") {
+        margin-bottom: rem(48);
+      }
     }
   }
 
-  &__text {
-    font: var(--small-regular);
-    color: var(--gray900-color);
+  .banner-3 {
+    &__title {
+      max-width: calc(rem(219.83) + 5.11vw); // 318>239(чтобы текст не переносился)
+    }
+  }
+
+  .banner-4 {
+    &__title {
+      margin-bottom: rem(32);
+    }
+
+    &__button {
+      padding-inline: rem(30);
+    }
+  }
+
+  // Timer
+  .timer {
+    display: flex;
+    align-items: center;
+    text-align: center;
+
+    &__box {
+      &:not(:last-child) {
+        margin-right: rem(24);
+      }
+    }
+
+    &__count {
+      display: block;
+      margin-bottom: rem(4);
+      font: var(--h3-font);
+      font-size: calc(rem(21.79) + 0.32vw); // 28>23
+      color: var(--gray900-color);
+
+      @include bp-down("768") {
+        margin-bottom: rem(2);
+      }
+    }
+
+    &__text {
+      font: var(--small-regular);
+      color: var(--gray900-color);
+    }
   }
 }

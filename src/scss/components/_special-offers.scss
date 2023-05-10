@@ -13,68 +13,68 @@
     align-items: center;
     justify-content: center;
   }
-}
 
-.marketing-slider {
-  position: relative;
-  color: var(--white-color);
+  .marketing-slider {
+    position: relative;
+    color: var(--white-color);
 
-  &__list {
-    overflow-y: hidden;
-    height: rem(18);
+    &__list {
+      overflow-y: hidden;
+      height: rem(18);
 
-    &::-webkit-scrollbar {
+      &::-webkit-scrollbar {
+        width: 0;
+        height: 0;
+      }
+    }
+
+    &__slide {
       width: 0;
       height: 0;
-    }
-  }
+      opacity: 0;
+      visibility: hidden;
+      transition: opacity 0.3s ease;
 
-  &__slide {
-    width: 0;
-    height: 0;
-    opacity: 0;
-    visibility: hidden;
-    transition: opacity 0.3s ease;
-
-    &--visible {
-      width: auto;
-      height: 100%;
-      opacity: 1;
-      visibility: visible;
-    }
-  }
-
-  &__text {
-    margin-right: rem(3);
-    font: var(--extrasmall-bold);
-    user-select: none;
-  }
-
-  &__link {
-    font: var(--extrasmall-regular);
-    text-decoration: underline;
-  }
-
-  &__btn {
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
-
-    svg {
-      width: rem(10.5);
-      height: rem(6);
-      fill: currentcolor;
-      pointer-events: none;
+      &--visible {
+        width: auto;
+        height: 100%;
+        opacity: 1;
+        visibility: visible;
+      }
     }
 
-    &--left {
-      left: rem(-24);
-      transform: translateY(-50%) rotate(90deg);
+    &__text {
+      margin-right: rem(3);
+      font: var(--extrasmall-bold);
+      user-select: none;
     }
 
-    &--right {
-      right: rem(-24);
-      transform: translateY(-50%) rotate(-90deg);
+    &__link {
+      font: var(--extrasmall-regular);
+      text-decoration: underline;
+    }
+
+    &__btn {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+
+      svg {
+        width: rem(10.5);
+        height: rem(6);
+        fill: currentcolor;
+        pointer-events: none;
+      }
+
+      &--left {
+        left: rem(-24);
+        transform: translateY(-50%) rotate(90deg);
+      }
+
+      &--right {
+        right: rem(-24);
+        transform: translateY(-50%) rotate(-90deg);
+      }
     }
   }
 }

@@ -86,8 +86,7 @@
     }
   }
 
-  &__category {
-  }
+  &__category {}
 
   &__title {
     margin-bottom: rem(8);
@@ -176,27 +175,27 @@
     opacity: 1;
     visibility: visible;
   }
-}
 
-.offer {
-  &__image {
-    margin-bottom: rem(16);
-  }
-
-  &__descr {
-    margin-bottom: rem(16);
-    font: var(--small-bold);
-    color: var(--gray800-color);
-  }
-
-  &__btn {
-    svg {
-      width: rem(12);
-      height: rem(7.5);
+  .offer {
+    &__image {
+      margin-bottom: rem(16);
     }
-  }
 
-  @include bp-down("992") {
-    display: none;
+    &__descr {
+      margin-bottom: rem(16);
+      font: var(--small-bold);
+      color: var(--gray800-color);
+    }
+
+    &__btn {
+      svg {
+        width: rem(12);
+        height: rem(7.5);
+      }
+    }
+
+    @include bp-down("992") {
+      display: none;
+    }
   }
 }
