@@ -46,7 +46,6 @@
     position: relative;
     display: grid;
     column-gap: rem(20);
-    // grid-template-columns: repeat(4, minmax(auto, rem(190)));
     grid-template-columns: 0.6fr 0.6fr 0.6fr 0.72fr;
     padding-right: rem(20);
 
@@ -85,8 +84,6 @@
       order: 1;
     }
   }
-
-  &__category {}
 
   &__title {
     margin-bottom: rem(8);

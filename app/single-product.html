@@ -1277,8 +1277,8 @@
       </div>
 
       <!-- Right -->
-      <div class="product-card__right">
-        <div class="product-card__details product" data-vendor="183260098">
+      <div class="product-card__right product" data-vendor="183260098">
+        <div class="product-card__details">
 
           <!-- Prices -->
           <div class="product__prices product-card__price">
@@ -1458,78 +1458,154 @@
           </button>
         </div>
 
-        <!-- Accordion -->
+        <!-- Accordion #1 -->
         <div class="product-card__accordion accordion">
           <div class="accordion__top">
             <h6 class="accordion__title">
               Delivery
             </h6>
 
-            <button class="accordion__toggle accordion__toggle--show"
+            <button class="accordion__toggle accordion__toggle--show c-toggle"
               aria-label="Show or hide the list of the categories."></button>
           </div>
 
-          <p class="accordion__descr">
-            Free standard shipping on orders over $35 before tax, plus free returns.
-          </p>
+          <div class="accordion__bottom accordion__bottom--1">
+            <p class="accordion__descr">
+              Free standard shipping on orders <b class="accordion__descr-price">over $35</b> before tax, plus free
+              returns.
+            </p>
 
-          <table class="accordion__table">
-            <tr class="accordion__table-top">
-              <th class="accordion__table-title">
-                Type
-              </th>
+            <table class="accordion__table">
+              <thead>
+                <tr class="accordion__table-top">
+                  <th class="accordion__table-title">
+                    Type
+                  </th>
 
-              <th class="accordion__table-title">
-                How long
-              </th>
+                  <th class="accordion__table-title">
+                    How long
+                  </th>
 
-              <th class="accordion__table-title">
-                How much
-              </th>
-            </tr>
+                  <th class="accordion__table-title">
+                    How much
+                  </th>
+                </tr>
+              </thead>
 
-            <tr class="accordion__table-row">
-              <td class="accordion__table-cell">
-                Standard delivery
-              </td>
+              <tbody>
+                <tr class="accordion__table-row">
+                  <td class="accordion__table-cell">
+                    Standard delivery
+                  </td>
 
-              <td class="accordion__table-cell">
-                1-4 business days
-              </td>
+                  <td class="accordion__table-cell">
+                    1-4 business days
+                  </td>
 
-              <td class="accordion__table-cell">
-                $4.50
-              </td>
-            </tr>
+                  <td class="accordion__table-cell">
+                    $4.50
+                  </td>
+                </tr>
 
-            <tr class="accordion__table-row">
-              <td class="accordion__table-cell">
-                Express delivery
-              </td>
+                <tr class="accordion__table-row">
+                  <td class="accordion__table-cell">
+                    Express delivery
+                  </td>
 
-              <td class="accordion__table-cell">
-                1 business day
-              </td>
+                  <td class="accordion__table-cell">
+                    1 business day
+                  </td>
 
-              <td class="accordion__table-cell">
-                $10.00
-              </td>
-            </tr>
+                  <td class="accordion__table-cell">
+                    $10.00
+                  </td>
+                </tr>
 
-            <tr class="accordion__table-row">
-              <td class="accordion__table-cell">
-                Pick up in store
-              </td>
+                <tr class="accordion__table-row">
+                  <td class="accordion__table-cell">
+                    Pick up in store
+                  </td>
 
-              <td class="accordion__table-cell">
-                1-3 business days
-              </td>
+                  <td class="accordion__table-cell">
+                    1-3 business days
+                  </td>
 
-              <td class="accordion__table-cell">
-                Free
-              </td>
-            </tr>
-          </table>
+                  <td class="accordion__table-cell">
+                    Free
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <!-- Accordion #2 -->
+        <div class="product-card__accordion accordion">
+          <div class="accordion__top">
+            <h6 class="accordion__title">
+              Return
+            </h6>
+
+            <button class="accordion__toggle accordion__toggle--show c-toggle"
+              aria-label="Show or hide the list of the categories."></button>
+          </div>
+
+          <div class="accordion__bottom">
+            <p class="accordion__descr accordion__descr--margin">
+              You have <b class="accordion__descr-price">60 days</b> to return the item (s) using any of the following
+              methods:
+            </p>
+
+            <ul class="accordion__list">
+              <li class="accordion__item">
+                Free store return
+              </li>
+
+              <li class="accordion__item">
+                Free returns via USPS Dropoff Service
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- Social -->
+        <div class="product-card__share share">
+          <h6 class="share__title">
+            Share:
+          </h6>
+
+          <ul class="share__list">
+            <li class="share__item">
+              <a href="#" class="share__link share__link--facebook" aria-label="Go to our facebook page.">
+                <svg xmlns='http://www.w3.org/2000/svg' aria-hidden='true'>
+                  <use href='./img/sprite.svg#facebook' aria-hidden='true'></use>
+                </svg>
+              </a>
+            </li>
+
+            <li class="share__item">
+              <a href="#" class="share__link share__link--twitter" aria-label="Go to our twitter page.">
+                <svg xmlns='http://www.w3.org/2000/svg' aria-hidden='true'>
+                  <use href='./img/sprite.svg#twitter' aria-hidden='true'></use>
+                </svg>
+              </a>
+            </li>
+
+            <li class="share__item">
+              <a href="#" class="share__link share__link--pinterest" aria-label="Go to our pinterest page.">
+                <svg xmlns='http://www.w3.org/2000/svg' aria-hidden='true'>
+                  <use href='./img/sprite.svg#pinterest' aria-hidden='true'></use>
+                </svg>
+              </a>
+            </li>
+          </ul>
+        </div>
+
+        <!-- Payment -->
+        <div class="product-card__payment payment">
+          <div class="payment__box payment__box--visa" aria-label="Go to visa`s website."></div>
+          <div class="payment__box payment__box--mastercard" aria-label="Go to mastercard`s website."></div>
+          <div class="payment__box payment__box--paypal" aria-label="Go to paypal`s website."></div>
         </div>
       </div>
     </div>

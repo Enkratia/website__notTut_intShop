@@ -34,6 +34,11 @@
   --white-012-color: rgb(255 255 255 / 12%);
 
   // **
+  --facebook-color: #4267b2;
+  --twitter-color: #1da1f2;
+  --pinterest-color: #e60023;
+
+  // **
   --brown-color: #874e19;
   --blue-gray-color: #c0dded;
   --dark-blue-color: #02457a;
@@ -84,6 +89,7 @@
 
   // Linear-gradients
   --divider-gradient: linear-gradient(rgb(218 219 221 / 0%) 0%, rgb(218 219 221 / 50%) 12.33%, #dadbdd 51.91%, rgb(218 219 221 / 50%) 87.85%, rgb(218 219 221 / 0%) 100%);
+  --divider2-gradient: linear-gradient(270.01deg, rgb(218 219 221 / 0%) 0%, rgb(218 219 221 / 50%) 12.33%, #dadbdd 51.91%, rgb(218 219 221 / 50%) 87.85%, rgb(218 219 221 / 0%) 100%);
   --app-store-gradient: linear-gradient(0deg, rgb(26 26 26 / 10%) -0.24%, rgb(33 33 33 / 15.1%) 177.23%, rgb(53 53 53 / 22.7%) 444.15%, rgb(87 87 87 / 31.8%) 767.35%, rgb(133 133 133 / 42.1%) 1129.49%, rgb(179 179 179 / 51%) 1442.59%);
 
   // Drop-shadows

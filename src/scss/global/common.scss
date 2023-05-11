@@ -1191,3 +1191,32 @@
     }
   }
 }
+
+.c-toggle {
+  position: relative;
+  width: rem(15);
+  height: rem(15);
+
+  &::before {
+    content: "";
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    width: 100%;
+    height: rem(2);
+    background-color: var(--primary-color);
+    transform: translate(-50%, -50%);
+  }
+
+  &::after {
+    content: "";
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    display: block;
+    width: rem(2);
+    height: 100%;
+    background-color: var(--primary-color);
+    transform: translate(-50%, -50%);
+  }
+}

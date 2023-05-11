@@ -21,7 +21,7 @@ if (v.$pcmSwiper) {
     spaceBetween: 20,
   });
 
-  // ==== PRODUCT CARD SLIDER OTHER THINGS ==== //
+  // ==== PRODUCT CARD TRANSFER IMAGE ==== //
   // F(s)
   // **
   function rearrangeActiveClass(elem) {

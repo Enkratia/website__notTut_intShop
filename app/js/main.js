@@ -2725,12 +2725,25 @@ __webpack_require__.r(__webpack_exports__);
 
 // For product
 // F(s)
+// **
+function writeColorName(btn, colors) {
+  const colorNameElement = colors.querySelector(".product-card__colors-item--name");
+  const colorName = btn.getAttribute("data-color");
+  colorNameElement.innerText = colorName;
+}
+
+// **
 function toggleActiveClass() {
-  this.closest(".colors").querySelector(".colors__button--active").classList.remove("colors__button--active");
+  const colors = this.closest(".colors");
+  colors.querySelector(".colors__button--active").classList.remove("colors__button--active");
   this.classList.add("colors__button--active");
+  if (this.parentElement.classList.contains("product-card__colors-item")) {
+    writeColorName(this, colors);
+  }
 }
 
 // L(s)
+// **
 _vars_js__WEBPACK_IMPORTED_MODULE_0__.$productColorsBtns.forEach(el => {
   el.addEventListener("click", toggleActiveClass);
 });
@@ -3285,7 +3298,7 @@ function changeInputValue(e) {
   if (e.key === "PageUp" || e.key === "ArrowUp") {
     if (this.value > 998) return;
     newValue = parseInt(this.value) + 1;
-    _vars_js__WEBPACK_IMPORTED_MODULE_0__.$toolbarInputNumberInputs.forEach(el => {
+    _vars_js__WEBPACK_IMPORTED_MODULE_0__.$inputNumberInputs.forEach(el => {
       el.value = newValue || 0;
     });
     return;
@@ -3293,19 +3306,19 @@ function changeInputValue(e) {
   if (e.key === "PageDown" || e.key === "ArrowDown") {
     if (this.value < 1 && this.value) return;
     newValue = parseInt(this.value) - 1;
-    _vars_js__WEBPACK_IMPORTED_MODULE_0__.$toolbarInputNumberInputs.forEach(el => {
+    _vars_js__WEBPACK_IMPORTED_MODULE_0__.$inputNumberInputs.forEach(el => {
       el.value = newValue || 0;
     });
     return;
   }
   if (!this.value.match(/^\d*$/)) {
     newValue = this.value.replace(/\D/g, "");
-    _vars_js__WEBPACK_IMPORTED_MODULE_0__.$toolbarInputNumberInputs.forEach(el => {
+    _vars_js__WEBPACK_IMPORTED_MODULE_0__.$inputNumberInputs.forEach(el => {
       el.value = newValue;
     });
   } else {
     newValue = this.value;
-    _vars_js__WEBPACK_IMPORTED_MODULE_0__.$toolbarInputNumberInputs.forEach(el => {
+    _vars_js__WEBPACK_IMPORTED_MODULE_0__.$inputNumberInputs.forEach(el => {
       el.value = newValue;
     });
   }
@@ -3317,13 +3330,13 @@ function changeInputValueWithBtn() {
   if (this.classList.contains("input-number__btn--upper")) {
     if (input.value > 998) return;
     newValue = parseInt(input.value) + 1;
-    _vars_js__WEBPACK_IMPORTED_MODULE_0__.$toolbarInputNumberInputs.forEach(el => {
+    _vars_js__WEBPACK_IMPORTED_MODULE_0__.$inputNumberInputs.forEach(el => {
       el.value = newValue || 0;
     });
   } else {
     if (input.value < 1 && input.value) return;
     newValue = parseInt(input.value) - 1;
-    _vars_js__WEBPACK_IMPORTED_MODULE_0__.$toolbarInputNumberInputs.forEach(el => {
+    _vars_js__WEBPACK_IMPORTED_MODULE_0__.$inputNumberInputs.forEach(el => {
       el.value = newValue || 0;
     });
   }
@@ -3606,6 +3619,38 @@ if (_vars_js__WEBPACK_IMPORTED_MODULE_0__.$saleSlider) {
 
 /***/ }),
 
+/***/ "./src/js/components/product-card__accordion.js":
+/*!******************************************************!*\
+  !*** ./src/js/components/product-card__accordion.js ***!
+  \******************************************************/
+/***/ ((__unused_webpack___webpack_module__, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+const productCardAccordionTops = document.querySelectorAll(".product-card .accordion__top");
+let isShow;
+
+// F(s)
+function showAccordion() {
+  this.classList.toggle("accordion__top--show");
+  const accordionBottom = this.nextElementSibling;
+  if (this.classList.contains("accordion__top--show")) {
+    const accordionBottomHeight = accordionBottom.scrollHeight;
+    accordionBottom.style.height = accordionBottomHeight + "px";
+    isShow = false;
+    return;
+  }
+  accordionBottom.style.height = "";
+  isShow = true;
+}
+
+// L(s)
+productCardAccordionTops.forEach(el => {
+  el.addEventListener("click", showAccordion);
+});
+
+/***/ }),
+
 /***/ "./src/js/components/product-card__slider.js":
 /*!***************************************************!*\
   !*** ./src/js/components/product-card__slider.js ***!
@@ -3637,7 +3682,7 @@ if (_vars_js__WEBPACK_IMPORTED_MODULE_0__.$pcmSwiper) {
     spaceBetween: 20
   });
 
-  // ==== PRODUCT CARD SLIDER OTHER THINGS ==== //
+  // ==== PRODUCT CARD TRANSFER IMAGE ==== //
   // F(s)
   // **
   function rearrangeActiveClass(elem) {
@@ -20586,9 +20631,11 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _components_sidebar_filters_button_js__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! ./components/sidebar-filters__button.js */ "./src/js/components/sidebar-filters__button.js");
 /* harmony import */ var _components_colors_button_js__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(/*! ./components/colors__button.js */ "./src/js/components/colors__button.js");
 /* harmony import */ var _components_product_card_slider_js__WEBPACK_IMPORTED_MODULE_16__ = __webpack_require__(/*! ./components/product-card__slider.js */ "./src/js/components/product-card__slider.js");
-/* harmony import */ var _components_$swipers_js__WEBPACK_IMPORTED_MODULE_17__ = __webpack_require__(/*! ./components/$swipers.js */ "./src/js/components/$swipers.js");
-/* harmony import */ var _components_$overlayScrollbars_js__WEBPACK_IMPORTED_MODULE_18__ = __webpack_require__(/*! ./components/$overlayScrollbars.js */ "./src/js/components/$overlayScrollbars.js");
+/* harmony import */ var _components_product_card_accordion_js__WEBPACK_IMPORTED_MODULE_17__ = __webpack_require__(/*! ./components/product-card__accordion.js */ "./src/js/components/product-card__accordion.js");
+/* harmony import */ var _components_$swipers_js__WEBPACK_IMPORTED_MODULE_18__ = __webpack_require__(/*! ./components/$swipers.js */ "./src/js/components/$swipers.js");
+/* harmony import */ var _components_$overlayScrollbars_js__WEBPACK_IMPORTED_MODULE_19__ = __webpack_require__(/*! ./components/$overlayScrollbars.js */ "./src/js/components/$overlayScrollbars.js");
 // Components
+
 
 
 

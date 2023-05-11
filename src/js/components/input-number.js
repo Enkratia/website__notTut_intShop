@@ -10,7 +10,7 @@ function changeInputValue(e) {
 
     newValue = parseInt(this.value) + 1;
 
-    v.$toolbarInputNumberInputs.forEach(el => {
+    v.$inputNumberInputs.forEach(el => {
       el.value = newValue || 0;
     });
 
@@ -22,7 +22,7 @@ function changeInputValue(e) {
 
     newValue = parseInt(this.value) - 1;
 
-    v.$toolbarInputNumberInputs.forEach(el => {
+    v.$inputNumberInputs.forEach(el => {
       el.value = newValue || 0;
     });
 
@@ -32,14 +32,14 @@ function changeInputValue(e) {
   if (!this.value.match(/^\d*$/)) {
     newValue = this.value.replace(/\D/g, "");
 
-    v.$toolbarInputNumberInputs.forEach(el => {
+    v.$inputNumberInputs.forEach(el => {
       el.value = newValue;
     });
 
   } else {
     newValue = this.value;
 
-    v.$toolbarInputNumberInputs.forEach(el => {
+    v.$inputNumberInputs.forEach(el => {
       el.value = newValue;
     });
   }
@@ -53,7 +53,7 @@ function changeInputValueWithBtn() {
     if (input.value > 998) return;
     newValue = parseInt(input.value) + 1;
 
-    v.$toolbarInputNumberInputs.forEach(el => {
+    v.$inputNumberInputs.forEach(el => {
       el.value = newValue || 0;
     });
 
@@ -61,7 +61,7 @@ function changeInputValueWithBtn() {
     if (input.value < 1 && input.value) return;
     newValue = parseInt(input.value) - 1;
 
-    v.$toolbarInputNumberInputs.forEach(el => {
+    v.$inputNumberInputs.forEach(el => {
       el.value = newValue || 0;
     });
   }
