@@ -371,7 +371,15 @@
 
     &__count {
       font: var(--base-regular);
+      opacity: 0;
+      visibility: hidden;
+      transition: opacity 0.3s;
       user-select: none;
+
+      &--show {
+        opacity: 1;
+        visibility: visible;
+      }
     }
 
     @include bp-down("992") {
@@ -405,7 +413,15 @@
       font: var(--extrasmall-bold);
       color: var(--white-color);
       background-color: var(--success-color);
+      opacity: 0;
+      visibility: hidden;
+      transition: opacity 0.3s;
       user-select: none;
+
+      &--show {
+        opacity: 1;
+        visibility: visible;
+      }
     }
   }
 

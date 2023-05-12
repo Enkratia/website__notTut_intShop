@@ -17,6 +17,8 @@ import "./components/sidebar-filters__button.js";
 import "./components/colors__button.js";
 import "./components/product-card__slider.js";
 import "./components/product-card__accordion.js";
+import "./components/product__favorites.js";
+import "./components/product__button-cart.js";
 
 // Components multiple in one
 import "./components/$swipers.js";

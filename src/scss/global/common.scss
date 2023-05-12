@@ -436,7 +436,10 @@
     svg {
       width: rem(15);
       height: rem(14);
-      fill: var(--gray700-color);
+      fill: var(--white-color);
+      stroke: var(--gray700-color);
+      stroke-width: rem(40);
+      transition: stroke 0.3s, fill 0.3s;
     }
 
     &:hover {
@@ -448,6 +451,48 @@
       &::after {
         opacity: 1;
         visibility: visible;
+      }
+    }
+
+    &--rectangle {
+      position: revert;
+      border-radius: rem(4);
+      padding-inline: rem(32);
+      width: auto;
+      height: rem(44);
+      letter-spacing: rem(0.3);
+      background-color: var(--white-color);
+      gap: 0;
+
+      &::before {
+        content: none;
+      }
+
+      &::after {
+        content: none;
+      }
+
+      svg {
+        margin-right: rem(5);
+        width: rem(21);
+        height: rem(14);
+        fill: var(--white-color);
+        stroke: var(--primary-color);
+        stroke-width: rem(40);
+        transition: stroke 0.3s, fill 0.3s;
+      }
+
+      &:hover {
+        svg {
+          stroke: var(--white-color);
+        }
+      }
+    }
+
+    &--active {
+      svg {
+        fill: var(--primary-color);
+        stroke: var(--primary-color);
       }
     }
   }
@@ -556,9 +601,22 @@
   &__button-cart {
     flex-grow: 1;
 
+    &::after {
+      content: "Add to cart";
+    }
+
     svg {
       width: rem(15);
       height: rem(15);
+    }
+
+    &:disabled {
+      opacity: 0.5;
+      pointer-events: none;
+
+      &::after {
+        content: "Added to cart";
+      }
     }
   }
 

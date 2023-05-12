@@ -58,6 +58,11 @@
     &--active {
       border-color: var(--primary-color);
       color: var(--primary-color);
+      pointer-events: none;
+    }
+
+    &:hover {
+      color: var(--gray800-color);
     }
   }
 
@@ -365,31 +370,45 @@
   }
 
   &__favorite {
-    position: revert;
-    border-radius: rem(4);
-    padding-inline: rem(32);
-    width: auto;
-    height: rem(44);
-    letter-spacing: rem(0.3);
-    background-color: var(--white-color);
-    gap: 0;
+    // position: revert;
+    // border-radius: rem(4);
+    // padding-inline: rem(32);
+    // width: auto;
+    // height: rem(44);
+    // letter-spacing: rem(0.3);
+    // background-color: var(--white-color);
+    // gap: 0;
 
-    &::before {
-      content: none;
-    }
+    // &::before {
+    //   content: none;
+    // }
 
-    &::after {
-      content: none;
-    }
+    // &::after {
+    //   content: none;
+    // }
 
-    svg {
-      position: relative;
-      top: rem(1);
-      margin-right: rem(8);
-      width: rem(16);
-      height: rem(15);
-      fill: currentcolor;
-    }
+    // svg {
+    //   margin-right: rem(5);
+    //   width: rem(21);
+    //   height: rem(14);
+    //   fill: var(--white-color);
+    //   stroke: var(--primary-color);
+    //   stroke-width: rem(40);
+    //   transition: stroke 0.3s, fill 0.3s;
+    // }
+
+    // &:hover {
+    //   svg {
+    //     stroke: var(--white-color);
+    //   }
+    // }
+
+    // &--active {
+    //   svg {
+    //     fill: var(--primary-color);
+    //     stroke: var(--primary-color);
+    //   }
+    // }
   }
 
   // Accordion

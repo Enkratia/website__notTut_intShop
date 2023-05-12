@@ -2,7 +2,7 @@ import Swiper, { Navigation } from 'swiper';
 
 let saleSlider = document.querySelector(".sale__slider"); // (Не убирать в vars)
 let products = saleSlider?.querySelectorAll(".sale__product"); // (Не убирать в vars)
-const marginForBoxShadow = 80; // (Тоже самое: window.getComputedStyle(products[0]).getPropertyValue("margin-bottom"))
+const marginForBoxShadow = 80; // (Тоже самое, что: window.getComputedStyle(products[0]).getPropertyValue("margin-bottom"))
 
 if (saleSlider) {
 
