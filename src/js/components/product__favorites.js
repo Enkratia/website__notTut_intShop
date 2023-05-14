@@ -6,8 +6,9 @@ let favoriteCount;
 // F(s)
 // **
 function markFavoriteProduct(elem, elemVendorCode) {
-  if (v.$saleSlider) { // Check for existing whole main page
-    const swiperWrapper = elem.closest(".swiper-wrapper");
+  const swiperWrapper = elem.closest(".swiper-wrapper");
+
+  if (swiperWrapper) { // Check for swiper parent
     const products = swiperWrapper.querySelectorAll("[data-vendor]");
 
     products.forEach(el => {
@@ -26,7 +27,7 @@ function markFavoriteProduct(elem, elemVendorCode) {
 
 // **
 function markFavoriteProductsInit() {
-  const favoriteProducts = document.querySelectorAll("[data-vendor");
+  const favoriteProducts = document.querySelectorAll("[data-vendor]");
 
   favoriteProducts.forEach(el => {
     const vendorCode = el.getAttribute("data-vendor");
@@ -77,7 +78,7 @@ function addToFavorite() {
 }
 
 // L(s)
-const productFavoriteBtns = document.querySelectorAll(".product__favorite")
+const productFavoriteBtns = document.querySelectorAll(".product__favorite"); // не убирать в vars
 productFavoriteBtns.forEach(el => {
   el.addEventListener("click", addToFavorite);
 });

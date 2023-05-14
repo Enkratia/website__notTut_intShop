@@ -40,7 +40,7 @@ import imagemin from 'gulp-imagemin';
 // const image = require('gulp-imagemin');
 import { readFileSync } from 'fs';
 // const { readFileSync } = require("fs");
-import typograf from 'gulp-typograf';
+// import typograf from 'gulp-typograf';
 // const typograf = require('gulp-typograf');
 import webp from 'gulp-webp';
 // const webp = require('gulp-webp');
@@ -222,9 +222,9 @@ const htmlInclude = () => {
       prefix: '@',
       basepath: '@file'
     }))
-    .pipe(typograf({
-      locale: ['ru', 'en-US']
-    }))
+    // .pipe(typograf({
+    //   locale: ['ru', 'en-US']
+    // }))
     .pipe(dest(buildFolder))
     .pipe(browserSync.stream());
 }
