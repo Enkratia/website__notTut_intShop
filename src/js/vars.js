@@ -12,9 +12,14 @@ export const $navItems = document.querySelectorAll(".nav__item");
 export const $searchForm = $headerMainContainer.querySelector("#search-form");
 export const $menuBtn = document.querySelector("#menu-btn");
 export const $headerFavoriteCount = $headerMainContainer.querySelector(".favorite__count");
+
+// **
 export const $headerCartCount = $headerMainContainer.querySelector(".cart__count");
 export const $cartBtn = $headerMainContainer.querySelector(".cart__btn");
 export const $cartClose = $headerMainContainer.querySelector(".cart-choice__close");
+export const $cartChoiceList = $headerMainContainer.querySelector(".cart-choice__list");
+export const $cartChoiceTitleCount = $headerMainContainer.querySelector(".cart-choice__title-count");
+
 
 // Special-offers
 export const $marketingSlider = document.querySelector("#marketing-slider");
@@ -22,7 +27,7 @@ export const $marketingSliderItems = $marketingSlider?.querySelectorAll(".market
 
 // Sale + Product
 export let $saleSlider = document.querySelector(".sale__slider");
-export let $products = document.querySelectorAll(".sale__product");
+export let $saleProducts = document.querySelectorAll(".sale__product");
 export let $looks = document.querySelectorAll(".product__look");
 export const $productColorsBtns = document.querySelectorAll(".product .colors__button");
 export const $productFavoriteBtns = document.querySelectorAll(".product__favorite");

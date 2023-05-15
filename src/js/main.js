@@ -20,6 +20,7 @@ import "./components/product-card__accordion.js";
 import "./components/product__favorites.js";
 import "./components/product__button-cart.js";
 import "./components/cart__btn.js";
+import "./components/sizes__button.js";
 
 // Components multiple in one
 import "./components/$swipers.js";

@@ -291,13 +291,17 @@
     margin-bottom: rem(32);
   }
 
+  &__select-outer-wrapper {
+    width: 100%;
+    max-width: rem(348);
+  }
+
   &__sort {
     display: flex;
     align-items: center;
 
     &-select {
       width: 100%;
-      max-width: rem(348);
     }
 
     &-head {

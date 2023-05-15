@@ -3,13 +3,23 @@ let isOpen = false;
 
 // F(s)
 // **
+function rechargeProductButton(selected) {
+  const product = selected.closest(".product-card");
+
+  if (product) {
+    const productButton = product.querySelector(".product__button-cart");
+    productButton.classList.remove("product-card__btn-cart--active");
+  }
+}
+
+// **
 function closeSelect() {
   this.classList.remove("custom-select--open");
 }
 
 // **
-function rearrangeClass(el) {
-  document.querySelector(".custom-select__item--active").classList.remove("custom-select__item--active");
+function rearrangeClass(el, list) {
+  list.querySelector(".custom-select__item--active").classList.remove("custom-select__item--active");
   return el.classList.add("custom-select__item--active");
 }
 
@@ -41,7 +51,8 @@ function changeSelectValue(e, selected, thisSelect) {
   // For ordinary selects
   if (e.target.classList.contains("custom-select__item")) {
     selected.textContent = e.target.textContent;
-    rearrangeClass(e.target);
+    rearrangeClass(e.target, thisSelect);
+    rechargeProductButton(e.target);
   }
 }
 
@@ -72,36 +83,38 @@ function selectWithKeyboard(e) {
     isOpen = this.classList.contains("custom-select--open");
 
   } else if (e.key === "ArrowUp" && isOpen) {
-    let prevSibling = document.querySelector(".custom-select__item--active").previousElementSibling;
+    let prevSibling = selectList.querySelector(".custom-select__item--active").previousElementSibling;
     if (!prevSibling) return;
 
     selected.textContent = prevSibling.textContent;
-    rearrangeClass(prevSibling)
+    rearrangeClass(prevSibling, selectList);
 
   } else if (e.key === "ArrowDown" && isOpen) {
-    let nextSibling = document.querySelector(".custom-select__item--active").nextElementSibling;
+    console.log(e.currentTarget)
+    let nextSibling = selectList.querySelector(".custom-select__item--active").nextElementSibling;
     if (!nextSibling) return;
 
     selected.textContent = nextSibling.textContent;
-    rearrangeClass(nextSibling)
+    rearrangeClass(nextSibling, selectList);
 
   } else if ((e.key === "PageUp" || e.key === "Home") && isOpen) {
     const firstSibling = selectList.firstElementChild;
 
     selected.textContent = firstSibling.textContent;
-    rearrangeClass(firstSibling)
+    rearrangeClass(firstSibling, selectList);
 
   } else if ((e.key === "PageDown" || e.key === "End") && isOpen) {
     const lastSibling = selectList.lastElementChild;
 
     selected.textContent = lastSibling.textContent;
-    rearrangeClass(lastSibling)
+    rearrangeClass(lastSibling, selectList);
 
   } else if (isOpen) {
     this.classList.remove("custom-select--open");
   }
 
   this.addEventListener("blur", closeSelect.bind(this), { once: true });
+  rechargeProductButton(e.target);
 }
 
 // L(s)

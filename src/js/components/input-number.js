@@ -4,7 +4,18 @@ let newValue;
 
 // F(s)
 // **
+function rechargeProductButton() {
+  const product = this.closest(".product-card");
+
+  if (product) {
+    const productButton = product.querySelector(".product__button-cart");
+    productButton.classList.remove("product-card__btn-cart--active");
+  }
+}
+
+// **
 function changeInputValue(e) {
+
   if (e.key === "PageUp" || e.key === "ArrowUp") {
     if (this.value > 998) return;
 
@@ -18,7 +29,7 @@ function changeInputValue(e) {
   }
 
   if ((e.key === "PageDown" || e.key === "ArrowDown")) {
-    if (this.value < 1  && this.value) return;
+    if (this.value < 1 && this.value) return;
 
     newValue = parseInt(this.value) - 1;
 
@@ -76,4 +87,9 @@ v.$inputNumberInputs.forEach(el => {
 // **
 v.$inputNumberBtns.forEach(el => {
   el.addEventListener("click", changeInputValueWithBtn);
+});
+
+// **
+v.$inputNumberInputs.forEach(el => {
+  el.addEventListener("change", rechargeProductButton);
 });

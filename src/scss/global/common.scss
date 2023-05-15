@@ -1053,6 +1053,33 @@
   transition: border-color 0.3s;
   user-select: none;
 
+  &__outer-wrapper {
+    position: relative;
+
+    &::before {
+      content: "Please provide a valid input.";
+      position: absolute;
+      left: 0;
+      top: calc(100% + rem(4));
+      font: var(--extrasmall-regular);
+      color: var(--danger-color);
+      opacity: 0;
+      visibility: hidden;
+      transition: all 0.3s;
+    }
+
+    &--warning {
+      &::before {
+        opacity: 1;
+        visibility: visible;
+      }
+
+      .custom-select__head {
+        border-color: var(--danger-color);
+      }
+    }
+  }
+
   &__head {
     display: flex;
     align-items: center;

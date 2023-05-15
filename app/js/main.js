@@ -2726,10 +2726,19 @@ const cartChoice = document.querySelector(".cart__choice");
 
 // F(s)
 // **
+function removeProductBtnActiveClass() {
+  document.querySelectorAll(".product__button-cart--active").forEach(el => {
+    el.classList.remove("product__button-cart--active");
+  });
+  document.querySelector(".product-card__btn-cart--active")?.classList.remove("product-card__btn-cart--active");
+}
+
+// **
 function closeCart() {
   const cart = this.closest(".cart");
   cart.classList.remove("cart--open");
   document.body.classList.remove("overflow-hidden");
+  removeProductBtnActiveClass();
 }
 
 // **
@@ -2762,6 +2771,20 @@ __webpack_require__.r(__webpack_exports__);
 // For product
 // F(s)
 // **
+function rechargeProductButton(elem) {
+  const product = elem.closest(".product");
+  const productCard = elem.closest(".product-card");
+  if (productCard) {
+    const productButton = product.querySelector(".product__button-cart");
+    productButton.classList.remove("product-card__btn-cart--active");
+    return;
+  } else if (product) {
+    const productButton = product.querySelector(".product__button-cart");
+    productButton.classList.remove("product__button-cart--active");
+  }
+}
+
+// **
 function writeColorName(btn, colors) {
   const colorNameElement = colors.querySelector(".product-card__colors-item--name");
   const colorName = btn.getAttribute("data-color");
@@ -2776,11 +2799,13 @@ function toggleActiveClass() {
   if (this.parentElement.classList.contains("product-card__colors-item")) {
     writeColorName(this, colors);
   }
+  rechargeProductButton(this);
 }
 
 // L(s)
 // **
-_vars_js__WEBPACK_IMPORTED_MODULE_0__.$productColorsBtns.forEach(el => {
+const productColorsBtns = document.querySelectorAll(".product .colors__button"); // (Не убирать в vars)
+productColorsBtns.forEach(el => {
   el.addEventListener("click", toggleActiveClass);
 });
 
@@ -2840,13 +2865,22 @@ let isOpen = false;
 
 // F(s)
 // **
+function rechargeProductButton(selected) {
+  const product = selected.closest(".product-card");
+  if (product) {
+    const productButton = product.querySelector(".product__button-cart");
+    productButton.classList.remove("product-card__btn-cart--active");
+  }
+}
+
+// **
 function closeSelect() {
   this.classList.remove("custom-select--open");
 }
 
 // **
-function rearrangeClass(el) {
-  document.querySelector(".custom-select__item--active").classList.remove("custom-select__item--active");
+function rearrangeClass(el, list) {
+  list.querySelector(".custom-select__item--active").classList.remove("custom-select__item--active");
   return el.classList.add("custom-select__item--active");
 }
 
@@ -2873,7 +2907,8 @@ function changeSelectValue(e, selected, thisSelect) {
   // For ordinary selects
   if (e.target.classList.contains("custom-select__item")) {
     selected.textContent = e.target.textContent;
-    rearrangeClass(e.target);
+    rearrangeClass(e.target, thisSelect);
+    rechargeProductButton(e.target);
   }
 }
 
@@ -2901,29 +2936,31 @@ function selectWithKeyboard(e) {
     this.classList.add("custom-select--open");
     isOpen = this.classList.contains("custom-select--open");
   } else if (e.key === "ArrowUp" && isOpen) {
-    let prevSibling = document.querySelector(".custom-select__item--active").previousElementSibling;
+    let prevSibling = selectList.querySelector(".custom-select__item--active").previousElementSibling;
     if (!prevSibling) return;
     selected.textContent = prevSibling.textContent;
-    rearrangeClass(prevSibling);
+    rearrangeClass(prevSibling, selectList);
   } else if (e.key === "ArrowDown" && isOpen) {
-    let nextSibling = document.querySelector(".custom-select__item--active").nextElementSibling;
+    console.log(e.currentTarget);
+    let nextSibling = selectList.querySelector(".custom-select__item--active").nextElementSibling;
     if (!nextSibling) return;
     selected.textContent = nextSibling.textContent;
-    rearrangeClass(nextSibling);
+    rearrangeClass(nextSibling, selectList);
   } else if ((e.key === "PageUp" || e.key === "Home") && isOpen) {
     const firstSibling = selectList.firstElementChild;
     selected.textContent = firstSibling.textContent;
-    rearrangeClass(firstSibling);
+    rearrangeClass(firstSibling, selectList);
   } else if ((e.key === "PageDown" || e.key === "End") && isOpen) {
     const lastSibling = selectList.lastElementChild;
     selected.textContent = lastSibling.textContent;
-    rearrangeClass(lastSibling);
+    rearrangeClass(lastSibling, selectList);
   } else if (isOpen) {
     this.classList.remove("custom-select--open");
   }
   this.addEventListener("blur", closeSelect.bind(this), {
     once: true
   });
+  rechargeProductButton(e.target);
 }
 
 // L(s)
@@ -3330,6 +3367,15 @@ let newValue;
 
 // F(s)
 // **
+function rechargeProductButton() {
+  const product = this.closest(".product-card");
+  if (product) {
+    const productButton = product.querySelector(".product__button-cart");
+    productButton.classList.remove("product-card__btn-cart--active");
+  }
+}
+
+// **
 function changeInputValue(e) {
   if (e.key === "PageUp" || e.key === "ArrowUp") {
     if (this.value > 998) return;
@@ -3387,6 +3433,11 @@ _vars_js__WEBPACK_IMPORTED_MODULE_0__.$inputNumberInputs.forEach(el => {
 // **
 _vars_js__WEBPACK_IMPORTED_MODULE_0__.$inputNumberBtns.forEach(el => {
   el.addEventListener("click", changeInputValueWithBtn);
+});
+
+// **
+_vars_js__WEBPACK_IMPORTED_MODULE_0__.$inputNumberInputs.forEach(el => {
+  el.addEventListener("change", rechargeProductButton);
 });
 
 /***/ }),
@@ -3844,10 +3895,191 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _vars_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../vars.js */ "./src/js/vars.js");
 
 const cartArray = JSON.parse(localStorage.getItem("cartArray")) ?? [];
-let cartProductsArray = [];
-let cartProductsArrayTmp = [];
+let dataObj;
 
 // F(s)
+// ** 
+function addDeletingProduct() {
+  const deleteProductBtns = _vars_js__WEBPACK_IMPORTED_MODULE_0__.$cartChoiceList.querySelectorAll(".choice-product__delete");
+  function deleteProduct() {
+    const cartProduct = this.closest(".cart-choice__item");
+    const vendorCode = cartProduct.getAttribute("data-vendor");
+    cartArray.forEach((el, idx) => {
+      if (el.vendor === vendorCode) {
+        cartArray.splice(idx, 1);
+        writeTheCount();
+        cartProduct.remove();
+        localStorage.setItem("cartArray", JSON.stringify(cartArray));
+        return;
+      }
+    });
+  }
+  deleteProductBtns.forEach(el => {
+    el.addEventListener("click", deleteProduct);
+  });
+}
+
+// ** 
+function insertSizeHTML() {
+  let size = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : undefined;
+  let priceHTML;
+  if (size) {
+    size = size.replace("Size ", "");
+    priceHTML = `
+    <div class="choice-product__size">
+      <span class="choice-product__size-title">
+       Size:
+      </span>
+
+      <span class="choice-product__size-data">
+        ${size}
+      </span>
+    </div>
+      `;
+  } else {
+    priceHTML = "";
+  }
+  return priceHTML;
+}
+
+// ** 
+function insertColorHTML() {
+  let color = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : undefined;
+  let priceHTML;
+  if (color) {
+    priceHTML = `
+     <div class="choice-product__color">
+      <span class="choice-product__color-title">
+         Color:
+       </span>
+
+      <span class="choice-product__color-data">
+         ${color}
+       </span>
+     </div>
+      `;
+  } else {
+    priceHTML = "";
+  }
+  return priceHTML;
+}
+
+// ** 
+function insertPriceHTML(price) {
+  let oldPrice = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : undefined;
+  let priceHTML;
+  if (oldPrice) {
+    priceHTML = `
+        <!-- Price -->
+        <div class="product__prices">
+          <span class="product__price product__price--red choice-product__price">
+            ${price}
+          </span>
+  
+          <span class="product__old-price choice-product__old-price">
+            ${oldPrice}
+          </span> 
+        </div>
+      `;
+  } else {
+    priceHTML = `
+        <!-- Price -->
+        <div class="product__prices">
+          <span class="product__price choice-product__price">
+            ${price}
+          </span>
+        </div>
+      `;
+  }
+  return priceHTML;
+}
+
+// **
+function insertCartProducts() {
+  if (cartArray.length === 0) return;
+  let liTags = "";
+  cartArray.forEach(el => {
+    liTags += `
+    <li class="cart-choice__item" data-vendor="${el.vendor}">
+    <article class="cart-choice__product choice-product">
+  
+      <!-- Image -->
+      <img src="${editImageSrc(el.imageSrc)}" alt="Product-image." class="choice-product__image">
+  
+      <!-- Content -->
+      <div class="choice-product__content">
+  
+        <!-- Title -->
+        <h6 class="choice-product__title">
+          ${el.title}
+        </h6>
+  
+        <!-- Color -->
+        ${insertColorHTML(el.color)}
+  
+        <!-- Size -->
+        ${insertSizeHTML(el.size)}
+  
+        <!-- Info -->
+        <div class="choice-product__info">
+  
+          <!-- Input-number -->
+          <div class="input-number choice-product__input-number">
+            <input type="text" class="input-number__input input choice-product__input-number-input" value="${el.count}"
+              aria-label="To write the number of products on page." maxlength="3">
+  
+            <div class="input-number__btns choice-product__btns">
+              <button class="input-number__btn input-number__btn--small input-number__btn--upper"
+                aria-label="To rise the number of products on page."></button>
+  
+              <button class="input-number__btn input-number__btn--small input-number__btn--lower"
+                aria-label="To reduce the number of products on page."></button>
+            </div>
+          </div>
+
+        ${insertPriceHTML(el.price, el.oldPrice)}
+        </div>
+
+        <!-- Favorite -->
+        <button class="product__favorite product__favorite--cart" aria-label="Add to favorite.">
+          <svg xmlns='http://www.w3.org/2000/svg' aria-hidden="true">
+            <use href='./img/sprite.svg#heart-full'></use>
+          </svg>
+        </button>
+      </div>
+  
+      <!-- Button delete -->
+      <button class="choice-product__delete" aria-label="Delete this product from the cart.">
+        <svg xmlns='http://www.w3.org/2000/svg' aria-hidden='true'>
+          <use href='./img/sprite.svg#bin' aria-hidden='true'></use>
+        </svg>
+      </button>
+    </article>
+    </li>`;
+  });
+  _vars_js__WEBPACK_IMPORTED_MODULE_0__.$cartChoiceList.innerHTML = "";
+  _vars_js__WEBPACK_IMPORTED_MODULE_0__.$cartChoiceList.insertAdjacentHTML("afterbegin", liTags);
+  addDeletingProduct();
+}
+insertCartProducts();
+
+// ** 
+function editImageSrc(imageSrc) {
+  let resolution;
+  const regExp1 = /_[0-9]+w\.(jpg|jpeg|png|svg)$/i;
+  const regExp2 = /_((.+)\.(jpg|jpeg|png|svg))$/i;
+  const regExp3 = /(.+)(\.(jpg|jpeg|png|svg))$/i;
+  if (imageSrc.match(regExp1)) {
+    resolution = imageSrc.match(regExp2);
+    imageSrc = imageSrc.replace(resolution[2], "80w");
+  } else {
+    resolution = imageSrc.match(regExp3);
+    imageSrc = resolution[1] + "_80w" + resolution[2];
+  }
+  return imageSrc;
+}
+
+// **
 function setActiveClass(elem, elemVendorCode) {
   const swiperWrapper = elem.closest(".swiper-wrapper");
   if (swiperWrapper) {
@@ -3857,7 +4089,7 @@ function setActiveClass(elem, elemVendorCode) {
       const productsVendorCode = el.getAttribute("data-vendor");
       if (elemVendorCode === productsVendorCode) {
         const productFavoriteBtn = el.querySelector(".product__button-cart");
-        productFavoriteBtn.classList.toggle("product__button-cart--active");
+        productFavoriteBtn.classList.add("product__button-cart--active");
       }
     });
     return;
@@ -3873,6 +4105,8 @@ function setActiveClass(elem, elemVendorCode) {
 function writeTheCount() {
   _vars_js__WEBPACK_IMPORTED_MODULE_0__.$headerCartCount.innerText = cartArray.length;
   _vars_js__WEBPACK_IMPORTED_MODULE_0__.$headerCartCount.classList.toggle("cart__count--show", cartArray.length);
+  _vars_js__WEBPACK_IMPORTED_MODULE_0__.$cartChoiceTitleCount.innerText = `(${cartArray.length})`;
+  _vars_js__WEBPACK_IMPORTED_MODULE_0__.$cartChoiceTitleCount.classList.toggle("cart-choice__title-count--show", cartArray.length);
 }
 writeTheCount();
 
@@ -3880,46 +4114,59 @@ writeTheCount();
 function addToCart() {
   const vendorElement = this.closest("[data-vendor]");
   const vendorCode = vendorElement.getAttribute("data-vendor");
-  const dataObj = {
-    imageSrc: vendorElement.querySelector(".pcs__image").getAttribute("src"),
-    title: vendorElement.querySelector(".product-card__title").innerText,
-    color: vendorElement.querySelector(".product-card__colors-item--name")?.innerText,
-    size: vendorElement.querySelector(".product-card__sort-selected")?.innerText,
-    count: vendorElement.querySelector(".input-number__input").value,
-    price: vendorElement.querySelector(".product__price").innerText,
-    oldPrice: vendorElement.querySelector(".product__old-price")?.innerText
-  };
-  for (let elem in dataObj) {
-    cartProductsArrayTmp.push(dataObj[elem]);
+  if (this.closest(".product-card")) {
+    dataObj = {
+      vendor: vendorCode,
+      imageSrc: vendorElement.querySelector(".product__image--main").getAttribute("src"),
+      title: vendorElement.querySelector(".product-card__title").innerText,
+      color: vendorElement.querySelector(".product-card__colors-item--name")?.innerText,
+      size: vendorElement.querySelector(".product-card__sort-selected")?.innerText,
+      count: vendorElement.querySelector(".input-number__input").value,
+      price: vendorElement.querySelector(".product__price").innerText,
+      oldPrice: vendorElement.querySelector(".product__old-price")?.innerText
+    };
+  } else {
+    dataObj = {
+      vendor: vendorCode,
+      imageSrc: vendorElement.querySelector(".product__image--main").getAttribute("src"),
+      title: vendorElement.querySelector(".product__name").innerText,
+      color: vendorElement.querySelector(".colors__button--active")?.getAttribute("data-color"),
+      size: vendorElement.querySelector(".sizes__button--active")?.innerText,
+      count: 1,
+      price: vendorElement.querySelector(".product__price").innerText,
+      oldPrice: vendorElement.querySelector(".product__old-price")?.innerText
+    };
   }
-  if (cartProductsArray.includes(cartProductsArrayTmp.toString())) return;
-  cartProductsArray.push(cartProductsArrayTmp);
-  console.log(cartProductsArray);
-
-  // if (!cartArray.includes(vendorCode)) {
-  cartArray.push(vendorCode);
-  localStorage.setItem("cartArray", JSON.stringify(cartArray));
+  for (let elem in dataObj) {
+    dataObj[elem] = dataObj[elem];
+  }
+  if (dataObj.size === "Please select") {
+    const sizeSelectWrapper = vendorElement.querySelector(".custom-select__outer-wrapper");
+    sizeSelectWrapper.classList.add("custom-select__outer-wrapper--warning");
+    sizeSelectWrapper.addEventListener("click", () => {
+      sizeSelectWrapper.classList.remove("custom-select__outer-wrapper--warning"), {
+        once: true
+      };
+    });
+    return;
+  }
   setActiveClass(this, vendorCode);
+  const isObjectExist = cartArray.find(el => {
+    return JSON.stringify(el) === JSON.stringify(dataObj);
+  });
+  if (isObjectExist) return;
+  cartArray.push(dataObj);
+  insertCartProducts();
+  localStorage.setItem("cartArray", JSON.stringify(cartArray));
   writeTheCount();
-  // }
 }
 
 // L(s)
+// **
 const productCartBtns = document.querySelectorAll(".product__button-cart"); // не убирать в vars
 productCartBtns.forEach(el => {
-  el.addEventListener("click", addToCart, {
-    once: true
-  });
+  el.addEventListener("click", addToCart);
 });
-
-// const image = vendorElement.querySelector(".pcs__image");
-// const imageSrc = image.getAttribute("src");
-// const title = vendorElement.querySelector(".product-card__title").innerText;
-// const color = vendorElement.querySelector(".product-card__colors-item--name")?.innerText;
-// const size = vendorElement.querySelector(".product-card__sort-selected")?.innerText;
-// const count = vendorElement.querySelector(".input-number__input").value;
-// const price = vendorElement.querySelector(".product__price").innerText;
-// const oldPrice = vendorElement.querySelector(".product__old-price")?.innerText;
 
 /***/ }),
 
@@ -4085,6 +4332,42 @@ if (_vars_js__WEBPACK_IMPORTED_MODULE_0__.$sidebarFiltersButton) {
   _vars_js__WEBPACK_IMPORTED_MODULE_0__.$mdq1119.addEventListener("change", stallBody);
   _vars_js__WEBPACK_IMPORTED_MODULE_0__.$mdq1119.addEventListener("change", reverseText);
 }
+
+/***/ }),
+
+/***/ "./src/js/components/sizes__button.js":
+/*!********************************************!*\
+  !*** ./src/js/components/sizes__button.js ***!
+  \********************************************/
+/***/ ((__unused_webpack___webpack_module__, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+const sizesBtn = document.querySelectorAll(".sizes__button");
+
+// F(s)
+// **
+function rechargeProductButton(elem) {
+  const product = elem.closest(".product");
+  if (product) {
+    const productButton = product.querySelector(".product__button-cart");
+    productButton.classList.remove("product__button-cart--active");
+  }
+}
+
+// **
+function toggleActiveClass() {
+  const sizes = this.closest(".sizes");
+  sizes.querySelector(".sizes__button--active").classList.remove("sizes__button--active");
+  this.classList.add("sizes__button--active");
+  rechargeProductButton(this);
+}
+
+// L(s)
+// **
+sizesBtn.forEach(el => {
+  el.addEventListener("click", toggleActiveClass);
+});
 
 /***/ }),
 
@@ -4703,6 +4986,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "$breadcrumbsContainer": () => (/* binding */ $breadcrumbsContainer),
 /* harmony export */   "$cartBtn": () => (/* binding */ $cartBtn),
+/* harmony export */   "$cartChoiceList": () => (/* binding */ $cartChoiceList),
+/* harmony export */   "$cartChoiceTitleCount": () => (/* binding */ $cartChoiceTitleCount),
 /* harmony export */   "$cartClose": () => (/* binding */ $cartClose),
 /* harmony export */   "$catalog": () => (/* binding */ $catalog),
 /* harmony export */   "$counters": () => (/* binding */ $counters),
@@ -4738,7 +5023,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "$productCardSwiper": () => (/* binding */ $productCardSwiper),
 /* harmony export */   "$productColorsBtns": () => (/* binding */ $productColorsBtns),
 /* harmony export */   "$productFavoriteBtns": () => (/* binding */ $productFavoriteBtns),
-/* harmony export */   "$products": () => (/* binding */ $products),
+/* harmony export */   "$saleProducts": () => (/* binding */ $saleProducts),
 /* harmony export */   "$saleSlider": () => (/* binding */ $saleSlider),
 /* harmony export */   "$searchForm": () => (/* binding */ $searchForm),
 /* harmony export */   "$sidebarFilterLists": () => (/* binding */ $sidebarFilterLists),
@@ -4770,9 +5055,13 @@ const $navItems = document.querySelectorAll(".nav__item");
 const $searchForm = $headerMainContainer.querySelector("#search-form");
 const $menuBtn = document.querySelector("#menu-btn");
 const $headerFavoriteCount = $headerMainContainer.querySelector(".favorite__count");
+
+// **
 const $headerCartCount = $headerMainContainer.querySelector(".cart__count");
 const $cartBtn = $headerMainContainer.querySelector(".cart__btn");
 const $cartClose = $headerMainContainer.querySelector(".cart-choice__close");
+const $cartChoiceList = $headerMainContainer.querySelector(".cart-choice__list");
+const $cartChoiceTitleCount = $headerMainContainer.querySelector(".cart-choice__title-count");
 
 // Special-offers
 const $marketingSlider = document.querySelector("#marketing-slider");
@@ -4780,7 +5069,7 @@ const $marketingSliderItems = $marketingSlider?.querySelectorAll(".marketing-sli
 
 // Sale + Product
 let $saleSlider = document.querySelector(".sale__slider");
-let $products = document.querySelectorAll(".sale__product");
+let $saleProducts = document.querySelectorAll(".sale__product");
 let $looks = document.querySelectorAll(".product__look");
 const $productColorsBtns = document.querySelectorAll(".product .colors__button");
 const $productFavoriteBtns = document.querySelectorAll(".product__favorite");
@@ -20856,9 +21145,11 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _components_product_favorites_js__WEBPACK_IMPORTED_MODULE_18__ = __webpack_require__(/*! ./components/product__favorites.js */ "./src/js/components/product__favorites.js");
 /* harmony import */ var _components_product_button_cart_js__WEBPACK_IMPORTED_MODULE_19__ = __webpack_require__(/*! ./components/product__button-cart.js */ "./src/js/components/product__button-cart.js");
 /* harmony import */ var _components_cart_btn_js__WEBPACK_IMPORTED_MODULE_20__ = __webpack_require__(/*! ./components/cart__btn.js */ "./src/js/components/cart__btn.js");
-/* harmony import */ var _components_$swipers_js__WEBPACK_IMPORTED_MODULE_21__ = __webpack_require__(/*! ./components/$swipers.js */ "./src/js/components/$swipers.js");
-/* harmony import */ var _components_$overlayScrollbars_js__WEBPACK_IMPORTED_MODULE_22__ = __webpack_require__(/*! ./components/$overlayScrollbars.js */ "./src/js/components/$overlayScrollbars.js");
+/* harmony import */ var _components_sizes_button_js__WEBPACK_IMPORTED_MODULE_21__ = __webpack_require__(/*! ./components/sizes__button.js */ "./src/js/components/sizes__button.js");
+/* harmony import */ var _components_$swipers_js__WEBPACK_IMPORTED_MODULE_22__ = __webpack_require__(/*! ./components/$swipers.js */ "./src/js/components/$swipers.js");
+/* harmony import */ var _components_$overlayScrollbars_js__WEBPACK_IMPORTED_MODULE_23__ = __webpack_require__(/*! ./components/$overlayScrollbars.js */ "./src/js/components/$overlayScrollbars.js");
 // Components
+
 
 
 

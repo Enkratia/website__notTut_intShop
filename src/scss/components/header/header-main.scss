@@ -467,6 +467,17 @@
         color: var(--gray900-color);
       }
 
+      &__title-count {
+        opacity: 0;
+        visibility: hidden;
+        transition: all 0.3s;
+
+        &--show {
+          opacity: 1;
+          visibility: visible;
+        }
+      }
+
       &__close {
         position: relative;
         top: rem(2);
