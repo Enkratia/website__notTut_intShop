@@ -187,7 +187,7 @@
 
   // Filter
   .filter {
-    overflow: hidden;
+    overflow-y: hidden;
     margin-bottom: rem(17);
     border-bottom: rem(1) solid var(--gray300-color);
     transition: padding-bottom 0.3s;
@@ -405,7 +405,7 @@
         }
       }
 
-      &:last-child {
+      &:nth-last-child(2) {
         overflow: visible;
         animation: overflow-bottom 0.3s ease;
       }

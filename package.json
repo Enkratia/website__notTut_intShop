@@ -66,6 +66,7 @@
   "homepage": "https://github.com/Enkratia/figma__productLanding#readme",
   "author": "",
   "dependencies": {
+    "decimal.js": "^10.4.3",
     "nouislider": "^15.7.0",
     "overlayscrollbars": "^2.1.1",
     "swiper": "^8.4.7"

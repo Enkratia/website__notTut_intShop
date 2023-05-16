@@ -1,4 +1,5 @@
 import * as v from "../vars.js";
+export {changeInputValueWithBtn as $changeInputValueWithBtn, changeInputValue as $changeInputValue}
 
 let newValue;
 
@@ -21,21 +22,32 @@ function changeInputValue(e) {
 
     newValue = parseInt(this.value) + 1;
 
-    v.$inputNumberInputs.forEach(el => {
-      el.value = newValue || 0;
-    });
+    if (this.classList.contains("choice-product__input-number-input")) {
+      this.value = newValue || 0;
+
+    } else {
+      v.$inputNumberInputs.forEach(el => {
+        el.value = newValue || 0;
+      });
+    }
 
     return;
   }
 
   if ((e.key === "PageDown" || e.key === "ArrowDown")) {
+
     if (this.value < 1 && this.value) return;
 
     newValue = parseInt(this.value) - 1;
 
-    v.$inputNumberInputs.forEach(el => {
-      el.value = newValue || 0;
-    });
+    if (this.classList.contains("choice-product__input-number-input")) {
+      this.value = newValue || 0;
+
+    } else {
+      v.$inputNumberInputs.forEach(el => {
+        el.value = newValue || 0;
+      });
+    }
 
     return;
   }
@@ -43,16 +55,26 @@ function changeInputValue(e) {
   if (!this.value.match(/^\d*$/)) {
     newValue = this.value.replace(/\D/g, "");
 
-    v.$inputNumberInputs.forEach(el => {
-      el.value = newValue;
-    });
+    if (this.classList.contains("choice-product__input-number-input")) {
+      this.value = newValue;
+
+    } else {
+      v.$inputNumberInputs.forEach(el => {
+        el.value = newValue;
+      });
+    }
 
   } else {
     newValue = this.value;
 
-    v.$inputNumberInputs.forEach(el => {
-      el.value = newValue;
-    });
+    if (this.classList.contains("choice-product__input-number-input")) {
+      this.value = newValue;
+
+    } else {
+      v.$inputNumberInputs.forEach(el => {
+        el.value = newValue;
+      });
+    }
   }
 }
 
@@ -64,17 +86,27 @@ function changeInputValueWithBtn() {
     if (input.value > 998) return;
     newValue = parseInt(input.value) + 1;
 
-    v.$inputNumberInputs.forEach(el => {
-      el.value = newValue || 0;
-    });
+    if (this.parentElement.classList.contains("choice-product__btns")) {
+      input.value = newValue || 0;
+
+    } else {
+      v.$inputNumberInputs.forEach(el => {
+        el.value = newValue || 0;
+      });
+    }
 
   } else {
     if (input.value < 1 && input.value) return;
     newValue = parseInt(input.value) - 1;
 
-    v.$inputNumberInputs.forEach(el => {
-      el.value = newValue || 0;
-    });
+    if (this.parentElement.classList.contains("choice-product__btns")) {
+      input.value = newValue || 0;
+
+    } else {
+      v.$inputNumberInputs.forEach(el => {
+        el.value = newValue || 0;
+      });
+    }
   }
 }
 

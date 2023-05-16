@@ -1,7 +1,5 @@
 import * as v from "../vars.js";
 
-const cartChoice = document.querySelector(".cart__choice");
-
 // F(s)
 // **
 function removeProductBtnActiveClass() {
@@ -33,3 +31,4 @@ v.$cartBtn.addEventListener("click", openCart);
 
 // **
 v.$cartClose.addEventListener("click", closeCart);
+

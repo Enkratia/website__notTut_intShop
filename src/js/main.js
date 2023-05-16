@@ -26,7 +26,6 @@ import "./components/sizes__button.js";
 import "./components/$swipers.js";
 import "./components/$overlayScrollbars.js";
 
-
 // Scroll-top
 const scrollTop = document.querySelector(".scroll-top");
 

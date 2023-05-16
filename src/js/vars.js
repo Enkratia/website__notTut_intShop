@@ -19,6 +19,9 @@ export const $cartBtn = $headerMainContainer.querySelector(".cart__btn");
 export const $cartClose = $headerMainContainer.querySelector(".cart-choice__close");
 export const $cartChoiceList = $headerMainContainer.querySelector(".cart-choice__list");
 export const $cartChoiceTitleCount = $headerMainContainer.querySelector(".cart-choice__title-count");
+export const $cartChoiceBottom = $headerMainContainer.querySelector(".cart-choice__bottom");
+export const $cartChoiceSubtotalSum = $headerMainContainer.querySelector(".cart-choice__subtotal-sum");
+
 
 
 // Special-offers

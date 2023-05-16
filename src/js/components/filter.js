@@ -35,8 +35,16 @@ if (v.$sidebarFilterTops[0]) {
 
   // **
   function changeRangeValues(idx) {
-    const currentInputValue = ~~v.$filterSliderInputs[idx].value;
-    filterPriceSlider.setHandle(idx, currentInputValue);
+    const input = v.$filterSliderInputs[idx];
+
+    if (!input.value.match(/^\d*$/)) {
+      const newValue = input.value.replace(/\D/g, "");
+      input.value = newValue;
+      filterPriceSlider.setHandle(idx, ~~newValue);
+      return;
+    }
+
+    filterPriceSlider.setHandle(idx, ~~input.value);
   }
 
   // L(s)
@@ -347,7 +355,7 @@ if (v.$sidebarFilterTops[0]) {
 
     setTimeout(() => { // чтобы overlay scrollbars observer успел за кликом
       bottom.appendChild(osBagElement);
-      osBagElement.addEventListener("click", function() {this.classList.toggle("active")}, { once: true });
+      osBagElement.addEventListener("click", function () { this.classList.toggle("active") }, { once: true });
       osBagElement.click();
     }, 100);
   }

@@ -1,9 +1,16 @@
 import * as v from "../vars.js";
+export { markFavoriteProductsInit as $markFavoriteProductsInit, addToFavorite as $addToFavorite }
 
 const favoriteArray = JSON.parse(localStorage.getItem("favoriteArray")) ?? [];
 let favoriteCount;
 
 // F(s)
+// **
+function toggleActiveClass(elem) {
+  const productFavoriteBtn = elem.querySelector(".product__favorite");
+  productFavoriteBtn.classList.toggle("product__favorite--active");
+}
+
 // **
 function markFavoriteProduct(elem, elemVendorCode) {
   const swiperWrapper = elem.closest(".swiper-wrapper");
@@ -15,26 +22,28 @@ function markFavoriteProduct(elem, elemVendorCode) {
       const productsVendorCode = el.getAttribute("data-vendor");
 
       if (elemVendorCode === productsVendorCode) {
-        const productFavoriteBtn = el.querySelector(".product__favorite");
-        productFavoriteBtn.classList.toggle("product__favorite--active");
+        toggleActiveClass(el)
       }
     });
 
   } else {
-    elem.classList.toggle("product__favorite--active");
+    const sameProducts = document.querySelectorAll(`[data-vendor="${elemVendorCode}"]`);
+
+    sameProducts.forEach(el => {
+      toggleActiveClass(el)
+    });
   }
 }
 
-// **
-function markFavoriteProductsInit() {
-  const favoriteProducts = document.querySelectorAll("[data-vendor]");
+// ***
+function markFavoriteProductsInit(cartLiElements = undefined) {
+  const favoriteProducts = cartLiElements ?? document.querySelectorAll("[data-vendor]");
 
   favoriteProducts.forEach(el => {
     const vendorCode = el.getAttribute("data-vendor");
 
     if (favoriteArray.includes(vendorCode)) {
-      const productFavoriteBtn = el.querySelector(".product__favorite");
-      productFavoriteBtn.classList.add("product__favorite--active");
+      toggleActiveClass(el)
     }
   });
 }

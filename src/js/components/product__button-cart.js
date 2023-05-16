@@ -1,31 +1,86 @@
+import { Decimal } from 'decimal.js';
+
 import * as v from "../vars.js";
+import * as inum from "./input-number.js";
+import * as prof from "./product__favorites.js";
 
 const cartArray = JSON.parse(localStorage.getItem("cartArray")) ?? [];
 let dataObj;
 
 // F(s)
+// **
+function calculatePrice() {
+  if (cartArray.length === 0) {
+    v.$cartChoiceSubtotalSum.textContent = "$0";
+    return;
+  }
+
+  const sumArray = cartArray.map(el => {
+    const price = el.price.replace("$", "");
+    return parseFloat(price);
+  });
+
+  const sum = Decimal.sum(...sumArray);
+  v.$cartChoiceSubtotalSum.textContent = "$" + sum.toFixed(2);
+}
+
+// **
+function showHideCartBottom() {
+  v.$cartChoiceBottom.classList.toggle("cart-choice__bottom--show", cartArray.length);
+  calculatePrice();
+}
+
+// **
+function addFavoriteBtnListeners() {
+  const productFavoriteBtns = v.$cartChoiceList.querySelectorAll(".product__favorite");
+  const liElements = v.$cartChoiceList.querySelectorAll("[data-vendor]");
+  prof.$markFavoriteProductsInit(liElements);
+
+  productFavoriteBtns.forEach(el => {
+    el.addEventListener("click", prof.$addToFavorite);
+  });
+}
+
+// **
+function addNumberInputListeners() {
+  const inputNumberInputs = v.$cartChoiceList.querySelectorAll(".input-number__input");
+  const inputNumberBtns = v.$cartChoiceList.querySelectorAll(".input-number__btn");
+
+  inputNumberInputs.forEach(function (el) {
+    el.addEventListener("keyup", inum.$changeInputValue.bind(el));
+  });
+
+  inputNumberBtns.forEach(function (el) {
+    el.addEventListener("click", inum.$changeInputValueWithBtn.bind(el));
+  });
+}
+
 // ** 
 function addDeletingProduct() {
   const deleteProductBtns = v.$cartChoiceList.querySelectorAll(".choice-product__delete");
 
   function deleteProduct() {
     const cartProduct = this.closest(".cart-choice__item");
-    const vendorCode = cartProduct.getAttribute("data-vendor");
+    const cartIdx = cartProduct.getAttribute("data-cartIdx");
 
-    cartArray.forEach((el, idx) => {
-      if (el.vendor === vendorCode) {
-        cartArray.splice(idx, 1);
-        writeTheCount();
-        cartProduct.remove();
-        localStorage.setItem("cartArray", JSON.stringify(cartArray));
-        return;
+    const liElems = v.$cartChoiceList.querySelectorAll("[data-cartIdx]");
+    liElems.forEach(el => {
+      const everyCartIdx = el.getAttribute("data-cartIdx");
+      if (+everyCartIdx > +cartIdx) {
+        el.setAttribute("data-cartIdx", everyCartIdx - 1);
       }
     });
+
+    cartArray.splice(cartIdx, 1);
+    writeTheCount();
+    showHideCartBottom();
+    cartProduct.remove();
+    localStorage.setItem("cartArray", JSON.stringify(cartArray));
   }
 
   deleteProductBtns.forEach(el => {
     el.addEventListener("click", deleteProduct);
-  }); 
+  });
 }
 
 // ** 
@@ -115,10 +170,10 @@ function insertCartProducts() {
   if (cartArray.length === 0) return;
 
   let liTags = "";
-  cartArray.forEach(el => {
+  cartArray.forEach((el, idx) => {
 
     liTags += `
-    <li class="cart-choice__item" data-vendor="${el.vendor}">
+    <li class="cart-choice__item" data-vendor="${el.vendor}" data-cartIdx="${idx}">
     <article class="cart-choice__product choice-product">
   
       <!-- Image -->
@@ -179,6 +234,9 @@ function insertCartProducts() {
   v.$cartChoiceList.innerHTML = "";
   v.$cartChoiceList.insertAdjacentHTML("afterbegin", liTags);
   addDeletingProduct();
+  addNumberInputListeners();
+  addFavoriteBtnListeners();
+  showHideCartBottom();
 }
 insertCartProducts();
 
