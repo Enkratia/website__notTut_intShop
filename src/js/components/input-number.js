@@ -1,21 +1,24 @@
 import * as v from "../vars.js";
+import * as pbc from "./product__button-cart.js";
 export {changeInputValueWithBtn as $changeInputValueWithBtn, changeInputValue as $changeInputValue}
 
 let newValue;
 
 // F(s)
 // **
-function rechargeProductButton() {
-  const product = this.closest(".product-card");
+function rechargeProductButton(elem) {
+  const product = elem.closest(".product-card");
 
   if (product) {
     const productButton = product.querySelector(".product__button-cart");
     productButton.classList.remove("product-card__btn-cart--active");
+    productButton.removeEventListener("click", pbc.$clickOnCart);
   }
 }
 
 // **
 function changeInputValue(e) {
+  rechargeProductButton(this);
 
   if (e.key === "PageUp" || e.key === "ArrowUp") {
     if (this.value > 998) return;
@@ -80,6 +83,7 @@ function changeInputValue(e) {
 
 // **
 function changeInputValueWithBtn() {
+  rechargeProductButton(this);
   const input = this.parentElement.previousElementSibling;
 
   if (this.classList.contains("input-number__btn--upper")) {
@@ -119,9 +123,4 @@ v.$inputNumberInputs.forEach(el => {
 // **
 v.$inputNumberBtns.forEach(el => {
   el.addEventListener("click", changeInputValueWithBtn);
-});
-
-// **
-v.$inputNumberInputs.forEach(el => {
-  el.addEventListener("change", rechargeProductButton);
 });

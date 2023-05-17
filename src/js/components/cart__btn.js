@@ -1,13 +1,20 @@
 import * as v from "../vars.js";
+import * as pbc from "./product__button-cart.js";
 
 // F(s)
 // **
 function removeProductBtnActiveClass() {
   document.querySelectorAll(".product__button-cart--active").forEach(el => {
     el.classList.remove("product__button-cart--active");
+    el.removeEventListener("click", pbc.$clickOnCart);
   });
 
-  document.querySelector(".product-card__btn-cart--active")?.classList.remove("product-card__btn-cart--active");
+  const productCardBtn = document.querySelector(".product-card__btn-cart--active");
+
+  if (productCardBtn) {
+    productCardBtn.classList.remove("product-card__btn-cart--active");
+    productCardBtn.removeEventListener("click", pbc.$clickOnCart);
+  }
 }
 
 // **

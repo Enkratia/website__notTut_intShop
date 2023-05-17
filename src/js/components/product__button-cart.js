@@ -1,11 +1,13 @@
 import { Decimal } from 'decimal.js';
-
 import * as v from "../vars.js";
 import * as inum from "./input-number.js";
 import * as prof from "./product__favorites.js";
 
+export { clickOnCart as $clickOnCart }
+
 const cartArray = JSON.parse(localStorage.getItem("cartArray")) ?? [];
 let dataObj;
+let productCartBtns;
 
 // F(s)
 // **
@@ -260,6 +262,11 @@ function editImageSrc(imageSrc) {
 }
 
 // **
+function clickOnCart() {
+  v.$cartBtn.click();
+}
+
+// **
 function setActiveClass(elem, elemVendorCode) {
   const swiperWrapper = elem.closest(".swiper-wrapper");
 
@@ -272,6 +279,7 @@ function setActiveClass(elem, elemVendorCode) {
       if (elemVendorCode === productsVendorCode) {
         const productFavoriteBtn = el.querySelector(".product__button-cart");
         productFavoriteBtn.classList.add("product__button-cart--active");
+        productFavoriteBtn.addEventListener("click", clickOnCart);
       }
     });
 
@@ -283,6 +291,8 @@ function setActiveClass(elem, elemVendorCode) {
   } else {
     elem.classList.add("product__button-cart--active");
   }
+
+  elem.addEventListener("click", clickOnCart);
 }
 
 // **
@@ -339,15 +349,14 @@ function addToCart() {
     return;
   }
 
-  setActiveClass(this, vendorCode);
-
   const isObjectExist = cartArray.find(el => {
     return (JSON.stringify(el) === JSON.stringify(dataObj));
   });
 
+  setActiveClass(this, vendorCode);
+
   if (isObjectExist) return;
   cartArray.push(dataObj);
-
 
   insertCartProducts();
 
@@ -357,7 +366,21 @@ function addToCart() {
 
 // L(s)
 // **
-const productCartBtns = document.querySelectorAll(".product__button-cart"); // не убирать в vars
-productCartBtns.forEach(el => {
-  el.addEventListener("click", addToCart);
+setTimeout(() => { // Wait swiper js
+  productCartBtns = document.querySelectorAll(".product__button-cart"); // не убирать в vars
+
+  productCartBtns.forEach(el => {
+    el.addEventListener("click", addToCart);
+  });
+}, 50);
+
+// **
+window.addEventListener("resize", () => {
+  setTimeout(() => { // Wait swiper js
+    productCartBtns = document.querySelectorAll(".swiper-wrapper .product__button-cart"); // не убирать в vars
+  
+    productCartBtns.forEach(el => {
+      el.addEventListener("click", addToCart);
+    });
+  }, 50);
 });

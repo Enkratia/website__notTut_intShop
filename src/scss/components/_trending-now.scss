@@ -31,6 +31,16 @@
     margin-bottom: calc(rem(33.38) + 3.37vw); // 96>48
   }
 
+  &__product {
+    position: relative;
+    z-index: var(--z-up);
+
+    &:hover {
+      margin-bottom: rem(80); // For box-shadow
+      box-shadow: var(--product-shadow);
+    }
+  }
+
   &__button-prev {
     position: absolute;
     right: rem(36);

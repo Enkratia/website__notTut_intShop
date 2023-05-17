@@ -62,39 +62,42 @@ if (v.$sidebarFilterTops[0]) {
 }
 
 // ==== SIDEBAR FILTERS WRAPPER SCROLLBAR ==== //
-let sidebarFiltersWrapper;
-
-// F(s)
-// **
-function overflowHiddenBody() {
-  if (v.$filterWrapper.classList.contains("sidebar-filters__wrapper--hide")) {
-    document.body.classList.add("overflow-hidden");
+if (v.$filterWrapper) {
+  
+  let sidebarFiltersWrapper;
+  
+  // F(s)
+  // **
+  function overflowHiddenBody() {
+    if (v.$filterWrapper.classList.contains("sidebar-filters__wrapper--hide")) {
+      document.body.classList.add("overflow-hidden");
+    }
   }
-}
-
-// **
-function toggleSidebarFiltersWrapperOS() {
-  if (v.$mdq1119.matches) {
-    sidebarFiltersWrapper = OverlayScrollbars(document.querySelector('.sidebar-filters__wrapper-inner'), {
-      overflow: {
-        x: 'visible',
-      },
-      scrollbars: {
-        theme: 'os-theme-sidebar-filters',
-      }
-    });
-
-    overflowHiddenBody();
-
-  } else {
-    sidebarFiltersWrapper?.destroy();
+  
+  // **
+  function toggleSidebarFiltersWrapperOS() {
+    if (v.$mdq1119.matches) {
+      sidebarFiltersWrapper = OverlayScrollbars(document.querySelector('.sidebar-filters__wrapper-inner'), {
+        overflow: {
+          x: 'visible',
+        },
+        scrollbars: {
+          theme: 'os-theme-sidebar-filters',
+        }
+      });
+  
+      overflowHiddenBody();
+  
+    } else {
+      sidebarFiltersWrapper?.destroy();
+    }
   }
+  toggleSidebarFiltersWrapperOS();
+  
+  
+  // L(s)
+  v.$mdq1119.addEventListener("change", toggleSidebarFiltersWrapperOS);
 }
-toggleSidebarFiltersWrapperOS();
-
-
-// L(s)
-v.$mdq1119.addEventListener("change", toggleSidebarFiltersWrapperOS);
 
 // ==== CART CHOICE SCROLLBAR ==== //
 let cartChoiceListScrollbar = OverlayScrollbars(document.querySelector('.cart-choice__list-wrapper'), {

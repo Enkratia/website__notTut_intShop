@@ -47,6 +47,16 @@
     padding-bottom: calc(rem(29.8) + 2.72vw); // 82>40
   }
 
+  &__product {
+    position: relative;
+    z-index: var(--z-up);
+
+    &:hover {
+      margin-bottom: rem(80); // For box-shadow
+      box-shadow: var(--product-shadow);
+    }
+  }
+
   &__pagination {
     display: block;
   }

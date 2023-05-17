@@ -1,7 +1,7 @@
 import * as v from "../vars.js";
 
 // MICROSLIDER
-let looks = document.querySelectorAll(".product__look"); // Не переносить в vars
+let looks;
 
 // F(s)
 // ***
@@ -12,10 +12,10 @@ function chooseImage() {
   // **
   function resetChooseImage() {
     thisLook.removeEventListener("click", chooseImageInner);
-
     const image = thisLook.querySelector(".microslider__image");
     const srcs = image.nextElementSibling;
     image.src = srcs.firstElementChild.dataset.src;
+
   }
 
   if (v.$saleSlider) {
@@ -56,19 +56,21 @@ function chooseImage() {
 
 // L(s)
 // **
-looks.forEach(look => {
-  look.addEventListener("click", chooseImage.bind(look)());
-});
+setTimeout(() => { // Wait swiper js
+  looks = document.querySelectorAll(".product__look");
+
+  looks.forEach(look => {
+    look.addEventListener("click", chooseImage.bind(look)());
+  });
+}, 50);
 
 // **
-if (v.$saleSlider) {
-  window.addEventListener("resize", () => {
-    setTimeout(() => { // (Чтобы swiper успел прогрузить свой js) // Сделать нормально позже
-      let looks = document.querySelectorAll(".product__look");
+window.addEventListener("resize", () => {
+  setTimeout(() => { // Wait swiper js
+    looks = document.querySelectorAll(".swiper-wrapper .product__look");
 
-      looks.forEach(look => {
-        look.addEventListener("click", chooseImage.bind(look)());
-      });
-    }, 300);
-  })
-}
+    looks.forEach(look => {
+      look.addEventListener("click", chooseImage.bind(look)());
+    });
+  }, 50);
+})

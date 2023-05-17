@@ -1,4 +1,5 @@
-const sizesBtn = document.querySelectorAll(".sizes__button");
+import * as pbc from "./product__button-cart.js";
+let sizesBtn;
 
 // F(s)
 // **
@@ -8,6 +9,7 @@ function rechargeProductButton(elem) {
   if (product) {
     const productButton = product.querySelector(".product__button-cart");
     productButton.classList.remove("product__button-cart--active");
+    productButton.removeEventListener("click", pbc.$clickOnCart);
   }
 }
 
@@ -21,6 +23,21 @@ function toggleActiveClass() {
 
 // L(s)
 // **
-sizesBtn.forEach(el => {
-  el.addEventListener("click", toggleActiveClass);
+setTimeout(() => { // Wait swiper js
+  sizesBtn = document.querySelectorAll(".sizes__button");
+
+  sizesBtn.forEach(el => {
+    el.addEventListener("click", toggleActiveClass);
+  });
+}, 50);
+
+// **
+window.addEventListener("resize", () => {
+  setTimeout(() => { // Wait swiper js
+    sizesBtn = document.querySelectorAll(".swiper-wrapper .sizes__button");
+
+    sizesBtn.forEach(el => {
+      el.addEventListener("click", toggleActiveClass);
+    });
+  }, 50);
 });

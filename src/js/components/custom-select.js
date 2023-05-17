@@ -1,4 +1,5 @@
 import * as v from "../vars.js";
+import * as pbc from "./product__button-cart.js";
 let isOpen = false;
 
 // F(s)
@@ -9,6 +10,7 @@ function rechargeProductButton(selected) {
   if (product) {
     const productButton = product.querySelector(".product__button-cart");
     productButton.classList.remove("product-card__btn-cart--active");
+    productButton.removeEventListener("click", pbc.$clickOnCart);
   }
 }
 

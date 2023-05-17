@@ -1,4 +1,5 @@
-import * as v from "../vars.js";
+import * as pbc from "./product__button-cart.js";
+let productColorsBtns;
 
 // For product
 // F(s)
@@ -10,11 +11,14 @@ function rechargeProductButton(elem) {
   if (productCard) {
     const productButton = product.querySelector(".product__button-cart");
     productButton.classList.remove("product-card__btn-cart--active");
+    productButton.removeEventListener("click", pbc.$clickOnCart);
+
     return;
 
   } else if (product) {
     const productButton = product.querySelector(".product__button-cart");
     productButton.classList.remove("product__button-cart--active");
+    productButton.removeEventListener("click", pbc.$clickOnCart);
   }
 }
 
@@ -40,7 +44,19 @@ function toggleActiveClass() {
 
 // L(s)
 // **
-const productColorsBtns = document.querySelectorAll(".product .colors__button"); // (Не убирать в vars)
-productColorsBtns.forEach(el => {
-  el.addEventListener("click", toggleActiveClass);
+setTimeout(() => {
+  productColorsBtns = document.querySelectorAll(".product .colors__button"); // (Не убирать в vars)
+  productColorsBtns.forEach(el => {
+    el.addEventListener("click", toggleActiveClass);
+  });
+}, 50);
+
+// **
+window.addEventListener("resize", () => {
+  setTimeout(() => {
+    productColorsBtns = document.querySelectorAll(".swiper-wrapper .product .colors__button"); // (Не убирать в vars)
+    productColorsBtns.forEach(el => {
+      el.addEventListener("click", toggleActiveClass);
+    });
+  }, 50);
 });

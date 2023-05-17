@@ -3,6 +3,7 @@ export { markFavoriteProductsInit as $markFavoriteProductsInit, addToFavorite as
 
 const favoriteArray = JSON.parse(localStorage.getItem("favoriteArray")) ?? [];
 let favoriteCount;
+let productFavoriteBtns;
 
 // F(s)
 // **
@@ -87,7 +88,20 @@ function addToFavorite() {
 }
 
 // L(s)
-const productFavoriteBtns = document.querySelectorAll(".product__favorite"); // не убирать в vars
-productFavoriteBtns.forEach(el => {
-  el.addEventListener("click", addToFavorite);
+setTimeout(() => { // Wait swiper js
+  productFavoriteBtns = document.querySelectorAll(".product__favorite");
+
+  productFavoriteBtns.forEach(el => {
+    el.addEventListener("click", addToFavorite);
+  });
+}, 50);
+
+window.addEventListener("resize", () => {
+  setTimeout(() => { // Wait swiper js
+    productFavoriteBtns = document.querySelectorAll(".swiper-wrapper .product__favorite");
+
+    productFavoriteBtns.forEach(el => {
+      el.addEventListener("click", addToFavorite);
+    });
+  }, 50);
 });
