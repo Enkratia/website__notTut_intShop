@@ -2746,6 +2746,22 @@ if (document.querySelector("#brands-slider")) {
 
 // PRODUCT CARD MINISLIDER SWIPER (in product-card__slider.js)
 
+// COMPLETE LOOK SWIPER
+const completeLookSwiper = new swiper__WEBPACK_IMPORTED_MODULE_1__["default"]("#complete-look-slider", {
+  modules: [swiper__WEBPACK_IMPORTED_MODULE_1__.Pagination, swiper__WEBPACK_IMPORTED_MODULE_1__.Navigation],
+  slidesPerView: 2,
+  spaceBetween: 30,
+  loop: true,
+  navigation: {
+    nextEl: '#cl-button-next',
+    prevEl: '#cl-button-prev'
+  },
+  pagination: {
+    el: '#cl-pagination',
+    clickable: true
+  }
+});
+
 /***/ }),
 
 /***/ "./src/js/components/cart__btn.js":
@@ -3835,6 +3851,36 @@ productCardAccordionTops.forEach(el => {
 
 /***/ }),
 
+/***/ "./src/js/components/product-card__size-btn.js":
+/*!*****************************************************!*\
+  !*** ./src/js/components/product-card__size-btn.js ***!
+  \*****************************************************/
+/***/ ((__unused_webpack___webpack_module__, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _vars_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../vars.js */ "./src/js/vars.js");
+
+
+// F(s)
+// **
+function hideSizeChart() {
+  _vars_js__WEBPACK_IMPORTED_MODULE_0__.$productCardChart.classList.remove("chart--show");
+  document.body.classList.remove("overflow-hidden");
+}
+
+// **
+function showSizeChart() {
+  _vars_js__WEBPACK_IMPORTED_MODULE_0__.$productCardChart.classList.add("chart--show");
+  document.body.classList.add("overflow-hidden");
+}
+
+// L(s)
+_vars_js__WEBPACK_IMPORTED_MODULE_0__.$productCardSizeBtn?.addEventListener("click", showSizeChart);
+_vars_js__WEBPACK_IMPORTED_MODULE_0__.$chartClose?.addEventListener("click", hideSizeChart);
+
+/***/ }),
+
 /***/ "./src/js/components/product-card__slider.js":
 /*!***************************************************!*\
   !*** ./src/js/components/product-card__slider.js ***!
@@ -4644,6 +4690,31 @@ if (_vars_js__WEBPACK_IMPORTED_MODULE_0__.$nativeCheckBoxes) {
 
 /***/ }),
 
+/***/ "./src/js/components/tabs.js":
+/*!***********************************!*\
+  !*** ./src/js/components/tabs.js ***!
+  \***********************************/
+/***/ ((__unused_webpack___webpack_module__, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _vars_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../vars.js */ "./src/js/vars.js");
+
+
+// F(s)
+function showTabContent() {
+  const tabs = this.closest(".product-card__tabs");
+  tabs.querySelector(".tab--active").classList.remove("tab--active");
+  this.classList.add("tab--active");
+}
+
+// L(s)
+_vars_js__WEBPACK_IMPORTED_MODULE_0__.$productCardTabs?.forEach(el => {
+  el.addEventListener("click", showTabContent);
+});
+
+/***/ }),
+
 /***/ "./src/js/components/timer.js":
 /*!************************************!*\
   !*** ./src/js/components/timer.js ***!
@@ -5187,6 +5258,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "$cartChoiceTitleCount": () => (/* binding */ $cartChoiceTitleCount),
 /* harmony export */   "$cartClose": () => (/* binding */ $cartClose),
 /* harmony export */   "$catalog": () => (/* binding */ $catalog),
+/* harmony export */   "$chartClose": () => (/* binding */ $chartClose),
 /* harmony export */   "$counters": () => (/* binding */ $counters),
 /* harmony export */   "$customCheckboxes": () => (/* binding */ $customCheckboxes),
 /* harmony export */   "$customSelects": () => (/* binding */ $customSelects),
@@ -5217,7 +5289,11 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "$navLinksAll": () => (/* binding */ $navLinksAll),
 /* harmony export */   "$navList": () => (/* binding */ $navList),
 /* harmony export */   "$pcmSwiper": () => (/* binding */ $pcmSwiper),
+/* harmony export */   "$productCard": () => (/* binding */ $productCard),
+/* harmony export */   "$productCardChart": () => (/* binding */ $productCardChart),
+/* harmony export */   "$productCardSizeBtn": () => (/* binding */ $productCardSizeBtn),
 /* harmony export */   "$productCardSwiper": () => (/* binding */ $productCardSwiper),
+/* harmony export */   "$productCardTabs": () => (/* binding */ $productCardTabs),
 /* harmony export */   "$productColorsBtns": () => (/* binding */ $productColorsBtns),
 /* harmony export */   "$productFavoriteBtns": () => (/* binding */ $productFavoriteBtns),
 /* harmony export */   "$saleProducts": () => (/* binding */ $saleProducts),
@@ -5310,8 +5386,13 @@ const $sidebarFiltersApplyBtn = $filterWrapper?.querySelector(".sidebar-filters_
 const $sidebarFiltersWrapperClose = $filterWrapper?.querySelector(".sidebar-filters__wrapper-close");
 
 // Product-card
+const $productCard = document.querySelector(".product-card");
 const $productCardSwiper = document.querySelector("#product-card-swiper");
 const $pcmSwiper = document.querySelector("#pcm-swiper");
+const $productCardSizeBtn = document.querySelector(".product-card__size-btn");
+const $productCardChart = document.querySelector(".product-card__chart");
+const $chartClose = $productCardChart?.querySelector(".chart__close");
+const $productCardTabs = $productCard?.querySelectorAll(".tab");
 
 // Media
 const $mdq767 = window.matchMedia("(max-width: 767px)");
@@ -26259,9 +26340,13 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _components_product_button_cart_js__WEBPACK_IMPORTED_MODULE_19__ = __webpack_require__(/*! ./components/product__button-cart.js */ "./src/js/components/product__button-cart.js");
 /* harmony import */ var _components_cart_btn_js__WEBPACK_IMPORTED_MODULE_20__ = __webpack_require__(/*! ./components/cart__btn.js */ "./src/js/components/cart__btn.js");
 /* harmony import */ var _components_sizes_button_js__WEBPACK_IMPORTED_MODULE_21__ = __webpack_require__(/*! ./components/sizes__button.js */ "./src/js/components/sizes__button.js");
-/* harmony import */ var _components_$swipers_js__WEBPACK_IMPORTED_MODULE_22__ = __webpack_require__(/*! ./components/$swipers.js */ "./src/js/components/$swipers.js");
-/* harmony import */ var _components_$overlayScrollbars_js__WEBPACK_IMPORTED_MODULE_23__ = __webpack_require__(/*! ./components/$overlayScrollbars.js */ "./src/js/components/$overlayScrollbars.js");
+/* harmony import */ var _components_product_card_size_btn_js__WEBPACK_IMPORTED_MODULE_22__ = __webpack_require__(/*! ./components/product-card__size-btn.js */ "./src/js/components/product-card__size-btn.js");
+/* harmony import */ var _components_tabs_js__WEBPACK_IMPORTED_MODULE_23__ = __webpack_require__(/*! ./components/tabs.js */ "./src/js/components/tabs.js");
+/* harmony import */ var _components_$swipers_js__WEBPACK_IMPORTED_MODULE_24__ = __webpack_require__(/*! ./components/$swipers.js */ "./src/js/components/$swipers.js");
+/* harmony import */ var _components_$overlayScrollbars_js__WEBPACK_IMPORTED_MODULE_25__ = __webpack_require__(/*! ./components/$overlayScrollbars.js */ "./src/js/components/$overlayScrollbars.js");
 // Components
+
+
 
 
 

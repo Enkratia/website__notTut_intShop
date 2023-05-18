@@ -348,3 +348,19 @@ if (document.querySelector("#brands-slider")) {
 // PRODUCT CARD SLIDER SWIPER (in product-card__slider.js)
 
 // PRODUCT CARD MINISLIDER SWIPER (in product-card__slider.js)
+
+// COMPLETE LOOK SWIPER
+const completeLookSwiper = new Swiper("#complete-look-slider", {
+  modules: [Pagination, Navigation],
+  slidesPerView: 2,
+  spaceBetween: 30,
+  loop: true,
+  navigation: {
+    nextEl: '#cl-button-next',
+    prevEl: '#cl-button-prev',
+  },
+  pagination: {
+    el: '#cl-pagination',
+    clickable: true,
+  },
+});

@@ -1231,18 +1231,18 @@
 
     <!-- Tabs -->
     <div class="product-card__tabs">
-      <button class="product-card__tab product-card__tab--active">
+      <button class="product-card__tab tab tab--active">
         General info
       </button>
 
-      <button class="product-card__tab">
+      <button class="product-card__tab tab">
         Product details
       </button>
 
-      <button class="product-card__tab">
+      <button class="product-card__tab tab">
         Reviews
 
-        <span class="product-card__tab-count">
+        <span class="tab__count">
           12
         </span>
       </button>
@@ -1658,1001 +1658,1410 @@
           <div class="payment__box payment__box--paypal" aria-label="Go to paypal`s website."></div>
         </div>
       </div>
+    </div>
+  </div>
 
-      <!-- Chart -->
-      <div class="product-card__chart chart">
-        <div class="chart__data">
+  <!-- Chart -->
+  <div class="product-card__chart chart">
+    <div class="chart__data">
 
-          <!-- Title -->
-          <h2 class="chart__title">
-            Size chart
-          </h2>
+      <!-- Title -->
+      <h2 class="chart__title">
+        Size chart
+      </h2>
 
-          <!-- Gender tabs -->
-          <ul class="chart__gender-tabs">
-            <li class="chart__gender-tab">
-              <button class="chart__gender-btn btn btn--mid btn--outline">
-                Women
-              </button>
+      <!-- Gender tabs -->
+      <ul class="chart__gender-tabs product-card__tabs">
+        <li class="chart__gender-item">
+          <label for="gender-women" class="chart__gender-tab tab tab--active" role="button" tabindex="0">
+            Women
+          </label>
+        </li>
+
+        <li class="chart__gender-item">
+          <label for="gender-men" class="chart__gender-tab tab" role="button" tabindex="0">
+            Men
+          </label>
+        </li>
+
+        <li class="chart__gender-item">
+          <label for="gender-kids" class="chart__gender-tab tab" role="button" tabindex="0">
+            Kids
+          </label>
+        </li>
+      </ul>
+
+      <!-- Gender table women -->
+      <div class="chart__gender-table-wrapper">
+        <input type="radio" class="chart__gender-input" id="gender-women" name="gender-input" checked>
+
+        <table class="chart__gender-table chart-table">
+          <caption class="chart-table__caption">
+            Footwear
+          </caption>
+
+          <tbody class="chart-table__content">
+
+            <!-- Row1 -->
+            <tr class="chart-table__row">
+              <td class="chart-table__data">
+                Europe
+              </td>
+
+              <td class="chart-table__data">
+                35
+              </td>
+
+              <td class="chart-table__data">
+                36
+              </td>
+
+              <td class="chart-table__data">
+                37
+              </td>
+
+              <td class="chart-table__data">
+                38
+              </td>
+
+              <td class="chart-table__data">
+                39
+              </td>
+
+              <td class="chart-table__data">
+                40
+              </td>
+
+              <td class="chart-table__data">
+                41
+              </td>
+
+              <td class="chart-table__data">
+                42
+              </td>
+            </tr>
+
+            <!-- Row2 -->
+            <tr class="chart-table__row">
+              <td class="chart-table__data">
+                USA
+              </td>
+
+              <td class="chart-table__data">
+                5
+              </td>
+
+              <td class="chart-table__data">
+                6
+              </td>
+
+              <td class="chart-table__data">
+                6.5
+              </td>
+
+              <td class="chart-table__data">
+                7.5
+              </td>
+
+              <td class="chart-table__data">
+                8
+              </td>
+
+              <td class="chart-table__data">
+                9
+              </td>
+
+              <td class="chart-table__data">
+                10
+              </td>
+
+              <td class="chart-table__data">
+                11
+              </td>
+            </tr>
+
+            <!-- Row3 -->
+            <tr class="chart-table__row">
+              <td class="chart-table__data">
+                United Kingdom
+              </td>
+
+              <td class="chart-table__data">
+                2
+              </td>
+
+              <td class="chart-table__data">
+                3
+              </td>
+
+              <td class="chart-table__data">
+                4
+              </td>
+
+              <td class="chart-table__data">
+                5
+              </td>
+
+              <td class="chart-table__data">
+                6
+              </td>
+
+              <td class="chart-table__data">
+                7
+              </td>
+
+              <td class="chart-table__data">
+                8
+              </td>
+
+              <td class="chart-table__data">
+                9
+              </td>
+            </tr>
+
+            <!-- Row4 -->
+            <tr class="chart-table__row">
+              <td class="chart-table__data">
+                China
+              </td>
+
+              <td class="chart-table__data">
+                230/83
+              </td>
+
+              <td class="chart-table__data">
+                235/84
+              </td>
+
+              <td class="chart-table__data">
+                240/85
+              </td>
+
+              <td class="chart-table__data">
+                245/86
+              </td>
+
+              <td class="chart-table__data">
+                255/87
+              </td>
+
+              <td class="chart-table__data">
+                260/88
+              </td>
+
+              <td class="chart-table__data">
+                265/89
+              </td>
+
+              <td class="chart-table__data">
+                275/90
+              </td>
+            </tr>
+
+            <!-- Row5 -->
+            <tr class="chart-table__row">
+              <td class="chart-table__data">
+                Russia
+              </td>
+
+              <td class="chart-table__data">
+                35
+              </td>
+
+              <td class="chart-table__data">
+                36
+              </td>
+
+              <td class="chart-table__data">
+                37
+              </td>
+
+              <td class="chart-table__data">
+                38
+              </td>
+
+              <td class="chart-table__data">
+                39
+              </td>
+
+              <td class="chart-table__data">
+                40
+              </td>
+
+              <td class="chart-table__data">
+                41
+              </td>
+
+              <td class="chart-table__data">
+                42
+              </td>
+            </tr>
+
+            <!-- Row6 -->
+            <tr class="chart-table__row">
+              <td class="chart-table__data">
+                Italy
+              </td>
+
+              <td class="chart-table__data">
+                35
+              </td>
+
+              <td class="chart-table__data">
+                36
+              </td>
+
+              <td class="chart-table__data">
+                37
+              </td>
+
+              <td class="chart-table__data">
+                38
+              </td>
+
+              <td class="chart-table__data">
+                39
+              </td>
+
+              <td class="chart-table__data">
+                40
+              </td>
+
+              <td class="chart-table__data">
+                41
+              </td>
+
+              <td class="chart-table__data">
+                42
+              </td>
+            </tr>
+
+            <!-- Row7 -->
+            <tr class="chart-table__row">
+              <td class="chart-table__data">
+                South Korea
+              </td>
+
+              <td class="chart-table__data">
+                230
+              </td>
+
+              <td class="chart-table__data">
+                235
+              </td>
+
+              <td class="chart-table__data">
+                240
+              </td>
+
+              <td class="chart-table__data">
+                245
+              </td>
+
+              <td class="chart-table__data">
+                255
+              </td>
+
+              <td class="chart-table__data">
+                260
+              </td>
+
+              <td class="chart-table__data">
+                265
+              </td>
+
+              <td class="chart-table__data">
+                275
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <!-- Gender table men -->
+      <div class="chart__gender-table-wrapper">
+        <input type="radio" class="chart__gender-input" id="gender-men" name="gender-input">
+
+        <table class="chart__gender-table chart-table">
+          <caption class="chart-table__caption">
+            Footwear
+          </caption>
+
+          <tbody class="chart-table__content">
+
+            <!-- Row1 -->
+            <tr class="chart-table__row">
+              <td class="chart-table__data">
+                Europe
+              </td>
+
+              <td class="chart-table__data">
+                43
+              </td>
+
+              <td class="chart-table__data">
+                44
+              </td>
+
+              <td class="chart-table__data">
+                45
+              </td>
+
+              <td class="chart-table__data">
+                46
+              </td>
+
+              <td class="chart-table__data">
+                47
+              </td>
+
+              <td class="chart-table__data">
+                48
+              </td>
+
+              <td class="chart-table__data">
+                49
+              </td>
+
+              <td class="chart-table__data">
+                50
+              </td>
+            </tr>
+
+            <!-- Row2 -->
+            <tr class="chart-table__row">
+              <td class="chart-table__data">
+                USA
+              </td>
+
+              <td class="chart-table__data">
+                5
+              </td>
+
+              <td class="chart-table__data">
+                6
+              </td>
+
+              <td class="chart-table__data">
+                6.5
+              </td>
+
+              <td class="chart-table__data">
+                7.5
+              </td>
+
+              <td class="chart-table__data">
+                8
+              </td>
+
+              <td class="chart-table__data">
+                9
+              </td>
+
+              <td class="chart-table__data">
+                10
+              </td>
+
+              <td class="chart-table__data">
+                11
+              </td>
+            </tr>
+
+            <!-- Row3 -->
+            <tr class="chart-table__row">
+              <td class="chart-table__data">
+                United Kingdom
+              </td>
+
+              <td class="chart-table__data">
+                2
+              </td>
+
+              <td class="chart-table__data">
+                3
+              </td>
+
+              <td class="chart-table__data">
+                4
+              </td>
+
+              <td class="chart-table__data">
+                5
+              </td>
+
+              <td class="chart-table__data">
+                6
+              </td>
+
+              <td class="chart-table__data">
+                7
+              </td>
+
+              <td class="chart-table__data">
+                8
+              </td>
+
+              <td class="chart-table__data">
+                9
+              </td>
+            </tr>
+
+            <!-- Row4 -->
+            <tr class="chart-table__row">
+              <td class="chart-table__data">
+                China
+              </td>
+
+              <td class="chart-table__data">
+                230/83
+              </td>
+
+              <td class="chart-table__data">
+                235/84
+              </td>
+
+              <td class="chart-table__data">
+                240/85
+              </td>
+
+              <td class="chart-table__data">
+                245/86
+              </td>
+
+              <td class="chart-table__data">
+                255/87
+              </td>
+
+              <td class="chart-table__data">
+                260/88
+              </td>
+
+              <td class="chart-table__data">
+                265/89
+              </td>
+
+              <td class="chart-table__data">
+                275/90
+              </td>
+            </tr>
+
+            <!-- Row5 -->
+            <tr class="chart-table__row">
+              <td class="chart-table__data">
+                Russia
+              </td>
+
+              <td class="chart-table__data">
+                35
+              </td>
+
+              <td class="chart-table__data">
+                36
+              </td>
+
+              <td class="chart-table__data">
+                37
+              </td>
+
+              <td class="chart-table__data">
+                38
+              </td>
+
+              <td class="chart-table__data">
+                39
+              </td>
+
+              <td class="chart-table__data">
+                40
+              </td>
+
+              <td class="chart-table__data">
+                41
+              </td>
+
+              <td class="chart-table__data">
+                42
+              </td>
+            </tr>
+
+            <!-- Row6 -->
+            <tr class="chart-table__row">
+              <td class="chart-table__data">
+                Italy
+              </td>
+
+              <td class="chart-table__data">
+                35
+              </td>
+
+              <td class="chart-table__data">
+                36
+              </td>
+
+              <td class="chart-table__data">
+                37
+              </td>
+
+              <td class="chart-table__data">
+                38
+              </td>
+
+              <td class="chart-table__data">
+                39
+              </td>
+
+              <td class="chart-table__data">
+                40
+              </td>
+
+              <td class="chart-table__data">
+                41
+              </td>
+
+              <td class="chart-table__data">
+                42
+              </td>
+            </tr>
+
+            <!-- Row7 -->
+            <tr class="chart-table__row">
+              <td class="chart-table__data">
+                South Korea
+              </td>
+
+              <td class="chart-table__data">
+                230
+              </td>
+
+              <td class="chart-table__data">
+                235
+              </td>
+
+              <td class="chart-table__data">
+                240
+              </td>
+
+              <td class="chart-table__data">
+                245
+              </td>
+
+              <td class="chart-table__data">
+                255
+              </td>
+
+              <td class="chart-table__data">
+                260
+              </td>
+
+              <td class="chart-table__data">
+                265
+              </td>
+
+              <td class="chart-table__data">
+                275
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <!-- Gender table kids -->
+      <div class="chart__gender-table-wrapper">
+        <input type="radio" class="chart__gender-input" id="gender-kids" name="gender-input">
+
+        <table class="chart__gender-table chart-table">
+          <caption class="chart-table__caption">
+            Footwear
+          </caption>
+
+          <tbody class="chart-table__content">
+
+            <!-- Row1 -->
+            <tr class="chart-table__row">
+              <td class="chart-table__data">
+                Europe
+              </td>
+
+              <td class="chart-table__data">
+                5
+              </td>
+
+              <td class="chart-table__data">
+                11
+              </td>
+
+              <td class="chart-table__data">
+                12
+              </td>
+
+              <td class="chart-table__data">
+                13
+              </td>
+
+              <td class="chart-table__data">
+                14
+              </td>
+
+              <td class="chart-table__data">
+                15
+              </td>
+
+              <td class="chart-table__data">
+                16
+              </td>
+
+              <td class="chart-table__data">
+                17
+              </td>
+            </tr>
+
+            <!-- Row2 -->
+            <tr class="chart-table__row">
+              <td class="chart-table__data">
+                USA
+              </td>
+
+              <td class="chart-table__data">
+                5
+              </td>
+
+              <td class="chart-table__data">
+                6
+              </td>
+
+              <td class="chart-table__data">
+                6.5
+              </td>
+
+              <td class="chart-table__data">
+                7.5
+              </td>
+
+              <td class="chart-table__data">
+                8
+              </td>
+
+              <td class="chart-table__data">
+                9
+              </td>
+
+              <td class="chart-table__data">
+                10
+              </td>
+
+              <td class="chart-table__data">
+                11
+              </td>
+            </tr>
+
+            <!-- Row3 -->
+            <tr class="chart-table__row">
+              <td class="chart-table__data">
+                United Kingdom
+              </td>
+
+              <td class="chart-table__data">
+                2
+              </td>
+
+              <td class="chart-table__data">
+                3
+              </td>
+
+              <td class="chart-table__data">
+                4
+              </td>
+
+              <td class="chart-table__data">
+                5
+              </td>
+
+              <td class="chart-table__data">
+                6
+              </td>
+
+              <td class="chart-table__data">
+                7
+              </td>
+
+              <td class="chart-table__data">
+                8
+              </td>
+
+              <td class="chart-table__data">
+                9
+              </td>
+            </tr>
+
+            <!-- Row4 -->
+            <tr class="chart-table__row">
+              <td class="chart-table__data">
+                China
+              </td>
+
+              <td class="chart-table__data">
+                230/83
+              </td>
+
+              <td class="chart-table__data">
+                235/84
+              </td>
+
+              <td class="chart-table__data">
+                240/85
+              </td>
+
+              <td class="chart-table__data">
+                245/86
+              </td>
+
+              <td class="chart-table__data">
+                255/87
+              </td>
+
+              <td class="chart-table__data">
+                260/88
+              </td>
+
+              <td class="chart-table__data">
+                265/89
+              </td>
+
+              <td class="chart-table__data">
+                275/90
+              </td>
+            </tr>
+
+            <!-- Row5 -->
+            <tr class="chart-table__row">
+              <td class="chart-table__data">
+                Russia
+              </td>
+
+              <td class="chart-table__data">
+                35
+              </td>
+
+              <td class="chart-table__data">
+                36
+              </td>
+
+              <td class="chart-table__data">
+                37
+              </td>
+
+              <td class="chart-table__data">
+                38
+              </td>
+
+              <td class="chart-table__data">
+                39
+              </td>
+
+              <td class="chart-table__data">
+                40
+              </td>
+
+              <td class="chart-table__data">
+                41
+              </td>
+
+              <td class="chart-table__data">
+                42
+              </td>
+            </tr>
+
+            <!-- Row6 -->
+            <tr class="chart-table__row">
+              <td class="chart-table__data">
+                Italy
+              </td>
+
+              <td class="chart-table__data">
+                35
+              </td>
+
+              <td class="chart-table__data">
+                36
+              </td>
+
+              <td class="chart-table__data">
+                37
+              </td>
+
+              <td class="chart-table__data">
+                38
+              </td>
+
+              <td class="chart-table__data">
+                39
+              </td>
+
+              <td class="chart-table__data">
+                40
+              </td>
+
+              <td class="chart-table__data">
+                41
+              </td>
+
+              <td class="chart-table__data">
+                42
+              </td>
+            </tr>
+
+            <!-- Row7 -->
+            <tr class="chart-table__row">
+              <td class="chart-table__data">
+                South Korea
+              </td>
+
+              <td class="chart-table__data">
+                230
+              </td>
+
+              <td class="chart-table__data">
+                235
+              </td>
+
+              <td class="chart-table__data">
+                240
+              </td>
+
+              <td class="chart-table__data">
+                245
+              </td>
+
+              <td class="chart-table__data">
+                255
+              </td>
+
+              <td class="chart-table__data">
+                260
+              </td>
+
+              <td class="chart-table__data">
+                265
+              </td>
+
+              <td class="chart-table__data">
+                275
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <!-- Units -->
+      <div class="chart__units">
+
+        <!-- Units top -->
+        <div class="chart__units-top">
+
+          <!-- Units title -->
+          <h6 class="chart__units-title">
+            I want to see size equivalence in:
+          </h6>
+
+          <!-- Units tabs -->
+          <ul class="chart__units-tabs product-card__tabs">
+            <li class="chart__units-item">
+              <label for="units-cm" class="chart__units-tab tab tab--active" role="button" tabindex="0">
+                cm
+              </label>
             </li>
 
-            <li class="chart__gender-tab">
-              <button class="chart__gender-btn btn btn--mid btn--outline">
-                Men
-              </button>
-            </li>
-
-            <li class="chart__gender-tab">
-              <button class="chart__gender-btn btn btn--mid btn--outline">
-                Kids
-              </button>
+            <li class="chart__units-item">
+              <label for="units-inches" class="chart__units-tab tab" role="button" tabindex="0">
+                inches
+              </label>
             </li>
           </ul>
+        </div>
 
-          <!-- Gender table1 -->
-          <table class="chart__gender-table">
-            <caption class="chart__gender-caption">
-              Footwear
-            </caption>
+        <!-- Units table cm -->
+        <div class="chart__units-table-wrapper">
+          <input type="radio" class="chart__units-input" id="units-cm" name="chart-units" checked>
 
-            <tbody class="chart__gender-content">
-
-              <!-- Row1 -->
-              <tr class="chart__gender-row">
-                <td class="chart__gender-data">
-                  Europe
-                </td>
-
-                <td class="chart__gender-data">
-                  35
-                </td>
-
-                <td class="chart__gender-data">
-                  36
-                </td>
-
-                <td class="chart__gender-data">
-                  37
-                </td>
-
-                <td class="chart__gender-data">
-                  38
-                </td>
-
-                <td class="chart__gender-data">
-                  39
-                </td>
-
-                <td class="chart__gender-data">
-                  40
-                </td>
-
-                <td class="chart__gender-data">
-                  41
-                </td>
-
-                <td class="chart__gender-data">
-                  42
-                </td>
-              </tr>
-
-              <!-- Row2 -->
-              <tr class="chart__gender-row">
-                <td class="chart__gender-data">
-                  USA
-                </td>
-
-                <td class="chart__gender-data">
-                  5
-                </td>
-
-                <td class="chart__gender-data">
-                  6
-                </td>
-
-                <td class="chart__gender-data">
-                  6.5
-                </td>
-
-                <td class="chart__gender-data">
-                  7.5
-                </td>
-
-                <td class="chart__gender-data">
-                  8
-                </td>
-
-                <td class="chart__gender-data">
-                  9
-                </td>
-
-                <td class="chart__gender-data">
-                  10
-                </td>
-
-                <td class="chart__gender-data">
-                  11
-                </td>
-              </tr>
-
-              <!-- Row3 -->
-              <tr class="chart__gender-row">
-                <td class="chart__gender-data">
-                  United Kingdom
-                </td>
-
-                <td class="chart__gender-data">
-                  2
-                </td>
-
-                <td class="chart__gender-data">
-                  3
-                </td>
-
-                <td class="chart__gender-data">
-                  4
-                </td>
-
-                <td class="chart__gender-data">
-                  5
-                </td>
-
-                <td class="chart__gender-data">
-                  6
-                </td>
-
-                <td class="chart__gender-data">
-                  7
-                </td>
-
-                <td class="chart__gender-data">
-                  8
-                </td>
-
-                <td class="chart__gender-data">
-                  9
-                </td>
-              </tr>
-
-              <!-- Row4 -->
-              <tr class="chart__gender-row">
-                <td class="chart__gender-data">
-                  China
-                </td>
-
-                <td class="chart__gender-data">
-                  230/83
-                </td>
-
-                <td class="chart__gender-data">
-                  235/84
-                </td>
-
-                <td class="chart__gender-data">
-                  240/85
-                </td>
-
-                <td class="chart__gender-data">
-                  245/86
-                </td>
-
-                <td class="chart__gender-data">
-                  255/87
-                </td>
-
-                <td class="chart__gender-data">
-                  260/88
-                </td>
-
-                <td class="chart__gender-data">
-                  265/89
-                </td>
-
-                <td class="chart__gender-data">
-                  275/90
-                </td>
-              </tr>
-
-              <!-- Row5 -->
-              <tr class="chart__gender-row">
-                <td class="chart__gender-data">
-                  Russia
-                </td>
-
-                <td class="chart__gender-data">
-                  35
-                </td>
-
-                <td class="chart__gender-data">
-                  36
-                </td>
-
-                <td class="chart__gender-data">
-                  37
-                </td>
-
-                <td class="chart__gender-data">
-                  38
-                </td>
-
-                <td class="chart__gender-data">
-                  39
-                </td>
-
-                <td class="chart__gender-data">
-                  40
-                </td>
-
-                <td class="chart__gender-data">
-                  41
-                </td>
-
-                <td class="chart__gender-data">
-                  42
-                </td>
-              </tr>
-
-              <!-- Row6 -->
-              <tr class="chart__gender-row">
-                <td class="chart__gender-data">
-                  Italy
-                </td>
-
-                <td class="chart__gender-data">
-                  35
-                </td>
-
-                <td class="chart__gender-data">
-                  36
-                </td>
-
-                <td class="chart__gender-data">
-                  37
-                </td>
-
-                <td class="chart__gender-data">
-                  38
-                </td>
-
-                <td class="chart__gender-data">
-                  39
-                </td>
-
-                <td class="chart__gender-data">
-                  40
-                </td>
-
-                <td class="chart__gender-data">
-                  41
-                </td>
-
-                <td class="chart__gender-data">
-                  42
-                </td>
-              </tr>
-
-              <!-- Row7 -->
-              <tr class="chart__gender-row">
-                <td class="chart__gender-data">
-                  South Korea
-                </td>
-
-                <td class="chart__gender-data">
-                  230
-                </td>
-
-                <td class="chart__gender-data">
-                  235
-                </td>
-
-                <td class="chart__gender-data">
-                  240
-                </td>
-
-                <td class="chart__gender-data">
-                  245
-                </td>
-
-                <td class="chart__gender-data">
-                  255
-                </td>
-
-                <td class="chart__gender-data">
-                  260
-                </td>
-
-                <td class="chart__gender-data">
-                  265
-                </td>
-
-                <td class="chart__gender-data">
-                  275
-                </td>
-              </tr>
-            </tbody>
-          </table>
-
-          <!-- Gender table2 -->
-          <table class="chart__gender-table">
-            <caption class="chart__gender-caption">
-              Footwear
-            </caption>
-
-            <tbody class="chart__gender-content">
-
-              <!-- Row1 -->
-              <tr class="chart__gender-row">
-                <td class="chart__gender-data">
-                  Europe
-                </td>
-
-                <td class="chart__gender-data">
-                  35
-                </td>
-
-                <td class="chart__gender-data">
-                  36
-                </td>
-
-                <td class="chart__gender-data">
-                  37
-                </td>
-
-                <td class="chart__gender-data">
-                  38
-                </td>
-
-                <td class="chart__gender-data">
-                  39
-                </td>
-
-                <td class="chart__gender-data">
-                  40
-                </td>
-
-                <td class="chart__gender-data">
-                  41
-                </td>
-
-                <td class="chart__gender-data">
-                  42
-                </td>
-              </tr>
-
-              <!-- Row2 -->
-              <tr class="chart__gender-row">
-                <td class="chart__gender-data">
-                  USA
-                </td>
-
-                <td class="chart__gender-data">
-                  5
-                </td>
-
-                <td class="chart__gender-data">
-                  6
-                </td>
-
-                <td class="chart__gender-data">
-                  6.5
-                </td>
-
-                <td class="chart__gender-data">
-                  7.5
-                </td>
-
-                <td class="chart__gender-data">
-                  8
-                </td>
-
-                <td class="chart__gender-data">
-                  9
-                </td>
-
-                <td class="chart__gender-data">
-                  10
-                </td>
-
-                <td class="chart__gender-data">
-                  11
-                </td>
-              </tr>
-
-              <!-- Row3 -->
-              <tr class="chart__gender-row">
-                <td class="chart__gender-data">
-                  United Kingdom
-                </td>
-
-                <td class="chart__gender-data">
-                  2
-                </td>
-
-                <td class="chart__gender-data">
-                  3
-                </td>
-
-                <td class="chart__gender-data">
-                  4
-                </td>
-
-                <td class="chart__gender-data">
-                  5
-                </td>
-
-                <td class="chart__gender-data">
-                  6
-                </td>
-
-                <td class="chart__gender-data">
-                  7
-                </td>
-
-                <td class="chart__gender-data">
-                  8
-                </td>
-
-                <td class="chart__gender-data">
-                  9
-                </td>
-              </tr>
-
-              <!-- Row4 -->
-              <tr class="chart__gender-row">
-                <td class="chart__gender-data">
-                  China
-                </td>
-
-                <td class="chart__gender-data">
-                  230/83
-                </td>
-
-                <td class="chart__gender-data">
-                  235/84
-                </td>
-
-                <td class="chart__gender-data">
-                  240/85
-                </td>
-
-                <td class="chart__gender-data">
-                  245/86
-                </td>
-
-                <td class="chart__gender-data">
-                  255/87
-                </td>
-
-                <td class="chart__gender-data">
-                  260/88
-                </td>
-
-                <td class="chart__gender-data">
-                  265/89
-                </td>
-
-                <td class="chart__gender-data">
-                  275/90
-                </td>
-              </tr>
-
-              <!-- Row5 -->
-              <tr class="chart__gender-row">
-                <td class="chart__gender-data">
-                  Russia
-                </td>
-
-                <td class="chart__gender-data">
-                  35
-                </td>
-
-                <td class="chart__gender-data">
-                  36
-                </td>
-
-                <td class="chart__gender-data">
-                  37
-                </td>
-
-                <td class="chart__gender-data">
-                  38
-                </td>
-
-                <td class="chart__gender-data">
-                  39
-                </td>
-
-                <td class="chart__gender-data">
-                  40
-                </td>
-
-                <td class="chart__gender-data">
-                  41
-                </td>
-
-                <td class="chart__gender-data">
-                  42
-                </td>
-              </tr>
-
-              <!-- Row6 -->
-              <tr class="chart__gender-row">
-                <td class="chart__gender-data">
-                  Italy
-                </td>
-
-                <td class="chart__gender-data">
-                  35
-                </td>
-
-                <td class="chart__gender-data">
-                  36
-                </td>
-
-                <td class="chart__gender-data">
-                  37
-                </td>
-
-                <td class="chart__gender-data">
-                  38
-                </td>
-
-                <td class="chart__gender-data">
-                  39
-                </td>
-
-                <td class="chart__gender-data">
-                  40
-                </td>
-
-                <td class="chart__gender-data">
-                  41
-                </td>
-
-                <td class="chart__gender-data">
-                  42
-                </td>
-              </tr>
-
-              <!-- Row7 -->
-              <tr class="chart__gender-row">
-                <td class="chart__gender-data">
-                  South Korea
-                </td>
-
-                <td class="chart__gender-data">
-                  230
-                </td>
-
-                <td class="chart__gender-data">
-                  235
-                </td>
-
-                <td class="chart__gender-data">
-                  240
-                </td>
-
-                <td class="chart__gender-data">
-                  245
-                </td>
-
-                <td class="chart__gender-data">
-                  255
-                </td>
-
-                <td class="chart__gender-data">
-                  260
-                </td>
-
-                <td class="chart__gender-data">
-                  265
-                </td>
-
-                <td class="chart__gender-data">
-                  275
-                </td>
-              </tr>
-            </tbody>
-          </table>
-
-          <!-- Gender table3 -->
-          <table class="chart__gender-table">
-            <caption class="chart__gender-caption">
-              Footwear
-            </caption>
-
-            <tbody class="chart__gender-content">
-
-              <!-- Row1 -->
-              <tr class="chart__gender-row">
-                <td class="chart__gender-data">
-                  Europe
-                </td>
-
-                <td class="chart__gender-data">
-                  35
-                </td>
-
-                <td class="chart__gender-data">
-                  36
-                </td>
-
-                <td class="chart__gender-data">
-                  37
-                </td>
-
-                <td class="chart__gender-data">
-                  38
-                </td>
-
-                <td class="chart__gender-data">
-                  39
-                </td>
-
-                <td class="chart__gender-data">
-                  40
-                </td>
-
-                <td class="chart__gender-data">
-                  41
-                </td>
-
-                <td class="chart__gender-data">
-                  42
-                </td>
-              </tr>
-
-              <!-- Row2 -->
-              <tr class="chart__gender-row">
-                <td class="chart__gender-data">
-                  USA
-                </td>
-
-                <td class="chart__gender-data">
-                  5
-                </td>
-
-                <td class="chart__gender-data">
-                  6
-                </td>
-
-                <td class="chart__gender-data">
-                  6.5
-                </td>
-
-                <td class="chart__gender-data">
-                  7.5
-                </td>
-
-                <td class="chart__gender-data">
-                  8
-                </td>
-
-                <td class="chart__gender-data">
-                  9
-                </td>
-
-                <td class="chart__gender-data">
-                  10
-                </td>
-
-                <td class="chart__gender-data">
-                  11
-                </td>
-              </tr>
-
-              <!-- Row3 -->
-              <tr class="chart__gender-row">
-                <td class="chart__gender-data">
-                  United Kingdom
-                </td>
-
-                <td class="chart__gender-data">
-                  2
-                </td>
-
-                <td class="chart__gender-data">
-                  3
-                </td>
-
-                <td class="chart__gender-data">
-                  4
-                </td>
-
-                <td class="chart__gender-data">
-                  5
-                </td>
-
-                <td class="chart__gender-data">
-                  6
-                </td>
-
-                <td class="chart__gender-data">
-                  7
-                </td>
-
-                <td class="chart__gender-data">
-                  8
-                </td>
-
-                <td class="chart__gender-data">
-                  9
-                </td>
-              </tr>
-
-              <!-- Row4 -->
-              <tr class="chart__gender-row">
-                <td class="chart__gender-data">
-                  China
-                </td>
-
-                <td class="chart__gender-data">
-                  230/83
-                </td>
-
-                <td class="chart__gender-data">
-                  235/84
-                </td>
-
-                <td class="chart__gender-data">
-                  240/85
-                </td>
-
-                <td class="chart__gender-data">
-                  245/86
-                </td>
-
-                <td class="chart__gender-data">
-                  255/87
-                </td>
-
-                <td class="chart__gender-data">
-                  260/88
-                </td>
-
-                <td class="chart__gender-data">
-                  265/89
-                </td>
-
-                <td class="chart__gender-data">
-                  275/90
-                </td>
-              </tr>
-
-              <!-- Row5 -->
-              <tr class="chart__gender-row">
-                <td class="chart__gender-data">
-                  Russia
-                </td>
-
-                <td class="chart__gender-data">
-                  35
-                </td>
-
-                <td class="chart__gender-data">
-                  36
-                </td>
-
-                <td class="chart__gender-data">
-                  37
-                </td>
-
-                <td class="chart__gender-data">
-                  38
-                </td>
-
-                <td class="chart__gender-data">
-                  39
-                </td>
-
-                <td class="chart__gender-data">
-                  40
-                </td>
-
-                <td class="chart__gender-data">
-                  41
-                </td>
-
-                <td class="chart__gender-data">
-                  42
-                </td>
-              </tr>
-
-              <!-- Row6 -->
-              <tr class="chart__gender-row">
-                <td class="chart__gender-data">
-                  Italy
-                </td>
-
-                <td class="chart__gender-data">
-                  35
-                </td>
-
-                <td class="chart__gender-data">
-                  36
-                </td>
-
-                <td class="chart__gender-data">
-                  37
-                </td>
-
-                <td class="chart__gender-data">
-                  38
-                </td>
-
-                <td class="chart__gender-data">
-                  39
-                </td>
-
-                <td class="chart__gender-data">
-                  40
-                </td>
-
-                <td class="chart__gender-data">
-                  41
-                </td>
-
-                <td class="chart__gender-data">
-                  42
-                </td>
-              </tr>
-
-              <!-- Row7 -->
-              <tr class="chart__gender-row">
-                <td class="chart__gender-data">
-                  South Korea
-                </td>
-
-                <td class="chart__gender-data">
-                  230
-                </td>
-
-                <td class="chart__gender-data">
-                  235
-                </td>
-
-                <td class="chart__gender-data">
-                  240
-                </td>
-
-                <td class="chart__gender-data">
-                  245
-                </td>
-
-                <td class="chart__gender-data">
-                  255
-                </td>
-
-                <td class="chart__gender-data">
-                  260
-                </td>
-
-                <td class="chart__gender-data">
-                  265
-                </td>
-
-                <td class="chart__gender-data">
-                  275
-                </td>
-              </tr>
-            </tbody>
-          </table>
-
-          <!-- Units -->
-          <div class="chart__units">
-            <h6 class="chart__units-title">
-              I want to see size equivalence in:
-            </h6>
-
-            <!-- Units tabs -->
-            <ul class="chart__units-tabs">
-              <li class="chart__units-tab">
-                <button class="chart__units-btn btn btn--mid btn--outline">
-                  cm
-                </button>
-              </li>
-
-              <li class="chart__units-tab">
-                <button class="chart__units-btn btn btn--mid btn--outline">
-                  inches
-                </button>
-              </li>
-            </ul>
-          </div>
-
-          <!-- Units table cm -->
-          <table class="chart__units-table">
-            <caption class="chart__units-caption">
+          <table class="chart__units-table chart-table chart-table--mb0">
+            <caption class="chart-table__caption">
               Equivalence in centimetres
             </caption>
 
-            <tbody class="chart__units-content">
-              <tr class="chart__units-row">
-                <td class="chart__units-ceil">
+            <tbody class="chart-table__content">
+              <tr class="chart-table__row">
+                <td class="chart-table__data">
                   Foot length
                 </td>
 
-                <td class="chart__units-ceil">
+                <td class="chart-table__data">
                   22.4cm
                 </td>
 
-                <td class="chart__units-ceil">
+                <td class="chart-table__data">
                   23cm
                 </td>
 
-                <td class="chart__units-ceil">
+                <td class="chart-table__data">
                   23.6cm
                 </td>
 
-                <td class="chart__units-ceil">
+                <td class="chart-table__data">
                   24.3cm
                 </td>
 
-                <td class="chart__units-ceil">
+                <td class="chart-table__data">
                   24.9cm
                 </td>
 
-                <td class="chart__units-ceil">
+                <td class="chart-table__data">
                   25.5cm
                 </td>
 
-                <td class="chart__units-ceil">
+                <td class="chart-table__data">
                   26.2cm
                 </td>
 
-                <td class="chart__units-ceil">
+                <td class="chart-table__data">
                   26.8cm
                 </td>
               </tr>
             </tbody>
           </table>
+        </div>
 
-          <!-- Units table inches -->
-          <table class="chart__units-table">
-            <caption class="chart__units-caption">
+        <!-- Units table inches -->
+        <div class="chart__units-table-wrapper">
+          <input type="radio" class="chart__units-input" id="units-inches" name="chart-units">
+
+          <table class="chart__units-table chart-table chart-table--mb0">
+            <caption class="chart-table__caption">
               Equivalence in inches
             </caption>
 
-            <tbody class="chart__units-content">
-              <tr class="chart__units-row">
-                <td class="chart__units-ceil">
+            <tbody class="chart-table__content">
+              <tr class="chart-table__row">
+                <td class="chart-table__data">
                   Foot length
                 </td>
 
-                <td class="chart__units-ceil">
+                <td class="chart-table__data">
                   81/8"
                 </td>
 
-                <td class="chart__units-ceil">
+                <td class="chart-table__data">
                   83/8"
                 </td>
 
-                <td class="chart__units-ceil">
+                <td class="chart-table__data">
                   81/2"
                 </td>
 
-                <td class="chart__units-ceil">
+                <td class="chart-table__data">
                   85/8"
                 </td>
 
-                <td class="chart__units-ceil">
+                <td class="chart-table__data">
                   87/8"
                 </td>
 
-                <td class="chart__units-ceil">
+                <td class="chart-table__data">
                   9"
                 </td>
 
-                <td class="chart__units-ceil">
+                <td class="chart-table__data">
                   91/8"
                 </td>
 
-                <td class="chart__units-ceil">
+                <td class="chart-table__data">
                   93/8"
                 </td>
               </tr>
             </tbody>
           </table>
+        </div>
+      </div>
+
+      <!-- Chart close -->
+      <button class="chart__close" aria-label="Close size chart.">
+        <svg xmlns='http://www.w3.org/2000/svg' aria-hidden='true'>
+          <use href='./img/sprite.svg#cross' aria-hidden='true'></use>
+        </svg>
+      </button>
+    </div>
+  </div>
+</section>
+  <section class="complete-look">
+  <div class="complete-look__container container">
+
+    <!-- Title -->
+    <h1 class="complete-look__title section-title">
+      Complete your look
+    </h1>
+
+    <!-- Content -->
+    <div class="complete-look__content">
+
+      <!-- Image -->
+      <div class="complete-look__image-wrapper">
+        <img src="./img/complete-look-1.jpg" alt="Image for section 'Complete look'." class="complete-look__image">
+      </div>
+
+      <!-- Slider -->
+      <div class="complete-look__slider-wrapper">
+        <div class="complete-look__slider" id="complete-look-slider">
+          <div class="complete-look__wrapper swiper-wrapper">
+
+            <!-- Slide1 -->
+            <div class="complete-look__slide swiper-slide">
+              <article class="complete-look__product product swiper-slide" data-vendor="1832600989">
+                <div class="product__look">
+                  <div class="product__image-wrapper microslider">
+                    <img src="./img/product-sandals-1.jpg" alt="Product image."
+                      class="product__image microslider__image product__image--main" id="microslider-image">
+
+                    <ul class="microslider__srcs" aria-hidden="true">
+                      <li class="microslider__src" data-src="./img/product-bag.jpg"></li>
+                      <li class="microslider__src" data-src="./img/product-bag-2.jpg"></li>
+                      <li class="microslider__src" data-src="./img/product-bag-3.jpg"></li>
+                    </ul>
+
+                    <div class="microslider__btns">
+                      <button class="microslider__button microslider__button--left"
+                        aria-label="Previous image of the product.">
+                        <svg xmlns='http://www.w3.org/2000/svg' aria-hidden="true">
+                          <use href='./img/sprite.svg#angle-down'></use>
+                        </svg>
+                      </button>
+
+                      <button class="microslider__button microslider__button--right"
+                        aria-label="Next image of the product.">
+                        <svg xmlns='http://www.w3.org/2000/svg' aria-hidden="true">
+                          <use href='./img/sprite.svg#angle-down'></use>
+                        </svg>
+                      </button>
+                    </div>
+
+                    <a href="#" class="product__image-link"></a>
+                  </div>
+
+                  <div class="product__rating product__rating--visible">
+                    <svg class="product__rating-icon product__rating-icon--active" xmlns='http://www.w3.org/2000/svg'
+                      aria-label="Star for rating one.">
+                      <use href='./img/sprite.svg#star2'></use>
+                    </svg>
+
+                    <svg class="product__rating-icon product__rating-icon--active" xmlns='http://www.w3.org/2000/svg'
+                      aria-label="Star for rating two.">
+                      <use href='./img/sprite.svg#star2'></use>
+                    </svg>
+
+                    <svg class="product__rating-icon product__rating-icon--active" xmlns='http://www.w3.org/2000/svg'
+                      aria-label="Star for rating three.">
+                      <use href='./img/sprite.svg#star2'></use>
+                    </svg>
+
+                    <svg class="product__rating-icon product__rating-icon--active" xmlns='http://www.w3.org/2000/svg'
+                      aria-label="Star for rating four.">
+                      <use href='./img/sprite.svg#star2'></use>
+                    </svg>
+
+                    <svg class="product__rating-icon product__rating-icon--active" xmlns='http://www.w3.org/2000/svg'
+                      aria-label="Star for rating five.">
+                      <use href='./img/sprite.svg#star2'></use>
+                    </svg>
+                  </div>
+
+                  <button class="product__favorite" aria-label="Add to favorite.">
+                    <svg xmlns='http://www.w3.org/2000/svg' aria-hidden="true">
+                      <use href='./img/sprite.svg#heart-full'></use>
+                    </svg>
+                  </button>
+                </div>
+
+                <div class="product__info product__info--white">
+                  <a href="#" class="product__name">
+                    Leather sandals
+                  </a>
+
+                  <div class="product__prices">
+                    <span class="product__price product__price--h4 complete-look__price">
+                      $48.00
+                    </span>
+                  </div>
+
+                  <div class="product__bottom">
+                    <div class="product__details">
+                      <ul class="product__sizes sizes">
+                        <li class="sizes__item">
+                          <button class="sizes__button">
+                            36
+                          </button>
+                        </li>
+
+                        <li class="sizes__item">
+                          <button class="sizes__button sizes__button--active">
+                            37
+                          </button>
+                        </li>
+
+                        <li class="sizes__item">
+                          <button class="sizes__button">
+                            42
+                          </button>
+                        </li>
+
+                        <li class="sizes__item">
+                          <button class="sizes__button">
+                            43
+                          </button>
+                        </li>
+
+                        <li class="sizes__item">
+                          <button class="sizes__button">
+                            44
+                          </button>
+                        </li>
+
+                        <li class="sizes__item">
+                          <button class="sizes__button">
+                            45
+                          </button>
+                        </li>
+
+                        <li class="sizes__item">
+                          <button class="sizes__button">
+                            46
+                          </button>
+                        </li>
+
+                        <li class="sizes__item">
+                          <button class="sizes__button">
+                            47
+                          </button>
+                        </li>
+
+
+                        <li class="sizes__item">
+                          <button class="sizes__button">
+                            48
+                          </button>
+                        </li>
+                      </ul>
+
+                      <ul class="product__colors colors">
+                        <li class="colors__item">
+                          <button class="colors__button colors__button--active" data-color="Black"
+                            aria-label="Choose black color."></button>
+                        </li>
+
+                        <li class="colors__item">
+                          <button class="colors__button" data-color="Brown" aria-label="Choose brown color."></button>
+                        </li>
+
+                        <li class="colors__item">
+                          <button class="colors__button" data-color="Blue-gray"
+                            aria-label="Choose blue-gray color."></button>
+                        </li>
+                      </ul>
+                    </div>
+
+                    <div class="product__button-wrapper">
+                      <button class="product__button-cart btn btn--mid">
+                        <svg xmlns='http://www.w3.org/2000/svg'>
+                          <use href='./img/sprite.svg#cart'></use>
+                        </svg>
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              </article>
+            </div>
+
+            <!-- Slide2 -->
+            <div class="complete-look__slide swiper-slide">
+              <article class="complete-look__product product swiper-slide" data-vendor="1832600115">
+                <div class="product__look">
+                  <div class="product__image-wrapper microslider">
+                    <img src="./img/product-watch.jpg" alt="Product image."
+                      class="product__image microslider__image product__image--main" id="microslider-image">
+
+                    <ul class="microslider__srcs" aria-hidden="true">
+                      <li class="microslider__src" data-src="./img/product-bag.jpg"></li>
+                      <li class="microslider__src" data-src="./img/product-bag-2.jpg"></li>
+                      <li class="microslider__src" data-src="./img/product-bag-3.jpg"></li>
+                    </ul>
+
+                    <div class="microslider__btns">
+                      <button class="microslider__button microslider__button--left"
+                        aria-label="Previous image of the product.">
+                        <svg xmlns='http://www.w3.org/2000/svg' aria-hidden="true">
+                          <use href='./img/sprite.svg#angle-down'></use>
+                        </svg>
+                      </button>
+
+                      <button class="microslider__button microslider__button--right"
+                        aria-label="Next image of the product.">
+                        <svg xmlns='http://www.w3.org/2000/svg' aria-hidden="true">
+                          <use href='./img/sprite.svg#angle-down'></use>
+                        </svg>
+                      </button>
+                    </div>
+
+                    <a href="#" class="product__image-link"></a>
+                  </div>
+
+                  <div class="product__rating product__rating--visible">
+                    <svg class="product__rating-icon product__rating-icon--active" xmlns='http://www.w3.org/2000/svg'
+                      aria-label="Star for rating one.">
+                      <use href='./img/sprite.svg#star2'></use>
+                    </svg>
+
+                    <svg class="product__rating-icon product__rating-icon--active" xmlns='http://www.w3.org/2000/svg'
+                      aria-label="Star for rating two.">
+                      <use href='./img/sprite.svg#star2'></use>
+                    </svg>
+
+                    <svg class="product__rating-icon product__rating-icon--active" xmlns='http://www.w3.org/2000/svg'
+                      aria-label="Star for rating three.">
+                      <use href='./img/sprite.svg#star2'></use>
+                    </svg>
+
+                    <svg class="product__rating-icon product__rating-icon--active" xmlns='http://www.w3.org/2000/svg'
+                      aria-label="Star for rating four.">
+                      <use href='./img/sprite.svg#star2'></use>
+                    </svg>
+
+                    <svg class="product__rating-icon" xmlns='http://www.w3.org/2000/svg'
+                      aria-label="Star for rating five.">
+                      <use href='./img/sprite.svg#star2'></use>
+                    </svg>
+                  </div>
+
+                  <button class="product__favorite" aria-label="Add to favorite.">
+                    <svg xmlns='http://www.w3.org/2000/svg' aria-hidden="true">
+                      <use href='./img/sprite.svg#heart-full'></use>
+                    </svg>
+                  </button>
+                </div>
+
+                <div class="product__info product__info--white">
+                  <a href="#" class="product__name">
+                    Chrono watch with blue things aside
+                  </a>
+
+                  <div class="product__prices">
+                    <span class="product__price product__price--h4 complete-look__price">
+                      $120.60
+                    </span>
+                  </div>
+
+                  <div class="product__bottom">
+                    <div class="product__details">
+                      <ul class="product__sizes sizes">
+                        <li class="sizes__item">
+                          <button class="sizes__button">
+                            36
+                          </button>
+                        </li>
+
+                        <li class="sizes__item">
+                          <button class="sizes__button sizes__button--active">
+                            37
+                          </button>
+                        </li>
+
+                        <li class="sizes__item">
+                          <button class="sizes__button">
+                            42
+                          </button>
+                        </li>
+
+                        <li class="sizes__item">
+                          <button class="sizes__button">
+                            43
+                          </button>
+                        </li>
+
+                        <li class="sizes__item">
+                          <button class="sizes__button">
+                            44
+                          </button>
+                        </li>
+
+                        <li class="sizes__item">
+                          <button class="sizes__button">
+                            45
+                          </button>
+                        </li>
+
+                        <li class="sizes__item">
+                          <button class="sizes__button">
+                            46
+                          </button>
+                        </li>
+
+                        <li class="sizes__item">
+                          <button class="sizes__button">
+                            47
+                          </button>
+                        </li>
+
+
+                        <li class="sizes__item">
+                          <button class="sizes__button">
+                            48
+                          </button>
+                        </li>
+                      </ul>
+
+                      <ul class="product__colors colors">
+                        <li class="colors__item">
+                          <button class="colors__button colors__button--active" data-color="Black"
+                            aria-label="Choose black color."></button>
+                        </li>
+
+                        <li class="colors__item">
+                          <button class="colors__button" data-color="Brown" aria-label="Choose brown color."></button>
+                        </li>
+
+                        <li class="colors__item">
+                          <button class="colors__button" data-color="Blue-gray"
+                            aria-label="Choose blue-gray color."></button>
+                        </li>
+                      </ul>
+                    </div>
+
+                    <div class="product__button-wrapper">
+                      <button class="product__button-cart btn btn--mid">
+                        <svg xmlns='http://www.w3.org/2000/svg'>
+                          <use href='./img/sprite.svg#cart'></use>
+                        </svg>
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              </article>
+            </div>
+
+            <!-- Pagination -->
+            <div class="complete-look__pagination flat-pagination" id="cl-pagination"></div>
+          </div>
+
+          <!-- Navigation -->
+          <button class="complete-look__button-prev arrow arrow--trans" id="cl-button-prev"
+            aria-label="Choose previous slide.">
+            <svg xmlns='http://www.w3.org/2000/svg' aria-hidden="true">
+              <use href='./img/sprite.svg#arrow' aria-hidden="true"></use>
+            </svg>
+          </button>
+
+          <button class="complete-look__button-next arrow arrow--trans" id="cl-button-next"
+            aria-label="Choose next slide.">
+            <svg xmlns='http://www.w3.org/2000/svg' aria-hidden="true">
+              <use href='./img/sprite.svg#arrow' aria-hidden="true"></use>
+            </svg>
+          </button>
         </div>
       </div>
     </div>

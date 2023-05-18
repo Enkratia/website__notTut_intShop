@@ -72,8 +72,14 @@ export const $sidebarFiltersApplyBtn = $filterWrapper?.querySelector(".sidebar-f
 export const $sidebarFiltersWrapperClose = $filterWrapper?.querySelector(".sidebar-filters__wrapper-close");
 
 // Product-card
+export const $productCard = document.querySelector(".product-card");
 export const $productCardSwiper = document.querySelector("#product-card-swiper");
 export const $pcmSwiper = document.querySelector("#pcm-swiper");
+export const $productCardSizeBtn = document.querySelector(".product-card__size-btn");
+export const $productCardChart = document.querySelector(".product-card__chart");
+export const $chartClose = $productCardChart?.querySelector(".chart__close");
+export const $productCardTabs = $productCard?.querySelectorAll(".tab");
+
 
 // Media
 export const $mdq767 = window.matchMedia("(max-width: 767px)");

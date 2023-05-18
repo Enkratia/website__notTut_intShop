@@ -32,37 +32,8 @@
   }
 
   &__tab {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    border: rem(1) solid transparent;
-    border-radius: rem(4);
-    padding-inline: rem(19);
-    height: rem(46);
-    font: var(--base-bold);
-    color: var(--gray600-color);
-    background-color: transparent;
-    transition: all 0.3s ease;
-
     &:not(:last-child) {
       margin-right: rem(8);
-    }
-
-    &-count {
-      position: relative;
-      left: rem(5);
-      bottom: rem(5);
-      font: var(--extra2small-bold);
-    }
-
-    &--active {
-      border-color: var(--primary-color);
-      color: var(--primary-color);
-      pointer-events: none;
-    }
-
-    &:hover {
-      color: var(--gray800-color);
     }
   }
 
@@ -654,6 +625,183 @@
       &--paypal {
         background-image: url("../img/paypal.svg");
       }
+    }
+  }
+
+  // Chart
+  &__chart {
+    position: fixed;
+    left: 0;
+    top: 0;
+    z-index: var(--z-modal);
+  }
+
+  .chart {
+    width: 100%;
+    height: 100vh;
+    background-color: var(--overlay-color);
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s;
+
+    &__data {
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      border: rem(1) solid var(--gray300-color);
+      border-radius: rem(4);
+      padding-block: rem(48);
+      background-color: var(--white-color);
+      transform: translate(-50%, -41.15%);
+    }
+
+    &__title {
+      margin-bottom: rem(31);
+      font: var(--h3-font);
+      text-align: center;
+      color: var(--gray900-color);
+    }
+
+    &__gender {
+      // Gender tabs
+      &-tabs {
+        display: flex;
+        justify-content: center;
+        margin-bottom: rem(24);
+        width: 100%;
+      }
+
+      &-item {
+        &:not(:last-child) {
+          margin-right: rem(12);
+        }
+      }
+
+      &-input {
+        display: none;
+
+        &:checked {
+          ~ .chart-table {
+            display: block;
+          }
+        }
+      }
+    }
+
+    // Chart table
+    .chart-table {
+      display: none;
+      margin-bottom: rem(31);
+      margin-inline: rem(48);
+      border: rem(1) solid var(--gray300-color);
+      border-radius: rem(4);
+      border-spacing: 0;
+      padding-top: rem(15);
+
+      &__caption {
+        display: block;
+        margin-bottom: rem(16);
+        font: var(--large-bold);
+        text-align: center;
+        color: var(--gray900-color);
+      }
+
+      &__content {
+        display: table;
+        width: 100%;
+      }
+
+      &__row {
+        background-color: var(--gray200-color);
+
+        &:nth-child(2n) {
+          background-color: var(--white-color);
+        }
+      }
+
+      &__data {
+        padding-top: rem(9);
+        padding-bottom: rem(10);
+        width: rem(77);
+        font: var(--small-regular);
+        color: var(--gray800-color);
+
+        &:first-child {
+          padding-left: rem(15);
+          width: rem(154);
+        }
+      }
+
+      &--mb0 {
+        margin-bottom: 0;
+      }
+    }
+
+    // Chart units
+    &__units {
+      border-top: rem(1) solid var(--gray300-color);
+      padding-top: rem(31);
+
+      &-top {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-bottom: rem(24);
+      }
+
+      &-title {
+        margin-right: rem(25);
+        font: var(--base-bold);
+        color: var(--gray900-color);
+      }
+
+      &-tabs {
+        display: flex;
+        align-items: center;
+      }
+
+      &-item {
+        position: relative;
+
+        &:first-child {
+          margin-right: rem(12);
+        }
+      }
+
+      &-input {
+        display: none;
+
+        &:checked {
+          ~ .chart-table {
+            display: block;
+          }
+        }
+      }
+    }
+
+    &__close {
+      position: absolute;
+      right: rem(22);
+      top: rem(22);
+
+      svg {
+        width: rem(26);
+        height: rem(26);
+        fill: var(--gray700-color);
+        transition: fill 0.3s;
+      }
+
+      &:hover {
+        svg {
+          fill: var(--gray900-color);
+        }
+      }
+    }
+
+    // Show size chart
+    &--show {
+      opacity: 1;
+      visibility: visible;
     }
   }
 }

@@ -1,0 +1,30 @@
+@use "../util/" as *;
+
+.complete-look {
+  padding-top: rem(180);
+
+  &__title {
+    text-align: revert;
+  }
+
+  &__content {
+    display: grid;
+    column-gap: rem(60);
+    grid-template-columns: auto minmax(0, rem(600));
+    padding-top: rem(60);
+  }
+
+  &__image {
+    width: 100%;
+    object-fit: cover;
+
+    &-wrapper {
+      max-width: rem(495);
+    }
+  }
+
+  &__slider {
+    overflow: hidden;
+    width: 100%;
+  }
+}
