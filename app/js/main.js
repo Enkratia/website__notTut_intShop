@@ -2408,6 +2408,10 @@ let cartChoiceListScrollbar = (0,overlayscrollbars__WEBPACK_IMPORTED_MODULE_1__.
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "$imageModalSwiper": () => (/* binding */ imageModalSwiper),
+/* harmony export */   "$productCardSwiper": () => (/* binding */ productCardSwiper)
+/* harmony export */ });
 /* harmony import */ var _vars_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../vars.js */ "./src/js/vars.js");
 /* harmony import */ var swiper__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! swiper */ "./node_modules/swiper/swiper.esm.js");
 
@@ -2742,9 +2746,24 @@ if (document.querySelector("#brands-slider")) {
   _vars_js__WEBPACK_IMPORTED_MODULE_0__.$mdq1024.addEventListener("change", resetBrandSwiper);
 }
 
-// PRODUCT CARD SLIDER SWIPER (in product-card__slider.js)
+// ==== PRODUCT CARD SLIDER SWIPER ==== //
+const productCardSwiper = new swiper__WEBPACK_IMPORTED_MODULE_1__["default"]("#product-card-swiper", {
+  modules: [swiper__WEBPACK_IMPORTED_MODULE_1__.Navigation],
+  loop: true,
+  slidesPerView: 1,
+  spaceBetween: 30,
+  navigation: {
+    nextEl: '#pcs-button-next',
+    prevEl: '#pcs-button-prev'
+  }
+});
 
-// PRODUCT CARD MINISLIDER SWIPER (in product-card__slider.js)
+
+// ==== PRODUCT CARD MINISLIDER SWIPER ==== //
+const productCardMiniSwiper = new swiper__WEBPACK_IMPORTED_MODULE_1__["default"]("#pcm-swiper", {
+  slidesPerView: 5,
+  spaceBetween: 20
+});
 
 // COMPLETE LOOK SWIPER
 const completeLookSwiper = new swiper__WEBPACK_IMPORTED_MODULE_1__["default"]("#complete-look-slider", {
@@ -2761,6 +2780,48 @@ const completeLookSwiper = new swiper__WEBPACK_IMPORTED_MODULE_1__["default"]("#
     clickable: true
   }
 });
+
+// RELATED PRODUCTS SWIPER
+const relatedProductsSwiper = new swiper__WEBPACK_IMPORTED_MODULE_1__["default"]("#related-products-slider", {
+  modules: [swiper__WEBPACK_IMPORTED_MODULE_1__.Navigation],
+  slidesPerView: 4,
+  spaceBetween: 30,
+  loop: true,
+  navigation: {
+    nextEl: '#rp-button-next',
+    prevEl: '#rp-button-prev'
+  }
+});
+
+// RELATED PRODUCTS SWIPER
+const recentlyViewedSwiper = new swiper__WEBPACK_IMPORTED_MODULE_1__["default"]("#recently-viewed-slider", {
+  modules: [swiper__WEBPACK_IMPORTED_MODULE_1__.Navigation],
+  slidesPerView: 4,
+  spaceBetween: 30,
+  loop: true,
+  navigation: {
+    nextEl: '#rw-button-next',
+    prevEl: '#rw-button-prev'
+  }
+});
+
+// IMAGE MODAL SWIPER
+const imageModalSwiper = new swiper__WEBPACK_IMPORTED_MODULE_1__["default"]("#image-modal-slider", {
+  modules: [swiper__WEBPACK_IMPORTED_MODULE_1__.Navigation, swiper__WEBPACK_IMPORTED_MODULE_1__.Pagination],
+  slidesPerView: 1,
+  spaceBetween: 30,
+  loop: true,
+  navigation: {
+    nextEl: '#image-modal-button-next',
+    prevEl: '#image-modal-button-prev'
+  },
+  pagination: {
+    el: '#image-modal-pagination',
+    clickable: true
+  },
+  grabCursor: true
+});
+
 
 /***/ }),
 
@@ -3435,6 +3496,54 @@ if (_vars_js__WEBPACK_IMPORTED_MODULE_0__.$sidebarFilterTops[0]) {
 
 /***/ }),
 
+/***/ "./src/js/components/image-modal.js":
+/*!******************************************!*\
+  !*** ./src/js/components/image-modal.js ***!
+  \******************************************/
+/***/ ((__unused_webpack___webpack_module__, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _vars_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../vars.js */ "./src/js/vars.js");
+/* harmony import */ var _$swipers_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./$swipers.js */ "./src/js/components/$swipers.js");
+
+
+
+// F(s)
+// **
+function hideImageModal() {
+  _vars_js__WEBPACK_IMPORTED_MODULE_0__.$imageModal.classList.remove("image-modal--show");
+}
+
+// **
+function showImageModal(e) {
+  const slide = e.target.closest(".pcs__slide");
+  if (slide) {
+    // const idx = slide.getAttribute("data-swiper-slide-index");
+    // $imageModalSwiper.slideToLoop(+idx);
+
+    // setTimeout(() => {
+    _vars_js__WEBPACK_IMPORTED_MODULE_0__.$imageModal.classList.add("image-modal--show");
+    // }, 250);
+  }
+}
+
+// L(s)
+// **
+_vars_js__WEBPACK_IMPORTED_MODULE_0__.$productCardSwiper.addEventListener("click", showImageModal);
+
+// **
+_vars_js__WEBPACK_IMPORTED_MODULE_0__.$imageModalClose.addEventListener("click", hideImageModal);
+function changeIMCurrentSlide() {
+  const activeSlide = _vars_js__WEBPACK_IMPORTED_MODULE_0__.$productCardSwiper.querySelector(".swiper-slide-active");
+  console.log(activeSlide);
+  const currentIdx = activeSlide.getAttribute("data-swiper-slide-index");
+  _$swipers_js__WEBPACK_IMPORTED_MODULE_1__.$imageModalSwiper.slideToLoop(+currentIdx);
+}
+_$swipers_js__WEBPACK_IMPORTED_MODULE_1__.$productCardSwiper.on("slideChange", changeIMCurrentSlide);
+
+/***/ }),
+
 /***/ "./src/js/components/input-number.js":
 /*!*******************************************!*\
   !*** ./src/js/components/input-number.js ***!
@@ -3890,49 +3999,30 @@ _vars_js__WEBPACK_IMPORTED_MODULE_0__.$chartClose?.addEventListener("click", hid
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _vars_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../vars.js */ "./src/js/vars.js");
-/* harmony import */ var swiper__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! swiper */ "./node_modules/swiper/swiper.esm.js");
+/* harmony import */ var _$swipers_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./$swipers.js */ "./src/js/components/$swipers.js");
 
 
-if (_vars_js__WEBPACK_IMPORTED_MODULE_0__.$pcmSwiper) {
-  // ==== PRODUCT CARD SLIDER SWIPER ==== //
-  const productCardSwiper = new swiper__WEBPACK_IMPORTED_MODULE_1__["default"]("#product-card-swiper", {
-    modules: [swiper__WEBPACK_IMPORTED_MODULE_1__.Navigation],
-    loop: true,
-    slidesPerView: 1,
-    spaceBetween: 30,
-    navigation: {
-      nextEl: '#pcs-button-next',
-      prevEl: '#pcs-button-prev'
-    }
-  });
 
-  // ==== PRODUCT CARD MINISLIDER SWIPER ==== //
-  const productCardMiniSwiper = new swiper__WEBPACK_IMPORTED_MODULE_1__["default"]("#pcm-swiper", {
-    slidesPerView: 5,
-    spaceBetween: 20
-  });
-
-  // ==== PRODUCT CARD TRANSFER IMAGE ==== //
-  // F(s)
-  // **
-  function rearrangeActiveClass(elem) {
-    _vars_js__WEBPACK_IMPORTED_MODULE_0__.$pcmSwiper.querySelector(".pcm__slide--active").classList.remove("pcm__slide--active");
-    elem.classList.add("pcm__slide--active");
-  }
-
-  // **
-  function transferImage(e) {
-    const slide = e.target.closest(".pcm__slide");
-    if (slide) {
-      const slideIdx = slide.getAttribute("data-slide-idx");
-      productCardSwiper.slideToLoop(slideIdx);
-      rearrangeActiveClass(slide);
-    }
-  }
-
-  // L(s)
-  _vars_js__WEBPACK_IMPORTED_MODULE_0__.$pcmSwiper.addEventListener("click", transferImage);
+// ==== PRODUCT CARD TRANSFER IMAGE ==== //
+// F(s)
+// **
+function rearrangeActiveClass(elem) {
+  _vars_js__WEBPACK_IMPORTED_MODULE_0__.$pcmSwiper.querySelector(".pcm__slide--active").classList.remove("pcm__slide--active");
+  elem.classList.add("pcm__slide--active");
 }
+
+// **
+function transferImage(e) {
+  const slide = e.target.closest(".pcm__slide");
+  if (slide) {
+    const slideIdx = slide.getAttribute("data-slide-idx");
+    _$swipers_js__WEBPACK_IMPORTED_MODULE_1__.$productCardSwiper.slideToLoop(slideIdx);
+    rearrangeActiveClass(slide);
+  }
+}
+
+// L(s)
+_vars_js__WEBPACK_IMPORTED_MODULE_0__?.$pcmSwiper.addEventListener("click", transferImage);
 
 /***/ }),
 
@@ -3948,7 +4038,7 @@ let slider;
 let products;
 const marginForBoxShadow = 80; // (Тоже самое, что: window.getComputedStyle(products[0]).getPropertyValue("margin-bottom"))
 
-if (document.querySelector("#sale-slider")) {
+if (document.querySelector(".swiper-slider")) {
   // F(s)
   // **
   function showProductBottom() {
@@ -3957,6 +4047,8 @@ if (document.querySelector("#sale-slider")) {
     productBottom.classList.add("product__bottom--visible");
     const productBottomHeight = productBottom.getBoundingClientRect().height;
     const sliderMargin = window.getComputedStyle(slider).getPropertyValue("margin-bottom");
+    console.log(sliderMargin);
+    console.log(parseFloat(sliderMargin), marginForBoxShadow, productBottomHeight);
     slider.style.marginBottom = parseFloat(sliderMargin) - marginForBoxShadow - productBottomHeight + "px";
   }
 
@@ -5270,6 +5362,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "$headerFavoriteCount": () => (/* binding */ $headerFavoriteCount),
 /* harmony export */   "$headerMainContainer": () => (/* binding */ $headerMainContainer),
 /* harmony export */   "$headerTopContainer": () => (/* binding */ $headerTopContainer),
+/* harmony export */   "$imageModal": () => (/* binding */ $imageModal),
+/* harmony export */   "$imageModalClose": () => (/* binding */ $imageModalClose),
 /* harmony export */   "$inputNumberBtns": () => (/* binding */ $inputNumberBtns),
 /* harmony export */   "$inputNumberInputs": () => (/* binding */ $inputNumberInputs),
 /* harmony export */   "$login": () => (/* binding */ $login),
@@ -5393,6 +5487,8 @@ const $productCardSizeBtn = document.querySelector(".product-card__size-btn");
 const $productCardChart = document.querySelector(".product-card__chart");
 const $chartClose = $productCardChart?.querySelector(".chart__close");
 const $productCardTabs = $productCard?.querySelectorAll(".tab");
+const $imageModal = $productCard?.querySelector(".product-card__image-modal");
+const $imageModalClose = $productCard?.querySelector(".image-modal__close");
 
 // Media
 const $mdq767 = window.matchMedia("(max-width: 767px)");
@@ -26342,9 +26438,11 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _components_sizes_button_js__WEBPACK_IMPORTED_MODULE_21__ = __webpack_require__(/*! ./components/sizes__button.js */ "./src/js/components/sizes__button.js");
 /* harmony import */ var _components_product_card_size_btn_js__WEBPACK_IMPORTED_MODULE_22__ = __webpack_require__(/*! ./components/product-card__size-btn.js */ "./src/js/components/product-card__size-btn.js");
 /* harmony import */ var _components_tabs_js__WEBPACK_IMPORTED_MODULE_23__ = __webpack_require__(/*! ./components/tabs.js */ "./src/js/components/tabs.js");
-/* harmony import */ var _components_$swipers_js__WEBPACK_IMPORTED_MODULE_24__ = __webpack_require__(/*! ./components/$swipers.js */ "./src/js/components/$swipers.js");
-/* harmony import */ var _components_$overlayScrollbars_js__WEBPACK_IMPORTED_MODULE_25__ = __webpack_require__(/*! ./components/$overlayScrollbars.js */ "./src/js/components/$overlayScrollbars.js");
+/* harmony import */ var _components_image_modal_js__WEBPACK_IMPORTED_MODULE_24__ = __webpack_require__(/*! ./components/image-modal.js */ "./src/js/components/image-modal.js");
+/* harmony import */ var _components_$swipers_js__WEBPACK_IMPORTED_MODULE_25__ = __webpack_require__(/*! ./components/$swipers.js */ "./src/js/components/$swipers.js");
+/* harmony import */ var _components_$overlayScrollbars_js__WEBPACK_IMPORTED_MODULE_26__ = __webpack_require__(/*! ./components/$overlayScrollbars.js */ "./src/js/components/$overlayScrollbars.js");
 // Components
+
 
 
 

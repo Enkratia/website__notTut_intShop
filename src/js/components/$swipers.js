@@ -345,9 +345,25 @@ if (document.querySelector("#brands-slider")) {
   v.$mdq1024.addEventListener("change", resetBrandSwiper);
 }
 
-// PRODUCT CARD SLIDER SWIPER (in product-card__slider.js)
+// ==== PRODUCT CARD SLIDER SWIPER ==== //
+const productCardSwiper = new Swiper("#product-card-swiper", {
+  modules: [Navigation],
+  loop: true,
+  slidesPerView: 1,
+  spaceBetween: 30,
+  navigation: {
+    nextEl: '#pcs-button-next',
+    prevEl: '#pcs-button-prev',
+  }
+});
 
-// PRODUCT CARD MINISLIDER SWIPER (in product-card__slider.js)
+export { productCardSwiper as $productCardSwiper}
+
+// ==== PRODUCT CARD MINISLIDER SWIPER ==== //
+const productCardMiniSwiper = new Swiper("#pcm-swiper", {
+  slidesPerView: 5,
+  spaceBetween: 20,
+});
 
 // COMPLETE LOOK SWIPER
 const completeLookSwiper = new Swiper("#complete-look-slider", {
@@ -364,3 +380,46 @@ const completeLookSwiper = new Swiper("#complete-look-slider", {
     clickable: true,
   },
 });
+
+// RELATED PRODUCTS SWIPER
+const relatedProductsSwiper = new Swiper("#related-products-slider", {
+  modules: [Navigation],
+  slidesPerView: 4,
+  spaceBetween: 30,
+  loop: true,
+  navigation: {
+    nextEl: '#rp-button-next',
+    prevEl: '#rp-button-prev',
+  }
+});
+
+// RELATED PRODUCTS SWIPER
+const recentlyViewedSwiper = new Swiper("#recently-viewed-slider", {
+  modules: [Navigation],
+  slidesPerView: 4,
+  spaceBetween: 30,
+  loop: true,
+  navigation: {
+    nextEl: '#rw-button-next',
+    prevEl: '#rw-button-prev',
+  }
+});
+
+// IMAGE MODAL SWIPER
+const imageModalSwiper = new Swiper("#image-modal-slider", {
+  modules: [Navigation, Pagination],
+  slidesPerView: 1,
+  spaceBetween: 30,
+  loop: true,
+  navigation: {
+    nextEl: '#image-modal-button-next',
+    prevEl: '#image-modal-button-prev',
+  },
+  pagination: {
+    el: '#image-modal-pagination',
+    clickable: true,
+  },
+  grabCursor: true
+});
+
+export {imageModalSwiper as $imageModalSwiper}

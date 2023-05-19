@@ -1479,4 +1479,78 @@
       </button>
     </div>
   </div>
+
+  <!-- Image modal -->
+  <div class="product-card__image-modal image-modal">
+
+    <!-- Image-modal head -->
+    <div class="image-modal__head">
+      <span class="image-modal__count">
+        <strong class="image-modal__count-current">
+          2
+        </strong>
+
+        / 7
+      </span>
+
+      <button class="image-modal__close" aria-label="Close image-modal.">
+        <svg xmlns='http://www.w3.org/2000/svg' aria-hidden='true'>
+          <use href='./img/sprite.svg#cross' aria-hidden='true'></use>
+        </svg>
+      </button>
+    </div>
+
+    <!-- Slider -->
+    <div class="image-modal__slider swiper-slider" id="image-modal-slider">
+      <div class="image-modal__wrapper swiper-wrapper">
+
+        <!-- Slide1 -->
+        <div class="image-modal__slide swiper-slide">
+          <img src="./img/product-sweatshirt_600w.jpg" alt="Product image." class="image-modal__image" loading="lazy">
+        </div>
+
+        <!-- Slide2 -->
+        <div class="image-modal__slide swiper-slide">
+          <img src="./img/product-sweatshirt-1_600w.jpg" alt="Product image." class="image-modal__image" loading="lazy">
+        </div>
+
+        <!-- Slide3 -->
+        <div class="image-modal__slide swiper-slide">
+          <img src="./img/product-sweatshirt-2_600w.jpg" alt="Product image." class="image-modal__image" loading="lazy">
+        </div>
+
+        <!-- Slide4 -->
+        <div class="image-modal__slide swiper-slide">
+          <img src="./img/product-sweatshirt-3_600w.jpg" alt="Product image." class="image-modal__image" loading="lazy">
+        </div>
+
+        <div class="image-modal__slide image-modal__slide--video swiper-slide">
+          <iframe loading="lazy" src="https://www.youtube.com/embed/1vrXpMLLK14" title="YouTube video player"
+            frameborder="0"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+            allowfullscreen class="image-modal__video"></iframe>
+        </div>
+      </div>
+
+      <!-- Navigation -->
+      <button class="image-modal__button image-modal__button-prev arrow" id="image-modal-button-prev"
+        aria-label="Choose previous slide.">
+        <svg xmlns='http://www.w3.org/2000/svg' aria-hidden="true">
+          <use href='./img/sprite.svg#arrow'></use>
+        </svg>
+      </button>
+
+      <button class="image-modal__button image-modal__button-next arrow" id="image-modal-button-next"
+        aria-label="Choose next slide.">
+        <svg xmlns='http://www.w3.org/2000/svg' aria-hidden="true">
+          <use href='./img/sprite.svg#arrow'></use>
+        </svg>
+      </button>
+
+      <!-- Pagination -->
+      <div class="image-modal__pagination-wrapper">
+        <div class="image-modal__pagination" id="image-modal-pagination"></div>
+      </div>
+    </div>
+  </div>
 </section>

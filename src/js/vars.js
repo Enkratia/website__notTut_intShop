@@ -79,6 +79,9 @@ export const $productCardSizeBtn = document.querySelector(".product-card__size-b
 export const $productCardChart = document.querySelector(".product-card__chart");
 export const $chartClose = $productCardChart?.querySelector(".chart__close");
 export const $productCardTabs = $productCard?.querySelectorAll(".tab");
+export const $imageModal = $productCard?.querySelector(".product-card__image-modal");
+export const $imageModalClose = $productCard?.querySelector(".image-modal__close");
+
 
 
 // Media

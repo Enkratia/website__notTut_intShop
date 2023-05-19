@@ -23,6 +23,7 @@ import "./components/cart__btn.js";
 import "./components/sizes__button.js";
 import "./components/product-card__size-btn.js";
 import "./components/tabs.js";
+import "./components/image-modal.js";
 
 // Components multiple in one
 import "./components/$swipers.js";

@@ -2,7 +2,7 @@ let slider;
 let products;
 const marginForBoxShadow = 80; // (Тоже самое, что: window.getComputedStyle(products[0]).getPropertyValue("margin-bottom"))
 
-if (document.querySelector("#sale-slider")) {
+if (document.querySelector(".swiper-slider")) {
 
   // F(s)
   // **
@@ -13,6 +13,8 @@ if (document.querySelector("#sale-slider")) {
     const productBottomHeight = productBottom.getBoundingClientRect().height;
 
     const sliderMargin = window.getComputedStyle(slider).getPropertyValue("margin-bottom");
+    console.log(sliderMargin)
+    console.log(parseFloat(sliderMargin), marginForBoxShadow, productBottomHeight)
     slider.style.marginBottom = parseFloat(sliderMargin) - marginForBoxShadow - productBottomHeight + "px";
   }
 

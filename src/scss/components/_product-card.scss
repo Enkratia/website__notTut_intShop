@@ -154,6 +154,7 @@
       &--active {
         border: rem(1) solid var(--primary-color);
         opacity: 1;
+        cursor: default;
       }
 
       &--video {
@@ -663,6 +664,7 @@
     }
 
     &__gender {
+
       // Gender tabs
       &-tabs {
         display: flex;
@@ -681,7 +683,7 @@
         display: none;
 
         &:checked {
-          ~ .chart-table {
+          ~.chart-table {
             display: block;
           }
         }
@@ -772,7 +774,7 @@
         display: none;
 
         &:checked {
-          ~ .chart-table {
+          ~.chart-table {
             display: block;
           }
         }
@@ -799,6 +801,176 @@
     }
 
     // Show size chart
+    &--show {
+      opacity: 1;
+      visibility: visible;
+    }
+  }
+
+  // Image modal
+  &__image-modal {
+    position: fixed;
+    left: 0;
+    top: 0;
+    z-index: var(--z-modal);
+    display: flex;
+    flex-direction: column;
+  }
+
+  .image-modal {
+    width: 100%;
+    height: calc(100vh - calc(100vh - 100%));
+    background-color: var(--white-color);
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s;
+
+    // Head
+    &__head {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding-right: rem(20);
+      padding-left: rem(40);
+      padding-block: rem(20);
+    }
+
+    &__count {
+      font: var(--lead-bold);
+      color: var(--gray700-color);
+
+      &-current {
+        color: var(--primary-color);
+      }
+    }
+
+    &__close {
+      display: flex;
+      border-radius: 50%;
+
+      svg {
+        width: rem(40);
+        height: rem(40);
+        fill: var(--gray700-color);
+        transition: fill 0.3s;
+      }
+
+      &:hover {
+        svg {
+          fill: var(--gray900-color);
+        }
+      }
+    }
+
+    // Slider
+    &__slider {
+      overflow-x: hidden;
+      width: 100%;
+      height: 100%;
+    }
+
+    &__slide {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 100%;
+      user-select: none;
+    }
+
+    &__image {
+      width: 100%;
+      max-width: rem(800);
+      max-height: 100%;
+      object-fit: cover;
+    }
+
+    &__video {
+      width: 70vw;
+      height: 39vw;
+      cursor: pointer;
+    }
+
+    // Navigation
+    &__button {
+      position: absolute;
+      top: 50%;
+      z-index: var(--z-up);
+      background-color: transparent;
+      transform: translateY(-50%);
+
+      svg {
+        width: rem(48);
+        height: rem(48);
+        fill: var(--gray700-color);
+        transition: fill 0.3s;
+      }
+
+      &:hover {
+        background-color: transparent;
+
+        svg {
+          fill: var(--primary-color);
+        }
+      }
+    }
+
+    &__button-prev {
+      left: rem(40);
+
+      svg {
+        transform: rotate(180deg);
+      }
+
+      @include bp-down("1060") {
+        left: calc(rem(-342.88) + 36.11vw); // 40>27 (1060>1024)
+      }
+
+      @include bp-down("1024") {
+        display: none;
+      }
+    }
+
+    &__button-next {
+      right: rem(40);
+
+      @include bp-down("1060") {
+        right: calc(rem(-342.88) + 36.11vw); // 40>27 (1060>1024)
+      }
+
+      @include bp-down("1024") {
+        display: none;
+      }
+    }
+
+    // Pagination 
+    &__pagination {
+      display: none;
+      border: rem(1) solid var(--gray500-color);
+      border-radius: rem(10);
+      padding-inline: rem(7);
+      width: auto;
+      text-align: center;
+      background-color: var(--white-color);
+
+      .swiper-pagination-bullet-active {
+        background-color: var(--primary-color);
+      }
+
+      &-wrapper {
+        position: absolute;
+        bottom: rem(20);
+        z-index: var(--z-up);
+        display: flex;
+        justify-content: center;
+        width: 100%;
+      }
+
+      @include bp-down("1024") {
+        display: block;
+      }
+    }
+
+    // Image-modal show class
     &--show {
       opacity: 1;
       visibility: visible;

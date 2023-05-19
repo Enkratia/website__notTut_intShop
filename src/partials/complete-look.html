@@ -16,13 +16,13 @@
 
       <!-- Slider -->
       <div class="complete-look__slider-wrapper">
-        <div class="complete-look__slider" id="complete-look-slider">
+        <div class="complete-look__slider swiper-slider" id="complete-look-slider">
           <div class="complete-look__wrapper swiper-wrapper">
 
             <!-- Slide1 -->
             <div class="complete-look__slide swiper-slide">
               <article class="complete-look__product product swiper-slide" data-vendor="1832600989">
-                <div class="product__look">
+                <div class="product__look complete-look__look">
                   <div class="product__image-wrapper microslider">
                     <img src="./img/product-sandals-1.jpg" alt="Product image."
                       class="product__image microslider__image product__image--main" id="microslider-image">
@@ -84,6 +84,10 @@
                       <use href='./img/sprite.svg#heart-full'></use>
                     </svg>
                   </button>
+
+                  <div class="product__discount">
+                    -20%
+                  </div>
                 </div>
 
                 <div class="product__info product__info--white">
@@ -92,8 +96,12 @@
                   </a>
 
                   <div class="product__prices">
-                    <span class="product__price product__price--h4 complete-look__price">
+                    <span class="product__price product__price--h5 product__price--red complete-look__price">
                       $48.00
+                    </span>
+
+                    <span class="product__old-price complete-look__old-price">
+                      $32.95
                     </span>
                   </div>
 
@@ -188,7 +196,7 @@
             <!-- Slide2 -->
             <div class="complete-look__slide swiper-slide">
               <article class="complete-look__product product swiper-slide" data-vendor="1832600115">
-                <div class="product__look">
+                <div class="product__look complete-look__look">
                   <div class="product__image-wrapper microslider">
                     <img src="./img/product-watch.jpg" alt="Product image."
                       class="product__image microslider__image product__image--main" id="microslider-image">
@@ -258,7 +266,7 @@
                   </a>
 
                   <div class="product__prices">
-                    <span class="product__price product__price--h4 complete-look__price">
+                    <span class="product__price product__price--h5 complete-look__price">
                       $120.60
                     </span>
                   </div>
@@ -350,26 +358,26 @@
                 </div>
               </article>
             </div>
-
-            <!-- Pagination -->
-            <div class="complete-look__pagination flat-pagination" id="cl-pagination"></div>
           </div>
-
-          <!-- Navigation -->
-          <button class="complete-look__button-prev arrow arrow--trans" id="cl-button-prev"
-            aria-label="Choose previous slide.">
-            <svg xmlns='http://www.w3.org/2000/svg' aria-hidden="true">
-              <use href='./img/sprite.svg#arrow' aria-hidden="true"></use>
-            </svg>
-          </button>
-
-          <button class="complete-look__button-next arrow arrow--trans" id="cl-button-next"
-            aria-label="Choose next slide.">
-            <svg xmlns='http://www.w3.org/2000/svg' aria-hidden="true">
-              <use href='./img/sprite.svg#arrow' aria-hidden="true"></use>
-            </svg>
-          </button>
         </div>
+
+        <!-- Pagination -->
+        <div class="complete-look__pagination flat-pagination" id="cl-pagination"></div>
+
+        <!-- Navigation -->
+        <button class="complete-look__button-prev arrow arrow--trans" id="cl-button-prev"
+          aria-label="Choose previous slide.">
+          <svg xmlns='http://www.w3.org/2000/svg' aria-hidden="true">
+            <use href='./img/sprite.svg#arrow' aria-hidden="true"></use>
+          </svg>
+        </button>
+
+        <button class="complete-look__button-next arrow arrow--trans" id="cl-button-next"
+          aria-label="Choose next slide.">
+          <svg xmlns='http://www.w3.org/2000/svg' aria-hidden="true">
+            <use href='./img/sprite.svg#arrow' aria-hidden="true"></use>
+          </svg>
+        </button>
       </div>
     </div>
   </div>

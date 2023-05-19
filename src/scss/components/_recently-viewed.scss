@@ -1,35 +1,21 @@
 @use "../util/" as *;
 
-.complete-look {
-  padding-top: rem(192);
-  padding-bottom: rem(100);
+.recently-viewed {
+  padding-top: rem(114);
+  padding-bottom: rem(200);
 
   &__title {
-    line-height: 0.75;
+    line-height: 75%;
     text-align: revert;
-  }
-
-  &__content {
-    position: relative;
-    display: grid;
-    column-gap: rem(60);
-    grid-template-columns: auto minmax(0, rem(600));
-    padding-top: rem(72);
-  }
-
-  &__image {
-    width: 100%;
-    object-fit: cover;
-
-    &-wrapper {
-      max-width: rem(495);
-    }
   }
 
   &__slider {
     overflow-x: hidden;
-    margin-bottom: rem(82);
-    width: 100%;
+
+    &-wrapper {
+      position: relative;
+      padding-top: rem(71);
+    }
   }
 
   &__product {
@@ -44,15 +30,6 @@
 
   &__look {
     margin-bottom: rem(14);
-  }
-
-  &__old-price {
-    font: var(--base-regular);
-  }
-
-  // Pagination
-  &__pagination {
-    display: block;
   }
 
   // Navigation

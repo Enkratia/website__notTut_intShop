@@ -583,13 +583,12 @@
 
   &__old-price {
     display: inline-block;
-    padding-top: rem(4);
     font: var(--large-regular);
+    line-height: 1;
     text-decoration: line-through;
     color: var(--gray700-color);
 
     &--base {
-      padding-top: rem(1);
       font: var(--base-regular);
     }
   }
