@@ -13,8 +13,6 @@ if (document.querySelector(".swiper-slider")) {
     const productBottomHeight = productBottom.getBoundingClientRect().height;
 
     const sliderMargin = window.getComputedStyle(slider).getPropertyValue("margin-bottom");
-    console.log(sliderMargin)
-    console.log(parseFloat(sliderMargin), marginForBoxShadow, productBottomHeight)
     slider.style.marginBottom = parseFloat(sliderMargin) - marginForBoxShadow - productBottomHeight + "px";
   }
 

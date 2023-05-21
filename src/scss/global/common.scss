@@ -328,6 +328,8 @@
 }
 
 .product {
+  position: relative;
+
   &__look {
     position: relative;
     overflow: hidden;
@@ -611,6 +613,22 @@
       opacity: 1;
       visibility: visible;
     }
+
+    &--permanent {
+      position: absolute;
+      left: 0;
+      top: 100%;
+      overflow: visible;
+      padding-bottom: rem(16);
+      padding-inline: inherit;
+      width: 100%;
+      height: auto;
+      box-shadow: var(--regular-shadow);
+      background-color: var(--white-color);
+      opacity: 1;
+      visibility: visible;
+      transition: box-shadow 0.3s ease-in-out opacity 0.3s;
+    }
   }
 
   &__details {
@@ -667,7 +685,9 @@
       border-radius: rem(4);
       padding-block: rem(2);
       padding-inline: rem(4);
+      min-width: rem(24);
       font: var(--extrasmall-regular);
+      text-transform: uppercase;
       color: var(--gray800-color);
       transition: border-color 0.3s;
 
@@ -742,8 +762,6 @@
 
   // Product hover (no swiper)
   &--noJs-hover {
-    position: relative;
-
     .product__bottom {
       position: absolute;
       left: 0;

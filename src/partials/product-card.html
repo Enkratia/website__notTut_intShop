@@ -37,8 +37,8 @@
       </button>
     </div>
 
-    <!-- Content -->
-    <div class="product-card__content">
+    <!-- General info -->
+    <div class="product-card__general">
 
       <!-- Left -->
       <div class="product-card__left">
@@ -179,16 +179,18 @@
 
           <ul class="product-card__colors colors">
             <li class="colors__item product-card__colors-item">
-              <button class="colors__button colors__button--active" data-color="Pink"
+              <button class="colors__button colors__button--active product-card__color-btn" data-color="Pink"
                 aria-label="Choose pink color."></button>
             </li>
 
             <li class="colors__item product-card__colors-item">
-              <button class="colors__button" data-color="Blue-gray" aria-label="Choose blue-gray color."></button>
+              <button class="colors__button product-card__color-btn" data-color="Blue-gray"
+                aria-label="Choose blue-gray color."></button>
             </li>
 
             <li class="colors__item product-card__colors-item">
-              <button class="colors__button" data-color="Yellow" aria-label="Choose yellow color."></button>
+              <button class="colors__button product-card__color-btn" data-color="Yellow"
+                aria-label="Choose yellow color."></button>
             </li>
 
             <li class="colors__item product-card__colors-item product-card__colors-item--name">
@@ -448,7 +450,271 @@
         </div>
       </div>
     </div>
+
+    <!-- Product details -->
+    <div class="product-card__details details">
+
+      <!-- Left -->
+      <div class="details__left">
+
+        <!-- Section1 -->
+        <section class="details__section">
+          <h3 class="details__title">
+            Details
+          </h3>
+
+          <p class="details__descr">
+            Id habitant tempor aliquam vulputate enim velit tincidunt sed. Urna sed facilisis nulla feugiat amet
+            venenatis. Id suspendisse ut quis tellus aliquam pellentesque neque, semper donec.
+          </p>
+
+          <ul class="details__list">
+            <li class="details__item">
+              Brand: Jordan
+            </li>
+
+            <li class="details__item">
+              Color: gray / red / yellow
+            </li>
+
+            <li class="details__item">
+              Mid-cut design
+            </li>
+
+            <li class="details__item">
+              Lace-up fastening
+            </li>
+
+            <li class="details__item">
+              Rubber outsole pods for durability and traction
+            </li>
+
+            <li class="details__item">
+              Moulded grooves in forefoot offer added flexibility
+            </li>
+
+            <li class="details__item">
+              Padded cuff with inner nodes designed to offer comfort and support around the Achilles tendon
+            </li>
+          </ul>
+        </section>
+
+        <!-- Section2 -->
+        <section class="details__section">
+          <h3 class="details__title">
+            Fabric
+          </h3>
+
+          <ul class="details__list">
+            <li class="details__item">
+              Upper: 50% real leather, 50% textile
+            </li>
+
+            <li class="details__item">
+              Lining: 100% textile
+            </li>
+
+            <li class="details__item">
+              Sole: 100% other materials
+            </li>
+          </ul>
+        </section>
+
+        <!-- Section3 -->
+        <section class="details__section">
+          <h3 class="details__title">
+            Care
+          </h3>
+
+          <ul class="details__list">
+            <li class="details__item details__item--care--wash">
+              Hand wash only (30°)
+            </li>
+
+            <li class="details__item details__item--care--ironing">
+              No ironing
+            </li>
+
+            <li class="details__item details__item--care--bleach">
+              Do not use any bleach
+            </li>
+
+            <li class="details__item details__item--care--tumble">
+              Do not tumble dry
+            </li>
+          </ul>
+        </section>
+      </div>
+
+      <!-- Right -->
+      <div class="details__right">
+        <article class="details__product product" data-vendor="183260005">
+
+          <!-- Look -->
+          <div class="product__look">
+
+            <!-- Microslider -->
+            <div class="product__image-wrapper microslider">
+
+              <!-- Image -->
+              <img src="./img/product-sweatshirt.jpg" alt="Product image."
+                class="product__image microslider__image product__image--main" id="microslider-image">
+
+              <!-- Sources for images -->
+              <ul class="microslider__srcs" aria-hidden="true">
+                <li class="microslider__src" data-src="./img/product-bag.jpg"></li>
+                <li class="microslider__src" data-src="./img/product-bag-2.jpg"></li>
+                <li class="microslider__src" data-src="./img/product-bag-3.jpg"></li>
+              </ul>
+
+              <!-- Btns for microslider -->
+              <div class="microslider__btns">
+                <button class="microslider__button microslider__button--left"
+                  aria-label="Previous image of the product.">
+                  <svg xmlns='http://www.w3.org/2000/svg' aria-hidden="true">
+                    <use href='./img/sprite.svg#angle-down'></use>
+                  </svg>
+                </button>
+
+                <button class="microslider__button microslider__button--right" aria-label="Next image of the product.">
+                  <svg xmlns='http://www.w3.org/2000/svg' aria-hidden="true">
+                    <use href='./img/sprite.svg#angle-down'></use>
+                  </svg>
+                </button>
+              </div>
+
+              <!-- Link -->
+              <a href="#" class="product__image-link"></a>
+            </div>
+
+            <!-- Rating -->
+            <div class="product__rating">
+              <svg class="product__rating-icon product__rating-icon--active" xmlns='http://www.w3.org/2000/svg'
+                aria-label="Star for rating one.">
+                <use href='./img/sprite.svg#star2'></use>
+              </svg>
+
+              <svg class="product__rating-icon product__rating-icon--active" xmlns='http://www.w3.org/2000/svg'
+                aria-label="Star for rating two.">
+                <use href='./img/sprite.svg#star2'></use>
+              </svg>
+
+              <svg class="product__rating-icon product__rating-icon--active" xmlns='http://www.w3.org/2000/svg'
+                aria-label="Star for rating three.">
+                <use href='./img/sprite.svg#star2'></use>
+              </svg>
+
+              <svg class="product__rating-icon product__rating-icon--active" xmlns='http://www.w3.org/2000/svg'
+                aria-label="Star for rating four.">
+                <use href='./img/sprite.svg#star2'></use>
+              </svg>
+
+              <svg class="product__rating-icon" xmlns='http://www.w3.org/2000/svg' aria-label="Star for rating five.">
+                <use href='./img/sprite.svg#star2'></use>
+              </svg>
+            </div>
+
+            <!-- Favorite -->
+            <button class="product__favorite" aria-label="Add to favorite.">
+              <svg xmlns='http://www.w3.org/2000/svg' aria-hidden="true">
+                <use href='./img/sprite.svg#heart-full'></use>
+              </svg>
+            </button>
+
+            <div class="product__discount">
+              -50%
+            </div>
+          </div>
+
+          <!-- Info -->
+          <div class="product__info product__info--white">
+
+            <!-- Product name -->
+            <a href="#" class="product__name">
+              Basic hooded sweatshirt in pink
+            </a>
+
+            <!-- Product prices -->
+            <div class="product__prices">
+              <span class="product__price product__price--h4 product__price--red">
+                $15.50
+              </span>
+
+              <span class="product__old-price details__old-price">
+                $31.00
+              </span>
+            </div>
+
+            <!-- Product bottom -->
+            <div class="product__bottom product__bottom--permanent">
+              <div class="product__details details__product-details">
+
+                <!-- Sizes -->
+                <ul class="product__sizes sizes">
+                  <li class="sizes__item">
+                    <button class="sizes__button">
+                      Xs
+                    </button>
+                  </li>
+
+                  <li class="sizes__item">
+                    <button class="sizes__button sizes__button--active">
+                      S
+                    </button>
+                  </li>
+
+                  <li class="sizes__item">
+                    <button class="sizes__button">
+                      M
+                    </button>
+                  </li>
+
+                  <li class="sizes__item">
+                    <button class="sizes__button">
+                      L
+                    </button>
+                  </li>
+
+                  <li class="sizes__item">
+                    <button class="sizes__button">
+                      Xl
+                    </button>
+                  </li>
+                </ul>
+
+                <!-- Colors -->
+                <ul class="product__colors colors details__colors">
+                  <li class="colors__item">
+                    <button class="colors__button colors__button--active" data-color="Pink"
+                      aria-label="Choose pink color."></button>
+                  </li>
+
+                  <li class="colors__item">
+                    <button class="colors__button" data-color="Blue-gray" aria-label="Choose blue-gray color."></button>
+                  </li>
+
+                  <li class="colors__item">
+                    <button class="colors__button" data-color="Yellow" aria-label="Choose yellow color."></button>
+                  </li>
+                </ul>
+              </div>
+
+              <!-- Button-cart -->
+              <div class="product__button-wrapper">
+                <button class="product__button-cart btn btn--mid">
+                  <svg xmlns='http://www.w3.org/2000/svg'>
+                    <use href='./img/sprite.svg#cart'></use>
+                  </svg>
+                </button>
+              </div>
+            </div>
+          </div>
+        </article>
+      </div>
+    </div>
   </div>
+
+
 
   <!-- Chart -->
   <div class="product-card__chart chart">
@@ -1485,13 +1751,11 @@
 
     <!-- Image-modal head -->
     <div class="image-modal__head">
-      <span class="image-modal__count">
-        <strong class="image-modal__count-current">
-          2
-        </strong>
-
-        / 7
-      </span>
+      <div class="image-modal__count">
+        <span class="image-modal__count-current"></span>
+        /
+        <span class="image-modal__count-total"></span>
+      </div>
 
       <button class="image-modal__close" aria-label="Close image-modal.">
         <svg xmlns='http://www.w3.org/2000/svg' aria-hidden='true'>
@@ -1506,29 +1770,42 @@
 
         <!-- Slide1 -->
         <div class="image-modal__slide swiper-slide">
-          <img src="./img/product-sweatshirt_600w.jpg" alt="Product image." class="image-modal__image" loading="lazy">
+          <div class="image-modal__image-wrapper">
+            <img src="./img/product-sweatshirt_600w.jpg" alt="Product image." class="image-modal__image" loading="lazy">
+          </div>
         </div>
 
         <!-- Slide2 -->
         <div class="image-modal__slide swiper-slide">
-          <img src="./img/product-sweatshirt-1_600w.jpg" alt="Product image." class="image-modal__image" loading="lazy">
+          <div class="image-modal__image-wrapper">
+            <img src="./img/product-sweatshirt-1_600w.jpg" alt="Product image." class="image-modal__image"
+              loading="lazy">
+          </div>
         </div>
 
         <!-- Slide3 -->
         <div class="image-modal__slide swiper-slide">
-          <img src="./img/product-sweatshirt-2_600w.jpg" alt="Product image." class="image-modal__image" loading="lazy">
+          <div class="image-modal__image-wrapper">
+            <img src="./img/product-sweatshirt-2_600w.jpg" alt="Product image." class="image-modal__image"
+              loading="lazy">
+          </div>
         </div>
 
         <!-- Slide4 -->
         <div class="image-modal__slide swiper-slide">
-          <img src="./img/product-sweatshirt-3_600w.jpg" alt="Product image." class="image-modal__image" loading="lazy">
+          <div class="image-modal__image-wrapper">
+            <img src="./img/product-sweatshirt-3_600w.jpg" alt="Product image." class="image-modal__image"
+              loading="lazy">
+          </div>
         </div>
 
-        <div class="image-modal__slide image-modal__slide--video swiper-slide">
-          <iframe loading="lazy" src="https://www.youtube.com/embed/1vrXpMLLK14" title="YouTube video player"
-            frameborder="0"
-            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-            allowfullscreen class="image-modal__video"></iframe>
+        <div class="image-modal__slide swiper-slide">
+          <div class="image-modal__video-wrapper">
+            <iframe loading="lazy" src="https://www.youtube.com/embed/1vrXpMLLK14" title="YouTube video player"
+              frameborder="0"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+              allowfullscreen class="image-modal__video"></iframe>
+          </div>
         </div>
       </div>
 

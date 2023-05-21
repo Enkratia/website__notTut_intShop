@@ -6,9 +6,9 @@ let productColorsBtns;
 // **
 function rechargeProductButton(elem) {
   const product = elem.closest(".product");
-  const productCard = elem.closest(".product-card");
+  const isProductCard = elem.classList.contains("product-card__color-btn");
 
-  if (productCard) {
+  if (isProductCard) {
     const productButton = product.querySelector(".product__button-cart");
     productButton.classList.remove("product-card__btn-cart--active");
     productButton.removeEventListener("click", pbc.$clickOnCart);

@@ -309,7 +309,7 @@ function addToCart() {
   const vendorElement = this.closest("[data-vendor]");
   const vendorCode = vendorElement.getAttribute("data-vendor");
 
-  if (this.closest(".product-card")) {
+  if (this.classList.contains("product-card__btn-cart")) {
     dataObj = {
       vendor: vendorCode,
       imageSrc: vendorElement.querySelector(".product__image--main").getAttribute("src"),

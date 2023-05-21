@@ -21,6 +21,7 @@ const heroSwiper = new Swiper("#hero-swiper", {
 
 // TOP-CATEGORIES SWIPER
 if (document.querySelector("#top-categories-swiper")) {
+
   const topCategoriesSwiper = new Swiper("#top-categories-swiper", {
     modules: [Pagination],
     loop: true,

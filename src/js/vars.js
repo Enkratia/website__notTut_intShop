@@ -80,7 +80,11 @@ export const $productCardChart = document.querySelector(".product-card__chart");
 export const $chartClose = $productCardChart?.querySelector(".chart__close");
 export const $productCardTabs = $productCard?.querySelectorAll(".tab");
 export const $imageModal = $productCard?.querySelector(".product-card__image-modal");
-export const $imageModalClose = $productCard?.querySelector(".image-modal__close");
+export const $imageModalClose = $imageModal?.querySelector(".image-modal__close");
+export const $imageModalCountCurrent = $imageModal?.querySelector(".image-modal__count-current");
+export const $imageModalCountTotal = $imageModal?.querySelector(".image-modal__count-total");
+
+
 
 
 
