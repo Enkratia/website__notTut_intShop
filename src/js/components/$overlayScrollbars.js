@@ -105,3 +105,13 @@ let cartChoiceListScrollbar = OverlayScrollbars(document.querySelector('.cart-ch
     theme: 'os-theme-cart-choice',
   }
 });
+
+// ==== DOWNLOAD FILES SCROLLBAR ==== //
+let downloadFilesScrollbar = OverlayScrollbars(document.querySelector('.download__files'), {
+  scrollbars: {
+    theme: 'os-theme-download-files',
+  }
+});
+
+
+

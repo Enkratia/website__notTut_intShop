@@ -65,7 +65,7 @@ function zoomInImage(e) {
     const height = wrapper.getBoundingClientRect().height;
     const left = wrapper.getBoundingClientRect().left;
 
-    const coeff = width * scale / ((width * scale - width) / 2);
+    // const coeff = width * scale / ((width * scale - width) / 2);
 
     let offsetX;
     let offsetY;
@@ -86,18 +86,18 @@ function zoomInImage(e) {
     function moveImage(e) {
 
       if (e.pageX > centerX) {
-        offsetX = (centerX - e.pageX) / (width / 2) * 100;
+        offsetX = (centerX - e.clientX) / (width / 2) * 100;
       } else {
-        offsetX = 100 - ((e.pageX - left) / (width / 2) * 100);
+        offsetX = 100 - ((e.clientX - left) / (width / 2) * 100);
       }
 
       if (e.pageY > centerY) {
-        offsetY = (centerY - e.pageY) / (height / 2) * 100;
+        offsetY = (centerY - e.clientY) / (height / 2) * 100;
       } else {
-        offsetY = 100 - ((e.pageY - top) / (height / 2) * 100);
+        offsetY = 100 - ((e.clientY - top) / (height / 2) * 100);
       }
-
-      image.style.transform = `scale(${scale}) translate(${offsetX / coeff}%, ${offsetY / coeff}%)`;
+      
+      image.style.transform = `scale(${scale}) translate(${offsetX / 4}%, ${offsetY / 4}%)`;
     }
   }
 }

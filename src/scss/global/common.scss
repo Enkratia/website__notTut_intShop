@@ -1268,6 +1268,9 @@
 
     &--active {
       color: var(--primary-color);
+      cursor: default;
+      pointer-events: none;
+      user-select: none;
     }
   }
 

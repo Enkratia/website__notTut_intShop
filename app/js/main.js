@@ -2398,6 +2398,13 @@ let cartChoiceListScrollbar = (0,overlayscrollbars__WEBPACK_IMPORTED_MODULE_1__.
   }
 });
 
+// ==== DOWNLOAD FILES SCROLLBAR ==== //
+let downloadFilesScrollbar = (0,overlayscrollbars__WEBPACK_IMPORTED_MODULE_1__.OverlayScrollbars)(document.querySelector('.download__files'), {
+  scrollbars: {
+    theme: 'os-theme-download-files'
+  }
+});
+
 /***/ }),
 
 /***/ "./src/js/components/$swipers.js":
@@ -3567,7 +3574,9 @@ function zoomInImage(e) {
     const width = wrapper.getBoundingClientRect().width;
     const height = wrapper.getBoundingClientRect().height;
     const left = wrapper.getBoundingClientRect().left;
-    const coeff = width * scale / ((width * scale - width) / 2);
+
+    // const coeff = width * scale / ((width * scale - width) / 2);
+
     let offsetX;
     let offsetY;
     const centerX = left + width / 2;
@@ -3586,16 +3595,16 @@ function zoomInImage(e) {
     // **
     function moveImage(e) {
       if (e.pageX > centerX) {
-        offsetX = (centerX - e.pageX) / (width / 2) * 100;
+        offsetX = (centerX - e.clientX) / (width / 2) * 100;
       } else {
-        offsetX = 100 - (e.pageX - left) / (width / 2) * 100;
+        offsetX = 100 - (e.clientX - left) / (width / 2) * 100;
       }
       if (e.pageY > centerY) {
-        offsetY = (centerY - e.pageY) / (height / 2) * 100;
+        offsetY = (centerY - e.clientY) / (height / 2) * 100;
       } else {
-        offsetY = 100 - (e.pageY - top) / (height / 2) * 100;
+        offsetY = 100 - (e.clientY - top) / (height / 2) * 100;
       }
-      image.style.transform = `scale(${scale}) translate(${offsetX / coeff}%, ${offsetY / coeff}%)`;
+      image.style.transform = `scale(${scale}) translate(${offsetX / 4}%, ${offsetY / 4}%)`;
     }
   }
 }
@@ -4629,6 +4638,56 @@ window.addEventListener("resize", () => {
 
 /***/ }),
 
+/***/ "./src/js/components/progress__bar.js":
+/*!********************************************!*\
+  !*** ./src/js/components/progress__bar.js ***!
+  \********************************************/
+/***/ ((__unused_webpack___webpack_module__, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+const progressBars = document.querySelectorAll(".progress__bar");
+const percentageArray = [];
+const asessments = {
+  "5": 7,
+  "4": 2,
+  "3": 1,
+  "2": 1,
+  "1": 1
+};
+
+// **
+function calculatePercentage(num, total) {
+  const percentage = 50 + (num - 2) / total * 100;
+  return percentage.toFixed(2) + "%";
+}
+
+// **
+function pushPercentage() {
+  const total = Object.values(asessments).reduce((curr, next) => curr + next);
+  for (let elem in asessments) {
+    switch (asessments[elem]) {
+      case 0:
+        percentageArray.unshift("0");
+        break;
+      case 1:
+        percentageArray.unshift("25%");
+        break;
+      case 2:
+        percentageArray.unshift("50%");
+        break;
+      default:
+        percentageArray.unshift(calculatePercentage(asessments[elem], total));
+    }
+  }
+}
+pushPercentage();
+percentageArray.forEach((el, idx) => {
+  progressBars[idx].style.setProperty("--progress-width", el);
+});
+
+/***/ }),
+
 /***/ "./src/js/components/sidebar-filters__button.js":
 /*!******************************************************!*\
   !*** ./src/js/components/sidebar-filters__button.js ***!
@@ -4964,14 +5023,79 @@ let page = 1;
 let totalPages = 10;
 let activePag;
 let chosenPag;
-const leftArrows = document.querySelectorAll(".tool-pag [data-toolpag='arrow-left']");
-const rightArrows = document.querySelectorAll(".tool-pag [data-toolpag='arrow-right']");
-const rightDots = document.querySelector(".tool-pag [data-toolpag='dots-right']");
-if (rightDots) {
+if (_vars_js__WEBPACK_IMPORTED_MODULE_0__.$toolPags) {
   // F(s)
+  // **
+  function createPags() {
+    let fullTag = "";
+
+    // **
+    function createNumPags() {
+      let count = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : 3;
+      for (let i = 1; i <= count; i++) {
+        fullTag += `
+            <li class="tool-pag__item tool-pag__item--number${i === 1 ? ' tool-pag__item--active' : ''}" data-toolpag="${i}">
+              <a href="#" class="tool-pag__link">
+               ${i}
+              </a>
+            </li>`;
+      }
+      return fullTag;
+    }
+    const leftArrowTag = `
+              <li class="tool-pag__item tool-pag__item--inactive" data-toolpag="arrow-left">
+                <a href="#" class="tool-pag__link" aria-label="Go to the previous page.">
+                  <svg class="tool-pag__arrow tool-pag__arrow--left" xmlns='http://www.w3.org/2000/svg' aria-hidden="true">
+                    <use href='./img/sprite.svg#arrow' aria-hidden="true"></use>
+                  </svg>
+                </a>
+              </li>`;
+    const rightArrowTag = `
+              <li class="tool-pag__item" data-toolpag="arrow-right">
+               <a href="#" class="tool-pag__link" aria-label="Go to the next page.">
+                 <svg class="tool-pag__arrow tool-pag__arrow--right" xmlns='http://www.w3.org/2000/svg' aria-hidden="true">
+                    <use href='./img/sprite.svg#arrow' aria-hidden="true"></use>
+                 </svg>
+                </a>
+              </li>`;
+    const firstItemTag = `
+              <li class="tool-pag__item tool-pag__item--number tool-pag__item--active" data-toolpag="1">
+                <a href="#" class="tool-pag__link">
+                  1
+                </a>
+              </li>`;
+    const lastItemTag = `
+              <li class="tool-pag__item tool-pag__item--number" data-toolpag="${totalPages}">
+                <a href="#" class="tool-pag__link">
+                  ${totalPages}
+                </a>
+              </li>`;
+    const rightDotsTag = `
+              <li class="tool-pag__item" data-toolpag="dots-right">
+                <a href="#" class="tool-pag__link">...</a>
+              </li>`;
+    if (totalPages === 1) {
+      fullTag = firstItemTag;
+    } else if (totalPages < 6) {
+      fullTag = leftArrowTag + createNumPags(totalPages) + rightArrowTag;
+    } else {
+      fullTag = leftArrowTag + createNumPags() + rightDotsTag + lastItemTag + rightArrowTag;
+    }
+    _vars_js__WEBPACK_IMPORTED_MODULE_0__.$toolPags.forEach(el => {
+      el.insertAdjacentHTML("afterbegin", fullTag);
+    });
+  }
+  createPags();
+
+  // *
+  const leftArrows = document.querySelectorAll(".tool-pag [data-toolpag='arrow-left']");
+  const rightArrows = document.querySelectorAll(".tool-pag [data-toolpag='arrow-right']");
+  const rightDots = document.querySelector(".tool-pag [data-toolpag='dots-right']");
+
   // **
   function initPags() {
     if (!_vars_js__WEBPACK_IMPORTED_MODULE_0__.$mdq875.matches) {
+      console.log(document.querySelector(".tool-pag__item--active"));
       const activePag = _vars_js__WEBPACK_IMPORTED_MODULE_0__.$toolPags[0].querySelector(".tool-pag__item--active").dataset.toolpag;
       let diff;
       if (activePag > page) {
@@ -5023,6 +5147,7 @@ if (rightDots) {
   // **
   function destroyRightDots(el) {
     const dotsRight = el.querySelector(`[data-toolpag='dots-right']`);
+    console.log("hello");
     if (!dotsRight) return;
     dotsRight.querySelector(".tool-pag__link").textContent = `${totalPages - 1}`;
     dotsRight.setAttribute("data-toolpag", `${totalPages - 1}`);
@@ -5056,7 +5181,6 @@ if (rightDots) {
   function rearrangeActiveClass() {
     _vars_js__WEBPACK_IMPORTED_MODULE_0__.$toolPags.forEach(el => {
       el.querySelector(".tool-pag__item--active")?.classList.remove("tool-pag__item--active");
-      console.log(page);
       el.querySelector(`[data-toolpag='${page}']`).classList.add("tool-pag__item--active");
     });
   }
@@ -5104,9 +5228,12 @@ if (rightDots) {
       activePag = el.querySelector(".tool-pag__item--active");
       chosenPag = el.querySelector(`[data-toolpag='${page}']`);
     });
-    if (chosenPag === activePag) return;
     rightArrows.forEach(el => el.classList.toggle("tool-pag__item--inactive", page === totalPages));
     leftArrows.forEach(el => el.classList.toggle("tool-pag__item--inactive", page === 1));
+    if (totalPages < 6) {
+      rearrangeActiveClass();
+      return;
+    }
     if (page === 1) {
       _vars_js__WEBPACK_IMPORTED_MODULE_0__.$toolPags.forEach(el => {
         const liElems = el.children;
@@ -5181,6 +5308,7 @@ if (rightDots) {
       rightArrows.forEach(el => el.classList.add("tool-pag__item--inactive"));
       return;
     }
+    if (totalPages < 6) return;
     if (page === 3) {
       _vars_js__WEBPACK_IMPORTED_MODULE_0__.$toolPags.forEach(el => {
         createNextPag(el, page);
@@ -5188,10 +5316,17 @@ if (rightDots) {
       return;
     }
     if (page === 4) {
-      _vars_js__WEBPACK_IMPORTED_MODULE_0__.$toolPags.forEach(el => {
-        createNextPag(el, page);
-        createLeftDots(el);
-      });
+      if (totalPages === 6) {
+        _vars_js__WEBPACK_IMPORTED_MODULE_0__.$toolPags.forEach(el => {
+          createLeftDots(el);
+          destroyRightDots(el);
+        });
+      } else {
+        _vars_js__WEBPACK_IMPORTED_MODULE_0__.$toolPags.forEach(el => {
+          createNextPag(el, page);
+          createLeftDots(el);
+        });
+      }
       return;
     }
     if (page > totalPages - 2) {
@@ -5220,6 +5355,7 @@ if (rightDots) {
       leftArrows.forEach(el => el.classList.add("tool-pag__item--inactive"));
       return;
     }
+    if (totalPages < 6) return;
     if (page === totalPages - 2) {
       _vars_js__WEBPACK_IMPORTED_MODULE_0__.$toolPags.forEach(el => {
         createPrevPag(el, page);
@@ -5227,10 +5363,17 @@ if (rightDots) {
       return;
     }
     if (page === totalPages - 3) {
-      _vars_js__WEBPACK_IMPORTED_MODULE_0__.$toolPags.forEach(el => {
-        createPrevPag(el, page);
-        createRightDots(el);
-      });
+      if (totalPages === 6) {
+        _vars_js__WEBPACK_IMPORTED_MODULE_0__.$toolPags.forEach(el => {
+          destroyLeftDots(el);
+          createRightDots(el);
+        });
+      } else {
+        _vars_js__WEBPACK_IMPORTED_MODULE_0__.$toolPags.forEach(el => {
+          createPrevPag(el, page);
+          createRightDots(el);
+        });
+      }
       return;
     }
     if (page === 2) {
@@ -5257,11 +5400,10 @@ if (rightDots) {
   // L(s)
   // **
   _vars_js__WEBPACK_IMPORTED_MODULE_0__.$toolPags.forEach(el => {
-    for (let i = 0; i < el.children.length; i++) {
-      if (i == 1 || i == 2 || i == 3 || i == 5) {
-        let numPag = el.children[i];
-        numPag.addEventListener("click", changePag);
-      }
+    const numPags = el.querySelectorAll(".tool-pag__item--number");
+    for (let i = 0; i < numPags.length; i++) {
+      let numPag = numPags[i];
+      numPag.addEventListener("click", changePag);
     }
   });
 
@@ -5276,7 +5418,7 @@ if (rightDots) {
   });
 
   // **
-  rightDots.addEventListener("click", goFarAhead);
+  rightDots?.addEventListener("click", goFarAhead);
 }
 
 // ==== MINI PAGINATION (ON SMALL WIDTH DEVICES) ==== //
@@ -5469,6 +5611,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "$toolbarSortSelects": () => (/* binding */ $toolbarSortSelects),
 /* harmony export */   "$topNavBtn": () => (/* binding */ $topNavBtn)
 /* harmony export */ });
+// *** Common *** //
+const $toolPags = document.querySelectorAll(".tool-pag");
+
 // Header
 const $headerTopContainer = document.querySelector("#header-top-container");
 const $topNavBtn = document.querySelector("#top-nav-button");
@@ -5518,7 +5663,6 @@ const $breadcrumbsContainer = document.querySelector(".breadcrumbs__container");
 const $catalog = document.querySelector("#catalog");
 
 // Toolbar
-const $toolPags = document.querySelectorAll(".tool-pag");
 const $toolPagsMini = document.querySelectorAll(".tool-pag-mini");
 const $toolbarSortSelects = document.querySelectorAll(".toolbar__sort-select");
 
@@ -26502,9 +26646,11 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _components_product_card_size_btn_js__WEBPACK_IMPORTED_MODULE_22__ = __webpack_require__(/*! ./components/product-card__size-btn.js */ "./src/js/components/product-card__size-btn.js");
 /* harmony import */ var _components_tabs_js__WEBPACK_IMPORTED_MODULE_23__ = __webpack_require__(/*! ./components/tabs.js */ "./src/js/components/tabs.js");
 /* harmony import */ var _components_image_modal_js__WEBPACK_IMPORTED_MODULE_24__ = __webpack_require__(/*! ./components/image-modal.js */ "./src/js/components/image-modal.js");
-/* harmony import */ var _components_$swipers_js__WEBPACK_IMPORTED_MODULE_25__ = __webpack_require__(/*! ./components/$swipers.js */ "./src/js/components/$swipers.js");
-/* harmony import */ var _components_$overlayScrollbars_js__WEBPACK_IMPORTED_MODULE_26__ = __webpack_require__(/*! ./components/$overlayScrollbars.js */ "./src/js/components/$overlayScrollbars.js");
+/* harmony import */ var _components_progress_bar_js__WEBPACK_IMPORTED_MODULE_25__ = __webpack_require__(/*! ./components/progress__bar.js */ "./src/js/components/progress__bar.js");
+/* harmony import */ var _components_$swipers_js__WEBPACK_IMPORTED_MODULE_26__ = __webpack_require__(/*! ./components/$swipers.js */ "./src/js/components/$swipers.js");
+/* harmony import */ var _components_$overlayScrollbars_js__WEBPACK_IMPORTED_MODULE_27__ = __webpack_require__(/*! ./components/$overlayScrollbars.js */ "./src/js/components/$overlayScrollbars.js");
 // Components
+
 
 
 

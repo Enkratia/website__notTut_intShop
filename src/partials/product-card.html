@@ -20,199 +20,825 @@
 
     <!-- Tabs -->
     <div class="product-card__tabs">
-      <button class="product-card__tab tab tab--active">
+      <label for="general-info" class="product-card__tab tab tab--active" role="button" tabindex="0">
         General info
-      </button>
+      </label>
 
-      <button class="product-card__tab tab">
+      <label for="product-details" class="product-card__tab tab" role="button" tabindex="0">
         Product details
-      </button>
+      </label>
 
-      <button class="product-card__tab tab">
+      <label for="product-card-reviews" class="product-card__tab tab" role="button" tabindex="0">
         Reviews
 
         <span class="tab__count">
           12
         </span>
-      </button>
+      </label>
     </div>
 
     <!-- General info -->
-    <div class="product-card__general">
+    <div class="product-card__general-wrapper">
+      <input type="radio" name="product-card-main-tab" id="general-info" hidden checked>
 
-      <!-- Left -->
-      <div class="product-card__left">
+      <div class="product-card__general">
 
-        <!-- Slider -->
-        <div class="product-card__slider pcs" id="product-card-swiper">
+        <!-- Left -->
+        <div class="product-card__left">
 
-          <!-- Slide1 -->
-          <div class="pcs__wrapper swiper-wrapper">
-            <div class="pcs__slide swiper-slide">
-              <img src="./img/product-sweatshirt_600w.jpg" alt="Product card image."
-                class="pcs__image product__image product__image--main">
+          <!-- Slider -->
+          <div class="product-card__slider pcs" id="product-card-swiper">
+
+            <!-- Slide1 -->
+            <div class="pcs__wrapper swiper-wrapper">
+              <div class="pcs__slide swiper-slide">
+                <img src="./img/product-sweatshirt_600w.jpg" alt="Product card image."
+                  class="pcs__image product__image product__image--main">
+              </div>
+
+              <!-- Slide2 -->
+              <div class="pcs__slide swiper-slide">
+                <img src="./img/product-sweatshirt-1_600w.jpg" alt="Product card image." class="pcs__image">
+              </div>
+
+              <!-- Slide3 -->
+              <div class="pcs__slide swiper-slide">
+                <img src="./img/product-sweatshirt-2_600w.jpg" alt="Product card image." class="pcs__image">
+              </div>
+
+              <!-- Slide4 -->
+              <div class="pcs__slide swiper-slide">
+                <img src="./img/product-sweatshirt-3_600w.jpg" alt="Product card image." class="pcs__image">
+              </div>
+
+              <!-- Slide5 -->
+              <div class="pcs__slide pcs__slide--video swiper-slide">
+                <img src="./img/product-sweatshirt-4_600w.jpg" alt="Product card image." class="pcs__image">
+              </div>
             </div>
 
-            <!-- Slide2 -->
-            <div class="pcs__slide swiper-slide">
-              <img src="./img/product-sweatshirt-1_600w.jpg" alt="Product card image." class="pcs__image">
+            <!-- Navigation -->
+            <button class="pcs__button-prev arrow" id="pcs-button-prev" aria-label="Choose previous slide.">
+              <svg xmlns='http://www.w3.org/2000/svg' aria-hidden="true">
+                <use href='./img/sprite.svg#arrow'></use>
+              </svg>
+            </button>
+
+            <button class="pcs__button-next arrow" id="pcs-button-next" aria-label="Choose next slide.">
+              <svg xmlns='http://www.w3.org/2000/svg' aria-hidden="true">
+                <use href='./img/sprite.svg#arrow'></use>
+              </svg>
+            </button>
+          </div>
+
+          <!-- Minislider -->
+          <div class="product-card__minislider pcm" id="pcm-swiper">
+            <div class="pcm__wrapper swiper-wrapper">
+              <div class="pcm__slide pcm__slide--active swiper-slide" data-slide-idx="0">
+                <img src="./img/product-sweatshirt_104w.jpg" alt="Product card image." class="pcm__image">
+              </div>
+
+              <div class="pcm__slide swiper-slide" data-slide-idx="1">
+                <img src="./img/product-sweatshirt-1_104w.jpg" alt="Product card image." class="pcm__image">
+              </div>
+
+              <div class="pcm__slide swiper-slide" data-slide-idx="2">
+                <img src="./img/product-sweatshirt-2_104w.jpg" alt="Product card image." class="pcm__image">
+              </div>
+
+              <div class="pcm__slide swiper-slide" data-slide-idx="3">
+                <img src="./img/product-sweatshirt-3_104w.jpg" alt="Product card image." class="pcm__image">
+              </div>
+
+              <div class="pcm__slide pcm__slide--video swiper-slide" data-slide-idx="4">
+                <img src="./img/product-sweatshirt-4_104w.jpg" alt="Product card image." class="pcm__image">
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Right -->
+        <div class="product-card__right">
+          <div class="product-card__details">
+
+            <!-- Prices -->
+            <div class="product__prices product-card__price">
+              <span class="product__price product__price--h4 product__price--red">
+                $15.50
+              </span>
+
+              <span class="product__old-price">
+                $31.00
+              </span>
             </div>
 
-            <!-- Slide3 -->
-            <div class="pcs__slide swiper-slide">
-              <img src="./img/product-sweatshirt-2_600w.jpg" alt="Product card image." class="pcs__image">
+            <!-- Discount -->
+            <div class="product__discount product-card__discount">
+              -50%
             </div>
 
-            <!-- Slide4 -->
-            <div class="pcs__slide swiper-slide">
-              <img src="./img/product-sweatshirt-3_600w.jpg" alt="Product card image." class="pcs__image">
-            </div>
+            <!-- Feedback -->
+            <div class="product-card__feedback">
 
-            <!-- Slide5 -->
-            <div class="pcs__slide pcs__slide--video swiper-slide">
-              <img src="./img/product-sweatshirt-4_600w.jpg" alt="Product card image." class="pcs__image">
+              <!-- Rating -->
+              <div class="product__rating product__rating--visible product-card__rating">
+                <svg class="product__rating-icon product__rating-icon--active" xmlns='http://www.w3.org/2000/svg'
+                  aria-label="Star for rating one.">
+                  <use href='./img/sprite.svg#star2'></use>
+                </svg>
+
+                <svg class="product__rating-icon product__rating-icon--active" xmlns='http://www.w3.org/2000/svg'
+                  aria-label="Star for rating two.">
+                  <use href='./img/sprite.svg#star2'></use>
+                </svg>
+
+                <svg class="product__rating-icon product__rating-icon--active" xmlns='http://www.w3.org/2000/svg'
+                  aria-label="Star for rating three.">
+                  <use href='./img/sprite.svg#star2'></use>
+                </svg>
+
+                <svg class="product__rating-icon product__rating-icon--active" xmlns='http://www.w3.org/2000/svg'
+                  aria-label="Star for rating four.">
+                  <use href='./img/sprite.svg#star2'></use>
+                </svg>
+
+                <svg class="product__rating-icon" xmlns='http://www.w3.org/2000/svg' aria-label="Star for rating five.">
+                  <use href='./img/sprite.svg#star2'></use>
+                </svg>
+              </div>
+
+              <!-- Reviews -->
+              <span class="product-card__reviews">
+                12 reviews
+              </span>
             </div>
           </div>
 
-          <!-- Navigation -->
-          <button class="pcs__button-prev arrow" id="pcs-button-prev" aria-label="Choose previous slide.">
-            <svg xmlns='http://www.w3.org/2000/svg' aria-hidden="true">
-              <use href='./img/sprite.svg#arrow'></use>
-            </svg>
-          </button>
+          <!-- Color -->
+          <div class="product-card__colors-wrapper">
+            <label class="product-card__label">
+              Color
+            </label>
 
-          <button class="pcs__button-next arrow" id="pcs-button-next" aria-label="Choose next slide.">
-            <svg xmlns='http://www.w3.org/2000/svg' aria-hidden="true">
-              <use href='./img/sprite.svg#arrow'></use>
-            </svg>
-          </button>
-        </div>
+            <ul class="product-card__colors colors">
+              <li class="colors__item product-card__colors-item">
+                <button class="colors__button colors__button--active product-card__color-btn" data-color="Pink"
+                  aria-label="Choose pink color."></button>
+              </li>
 
-        <!-- Minislider -->
-        <div class="product-card__minislider pcm" id="pcm-swiper">
-          <div class="pcm__wrapper swiper-wrapper">
-            <div class="pcm__slide pcm__slide--active swiper-slide" data-slide-idx="0">
-              <img src="./img/product-sweatshirt_104w.jpg" alt="Product card image." class="pcm__image">
+              <li class="colors__item product-card__colors-item">
+                <button class="colors__button product-card__color-btn" data-color="Blue-gray"
+                  aria-label="Choose blue-gray color."></button>
+              </li>
+
+              <li class="colors__item product-card__colors-item">
+                <button class="colors__button product-card__color-btn" data-color="Yellow"
+                  aria-label="Choose yellow color."></button>
+              </li>
+
+              <li class="colors__item product-card__colors-item product-card__colors-item--name">
+                Pink
+              </li>
+            </ul>
+          </div>
+
+          <!-- Size -->
+          <div class="product-card__sizes-wrapper">
+            <label class="product-card__label product-card__label--size">
+              Size
+            </label>
+
+            <div class="product-card__sizes">
+
+              <!-- Size select -->
+              <div class="custom-select__outer-wrapper product-card__select-outer-wrapper">
+                <div class="custom-select custom-select--light product-card__sort-select" role="listbox" tabindex="0">
+                  <div class="custom-select__head custom-select__head--light product-card__sort-head">
+                    <span class="custom-select__selected product-card__sort-selected">
+                      Please select
+                    </span>
+
+                    <svg class="custom-select__icon" xmlns='http://www.w3.org/2000/svg'>
+                      <use href='./img/sprite.svg#angle-down'></use>
+                    </svg>
+                  </div>
+
+                  <div class="custom-select__inner-wrapper product-card__sort-wrapper">
+                    <ul class="custom-select__list product-card__sort-list" data-overlayscrollbars-initialize>
+                      <li class="custom-select__item custom-select__item--active product-card__sort-item">
+                        Please select
+                      </li>
+
+                      <li class="custom-select__item product-card__sort-item">
+                        Size S
+                      </li>
+
+                      <li class="custom-select__item product-card__sort-item">
+                        Size M
+                      </li>
+
+                      <li class="custom-select__item product-card__sort-item">
+                        Size L
+                      </li>
+
+                      <li class="custom-select__item product-card__sort-item">
+                        Size XL
+                      </li>
+
+                      <li class="custom-select__item product-card__sort-item">
+                        Size XXL
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Size chart button -->
+              <button class="product-card__size-btn">
+                <svg xmlns='http://www.w3.org/2000/svg' aria-hidden='true'>
+                  <use href='./img/sprite.svg#hanger' aria-hidden='true'></use>
+                </svg>
+
+                Size chart
+              </button>
+            </div>
+          </div>
+
+          <!-- CTA -->
+          <div class="product-card__cta">
+
+            <!-- Input-number -->
+            <div class="input-number product-card__input-number">
+              <input type="text" class="input-number__input input product-card__input-number-input" value="1"
+                aria-label="To write the number of products on page." maxlength="3">
+
+              <div class="input-number__btns product-card__input-number-btns">
+                <button class="input-number__btn input-number__btn--small input-number__btn--upper"
+                  aria-label="To rise the number of products on page."></button>
+
+                <button class="input-number__btn input-number__btn--small input-number__btn--lower"
+                  aria-label="To reduce the number of products on page."></button>
+              </div>
             </div>
 
-            <div class="pcm__slide swiper-slide" data-slide-idx="1">
-              <img src="./img/product-sweatshirt-1_104w.jpg" alt="Product card image." class="pcm__image">
+            <!-- Button-cart -->
+            <div class="product__button-wrapper product-card__btn-cart-wrapper">
+              <button class="product__button-cart btn btn--mid product-card__btn-cart">
+                <svg xmlns='http://www.w3.org/2000/svg' aria-hidden="true">
+                  <use href='./img/sprite.svg#cart' aria-hidden="true"></use>
+                </svg>
+              </button>
             </div>
 
-            <div class="pcm__slide swiper-slide" data-slide-idx="2">
-              <img src="./img/product-sweatshirt-2_104w.jpg" alt="Product card image." class="pcm__image">
+            <!-- Favorite -->
+            <button
+              class="product__favorite product__favorite--rectangle product-card__favorite btn btn--mid btn--outline"
+              aria-label="Add to favorite.">
+              <svg xmlns='http://www.w3.org/2000/svg' aria-hidden="true">
+                <use href='./img/sprite.svg#heart-full' aria-hidden="true"></use>
+              </svg>
+
+              Favourite
+            </button>
+          </div>
+
+          <!-- Accordion #1 -->
+          <div class="product-card__accordion accordion">
+            <div class="accordion__top">
+              <h6 class="accordion__title">
+                Delivery
+              </h6>
+
+              <button class="accordion__toggle accordion__toggle--show c-toggle"
+                aria-label="Show or hide the list of the categories."></button>
             </div>
 
-            <div class="pcm__slide swiper-slide" data-slide-idx="3">
-              <img src="./img/product-sweatshirt-3_104w.jpg" alt="Product card image." class="pcm__image">
+            <div class="accordion__bottom accordion__bottom--1">
+              <p class="accordion__descr">
+                Free standard shipping on orders <b class="accordion__descr-price">over $35</b> before tax, plus free
+                returns.
+              </p>
+
+              <table class="accordion__table">
+                <thead>
+                  <tr class="accordion__table-top">
+                    <th class="accordion__table-title">
+                      Type
+                    </th>
+
+                    <th class="accordion__table-title">
+                      How long
+                    </th>
+
+                    <th class="accordion__table-title">
+                      How much
+                    </th>
+                  </tr>
+                </thead>
+
+                <tbody>
+                  <tr class="accordion__table-row">
+                    <td class="accordion__table-cell">
+                      Standard delivery
+                    </td>
+
+                    <td class="accordion__table-cell">
+                      1-4 business days
+                    </td>
+
+                    <td class="accordion__table-cell">
+                      $4.50
+                    </td>
+                  </tr>
+
+                  <tr class="accordion__table-row">
+                    <td class="accordion__table-cell">
+                      Express delivery
+                    </td>
+
+                    <td class="accordion__table-cell">
+                      1 business day
+                    </td>
+
+                    <td class="accordion__table-cell">
+                      $10.00
+                    </td>
+                  </tr>
+
+                  <tr class="accordion__table-row">
+                    <td class="accordion__table-cell">
+                      Pick up in store
+                    </td>
+
+                    <td class="accordion__table-cell">
+                      1-3 business days
+                    </td>
+
+                    <td class="accordion__table-cell">
+                      Free
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+
+          <!-- Accordion #2 -->
+          <div class="product-card__accordion accordion">
+            <div class="accordion__top">
+              <h6 class="accordion__title">
+                Return
+              </h6>
+
+              <button class="accordion__toggle accordion__toggle--show c-toggle"
+                aria-label="Show or hide the list of the categories."></button>
             </div>
 
-            <div class="pcm__slide pcm__slide--video swiper-slide" data-slide-idx="4">
-              <img src="./img/product-sweatshirt-4_104w.jpg" alt="Product card image." class="pcm__image">
+            <div class="accordion__bottom">
+              <p class="accordion__descr accordion__descr--margin">
+                You have <b class="accordion__descr-price">60 days</b> to return the item(s) using any of the following
+                methods:
+              </p>
+
+              <ul class="accordion__list">
+                <li class="accordion__item">
+                  Free store return
+                </li>
+
+                <li class="accordion__item">
+                  Free returns via USPS Dropoff Service
+                </li>
+              </ul>
             </div>
+          </div>
+
+          <!-- Social -->
+          <div class="product-card__share share">
+            <h6 class="share__title">
+              Share:
+            </h6>
+
+            <ul class="share__list">
+              <li class="share__item">
+                <a href="#" class="share__link share__link--facebook" aria-label="Go to our facebook page.">
+                  <svg xmlns='http://www.w3.org/2000/svg' aria-hidden='true'>
+                    <use href='./img/sprite.svg#facebook' aria-hidden='true'></use>
+                  </svg>
+                </a>
+              </li>
+
+              <li class="share__item">
+                <a href="#" class="share__link share__link--twitter" aria-label="Go to our twitter page.">
+                  <svg xmlns='http://www.w3.org/2000/svg' aria-hidden='true'>
+                    <use href='./img/sprite.svg#twitter' aria-hidden='true'></use>
+                  </svg>
+                </a>
+              </li>
+
+              <li class="share__item">
+                <a href="#" class="share__link share__link--pinterest" aria-label="Go to our pinterest page.">
+                  <svg xmlns='http://www.w3.org/2000/svg' aria-hidden='true'>
+                    <use href='./img/sprite.svg#pinterest' aria-hidden='true'></use>
+                  </svg>
+                </a>
+              </li>
+            </ul>
+          </div>
+
+          <!-- Payment -->
+          <div class="product-card__payment payment">
+            <div class="payment__box payment__box--visa" aria-label="Go to visa`s website."></div>
+            <div class="payment__box payment__box--mastercard" aria-label="Go to mastercard`s website."></div>
+            <div class="payment__box payment__box--paypal" aria-label="Go to paypal`s website."></div>
           </div>
         </div>
       </div>
+    </div>
 
-      <!-- Right -->
-      <div class="product-card__right">
-        <div class="product-card__details">
+    <!-- Product details -->
+    <div class="product-card__details-wrapper">
+      <input type="radio" name="product-card-main-tab" id="product-details" hidden>
 
-          <!-- Prices -->
-          <div class="product__prices product-card__price">
-            <span class="product__price product__price--h4 product__price--red">
-              $15.50
-            </span>
+      <div class="product-card__details details">
 
-            <span class="product__old-price">
-              $31.00
-            </span>
-          </div>
+        <!-- Left -->
+        <div class="details__left">
 
-          <!-- Discount -->
-          <div class="product__discount product-card__discount">
-            -50%
-          </div>
+          <!-- Section1 -->
+          <section class="details__section">
+            <h3 class="details__title">
+              Details
+            </h3>
 
-          <!-- Feedback -->
-          <div class="product-card__feedback">
+            <p class="details__descr">
+              Id habitant tempor aliquam vulputate enim velit tincidunt sed. Urna sed facilisis nulla feugiat amet
+              venenatis. Id suspendisse ut quis tellus aliquam pellentesque neque, semper donec.
+            </p>
 
-            <!-- Rating -->
-            <div class="product__rating product__rating--visible product-card__rating">
-              <svg class="product__rating-icon product__rating-icon--active" xmlns='http://www.w3.org/2000/svg'
-                aria-label="Star for rating one.">
-                <use href='./img/sprite.svg#star2'></use>
-              </svg>
+            <ul class="details__list">
+              <li class="details__item">
+                Brand: Jordan
+              </li>
 
-              <svg class="product__rating-icon product__rating-icon--active" xmlns='http://www.w3.org/2000/svg'
-                aria-label="Star for rating two.">
-                <use href='./img/sprite.svg#star2'></use>
-              </svg>
+              <li class="details__item">
+                Color: gray / red / yellow
+              </li>
 
-              <svg class="product__rating-icon product__rating-icon--active" xmlns='http://www.w3.org/2000/svg'
-                aria-label="Star for rating three.">
-                <use href='./img/sprite.svg#star2'></use>
-              </svg>
+              <li class="details__item">
+                Mid-cut design
+              </li>
 
-              <svg class="product__rating-icon product__rating-icon--active" xmlns='http://www.w3.org/2000/svg'
-                aria-label="Star for rating four.">
-                <use href='./img/sprite.svg#star2'></use>
-              </svg>
+              <li class="details__item">
+                Lace-up fastening
+              </li>
 
-              <svg class="product__rating-icon" xmlns='http://www.w3.org/2000/svg' aria-label="Star for rating five.">
-                <use href='./img/sprite.svg#star2'></use>
-              </svg>
+              <li class="details__item">
+                Rubber outsole pods for durability and traction
+              </li>
+
+              <li class="details__item">
+                Moulded grooves in forefoot offer added flexibility
+              </li>
+
+              <li class="details__item">
+                Padded cuff with inner nodes designed to offer comfort and support around the Achilles tendon
+              </li>
+            </ul>
+          </section>
+
+          <!-- Section2 -->
+          <section class="details__section">
+            <h3 class="details__title">
+              Fabric
+            </h3>
+
+            <ul class="details__list">
+              <li class="details__item">
+                Upper: 50% real leather, 50% textile
+              </li>
+
+              <li class="details__item">
+                Lining: 100% textile
+              </li>
+
+              <li class="details__item">
+                Sole: 100% other materials
+              </li>
+            </ul>
+          </section>
+
+          <!-- Section3 -->
+          <section class="details__section">
+            <h3 class="details__title">
+              Care
+            </h3>
+
+            <ul class="details__list">
+              <li class="details__item details__item--care--wash">
+                Hand wash only (30°)
+              </li>
+
+              <li class="details__item details__item--care--ironing">
+                No ironing
+              </li>
+
+              <li class="details__item details__item--care--bleach">
+                Do not use any bleach
+              </li>
+
+              <li class="details__item details__item--care--tumble">
+                Do not tumble dry
+              </li>
+            </ul>
+          </section>
+        </div>
+
+        <!-- Right -->
+        <div class="details__right">
+          <article class="details__product product" data-vendor="183260098">
+
+            <!-- Look -->
+            <div class="product__look">
+
+              <!-- Microslider -->
+              <div class="product__image-wrapper microslider">
+
+                <!-- Image -->
+                <img src="./img/product-sweatshirt.jpg" alt="Product image."
+                  class="product__image microslider__image product__image--main" id="microslider-image">
+
+                <!-- Sources for images -->
+                <ul class="microslider__srcs" aria-hidden="true">
+                  <li class="microslider__src" data-src="./img/product-bag.jpg"></li>
+                  <li class="microslider__src" data-src="./img/product-bag-2.jpg"></li>
+                  <li class="microslider__src" data-src="./img/product-bag-3.jpg"></li>
+                </ul>
+
+                <!-- Btns for microslider -->
+                <div class="microslider__btns">
+                  <button class="microslider__button microslider__button--left"
+                    aria-label="Previous image of the product.">
+                    <svg xmlns='http://www.w3.org/2000/svg' aria-hidden="true">
+                      <use href='./img/sprite.svg#angle-down'></use>
+                    </svg>
+                  </button>
+
+                  <button class="microslider__button microslider__button--right"
+                    aria-label="Next image of the product.">
+                    <svg xmlns='http://www.w3.org/2000/svg' aria-hidden="true">
+                      <use href='./img/sprite.svg#angle-down'></use>
+                    </svg>
+                  </button>
+                </div>
+
+                <!-- Link -->
+                <a href="#" class="product__image-link"></a>
+              </div>
+
+              <!-- Rating -->
+              <div class="product__rating">
+                <svg class="product__rating-icon product__rating-icon--active" xmlns='http://www.w3.org/2000/svg'
+                  aria-label="Star for rating one.">
+                  <use href='./img/sprite.svg#star2'></use>
+                </svg>
+
+                <svg class="product__rating-icon product__rating-icon--active" xmlns='http://www.w3.org/2000/svg'
+                  aria-label="Star for rating two.">
+                  <use href='./img/sprite.svg#star2'></use>
+                </svg>
+
+                <svg class="product__rating-icon product__rating-icon--active" xmlns='http://www.w3.org/2000/svg'
+                  aria-label="Star for rating three.">
+                  <use href='./img/sprite.svg#star2'></use>
+                </svg>
+
+                <svg class="product__rating-icon product__rating-icon--active" xmlns='http://www.w3.org/2000/svg'
+                  aria-label="Star for rating four.">
+                  <use href='./img/sprite.svg#star2'></use>
+                </svg>
+
+                <svg class="product__rating-icon" xmlns='http://www.w3.org/2000/svg' aria-label="Star for rating five.">
+                  <use href='./img/sprite.svg#star2'></use>
+                </svg>
+              </div>
+
+              <!-- Favorite -->
+              <button class="product__favorite" aria-label="Add to favorite.">
+                <svg xmlns='http://www.w3.org/2000/svg' aria-hidden="true">
+                  <use href='./img/sprite.svg#heart-full'></use>
+                </svg>
+              </button>
+
+              <div class="product__discount">
+                -50%
+              </div>
             </div>
 
-            <!-- Reviews -->
-            <span class="product-card__reviews">
-              12 reviews
-            </span>
+            <!-- Info -->
+            <div class="product__info product__info--white">
+
+              <!-- Product name -->
+              <a href="#" class="product__name">
+                Basic hooded sweatshirt in pink
+              </a>
+
+              <!-- Product prices -->
+              <div class="product__prices">
+                <span class="product__price product__price--h4 product__price--red">
+                  $15.50
+                </span>
+
+                <span class="product__old-price details__old-price">
+                  $31.00
+                </span>
+              </div>
+
+              <!-- Product bottom -->
+              <div class="product__bottom product__bottom--permanent">
+                <div class="product__details details__product-details">
+
+                  <!-- Sizes -->
+                  <ul class="product__sizes sizes">
+                    <li class="sizes__item">
+                      <button class="sizes__button">
+                        Xs
+                      </button>
+                    </li>
+
+                    <li class="sizes__item">
+                      <button class="sizes__button sizes__button--active">
+                        S
+                      </button>
+                    </li>
+
+                    <li class="sizes__item">
+                      <button class="sizes__button">
+                        M
+                      </button>
+                    </li>
+
+                    <li class="sizes__item">
+                      <button class="sizes__button">
+                        L
+                      </button>
+                    </li>
+
+                    <li class="sizes__item">
+                      <button class="sizes__button">
+                        Xl
+                      </button>
+                    </li>
+                  </ul>
+
+                  <!-- Colors -->
+                  <ul class="product__colors colors details__colors">
+                    <li class="colors__item">
+                      <button class="colors__button colors__button--active" data-color="Pink"
+                        aria-label="Choose pink color."></button>
+                    </li>
+
+                    <li class="colors__item">
+                      <button class="colors__button" data-color="Blue-gray"
+                        aria-label="Choose blue-gray color."></button>
+                    </li>
+
+                    <li class="colors__item">
+                      <button class="colors__button" data-color="Yellow" aria-label="Choose yellow color."></button>
+                    </li>
+                  </ul>
+                </div>
+
+                <!-- Button-cart -->
+                <div class="product__button-wrapper">
+                  <button class="product__button-cart btn btn--mid">
+                    <svg xmlns='http://www.w3.org/2000/svg'>
+                      <use href='./img/sprite.svg#cart'></use>
+                    </svg>
+                  </button>
+                </div>
+              </div>
+            </div>
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <!-- Reviews -->
+    <div class="product-card__reviews-wrapper">
+      <input type="radio" name="product-card-main-tab" id="product-card-reviews" hidden>
+
+      <div class="product-card__reviews-content reviews-content">
+
+        <!-- Left -->
+        <div class="reviews-content__left">
+
+          <!-- Info -->
+          <div class="reviews-content__info product">
+
+            <!-- Rate -->
+            <div class="reviews-content__info-rate">
+              <h2 class="reviews-content__info-title">
+                12 reviews
+              </h2>
+
+              <div class="product__rating reviews-content__info-rating">
+                <svg class="product__rating-icon product__rating-icon--active reviews-content__info-star"
+                  xmlns='http://www.w3.org/2000/svg' aria-label="Star for rating one.">
+                  <use href='./img/sprite.svg#star2'></use>
+                </svg>
+
+                <svg class="product__rating-icon product__rating-icon--active reviews-content__info-star"
+                  xmlns='http://www.w3.org/2000/svg' aria-label="Star for rating two.">
+                  <use href='./img/sprite.svg#star2'></use>
+                </svg>
+
+                <svg class="product__rating-icon product__rating-icon--active reviews-content__info-star"
+                  xmlns='http://www.w3.org/2000/svg' aria-label="Star for rating three.">
+                  <use href='./img/sprite.svg#star2'></use>
+                </svg>
+
+                <svg class="product__rating-icon product__rating-icon--active reviews-content__info-star"
+                  xmlns='http://www.w3.org/2000/svg' aria-label="Star for rating four.">
+                  <use href='./img/sprite.svg#star2'></use>
+                </svg>
+
+                <svg class="product__rating-icon reviews-content__info-star" xmlns='http://www.w3.org/2000/svg'
+                  aria-label="Star for rating five.">
+                  <use href='./img/sprite.svg#star2'></use>
+                </svg>
+              </div>
+
+              <div class="reviews-content__info-recommended">
+                <span class="reviews-content__info-numbers">
+                  9 out of 12 (75%)
+                </span>
+
+                <span class="reviews-content__info-descr">
+                  Customers recommended this product
+                </span>
+              </div>
+            </div>
+
+            <!-- Progress -->
+            <ul class="reviews__info-progress progress">
+              <li class="progress__item">
+                <span class="progress__grade">
+                  5
+                </span>
+
+                <span class="progress__bar progress__bar--5" data-pb="7"></span>
+              </li>
+
+              <li class="progress__item">
+                <span class="progress__grade">
+                  4
+                </span>
+
+                <span class="progress__bar progress__bar--4" data-pb="2"></span>
+              </li>
+
+              <li class="progress__item">
+                <span class="progress__grade">
+                  3
+                </span>
+
+                <span class="progress__bar progress__bar--3" data-pb="1"></span>
+              </li>
+
+              <li class="progress__item">
+                <span class="progress__grade">
+                  2
+                </span>
+
+                <span class="progress__bar progress__bar--2" data-pb="1"></span>
+              </li>
+
+              <li class="progress__item">
+                <span class="progress__grade">
+                  1
+                </span>
+
+                <span class="progress__bar progress__bar--1" data-pb="1"></span>
+              </li>
+            </ul>
           </div>
-        </div>
 
-        <!-- Color -->
-        <div class="product-card__colors-wrapper">
-          <label class="product-card__label">
-            Color
-          </label>
+          <!-- Toolbar -->
+          <div class="reviews-content__tool-bar tool-bar">
+            <button class="tool-bar__btn btn btn--mid">
+              Leave a review
+            </button>
 
-          <ul class="product-card__colors colors">
-            <li class="colors__item product-card__colors-item">
-              <button class="colors__button colors__button--active product-card__color-btn" data-color="Pink"
-                aria-label="Choose pink color."></button>
-            </li>
+            <div class="tool-bar__sort">
+              <span class="tool-bar__sort-title">
+                Sort by
+              </span>
 
-            <li class="colors__item product-card__colors-item">
-              <button class="colors__button product-card__color-btn" data-color="Blue-gray"
-                aria-label="Choose blue-gray color."></button>
-            </li>
-
-            <li class="colors__item product-card__colors-item">
-              <button class="colors__button product-card__color-btn" data-color="Yellow"
-                aria-label="Choose yellow color."></button>
-            </li>
-
-            <li class="colors__item product-card__colors-item product-card__colors-item--name">
-              Pink
-            </li>
-          </ul>
-        </div>
-
-        <!-- Size -->
-        <div class="product-card__sizes-wrapper">
-          <label class="product-card__label product-card__label--size">
-            Size
-          </label>
-
-          <div class="product-card__sizes">
-
-            <!-- Size select -->
-            <div class="custom-select__outer-wrapper product-card__select-outer-wrapper">
-              <div class="custom-select custom-select--light product-card__sort-select" role="listbox" tabindex="0">
-                <div class="custom-select__head custom-select__head--light product-card__sort-head">
-                  <span class="custom-select__selected product-card__sort-selected">
-                    Please select
+              <div class="custom-select custom-select--light tool-bar__sort-select" role="listbox" tabindex="0"
+                aria-label="Sort commentaries according to condition.">
+                <div class="custom-select__head custom-select__head--light tool-bar__sort-head">
+                  <span class="custom-select__selected tool-bar__sort-selected">
+                    newest
                   </span>
 
                   <svg class="custom-select__icon" xmlns='http://www.w3.org/2000/svg'>
@@ -220,500 +846,572 @@
                   </svg>
                 </div>
 
-                <div class="custom-select__inner-wrapper product-card__sort-wrapper">
-                  <ul class="custom-select__list product-card__sort-list" data-overlayscrollbars-initialize>
-                    <li class="custom-select__item custom-select__item--active product-card__sort-item">
-                      Please select
+                <div class="custom-select__inner-wrapper tool-bar__sort-wrapper">
+                  <ul class="custom-select__list tool-bar__sort-list" data-overlayscrollbars-initialize>
+                    <li class="custom-select__item custom-select__item--active tool-bar__sort-item">
+                      newest
                     </li>
 
-                    <li class="custom-select__item product-card__sort-item">
-                      Size S
+                    <li class="custom-select__item tool-bar__sort-item">
+                      oldest
                     </li>
 
-                    <li class="custom-select__item product-card__sort-item">
-                      Size M
+                    <li class="custom-select__item tool-bar__sort-item">
+                      more likes
                     </li>
 
-                    <li class="custom-select__item product-card__sort-item">
-                      Size L
+                    <li class="custom-select__item tool-bar__sort-item">
+                      more dislikes
                     </li>
 
-                    <li class="custom-select__item product-card__sort-item">
-                      Size XL
+                    <li class="custom-select__item tool-bar__sort-item">
+                      popular
                     </li>
 
-                    <li class="custom-select__item product-card__sort-item">
-                      Size XXL
+                    <li class="custom-select__item tool-bar__sort-item">
+                      unpopular
                     </li>
                   </ul>
                 </div>
               </div>
             </div>
-
-            <!-- Size chart button -->
-            <button class="product-card__size-btn">
-              <svg xmlns='http://www.w3.org/2000/svg' aria-hidden='true'>
-                <use href='./img/sprite.svg#hanger' aria-hidden='true'></use>
-              </svg>
-
-              Size chart
-            </button>
-          </div>
-        </div>
-
-        <!-- CTA -->
-        <div class="product-card__cta">
-
-          <!-- Input-number -->
-          <div class="input-number product-card__input-number">
-            <input type="text" class="input-number__input input product-card__input-number-input" value="1"
-              aria-label="To write the number of products on page." maxlength="3">
-
-            <div class="input-number__btns product-card__input-number-btns">
-              <button class="input-number__btn input-number__btn--small input-number__btn--upper"
-                aria-label="To rise the number of products on page."></button>
-
-              <button class="input-number__btn input-number__btn--small input-number__btn--lower"
-                aria-label="To reduce the number of products on page."></button>
-            </div>
           </div>
 
-          <!-- Button-cart -->
-          <div class="product__button-wrapper product-card__btn-cart-wrapper">
-            <button class="product__button-cart btn btn--mid product-card__btn-cart">
-              <svg xmlns='http://www.w3.org/2000/svg' aria-hidden="true">
-                <use href='./img/sprite.svg#cart' aria-hidden="true"></use>
-              </svg>
-            </button>
-          </div>
+          <!-- Review -->
+          <div class="reviews-content__review review">
 
-          <!-- Favorite -->
-          <button
-            class="product__favorite product__favorite--rectangle product-card__favorite btn btn--mid btn--outline"
-            aria-label="Add to favorite.">
-            <svg xmlns='http://www.w3.org/2000/svg' aria-hidden="true">
-              <use href='./img/sprite.svg#heart-full' aria-hidden="true"></use>
-            </svg>
+            <!-- Review1 -->
+            <div class="review__box">
+              <div class="review__user">
+                <span class="review__user-name">
+                  Devon Lane
+                </span>
 
-            Favourite
-          </button>
-        </div>
+                <span class="review__user-date">
+                  July 15, 2020
+                </span>
 
-        <!-- Accordion #1 -->
-        <div class="product-card__accordion accordion">
-          <div class="accordion__top">
-            <h6 class="accordion__title">
-              Delivery
-            </h6>
-
-            <button class="accordion__toggle accordion__toggle--show c-toggle"
-              aria-label="Show or hide the list of the categories."></button>
-          </div>
-
-          <div class="accordion__bottom accordion__bottom--1">
-            <p class="accordion__descr">
-              Free standard shipping on orders <b class="accordion__descr-price">over $35</b> before tax, plus free
-              returns.
-            </p>
-
-            <table class="accordion__table">
-              <thead>
-                <tr class="accordion__table-top">
-                  <th class="accordion__table-title">
-                    Type
-                  </th>
-
-                  <th class="accordion__table-title">
-                    How long
-                  </th>
-
-                  <th class="accordion__table-title">
-                    How much
-                  </th>
-                </tr>
-              </thead>
-
-              <tbody>
-                <tr class="accordion__table-row">
-                  <td class="accordion__table-cell">
-                    Standard delivery
-                  </td>
-
-                  <td class="accordion__table-cell">
-                    1-4 business days
-                  </td>
-
-                  <td class="accordion__table-cell">
-                    $4.50
-                  </td>
-                </tr>
-
-                <tr class="accordion__table-row">
-                  <td class="accordion__table-cell">
-                    Express delivery
-                  </td>
-
-                  <td class="accordion__table-cell">
-                    1 business day
-                  </td>
-
-                  <td class="accordion__table-cell">
-                    $10.00
-                  </td>
-                </tr>
-
-                <tr class="accordion__table-row">
-                  <td class="accordion__table-cell">
-                    Pick up in store
-                  </td>
-
-                  <td class="accordion__table-cell">
-                    1-3 business days
-                  </td>
-
-                  <td class="accordion__table-cell">
-                    Free
-                  </td>
-                </tr>
-              </tbody>
-            </table>
-          </div>
-        </div>
-
-        <!-- Accordion #2 -->
-        <div class="product-card__accordion accordion">
-          <div class="accordion__top">
-            <h6 class="accordion__title">
-              Return
-            </h6>
-
-            <button class="accordion__toggle accordion__toggle--show c-toggle"
-              aria-label="Show or hide the list of the categories."></button>
-          </div>
-
-          <div class="accordion__bottom">
-            <p class="accordion__descr accordion__descr--margin">
-              You have <b class="accordion__descr-price">60 days</b> to return the item(s) using any of the following
-              methods:
-            </p>
-
-            <ul class="accordion__list">
-              <li class="accordion__item">
-                Free store return
-              </li>
-
-              <li class="accordion__item">
-                Free returns via USPS Dropoff Service
-              </li>
-            </ul>
-          </div>
-        </div>
-
-        <!-- Social -->
-        <div class="product-card__share share">
-          <h6 class="share__title">
-            Share:
-          </h6>
-
-          <ul class="share__list">
-            <li class="share__item">
-              <a href="#" class="share__link share__link--facebook" aria-label="Go to our facebook page.">
-                <svg xmlns='http://www.w3.org/2000/svg' aria-hidden='true'>
-                  <use href='./img/sprite.svg#facebook' aria-hidden='true'></use>
-                </svg>
-              </a>
-            </li>
-
-            <li class="share__item">
-              <a href="#" class="share__link share__link--twitter" aria-label="Go to our twitter page.">
-                <svg xmlns='http://www.w3.org/2000/svg' aria-hidden='true'>
-                  <use href='./img/sprite.svg#twitter' aria-hidden='true'></use>
-                </svg>
-              </a>
-            </li>
-
-            <li class="share__item">
-              <a href="#" class="share__link share__link--pinterest" aria-label="Go to our pinterest page.">
-                <svg xmlns='http://www.w3.org/2000/svg' aria-hidden='true'>
-                  <use href='./img/sprite.svg#pinterest' aria-hidden='true'></use>
-                </svg>
-              </a>
-            </li>
-          </ul>
-        </div>
-
-        <!-- Payment -->
-        <div class="product-card__payment payment">
-          <div class="payment__box payment__box--visa" aria-label="Go to visa`s website."></div>
-          <div class="payment__box payment__box--mastercard" aria-label="Go to mastercard`s website."></div>
-          <div class="payment__box payment__box--paypal" aria-label="Go to paypal`s website."></div>
-        </div>
-      </div>
-    </div>
-
-    <!-- Product details -->
-    <div class="product-card__details details">
-
-      <!-- Left -->
-      <div class="details__left">
-
-        <!-- Section1 -->
-        <section class="details__section">
-          <h3 class="details__title">
-            Details
-          </h3>
-
-          <p class="details__descr">
-            Id habitant tempor aliquam vulputate enim velit tincidunt sed. Urna sed facilisis nulla feugiat amet
-            venenatis. Id suspendisse ut quis tellus aliquam pellentesque neque, semper donec.
-          </p>
-
-          <ul class="details__list">
-            <li class="details__item">
-              Brand: Jordan
-            </li>
-
-            <li class="details__item">
-              Color: gray / red / yellow
-            </li>
-
-            <li class="details__item">
-              Mid-cut design
-            </li>
-
-            <li class="details__item">
-              Lace-up fastening
-            </li>
-
-            <li class="details__item">
-              Rubber outsole pods for durability and traction
-            </li>
-
-            <li class="details__item">
-              Moulded grooves in forefoot offer added flexibility
-            </li>
-
-            <li class="details__item">
-              Padded cuff with inner nodes designed to offer comfort and support around the Achilles tendon
-            </li>
-          </ul>
-        </section>
-
-        <!-- Section2 -->
-        <section class="details__section">
-          <h3 class="details__title">
-            Fabric
-          </h3>
-
-          <ul class="details__list">
-            <li class="details__item">
-              Upper: 50% real leather, 50% textile
-            </li>
-
-            <li class="details__item">
-              Lining: 100% textile
-            </li>
-
-            <li class="details__item">
-              Sole: 100% other materials
-            </li>
-          </ul>
-        </section>
-
-        <!-- Section3 -->
-        <section class="details__section">
-          <h3 class="details__title">
-            Care
-          </h3>
-
-          <ul class="details__list">
-            <li class="details__item details__item--care--wash">
-              Hand wash only (30°)
-            </li>
-
-            <li class="details__item details__item--care--ironing">
-              No ironing
-            </li>
-
-            <li class="details__item details__item--care--bleach">
-              Do not use any bleach
-            </li>
-
-            <li class="details__item details__item--care--tumble">
-              Do not tumble dry
-            </li>
-          </ul>
-        </section>
-      </div>
-
-      <!-- Right -->
-      <div class="details__right">
-        <article class="details__product product" data-vendor="183260005">
-
-          <!-- Look -->
-          <div class="product__look">
-
-            <!-- Microslider -->
-            <div class="product__image-wrapper microslider">
-
-              <!-- Image -->
-              <img src="./img/product-sweatshirt.jpg" alt="Product image."
-                class="product__image microslider__image product__image--main" id="microslider-image">
-
-              <!-- Sources for images -->
-              <ul class="microslider__srcs" aria-hidden="true">
-                <li class="microslider__src" data-src="./img/product-bag.jpg"></li>
-                <li class="microslider__src" data-src="./img/product-bag-2.jpg"></li>
-                <li class="microslider__src" data-src="./img/product-bag-3.jpg"></li>
-              </ul>
-
-              <!-- Btns for microslider -->
-              <div class="microslider__btns">
-                <button class="microslider__button microslider__button--left"
-                  aria-label="Previous image of the product.">
-                  <svg xmlns='http://www.w3.org/2000/svg' aria-hidden="true">
-                    <use href='./img/sprite.svg#angle-down'></use>
+                <div class="review__user-rate user-rate">
+                  <svg class="user-rate__icon user-rate__icon--active" xmlns='http://www.w3.org/2000/svg'
+                    aria-label="Star for rating one.">
+                    <use href='./img/sprite.svg#star2'></use>
                   </svg>
-                </button>
 
-                <button class="microslider__button microslider__button--right" aria-label="Next image of the product.">
-                  <svg xmlns='http://www.w3.org/2000/svg' aria-hidden="true">
-                    <use href='./img/sprite.svg#angle-down'></use>
+                  <svg class="user-rate__icon user-rate__icon--active" xmlns='http://www.w3.org/2000/svg'
+                    aria-label="Star for rating two.">
+                    <use href='./img/sprite.svg#star2'></use>
                   </svg>
-                </button>
+
+                  <svg class="user-rate__icon user-rate__icon--active" xmlns='http://www.w3.org/2000/svg'
+                    aria-label="Star for rating three.">
+                    <use href='./img/sprite.svg#star2'></use>
+                  </svg>
+
+                  <svg class="user-rate__icon user-rate__icon--active" xmlns='http://www.w3.org/2000/svg'
+                    aria-label="Star for rating four.">
+                    <use href='./img/sprite.svg#star2'></use>
+                  </svg>
+
+                  <svg class="user-rate__icon user-rate__icon--active" xmlns='http://www.w3.org/2000/svg'
+                    aria-label="Star for rating five.">
+                    <use href='./img/sprite.svg#star2'></use>
+                  </svg>
+                </div>
               </div>
 
-              <!-- Link -->
-              <a href="#" class="product__image-link"></a>
+              <div class="review__message">
+                <p class="review__message-text">
+                  Phasellus varius faucibus ultrices odio in. Massa neque dictum natoque ornare rutrum malesuada et
+                  phasellus. Viverra natoque nulla cras vel nisl proin senectus. Tortor sed eleifend ante tristique
+                  felis
+                  sed urna aliquet. Suspendisse fames egestas sed duis purus diam et.
+                </p>
+
+                <div class="review__message-tooltips">
+                  <button class="review__message-reply">
+                    <svg xmlns='http://www.w3.org/2000/svg' aria-hidden='true'>
+                      <use href='./img/sprite.svg#reply' aria-hidden='true'></use>
+                    </svg>
+
+                    Reply
+                  </button>
+
+                  <div class="review__message-assessment">
+                    <button class="review__message-like" aria-label="Like this review.">
+                      <svg xmlns='http://www.w3.org/2000/svg' aria-hidden='true'>
+                        <use href='./img/sprite.svg#like' aria-hidden='true'></use>
+                      </svg>
+
+                      <span class="review__message-like-count">
+                        2
+                      </span>
+                    </button>
+
+                    <button class="review__message-dislike" aria-label="Dislike this review.">
+                      <svg xmlns='http://www.w3.org/2000/svg' aria-hidden='true'>
+                        <use href='./img/sprite.svg#dislike' aria-hidden='true'></use>
+                      </svg>
+
+                      <span class="review__message-dislike-count">
+                        0
+                      </span>
+                    </button>
+                  </div>
+                </div>
+              </div>
             </div>
 
-            <!-- Rating -->
-            <div class="product__rating">
-              <svg class="product__rating-icon product__rating-icon--active" xmlns='http://www.w3.org/2000/svg'
-                aria-label="Star for rating one.">
-                <use href='./img/sprite.svg#star2'></use>
-              </svg>
+            <!-- Review2 -->
+            <div class="review__box">
+              <div class="review__user">
+                <span class="review__user-name">
+                  Annette Black
+                </span>
 
-              <svg class="product__rating-icon product__rating-icon--active" xmlns='http://www.w3.org/2000/svg'
-                aria-label="Star for rating two.">
-                <use href='./img/sprite.svg#star2'></use>
-              </svg>
+                <span class="review__user-date">
+                  1 day ago
+                </span>
 
-              <svg class="product__rating-icon product__rating-icon--active" xmlns='http://www.w3.org/2000/svg'
-                aria-label="Star for rating three.">
-                <use href='./img/sprite.svg#star2'></use>
-              </svg>
+                <div class="review__user-rate user-rate">
+                  <svg class="user-rate__icon user-rate__icon--active" xmlns='http://www.w3.org/2000/svg'
+                    aria-label="Star for rating one.">
+                    <use href='./img/sprite.svg#star2'></use>
+                  </svg>
 
-              <svg class="product__rating-icon product__rating-icon--active" xmlns='http://www.w3.org/2000/svg'
-                aria-label="Star for rating four.">
-                <use href='./img/sprite.svg#star2'></use>
-              </svg>
+                  <svg class="user-rate__icon user-rate__icon--active" xmlns='http://www.w3.org/2000/svg'
+                    aria-label="Star for rating two.">
+                    <use href='./img/sprite.svg#star2'></use>
+                  </svg>
 
-              <svg class="product__rating-icon" xmlns='http://www.w3.org/2000/svg' aria-label="Star for rating five.">
-                <use href='./img/sprite.svg#star2'></use>
-              </svg>
+                  <svg class="user-rate__icon user-rate__icon--active" xmlns='http://www.w3.org/2000/svg'
+                    aria-label="Star for rating three.">
+                    <use href='./img/sprite.svg#star2'></use>
+                  </svg>
+
+                  <svg class="user-rate__icon user-rate__icon--active" xmlns='http://www.w3.org/2000/svg'
+                    aria-label="Star for rating four.">
+                    <use href='./img/sprite.svg#star2'></use>
+                  </svg>
+
+                  <svg class="user-rate__icon" xmlns='http://www.w3.org/2000/svg' aria-label="Star for rating five.">
+                    <use href='./img/sprite.svg#star2'></use>
+                  </svg>
+                </div>
+              </div>
+
+              <div class="review__message">
+                <p class="review__message-text">
+                  @Devon Lane Egestas fermentum natoque sollicitudin mauris. Facilisis praesent urna sed rhoncus quis
+                  pharetra pellentesque erat sagittis.
+                </p>
+
+                <div class="review__message-tooltips">
+                  <button class="review__message-reply">
+                    <svg xmlns='http://www.w3.org/2000/svg' aria-hidden='true'>
+                      <use href='./img/sprite.svg#reply' aria-hidden='true'></use>
+                    </svg>
+
+                    Reply
+                  </button>
+
+                  <div class="review__message-assessment">
+                    <button class="review__message-like" aria-label="Like this review.">
+                      <svg xmlns='http://www.w3.org/2000/svg' aria-hidden='true'>
+                        <use href='./img/sprite.svg#like' aria-hidden='true'></use>
+                      </svg>
+
+                      <span class="review__message-like-count">
+                        2
+                      </span>
+                    </button>
+
+                    <button class="review__message-dislike" aria-label="Dislike this review.">
+                      <svg xmlns='http://www.w3.org/2000/svg' aria-hidden='true'>
+                        <use href='./img/sprite.svg#dislike' aria-hidden='true'></use>
+                      </svg>
+
+                      <span class="review__message-dislike-count">
+                        1
+                      </span>
+                    </button>
+                  </div>
+                </div>
+              </div>
             </div>
 
-            <!-- Favorite -->
-            <button class="product__favorite" aria-label="Add to favorite.">
-              <svg xmlns='http://www.w3.org/2000/svg' aria-hidden="true">
-                <use href='./img/sprite.svg#heart-full'></use>
-              </svg>
-            </button>
+            <!-- Review3 -->
+            <div class="review__box">
+              <div class="review__user">
+                <span class="review__user-name">
+                  Albert Flores
+                </span>
 
-            <div class="product__discount">
-              -50%
+                <span class="review__user-date">
+                  July 7, 2020
+                </span>
+
+                <div class="review__user-rate user-rate">
+                  <svg class="user-rate__icon user-rate__icon--active" xmlns='http://www.w3.org/2000/svg'
+                    aria-label="Star for rating one.">
+                    <use href='./img/sprite.svg#star2'></use>
+                  </svg>
+
+                  <svg class="user-rate__icon" xmlns='http://www.w3.org/2000/svg' aria-label="Star for rating two.">
+                    <use href='./img/sprite.svg#star2'></use>
+                  </svg>
+
+                  <svg class="user-rate__icon" xmlns='http://www.w3.org/2000/svg' aria-label="Star for rating three.">
+                    <use href='./img/sprite.svg#star2'></use>
+                  </svg>
+
+                  <svg class="user-rate__icon" xmlns='http://www.w3.org/2000/svg' aria-label="Star for rating four.">
+                    <use href='./img/sprite.svg#star2'></use>
+                  </svg>
+
+                  <svg class="user-rate__icon" xmlns='http://www.w3.org/2000/svg' aria-label="Star for rating five.">
+                    <use href='./img/sprite.svg#star2'></use>
+                  </svg>
+                </div>
+              </div>
+
+              <div class="review__message">
+                <p class="review__message-text">
+                  Libero commodo sit dui ac proin. Penatibus ultricies at adipiscing mauris nunc. Fames faucibus nisl
+                  duis id diam.
+                </p>
+
+                <div class="review__message-tooltips">
+                  <button class="review__message-reply">
+                    <svg xmlns='http://www.w3.org/2000/svg' aria-hidden='true'>
+                      <use href='./img/sprite.svg#reply' aria-hidden='true'></use>
+                    </svg>
+
+                    Reply
+                  </button>
+
+                  <div class="review__message-assessment">
+                    <button class="review__message-like" aria-label="Like this review.">
+                      <svg xmlns='http://www.w3.org/2000/svg' aria-hidden='true'>
+                        <use href='./img/sprite.svg#like' aria-hidden='true'></use>
+                      </svg>
+
+                      <span class="review__message-like-count">
+                        0
+                      </span>
+                    </button>
+
+                    <button class="review__message-dislike" aria-label="Dislike this review.">
+                      <svg xmlns='http://www.w3.org/2000/svg' aria-hidden='true'>
+                        <use href='./img/sprite.svg#dislike' aria-hidden='true'></use>
+                      </svg>
+
+                      <span class="review__message-dislike-count">
+                        3
+                      </span>
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Review4 -->
+            <div class="review__box">
+              <div class="review__user">
+                <span class="review__user-name">
+                  Marvin McKinney
+                </span>
+
+                <span class="review__user-date">
+                  June 28, 2020
+                </span>
+
+                <div class="review__user-rate user-rate">
+                  <svg class="user-rate__icon user-rate__icon--active" xmlns='http://www.w3.org/2000/svg'
+                    aria-label="Star for rating one.">
+                    <use href='./img/sprite.svg#star2'></use>
+                  </svg>
+
+                  <svg class="user-rate__icon user-rate__icon--active" xmlns='http://www.w3.org/2000/svg'
+                    aria-label="Star for rating two.">
+                    <use href='./img/sprite.svg#star2'></use>
+                  </svg>
+
+                  <svg class="user-rate__icon user-rate__icon--active" xmlns='http://www.w3.org/2000/svg'
+                    aria-label="Star for rating three.">
+                    <use href='./img/sprite.svg#star2'></use>
+                  </svg>
+
+                  <svg class="user-rate__icon user-rate__icon--active" xmlns='http://www.w3.org/2000/svg'
+                    aria-label="Star for rating four.">
+                    <use href='./img/sprite.svg#star2'></use>
+                  </svg>
+
+                  <svg class="user-rate__icon user-rate__icon--active" xmlns='http://www.w3.org/2000/svg'
+                    aria-label="Star for rating five.">
+                    <use href='./img/sprite.svg#star2'></use>
+                  </svg>
+                </div>
+              </div>
+
+              <div class="review__message">
+                <p class="review__message-text">
+                  Ullamcorper nibh sed ac ipsum nunc imperdiet rhoncus. Quam donec habitant nibh sit consequat erat
+                  libero, tincidunt. Eros ut aliquam proin et duis. Mauris, egestas congue nibh dui a nulla.
+                </p>
+
+                <div class="review__message-tooltips">
+                  <button class="review__message-reply">
+                    <svg xmlns='http://www.w3.org/2000/svg' aria-hidden='true'>
+                      <use href='./img/sprite.svg#reply' aria-hidden='true'></use>
+                    </svg>
+
+                    Reply
+                  </button>
+
+                  <div class="review__message-assessment">
+                    <button class="review__message-like" aria-label="Like this review.">
+                      <svg xmlns='http://www.w3.org/2000/svg' aria-hidden='true'>
+                        <use href='./img/sprite.svg#like' aria-hidden='true'></use>
+                      </svg>
+
+                      <span class="review__message-like-count">
+                        3
+                      </span>
+                    </button>
+
+                    <button class="review__message-dislike" aria-label="Dislike this review.">
+                      <svg xmlns='http://www.w3.org/2000/svg' aria-hidden='true'>
+                        <use href='./img/sprite.svg#dislike' aria-hidden='true'></use>
+                      </svg>
+
+                      <span class="review__message-dislike-count">
+                        0
+                      </span>
+                    </button>
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
 
-          <!-- Info -->
-          <div class="product__info product__info--white">
+          <!-- Pagination -->
+          <ul class="reviews-content__pagination tool-pag">
+            <!-- <li class="tool-pag__item tool-pag__item--inactive" data-toolpag="arrow-left">
+              <a href="#" class="tool-pag__link" aria-label="Go to the previous page.">
+                <svg class="tool-pag__arrow tool-pag__arrow--left" xmlns='http://www.w3.org/2000/svg' aria-hidden="true">
+                  <use href='./img/sprite.svg#arrow' aria-hidden="true"></use>
+                </svg>
+              </a>
+            </li>
+      
+            <li class="tool-pag__item tool-pag__item--active" data-toolpag="1">
+              <a href="#" class="tool-pag__link">
+                1
+              </a>
+            </li>
+      
+            <li class="tool-pag__item" data-toolpag="2">
+              <a href="#" class="tool-pag__link">
+                2
+              </a>
+            </li>
+      
+            <li class="tool-pag__item" data-toolpag="3">
+              <a href="#" class="tool-pag__link">
+                3
+              </a>
+            </li>
+      
+            <li class="tool-pag__item" data-toolpag="dots-right">
+              <a href="#" class="tool-pag__link">...</a>
+            </li>
+      
+            <li class="tool-pag__item" data-toolpag="10">
+              <a href="#" class="tool-pag__link">
+                10
+              </a>
+            </li>
+      
+            <li class="tool-pag__item" data-toolpag="arrow-right">
+              <a href="#" class="tool-pag__link" aria-label="Go to the next page.">
+                <svg class="tool-pag__arrow tool-pag__arrow--right" xmlns='http://www.w3.org/2000/svg' aria-hidden="true">
+                  <use href='./img/sprite.svg#arrow' aria-hidden="true"></use>
+                </svg>
+              </a>
+            </li> -->
+          </ul>
+        </div>
 
-            <!-- Product name -->
-            <a href="#" class="product__name">
-              Basic hooded sweatshirt in pink
-            </a>
+        <!-- Right -->
+        <div class="reviews-content__right">
+          <article class="reviews-content__product product" data-vendor="183260098">
 
-            <!-- Product prices -->
-            <div class="product__prices">
-              <span class="product__price product__price--h4 product__price--red">
-                $15.50
-              </span>
+            <!-- Look -->
+            <div class="product__look">
 
-              <span class="product__old-price details__old-price">
-                $31.00
-              </span>
-            </div>
+              <!-- Microslider -->
+              <div class="product__image-wrapper microslider">
 
-            <!-- Product bottom -->
-            <div class="product__bottom product__bottom--permanent">
-              <div class="product__details details__product-details">
+                <!-- Image -->
+                <img src="./img/product-sweatshirt.jpg" alt="Product image."
+                  class="product__image microslider__image product__image--main" id="microslider-image">
 
-                <!-- Sizes -->
-                <ul class="product__sizes sizes">
-                  <li class="sizes__item">
-                    <button class="sizes__button">
-                      Xs
-                    </button>
-                  </li>
-
-                  <li class="sizes__item">
-                    <button class="sizes__button sizes__button--active">
-                      S
-                    </button>
-                  </li>
-
-                  <li class="sizes__item">
-                    <button class="sizes__button">
-                      M
-                    </button>
-                  </li>
-
-                  <li class="sizes__item">
-                    <button class="sizes__button">
-                      L
-                    </button>
-                  </li>
-
-                  <li class="sizes__item">
-                    <button class="sizes__button">
-                      Xl
-                    </button>
-                  </li>
+                <!-- Sources for images -->
+                <ul class="microslider__srcs" aria-hidden="true">
+                  <li class="microslider__src" data-src="./img/product-bag.jpg"></li>
+                  <li class="microslider__src" data-src="./img/product-bag-2.jpg"></li>
+                  <li class="microslider__src" data-src="./img/product-bag-3.jpg"></li>
                 </ul>
 
-                <!-- Colors -->
-                <ul class="product__colors colors details__colors">
-                  <li class="colors__item">
-                    <button class="colors__button colors__button--active" data-color="Pink"
-                      aria-label="Choose pink color."></button>
-                  </li>
+                <!-- Btns for microslider -->
+                <div class="microslider__btns">
+                  <button class="microslider__button microslider__button--left"
+                    aria-label="Previous image of the product.">
+                    <svg xmlns='http://www.w3.org/2000/svg' aria-hidden="true">
+                      <use href='./img/sprite.svg#angle-down'></use>
+                    </svg>
+                  </button>
 
-                  <li class="colors__item">
-                    <button class="colors__button" data-color="Blue-gray" aria-label="Choose blue-gray color."></button>
-                  </li>
+                  <button class="microslider__button microslider__button--right"
+                    aria-label="Next image of the product.">
+                    <svg xmlns='http://www.w3.org/2000/svg' aria-hidden="true">
+                      <use href='./img/sprite.svg#angle-down'></use>
+                    </svg>
+                  </button>
+                </div>
 
-                  <li class="colors__item">
-                    <button class="colors__button" data-color="Yellow" aria-label="Choose yellow color."></button>
-                  </li>
-                </ul>
+                <!-- Link -->
+                <a href="#" class="product__image-link"></a>
               </div>
 
-              <!-- Button-cart -->
-              <div class="product__button-wrapper">
-                <button class="product__button-cart btn btn--mid">
-                  <svg xmlns='http://www.w3.org/2000/svg'>
-                    <use href='./img/sprite.svg#cart'></use>
-                  </svg>
-                </button>
+              <!-- Rating -->
+              <div class="product__rating">
+                <svg class="product__rating-icon product__rating-icon--active" xmlns='http://www.w3.org/2000/svg'
+                  aria-label="Star for rating one.">
+                  <use href='./img/sprite.svg#star2'></use>
+                </svg>
+
+                <svg class="product__rating-icon product__rating-icon--active" xmlns='http://www.w3.org/2000/svg'
+                  aria-label="Star for rating two.">
+                  <use href='./img/sprite.svg#star2'></use>
+                </svg>
+
+                <svg class="product__rating-icon product__rating-icon--active" xmlns='http://www.w3.org/2000/svg'
+                  aria-label="Star for rating three.">
+                  <use href='./img/sprite.svg#star2'></use>
+                </svg>
+
+                <svg class="product__rating-icon product__rating-icon--active" xmlns='http://www.w3.org/2000/svg'
+                  aria-label="Star for rating four.">
+                  <use href='./img/sprite.svg#star2'></use>
+                </svg>
+
+                <svg class="product__rating-icon" xmlns='http://www.w3.org/2000/svg' aria-label="Star for rating five.">
+                  <use href='./img/sprite.svg#star2'></use>
+                </svg>
+              </div>
+
+              <!-- Favorite -->
+              <button class="product__favorite" aria-label="Add to favorite.">
+                <svg xmlns='http://www.w3.org/2000/svg' aria-hidden="true">
+                  <use href='./img/sprite.svg#heart-full'></use>
+                </svg>
+              </button>
+
+              <div class="product__discount">
+                -50%
               </div>
             </div>
-          </div>
-        </article>
+
+            <!-- Info -->
+            <div class="product__info product__info--white">
+
+              <!-- Product name -->
+              <a href="#" class="product__name">
+                Basic hooded sweatshirt in pink
+              </a>
+
+              <!-- Product prices -->
+              <div class="product__prices">
+                <span class="product__price product__price--h4 product__price--red">
+                  $15.50
+                </span>
+
+                <span class="product__old-price reviews-content__old-price">
+                  $31.00
+                </span>
+              </div>
+
+              <!-- Product bottom -->
+              <div class="product__bottom product__bottom--permanent">
+                <div class="product__details reviews-content__product-details">
+
+                  <!-- Sizes -->
+                  <ul class="product__sizes sizes">
+                    <li class="sizes__item">
+                      <button class="sizes__button">
+                        Xs
+                      </button>
+                    </li>
+
+                    <li class="sizes__item">
+                      <button class="sizes__button sizes__button--active">
+                        S
+                      </button>
+                    </li>
+
+                    <li class="sizes__item">
+                      <button class="sizes__button">
+                        M
+                      </button>
+                    </li>
+
+                    <li class="sizes__item">
+                      <button class="sizes__button">
+                        L
+                      </button>
+                    </li>
+
+                    <li class="sizes__item">
+                      <button class="sizes__button">
+                        Xl
+                      </button>
+                    </li>
+                  </ul>
+
+                  <!-- Colors -->
+                  <ul class="product__colors colors reviews-content__colors">
+                    <li class="colors__item">
+                      <button class="colors__button colors__button--active" data-color="Pink"
+                        aria-label="Choose pink color."></button>
+                    </li>
+
+                    <li class="colors__item">
+                      <button class="colors__button" data-color="Blue-gray"
+                        aria-label="Choose blue-gray color."></button>
+                    </li>
+
+                    <li class="colors__item">
+                      <button class="colors__button" data-color="Yellow" aria-label="Choose yellow color."></button>
+                    </li>
+                  </ul>
+                </div>
+
+                <!-- Button-cart -->
+                <div class="product__button-wrapper">
+                  <button class="product__button-cart btn btn--mid">
+                    <svg xmlns='http://www.w3.org/2000/svg'>
+                      <use href='./img/sprite.svg#cart'></use>
+                    </svg>
+                  </button>
+                </div>
+              </div>
+            </div>
+          </article>
+        </div>
       </div>
     </div>
   </div>
-
 
 
   <!-- Chart -->
@@ -1827,6 +2525,211 @@
       <!-- Pagination -->
       <div class="image-modal__pagination-wrapper">
         <div class="image-modal__pagination" id="image-modal-pagination"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Leave review -->
+  <div class="product-card__leave-review leave-review">
+    <div class="leave-review__content">
+      <h3 class="leave-review__title">
+        Leave a review
+      </h3>
+
+      <!-- Name -->
+      <div class="leave-review__box">
+        <label for="leave-review-name" class="leave-review__label">
+          Name
+        </label>
+
+        <input type="text" class="leave-review__input input" placeholder="Your name" id="leave-review-name">
+      </div>
+
+      <!-- Email -->
+      <div class="leave-review__box">
+        <label for="leave-review-email" class="leave-review__label">
+          Email
+        </label>
+
+        <input type="text" class="leave-review__input input" placeholder="Your working email" id="leave-review-email">
+      </div>
+
+      <!-- Rating -->
+      <div class="leave-review__box">
+        <label class="leave-review__label">
+          Rating
+        </label>
+
+        <div class="custom-select custom-select--light leave-review__sort-select" role="listbox" tabindex="0">
+          <div class="custom-select__head custom-select__head--light leave-review__sort-head">
+            <span class="custom-select__selected leave-review__sort-selected">
+              Choose rating
+            </span>
+
+            <svg class="custom-select__icon" xmlns='http://www.w3.org/2000/svg'>
+              <use href='./img/sprite.svg#angle-down'></use>
+            </svg>
+          </div>
+
+          <div class="custom-select__inner-wrapper leave-review__sort-wrapper">
+            <ul class="custom-select__list leave-review__sort-list" data-overlayscrollbars-initialize>
+              <li class="custom-select__item custom-select__item--active leave-review__sort-item">
+                Choose rating
+              </li>
+
+              <li class="custom-select__item leave-review__sort-item">
+                Option 1
+              </li>
+
+              <li class="custom-select__item leave-review__sort-item">
+                Option 2
+              </li>
+
+              <li class="custom-select__item leave-review__sort-item">
+                Option 3
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <!-- Upload -->
+      <div class="leave-review__box">
+        <label for="" class="leave-review__label">
+          Upload a photo or video (optional)
+        </label>
+
+        <div class="leave-review__download download">
+
+          <!-- Download area -->
+          <div class="download__area">
+            <svg xmlns='http://www.w3.org/2000/svg' aria-hidden='true'>
+              <use href='./img/sprite.svg#upload' aria-hidden='true'></use>
+            </svg>
+
+            <p class="download__area-descr">
+              Drag and drop here to upload
+            </p>
+
+            <button class="download__area-btn btn btn--outline">
+              Or select file
+            </button>
+          </div>
+
+          <!-- Download files -->
+          <div class="download__files-wrapper">
+            <ul class="download__files" data-overlayscrollbars-initialize>
+  
+              <!-- Download file1 -->
+              <li class="download__file">
+                <svg xmlns='http://www.w3.org/2000/svg' aria-hidden='true'>
+                  <use href='./img/sprite.svg#file' aria-hidden='true'></use>
+                </svg>
+  
+                <div class="download__file-details">
+  
+                  <!-- Dwonload file top -->
+                  <div class="download__file-top">
+                    <span class="download__file-name">
+                      Adblock detec... .png
+                    </span>
+  
+                    <span class="download__file-percent">
+                      13%
+                    </span>
+                  </div>
+  
+                  <!-- Download file bottom -->
+                  <div class="download__file-bottom">
+                    <div class="download__file-progressbar"></div>
+                    <span class="download__file-size">82kb</span>
+                  </div>
+                </div>
+              </li>
+  
+              <!-- Download file2 -->
+              <li class="download__file">
+                <svg xmlns='http://www.w3.org/2000/svg' aria-hidden='true'>
+                  <use href='./img/sprite.svg#file' aria-hidden='true'></use>
+                </svg>
+  
+                <div class="download__file-details">
+  
+                  <!-- Dwonload file top -->
+                  <div class="download__file-top">
+                    <span class="download__file-name">
+                      Adblock detec... .png
+                    </span>
+  
+                    <span class="download__file-percent">
+                      13%
+                    </span>
+                  </div>
+  
+                  <!-- Download file bottom -->
+                  <div class="download__file-bottom">
+                    <div class="download__file-progressbar"></div>
+                    <span class="download__file-size">82kb</span>
+                  </div>
+                </div>
+              </li>
+  
+              <!-- Download file3 -->
+              <li class="download__file">
+                <svg xmlns='http://www.w3.org/2000/svg' aria-hidden='true'>
+                  <use href='./img/sprite.svg#file' aria-hidden='true'></use>
+                </svg>
+  
+                <div class="download__file-details">
+  
+                  <!-- Dwonload file top -->
+                  <div class="download__file-top">
+                    <span class="download__file-name">
+                      Adblock detec... .png
+                    </span>
+  
+                    <span class="download__file-percent">
+                      13%
+                    </span>
+                  </div>
+  
+                  <!-- Download file bottom -->
+                  <div class="download__file-bottom">
+                    <div class="download__file-progressbar"></div>
+                    <span class="download__file-size">82kb</span>
+                  </div>
+                </div>
+              </li>
+  
+              <!-- Download file4 -->
+              <li class="download__file">
+                <svg xmlns='http://www.w3.org/2000/svg' aria-hidden='true'>
+                  <use href='./img/sprite.svg#file' aria-hidden='true'></use>
+                </svg>
+  
+                <div class="download__file-details">
+  
+                  <!-- Dwonload file top -->
+                  <div class="download__file-top">
+                    <span class="download__file-name">
+                      Adblock detec... .png
+                    </span>
+  
+                    <span class="download__file-percent">
+                      13%
+                    </span>
+                  </div>
+  
+                  <!-- Download file bottom -->
+                  <div class="download__file-bottom">
+                    <div class="download__file-progressbar"></div>
+                    <span class="download__file-size">82kb</span>
+                  </div>
+                </div>
+              </li>
+            </ul>
+          </div>
+        </div>
       </div>
     </div>
   </div>

@@ -79,6 +79,7 @@
   &__pagination {
     justify-self: end;
     padding-right: rem(1.5);
+    min-width: 0;
 
     @include bp-down("876") {
       display: none;

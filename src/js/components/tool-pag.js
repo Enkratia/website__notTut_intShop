@@ -6,16 +6,89 @@ let totalPages = 10;
 let activePag;
 let chosenPag;
 
-const leftArrows = document.querySelectorAll(".tool-pag [data-toolpag='arrow-left']");
-const rightArrows = document.querySelectorAll(".tool-pag [data-toolpag='arrow-right']");
-const rightDots = document.querySelector(".tool-pag [data-toolpag='dots-right']");
-
-if (rightDots) {
+if (v.$toolPags) {
 
   // F(s)
   // **
+  function createPags() {
+    let fullTag = "";
+
+    // **
+    function createNumPags(count = 3) {
+      for (let i = 1; i <= count; i++) {
+        fullTag += `
+            <li class="tool-pag__item tool-pag__item--number${i === 1 ? ' tool-pag__item--active' : ''}" data-toolpag="${i}">
+              <a href="#" class="tool-pag__link">
+               ${i}
+              </a>
+            </li>`;
+      }
+
+      return fullTag;
+    }
+
+    const leftArrowTag = `
+              <li class="tool-pag__item tool-pag__item--inactive" data-toolpag="arrow-left">
+                <a href="#" class="tool-pag__link" aria-label="Go to the previous page.">
+                  <svg class="tool-pag__arrow tool-pag__arrow--left" xmlns='http://www.w3.org/2000/svg' aria-hidden="true">
+                    <use href='./img/sprite.svg#arrow' aria-hidden="true"></use>
+                  </svg>
+                </a>
+              </li>`;
+
+    const rightArrowTag = `
+              <li class="tool-pag__item" data-toolpag="arrow-right">
+               <a href="#" class="tool-pag__link" aria-label="Go to the next page.">
+                 <svg class="tool-pag__arrow tool-pag__arrow--right" xmlns='http://www.w3.org/2000/svg' aria-hidden="true">
+                    <use href='./img/sprite.svg#arrow' aria-hidden="true"></use>
+                 </svg>
+                </a>
+              </li>`;
+
+    const firstItemTag = `
+              <li class="tool-pag__item tool-pag__item--number tool-pag__item--active" data-toolpag="1">
+                <a href="#" class="tool-pag__link">
+                  1
+                </a>
+              </li>`;
+
+    const lastItemTag = `
+              <li class="tool-pag__item tool-pag__item--number" data-toolpag="${totalPages}">
+                <a href="#" class="tool-pag__link">
+                  ${totalPages}
+                </a>
+              </li>`;
+
+    const rightDotsTag = `
+              <li class="tool-pag__item" data-toolpag="dots-right">
+                <a href="#" class="tool-pag__link">...</a>
+              </li>`;
+
+    if (totalPages === 1) {
+      fullTag = firstItemTag;
+
+    } else if (totalPages < 6) {
+      fullTag = leftArrowTag + createNumPags(totalPages) + rightArrowTag;
+
+    } else {
+      fullTag = leftArrowTag + createNumPags() + rightDotsTag + lastItemTag + rightArrowTag;
+    }
+
+    v.$toolPags.forEach(el => {
+      el.insertAdjacentHTML("afterbegin", fullTag);
+    });
+  }
+  createPags();
+
+  // *
+  const leftArrows = document.querySelectorAll(".tool-pag [data-toolpag='arrow-left']");
+  const rightArrows = document.querySelectorAll(".tool-pag [data-toolpag='arrow-right']");
+  const rightDots = document.querySelector(".tool-pag [data-toolpag='dots-right']");
+
+  // **
   function initPags() {
     if (!v.$mdq875.matches) {
+      console.log(document.querySelector(".tool-pag__item--active"))
       const activePag = v.$toolPags[0].querySelector(".tool-pag__item--active").dataset.toolpag;
       let diff;
 
@@ -73,7 +146,7 @@ if (rightDots) {
   // **
   function destroyRightDots(el) {
     const dotsRight = el.querySelector(`[data-toolpag='dots-right']`);
-
+    console.log("hello")
     if (!dotsRight) return;
 
     dotsRight.querySelector(".tool-pag__link").textContent = `${totalPages - 1}`;
@@ -113,7 +186,6 @@ if (rightDots) {
   function rearrangeActiveClass() {
     v.$toolPags.forEach(el => {
       el.querySelector(".tool-pag__item--active")?.classList.remove("tool-pag__item--active");
-      console.log(page)
       el.querySelector(`[data-toolpag='${page}']`).classList.add("tool-pag__item--active");
     });
   }
@@ -165,10 +237,13 @@ if (rightDots) {
       chosenPag = el.querySelector(`[data-toolpag='${page}']`);
     });
 
-    if (chosenPag === activePag) return;
-
     rightArrows.forEach(el => el.classList.toggle("tool-pag__item--inactive", page === totalPages));
     leftArrows.forEach(el => el.classList.toggle("tool-pag__item--inactive", page === 1));
+
+    if (totalPages < 6) {
+      rearrangeActiveClass();
+      return;
+    }
 
     if (page === 1) {
       v.$toolPags.forEach(el => {
@@ -262,6 +337,8 @@ if (rightDots) {
       return;
     }
 
+    if (totalPages < 6) return;
+
     if (page === 3) {
       v.$toolPags.forEach(el => {
         createNextPag(el, page);
@@ -271,10 +348,18 @@ if (rightDots) {
     }
 
     if (page === 4) {
-      v.$toolPags.forEach(el => {
-        createNextPag(el, page);
-        createLeftDots(el);
-      });
+      if (totalPages === 6) {
+        v.$toolPags.forEach(el => {
+          createLeftDots(el);
+          destroyRightDots(el);
+        });
+
+      } else {
+        v.$toolPags.forEach(el => {
+          createNextPag(el, page);
+          createLeftDots(el);
+        });
+      }
 
       return;
     }
@@ -312,6 +397,8 @@ if (rightDots) {
       return;
     }
 
+    if (totalPages < 6) return;
+
     if (page === totalPages - 2) {
       v.$toolPags.forEach(el => {
         createPrevPag(el, page);
@@ -321,10 +408,18 @@ if (rightDots) {
     }
 
     if (page === totalPages - 3) {
-      v.$toolPags.forEach(el => {
-        createPrevPag(el, page);
-        createRightDots(el);
-      });
+      if (totalPages === 6) {
+        v.$toolPags.forEach(el => {
+          destroyLeftDots(el)
+          createRightDots(el);
+        });
+
+      } else {
+        v.$toolPags.forEach(el => {
+          createPrevPag(el, page);
+          createRightDots(el);
+        });
+      }
 
       return;
     }
@@ -349,7 +444,6 @@ if (rightDots) {
     if (page < totalPages - 3) {
       v.$toolPags.forEach(el => {
         createPrevPag(el, page);
-
         destroyRightPage(el)
       });
     }
@@ -358,11 +452,11 @@ if (rightDots) {
   // L(s)
   // **
   v.$toolPags.forEach(el => {
-    for (let i = 0; i < el.children.length; i++) {
-      if (i == 1 || i == 2 || i == 3 || i == 5) {
-        let numPag = el.children[i];
-        numPag.addEventListener("click", changePag);
-      }
+    const numPags = el.querySelectorAll(".tool-pag__item--number");
+
+    for (let i = 0; i < numPags.length; i++) {
+      let numPag = numPags[i];
+      numPag.addEventListener("click", changePag);
     }
   });
 
@@ -377,7 +471,7 @@ if (rightDots) {
   });
 
   // **
-  rightDots.addEventListener("click", goFarAhead);
+  rightDots?.addEventListener("click", goFarAhead);
 }
 
 

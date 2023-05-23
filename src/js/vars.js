@@ -1,3 +1,7 @@
+
+// *** Common *** //
+export const $toolPags = document.querySelectorAll(".tool-pag");
+
 // Header
 export const $headerTopContainer = document.querySelector("#header-top-container");
 export const $topNavBtn = document.querySelector("#top-nav-button");
@@ -49,7 +53,6 @@ export const $breadcrumbsContainer = document.querySelector(".breadcrumbs__conta
 export const $catalog = document.querySelector("#catalog");
 
 // Toolbar
-export const $toolPags = document.querySelectorAll(".tool-pag");
 export const $toolPagsMini = document.querySelectorAll(".tool-pag-mini");
 export const $toolbarSortSelects = document.querySelectorAll(".toolbar__sort-select");
 
@@ -83,8 +86,6 @@ export const $imageModal = $productCard?.querySelector(".product-card__image-mod
 export const $imageModalClose = $imageModal?.querySelector(".image-modal__close");
 export const $imageModalCountCurrent = $imageModal?.querySelector(".image-modal__count-current");
 export const $imageModalCountTotal = $imageModal?.querySelector(".image-modal__count-total");
-
-
 
 
 
