@@ -2531,7 +2531,7 @@
 
   <!-- Leave review -->
   <div class="product-card__leave-review leave-review">
-    <div class="leave-review__content">
+    <form class="leave-review__content" data-overlayscrollbars-initialize>
       <h3 class="leave-review__title">
         Leave a review
       </h3>
@@ -2542,7 +2542,10 @@
           Name
         </label>
 
-        <input type="text" class="leave-review__input input" placeholder="Your name" id="leave-review-name">
+        <div class="input-wrapper">
+          <input type="text" class="leave-review__input input" placeholder="Your name" id="leave-review-name"
+            name="leave-review-name">
+        </div>
       </div>
 
       <!-- Email -->
@@ -2551,7 +2554,10 @@
           Email
         </label>
 
-        <input type="text" class="leave-review__input input" placeholder="Your working email" id="leave-review-email">
+        <div class="input-wrapper">
+          <input type="email" class="leave-review__input input" placeholder="Your working email" id="leave-review-email"
+            name="leave-review-email">
+        </div>
       </div>
 
       <!-- Rating -->
@@ -2560,35 +2566,39 @@
           Rating
         </label>
 
-        <div class="custom-select custom-select--light leave-review__sort-select" role="listbox" tabindex="0">
-          <div class="custom-select__head custom-select__head--light leave-review__sort-head">
-            <span class="custom-select__selected leave-review__sort-selected">
-              Choose rating
-            </span>
+        <div class="custom-select__outer-wrapper leave-review__select-outer-wrapper">
+          <div class="custom-select custom-select--light leave-review__sort-select" role="listbox" tabindex="0">
+            <input type="hidden" class="leave-review__select-hidden" name="leave-review-select-hidden">
 
-            <svg class="custom-select__icon" xmlns='http://www.w3.org/2000/svg'>
-              <use href='./img/sprite.svg#angle-down'></use>
-            </svg>
-          </div>
-
-          <div class="custom-select__inner-wrapper leave-review__sort-wrapper">
-            <ul class="custom-select__list leave-review__sort-list" data-overlayscrollbars-initialize>
-              <li class="custom-select__item custom-select__item--active leave-review__sort-item">
+            <div class="custom-select__head custom-select__head--light leave-review__sort-head">
+              <span class="custom-select__selected leave-review__sort-selected">
                 Choose rating
-              </li>
+              </span>
 
-              <li class="custom-select__item leave-review__sort-item">
-                Option 1
-              </li>
+              <svg class="custom-select__icon" xmlns='http://www.w3.org/2000/svg'>
+                <use href='./img/sprite.svg#angle-down'></use>
+              </svg>
+            </div>
 
-              <li class="custom-select__item leave-review__sort-item">
-                Option 2
-              </li>
+            <div class="custom-select__inner-wrapper leave-review__sort-wrapper">
+              <ul class="custom-select__list leave-review__sort-list" data-overlayscrollbars-initialize>
+                <li class="custom-select__item custom-select__item--active leave-review__sort-item">
+                  Choose rating
+                </li>
 
-              <li class="custom-select__item leave-review__sort-item">
-                Option 3
-              </li>
-            </ul>
+                <li class="custom-select__item leave-review__sort-item">
+                  Option 1
+                </li>
+
+                <li class="custom-select__item leave-review__sort-item">
+                  Option 2
+                </li>
+
+                <li class="custom-select__item leave-review__sort-item">
+                  Option 3
+                </li>
+              </ul>
+            </div>
           </div>
         </div>
       </div>
@@ -2611,126 +2621,46 @@
               Drag and drop here to upload
             </p>
 
-            <button class="download__area-btn btn btn--outline">
+            <button type="button" class="download__area-btn btn btn--outline">
               Or select file
             </button>
+
+            <input type="file" class="download__area-btn-native" name="leave-review-files" multiple
+              accept="image/*,video/*" hidden>
           </div>
 
           <!-- Download files -->
-          <div class="download__files-wrapper">
-            <ul class="download__files" data-overlayscrollbars-initialize>
-  
-              <!-- Download file1 -->
-              <li class="download__file">
-                <svg xmlns='http://www.w3.org/2000/svg' aria-hidden='true'>
-                  <use href='./img/sprite.svg#file' aria-hidden='true'></use>
-                </svg>
-  
-                <div class="download__file-details">
-  
-                  <!-- Dwonload file top -->
-                  <div class="download__file-top">
-                    <span class="download__file-name">
-                      Adblock detec... .png
-                    </span>
-  
-                    <span class="download__file-percent">
-                      13%
-                    </span>
-                  </div>
-  
-                  <!-- Download file bottom -->
-                  <div class="download__file-bottom">
-                    <div class="download__file-progressbar"></div>
-                    <span class="download__file-size">82kb</span>
-                  </div>
-                </div>
-              </li>
-  
-              <!-- Download file2 -->
-              <li class="download__file">
-                <svg xmlns='http://www.w3.org/2000/svg' aria-hidden='true'>
-                  <use href='./img/sprite.svg#file' aria-hidden='true'></use>
-                </svg>
-  
-                <div class="download__file-details">
-  
-                  <!-- Dwonload file top -->
-                  <div class="download__file-top">
-                    <span class="download__file-name">
-                      Adblock detec... .png
-                    </span>
-  
-                    <span class="download__file-percent">
-                      13%
-                    </span>
-                  </div>
-  
-                  <!-- Download file bottom -->
-                  <div class="download__file-bottom">
-                    <div class="download__file-progressbar"></div>
-                    <span class="download__file-size">82kb</span>
-                  </div>
-                </div>
-              </li>
-  
-              <!-- Download file3 -->
-              <li class="download__file">
-                <svg xmlns='http://www.w3.org/2000/svg' aria-hidden='true'>
-                  <use href='./img/sprite.svg#file' aria-hidden='true'></use>
-                </svg>
-  
-                <div class="download__file-details">
-  
-                  <!-- Dwonload file top -->
-                  <div class="download__file-top">
-                    <span class="download__file-name">
-                      Adblock detec... .png
-                    </span>
-  
-                    <span class="download__file-percent">
-                      13%
-                    </span>
-                  </div>
-  
-                  <!-- Download file bottom -->
-                  <div class="download__file-bottom">
-                    <div class="download__file-progressbar"></div>
-                    <span class="download__file-size">82kb</span>
-                  </div>
-                </div>
-              </li>
-  
-              <!-- Download file4 -->
-              <li class="download__file">
-                <svg xmlns='http://www.w3.org/2000/svg' aria-hidden='true'>
-                  <use href='./img/sprite.svg#file' aria-hidden='true'></use>
-                </svg>
-  
-                <div class="download__file-details">
-  
-                  <!-- Dwonload file top -->
-                  <div class="download__file-top">
-                    <span class="download__file-name">
-                      Adblock detec... .png
-                    </span>
-  
-                    <span class="download__file-percent">
-                      13%
-                    </span>
-                  </div>
-  
-                  <!-- Download file bottom -->
-                  <div class="download__file-bottom">
-                    <div class="download__file-progressbar"></div>
-                    <span class="download__file-size">82kb</span>
-                  </div>
-                </div>
-              </li>
+          <div class="download__files-wrapper" data-overlayscrollbars-initialize>
+            <ul class="download__files">
+
             </ul>
           </div>
         </div>
       </div>
-    </div>
+
+      <!-- Review -->
+      <div class="leave-review__box">
+        <label for="leave-review-review" class="leave-review__label">
+          Review
+        </label>
+
+        <div class="input-wrapper">
+          <textarea class="leave-review__textarea input" placeholder="Your working email" id="leave-review-review"
+            name="leave-review-review" data-overlayscrollbars-initialize></textarea>
+        </div>
+      </div>
+
+      <!-- Submit -->
+      <button type="submit" class="leave-review__submit btn btn--mid">
+        Submit a review
+      </button>
+
+      <!-- Close -->
+      <button type="button" class="leave-review__close">
+        <svg xmlns='http://www.w3.org/2000/svg' aria-hidden='true'>
+          <use href='./img/sprite.svg#cross' aria-hidden='true'></use>
+        </svg>
+      </button>
+    </form>
   </div>
 </section>

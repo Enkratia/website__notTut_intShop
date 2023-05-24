@@ -87,6 +87,13 @@ export const $imageModalClose = $imageModal?.querySelector(".image-modal__close"
 export const $imageModalCountCurrent = $imageModal?.querySelector(".image-modal__count-current");
 export const $imageModalCountTotal = $imageModal?.querySelector(".image-modal__count-total");
 
+// **
+export const $leaveReview = $productCard?.querySelector(".leave-review");
+export const $leaveReviewBtn = $productCard?.querySelector(".tool-bar__btn");
+export const $leaveReviewClose = $leaveReview?.querySelector(".leave-review__close");
+export const $leaveReviewSubmit = $leaveReview?.querySelector(".leave-review__submit");
+
+
 
 
 // Media

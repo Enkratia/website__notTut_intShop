@@ -6,7 +6,7 @@ let totalPages = 10;
 let activePag;
 let chosenPag;
 
-if (v.$toolPags) {
+if (v.$toolPags[0]) {
 
   // F(s)
   // **

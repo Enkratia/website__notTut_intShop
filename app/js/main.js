@@ -2397,13 +2397,21 @@ let cartChoiceListScrollbar = (0,overlayscrollbars__WEBPACK_IMPORTED_MODULE_1__.
     theme: 'os-theme-cart-choice'
   }
 });
+if (_vars_js__WEBPACK_IMPORTED_MODULE_0__.$productCard) {
+  // ==== DOWNLOAD FILES SCROLLBAR ==== //
+  let downloadFilesScrollbar = (0,overlayscrollbars__WEBPACK_IMPORTED_MODULE_1__.OverlayScrollbars)(document.querySelector('.download__files-wrapper'), {
+    scrollbars: {
+      theme: 'os-theme-download-files'
+    }
+  });
 
-// ==== DOWNLOAD FILES SCROLLBAR ==== //
-let downloadFilesScrollbar = (0,overlayscrollbars__WEBPACK_IMPORTED_MODULE_1__.OverlayScrollbars)(document.querySelector('.download__files'), {
-  scrollbars: {
-    theme: 'os-theme-download-files'
-  }
-});
+  // ==== LEAVE REVIEW CONTENT SCROLLBAR ==== //
+  let leaveReviewContentScrollbar = (0,overlayscrollbars__WEBPACK_IMPORTED_MODULE_1__.OverlayScrollbars)(document.querySelector('.leave-review__content'), {
+    scrollbars: {
+      theme: 'os-theme-leave-review-content'
+    }
+  });
+}
 
 /***/ }),
 
@@ -3120,6 +3128,125 @@ _vars_js__WEBPACK_IMPORTED_MODULE_0__.$customSelects.forEach(el => {
 
 /***/ }),
 
+/***/ "./src/js/components/download.js":
+/*!***************************************!*\
+  !*** ./src/js/components/download.js ***!
+  \***************************************/
+/***/ ((__unused_webpack___webpack_module__, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _vars_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../vars.js */ "./src/js/vars.js");
+
+const downloadBtn = _vars_js__WEBPACK_IMPORTED_MODULE_0__.$leaveReview.querySelector(".download__area-btn");
+const fileInput = _vars_js__WEBPACK_IMPORTED_MODULE_0__.$leaveReview.querySelector(".download__area-btn-native");
+const downloadingFiles = _vars_js__WEBPACK_IMPORTED_MODULE_0__.$leaveReview.querySelector(".download__files");
+let elementIdx = 0;
+
+// F(s)
+// **
+function checkError(elem) {
+  const size = elem.querySelector(".download__file-size");
+  size.innerText = "Something gone wrong.";
+  elem.classList.add("download__file--error");
+}
+
+// **
+function checkUpdate(elem, _ref) {
+  let {
+    loaded,
+    total
+  } = _ref;
+  const percent = elem.querySelector(".download__file-percent");
+  const progress = elem.querySelector(".download__file-progress");
+  const downloaded = ~~(loaded / total * 100) + "%";
+  percent.innerText = downloaded;
+  progress.style.width = downloaded;
+  if (loaded === total) {
+    setTimeout(() => {
+      elem.classList.add("download__file--load");
+      if (total < 1048576) {
+        total = parseInt(total / 1024) + " KB";
+      } else {
+        total = parseInt(total / 1048576) + " MB";
+      }
+      const size = elem.querySelector(".download__file-size");
+      size.innerText = total;
+    }, 500);
+  }
+}
+
+// **
+function createLiTag(_ref2) {
+  let {
+    name
+  } = _ref2;
+  const wrapper = downloadingFiles.closest(".download__files-wrapper");
+  wrapper.classList.add("download__files-wrapper--show");
+  const regExp = /(.+)(\.\S+)$/i;
+  const regExpResult = name.match(regExp);
+  const fileName = regExpResult[1].length < 14 ? regExpResult[1] : regExpResult[1].substring(0, 14);
+  const ext = regExpResult[2];
+  const liTag = `
+              <li class="download__file" data-progress="${elementIdx}">
+                <svg xmlns='http://www.w3.org/2000/svg' aria-hidden='true'>
+                  <use href='./img/sprite.svg#file' aria-hidden='true'></use>
+                </svg>
+
+                <div class="download__file-details">
+
+                  <!-- Dwonload file top -->
+                  <div class="download__file-top">
+                    <span class="download__file-name">
+                      ${fileName}... ${ext}
+                    </span>
+
+                    <span class="download__file-percent"></span>
+                  </div>
+
+                  <!-- Download file bottom -->
+                  <div class="download__file-bottom">
+                    <div class="download__file-progressbar">
+                      <div class="download__file-progress"></div>
+                    </div>
+                    
+                    <span class="download__file-size"></span>
+                  </div>
+                </div>
+              </li>`;
+  return liTag;
+}
+
+// **
+function observeFileLoading() {
+  const files = this.files;
+  for (let i = 0; i < files.length; i++) {
+    downloadingFiles.insertAdjacentHTML("afterbegin", createLiTag(files[i]));
+    const li = downloadingFiles.firstElementChild;
+    const reader = new FileReader();
+    reader.readAsDataURL(files[i]);
+    reader.onprogress = e => checkUpdate(li, e);
+    reader.onerror = () => checkError(li);
+    setTimeout(() => {
+      reader.abort();
+    }, 100);
+  }
+}
+
+// **
+function observeFiles() {
+  this.nextElementSibling.click();
+}
+
+// L(s)
+// **
+downloadBtn.addEventListener("click", observeFiles);
+
+// **
+fileInput.addEventListener("change", observeFileLoading);
+
+/***/ }),
+
 /***/ "./src/js/components/filter.js":
 /*!*************************************!*\
   !*** ./src/js/components/filter.js ***!
@@ -3515,102 +3642,104 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _$swipers_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./$swipers.js */ "./src/js/components/$swipers.js");
 
 
-let isInit = true;
+if (_vars_js__WEBPACK_IMPORTED_MODULE_0__.$imageModal) {
+  let isInit = true;
 
-// ==== SHOW MODAL-IMAGE / SLIDE MODAL-IMAGE ==== //
-// F(s)
-// **
-function writeSlideCount() {
-  let current = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : undefined;
-  _vars_js__WEBPACK_IMPORTED_MODULE_0__.$imageModalCountCurrent.innerText = current ?? "1";
-  if (isInit) {
-    const totalSlides = _vars_js__WEBPACK_IMPORTED_MODULE_0__.$imageModal.querySelectorAll(".swiper-slide:not(.swiper-slide-duplicate)").length;
-    _vars_js__WEBPACK_IMPORTED_MODULE_0__.$imageModalCountTotal.innerText = totalSlides;
-    isInit = false;
-  }
-}
-writeSlideCount();
-
-// **
-function changeCurrentSlide() {
-  const currentIdx = this.realIndex;
-  _$swipers_js__WEBPACK_IMPORTED_MODULE_1__.$imageModalSwiper.slideToLoop(currentIdx);
-  writeSlideCount(currentIdx + 1);
-}
-
-// **
-function hideImageModal() {
-  _vars_js__WEBPACK_IMPORTED_MODULE_0__.$imageModal.classList.remove("image-modal--show");
-}
-
-// **
-function showImageModal(e) {
-  const slide = e.target.closest(".pcs__slide");
-  if (slide) {
-    _vars_js__WEBPACK_IMPORTED_MODULE_0__.$imageModal.classList.add("image-modal--show");
-  }
-}
-
-// L(s)
-// **
-_vars_js__WEBPACK_IMPORTED_MODULE_0__.$productCardSwiper.addEventListener("click", showImageModal);
-
-// **
-_vars_js__WEBPACK_IMPORTED_MODULE_0__.$imageModalClose.addEventListener("click", hideImageModal);
-
-// **
-_$swipers_js__WEBPACK_IMPORTED_MODULE_1__.$productCardSwiper.on("slideChange", changeCurrentSlide);
-_$swipers_js__WEBPACK_IMPORTED_MODULE_1__.$imageModalSwiper.on("slideChange", changeCurrentSlide);
-
-// ===== ZOOM IN ===== //
-const scale = 2;
-
-// F(s)
-function zoomInImage(e) {
-  const image = e.target.closest(".image-modal__image");
-  if (image) {
-    const wrapper = image.parentElement;
-    const top = wrapper.getBoundingClientRect().top;
-    const width = wrapper.getBoundingClientRect().width;
-    const height = wrapper.getBoundingClientRect().height;
-    const left = wrapper.getBoundingClientRect().left;
-
-    // const coeff = width * scale / ((width * scale - width) / 2);
-
-    let offsetX;
-    let offsetY;
-    const centerX = left + width / 2;
-    const centerY = top + height / 2;
-    image.addEventListener("mousemove", moveImage);
-    image.addEventListener("mouseleave", resetImagePosition);
-
-    // **
-    function resetImagePosition() {
-      image.removeEventListener("mousemove", moveImage, {
-        once: true
-      });
-      image.style.transform = "scale(1)";
-    }
-
-    // **
-    function moveImage(e) {
-      if (e.pageX > centerX) {
-        offsetX = (centerX - e.clientX) / (width / 2) * 100;
-      } else {
-        offsetX = 100 - (e.clientX - left) / (width / 2) * 100;
-      }
-      if (e.pageY > centerY) {
-        offsetY = (centerY - e.clientY) / (height / 2) * 100;
-      } else {
-        offsetY = 100 - (e.clientY - top) / (height / 2) * 100;
-      }
-      image.style.transform = `scale(${scale}) translate(${offsetX / 4}%, ${offsetY / 4}%)`;
+  // ==== SHOW MODAL-IMAGE / SLIDE MODAL-IMAGE ==== //
+  // F(s)
+  // **
+  function writeSlideCount() {
+    let current = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : undefined;
+    _vars_js__WEBPACK_IMPORTED_MODULE_0__.$imageModalCountCurrent.innerText = current ?? "1";
+    if (isInit) {
+      const totalSlides = _vars_js__WEBPACK_IMPORTED_MODULE_0__.$imageModal.querySelectorAll(".swiper-slide:not(.swiper-slide-duplicate)").length;
+      _vars_js__WEBPACK_IMPORTED_MODULE_0__.$imageModalCountTotal.innerText = totalSlides;
+      isInit = false;
     }
   }
-}
+  writeSlideCount();
 
-// L(s)
-_vars_js__WEBPACK_IMPORTED_MODULE_0__.$imageModal.addEventListener("mouseover", zoomInImage);
+  // **
+  function changeCurrentSlide() {
+    const currentIdx = this.realIndex;
+    _$swipers_js__WEBPACK_IMPORTED_MODULE_1__.$imageModalSwiper.slideToLoop(currentIdx);
+    writeSlideCount(currentIdx + 1);
+  }
+
+  // **
+  function hideImageModal() {
+    _vars_js__WEBPACK_IMPORTED_MODULE_0__.$imageModal.classList.remove("image-modal--show");
+  }
+
+  // **
+  function showImageModal(e) {
+    const slide = e.target.closest(".pcs__slide");
+    if (slide) {
+      _vars_js__WEBPACK_IMPORTED_MODULE_0__.$imageModal.classList.add("image-modal--show");
+    }
+  }
+
+  // L(s)
+  // **
+  _vars_js__WEBPACK_IMPORTED_MODULE_0__.$productCardSwiper.addEventListener("click", showImageModal);
+
+  // **
+  _vars_js__WEBPACK_IMPORTED_MODULE_0__.$imageModalClose.addEventListener("click", hideImageModal);
+
+  // **
+  _$swipers_js__WEBPACK_IMPORTED_MODULE_1__.$productCardSwiper.on("slideChange", changeCurrentSlide);
+  _$swipers_js__WEBPACK_IMPORTED_MODULE_1__.$imageModalSwiper.on("slideChange", changeCurrentSlide);
+
+  // ===== ZOOM IN ===== //
+  const scale = 2;
+
+  // F(s)
+  function zoomInImage(e) {
+    const image = e.target.closest(".image-modal__image");
+    if (image) {
+      const wrapper = image.parentElement;
+      const top = wrapper.getBoundingClientRect().top;
+      const width = wrapper.getBoundingClientRect().width;
+      const height = wrapper.getBoundingClientRect().height;
+      const left = wrapper.getBoundingClientRect().left;
+
+      // const coeff = width * scale / ((width * scale - width) / 2);
+
+      let offsetX;
+      let offsetY;
+      const centerX = left + width / 2;
+      const centerY = top + height / 2;
+      image.addEventListener("mousemove", moveImage);
+      image.addEventListener("mouseleave", resetImagePosition);
+
+      // **
+      function resetImagePosition() {
+        image.removeEventListener("mousemove", moveImage, {
+          once: true
+        });
+        image.style.transform = "scale(1)";
+      }
+
+      // **
+      function moveImage(e) {
+        if (e.pageX > centerX) {
+          offsetX = (centerX - e.clientX) / (width / 2) * 100;
+        } else {
+          offsetX = 100 - (e.clientX - left) / (width / 2) * 100;
+        }
+        if (e.pageY > centerY) {
+          offsetY = (centerY - e.clientY) / (height / 2) * 100;
+        } else {
+          offsetY = 100 - (e.clientY - top) / (height / 2) * 100;
+        }
+        image.style.transform = `scale(${scale}) translate(${offsetX / 4}%, ${offsetY / 4}%)`;
+      }
+    }
+  }
+
+  // L(s)
+  _vars_js__WEBPACK_IMPORTED_MODULE_0__.$imageModal.addEventListener("mouseover", zoomInImage);
+}
 
 /***/ }),
 
@@ -3729,6 +3858,99 @@ _vars_js__WEBPACK_IMPORTED_MODULE_0__.$inputNumberInputs.forEach(el => {
 _vars_js__WEBPACK_IMPORTED_MODULE_0__.$inputNumberBtns.forEach(el => {
   el.addEventListener("click", changeInputValueWithBtn);
 });
+
+/***/ }),
+
+/***/ "./src/js/components/leave-review.js":
+/*!*******************************************!*\
+  !*** ./src/js/components/leave-review.js ***!
+  \*******************************************/
+/***/ ((__unused_webpack___webpack_module__, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _vars_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../vars.js */ "./src/js/vars.js");
+
+const ordinaryInputs = _vars_js__WEBPACK_IMPORTED_MODULE_0__.$leaveReview.querySelectorAll(".input:not([type='email'])");
+const emailInput = _vars_js__WEBPACK_IMPORTED_MODULE_0__.$leaveReview.querySelector("[type='email']");
+const selected = _vars_js__WEBPACK_IMPORTED_MODULE_0__.$leaveReview.querySelector(".leave-review__sort-selected");
+const select = _vars_js__WEBPACK_IMPORTED_MODULE_0__.$leaveReview.querySelector(".leave-review__sort-select");
+const regExp = /^\S+@\S+\.\S+$/;
+
+// F(s)
+// **
+function verifySelectInput() {
+  if (selected.innerText !== "Choose rating") {
+    const selectWrapper = selected.closest(".custom-select__outer-wrapper");
+    selectWrapper.classList.remove("custom-select__outer-wrapper--warning");
+    selectWrapper.classList.add("custom-select__outer-wrapper--success");
+  }
+}
+
+// **
+function verifyEmailInput() {
+  if (emailInput.value.match(regExp)) {
+    emailInput.parentElement.classList.remove("input-wrapper--warning");
+    emailInput.parentElement.classList.add("input-wrapper--success");
+  }
+}
+
+// **
+function verifyOrdinaryInput() {
+  ordinaryInputs.forEach(el => {
+    if (el.value.length > 0) {
+      el.parentElement.classList.remove("input-wrapper--warning");
+      el.parentElement.classList.add("input-wrapper--success");
+    }
+  });
+}
+
+// **
+function checkAndSendForm(e) {
+  e.preventDefault();
+  ordinaryInputs.forEach(el => {
+    if (el.value.length === 0) {
+      el.parentElement.classList.remove("input-wrapper--success");
+      el.parentElement.classList.add("input-wrapper--warning");
+    }
+  });
+  if (!emailInput.value.match(regExp)) {
+    emailInput.parentElement.classList.remove("input-wrapper--success");
+    emailInput.parentElement.classList.add("input-wrapper--warning");
+  }
+  if (selected.innerText === "Choose rating") {
+    const selectWrapper = selected.closest(".custom-select__outer-wrapper");
+    selectWrapper.classList.remove("custom-select__outer-wrapper--success");
+    selectWrapper.classList.add("custom-select__outer-wrapper--warning");
+  }
+}
+
+// **
+function hideLeaveReview() {
+  _vars_js__WEBPACK_IMPORTED_MODULE_0__.$leaveReview.classList.remove("leave-review--show");
+  document.body.classList.remove("overflow-hidden");
+}
+
+// **
+function showLeaveReview() {
+  _vars_js__WEBPACK_IMPORTED_MODULE_0__.$leaveReview.classList.add("leave-review--show");
+  document.body.classList.add("overflow-hidden");
+}
+
+// L(s)
+// ** 
+_vars_js__WEBPACK_IMPORTED_MODULE_0__.$leaveReviewBtn.addEventListener("click", showLeaveReview);
+_vars_js__WEBPACK_IMPORTED_MODULE_0__.$leaveReviewClose.addEventListener("click", hideLeaveReview);
+
+// **
+_vars_js__WEBPACK_IMPORTED_MODULE_0__.$leaveReviewSubmit.addEventListener("click", checkAndSendForm);
+
+// **
+ordinaryInputs.forEach(el => {
+  el.addEventListener("blur", verifyOrdinaryInput);
+});
+emailInput.addEventListener("blur", verifyEmailInput);
+select.addEventListener("blur", verifySelectInput);
 
 /***/ }),
 
@@ -4072,27 +4294,28 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _$swipers_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./$swipers.js */ "./src/js/components/$swipers.js");
 
 
-
-// ==== PRODUCT CARD TRANSFER IMAGE ==== //
-// F(s)
-// **
-function rearrangeActiveClass(elem) {
-  _vars_js__WEBPACK_IMPORTED_MODULE_0__.$pcmSwiper.querySelector(".pcm__slide--active").classList.remove("pcm__slide--active");
-  elem.classList.add("pcm__slide--active");
-}
-
-// **
-function transferImage(e) {
-  const slide = e.target.closest(".pcm__slide");
-  if (slide) {
-    const slideIdx = slide.getAttribute("data-slide-idx");
-    _$swipers_js__WEBPACK_IMPORTED_MODULE_1__.$productCardSwiper.slideToLoop(slideIdx);
-    rearrangeActiveClass(slide);
+if (_vars_js__WEBPACK_IMPORTED_MODULE_0__.$pcmSwiper) {
+  // ==== PRODUCT CARD TRANSFER IMAGE ==== //
+  // F(s)
+  // **
+  function rearrangeActiveClass(elem) {
+    _vars_js__WEBPACK_IMPORTED_MODULE_0__.$pcmSwiper.querySelector(".pcm__slide--active").classList.remove("pcm__slide--active");
+    elem.classList.add("pcm__slide--active");
   }
-}
 
-// L(s)
-_vars_js__WEBPACK_IMPORTED_MODULE_0__?.$pcmSwiper.addEventListener("click", transferImage);
+  // **
+  function transferImage(e) {
+    const slide = e.target.closest(".pcm__slide");
+    if (slide) {
+      const slideIdx = slide.getAttribute("data-slide-idx");
+      _$swipers_js__WEBPACK_IMPORTED_MODULE_1__.$productCardSwiper.slideToLoop(slideIdx);
+      rearrangeActiveClass(slide);
+    }
+  }
+
+  // L(s)
+  _vars_js__WEBPACK_IMPORTED_MODULE_0__.$pcmSwiper.addEventListener("click", transferImage);
+}
 
 /***/ }),
 
@@ -4648,43 +4871,45 @@ window.addEventListener("resize", () => {
 __webpack_require__.r(__webpack_exports__);
 const progressBars = document.querySelectorAll(".progress__bar");
 const percentageArray = [];
-const asessments = {
-  "5": 7,
-  "4": 2,
-  "3": 1,
-  "2": 1,
-  "1": 1
-};
+if (progressBars[0]) {
+  const asessments = {
+    "5": 7,
+    "4": 2,
+    "3": 1,
+    "2": 1,
+    "1": 1
+  };
 
-// **
-function calculatePercentage(num, total) {
-  const percentage = 50 + (num - 2) / total * 100;
-  return percentage.toFixed(2) + "%";
-}
+  // **
+  function calculatePercentage(num, total) {
+    const percentage = 50 + (num - 2) / total * 100;
+    return percentage.toFixed(2) + "%";
+  }
 
-// **
-function pushPercentage() {
-  const total = Object.values(asessments).reduce((curr, next) => curr + next);
-  for (let elem in asessments) {
-    switch (asessments[elem]) {
-      case 0:
-        percentageArray.unshift("0");
-        break;
-      case 1:
-        percentageArray.unshift("25%");
-        break;
-      case 2:
-        percentageArray.unshift("50%");
-        break;
-      default:
-        percentageArray.unshift(calculatePercentage(asessments[elem], total));
+  // **
+  function pushPercentage() {
+    const total = Object.values(asessments).reduce((curr, next) => curr + next);
+    for (let elem in asessments) {
+      switch (asessments[elem]) {
+        case 0:
+          percentageArray.unshift("0");
+          break;
+        case 1:
+          percentageArray.unshift("25%");
+          break;
+        case 2:
+          percentageArray.unshift("50%");
+          break;
+        default:
+          percentageArray.unshift(calculatePercentage(asessments[elem], total));
+      }
     }
   }
+  pushPercentage();
+  percentageArray.forEach((el, idx) => {
+    progressBars[idx].style.setProperty("--progress-width", el);
+  });
 }
-pushPercentage();
-percentageArray.forEach((el, idx) => {
-  progressBars[idx].style.setProperty("--progress-width", el);
-});
 
 /***/ }),
 
@@ -5023,7 +5248,7 @@ let page = 1;
 let totalPages = 10;
 let activePag;
 let chosenPag;
-if (_vars_js__WEBPACK_IMPORTED_MODULE_0__.$toolPags) {
+if (_vars_js__WEBPACK_IMPORTED_MODULE_0__.$toolPags[0]) {
   // F(s)
   // **
   function createPags() {
@@ -5569,6 +5794,10 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "$imageModalCountTotal": () => (/* binding */ $imageModalCountTotal),
 /* harmony export */   "$inputNumberBtns": () => (/* binding */ $inputNumberBtns),
 /* harmony export */   "$inputNumberInputs": () => (/* binding */ $inputNumberInputs),
+/* harmony export */   "$leaveReview": () => (/* binding */ $leaveReview),
+/* harmony export */   "$leaveReviewBtn": () => (/* binding */ $leaveReviewBtn),
+/* harmony export */   "$leaveReviewClose": () => (/* binding */ $leaveReviewClose),
+/* harmony export */   "$leaveReviewSubmit": () => (/* binding */ $leaveReviewSubmit),
 /* harmony export */   "$login": () => (/* binding */ $login),
 /* harmony export */   "$looks": () => (/* binding */ $looks),
 /* harmony export */   "$marketingSlider": () => (/* binding */ $marketingSlider),
@@ -5696,6 +5925,12 @@ const $imageModal = $productCard?.querySelector(".product-card__image-modal");
 const $imageModalClose = $imageModal?.querySelector(".image-modal__close");
 const $imageModalCountCurrent = $imageModal?.querySelector(".image-modal__count-current");
 const $imageModalCountTotal = $imageModal?.querySelector(".image-modal__count-total");
+
+// **
+const $leaveReview = $productCard?.querySelector(".leave-review");
+const $leaveReviewBtn = $productCard?.querySelector(".tool-bar__btn");
+const $leaveReviewClose = $leaveReview?.querySelector(".leave-review__close");
+const $leaveReviewSubmit = $leaveReview?.querySelector(".leave-review__submit");
 
 // Media
 const $mdq767 = window.matchMedia("(max-width: 767px)");
@@ -26647,9 +26882,13 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _components_tabs_js__WEBPACK_IMPORTED_MODULE_23__ = __webpack_require__(/*! ./components/tabs.js */ "./src/js/components/tabs.js");
 /* harmony import */ var _components_image_modal_js__WEBPACK_IMPORTED_MODULE_24__ = __webpack_require__(/*! ./components/image-modal.js */ "./src/js/components/image-modal.js");
 /* harmony import */ var _components_progress_bar_js__WEBPACK_IMPORTED_MODULE_25__ = __webpack_require__(/*! ./components/progress__bar.js */ "./src/js/components/progress__bar.js");
-/* harmony import */ var _components_$swipers_js__WEBPACK_IMPORTED_MODULE_26__ = __webpack_require__(/*! ./components/$swipers.js */ "./src/js/components/$swipers.js");
-/* harmony import */ var _components_$overlayScrollbars_js__WEBPACK_IMPORTED_MODULE_27__ = __webpack_require__(/*! ./components/$overlayScrollbars.js */ "./src/js/components/$overlayScrollbars.js");
+/* harmony import */ var _components_leave_review_js__WEBPACK_IMPORTED_MODULE_26__ = __webpack_require__(/*! ./components/leave-review.js */ "./src/js/components/leave-review.js");
+/* harmony import */ var _components_download_js__WEBPACK_IMPORTED_MODULE_27__ = __webpack_require__(/*! ./components/download.js */ "./src/js/components/download.js");
+/* harmony import */ var _components_$swipers_js__WEBPACK_IMPORTED_MODULE_28__ = __webpack_require__(/*! ./components/$swipers.js */ "./src/js/components/$swipers.js");
+/* harmony import */ var _components_$overlayScrollbars_js__WEBPACK_IMPORTED_MODULE_29__ = __webpack_require__(/*! ./components/$overlayScrollbars.js */ "./src/js/components/$overlayScrollbars.js");
 // Components
+
+
 
 
 

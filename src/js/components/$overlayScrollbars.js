@@ -63,9 +63,9 @@ if (v.$sidebarFilterTops[0]) {
 
 // ==== SIDEBAR FILTERS WRAPPER SCROLLBAR ==== //
 if (v.$filterWrapper) {
-  
+
   let sidebarFiltersWrapper;
-  
+
   // F(s)
   // **
   function overflowHiddenBody() {
@@ -73,7 +73,7 @@ if (v.$filterWrapper) {
       document.body.classList.add("overflow-hidden");
     }
   }
-  
+
   // **
   function toggleSidebarFiltersWrapperOS() {
     if (v.$mdq1119.matches) {
@@ -85,16 +85,16 @@ if (v.$filterWrapper) {
           theme: 'os-theme-sidebar-filters',
         }
       });
-  
+
       overflowHiddenBody();
-  
+
     } else {
       sidebarFiltersWrapper?.destroy();
     }
   }
   toggleSidebarFiltersWrapperOS();
-  
-  
+
+
   // L(s)
   v.$mdq1119.addEventListener("change", toggleSidebarFiltersWrapperOS);
 }
@@ -106,12 +106,23 @@ let cartChoiceListScrollbar = OverlayScrollbars(document.querySelector('.cart-ch
   }
 });
 
-// ==== DOWNLOAD FILES SCROLLBAR ==== //
-let downloadFilesScrollbar = OverlayScrollbars(document.querySelector('.download__files'), {
-  scrollbars: {
-    theme: 'os-theme-download-files',
-  }
-});
+if (v.$productCard) {
+
+  // ==== DOWNLOAD FILES SCROLLBAR ==== //
+  let downloadFilesScrollbar = OverlayScrollbars(document.querySelector('.download__files-wrapper'), {
+    scrollbars: {
+      theme: 'os-theme-download-files',
+    }
+  });
+
+  // ==== LEAVE REVIEW CONTENT SCROLLBAR ==== //
+  let leaveReviewContentScrollbar = OverlayScrollbars(document.querySelector('.leave-review__content'), {
+    scrollbars: {
+      theme: 'os-theme-leave-review-content',
+    }
+  });
+}
+
 
 
 

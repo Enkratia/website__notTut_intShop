@@ -25,6 +25,9 @@ import "./components/product-card__size-btn.js";
 import "./components/tabs.js";
 import "./components/image-modal.js";
 import "./components/progress__bar.js";
+import "./components/leave-review.js";
+import "./components/download.js";
+
 
 // Components multiple in one
 import "./components/$swipers.js";
