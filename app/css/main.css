@@ -3579,6 +3579,9 @@ button {
 .custom-select:focus > .custom-select__head {
   border-color: var(--primary-color);
 }
+.custom-select--chosen .custom-select__selected {
+  color: var(--gray800-color);
+}
 
 .input-number {
   position: relative;
@@ -8411,7 +8414,7 @@ input:checked ~ .product-card__general {
   height: 0.625rem;
 }
 .product-card__sort-head:hover {
-  color: var(--primary-color);
+  color: var(--gray800-color);
 }
 .product-card__sort-wrapper {
   width: 100%;
@@ -9060,6 +9063,10 @@ input:checked ~ .product-card__general {
   font: var(--base-regular);
   color: var(--gray800-color);
 }
+.product-card .reviews-content .review__message-link {
+  font: var(--base-bold);
+  color: var(--primary-color);
+}
 .product-card .reviews-content .review__message-tooltips {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -9097,29 +9104,24 @@ input:checked ~ .product-card__general {
   width: 1rem;
   height: 1rem;
 }
-.product-card .reviews-content .review__message-like {
+.product-card .reviews-content .review__message-btn {
   display: -webkit-inline-box;
   display: -ms-inline-flexbox;
   display: inline-flex;
   -webkit-box-align: center;
   -ms-flex-align: center;
   align-items: center;
+}
+.product-card .reviews-content .review__message-btn svg {
+  margin-right: 0.5rem;
+}
+.product-card .reviews-content .review__message-btn--like {
   margin-right: 1rem;
 }
-.product-card .reviews-content .review__message-like svg {
-  margin-right: 0.5rem;
+.product-card .reviews-content .review__message-btn--like svg {
   fill: var(--success-color);
 }
-.product-card .reviews-content .review__message-dislike {
-  display: -webkit-inline-box;
-  display: -ms-inline-flexbox;
-  display: inline-flex;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
-}
-.product-card .reviews-content .review__message-dislike svg {
-  margin-right: 0.5rem;
+.product-card .reviews-content .review__message-btn--dislike svg {
   fill: var(--danger-color);
 }
 .product-card .reviews-content__pagination {
@@ -9537,7 +9539,7 @@ input:checked ~ .product-card__general {
   margin-bottom: 1.25rem;
 }
 .product-card .leave-review__box:last-of-type {
-  margin-bottom: 2.25rem;
+  margin-bottom: 2.5rem;
 }
 .product-card .leave-review__label {
   display: inline-block;
@@ -9575,15 +9577,28 @@ input:checked ~ .product-card__general {
   height: 0.625rem;
 }
 .product-card .leave-review__sort-head:hover {
-  color: var(--primary-color);
+  color: var(--gray800--color);
 }
 .product-card .leave-review__sort-wrapper {
   width: 100%;
 }
 .product-card .leave-review .download__area {
+  position: relative;
   border: 0.0625rem dashed var(--gray400-color);
+  border-radius: 0.25rem;
   padding: 1.4375rem;
   text-align: center;
+  -webkit-transition: border-color 0.3s;
+  -o-transition: border-color 0.3s;
+  transition: border-color 0.3s;
+}
+.product-card .leave-review .download__area::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 0;
+  height: 0;
 }
 .product-card .leave-review .download__area svg {
   margin-bottom: 0.5rem;
@@ -9600,18 +9615,34 @@ input:checked ~ .product-card__general {
   -ms-user-select: none;
   user-select: none;
 }
+.product-card .leave-review .download__area--highlight {
+  border: 0.0625rem solid var(--primary-color);
+}
+.product-card .leave-review .download__area--highlight::before {
+  width: 100%;
+  height: 100%;
+}
+.product-card .leave-review .download__area--highlight svg {
+  fill: var(--primary-color);
+}
+.product-card .leave-review .download__area--highlight .download__area-descr {
+  color: var(--primary-color);
+}
 .product-card .leave-review .download__files {
   padding-right: 0.5rem;
 }
 .product-card .leave-review .download__files-wrapper {
   overflow: scroll;
+  height: auto;
+  max-height: 8.75rem;
+  opacity: 0;
+  visibility: hidden;
   -webkit-transition: margin-top 0.3s, visibility 0.3s, opacity 0.3s;
   -o-transition: margin-top 0.3s, visibility 0.3s, opacity 0.3s;
   transition: margin-top 0.3s, visibility 0.3s, opacity 0.3s;
 }
 .product-card .leave-review .download__files-wrapper--show {
   margin-top: 1.5rem;
-  height: 8.75rem;
   opacity: 1;
   visibility: visible;
 }
@@ -9698,7 +9729,6 @@ input:checked ~ .product-card__general {
 .product-card .leave-review .download__file-size {
   display: none;
   font: var(--extrasmall-regular);
-  text-transform: uppercase;
   color: var(--gray800-color);
 }
 .product-card .leave-review .download__file--load::before {
@@ -9731,9 +9761,28 @@ input:checked ~ .product-card__general {
   color: var(----danger-color);
 }
 .product-card .leave-review__textarea {
+  position: relative;
   width: 100%;
   height: 6.6875rem;
+  white-space: pre-wrap;
   resize: none;
+}
+.product-card .leave-review__textarea::before {
+  content: "Your working email";
+  position: absolute;
+  left: 1rem;
+  top: 0.6875rem;
+  font: var(--small-regular);
+  color: var(--gray600-color);
+  pointer-events: none;
+}
+.product-card .leave-review__textarea-link {
+  font: var(--base-bold);
+  color: var(--primary-color);
+  pointer-events: none;
+}
+.product-card .leave-review__textarea--active::before {
+  content: none;
 }
 .product-card .leave-review__submit {
   width: 100%;

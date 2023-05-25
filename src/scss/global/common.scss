@@ -1280,6 +1280,13 @@
   &:focus>.custom-select__head {
     border-color: var(--primary-color);
   }
+
+  // Select chosen class
+  &--chosen {
+    .custom-select__selected {
+      color: var(--gray800-color);
+    }
+  }
 }
 
 .input-number {

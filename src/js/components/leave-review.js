@@ -1,13 +1,62 @@
 import * as v from "../vars.js";
 
-const ordinaryInputs = v.$leaveReview.querySelectorAll(".input:not([type='email'])");
+const textInputs = v.$leaveReview.querySelectorAll(".input[type='text']");
 const emailInput = v.$leaveReview.querySelector("[type='email']");
+const textarea = v.$leaveReview.querySelector(".leave-review__textarea");
+
 const selected = v.$leaveReview.querySelector(".leave-review__sort-selected");
 const select = v.$leaveReview.querySelector(".leave-review__sort-select");
 
 const regExp = /^\S+@\S+\.\S+$/;
 
+// ==== CHECK LEAVE-REVIEW VALIDITY | TEXTAREA PLACEHOLDER ==== //
 // F(s)
+//**
+function addWarningClass(elem) {
+  elem.parentElement.classList.remove("input-wrapper--success");
+  elem.parentElement.classList.add("input-wrapper--warning");
+}
+
+//**
+function addSuccessClass(elem) {
+  elem.parentElement.classList.remove("input-wrapper--warning");
+  elem.parentElement.classList.add("input-wrapper--success");
+}
+
+// **
+function removeTextareaPlaceholder() {
+  const isEmpty = isTextareaEmpty();
+
+  if (isEmpty || this.querySelector("a")) {
+    textarea.classList.add("leave-review__textarea--active");
+    return;
+  }
+
+  textarea.classList.remove("leave-review__textarea--active");
+}
+
+// **
+function isTextareaEmpty() {
+  const regExp = /(<a.+<\/a>)/i;
+  let textareaText = textarea.innerHTML.trim();
+
+  const regExpResult = textareaText.match(regExp);
+  if (regExpResult) {
+    textareaText = textareaText.replace(regExpResult[0], "");
+  }
+
+  return textareaText.length;
+}
+
+// **
+function verifyTextarea() {
+  const isEmpty = isTextareaEmpty();
+
+  if (isEmpty) {
+    addSuccessClass(textarea);
+  }
+}
+
 // **
 function verifySelectInput() {
   if (selected.innerText !== "Choose rating") {
@@ -18,38 +67,40 @@ function verifySelectInput() {
 }
 
 // **
-function verifyEmailInput () {
+function verifyEmailInput() {
   if (emailInput.value.match(regExp)) {
-    emailInput.parentElement.classList.remove("input-wrapper--warning");
-    emailInput.parentElement.classList.add("input-wrapper--success");
+    addSuccessClass(emailInput);
   }
 }
 
 // **
-function verifyOrdinaryInput() {
-  ordinaryInputs.forEach(el => {
+function verifyTextInput() {
+  textInputs.forEach(el => {
     if (el.value.length > 0) {
-      el.parentElement.classList.remove("input-wrapper--warning");
-      el.parentElement.classList.add("input-wrapper--success");
+      addSuccessClass(el);
     }
   });
 }
 
-// **
+// ***
 function checkAndSendForm(e) {
   e.preventDefault();
 
-  ordinaryInputs.forEach(el => {
+  textInputs.forEach(el => {
     if (el.value.length === 0) {
-      el.parentElement.classList.remove("input-wrapper--success");
-      el.parentElement.classList.add("input-wrapper--warning");
+      addWarningClass(el);
     }
   });
 
   if (!emailInput.value.match(regExp)) {
-    emailInput.parentElement.classList.remove("input-wrapper--success");
-    emailInput.parentElement.classList.add("input-wrapper--warning");
+    addWarningClass(emailInput);
   }
+
+  const isEmpty = isTextareaEmpty();
+  if (!isEmpty) {
+    addWarningClass(textarea);
+  }
+
 
   if (selected.innerText === "Choose rating") {
     const selectWrapper = selected.closest(".custom-select__outer-wrapper");
@@ -58,6 +109,29 @@ function checkAndSendForm(e) {
   }
 }
 
+// L(s)
+// **
+v.$leaveReviewSubmit.addEventListener("click", checkAndSendForm);
+
+// **
+textInputs.forEach(el => {
+  el.addEventListener("blur", verifyTextInput);
+});
+
+// **
+emailInput.addEventListener("blur", verifyEmailInput);
+
+// **
+select.addEventListener("blur", verifySelectInput);
+
+// **
+textarea.addEventListener("blur", verifyTextarea);
+
+// **
+textarea.addEventListener("input", removeTextareaPlaceholder);
+
+
+// ==== CHECK HIDE LEAVE-REVIEW ==== //
 // **
 function hideLeaveReview() {
   v.$leaveReview.classList.remove("leave-review--show");
@@ -66,6 +140,9 @@ function hideLeaveReview() {
 
 // **
 function showLeaveReview() {
+  textarea.classList.remove("leave-review__textarea--active");
+  textarea.innerHTML = "";
+
   v.$leaveReview.classList.add("leave-review--show");
   document.body.classList.add("overflow-hidden");
 }
@@ -73,14 +150,6 @@ function showLeaveReview() {
 // L(s)
 // ** 
 v.$leaveReviewBtn.addEventListener("click", showLeaveReview);
+
+// **
 v.$leaveReviewClose.addEventListener("click", hideLeaveReview);
-
-// **
-v.$leaveReviewSubmit.addEventListener("click", checkAndSendForm);
-
-// **
-ordinaryInputs.forEach(el => {
-  el.addEventListener("blur", verifyOrdinaryInput);
-});
-emailInput.addEventListener("blur", verifyEmailInput);
-select.addEventListener("blur", verifySelectInput);

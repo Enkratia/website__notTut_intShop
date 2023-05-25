@@ -3,12 +3,19 @@ import * as pbc from "./product__button-cart.js";
 let isOpen = false;
 
 // F(s)
+function highlightChosen(select) {
+  const selectedText = select.querySelector(".custom-select__selected").innerText;
+  const firstLiItemText = select.querySelector(".custom-select__list").firstElementChild.innerText;
+
+  select.classList.toggle("custom-select--chosen", selectedText !== firstLiItemText);
+}
+
 // **
 function rechargeProductButton(selected) {
-  const product = selected.closest(".product-card");
+  const general = selected.closest(".product-card__general");
 
-  if (product) {
-    const productButton = product.querySelector(".product__button-cart");
+  if (general) {
+    const productButton = general.querySelector(".product__button-cart");
     productButton.classList.remove("product-card__btn-cart--active");
     productButton.removeEventListener("click", pbc.$clickOnCart);
   }
@@ -47,6 +54,8 @@ function changeSelectValue(e, selected, thisSelect) {
       toolbarSortSelected.textContent = e.target.textContent;
     });
 
+    highlightChosen(thisSelect);
+
     return;
   }
 
@@ -55,6 +64,8 @@ function changeSelectValue(e, selected, thisSelect) {
     selected.textContent = e.target.textContent;
     rearrangeClass(e.target, thisSelect);
     rechargeProductButton(e.target);
+
+    highlightChosen(thisSelect);
   }
 }
 

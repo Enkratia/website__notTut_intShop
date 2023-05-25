@@ -3015,11 +3015,17 @@ __webpack_require__.r(__webpack_exports__);
 let isOpen = false;
 
 // F(s)
+function highlightChosen(select) {
+  const selectedText = select.querySelector(".custom-select__selected").innerText;
+  const firstLiItemText = select.querySelector(".custom-select__list").firstElementChild.innerText;
+  select.classList.toggle("custom-select--chosen", selectedText !== firstLiItemText);
+}
+
 // **
 function rechargeProductButton(selected) {
-  const product = selected.closest(".product-card");
-  if (product) {
-    const productButton = product.querySelector(".product__button-cart");
+  const general = selected.closest(".product-card__general");
+  if (general) {
+    const productButton = general.querySelector(".product__button-cart");
     productButton.classList.remove("product-card__btn-cart--active");
     productButton.removeEventListener("click", _product_button_cart_js__WEBPACK_IMPORTED_MODULE_1__.$clickOnCart);
   }
@@ -3053,6 +3059,7 @@ function changeSelectValue(e, selected, thisSelect) {
       const toolbarSortSelected = el.querySelector(".toolbar__sort-selected");
       toolbarSortSelected.textContent = e.target.textContent;
     });
+    highlightChosen(thisSelect);
     return;
   }
 
@@ -3061,6 +3068,7 @@ function changeSelectValue(e, selected, thisSelect) {
     selected.textContent = e.target.textContent;
     rearrangeClass(e.target, thisSelect);
     rechargeProductButton(e.target);
+    highlightChosen(thisSelect);
   }
 }
 
@@ -3138,16 +3146,12 @@ _vars_js__WEBPACK_IMPORTED_MODULE_0__.$customSelects.forEach(el => {
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _vars_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../vars.js */ "./src/js/vars.js");
 
-const downloadBtn = _vars_js__WEBPACK_IMPORTED_MODULE_0__.$leaveReview.querySelector(".download__area-btn");
-const fileInput = _vars_js__WEBPACK_IMPORTED_MODULE_0__.$leaveReview.querySelector(".download__area-btn-native");
-const downloadingFiles = _vars_js__WEBPACK_IMPORTED_MODULE_0__.$leaveReview.querySelector(".download__files");
-let elementIdx = 0;
 
 // F(s)
 // **
 function checkError(elem) {
   const size = elem.querySelector(".download__file-size");
-  size.innerText = "Something gone wrong.";
+  size.innerText = "Something gone wrong ...";
   elem.classList.add("download__file--error");
 }
 
@@ -3172,7 +3176,7 @@ function checkUpdate(elem, _ref) {
       }
       const size = elem.querySelector(".download__file-size");
       size.innerText = total;
-    }, 500);
+    }, 300);
   }
 }
 
@@ -3181,14 +3185,14 @@ function createLiTag(_ref2) {
   let {
     name
   } = _ref2;
-  const wrapper = downloadingFiles.closest(".download__files-wrapper");
+  const wrapper = _vars_js__WEBPACK_IMPORTED_MODULE_0__.$downloadingFiles.closest(".download__files-wrapper");
   wrapper.classList.add("download__files-wrapper--show");
   const regExp = /(.+)(\.\S+)$/i;
   const regExpResult = name.match(regExp);
   const fileName = regExpResult[1].length < 14 ? regExpResult[1] : regExpResult[1].substring(0, 14);
   const ext = regExpResult[2];
   const liTag = `
-              <li class="download__file" data-progress="${elementIdx}">
+              <li class="download__file">
                 <svg xmlns='http://www.w3.org/2000/svg' aria-hidden='true'>
                   <use href='./img/sprite.svg#file' aria-hidden='true'></use>
                 </svg>
@@ -3217,33 +3221,60 @@ function createLiTag(_ref2) {
   return liTag;
 }
 
-// **
-function observeFileLoading() {
-  const files = this.files;
+// ***
+function observeFileLoading(dropFiles) {
+  const files = this ? this.files : dropFiles;
+  if (!files.length) return;
   for (let i = 0; i < files.length; i++) {
-    downloadingFiles.insertAdjacentHTML("afterbegin", createLiTag(files[i]));
-    const li = downloadingFiles.firstElementChild;
+    _vars_js__WEBPACK_IMPORTED_MODULE_0__.$downloadingFiles.insertAdjacentHTML("afterbegin", createLiTag(files[i]));
+    const li = _vars_js__WEBPACK_IMPORTED_MODULE_0__.$downloadingFiles.firstElementChild;
     const reader = new FileReader();
     reader.readAsDataURL(files[i]);
     reader.onprogress = e => checkUpdate(li, e);
     reader.onerror = () => checkError(li);
-    setTimeout(() => {
-      reader.abort();
-    }, 100);
   }
 }
 
-// **
+// ***
 function observeFiles() {
   this.nextElementSibling.click();
 }
 
 // L(s)
 // **
-downloadBtn.addEventListener("click", observeFiles);
+_vars_js__WEBPACK_IMPORTED_MODULE_0__.$downloadBtn.addEventListener("click", observeFiles);
 
 // **
-fileInput.addEventListener("change", observeFileLoading);
+_vars_js__WEBPACK_IMPORTED_MODULE_0__.$fileInput.addEventListener("change", observeFileLoading);
+
+// ==== DRAG & DROP === //
+// F(s)
+// **
+function processFiles(e) {
+  e.preventDefault();
+  observeFileLoading(e.dataTransfer.files);
+  _vars_js__WEBPACK_IMPORTED_MODULE_0__.$downloadArea.classList.remove("download__area--highlight");
+  _vars_js__WEBPACK_IMPORTED_MODULE_0__.$downloadAreaDescr.innerText = "Drag and drop here to upload";
+}
+
+// **
+function unHighlightArea() {
+  _vars_js__WEBPACK_IMPORTED_MODULE_0__.$downloadArea.classList.remove("download__area--highlight");
+  _vars_js__WEBPACK_IMPORTED_MODULE_0__.$downloadAreaDescr.innerText = "Drag and drop here to upload";
+}
+
+// **
+function highlightArea(e) {
+  e.preventDefault();
+  _vars_js__WEBPACK_IMPORTED_MODULE_0__.$downloadArea.classList.add("download__area--highlight");
+  _vars_js__WEBPACK_IMPORTED_MODULE_0__.$downloadAreaDescr.innerText = "Release to upload";
+}
+
+// L(s)
+// **
+_vars_js__WEBPACK_IMPORTED_MODULE_0__.$downloadArea.addEventListener("dragover", highlightArea);
+_vars_js__WEBPACK_IMPORTED_MODULE_0__.$downloadArea.addEventListener("dragleave", unHighlightArea);
+_vars_js__WEBPACK_IMPORTED_MODULE_0__.$downloadArea.addEventListener("drop", processFiles);
 
 /***/ }),
 
@@ -3871,13 +3902,56 @@ _vars_js__WEBPACK_IMPORTED_MODULE_0__.$inputNumberBtns.forEach(el => {
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _vars_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../vars.js */ "./src/js/vars.js");
 
-const ordinaryInputs = _vars_js__WEBPACK_IMPORTED_MODULE_0__.$leaveReview.querySelectorAll(".input:not([type='email'])");
+const textInputs = _vars_js__WEBPACK_IMPORTED_MODULE_0__.$leaveReview.querySelectorAll(".input[type='text']");
 const emailInput = _vars_js__WEBPACK_IMPORTED_MODULE_0__.$leaveReview.querySelector("[type='email']");
+const textarea = _vars_js__WEBPACK_IMPORTED_MODULE_0__.$leaveReview.querySelector(".leave-review__textarea");
 const selected = _vars_js__WEBPACK_IMPORTED_MODULE_0__.$leaveReview.querySelector(".leave-review__sort-selected");
 const select = _vars_js__WEBPACK_IMPORTED_MODULE_0__.$leaveReview.querySelector(".leave-review__sort-select");
 const regExp = /^\S+@\S+\.\S+$/;
 
+// ==== CHECK LEAVE-REVIEW VALIDITY | TEXTAREA PLACEHOLDER ==== //
 // F(s)
+//**
+function addWarningClass(elem) {
+  elem.parentElement.classList.remove("input-wrapper--success");
+  elem.parentElement.classList.add("input-wrapper--warning");
+}
+
+//**
+function addSuccessClass(elem) {
+  elem.parentElement.classList.remove("input-wrapper--warning");
+  elem.parentElement.classList.add("input-wrapper--success");
+}
+
+// **
+function removeTextareaPlaceholder() {
+  const isEmpty = isTextareaEmpty();
+  if (isEmpty || this.querySelector("a")) {
+    textarea.classList.add("leave-review__textarea--active");
+    return;
+  }
+  textarea.classList.remove("leave-review__textarea--active");
+}
+
+// **
+function isTextareaEmpty() {
+  const regExp = /(<a.+<\/a>)/i;
+  let textareaText = textarea.innerHTML.trim();
+  const regExpResult = textareaText.match(regExp);
+  if (regExpResult) {
+    textareaText = textareaText.replace(regExpResult[0], "");
+  }
+  return textareaText.length;
+}
+
+// **
+function verifyTextarea() {
+  const isEmpty = isTextareaEmpty();
+  if (isEmpty) {
+    addSuccessClass(textarea);
+  }
+}
+
 // **
 function verifySelectInput() {
   if (selected.innerText !== "Choose rating") {
@@ -3890,33 +3964,33 @@ function verifySelectInput() {
 // **
 function verifyEmailInput() {
   if (emailInput.value.match(regExp)) {
-    emailInput.parentElement.classList.remove("input-wrapper--warning");
-    emailInput.parentElement.classList.add("input-wrapper--success");
+    addSuccessClass(emailInput);
   }
 }
 
 // **
-function verifyOrdinaryInput() {
-  ordinaryInputs.forEach(el => {
+function verifyTextInput() {
+  textInputs.forEach(el => {
     if (el.value.length > 0) {
-      el.parentElement.classList.remove("input-wrapper--warning");
-      el.parentElement.classList.add("input-wrapper--success");
+      addSuccessClass(el);
     }
   });
 }
 
-// **
+// ***
 function checkAndSendForm(e) {
   e.preventDefault();
-  ordinaryInputs.forEach(el => {
+  textInputs.forEach(el => {
     if (el.value.length === 0) {
-      el.parentElement.classList.remove("input-wrapper--success");
-      el.parentElement.classList.add("input-wrapper--warning");
+      addWarningClass(el);
     }
   });
   if (!emailInput.value.match(regExp)) {
-    emailInput.parentElement.classList.remove("input-wrapper--success");
-    emailInput.parentElement.classList.add("input-wrapper--warning");
+    addWarningClass(emailInput);
+  }
+  const isEmpty = isTextareaEmpty();
+  if (!isEmpty) {
+    addWarningClass(textarea);
   }
   if (selected.innerText === "Choose rating") {
     const selectWrapper = selected.closest(".custom-select__outer-wrapper");
@@ -3925,6 +3999,28 @@ function checkAndSendForm(e) {
   }
 }
 
+// L(s)
+// **
+_vars_js__WEBPACK_IMPORTED_MODULE_0__.$leaveReviewSubmit.addEventListener("click", checkAndSendForm);
+
+// **
+textInputs.forEach(el => {
+  el.addEventListener("blur", verifyTextInput);
+});
+
+// **
+emailInput.addEventListener("blur", verifyEmailInput);
+
+// **
+select.addEventListener("blur", verifySelectInput);
+
+// **
+textarea.addEventListener("blur", verifyTextarea);
+
+// **
+textarea.addEventListener("input", removeTextareaPlaceholder);
+
+// ==== CHECK HIDE LEAVE-REVIEW ==== //
 // **
 function hideLeaveReview() {
   _vars_js__WEBPACK_IMPORTED_MODULE_0__.$leaveReview.classList.remove("leave-review--show");
@@ -3933,6 +4029,8 @@ function hideLeaveReview() {
 
 // **
 function showLeaveReview() {
+  textarea.classList.remove("leave-review__textarea--active");
+  textarea.innerHTML = "";
   _vars_js__WEBPACK_IMPORTED_MODULE_0__.$leaveReview.classList.add("leave-review--show");
   document.body.classList.add("overflow-hidden");
 }
@@ -3940,17 +4038,9 @@ function showLeaveReview() {
 // L(s)
 // ** 
 _vars_js__WEBPACK_IMPORTED_MODULE_0__.$leaveReviewBtn.addEventListener("click", showLeaveReview);
+
+// **
 _vars_js__WEBPACK_IMPORTED_MODULE_0__.$leaveReviewClose.addEventListener("click", hideLeaveReview);
-
-// **
-_vars_js__WEBPACK_IMPORTED_MODULE_0__.$leaveReviewSubmit.addEventListener("click", checkAndSendForm);
-
-// **
-ordinaryInputs.forEach(el => {
-  el.addEventListener("blur", verifyOrdinaryInput);
-});
-emailInput.addEventListener("blur", verifyEmailInput);
-select.addEventListener("blur", verifySelectInput);
 
 /***/ }),
 
@@ -4913,6 +5003,84 @@ if (progressBars[0]) {
 
 /***/ }),
 
+/***/ "./src/js/components/review-message-tooltips.js":
+/*!******************************************************!*\
+  !*** ./src/js/components/review-message-tooltips.js ***!
+  \******************************************************/
+/***/ ((__unused_webpack___webpack_module__, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _vars_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../vars.js */ "./src/js/vars.js");
+
+let siblingBtn;
+
+// ==== LIKE - DISLIKE BUTTONS ==== //
+// F(s)
+// **
+function decreaseCount(btn) {
+  const btnCount = btn.lastElementChild;
+  const btnCountText = btnCount.innerText;
+  btnCount.innerText = btnCountText - 1;
+  btn.classList.remove("review__message-btn--active");
+}
+
+// **
+function increaseCount(btn) {
+  const btnCount = btn.lastElementChild;
+  const btnCountText = btnCount.innerText;
+  btnCount.innerText = +btnCountText + 1;
+  btn.classList.add("review__message-btn--active");
+}
+
+// ***
+function assessReview() {
+  if (this.classList.contains("review__message-btn--active")) {
+    decreaseCount(this);
+    return;
+  }
+  increaseCount(this);
+  if (this.classList.contains("review__message-btn--like")) {
+    siblingBtn = this.nextElementSibling;
+  } else {
+    siblingBtn = this.previousElementSibling;
+  }
+  if (siblingBtn.classList.contains("review__message-btn--active")) {
+    decreaseCount(siblingBtn);
+  }
+}
+
+// L(s)
+_vars_js__WEBPACK_IMPORTED_MODULE_0__.$reviewAssessBtns.forEach(el => {
+  el.addEventListener("click", assessReview);
+});
+
+// ==== REPLY BUTTON ==== //
+const textarea = _vars_js__WEBPACK_IMPORTED_MODULE_0__.$leaveReview.querySelector(".leave-review__textarea");
+
+// F(s)
+// **
+function replyOnReview() {
+  _vars_js__WEBPACK_IMPORTED_MODULE_0__.$leaveReviewBtn.click();
+  textarea.classList.add("leave-review__textarea--active");
+  textarea.innerHTML = "";
+  const review = this.closest(".review__box");
+  const reviewUserName = review.querySelector(".review__user-name").innerText;
+  const reviewLink = document.createElement("a");
+  reviewLink.setAttribute("contenteditable", "false");
+  reviewLink.className = "leave-review__textarea-link";
+  reviewLink.innerText = "@" + reviewUserName;
+  textarea.appendChild(reviewLink);
+  textarea.insertAdjacentHTML("beforeend", " ");
+}
+
+// L(s)
+_vars_js__WEBPACK_IMPORTED_MODULE_0__.$replyBtns.forEach(el => {
+  el.addEventListener("click", replyOnReview);
+});
+
+/***/ }),
+
 /***/ "./src/js/components/sidebar-filters__button.js":
 /*!******************************************************!*\
   !*** ./src/js/components/sidebar-filters__button.js ***!
@@ -5780,6 +5948,11 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "$counters": () => (/* binding */ $counters),
 /* harmony export */   "$customCheckboxes": () => (/* binding */ $customCheckboxes),
 /* harmony export */   "$customSelects": () => (/* binding */ $customSelects),
+/* harmony export */   "$downloadArea": () => (/* binding */ $downloadArea),
+/* harmony export */   "$downloadAreaDescr": () => (/* binding */ $downloadAreaDescr),
+/* harmony export */   "$downloadBtn": () => (/* binding */ $downloadBtn),
+/* harmony export */   "$downloadingFiles": () => (/* binding */ $downloadingFiles),
+/* harmony export */   "$fileInput": () => (/* binding */ $fileInput),
 /* harmony export */   "$filterSliderInputs": () => (/* binding */ $filterSliderInputs),
 /* harmony export */   "$filterSliderRange": () => (/* binding */ $filterSliderRange),
 /* harmony export */   "$filterWrapper": () => (/* binding */ $filterWrapper),
@@ -5822,6 +5995,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "$productCardTabs": () => (/* binding */ $productCardTabs),
 /* harmony export */   "$productColorsBtns": () => (/* binding */ $productColorsBtns),
 /* harmony export */   "$productFavoriteBtns": () => (/* binding */ $productFavoriteBtns),
+/* harmony export */   "$replyBtns": () => (/* binding */ $replyBtns),
+/* harmony export */   "$reviewAssessBtns": () => (/* binding */ $reviewAssessBtns),
 /* harmony export */   "$saleProducts": () => (/* binding */ $saleProducts),
 /* harmony export */   "$saleSlider": () => (/* binding */ $saleSlider),
 /* harmony export */   "$searchForm": () => (/* binding */ $searchForm),
@@ -5927,10 +6102,19 @@ const $imageModalCountCurrent = $imageModal?.querySelector(".image-modal__count-
 const $imageModalCountTotal = $imageModal?.querySelector(".image-modal__count-total");
 
 // **
+const $reviewAssessBtns = $productCard?.querySelectorAll(".review__message-btn");
+const $replyBtns = $productCard?.querySelectorAll(".review__message-reply");
+
+// **
 const $leaveReview = $productCard?.querySelector(".leave-review");
 const $leaveReviewBtn = $productCard?.querySelector(".tool-bar__btn");
 const $leaveReviewClose = $leaveReview?.querySelector(".leave-review__close");
 const $leaveReviewSubmit = $leaveReview?.querySelector(".leave-review__submit");
+const $downloadArea = $leaveReview?.querySelector(".download__area");
+const $downloadAreaDescr = $leaveReview?.querySelector(".download__area-descr");
+const $downloadBtn = $leaveReview?.querySelector(".download__area-btn");
+const $fileInput = $leaveReview?.querySelector(".download__area-btn-native");
+const $downloadingFiles = $leaveReview?.querySelector(".download__files");
 
 // Media
 const $mdq767 = window.matchMedia("(max-width: 767px)");
@@ -26884,9 +27068,11 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _components_progress_bar_js__WEBPACK_IMPORTED_MODULE_25__ = __webpack_require__(/*! ./components/progress__bar.js */ "./src/js/components/progress__bar.js");
 /* harmony import */ var _components_leave_review_js__WEBPACK_IMPORTED_MODULE_26__ = __webpack_require__(/*! ./components/leave-review.js */ "./src/js/components/leave-review.js");
 /* harmony import */ var _components_download_js__WEBPACK_IMPORTED_MODULE_27__ = __webpack_require__(/*! ./components/download.js */ "./src/js/components/download.js");
-/* harmony import */ var _components_$swipers_js__WEBPACK_IMPORTED_MODULE_28__ = __webpack_require__(/*! ./components/$swipers.js */ "./src/js/components/$swipers.js");
-/* harmony import */ var _components_$overlayScrollbars_js__WEBPACK_IMPORTED_MODULE_29__ = __webpack_require__(/*! ./components/$overlayScrollbars.js */ "./src/js/components/$overlayScrollbars.js");
+/* harmony import */ var _components_review_message_tooltips_js__WEBPACK_IMPORTED_MODULE_28__ = __webpack_require__(/*! ./components/review-message-tooltips.js */ "./src/js/components/review-message-tooltips.js");
+/* harmony import */ var _components_$swipers_js__WEBPACK_IMPORTED_MODULE_29__ = __webpack_require__(/*! ./components/$swipers.js */ "./src/js/components/$swipers.js");
+/* harmony import */ var _components_$overlayScrollbars_js__WEBPACK_IMPORTED_MODULE_30__ = __webpack_require__(/*! ./components/$overlayScrollbars.js */ "./src/js/components/$overlayScrollbars.js");
 // Components
+
 
 
 

@@ -27,6 +27,8 @@ import "./components/image-modal.js";
 import "./components/progress__bar.js";
 import "./components/leave-review.js";
 import "./components/download.js";
+import "./components/review-message-tooltips.js";
+
 
 
 // Components multiple in one

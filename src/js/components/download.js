@@ -1,15 +1,10 @@
 import * as v from "../vars.js";
 
-const downloadBtn = v.$leaveReview.querySelector(".download__area-btn");
-const fileInput = v.$leaveReview.querySelector(".download__area-btn-native");
-const downloadingFiles = v.$leaveReview.querySelector(".download__files");
-let elementIdx = 0;
-
 // F(s)
 // **
 function checkError(elem) {
   const size = elem.querySelector(".download__file-size");
-  size.innerText = "Something gone wrong.";
+  size.innerText = "Something gone wrong ...";
 
   elem.classList.add("download__file--error");
 }
@@ -36,13 +31,13 @@ function checkUpdate(elem, {loaded, total}) {
 
       const size = elem.querySelector(".download__file-size");
       size.innerText = total;
-    }, 500);
+    }, 300);
   }
 }
 
 // **
 function createLiTag({ name }) {
-  const wrapper = downloadingFiles.closest(".download__files-wrapper");
+  const wrapper = v.$downloadingFiles.closest(".download__files-wrapper");
   wrapper.classList.add("download__files-wrapper--show");
 
   const regExp = /(.+)(\.\S+)$/i;
@@ -52,7 +47,7 @@ function createLiTag({ name }) {
   const ext = regExpResult[2];
 
   const liTag = `
-              <li class="download__file" data-progress="${elementIdx}">
+              <li class="download__file">
                 <svg xmlns='http://www.w3.org/2000/svg' aria-hidden='true'>
                   <use href='./img/sprite.svg#file' aria-hidden='true'></use>
                 </svg>
@@ -82,35 +77,63 @@ function createLiTag({ name }) {
   return liTag;
 }
 
-// **
-function observeFileLoading() {
-  const files = this.files;
+// ***
+function observeFileLoading(dropFiles) {
+  const files = this ? this.files : dropFiles;
 
+  if (!files.length) return;
   
   for (let i = 0; i < files.length; i++) {
-    downloadingFiles.insertAdjacentHTML("afterbegin", createLiTag(files[i]));
-    const li = downloadingFiles.firstElementChild;
+    v.$downloadingFiles.insertAdjacentHTML("afterbegin", createLiTag(files[i]));
+    const li = v.$downloadingFiles.firstElementChild;
 
     const reader = new FileReader();
     reader.readAsDataURL(files[i]);
 
     reader.onprogress = (e) => checkUpdate(li, e);
     reader.onerror = () => checkError(li);
-
-    setTimeout(() => {
-      reader.abort();
-    }, 100);
   }
 }
 
-// **
+// ***
 function observeFiles() {
   this.nextElementSibling.click();
 }
 
 // L(s)
 // **
-downloadBtn.addEventListener("click", observeFiles);
+v.$downloadBtn.addEventListener("click", observeFiles);
 
 // **
-fileInput.addEventListener("change", observeFileLoading);
+v.$fileInput.addEventListener("change", observeFileLoading);
+
+
+// ==== DRAG & DROP === //
+// F(s)
+// **
+function processFiles(e) {
+  e.preventDefault();
+  observeFileLoading(e.dataTransfer.files)
+
+  v.$downloadArea.classList.remove("download__area--highlight");
+  v.$downloadAreaDescr.innerText = "Drag and drop here to upload";
+}
+
+// **
+function unHighlightArea() {
+  v.$downloadArea.classList.remove("download__area--highlight");
+  v.$downloadAreaDescr.innerText = "Drag and drop here to upload";
+}
+
+// **
+function highlightArea(e) {
+  e.preventDefault();
+  v.$downloadArea.classList.add("download__area--highlight");
+  v.$downloadAreaDescr.innerText = "Release to upload";
+}
+
+// L(s)
+// **
+v.$downloadArea.addEventListener("dragover", highlightArea);
+v.$downloadArea.addEventListener("dragleave", unHighlightArea);
+v.$downloadArea.addEventListener("drop", processFiles);

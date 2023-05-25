@@ -291,7 +291,7 @@
       }
 
       &:hover {
-        color: var(--primary-color);
+        color: var(--gray800-color);
       }
     }
 
@@ -1021,6 +1021,11 @@
           color: var(--gray800-color);
         }
 
+        &-link {
+          font: var(--base-bold);
+          color: var(--primary-color);
+        }
+
         &-tooltips {
           display: flex;
           align-items: center;
@@ -1053,24 +1058,26 @@
           }
         }
 
-        &-like {
+        &-btn {
           display: inline-flex;
           align-items: center;
-          margin-right: rem(16);
 
           svg {
             margin-right: rem(8);
-            fill: var(--success-color);
           }
-        }
 
-        &-dislike {
-          display: inline-flex;
-          align-items: center;
+          &--like {
+            margin-right: rem(16);
 
-          svg {
-            margin-right: rem(8);
-            fill: var(--danger-color);
+            svg {
+              fill: var(--success-color);
+            }
+          }
+
+          &--dislike {
+            svg {
+              fill: var(--danger-color);
+            }
           }
         }
       }
@@ -1504,7 +1511,7 @@
       margin-bottom: rem(20);
 
       &:last-of-type {
-        margin-bottom: rem(36);
+        margin-bottom: rem(40);
       }
     }
 
@@ -1544,7 +1551,7 @@
         }
 
         &:hover {
-          color: var(--primary-color);
+          color: var(--gray800--color);
         }
       }
 
@@ -1558,9 +1565,21 @@
 
       // Download area
       &__area {
+        position: relative;
         border: rem(1) dashed var(--gray400-color);
+        border-radius: rem(4);
         padding: rem(23);
         text-align: center;
+        transition: border-color 0.3s;
+
+        &::before {
+          content: "";
+          position: absolute;
+          left: 0;
+          top: 0;
+          width: 0;
+          height: 0;
+        }
 
         svg {
           margin-bottom: rem(8);
@@ -1575,22 +1594,40 @@
           color: var(--gray800-color);
           user-select: none;
         }
+
+        // Highlight class
+        &--highlight {
+          border: rem(1) solid var(--primary-color);
+
+          &::before {
+            width: 100%;
+            height: 100%;
+          }
+
+          svg {
+            fill: var(--primary-color);
+          }
+
+          .download__area-descr {
+            color: var(--primary-color);
+          }
+        }
       }
 
       // Download files
       &__files {
         padding-right: rem(8);
-        
+
         &-wrapper {
           overflow: scroll;
-          // height: 0;
-          // opacity: 0;
-          // visibility: hidden;
+          height: auto;
+          max-height: rem(140);
+          opacity: 0;
+          visibility: hidden;
           transition: margin-top 0.3s, visibility 0.3s, opacity 0.3s;
 
           &--show {
             margin-top: rem(24);
-            height: rem(140);
             opacity: 1;
             visibility: visible;
           }
@@ -1668,7 +1705,6 @@
         &-size {
           display: none;
           font: var(--extrasmall-regular);
-          text-transform: uppercase;
           color: var(--gray800-color);
         }
 
@@ -1717,9 +1753,33 @@
     }
 
     &__textarea {
+      position: relative;
       width: 100%;
       height: rem(107);
+      white-space: pre-wrap;
       resize: none;
+
+      &::before {
+        content: "Your working email";
+        position: absolute;
+        left: rem(16);
+        top: rem(11);
+        font: var(--small-regular);
+        color: var(--gray600-color);
+        pointer-events: none;
+      }
+
+      &-link {
+        font: var(--base-bold);
+        color: var(--primary-color);
+        pointer-events: none;
+      }
+
+      &--active {
+        &::before {
+          content: none;
+        }
+      }
     }
 
     &__submit {

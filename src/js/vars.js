@@ -88,10 +88,19 @@ export const $imageModalCountCurrent = $imageModal?.querySelector(".image-modal_
 export const $imageModalCountTotal = $imageModal?.querySelector(".image-modal__count-total");
 
 // **
+export const $reviewAssessBtns = $productCard?.querySelectorAll(".review__message-btn");
+export const $replyBtns = $productCard?.querySelectorAll(".review__message-reply");
+
+// **
 export const $leaveReview = $productCard?.querySelector(".leave-review");
 export const $leaveReviewBtn = $productCard?.querySelector(".tool-bar__btn");
 export const $leaveReviewClose = $leaveReview?.querySelector(".leave-review__close");
 export const $leaveReviewSubmit = $leaveReview?.querySelector(".leave-review__submit");
+export const $downloadArea = $leaveReview?.querySelector(".download__area");
+export const $downloadAreaDescr = $leaveReview?.querySelector(".download__area-descr");
+export const $downloadBtn = $leaveReview?.querySelector(".download__area-btn");
+export const $fileInput = $leaveReview?.querySelector(".download__area-btn-native");
+export const $downloadingFiles = $leaveReview?.querySelector(".download__files");
 
 
 

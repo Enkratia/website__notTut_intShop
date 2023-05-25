@@ -823,7 +823,7 @@
             </ul>
           </div>
 
-          <!-- Toolbar -->
+          <!-- Tool-bar -->
           <div class="reviews-content__tool-bar tool-bar">
             <button class="tool-bar__btn btn btn--mid">
               Leave a review
@@ -937,7 +937,7 @@
                   </button>
 
                   <div class="review__message-assessment">
-                    <button class="review__message-like" aria-label="Like this review.">
+                    <button class="review__message-btn review__message-btn--like" aria-label="Like this review.">
                       <svg xmlns='http://www.w3.org/2000/svg' aria-hidden='true'>
                         <use href='./img/sprite.svg#like' aria-hidden='true'></use>
                       </svg>
@@ -947,7 +947,7 @@
                       </span>
                     </button>
 
-                    <button class="review__message-dislike" aria-label="Dislike this review.">
+                    <button class="review__message-btn review__message-btn--dislike" aria-label="Dislike this review.">
                       <svg xmlns='http://www.w3.org/2000/svg' aria-hidden='true'>
                         <use href='./img/sprite.svg#dislike' aria-hidden='true'></use>
                       </svg>
@@ -1001,8 +1001,14 @@
 
               <div class="review__message">
                 <p class="review__message-text">
-                  @Devon Lane Egestas fermentum natoque sollicitudin mauris. Facilisis praesent urna sed rhoncus quis
-                  pharetra pellentesque erat sagittis.
+                  <a href="#" class="review__message-link">
+                    @Devon Lane
+                  </a>
+
+                  <span>
+                    Egestas fermentum natoque sollicitudin mauris. Facilisis praesent urna sed rhoncus quis pharetra
+                    pellentesque erat sagittis.
+                  </span>
                 </p>
 
                 <div class="review__message-tooltips">
@@ -1015,7 +1021,7 @@
                   </button>
 
                   <div class="review__message-assessment">
-                    <button class="review__message-like" aria-label="Like this review.">
+                    <button class="review__message-btn review__message-btn--like" aria-label="Like this review.">
                       <svg xmlns='http://www.w3.org/2000/svg' aria-hidden='true'>
                         <use href='./img/sprite.svg#like' aria-hidden='true'></use>
                       </svg>
@@ -1025,7 +1031,7 @@
                       </span>
                     </button>
 
-                    <button class="review__message-dislike" aria-label="Dislike this review.">
+                    <button class="review__message-btn review__message-btn--dislike" aria-label="Dislike this review.">
                       <svg xmlns='http://www.w3.org/2000/svg' aria-hidden='true'>
                         <use href='./img/sprite.svg#dislike' aria-hidden='true'></use>
                       </svg>
@@ -1090,7 +1096,7 @@
                   </button>
 
                   <div class="review__message-assessment">
-                    <button class="review__message-like" aria-label="Like this review.">
+                    <button class="review__message-btn review__message-btn--like" aria-label="Like this review.">
                       <svg xmlns='http://www.w3.org/2000/svg' aria-hidden='true'>
                         <use href='./img/sprite.svg#like' aria-hidden='true'></use>
                       </svg>
@@ -1100,7 +1106,7 @@
                       </span>
                     </button>
 
-                    <button class="review__message-dislike" aria-label="Dislike this review.">
+                    <button class="review__message-btn review__message-btn--dislike" aria-label="Dislike this review.">
                       <svg xmlns='http://www.w3.org/2000/svg' aria-hidden='true'>
                         <use href='./img/sprite.svg#dislike' aria-hidden='true'></use>
                       </svg>
@@ -1169,22 +1175,22 @@
                   </button>
 
                   <div class="review__message-assessment">
-                    <button class="review__message-like" aria-label="Like this review.">
+                    <button class="review__message-btn review__message-btn--like" aria-label="Like this review.">
                       <svg xmlns='http://www.w3.org/2000/svg' aria-hidden='true'>
                         <use href='./img/sprite.svg#like' aria-hidden='true'></use>
                       </svg>
 
-                      <span class="review__message-like-count">
+                      <span class="review__message-count">
                         3
                       </span>
                     </button>
 
-                    <button class="review__message-dislike" aria-label="Dislike this review.">
+                    <button class="review__message-btn review__message-btn--dislike" aria-label="Dislike this review.">
                       <svg xmlns='http://www.w3.org/2000/svg' aria-hidden='true'>
                         <use href='./img/sprite.svg#dislike' aria-hidden='true'></use>
                       </svg>
 
-                      <span class="review__message-dislike-count">
+                      <span class="review__message-count">
                         0
                       </span>
                     </button>
@@ -2631,9 +2637,7 @@
 
           <!-- Download files -->
           <div class="download__files-wrapper" data-overlayscrollbars-initialize>
-            <ul class="download__files">
-
-            </ul>
+            <ul class="download__files"></ul>
           </div>
         </div>
       </div>
@@ -2645,8 +2649,8 @@
         </label>
 
         <div class="input-wrapper">
-          <textarea class="leave-review__textarea input" placeholder="Your working email" id="leave-review-review"
-            name="leave-review-review" data-overlayscrollbars-initialize></textarea>
+          <div class="leave-review__textarea input" id="leave-review-review" name="leave-review-review"
+            contenteditable="true" role="textbox" data-overlayscrollbars-initialize></div>
         </div>
       </div>
 
