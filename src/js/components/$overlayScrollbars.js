@@ -121,6 +121,13 @@ if (v.$productCard) {
       theme: 'os-theme-leave-review-content',
     }
   });
+
+  // ==== PRODUCT CARD TABS SCROLLBAR ==== //
+  let productCardTabsScrollbar = OverlayScrollbars(document.querySelector('.product-card__tabs'), {
+    scrollbars: {
+      theme: 'os-theme-download-files',
+    }
+  });
 }
 
 

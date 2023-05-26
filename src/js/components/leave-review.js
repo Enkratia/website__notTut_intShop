@@ -1,6 +1,6 @@
 import * as v from "../vars.js";
 
-const textInputs = v.$leaveReview.querySelectorAll(".input[type='text']");
+const textInput = v.$leaveReview.querySelector(".input[type='text']");
 const emailInput = v.$leaveReview.querySelector("[type='email']");
 const textarea = v.$leaveReview.querySelector(".leave-review__textarea");
 
@@ -11,6 +11,11 @@ const regExp = /^\S+@\S+\.\S+$/;
 
 // ==== CHECK LEAVE-REVIEW VALIDITY | TEXTAREA PLACEHOLDER ==== //
 // F(s)
+// **
+function removeWarningSuccessClasses(elem) {
+  elem.parentElement.classList.remove("input-wrapper--success", "input-wrapper--warning");
+} 
+
 //**
 function addWarningClass(elem) {
   elem.parentElement.classList.remove("input-wrapper--success");
@@ -75,22 +80,18 @@ function verifyEmailInput() {
 
 // **
 function verifyTextInput() {
-  textInputs.forEach(el => {
-    if (el.value.length > 0) {
-      addSuccessClass(el);
-    }
-  });
+  if (textInput.value.length > 0) {
+    addSuccessClass(textInput);
+  }
 }
 
 // ***
 function checkAndSendForm(e) {
   e.preventDefault();
 
-  textInputs.forEach(el => {
-    if (el.value.length === 0) {
-      addWarningClass(el);
-    }
-  });
+  if (textInput.value.length === 0) {
+    addWarningClass(textInput);
+  }
 
   if (!emailInput.value.match(regExp)) {
     addWarningClass(emailInput);
@@ -100,7 +101,6 @@ function checkAndSendForm(e) {
   if (!isEmpty) {
     addWarningClass(textarea);
   }
-
 
   if (selected.innerText === "Choose rating") {
     const selectWrapper = selected.closest(".custom-select__outer-wrapper");
@@ -114,9 +114,7 @@ function checkAndSendForm(e) {
 v.$leaveReviewSubmit.addEventListener("click", checkAndSendForm);
 
 // **
-textInputs.forEach(el => {
-  el.addEventListener("blur", verifyTextInput);
-});
+textInput.addEventListener("blur", verifyTextInput);
 
 // **
 emailInput.addEventListener("blur", verifyEmailInput);
@@ -133,16 +131,38 @@ textarea.addEventListener("input", removeTextareaPlaceholder);
 
 // ==== CHECK HIDE LEAVE-REVIEW ==== //
 // **
+function resetForm() {
+  textarea.classList.remove("leave-review__textarea--active");
+
+  textarea.innerHTML = "";
+  textInput.value = "";
+  emailInput.value = "";
+
+  removeWarningSuccessClasses(textarea);
+  removeWarningSuccessClasses(textInput);
+  removeWarningSuccessClasses(emailInput);
+
+  const firstSelectChild = v.$leaveReview.querySelector(".leave-review__sort-list").firstElementChild;
+  firstSelectChild.click();
+  firstSelectChild.click();
+
+  const selectWrapper = select.closest(".custom-select__outer-wrapper");
+  selectWrapper.classList.remove("custom-select__outer-wrapper--success", "custom-select__outer-wrapper--warning");
+
+  v.$downloadingFiles.innerHTML = "";
+  v.$downloadingFiles.closest(".download__files-wrapper").classList.remove("download__files-wrapper--show");
+}
+
+// ***
 function hideLeaveReview() {
   v.$leaveReview.classList.remove("leave-review--show");
   document.body.classList.remove("overflow-hidden");
+
+  resetForm();
 }
 
-// **
+// ***
 function showLeaveReview() {
-  textarea.classList.remove("leave-review__textarea--active");
-  textarea.innerHTML = "";
-
   v.$leaveReview.classList.add("leave-review--show");
   document.body.classList.add("overflow-hidden");
 }

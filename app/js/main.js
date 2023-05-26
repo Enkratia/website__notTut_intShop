@@ -2411,6 +2411,13 @@ if (_vars_js__WEBPACK_IMPORTED_MODULE_0__.$productCard) {
       theme: 'os-theme-leave-review-content'
     }
   });
+
+  // ==== PRODUCT CARD TABS SCROLLBAR ==== //
+  let productCardTabsScrollbar = (0,overlayscrollbars__WEBPACK_IMPORTED_MODULE_1__.OverlayScrollbars)(document.querySelector('.product-card__tabs'), {
+    scrollbars: {
+      theme: 'os-theme-download-files'
+    }
+  });
 }
 
 /***/ }),
@@ -3902,7 +3909,7 @@ _vars_js__WEBPACK_IMPORTED_MODULE_0__.$inputNumberBtns.forEach(el => {
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _vars_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../vars.js */ "./src/js/vars.js");
 
-const textInputs = _vars_js__WEBPACK_IMPORTED_MODULE_0__.$leaveReview.querySelectorAll(".input[type='text']");
+const textInput = _vars_js__WEBPACK_IMPORTED_MODULE_0__.$leaveReview.querySelector(".input[type='text']");
 const emailInput = _vars_js__WEBPACK_IMPORTED_MODULE_0__.$leaveReview.querySelector("[type='email']");
 const textarea = _vars_js__WEBPACK_IMPORTED_MODULE_0__.$leaveReview.querySelector(".leave-review__textarea");
 const selected = _vars_js__WEBPACK_IMPORTED_MODULE_0__.$leaveReview.querySelector(".leave-review__sort-selected");
@@ -3911,6 +3918,11 @@ const regExp = /^\S+@\S+\.\S+$/;
 
 // ==== CHECK LEAVE-REVIEW VALIDITY | TEXTAREA PLACEHOLDER ==== //
 // F(s)
+// **
+function removeWarningSuccessClasses(elem) {
+  elem.parentElement.classList.remove("input-wrapper--success", "input-wrapper--warning");
+}
+
 //**
 function addWarningClass(elem) {
   elem.parentElement.classList.remove("input-wrapper--success");
@@ -3970,21 +3982,17 @@ function verifyEmailInput() {
 
 // **
 function verifyTextInput() {
-  textInputs.forEach(el => {
-    if (el.value.length > 0) {
-      addSuccessClass(el);
-    }
-  });
+  if (textInput.value.length > 0) {
+    addSuccessClass(textInput);
+  }
 }
 
 // ***
 function checkAndSendForm(e) {
   e.preventDefault();
-  textInputs.forEach(el => {
-    if (el.value.length === 0) {
-      addWarningClass(el);
-    }
-  });
+  if (textInput.value.length === 0) {
+    addWarningClass(textInput);
+  }
   if (!emailInput.value.match(regExp)) {
     addWarningClass(emailInput);
   }
@@ -4004,9 +4012,7 @@ function checkAndSendForm(e) {
 _vars_js__WEBPACK_IMPORTED_MODULE_0__.$leaveReviewSubmit.addEventListener("click", checkAndSendForm);
 
 // **
-textInputs.forEach(el => {
-  el.addEventListener("blur", verifyTextInput);
-});
+textInput.addEventListener("blur", verifyTextInput);
 
 // **
 emailInput.addEventListener("blur", verifyEmailInput);
@@ -4022,15 +4028,32 @@ textarea.addEventListener("input", removeTextareaPlaceholder);
 
 // ==== CHECK HIDE LEAVE-REVIEW ==== //
 // **
+function resetForm() {
+  textarea.classList.remove("leave-review__textarea--active");
+  textarea.innerHTML = "";
+  textInput.value = "";
+  emailInput.value = "";
+  removeWarningSuccessClasses(textarea);
+  removeWarningSuccessClasses(textInput);
+  removeWarningSuccessClasses(emailInput);
+  const firstSelectChild = _vars_js__WEBPACK_IMPORTED_MODULE_0__.$leaveReview.querySelector(".leave-review__sort-list").firstElementChild;
+  firstSelectChild.click();
+  firstSelectChild.click();
+  const selectWrapper = select.closest(".custom-select__outer-wrapper");
+  selectWrapper.classList.remove("custom-select__outer-wrapper--success", "custom-select__outer-wrapper--warning");
+  _vars_js__WEBPACK_IMPORTED_MODULE_0__.$downloadingFiles.innerHTML = "";
+  _vars_js__WEBPACK_IMPORTED_MODULE_0__.$downloadingFiles.closest(".download__files-wrapper").classList.remove("download__files-wrapper--show");
+}
+
+// ***
 function hideLeaveReview() {
   _vars_js__WEBPACK_IMPORTED_MODULE_0__.$leaveReview.classList.remove("leave-review--show");
   document.body.classList.remove("overflow-hidden");
+  resetForm();
 }
 
-// **
+// ***
 function showLeaveReview() {
-  textarea.classList.remove("leave-review__textarea--active");
-  textarea.innerHTML = "";
   _vars_js__WEBPACK_IMPORTED_MODULE_0__.$leaveReview.classList.add("leave-review--show");
   document.body.classList.add("overflow-hidden");
 }

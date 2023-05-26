@@ -26,8 +26,6 @@ export const $cartChoiceTitleCount = $headerMainContainer.querySelector(".cart-c
 export const $cartChoiceBottom = $headerMainContainer.querySelector(".cart-choice__bottom");
 export const $cartChoiceSubtotalSum = $headerMainContainer.querySelector(".cart-choice__subtotal-sum");
 
-
-
 // Special-offers
 export const $marketingSlider = document.querySelector("#marketing-slider");
 export const $marketingSliderItems = $marketingSlider?.querySelectorAll(".marketing-slider__slide");

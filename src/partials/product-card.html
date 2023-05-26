@@ -1,5 +1,5 @@
 <section class="product-card product" data-vendor="183260098">
-  <div class="product-card__container container">
+  <div class="product-card__container container container--40">
 
     <!-- Text -->
     <div class="product-card__text">
@@ -19,22 +19,24 @@
     </div>
 
     <!-- Tabs -->
-    <div class="product-card__tabs">
-      <label for="general-info" class="product-card__tab tab tab--active" role="button" tabindex="0">
-        General info
-      </label>
-
-      <label for="product-details" class="product-card__tab tab" role="button" tabindex="0">
-        Product details
-      </label>
-
-      <label for="product-card-reviews" class="product-card__tab tab" role="button" tabindex="0">
-        Reviews
-
-        <span class="tab__count">
-          12
-        </span>
-      </label>
+    <div class="product-card__tabs-wrapper">
+      <div class="product-card__tabs" data-overlayscrollbars-initialize>
+        <label for="general-info" class="product-card__tab tab tab--active" role="button" tabindex="0">
+          General info
+        </label>
+  
+        <label for="product-details" class="product-card__tab tab" role="button" tabindex="0">
+          Product details
+        </label>
+  
+        <label for="product-card-reviews" class="product-card__tab tab" role="button" tabindex="0">
+          Reviews
+  
+          <span class="tab__count">
+            12
+          </span>
+        </label>
+      </div>
     </div>
 
     <!-- General info -->
@@ -95,23 +97,33 @@
           <div class="product-card__minislider pcm" id="pcm-swiper">
             <div class="pcm__wrapper swiper-wrapper">
               <div class="pcm__slide pcm__slide--active swiper-slide" data-slide-idx="0">
-                <img src="./img/product-sweatshirt_104w.jpg" alt="Product card image." class="pcm__image">
+                <div class="pcm__image-wrapper">
+                  <img src="./img/product-sweatshirt_104w.jpg" alt="Product card image." class="pcm__image">
+                </div>
               </div>
 
               <div class="pcm__slide swiper-slide" data-slide-idx="1">
-                <img src="./img/product-sweatshirt-1_104w.jpg" alt="Product card image." class="pcm__image">
+                <div class="pcm__image-wrapper">
+                  <img src="./img/product-sweatshirt-1_104w.jpg" alt="Product card image." class="pcm__image">
+                </div>
               </div>
 
               <div class="pcm__slide swiper-slide" data-slide-idx="2">
-                <img src="./img/product-sweatshirt-2_104w.jpg" alt="Product card image." class="pcm__image">
+                <div class="pcm__image-wrapper">
+                  <img src="./img/product-sweatshirt-2_104w.jpg" alt="Product card image." class="pcm__image">
+                </div>
               </div>
 
               <div class="pcm__slide swiper-slide" data-slide-idx="3">
-                <img src="./img/product-sweatshirt-3_104w.jpg" alt="Product card image." class="pcm__image">
+                <div class="pcm__image-wrapper">
+                  <img src="./img/product-sweatshirt-3_104w.jpg" alt="Product card image." class="pcm__image">
+                </div>
               </div>
 
               <div class="pcm__slide pcm__slide--video swiper-slide" data-slide-idx="4">
-                <img src="./img/product-sweatshirt-4_104w.jpg" alt="Product card image." class="pcm__image">
+                <div class="pcm__image-wrapper">
+                  <img src="./img/product-sweatshirt-4_104w.jpg" alt="Product card image." class="pcm__image">
+                </div>
               </div>
             </div>
           </div>
@@ -2649,6 +2661,8 @@
         </label>
 
         <div class="input-wrapper">
+          <input type="hidden" class="leave-review__textarea-hidden" name="leave-review-textarea-hidden">
+
           <div class="leave-review__textarea input" id="leave-review-review" name="leave-review-review"
             contenteditable="true" role="textbox" data-overlayscrollbars-initialize></div>
         </div>
