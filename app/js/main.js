@@ -2414,6 +2414,7 @@ if (_vars_js__WEBPACK_IMPORTED_MODULE_0__.$productCard) {
 
   // ==== PRODUCT CARD TABS SCROLLBAR ==== //
   let productCardTabsScrollbar = (0,overlayscrollbars__WEBPACK_IMPORTED_MODULE_1__.OverlayScrollbars)(document.querySelector('.product-card__tabs'), {
+    paddingAbsolute: true,
     scrollbars: {
       theme: 'os-theme-download-files'
     }
@@ -2784,7 +2785,18 @@ const productCardSwiper = new swiper__WEBPACK_IMPORTED_MODULE_1__["default"]("#p
 // ==== PRODUCT CARD MINISLIDER SWIPER ==== //
 const productCardMiniSwiper = new swiper__WEBPACK_IMPORTED_MODULE_1__["default"]("#pcm-swiper", {
   slidesPerView: 5,
-  spaceBetween: 20
+  spaceBetween: 10,
+  breakpoints: {
+    1024: {
+      spaceBetween: 20
+    },
+    768: {
+      spaceBetween: 10
+    },
+    576: {
+      spaceBetween: 20
+    }
+  }
 });
 
 // COMPLETE LOOK SWIPER
@@ -5988,6 +6000,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "$imageModalClose": () => (/* binding */ $imageModalClose),
 /* harmony export */   "$imageModalCountCurrent": () => (/* binding */ $imageModalCountCurrent),
 /* harmony export */   "$imageModalCountTotal": () => (/* binding */ $imageModalCountTotal),
+/* harmony export */   "$imageModalFullscreen": () => (/* binding */ $imageModalFullscreen),
 /* harmony export */   "$inputNumberBtns": () => (/* binding */ $inputNumberBtns),
 /* harmony export */   "$inputNumberInputs": () => (/* binding */ $inputNumberInputs),
 /* harmony export */   "$leaveReview": () => (/* binding */ $leaveReview),
@@ -6123,6 +6136,7 @@ const $imageModal = $productCard?.querySelector(".product-card__image-modal");
 const $imageModalClose = $imageModal?.querySelector(".image-modal__close");
 const $imageModalCountCurrent = $imageModal?.querySelector(".image-modal__count-current");
 const $imageModalCountTotal = $imageModal?.querySelector(".image-modal__count-total");
+const $imageModalFullscreen = $imageModal?.querySelector(".image-modal__fullscreen");
 
 // **
 const $reviewAssessBtns = $productCard?.querySelectorAll(".review__message-btn");

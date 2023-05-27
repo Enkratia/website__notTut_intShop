@@ -84,6 +84,7 @@ export const $imageModal = $productCard?.querySelector(".product-card__image-mod
 export const $imageModalClose = $imageModal?.querySelector(".image-modal__close");
 export const $imageModalCountCurrent = $imageModal?.querySelector(".image-modal__count-current");
 export const $imageModalCountTotal = $imageModal?.querySelector(".image-modal__count-total");
+export const $imageModalFullscreen = $imageModal?.querySelector(".image-modal__fullscreen");
 
 // **
 export const $reviewAssessBtns = $productCard?.querySelectorAll(".review__message-btn");

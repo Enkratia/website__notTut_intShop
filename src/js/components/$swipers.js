@@ -363,7 +363,18 @@ export { productCardSwiper as $productCardSwiper}
 // ==== PRODUCT CARD MINISLIDER SWIPER ==== //
 const productCardMiniSwiper = new Swiper("#pcm-swiper", {
   slidesPerView: 5,
-  spaceBetween: 20,
+  spaceBetween: 10,
+  breakpoints: {
+    1024: {
+      spaceBetween: 20,
+    },
+    768: {
+      spaceBetween: 10,
+    },
+    576: {
+      spaceBetween: 20,
+    }
+  }
 });
 
 // COMPLETE LOOK SWIPER

@@ -124,6 +124,7 @@ if (v.$productCard) {
 
   // ==== PRODUCT CARD TABS SCROLLBAR ==== //
   let productCardTabsScrollbar = OverlayScrollbars(document.querySelector('.product-card__tabs'), {
+    paddingAbsolute: true,
     scrollbars: {
       theme: 'os-theme-download-files',
     }
