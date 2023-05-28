@@ -15,6 +15,18 @@
     column-gap: rem(60);
     grid-template-columns: auto minmax(0, rem(600));
     padding-top: rem(72);
+
+    @include bp-down("1120") {
+      column-gap: rem(40);
+    }
+
+    @include bp-down("992") {
+      grid-template-columns: minmax(rem(120), rem(500)) minmax(0, rem(360));
+    }
+
+    @include bp-down("768") {
+      display: block;
+    }
   }
 
   &__image {
@@ -23,6 +35,10 @@
 
     &-wrapper {
       max-width: rem(495);
+    }
+
+    @include bp-down("768") {
+      display: none;
     }
   }
 
@@ -65,6 +81,10 @@
     svg {
       transform: rotate(180deg);
     }
+
+    @include bp-down("576") {
+      transform: translate(62%, -80%);
+    }
   }
 
   &__button-next {
@@ -72,5 +92,9 @@
     right: 0;
     top: 0;
     transform: translate(26%, -50%);
+
+    @include bp-down("576") {
+      transform: translate(26%, -80%);
+    }
   }
 }

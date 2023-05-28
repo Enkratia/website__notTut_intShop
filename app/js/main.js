@@ -2802,8 +2802,8 @@ const productCardMiniSwiper = new swiper__WEBPACK_IMPORTED_MODULE_1__["default"]
 // COMPLETE LOOK SWIPER
 const completeLookSwiper = new swiper__WEBPACK_IMPORTED_MODULE_1__["default"]("#complete-look-slider", {
   modules: [swiper__WEBPACK_IMPORTED_MODULE_1__.Pagination, swiper__WEBPACK_IMPORTED_MODULE_1__.Navigation],
-  slidesPerView: 2,
-  spaceBetween: 30,
+  slidesPerView: 1,
+  spaceBetween: 20,
   loop: true,
   navigation: {
     nextEl: '#cl-button-next',
@@ -2812,6 +2812,24 @@ const completeLookSwiper = new swiper__WEBPACK_IMPORTED_MODULE_1__["default"]("#
   pagination: {
     el: '#cl-pagination',
     clickable: true
+  },
+  breakpoints: {
+    992: {
+      slidesPerView: 2,
+      spaceBetween: 30
+    },
+    768: {
+      slidesPerView: 1,
+      spaceBetween: 30
+    },
+    567: {
+      slidesPerView: 2,
+      spaceBetween: 30
+    },
+    480: {
+      slidesPerView: 2,
+      spaceBetween: 20
+    }
   }
 });
 

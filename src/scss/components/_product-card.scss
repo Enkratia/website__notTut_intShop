@@ -796,7 +796,7 @@
     }
   }
 
-  input:checked~.details {
+  input:checked ~ .details {
     display: flex;
   }
 
@@ -813,6 +813,15 @@
       max-width: rem(735);
       font: var(--base-regular);
       color: var(--gray800-color);
+
+      @include bp-down("1024") {
+        margin-right: calc(rem(-80) + 13.67vw); // 60>25(1024>768)
+      }
+
+      @include bp-down("768") {
+        margin-right: 0;
+        margin-bottom: rem(30);
+      }
     }
 
     &__section {
@@ -907,13 +916,10 @@
     }
 
     &__right {
+      flex-shrink: 2;
       width: 100%;
+      min-width: 0;
       max-width: rem(390);
-    }
-
-    &__old-price {
-      position: relative;
-      top: rem(2);
     }
 
     &__product-details {
@@ -922,6 +928,11 @@
 
     &__colors {
       gap: rem(7);
+    }
+
+    @include bp-down("768") {
+      flex-direction: column;
+      align-items: center;
     }
   }
 
@@ -940,6 +951,15 @@
       margin-right: rem(60);
       width: 100%;
       max-width: rem(735);
+
+      @include bp-down("1024") {
+        margin-right: calc(rem(-80) + 13.67vw); // 60>25(1024>768)
+      }
+
+      @include bp-down("768") {
+        margin-right: 0;
+        margin-bottom: rem(60);
+      }
     }
 
     &__info {
@@ -950,12 +970,19 @@
 
       // Rate
       &-rate {
-        margin-right: rem(15);
+        margin-right: rem(18);
+        width: 71%;
+
+        @include bp-down("576") {
+          margin-right: 0;
+          margin-bottom: rem(35);
+        }
       }
 
       &-title {
         margin-bottom: rem(19);
         font: var(--h2-font);
+        white-space: nowrap;
         text-align: initial;
         color: var(--gray900-color);
       }
@@ -983,6 +1010,7 @@
       // Progress
       .progress {
         padding-right: rem(24);
+        width: 100%;
         font: var(--small-regular);
         color: var(--gray700-color);
 
@@ -1023,8 +1051,9 @@
           position: relative;
           display: inline-flex;
           border-radius: rem(4);
-          width: rem(356);
+          width: 100%;
           height: rem(4);
+          max-width: rem(356);
           background-color: var(--gray300-color);
 
           &::before {
@@ -1072,7 +1101,16 @@
               background-color: var(--danger-color);
             }
           }
+
+          @include bp-down("576") {
+            max-width: none;
+          }
         }
+      }
+
+      @include bp-down("576") {
+        flex-direction: column;
+        margin-bottom: rem(31);
       }
     }
 
@@ -1087,7 +1125,7 @@
 
       // Btn
       &__btn {
-        margin-right: rem(30);
+        margin-right: rem(22);
         padding-inline: rem(40);
       }
 
@@ -1100,6 +1138,10 @@
           margin-right: rem(12);
           font: var(--base-bold);
           color: var(--gray800-color);
+
+          @include bp-down("576") {
+            display: none;
+          }
         }
 
         &-select {
@@ -1134,6 +1176,10 @@
 
         &:not(:first-child) {
           padding-top: rem(31);
+        }
+
+        @include bp-down("576") {
+          flex-direction: column;
         }
       }
 
@@ -1174,6 +1220,10 @@
               stroke: var(--warning-color);
             }
           }
+        }
+
+        @include bp-down("576") {
+          margin-bottom: rem(20);
         }
       }
 
@@ -1251,17 +1301,28 @@
     &__pagination {
       justify-content: center;
       padding-top: rem(58);
+
+      &-mini {
+        display: none;
+
+        @include bp-down("576") {
+          display: flex;
+          justify-content: center;
+          padding-top: rem(58);
+        }
+      }
+
+      @include bp-down("576") {
+        display: none;
+      }
     }
 
     // Right
     &__right {
+      flex-shrink: 2;
       width: 100%;
+      min-width: 0;
       max-width: rem(390);
-    }
-
-    &__old-price {
-      position: relative;
-      top: rem(2);
     }
 
     &__product-details {
@@ -1270,6 +1331,11 @@
 
     &__colors {
       gap: rem(7);
+    }
+
+    @include bp-down("768") {
+      flex-direction: column;
+      align-items: center;
     }
   }
 
@@ -1300,7 +1366,7 @@
       padding-block: rem(48);
       max-width: calc(100% - rem(20));
       background-color: var(--white-color);
-      
+
       &-wrapper {
         display: inline-block;
         overflow-y: auto;
@@ -1458,7 +1524,7 @@
       }
 
       // Active units table tab
-      input:checked + .chart__units-table-wrapper {
+      input:checked+.chart__units-table-wrapper {
         display: block;
       }
 
@@ -1521,7 +1587,7 @@
 
   .image-modal {
     width: 100%;
-    height: calc(100vh - calc(100vh - 100%));
+    height: calc(100vh - (100vh - 100%));
     background-color: var(--white-color);
     opacity: 0;
     visibility: hidden;
@@ -1568,15 +1634,19 @@
 
     // Slider
     &__slider {
-      // overflow-x: hidden;
+      position: relative;
       width: 100%;
+      height: calc(100% - rem(56));
+    }
+
+    &__wrapper {
       height: 100%;
     }
 
     &__slide {
       display: flex;
       align-items: center;
-      justify-content: center;
+      justify-content: space-between;
       overflow: hidden;
       height: 100%;
       user-select: none;
@@ -1585,26 +1655,36 @@
     &__image {
       position: absolute;
       left: 0;
+      right: 0;
       top: 0;
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
+      bottom: 0;
+      margin: auto;
+      max-width: 100%;
+      max-height: 100%;
       transition: transform 0.2s;
 
       &-wrapper {
         position: relative;
+        left: 0;
+        right: 0;
+        top: 0;
+        bottom: 0;
         overflow: hidden;
-        padding-top: 100%;
-        // height: rem(800);
+        margin: auto;
         width: 100%;
         height: 100%;
-        // max-width: rem(800);
-        // max-height: rem(800);
+        max-width: rem(800);
+        max-height: rem(800);
 
         &-outer {
+          position: absolute;
+          left: 0;
+          top: 0;
+          display: flex;
+          align-items: center;
+          justify-content: center;
           width: 100%;
-          max-width: rem(800);
-          max-height: rem(800);
+          height: 100%;
         }
       }
     }

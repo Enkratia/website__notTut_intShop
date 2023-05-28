@@ -380,8 +380,8 @@ const productCardMiniSwiper = new Swiper("#pcm-swiper", {
 // COMPLETE LOOK SWIPER
 const completeLookSwiper = new Swiper("#complete-look-slider", {
   modules: [Pagination, Navigation],
-  slidesPerView: 2,
-  spaceBetween: 30,
+  slidesPerView: 1,
+  spaceBetween: 20,
   loop: true,
   navigation: {
     nextEl: '#cl-button-next',
@@ -391,6 +391,24 @@ const completeLookSwiper = new Swiper("#complete-look-slider", {
     el: '#cl-pagination',
     clickable: true,
   },
+  breakpoints: {
+    992: {
+      slidesPerView: 2,
+      spaceBetween: 30,
+    },
+    768: {
+      slidesPerView: 1,
+      spaceBetween: 30,
+    },
+    567: {
+      slidesPerView: 2,
+      spaceBetween: 30,
+    },
+    480: {
+      slidesPerView: 2,
+      spaceBetween: 20,
+    }
+  }
 });
 
 // RELATED PRODUCTS SWIPER
