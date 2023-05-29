@@ -269,6 +269,7 @@ function clickOnCart() {
 // **
 function setActiveClass(elem, elemVendorCode) {
   const swiperWrapper = elem.closest(".swiper-wrapper");
+  const productCard = elem.closest(".product-card");
 
   if (swiperWrapper) { // Check for swiper parent
     const products = swiperWrapper.querySelectorAll("[data-vendor]");
@@ -277,21 +278,32 @@ function setActiveClass(elem, elemVendorCode) {
       const productsVendorCode = el.getAttribute("data-vendor");
 
       if (elemVendorCode === productsVendorCode) {
-        const productFavoriteBtn = el.querySelector(".product__button-cart");
-        productFavoriteBtn.classList.add("product__button-cart--active");
-        productFavoriteBtn.addEventListener("click", clickOnCart);
+        const productBtn = el.querySelector(".product__button-cart");
+        productBtn.classList.add("product__button-cart--active");
+        productBtn.addEventListener("click", clickOnCart);
       }
     });
 
     return;
   }
 
-  if (elem.classList.contains("product-card__btn-cart")) {
-    elem.classList.add("product-card__btn-cart--active");
-  } else {
-    elem.classList.add("product__button-cart--active");
+  if (productCard) {
+    const productBtns = productCard.querySelectorAll(".product__button-cart");
+
+    productBtns.forEach(el => {
+      if (el.classList.contains("product-card__btn-cart")) {
+        el.classList.add("product-card__btn-cart--active");
+      } else {
+        el.classList.add("product__button-cart--active");
+      }
+
+      el.addEventListener("click", clickOnCart);
+    });
+
+    return;
   }
 
+  elem.classList.add("product__button-cart--active");
   elem.addEventListener("click", clickOnCart);
 }
 

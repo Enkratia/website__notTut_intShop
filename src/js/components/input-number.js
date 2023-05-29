@@ -1,24 +1,13 @@
 import * as v from "../vars.js";
-import * as pbc from "./product__button-cart.js";
+import * as cb from "./colors__button.js";
 export {changeInputValueWithBtn as $changeInputValueWithBtn, changeInputValue as $changeInputValue}
 
 let newValue;
 
 // F(s)
 // **
-function rechargeProductButton(elem) {
-  const product = elem.closest(".product-card");
-
-  if (product) {
-    const productButton = product.querySelector(".product__button-cart");
-    productButton.classList.remove("product-card__btn-cart--active");
-    productButton.removeEventListener("click", pbc.$clickOnCart);
-  }
-}
-
-// **
 function changeInputValue(e) {
-  rechargeProductButton(this);
+  cb.$rechargeProductButton(this);
 
   if (e.key === "PageUp" || e.key === "ArrowUp") {
     if (this.value > 998) return;
@@ -83,7 +72,7 @@ function changeInputValue(e) {
 
 // **
 function changeInputValueWithBtn() {
-  rechargeProductButton(this);
+  cb.$rechargeProductButton(this);
   const input = this.parentElement.previousElementSibling;
 
   if (this.classList.contains("input-number__btn--upper")) {

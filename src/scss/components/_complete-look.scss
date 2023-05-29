@@ -1,12 +1,15 @@
 @use "../util/" as *;
 
 .complete-look {
-  padding-top: rem(192);
-  padding-bottom: rem(100);
+  padding-top: rem(179);
+  padding-bottom: rem(99);
 
   &__title {
-    line-height: 0.75;
     text-align: revert;
+
+    @include bp-down("414") {
+      max-width: rem(210);
+    }
   }
 
   &__content {
@@ -14,7 +17,11 @@
     display: grid;
     column-gap: rem(60);
     grid-template-columns: auto minmax(0, rem(600));
-    padding-top: rem(72);
+    padding-top: rem(60);
+
+    @include bp-down("1325") {
+      padding-top: calc(rem(39.08) + 1.58vw); // 60>45(1325>375)
+    }
 
     @include bp-down("1120") {
       column-gap: rem(40);
@@ -44,8 +51,12 @@
 
   &__slider {
     overflow-x: hidden;
-    margin-bottom: rem(82);
+    margin-bottom: 4.3vw;
     width: 100%;
+
+    @include bp-down("768") {
+      margin-bottom: 7vw;
+    }
   }
 
   &__product {
@@ -74,27 +85,40 @@
   // Navigation
   &__button-prev {
     position: absolute;
-    right: rem(50);
-    top: 0;
-    transform: translate(31%, -50%);
+    right: rem(35);
+    top: calc(rem(-32.71) - 0.22vw); // -37>-34(1920>576)
 
     svg {
       transform: rotate(180deg);
     }
 
     @include bp-down("576") {
-      transform: translate(62%, -80%);
+      right: rem(25);
+      top: rem(-38);
+    }
+
+    @include bp-down("414") {
+      top: rem(-52);
     }
   }
 
   &__button-next {
     position: absolute;
-    right: 0;
-    top: 0;
-    transform: translate(26%, -50%);
+    right: rem(-12);
+    top: calc(rem(-32.71) - 0.22vw); // -37>-34(1920>576)
 
     @include bp-down("576") {
-      transform: translate(26%, -80%);
+      right: rem(-10);
+      top: rem(-38);
     }
+
+    @include bp-down("414") {
+      top: rem(-52);
+    }
+  }
+
+  @include bp-down("1325") {
+    padding-top: calc(rem(4.66) + 13.16vw); // 179>54(1325>375)
+    padding-bottom: calc(rem(43.21) + 4.21vw); // 99>59(1325>375)
   }
 }

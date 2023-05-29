@@ -56,6 +56,7 @@
       font: var(--small-bold);
       color: var(--gray700-color);
       cursor: pointer;
+      user-select: none;
 
       &:hover {
         border-color: var(--primary-color);

@@ -102,8 +102,6 @@ export const $fileInput = $leaveReview?.querySelector(".download__area-btn-nativ
 export const $downloadingFiles = $leaveReview?.querySelector(".download__files");
 
 
-
-
 // Media
 export const $mdq767 = window.matchMedia("(max-width: 767px)");
 export const $mdq768 = window.matchMedia("(min-width: 768px)");

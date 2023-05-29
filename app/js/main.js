@@ -2822,7 +2822,7 @@ const completeLookSwiper = new swiper__WEBPACK_IMPORTED_MODULE_1__["default"]("#
       slidesPerView: 1,
       spaceBetween: 30
     },
-    567: {
+    576: {
       slidesPerView: 2,
       spaceBetween: 30
     },
@@ -2836,24 +2836,60 @@ const completeLookSwiper = new swiper__WEBPACK_IMPORTED_MODULE_1__["default"]("#
 // RELATED PRODUCTS SWIPER
 const relatedProductsSwiper = new swiper__WEBPACK_IMPORTED_MODULE_1__["default"]("#related-products-slider", {
   modules: [swiper__WEBPACK_IMPORTED_MODULE_1__.Navigation],
-  slidesPerView: 4,
-  spaceBetween: 30,
+  slidesPerView: 1,
+  spaceBetween: 20,
   loop: true,
   navigation: {
     nextEl: '#rp-button-next',
     prevEl: '#rp-button-prev'
+  },
+  breakpoints: {
+    1060: {
+      slidesPerView: 4,
+      spaceBetween: 30
+    },
+    768: {
+      slidesPerView: 3,
+      spaceBetween: 20
+    },
+    576: {
+      slidesPerView: 2,
+      spaceBetween: 30
+    },
+    480: {
+      slidesPerView: 2,
+      spaceBetween: 20
+    }
   }
 });
 
-// RELATED PRODUCTS SWIPER
+// RECENTLY VIEWED SWIPER
 const recentlyViewedSwiper = new swiper__WEBPACK_IMPORTED_MODULE_1__["default"]("#recently-viewed-slider", {
   modules: [swiper__WEBPACK_IMPORTED_MODULE_1__.Navigation],
-  slidesPerView: 4,
-  spaceBetween: 30,
+  slidesPerView: 1,
+  spaceBetween: 20,
   loop: true,
   navigation: {
     nextEl: '#rw-button-next',
     prevEl: '#rw-button-prev'
+  },
+  breakpoints: {
+    1060: {
+      slidesPerView: 4,
+      spaceBetween: 30
+    },
+    768: {
+      slidesPerView: 3,
+      spaceBetween: 20
+    },
+    576: {
+      slidesPerView: 2,
+      spaceBetween: 30
+    },
+    480: {
+      slidesPerView: 2,
+      spaceBetween: 20
+    }
   }
 });
 
@@ -2936,21 +2972,48 @@ _vars_js__WEBPACK_IMPORTED_MODULE_0__.$cartClose.addEventListener("click", close
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "$rechargeProductButton": () => (/* binding */ rechargeProductButton)
+/* harmony export */ });
 /* harmony import */ var _product_button_cart_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./product__button-cart.js */ "./src/js/components/product__button-cart.js");
+
 
 let productColorsBtns;
 
 // For product
 // F(s)
 // **
+function toggleActiveClassInCard(btn, prodCard) {
+  const activeColorBtns = prodCard.querySelectorAll(".colors__button--active");
+  activeColorBtns.forEach(el => {
+    el.classList.remove("colors__button--active");
+  });
+  const newColor = btn.getAttribute("data-color");
+  const newColorBtns = prodCard.querySelectorAll(`[data-color=${newColor}]`);
+  newColorBtns.forEach(el => {
+    el.classList.add("colors__button--active");
+  });
+}
+
+// **
+function rechargeProductCardButton(prodCard) {
+  const productBtns = prodCard.querySelectorAll(".product__button-cart");
+  productBtns.forEach(el => {
+    if (el.classList.contains("product-card__btn-cart")) {
+      el.classList.remove("product-card__btn-cart--active");
+    } else {
+      el.classList.remove("product__button-cart--active");
+    }
+    el.removeEventListener("click", _product_button_cart_js__WEBPACK_IMPORTED_MODULE_0__.$clickOnCart);
+  });
+}
+
+// ***
 function rechargeProductButton(elem) {
   const product = elem.closest(".product");
-  const isProductCard = elem.classList.contains("product-card__color-btn");
-  if (isProductCard) {
-    const productButton = product.querySelector(".product__button-cart");
-    productButton.classList.remove("product-card__btn-cart--active");
-    productButton.removeEventListener("click", _product_button_cart_js__WEBPACK_IMPORTED_MODULE_0__.$clickOnCart);
-    return;
+  const productCard = elem.closest(".product-card");
+  if (productCard) {
+    rechargeProductCardButton(productCard);
   } else if (product) {
     const productButton = product.querySelector(".product__button-cart");
     productButton.classList.remove("product__button-cart--active");
@@ -2965,13 +3028,18 @@ function writeColorName(btn, colors) {
   colorNameElement.innerText = colorName;
 }
 
-// **
+// ***
 function toggleActiveClass() {
   const colors = this.closest(".colors");
-  colors.querySelector(".colors__button--active").classList.remove("colors__button--active");
-  this.classList.add("colors__button--active");
-  if (this.parentElement.classList.contains("product-card__colors-item")) {
-    writeColorName(this, colors);
+  const productCard = this.closest(".product-card");
+  if (productCard) {
+    toggleActiveClassInCard(this, productCard);
+    if (this.parentElement.classList.contains("product-card__colors-item")) {
+      writeColorName(this, colors);
+    }
+  } else {
+    colors.querySelector(".colors__button--active").classList.remove("colors__button--active");
+    this.classList.add("colors__button--active");
   }
   rechargeProductButton(this);
 }
@@ -3046,26 +3114,37 @@ _vars_js__WEBPACK_IMPORTED_MODULE_0__.$customCheckboxes.forEach(el => {
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _vars_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../vars.js */ "./src/js/vars.js");
-/* harmony import */ var _product_button_cart_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./product__button-cart.js */ "./src/js/components/product__button-cart.js");
+/* harmony import */ var _colors_button_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./colors__button.js */ "./src/js/components/colors__button.js");
 
 
 let isOpen = false;
 
+// SELECT WITH MOUSE
 // F(s)
+// **
+function toggleActiveClassInCard(elem) {
+  const activeSizeBtns = _vars_js__WEBPACK_IMPORTED_MODULE_0__.$productCard.querySelectorAll(".sizes__button--active");
+  const newSize = elem.getAttribute("data-size-select");
+  if (!newSize) {
+    activeSizeBtns.forEach(el => {
+      el.classList.remove("sizes__button--active");
+    });
+    return;
+  }
+  const newSizeBtns = _vars_js__WEBPACK_IMPORTED_MODULE_0__.$productCard.querySelectorAll(`[data-size=${newSize}]`);
+  activeSizeBtns.forEach(el => {
+    el.classList.remove("sizes__button--active");
+  });
+  newSizeBtns.forEach(el => {
+    el.classList.add("sizes__button--active");
+  });
+}
+
+// **
 function highlightChosen(select) {
   const selectedText = select.querySelector(".custom-select__selected").innerText;
   const firstLiItemText = select.querySelector(".custom-select__list").firstElementChild.innerText;
   select.classList.toggle("custom-select--chosen", selectedText !== firstLiItemText);
-}
-
-// **
-function rechargeProductButton(selected) {
-  const general = selected.closest(".product-card__general");
-  if (general) {
-    const productButton = general.querySelector(".product__button-cart");
-    productButton.classList.remove("product-card__btn-cart--active");
-    productButton.removeEventListener("click", _product_button_cart_js__WEBPACK_IMPORTED_MODULE_1__.$clickOnCart);
-  }
 }
 
 // **
@@ -3104,12 +3183,12 @@ function changeSelectValue(e, selected, thisSelect) {
   if (e.target.classList.contains("custom-select__item")) {
     selected.textContent = e.target.textContent;
     rearrangeClass(e.target, thisSelect);
-    rechargeProductButton(e.target);
+    _colors_button_js__WEBPACK_IMPORTED_MODULE_1__.$rechargeProductButton(e.target);
     highlightChosen(thisSelect);
+    toggleActiveClassInCard(e.target);
   }
 }
 
-// SELECT WITH MOUSE
 // ***
 function select(e) {
   const thisSelect = this;
@@ -3157,7 +3236,7 @@ function selectWithKeyboard(e) {
   this.addEventListener("blur", closeSelect.bind(this), {
     once: true
   });
-  rechargeProductButton(e.target);
+  _colors_button_js__WEBPACK_IMPORTED_MODULE_1__.$rechargeProductButton(e.target);
 }
 
 // L(s)
@@ -3824,7 +3903,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "$changeInputValueWithBtn": () => (/* binding */ changeInputValueWithBtn)
 /* harmony export */ });
 /* harmony import */ var _vars_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../vars.js */ "./src/js/vars.js");
-/* harmony import */ var _product_button_cart_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./product__button-cart.js */ "./src/js/components/product__button-cart.js");
+/* harmony import */ var _colors_button_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./colors__button.js */ "./src/js/components/colors__button.js");
 
 
 
@@ -3832,18 +3911,8 @@ let newValue;
 
 // F(s)
 // **
-function rechargeProductButton(elem) {
-  const product = elem.closest(".product-card");
-  if (product) {
-    const productButton = product.querySelector(".product__button-cart");
-    productButton.classList.remove("product-card__btn-cart--active");
-    productButton.removeEventListener("click", _product_button_cart_js__WEBPACK_IMPORTED_MODULE_1__.$clickOnCart);
-  }
-}
-
-// **
 function changeInputValue(e) {
-  rechargeProductButton(this);
+  _colors_button_js__WEBPACK_IMPORTED_MODULE_1__.$rechargeProductButton(this);
   if (e.key === "PageUp" || e.key === "ArrowUp") {
     if (this.value > 998) return;
     newValue = parseInt(this.value) + 1;
@@ -3891,7 +3960,7 @@ function changeInputValue(e) {
 
 // **
 function changeInputValueWithBtn() {
-  rechargeProductButton(this);
+  _colors_button_js__WEBPACK_IMPORTED_MODULE_1__.$rechargeProductButton(this);
   const input = this.parentElement.previousElementSibling;
   if (this.classList.contains("input-number__btn--upper")) {
     if (input.value > 998) return;
@@ -4787,24 +4856,33 @@ function clickOnCart() {
 // **
 function setActiveClass(elem, elemVendorCode) {
   const swiperWrapper = elem.closest(".swiper-wrapper");
+  const productCard = elem.closest(".product-card");
   if (swiperWrapper) {
     // Check for swiper parent
     const products = swiperWrapper.querySelectorAll("[data-vendor]");
     products.forEach(el => {
       const productsVendorCode = el.getAttribute("data-vendor");
       if (elemVendorCode === productsVendorCode) {
-        const productFavoriteBtn = el.querySelector(".product__button-cart");
-        productFavoriteBtn.classList.add("product__button-cart--active");
-        productFavoriteBtn.addEventListener("click", clickOnCart);
+        const productBtn = el.querySelector(".product__button-cart");
+        productBtn.classList.add("product__button-cart--active");
+        productBtn.addEventListener("click", clickOnCart);
       }
     });
     return;
   }
-  if (elem.classList.contains("product-card__btn-cart")) {
-    elem.classList.add("product-card__btn-cart--active");
-  } else {
-    elem.classList.add("product__button-cart--active");
+  if (productCard) {
+    const productBtns = productCard.querySelectorAll(".product__button-cart");
+    productBtns.forEach(el => {
+      if (el.classList.contains("product-card__btn-cart")) {
+        el.classList.add("product-card__btn-cart--active");
+      } else {
+        el.classList.add("product__button-cart--active");
+      }
+      el.addEventListener("click", clickOnCart);
+    });
+    return;
   }
+  elem.classList.add("product__button-cart--active");
   elem.addEventListener("click", clickOnCart);
 }
 
@@ -5222,27 +5300,41 @@ if (_vars_js__WEBPACK_IMPORTED_MODULE_0__.$sidebarFiltersButton) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _product_button_cart_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./product__button-cart.js */ "./src/js/components/product__button-cart.js");
+/* harmony import */ var _vars_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../vars.js */ "./src/js/vars.js");
+/* harmony import */ var _colors_button_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./colors__button.js */ "./src/js/components/colors__button.js");
+
 
 let sizesBtn;
 
 // F(s)
 // **
-function rechargeProductButton(elem) {
-  const product = elem.closest(".product");
-  if (product) {
-    const productButton = product.querySelector(".product__button-cart");
-    productButton.classList.remove("product__button-cart--active");
-    productButton.removeEventListener("click", _product_button_cart_js__WEBPACK_IMPORTED_MODULE_0__.$clickOnCart);
-  }
+function toggleActiveClassInCard(btn, prodCard) {
+  const activeSizeBtns = prodCard.querySelectorAll(".sizes__button--active");
+  const newSize = btn.getAttribute("data-size");
+  const newSizeBtns = prodCard.querySelectorAll(`[data-size=${newSize}]`);
+  const sizeSelectList = _vars_js__WEBPACK_IMPORTED_MODULE_0__.$productCard.querySelector(".custom-select__list");
+  const newSizeSelected = sizeSelectList.querySelector(`[data-size-select="${newSize}"]`);
+  activeSizeBtns.forEach(el => {
+    el.classList.remove("sizes__button--active");
+  });
+  newSizeBtns.forEach(el => {
+    el.classList.add("sizes__button--active");
+  });
+  newSizeSelected.click();
+  newSizeSelected.click();
 }
 
 // **
 function toggleActiveClass() {
   const sizes = this.closest(".sizes");
-  sizes.querySelector(".sizes__button--active").classList.remove("sizes__button--active");
-  this.classList.add("sizes__button--active");
-  rechargeProductButton(this);
+  const productCard = this.closest(".product-card");
+  if (productCard) {
+    toggleActiveClassInCard(this, productCard);
+  } else {
+    sizes.querySelector(".sizes__button--active").classList.remove("sizes__button--active");
+    this.classList.add("sizes__button--active");
+  }
+  _colors_button_js__WEBPACK_IMPORTED_MODULE_1__.$rechargeProductButton(this);
 }
 
 // L(s)

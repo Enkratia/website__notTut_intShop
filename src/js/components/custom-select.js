@@ -1,24 +1,39 @@
 import * as v from "../vars.js";
-import * as pbc from "./product__button-cart.js";
+import * as cb from "./colors__button.js";
 let isOpen = false;
 
+// SELECT WITH MOUSE
 // F(s)
+// **
+function toggleActiveClassInCard(elem) {
+  const activeSizeBtns = v.$productCard.querySelectorAll(".sizes__button--active");
+  const newSize = elem.getAttribute("data-size-select");
+
+  if (!newSize) {
+    activeSizeBtns.forEach(el => {
+      el.classList.remove("sizes__button--active");
+    });
+
+    return
+  }
+
+  const newSizeBtns = v.$productCard.querySelectorAll(`[data-size=${newSize}]`);
+  
+  activeSizeBtns.forEach(el => {
+    el.classList.remove("sizes__button--active");
+  });
+  
+  newSizeBtns.forEach(el => {
+    el.classList.add("sizes__button--active");
+  });
+}
+
+// **
 function highlightChosen(select) {
   const selectedText = select.querySelector(".custom-select__selected").innerText;
   const firstLiItemText = select.querySelector(".custom-select__list").firstElementChild.innerText;
 
   select.classList.toggle("custom-select--chosen", selectedText !== firstLiItemText);
-}
-
-// **
-function rechargeProductButton(selected) {
-  const general = selected.closest(".product-card__general");
-
-  if (general) {
-    const productButton = general.querySelector(".product__button-cart");
-    productButton.classList.remove("product-card__btn-cart--active");
-    productButton.removeEventListener("click", pbc.$clickOnCart);
-  }
 }
 
 // **
@@ -63,13 +78,13 @@ function changeSelectValue(e, selected, thisSelect) {
   if (e.target.classList.contains("custom-select__item")) {
     selected.textContent = e.target.textContent;
     rearrangeClass(e.target, thisSelect);
-    rechargeProductButton(e.target);
+    cb.$rechargeProductButton(e.target);
 
     highlightChosen(thisSelect);
+    toggleActiveClassInCard(e.target);
   }
 }
 
-// SELECT WITH MOUSE
 // ***
 function select(e) {
   const thisSelect = this;
@@ -127,7 +142,7 @@ function selectWithKeyboard(e) {
   }
 
   this.addEventListener("blur", closeSelect.bind(this), { once: true });
-  rechargeProductButton(e.target);
+  cb.$rechargeProductButton(e.target);
 }
 
 // L(s)

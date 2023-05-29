@@ -1,11 +1,10 @@
 @use "../util/" as *;
 
 .recently-viewed {
-  padding-top: rem(114);
-  padding-bottom: rem(200);
+  padding-top: rem(101);
+  padding-bottom: rem(199);
 
   &__title {
-    line-height: 75%;
     text-align: revert;
   }
 
@@ -14,7 +13,11 @@
 
     &-wrapper {
       position: relative;
-      padding-top: rem(71);
+      padding-top: rem(59);
+
+      @include bp-down("1325") {
+        padding-top: calc(rem(45.05) + 1.05vw); // 59>49(1325>375)
+      }
     }
   }
 
@@ -35,19 +38,32 @@
   // Navigation
   &__button-prev {
     position: absolute;
-    right: rem(50);
-    top: 0;
-    transform: translate(31%, -50%);
+    right: rem(35);
+    top: calc(rem(-32.71) - 0.22vw); // -37>-34(1920>576)
 
     svg {
       transform: rotate(180deg);
+    }
+
+    @include bp-down("576") {
+      right: rem(25);
+      top: rem(-38);
     }
   }
 
   &__button-next {
     position: absolute;
-    right: 0;
-    top: 0;
-    transform: translate(26%, -50%);
+    right: rem(-12);
+    top: calc(rem(-32.71) - 0.22vw); // -37>-34(1920>576)
+
+    @include bp-down("576") {
+      right: rem(-10);
+      top: rem(-38);
+    }
+  }
+
+  @include bp-down("1325") {
+    padding-top: calc(rem(38.24) + 4.74vw); // 101>56(1325>375)
+    padding-bottom: calc(rem(5.13) + 14.63vw); // 199>60(1325>375)
   }
 }

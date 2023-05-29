@@ -1,13 +1,16 @@
 @use "../util/" as *;
 
 .related-products {
-  padding-top: rem(94);
-  padding-bottom: rem(116);
+  padding-top: rem(81);
+  padding-bottom: rem(117);
   background-color: var(--gray300-color);
 
   &__title {
-    line-height: 75%;
     text-align: revert;
+
+    @include bp-down("500") {
+      max-width: rem(210);
+    }
   }
 
   &__slider {
@@ -15,7 +18,11 @@
 
     &-wrapper {
       position: relative;
-      padding-top: rem(71);
+      padding-top: rem(59);
+
+      @include bp-down("1325") {
+        padding-top: calc(rem(45.05) + 1.05vw); // 59>49(1325>375)
+      }
     }
   }
 
@@ -36,19 +43,40 @@
   // Navigation
   &__button-prev {
     position: absolute;
-    right: rem(50);
-    top: 0;
-    transform: translate(31%, -50%);
+    right: rem(35);
+    top: calc(rem(-32.71) - 0.22vw); // -37>-34(1920>576)
 
     svg {
       transform: rotate(180deg);
+    }
+
+    @include bp-down("576") {
+      right: rem(25);
+      top: rem(-38);
+    }
+
+    @include bp-down("500") {
+      top: rem(-52);
     }
   }
 
   &__button-next {
     position: absolute;
-    right: 0;
-    top: 0;
-    transform: translate(26%, -50%);
+    right: rem(-12);
+    top: calc(rem(-32.71) - 0.22vw); // -37>-34(1920>576)
+
+    @include bp-down("576") {
+      right: rem(-10);
+      top: rem(-38);
+    }
+
+    @include bp-down("500") {
+      top: rem(-52);
+    }
+  }
+
+  @include bp-down("1325") {
+    padding-top: calc(rem(41.95) + 2.95vw); // 81>33(1325>375)
+    padding-bottom: calc(rem(57.03) + 4.53vw); // 117>74(1325>375)
   }
 }
