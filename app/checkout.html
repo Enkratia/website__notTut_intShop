@@ -1,0 +1,1304 @@
+<!DOCTYPE html>
+<html lang='en'>
+
+<head>
+  <meta charset='UTF-8'>
+  <meta name='viewport' content='width=device-width, initial-scale=1.0'>
+  <script src='js/main.js' defer></script>
+  <link rel='stylesheet' href='css/main.css'>
+  <title>Checkout</title>
+</head>
+
+<body class="body">
+
+  <header class="header" id="header">
+
+  <div class="header-top header__top">
+  <div class="header-top__container container" id="header-top-container">
+    <div class="header-top__available available">
+      <a class="available__link" href="tel:+74055550128">
+        <span class="available__text">
+          Available 24/7 at
+        </span>
+
+        <span class="available__icon" aria-label="hidden">
+          <svg xmlns='http://www.w3.org/2000/svg' aria-label="hidden">
+            <use href='./img/sprite.svg#phone' aria-label="hidden"></use>
+          </svg>
+        </span>
+
+        <span class="available__tel">
+          (405) 555-0128
+        </span>
+      </a>
+    </div>
+
+    <nav class="header-top__nav top-nav" id="top-nav">
+      <button class="top-nav__button" id="top-nav-button">
+        <svg xmlns='http://www.w3.org/2000/svg'>
+          <use href='./img/sprite.svg#layouts'></use>
+        </svg>
+
+        <span class="top-nav__button-text">
+          Info
+        </span>
+      </button>
+
+      <ul class="top-nav__list">
+        <li class="top-nav__item">
+          <a href="#" class="top-nav__link">
+            Delivery & returns
+          </a>
+        </li>
+
+        <li class="top-nav__item">
+          <a href="#" class="top-nav__link">
+            Track order
+          </a>
+        </li>
+
+        <li class="top-nav__item">
+          <a href="#" class="top-nav__link">
+            Blog
+          </a>
+        </li>
+
+        <li class="top-nav__item">
+          <a href="#" class="top-nav__link">
+            Contacts
+          </a>
+        </li>
+      </ul>
+    </nav>
+
+    <div class="header-top__currency currency">
+      <img class="currency__flag" src="./img/flag-usa.svg" alt="" aria-hidden="true">
+
+      <div class="custom-select header-top__select" id="custom-select" role="listbox" tabindex="0">
+        <div class="custom-select__head">
+          <span class="custom-select__selected header-top__selected" id="custom-select-selected">
+            Eng / $
+          </span>
+
+          <svg class="custom-select__icon" xmlns='http://www.w3.org/2000/svg'>
+            <use href='./img/sprite.svg#angle-down'></use>
+          </svg>
+        </div>
+
+        <div class="custom-select__inner-wrapper">
+          <ul class="custom-select__list" id="custom-select-list" data-overlayscrollbars-initialize>
+            <li class="custom-select__item custom-select__item--active">
+              Eng / $
+            </li>
+
+            <li class="custom-select__item">
+              Olt / h
+            </li>
+
+            <li class="custom-select__item">
+              Iur / p
+            </li>
+
+            <li class="custom-select__item">
+              Bus / d
+            </li>
+
+            <li class="custom-select__item">
+              Olt / h
+            </li>
+
+            <li class="custom-select__item">
+              Iur / p
+            </li>
+
+            <li class="custom-select__item">
+              Bus / d
+            </li>
+
+            <li class="custom-select__item">
+              Bus / d
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="header-top__login login" id="login">
+      <button class="login__btn">
+        Log in
+      </button>
+
+      <button class="login__btn">
+        Register
+      </button>
+
+      <svg class="login__icon" xmlns='http://www.w3.org/2000/svg'>
+        <use href='./img/sprite.svg#person'></use>
+      </svg>
+    </div>
+  </div>
+</div>
+  <div class="header-main header__main" id="header-main">
+  <div class="header-main__container container container--30" id="header-main-container">
+    <a href="#" class="header-main__logo logo">
+      <img src="./img/logo.svg" alt="Logo.">
+    </a>
+
+    <nav class="header-main__nav nav" id="nav">
+      <ul class="nav__list" id="nav-list">
+        <li class="nav__item">
+          <a href="#" class="nav__link nav__link--active" data-category="women">
+            Women
+
+            <button class="nav__btn-dropdown" aria-label="Show categories.">
+              <svg xmlns='http://www.w3.org/2000/svg' aria-hidden="true">
+                <use href='./img/sprite.svg#angle-down' aria-hidden="true"></use>
+              </svg>
+            </button>
+          </a>
+
+          <div class="nav__megamenu megamenu megamenu-women">
+  <div class="megamenu__container container">
+    <div class="megamenu__categories">
+
+      <!-- Non-category -->
+      <div class="megamenu__non-category">
+        <ul class="megamenu__list">
+          <li class="megamenu__item">
+            <a href="#" class="megamenu__link">
+              New collection
+            </a>
+          </li>
+
+          <li class="megamenu__item">
+            <a href="#" class="megamenu__link">
+              Best Sellers
+            </a>
+          </li>
+
+          <li class="megamenu__item">
+            <a href="#" class="megamenu__link">
+              Plus Size
+            </a>
+          </li>
+
+          <li class="megamenu__item">
+            <a href="#" class="megamenu__link megamenu__link--sale">
+              Sale up to 70%
+            </a>
+          </li>
+        </ul>
+      </div>
+
+      <!-- Category1 (Clothes) -->
+      <div class="megamenu__category">
+        <h3 class="megamenu__title">
+          <a href="#" class="megamenu__title-link">
+            Clothes
+          </a>
+        </h3>
+
+        <ul class="megamenu__list">
+          <li class="megamenu__item">
+            <a href="#" class="megamenu__link">
+              Coats
+            </a>
+          </li>
+
+          <li class="megamenu__item">
+            <a href="#" class="megamenu__link">
+              Jackets
+            </a>
+          </li>
+
+          <li class="megamenu__item">
+            <a href="#" class="megamenu__link">
+              Suits
+            </a>
+          </li>
+
+          <li class="megamenu__item">
+            <a href="#" class="megamenu__link">
+              Dresses
+            </a>
+          </li>
+
+          <li class="megamenu__item">
+            <a href="#" class="megamenu__link">
+              Cardigans & sweaters
+            </a>
+          </li>
+
+          <li class="megamenu__item">
+            <a href="#" class="megamenu__link">
+              Sweatshirts & hoodies
+            </a>
+          </li>
+
+          <li class="megamenu__item">
+            <a href="#" class="megamenu__link">
+              T-shirts & tops
+            </a>
+          </li>
+
+          <li class="megamenu__item">
+            <a href="#" class="megamenu__link">
+              Pants
+            </a>
+          </li>
+
+          <li class="megamenu__item">
+            <a href="#" class="megamenu__link">
+              Jeans
+            </a>
+          </li>
+
+          <li class="megamenu__item">
+            <a href="#" class="megamenu__link">
+              Shorts
+            </a>
+          </li>
+
+          <li class="megamenu__item">
+            <a href="#" class="megamenu__link">
+              Skirts
+            </a>
+          </li>
+
+          <li class="megamenu__item">
+            <a href="#" class="megamenu__link">
+              Lingerie & nightwear
+            </a>
+          </li>
+
+          <li class="megamenu__item">
+            <a href="#" class="megamenu__link">
+              Sportswear
+            </a>
+          </li>
+
+          <li class="megamenu__item">
+            <a href="#" class="megamenu__link">
+              Swimwear
+            </a>
+          </li>
+        </ul>
+      </div>
+      
+      <!-- Category2 (Shoes) -->
+      <div class="megamenu__category">
+        <h3 class="megamenu__title">
+          <a href="#" class="megamenu__title-link">
+            Shoes
+          </a>
+        </h3>
+
+        <ul class="megamenu__list">
+          <li class="megamenu__item">
+            <a href="#" class="megamenu__link">
+              Boots
+            </a>
+          </li>
+
+          <li class="megamenu__item">
+            <a href="#" class="megamenu__link">
+              Flat shoes
+            </a>
+          </li>
+
+          <li class="megamenu__item">
+            <a href="#" class="megamenu__link">
+              Heels
+            </a>
+          </li>
+
+          <li class="megamenu__item">
+            <a href="#" class="megamenu__link">
+              Sandals
+            </a>
+          </li>
+
+          <li class="megamenu__item">
+            <a href="#" class="megamenu__link">
+              Mules
+            </a>
+          </li>
+
+          <li class="megamenu__item">
+            <a href="#" class="megamenu__link">
+              Sliders
+            </a>
+          </li>
+
+          <li class="megamenu__item">
+            <a href="#" class="megamenu__link">
+              Slippers
+            </a>
+          </li>
+
+          <li class="megamenu__item">
+            <a href="#" class="megamenu__link">
+              Snickers
+            </a>
+          </li>
+
+          <li class="megamenu__item">
+            <a href="#" class="megamenu__link">
+              Leather
+            </a>
+          </li>
+        </ul>
+      </div>
+      
+      <!-- Category3 (Accessories) -->
+      <div class="megamenu__category">
+        <h3 class="megamenu__title">
+          <a href="#" class="megamenu__title-link">
+            Accessories
+          </a>
+        </h3>
+
+        <ul class="megamenu__list">
+          <li class="megamenu__item">
+            <a href="#" class="megamenu__link">
+              Bags & bagpacks
+            </a>
+          </li>
+
+          <li class="megamenu__item">
+            <a href="#" class="megamenu__link">
+              Hats & scarves
+            </a>
+          </li>
+
+          <li class="megamenu__item">
+            <a href="#" class="megamenu__link">
+              Hair accessories
+            </a>
+          </li>
+
+          <li class="megamenu__item">
+            <a href="#" class="megamenu__link">
+              Belts
+            </a>
+          </li>
+
+          <li class="megamenu__item">
+            <a href="#" class="megamenu__link">
+              Jewellery
+            </a>
+          </li>
+
+          <li class="megamenu__item">
+            <a href="#" class="megamenu__link">
+              Watches
+            </a>
+          </li>
+
+          <li class="megamenu__item">
+            <a href="#" class="megamenu__link">
+              Sunglasses
+            </a>
+          </li>
+
+          <li class="megamenu__item">
+            <a href="#" class="megamenu__link">
+              Purses
+            </a>
+          </li>
+
+          <li class="megamenu__item">
+            <a href="#" class="megamenu__link">
+              Gloves
+            </a>
+          </li>
+
+          <li class="megamenu__item">
+            <a href="#" class="megamenu__link">
+              Socks & tights
+            </a>
+          </li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- Offer -->
+    <article class="megamenu__offer offer">
+      <img src="./img/offers1.jpg" alt="Product offer." class="offer__image">
+
+      <p class="offer__descr">
+        Back to school. Sale up to 50%
+      </p>
+
+      <a href="#" class="offer__btn btn btn--outline">
+        <span class="offer__btn-text">
+          See offers
+        </span>
+
+        <svg xmlns='http://www.w3.org/2000/svg'>
+          <use href='./img/sprite.svg#arrow'></use>
+        </svg>
+      </a>
+    </article>
+  </div>
+</div>
+        </li>
+
+        <li class="nav__item">
+          <a href="#" class="nav__link">
+            Men
+
+            <button class="nav__btn-dropdown" aria-label="Show categories.">
+              <svg xmlns='http://www.w3.org/2000/svg' aria-hidden="true">
+                <use href='./img/sprite.svg#angle-down' aria-hidden="true"></use>
+              </svg>
+            </button>
+          </a>
+
+          <div class="nav__megamenu megamenu megamenu-men">
+  <div class="megamenu__container container">
+    <div class="megamenu__categories">
+
+      <!-- Non-category -->
+      <div class="megamenu__non-category">
+        <ul class="megamenu__list">
+          <li class="megamenu__item">
+            <a href="#" class="megamenu__link">
+              New collection
+            </a>
+          </li>
+
+          <li class="megamenu__item">
+            <a href="#" class="megamenu__link">
+              Best Sellers
+            </a>
+          </li>
+
+          <li class="megamenu__item">
+            <a href="#" class="megamenu__link">
+              Plus Size
+            </a>
+          </li>
+
+          <li class="megamenu__item">
+            <a href="#" class="megamenu__link megamenu__link--sale">
+              Sale up to 70%
+            </a>
+          </li>
+        </ul>
+      </div>
+
+      <!-- Category1 (Clothes) -->
+      <div class="megamenu__category">
+        <h3 class="megamenu__title">
+          <a href="#" class="megamenu__title-link">
+            Clothes
+          </a>
+        </h3>
+
+        <ul class="megamenu__list">
+          <li class="megamenu__item">
+            <a href="#" class="megamenu__link">
+              Coats
+            </a>
+          </li>
+
+          <li class="megamenu__item">
+            <a href="#" class="megamenu__link">
+              Sportswear
+            </a>
+          </li>
+
+          <li class="megamenu__item">
+            <a href="#" class="megamenu__link">
+              Swimwear
+            </a>
+          </li>
+        </ul>
+      </div>
+
+      <!-- Category2 (Shoes) -->
+      <div class="megamenu__category">
+        <h3 class="megamenu__title">
+          <a href="#" class="megamenu__title-link">
+            Shoes
+          </a>
+        </h3>
+
+        <ul class="megamenu__list">
+          <li class="megamenu__item">
+            <a href="#" class="megamenu__link">
+              Boots
+            </a>
+          </li>
+
+          <li class="megamenu__item">
+            <a href="#" class="megamenu__link">
+              Flat shoes
+            </a>
+          </li>
+
+          <li class="megamenu__item">
+            <a href="#" class="megamenu__link">
+              Sandals
+            </a>
+          </li>
+
+          <li class="megamenu__item">
+            <a href="#" class="megamenu__link">
+              Slippers
+            </a>
+          </li>
+
+          <li class="megamenu__item">
+            <a href="#" class="megamenu__link">
+              Snickers
+            </a>
+          </li>
+
+          <li class="megamenu__item">
+            <a href="#" class="megamenu__link">
+              Leather
+            </a>
+          </li>
+        </ul>
+      </div>
+
+      <!-- Category3 (Accessories) -->
+      <div class="megamenu__category">
+        <h3 class="megamenu__title">
+          <a href="#" class="megamenu__title-link">
+            Accessories
+          </a>
+        </h3>
+
+        <ul class="megamenu__list">
+          <li class="megamenu__item">
+            <a href="#" class="megamenu__link">
+              Bags & bagpacks
+            </a>
+          </li>
+
+          <li class="megamenu__item">
+            <a href="#" class="megamenu__link">
+              Hats & scarves
+            </a>
+          </li>
+
+          <li class="megamenu__item">
+            <a href="#" class="megamenu__link">
+              Belts
+            </a>
+          </li>
+
+          <li class="megamenu__item">
+            <a href="#" class="megamenu__link">
+              Watches
+            </a>
+          </li>
+
+          <li class="megamenu__item">
+            <a href="#" class="megamenu__link">
+              Socks & tights
+            </a>
+          </li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- Offer -->
+    <article class="megamenu__offer offer">
+      <img src="./img/offers1.jpg" alt="Product offer." class="offer__image">
+
+      <p class="offer__descr">
+        Back to school. Sale up to 50%
+      </p>
+
+      <a href="#" class="offer__btn btn btn--outline">
+        <span class="offer__btn-text">
+          See offers
+        </span>
+
+        <svg xmlns='http://www.w3.org/2000/svg'>
+          <use href='./img/sprite.svg#arrow'></use>
+        </svg>
+      </a>
+    </article>
+  </div>
+</div>
+        </li>
+
+        <li class="nav__item">
+          <a href="#" class="nav__link">
+            Girls
+
+            <button class="nav__btn-dropdown" aria-label="Show categories.">
+              <svg xmlns='http://www.w3.org/2000/svg' aria-hidden="true">
+                <use href='./img/sprite.svg#angle-down' aria-hidden="true"></use>
+              </svg>
+            </button>
+          </a>
+
+          <div class="nav__megamenu megamenu megamenu-girls">
+  <div class="megamenu__container container">
+    <div class="megamenu__categories">
+      
+      <!-- Non-category -->
+      <div class="megamenu__non-category">
+        <ul class="megamenu__list">
+          <li class="megamenu__item">
+            <a href="#" class="megamenu__link">
+              New collection
+            </a>
+          </li>
+
+          <li class="megamenu__item">
+            <a href="#" class="megamenu__link">
+              Best Sellers
+            </a>
+          </li>
+
+          <li class="megamenu__item">
+            <a href="#" class="megamenu__link">
+              Plus Size
+            </a>
+          </li>
+
+          <li class="megamenu__item">
+            <a href="#" class="megamenu__link megamenu__link--sale">
+              Sale up to 70%
+            </a>
+          </li>
+        </ul>
+      </div>
+
+      <!-- Category1 (Clothes) -->
+      <div class="megamenu__category">
+        <h3 class="megamenu__title">
+          <a href="#" class="megamenu__title-link">
+            Clothes
+          </a>
+        </h3>
+
+        <ul class="megamenu__list">
+          <li class="megamenu__item">
+            <a href="#" class="megamenu__link">
+              Suits
+            </a>
+          </li>
+
+          <li class="megamenu__item">
+            <a href="#" class="megamenu__link">
+              Dresses
+            </a>
+          </li>
+
+          <li class="megamenu__item">
+            <a href="#" class="megamenu__link">
+              Pants
+            </a>
+          </li>
+
+          <li class="megamenu__item">
+            <a href="#" class="megamenu__link">
+              Skirts
+            </a>
+          </li>
+
+          <li class="megamenu__item">
+            <a href="#" class="megamenu__link">
+              Sportswear
+            </a>
+          </li>
+
+          <li class="megamenu__item">
+            <a href="#" class="megamenu__link">
+              Swimwear
+            </a>
+          </li>
+        </ul>
+      </div>
+
+      <!-- Category2 (Shoes) -->
+      <div class="megamenu__category">
+        <h3 class="megamenu__title">
+          <a href="#" class="megamenu__title-link">
+            Shoes
+          </a>
+        </h3>
+
+        <ul class="megamenu__list">
+          <li class="megamenu__item">
+            <a href="#" class="megamenu__link">
+              Sandals
+            </a>
+          </li>
+
+          <li class="megamenu__item">
+            <a href="#" class="megamenu__link">
+              Snickers
+            </a>
+          </li>
+
+          <li class="megamenu__item">
+            <a href="#" class="megamenu__link">
+              Leather
+            </a>
+          </li>
+        </ul>
+      </div>
+
+      <!-- Category3 (Accessories) -->
+      <div class="megamenu__category">
+        <h3 class="megamenu__title">
+          <a href="#" class="megamenu__title-link">
+            Accessories
+          </a>
+        </h3>
+
+        <ul class="megamenu__list">
+          <li class="megamenu__item">
+            <a href="#" class="megamenu__link">
+              Bags & bagpacks
+            </a>
+          </li>
+
+
+          <li class="megamenu__item">
+            <a href="#" class="megamenu__link">
+              Watches
+            </a>
+          </li>
+
+          <li class="megamenu__item">
+            <a href="#" class="megamenu__link">
+              Sunglasses
+            </a>
+          </li>
+
+          <li class="megamenu__item">
+            <a href="#" class="megamenu__link">
+              Gloves
+            </a>
+          </li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- Offer -->
+    <article class="megamenu__offer offer">
+      <img src="./img/offers1.jpg" alt="Product offer." class="offer__image">
+
+      <p class="offer__descr">
+        Back to school. Sale up to 50%
+      </p>
+
+      <a href="#" class="offer__btn btn btn--outline">
+        <span class="offer__btn-text">
+          See offers
+        </span>
+
+        <svg xmlns='http://www.w3.org/2000/svg'>
+          <use href='./img/sprite.svg#arrow'></use>
+        </svg>
+      </a>
+    </article>
+  </div>
+</div>
+        </li>
+
+        <li class="nav__item">
+          <a href="#" class="nav__link">
+            Boys
+
+            <button class="nav__btn-dropdown" aria-label="Show categories.">
+              <svg xmlns='http://www.w3.org/2000/svg' aria-hidden="true">
+                <use href='./img/sprite.svg#angle-down' aria-hidden="true"></use>
+              </svg>
+            </button>
+          </a>
+
+          <div class="nav__megamenu megamenu megamenu-boys">
+  <div class="megamenu__container container">
+    <div class="megamenu__categories">
+
+      <!-- Non-category -->
+      <div class="megamenu__non-category">
+        <ul class="megamenu__list">
+          <li class="megamenu__item">
+            <a href="#" class="megamenu__link">
+              New collection
+            </a>
+          </li>
+
+          <li class="megamenu__item">
+            <a href="#" class="megamenu__link">
+              Best Sellers
+            </a>
+          </li>
+
+          <li class="megamenu__item">
+            <a href="#" class="megamenu__link">
+              Plus Size
+            </a>
+          </li>
+
+          <li class="megamenu__item">
+            <a href="#" class="megamenu__link megamenu__link--sale">
+              Sale up to 70%
+            </a>
+          </li>
+        </ul>
+      </div>
+
+      <!-- Category1 (Clothes) -->
+      <div class="megamenu__category">
+        <h3 class="megamenu__title">
+          <a href="#" class="megamenu__title-link">
+            Clothes
+          </a>
+        </h3>
+
+        <ul class="megamenu__list">
+          <li class="megamenu__item">
+            <a href="#" class="megamenu__link">
+              Pants
+            </a>
+          </li>
+
+          <li class="megamenu__item">
+            <a href="#" class="megamenu__link">
+              Sportswear
+            </a>
+          </li>
+
+          <li class="megamenu__item">
+            <a href="#" class="megamenu__link">
+              Swimwear
+            </a>
+          </li>
+        </ul>
+      </div>
+
+      <!-- Category2 (Shoes)-->
+      <div class="megamenu__category">
+        <h3 class="megamenu__title">
+          <a href="#" class="megamenu__title-link">
+            Shoes
+          </a>
+        </h3>
+
+        <ul class="megamenu__list">
+          <li class="megamenu__item">
+            <a href="#" class="megamenu__link">
+              Sandals
+            </a>
+          </li>
+
+          <li class="megamenu__item">
+            <a href="#" class="megamenu__link">
+              Snickers
+            </a>
+          </li>
+
+          <li class="megamenu__item">
+            <a href="#" class="megamenu__link">
+              Leather
+            </a>
+          </li>
+        </ul>
+      </div>
+
+      <!-- Category3 (Accessories)-->
+      <div class="megamenu__category">
+        <h3 class="megamenu__title">
+          <a href="#" class="megamenu__title-link">
+            Accessories
+          </a>
+        </h3>
+
+        <ul class="megamenu__list">
+          <li class="megamenu__item">
+            <a href="#" class="megamenu__link">
+              Bags & bagpacks
+            </a>
+          </li>
+
+          <li class="megamenu__item">
+            <a href="#" class="megamenu__link">
+              Watches
+            </a>
+          </li>
+
+          <li class="megamenu__item">
+            <a href="#" class="megamenu__link">
+              Sunglasses
+            </a>
+          </li>
+
+          <li class="megamenu__item">
+            <a href="#" class="megamenu__link">
+              Gloves
+            </a>
+          </li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- Offer -->
+    <article class="megamenu__offer offer">
+      <img src="./img/offers1.jpg" alt="Product offer." class="offer__image">
+
+      <p class="offer__descr">
+        Back to school. Sale up to 50%
+      </p>
+
+      <a href="#" class="offer__btn btn btn--outline">
+        <span class="offer__btn-text">
+          See offers
+        </span>
+
+        <svg xmlns='http://www.w3.org/2000/svg'>
+          <use href='./img/sprite.svg#arrow'></use>
+        </svg>
+      </a>
+    </article>
+  </div>
+</div>
+        </li>
+
+        <li class="nav__item">
+          <a href="#" class="nav__link nav__link--sale">
+            Sale
+          </a>
+        </li>
+      </ul>
+    </nav>
+
+    <form class="header-main__search-form search-form" id="search-form">
+      <input type="text" class="search-form__input input" placeholder="Search for products...">
+
+      <button class="search-form__btn" aria-label="Search.">
+        <svg class='search-form__icon' xmlns='http://www.w3.org/2000/svg' aria-hidden="true">
+          <use href='./img/sprite.svg#search'></use>
+        </svg>
+      </button>
+    </form>
+
+    <div class="header-main__choice">
+      <div class="header-main__choice-favorite favorite">
+        <button class="favorite__btn" aria-label="Observe favorites.">
+          <svg class='favorite__icon' xmlns='http://www.w3.org/2000/svg' aria-hidden="true">
+            <use href='./img/sprite.svg#heart'></use>
+          </svg>
+        </button>
+
+        <div class="favorite__count">0</div>
+      </div>
+
+      <!-- Cart -->
+      <div class="header-main__choice-cart cart">
+
+        <!-- Cart button -->
+        <button class="cart__btn" aria-label="Observe cart.">
+          <svg class='cart__icon' xmlns='http://www.w3.org/2000/svg' aria-hidden="true">
+            <use href='./img/sprite.svg#cart'></use>
+          </svg>
+        </button>
+
+        <!-- Cart count -->
+        <div class="cart__count">
+          0
+        </div>
+
+        <!-- Cart choice -->
+        <div class="cart__choice cart-choice">
+
+          <!-- Cart choice top -->
+          <div class="cart__choice-top cart-choice__top">
+            <h5 class="cart-choice__title">
+              Your cart
+              
+              <strong class="cart-choice__title-count">(0)</strong>
+            </h5>
+
+            <button class="cart-choice__close" aria-label="Close cart.">
+              <svg xmlns='http://www.w3.org/2000/svg' aria-hidden='true'>
+                <use href='./img/sprite.svg#cross' aria-hidden='true'></use>
+              </svg>
+            </button>
+          </div>
+
+          <!-- Cart choice list -->
+          <div class="cart-choice__list-wrapper" data-overlayscrollbars-initialize>
+            <ul class="cart-choice__list"></ul>
+          </div>
+
+          <!-- Cart choice bottom -->
+          <div class="cart-choice__bottom">
+            <div class="cart-choice__subtotal">
+              <span class="cart-choice__subtotal-title">
+                Subtotal:
+              </span>
+
+              <span class="cart-choice__subtotal-sum">
+                $0
+              </span>
+            </div>
+
+            <a href="#" class="cart-choice__checkout btn btn--lg">
+              <svg xmlns='http://www.w3.org/2000/svg' aria-hidden='true'>
+                <use href='./img/sprite.svg#wallet' aria-hidden='true'></use>
+              </svg>
+
+              Checkout
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <button class="header__menu-btn menu-btn" id="menu-btn" aria-label="Menu button.">
+      <div class="menu-btn__inner-wrapper">
+        <span class="menu-btn__line" aria-hidden="true"></span>
+        <span class="menu-btn__line" aria-hidden="true"></span>
+        <span class="menu-btn__line" aria-hidden="true"></span>
+      </div>
+    </button>
+  </div>
+</div>
+  
+</header>
+  <section class="special-offers special-offers__bot">
+  <div class="special-offers__container container">
+
+    <!-- Slider -->
+    <div class="marketing-slider special-offers__marketing-slider" id="marketing-slider">
+      <ul class="marketing-slider__list" id="marketing-slider-list">
+
+        <!-- Slide1 -->
+        <li class="marketing-slider__slide marketing-slider__slide--visible" id="marketing-slider-item">
+          <span class="marketing-slider__text">
+            Up to 70% Off.
+          </span>
+  
+          <a href="#" class="marketing-slider__link">
+            Shop our latest sale styles
+          </a>
+        </li>
+  
+        <!-- Slide2 -->
+        <li class="marketing-slider__slide">
+          <span class="marketing-slider__text">
+            Money back guarantee.
+          </span>
+  
+          <a href="#" class="marketing-slider__link">
+            Learn more
+          </a>
+        </li>
+  
+        <!-- Slide3 -->
+        <li class="marketing-slider__slide">
+          <span class="marketing-slider__text">
+            Friendly customer support.
+          </span>
+  
+          <a href="#" class="marketing-slider__link">
+            Contact 24/7
+          </a>
+        </li>
+      </ul>
+
+      <!-- Navigation -->
+      <div class="marketing-slider__navigation">
+        <button class="marketing-slider__btn marketing-slider__btn--left" aria-label="Move to the previous slider.section">
+          <svg xmlns='http://www.w3.org/2000/svg' aria-hidden="true">
+            <use href='./img/sprite.svg#angle-down'></use>
+          </svg>
+        </button>
+
+        <button class="marketing-slider__btn marketing-slider__btn--right" aria-label="Move to the next slider.section">
+          <svg xmlns='http://www.w3.org/2000/svg' aria-hidden="true">
+            <use href='./img/sprite.svg#angle-down'></use>
+          </svg>
+        </button>
+      </div>
+    </div>
+  </div>
+</section>
+  <section class="breadcrumbs-checkout">
+  <div class="breadcrumbs-checkout__container container">
+
+    <!-- Breadcrumbs list -->
+    <ul class="breadcrumbs-checkout__list">
+
+      <!-- Item1 -->
+      <li class="breadcrumbs-checkout__item">
+        <a href="#" class="breadcrumbs-checkout__link">
+          <svg xmlns='http://www.w3.org/2000/svg' aria-hidden="true">
+            <use href='./img/sprite.svg#home' aria-hidden="true"></use>
+          </svg>
+        </a>
+      </li>
+
+      <!-- Item2 -->
+      <li class="breadcrumbs-checkout__item">
+        <a href="#" class="breadcrumbs-checkout__link">
+          Checkout
+        </a>
+      </li>
+    </ul>
+  </div>
+</section>
+  <section class="checkout">
+  <form class="checkout__container container">
+
+    <!-- Left -->
+    <div class="checkout__left">
+
+      <!-- Checkout head -->
+      <div class="checkout__head head">
+
+        <!-- Checkout header-top -->
+        <div class="head__top">
+          <h1 class="head__top-title section-title">
+            Checkout
+          </h1>
+
+          <a href="#" class="head__top-back">
+            Back to shopping
+          </a>
+        </div>
+
+        <!-- Checkout header-bottom -->
+        <div class="head__bottom">
+          <svg xmlns='http://www.w3.org/2000/svg' aria-hidden='true'>
+            <use href='./img/sprite.svg#person' aria-hidden='true'></use>
+          </svg>
+
+          <span class="head__bottom-text">
+            Already have an account?
+
+            <button class="head__bottom-btn">Sign in</button>
+
+            for faster checkout experience
+          </span>
+        </div>
+      </div>
+
+      <!-- Checkout list -->
+      <ul class="checkout__list">
+
+        <!-- Checkout item1 -->
+        <li class="checkout__list-item">
+          <h4 class="checkout__list-title">
+            1. Item Review
+          </h4>
+
+          <!-- Checkout products -->
+          <div class="checkout__products">
+            <ul class="checkout__products-list"></ul>
+          </div>
+        </li>
+      </ul>
+
+    </div>
+
+    <!-- Right -->
+    <div class="checkout__right">
+
+      <!-- Promo -->
+      <div class="checkout__promo">
+        <label class="checkout__promo-label" for="checkout-promo-input">
+          Apply a promo code
+        </label>
+
+        <div class="checkout__promo-field">
+          <input type="text" class="checkout__promo-input input" name="checkout-promo-input" id="checkout-promo-input"
+            placeholder="Enter promo code">
+
+          <button type="button" class="checkout__promo-btn btn btn--lg">
+            Apply
+          </button>
+        </div>
+      </div>
+
+      <!-- Totals -->
+      <div class="checkout__totals">
+        <h4 class="checkout__totals-title">
+          Order totals
+        </h4>
+
+        <ul class="checkout__totals-info">
+          <li class="checkout__totals-item checkout__totals-item--subtotal">
+            <span class="checkout__totals-name">
+              Subtotal:
+            </span>
+
+            <span class="checkout__totals-sum">
+              $198.65
+            </span>
+          </li>
+
+          <li class="checkout__totals-item">
+            <span class="checkout__totals-name">
+              Shipping costs:
+            </span>
+
+            <span class="checkout__totals-sum">
+              $25.00
+            </span>
+          </li>
+
+          <li class="checkout__totals-item">
+            <span class="checkout__totals-name">
+              Discount:
+            </span>
+
+            <span class="checkout__totals-sum">
+              —
+            </span>
+          </li>
+
+          <li class="checkout__totals-item">
+            <span class="checkout__totals-name">
+              Estimated sales tax:
+            </span>
+
+            <span class="checkout__totals-sum">
+              $6.35
+            </span>
+          </li>
+        </ul>
+
+        <div class="checkout__totals-total">
+          <span class="checkout__totals-total-name">
+            Order total:
+          </span>
+
+          <span class="checkout__totals-total-sum">
+            $230.00
+          </span>
+        </div>
+      </div>
+
+      <!-- Complete -->
+      <button type="submit" class="checkout__complete btn btn--lg">
+        Complete order
+      </button>
+    </div>
+  </form>
+</section>
+
+
+  
+
+  <a class="scroll-top" aria-label="Scroll to top.">
+    <svg xmlns='http://www.w3.org/2000/svg' aria-hidden="true">
+      <use href='./img/sprite.svg#angle-down' aria-hidden="true"></use>
+    </svg>
+  </a>
+</body>
+
+</html>

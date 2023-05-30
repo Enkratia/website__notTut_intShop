@@ -101,6 +101,9 @@ export const $downloadBtn = $leaveReview?.querySelector(".download__area-btn");
 export const $fileInput = $leaveReview?.querySelector(".download__area-btn-native");
 export const $downloadingFiles = $leaveReview?.querySelector(".download__files");
 
+// Checkout
+export const $checkoutProductsList = document.querySelector(".checkout__products-list");
+
 
 // Media
 export const $mdq767 = window.matchMedia("(max-width: 767px)");

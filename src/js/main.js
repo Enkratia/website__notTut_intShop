@@ -28,7 +28,7 @@ import "./components/progress__bar.js";
 import "./components/leave-review.js";
 import "./components/download.js";
 import "./components/review-message-tooltips.js";
-
+import "./components/checkout.js";
 
 
 // Components multiple in one

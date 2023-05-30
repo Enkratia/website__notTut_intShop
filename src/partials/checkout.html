@@ -1,0 +1,139 @@
+<section class="checkout">
+  <form class="checkout__container container">
+
+    <!-- Left -->
+    <div class="checkout__left">
+
+      <!-- Checkout head -->
+      <div class="checkout__head head">
+
+        <!-- Checkout header-top -->
+        <div class="head__top">
+          <h1 class="head__top-title section-title">
+            Checkout
+          </h1>
+
+          <a href="#" class="head__top-back">
+            Back to shopping
+          </a>
+        </div>
+
+        <!-- Checkout header-bottom -->
+        <div class="head__bottom">
+          <svg xmlns='http://www.w3.org/2000/svg' aria-hidden='true'>
+            <use href='./img/sprite.svg#person' aria-hidden='true'></use>
+          </svg>
+
+          <span class="head__bottom-text">
+            Already have an account?
+
+            <button class="head__bottom-btn">Sign in</button>
+
+            for faster checkout experience
+          </span>
+        </div>
+      </div>
+
+      <!-- Checkout list -->
+      <ul class="checkout__list">
+
+        <!-- Checkout item1 -->
+        <li class="checkout__list-item">
+          <h4 class="checkout__list-title">
+            1. Item Review
+          </h4>
+
+          <!-- Checkout products -->
+          <div class="checkout__products">
+            <ul class="checkout__products-list"></ul>
+          </div>
+        </li>
+      </ul>
+
+    </div>
+
+    <!-- Right -->
+    <div class="checkout__right">
+
+      <!-- Promo -->
+      <div class="checkout__promo">
+        <label class="checkout__promo-label" for="checkout-promo-input">
+          Apply a promo code
+        </label>
+
+        <div class="checkout__promo-field">
+          <input type="text" class="checkout__promo-input input" name="checkout-promo-input" id="checkout-promo-input"
+            placeholder="Enter promo code">
+
+          <button type="button" class="checkout__promo-btn btn btn--lg">
+            Apply
+          </button>
+        </div>
+      </div>
+
+      <!-- Totals -->
+      <div class="checkout__totals">
+        <h4 class="checkout__totals-title">
+          Order totals
+        </h4>
+
+        <ul class="checkout__totals-info">
+          <li class="checkout__totals-item checkout__totals-item--subtotal">
+            <span class="checkout__totals-name">
+              Subtotal:
+            </span>
+
+            <span class="checkout__totals-sum">
+              $198.65
+            </span>
+          </li>
+
+          <li class="checkout__totals-item">
+            <span class="checkout__totals-name">
+              Shipping costs:
+            </span>
+
+            <span class="checkout__totals-sum">
+              $25.00
+            </span>
+          </li>
+
+          <li class="checkout__totals-item">
+            <span class="checkout__totals-name">
+              Discount:
+            </span>
+
+            <span class="checkout__totals-sum">
+              —
+            </span>
+          </li>
+
+          <li class="checkout__totals-item">
+            <span class="checkout__totals-name">
+              Estimated sales tax:
+            </span>
+
+            <span class="checkout__totals-sum">
+              $6.35
+            </span>
+          </li>
+        </ul>
+
+        <div class="checkout__totals-total">
+          <span class="checkout__totals-total-name">
+            Order total:
+          </span>
+
+          <span class="checkout__totals-total-sum">
+            $230.00
+          </span>
+        </div>
+      </div>
+
+      <!-- Complete -->
+      <button type="submit" class="checkout__complete btn btn--lg">
+        Complete order
+      </button>
+    </div>
+  </form>
+</section>

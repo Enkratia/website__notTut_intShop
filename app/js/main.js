@@ -2964,6 +2964,19 @@ _vars_js__WEBPACK_IMPORTED_MODULE_0__.$cartClose.addEventListener("click", close
 
 /***/ }),
 
+/***/ "./src/js/components/checkout.js":
+/*!***************************************!*\
+  !*** ./src/js/components/checkout.js ***!
+  \***************************************/
+/***/ ((__unused_webpack___webpack_module__, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _vars_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../vars.js */ "./src/js/vars.js");
+
+
+/***/ }),
+
 /***/ "./src/js/components/colors__button.js":
 /*!*********************************************!*\
   !*** ./src/js/components/colors__button.js ***!
@@ -3262,135 +3275,136 @@ _vars_js__WEBPACK_IMPORTED_MODULE_0__.$customSelects.forEach(el => {
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _vars_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../vars.js */ "./src/js/vars.js");
 
-
-// F(s)
-// **
-function checkError(elem) {
-  const size = elem.querySelector(".download__file-size");
-  size.innerText = "Something gone wrong ...";
-  elem.classList.add("download__file--error");
-}
-
-// **
-function checkUpdate(elem, _ref) {
-  let {
-    loaded,
-    total
-  } = _ref;
-  const percent = elem.querySelector(".download__file-percent");
-  const progress = elem.querySelector(".download__file-progress");
-  const downloaded = ~~(loaded / total * 100) + "%";
-  percent.innerText = downloaded;
-  progress.style.width = downloaded;
-  if (loaded === total) {
-    setTimeout(() => {
-      elem.classList.add("download__file--load");
-      if (total < 1048576) {
-        total = parseInt(total / 1024) + " KB";
-      } else {
-        total = parseInt(total / 1048576) + " MB";
-      }
-      const size = elem.querySelector(".download__file-size");
-      size.innerText = total;
-    }, 300);
+if (_vars_js__WEBPACK_IMPORTED_MODULE_0__.$leaveReview) {
+  // F(s)
+  // **
+  function checkError(elem) {
+    const size = elem.querySelector(".download__file-size");
+    size.innerText = "Something gone wrong ...";
+    elem.classList.add("download__file--error");
   }
-}
 
-// **
-function createLiTag(_ref2) {
-  let {
-    name
-  } = _ref2;
-  const wrapper = _vars_js__WEBPACK_IMPORTED_MODULE_0__.$downloadingFiles.closest(".download__files-wrapper");
-  wrapper.classList.add("download__files-wrapper--show");
-  const regExp = /(.+)(\.\S+)$/i;
-  const regExpResult = name.match(regExp);
-  const fileName = regExpResult[1].length < 14 ? regExpResult[1] : regExpResult[1].substring(0, 14);
-  const ext = regExpResult[2];
-  const liTag = `
-              <li class="download__file">
-                <svg xmlns='http://www.w3.org/2000/svg' aria-hidden='true'>
-                  <use href='./img/sprite.svg#file' aria-hidden='true'></use>
-                </svg>
+  // **
+  function checkUpdate(elem, _ref) {
+    let {
+      loaded,
+      total
+    } = _ref;
+    const percent = elem.querySelector(".download__file-percent");
+    const progress = elem.querySelector(".download__file-progress");
+    const downloaded = ~~(loaded / total * 100) + "%";
+    percent.innerText = downloaded;
+    progress.style.width = downloaded;
+    if (loaded === total) {
+      setTimeout(() => {
+        elem.classList.add("download__file--load");
+        if (total < 1048576) {
+          total = parseInt(total / 1024) + " KB";
+        } else {
+          total = parseInt(total / 1048576) + " MB";
+        }
+        const size = elem.querySelector(".download__file-size");
+        size.innerText = total;
+      }, 300);
+    }
+  }
 
-                <div class="download__file-details">
-
-                  <!-- Dwonload file top -->
-                  <div class="download__file-top">
-                    <span class="download__file-name">
-                      ${fileName}... ${ext}
-                    </span>
-
-                    <span class="download__file-percent"></span>
-                  </div>
-
-                  <!-- Download file bottom -->
-                  <div class="download__file-bottom">
-                    <div class="download__file-progressbar">
-                      <div class="download__file-progress"></div>
+  // **
+  function createLiTag(_ref2) {
+    let {
+      name
+    } = _ref2;
+    const wrapper = _vars_js__WEBPACK_IMPORTED_MODULE_0__.$downloadingFiles.closest(".download__files-wrapper");
+    wrapper.classList.add("download__files-wrapper--show");
+    const regExp = /(.+)(\.\S+)$/i;
+    const regExpResult = name.match(regExp);
+    const fileName = regExpResult[1].length < 14 ? regExpResult[1] : regExpResult[1].substring(0, 14);
+    const ext = regExpResult[2];
+    const liTag = `
+                <li class="download__file">
+                  <svg xmlns='http://www.w3.org/2000/svg' aria-hidden='true'>
+                    <use href='./img/sprite.svg#file' aria-hidden='true'></use>
+                  </svg>
+  
+                  <div class="download__file-details">
+  
+                    <!-- Dwonload file top -->
+                    <div class="download__file-top">
+                      <span class="download__file-name">
+                        ${fileName}... ${ext}
+                      </span>
+  
+                      <span class="download__file-percent"></span>
                     </div>
-                    
-                    <span class="download__file-size"></span>
+  
+                    <!-- Download file bottom -->
+                    <div class="download__file-bottom">
+                      <div class="download__file-progressbar">
+                        <div class="download__file-progress"></div>
+                      </div>
+                      
+                      <span class="download__file-size"></span>
+                    </div>
                   </div>
-                </div>
-              </li>`;
-  return liTag;
-}
-
-// ***
-function observeFileLoading(dropFiles) {
-  const files = this ? this.files : dropFiles;
-  if (!files.length) return;
-  for (let i = 0; i < files.length; i++) {
-    _vars_js__WEBPACK_IMPORTED_MODULE_0__.$downloadingFiles.insertAdjacentHTML("afterbegin", createLiTag(files[i]));
-    const li = _vars_js__WEBPACK_IMPORTED_MODULE_0__.$downloadingFiles.firstElementChild;
-    const reader = new FileReader();
-    reader.readAsDataURL(files[i]);
-    reader.onprogress = e => checkUpdate(li, e);
-    reader.onerror = () => checkError(li);
+                </li>`;
+    return liTag;
   }
+
+  // ***
+  function observeFileLoading(dropFiles) {
+    const files = this ? this.files : dropFiles;
+    if (!files.length) return;
+    for (let i = 0; i < files.length; i++) {
+      _vars_js__WEBPACK_IMPORTED_MODULE_0__.$downloadingFiles.insertAdjacentHTML("afterbegin", createLiTag(files[i]));
+      const li = _vars_js__WEBPACK_IMPORTED_MODULE_0__.$downloadingFiles.firstElementChild;
+      const reader = new FileReader();
+      reader.readAsDataURL(files[i]);
+      reader.onprogress = e => checkUpdate(li, e);
+      reader.onerror = () => checkError(li);
+    }
+  }
+
+  // ***
+  function observeFiles() {
+    this.nextElementSibling.click();
+  }
+
+  // L(s)
+  // **
+  _vars_js__WEBPACK_IMPORTED_MODULE_0__.$downloadBtn.addEventListener("click", observeFiles);
+
+  // **
+  _vars_js__WEBPACK_IMPORTED_MODULE_0__.$fileInput.addEventListener("change", observeFileLoading);
+
+  // ==== DRAG & DROP === //
+  // F(s)
+  // **
+  function processFiles(e) {
+    e.preventDefault();
+    observeFileLoading(e.dataTransfer.files);
+    _vars_js__WEBPACK_IMPORTED_MODULE_0__.$downloadArea.classList.remove("download__area--highlight");
+    _vars_js__WEBPACK_IMPORTED_MODULE_0__.$downloadAreaDescr.innerText = "Drag and drop here to upload";
+  }
+
+  // **
+  function unHighlightArea() {
+    _vars_js__WEBPACK_IMPORTED_MODULE_0__.$downloadArea.classList.remove("download__area--highlight");
+    _vars_js__WEBPACK_IMPORTED_MODULE_0__.$downloadAreaDescr.innerText = "Drag and drop here to upload";
+  }
+
+  // **
+  function highlightArea(e) {
+    e.preventDefault();
+    _vars_js__WEBPACK_IMPORTED_MODULE_0__.$downloadArea.classList.add("download__area--highlight");
+    _vars_js__WEBPACK_IMPORTED_MODULE_0__.$downloadAreaDescr.innerText = "Release to upload";
+  }
+
+  // L(s)
+  // **
+  _vars_js__WEBPACK_IMPORTED_MODULE_0__.$downloadArea.addEventListener("dragover", highlightArea);
+  _vars_js__WEBPACK_IMPORTED_MODULE_0__.$downloadArea.addEventListener("dragleave", unHighlightArea);
+  _vars_js__WEBPACK_IMPORTED_MODULE_0__.$downloadArea.addEventListener("drop", processFiles);
 }
-
-// ***
-function observeFiles() {
-  this.nextElementSibling.click();
-}
-
-// L(s)
-// **
-_vars_js__WEBPACK_IMPORTED_MODULE_0__.$downloadBtn.addEventListener("click", observeFiles);
-
-// **
-_vars_js__WEBPACK_IMPORTED_MODULE_0__.$fileInput.addEventListener("change", observeFileLoading);
-
-// ==== DRAG & DROP === //
-// F(s)
-// **
-function processFiles(e) {
-  e.preventDefault();
-  observeFileLoading(e.dataTransfer.files);
-  _vars_js__WEBPACK_IMPORTED_MODULE_0__.$downloadArea.classList.remove("download__area--highlight");
-  _vars_js__WEBPACK_IMPORTED_MODULE_0__.$downloadAreaDescr.innerText = "Drag and drop here to upload";
-}
-
-// **
-function unHighlightArea() {
-  _vars_js__WEBPACK_IMPORTED_MODULE_0__.$downloadArea.classList.remove("download__area--highlight");
-  _vars_js__WEBPACK_IMPORTED_MODULE_0__.$downloadAreaDescr.innerText = "Drag and drop here to upload";
-}
-
-// **
-function highlightArea(e) {
-  e.preventDefault();
-  _vars_js__WEBPACK_IMPORTED_MODULE_0__.$downloadArea.classList.add("download__area--highlight");
-  _vars_js__WEBPACK_IMPORTED_MODULE_0__.$downloadAreaDescr.innerText = "Release to upload";
-}
-
-// L(s)
-// **
-_vars_js__WEBPACK_IMPORTED_MODULE_0__.$downloadArea.addEventListener("dragover", highlightArea);
-_vars_js__WEBPACK_IMPORTED_MODULE_0__.$downloadArea.addEventListener("dragleave", unHighlightArea);
-_vars_js__WEBPACK_IMPORTED_MODULE_0__.$downloadArea.addEventListener("drop", processFiles);
 
 /***/ }),
 
@@ -4008,161 +4022,163 @@ _vars_js__WEBPACK_IMPORTED_MODULE_0__.$inputNumberBtns.forEach(el => {
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _vars_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../vars.js */ "./src/js/vars.js");
 
-const textInput = _vars_js__WEBPACK_IMPORTED_MODULE_0__.$leaveReview.querySelector(".input[type='text']");
-const emailInput = _vars_js__WEBPACK_IMPORTED_MODULE_0__.$leaveReview.querySelector("[type='email']");
-const textarea = _vars_js__WEBPACK_IMPORTED_MODULE_0__.$leaveReview.querySelector(".leave-review__textarea");
-const selected = _vars_js__WEBPACK_IMPORTED_MODULE_0__.$leaveReview.querySelector(".leave-review__sort-selected");
-const select = _vars_js__WEBPACK_IMPORTED_MODULE_0__.$leaveReview.querySelector(".leave-review__sort-select");
-const regExp = /^\S+@\S+\.\S+$/;
+if (_vars_js__WEBPACK_IMPORTED_MODULE_0__.$leaveReview) {
+  const textInput = _vars_js__WEBPACK_IMPORTED_MODULE_0__.$leaveReview.querySelector(".input[type='text']");
+  const emailInput = _vars_js__WEBPACK_IMPORTED_MODULE_0__.$leaveReview.querySelector("[type='email']");
+  const textarea = _vars_js__WEBPACK_IMPORTED_MODULE_0__.$leaveReview.querySelector(".leave-review__textarea");
+  const selected = _vars_js__WEBPACK_IMPORTED_MODULE_0__.$leaveReview.querySelector(".leave-review__sort-selected");
+  const select = _vars_js__WEBPACK_IMPORTED_MODULE_0__.$leaveReview.querySelector(".leave-review__sort-select");
+  const regExp = /^\S+@\S+\.\S+$/;
 
-// ==== CHECK LEAVE-REVIEW VALIDITY | TEXTAREA PLACEHOLDER ==== //
-// F(s)
-// **
-function removeWarningSuccessClasses(elem) {
-  elem.parentElement.classList.remove("input-wrapper--success", "input-wrapper--warning");
-}
-
-//**
-function addWarningClass(elem) {
-  elem.parentElement.classList.remove("input-wrapper--success");
-  elem.parentElement.classList.add("input-wrapper--warning");
-}
-
-//**
-function addSuccessClass(elem) {
-  elem.parentElement.classList.remove("input-wrapper--warning");
-  elem.parentElement.classList.add("input-wrapper--success");
-}
-
-// **
-function removeTextareaPlaceholder() {
-  const isEmpty = isTextareaEmpty();
-  if (isEmpty || this.querySelector("a")) {
-    textarea.classList.add("leave-review__textarea--active");
-    return;
+  // ==== CHECK LEAVE-REVIEW VALIDITY | TEXTAREA PLACEHOLDER ==== //
+  // F(s)
+  // **
+  function removeWarningSuccessClasses(elem) {
+    elem.parentElement.classList.remove("input-wrapper--success", "input-wrapper--warning");
   }
-  textarea.classList.remove("leave-review__textarea--active");
-}
 
-// **
-function isTextareaEmpty() {
-  const regExp = /(<a.+<\/a>)/i;
-  let textareaText = textarea.innerHTML.trim();
-  const regExpResult = textareaText.match(regExp);
-  if (regExpResult) {
-    textareaText = textareaText.replace(regExpResult[0], "");
+  //**
+  function addWarningClass(elem) {
+    elem.parentElement.classList.remove("input-wrapper--success");
+    elem.parentElement.classList.add("input-wrapper--warning");
   }
-  return textareaText.length;
-}
 
-// **
-function verifyTextarea() {
-  const isEmpty = isTextareaEmpty();
-  if (isEmpty) {
-    addSuccessClass(textarea);
+  //**
+  function addSuccessClass(elem) {
+    elem.parentElement.classList.remove("input-wrapper--warning");
+    elem.parentElement.classList.add("input-wrapper--success");
   }
-}
 
-// **
-function verifySelectInput() {
-  if (selected.innerText !== "Choose rating") {
-    const selectWrapper = selected.closest(".custom-select__outer-wrapper");
-    selectWrapper.classList.remove("custom-select__outer-wrapper--warning");
-    selectWrapper.classList.add("custom-select__outer-wrapper--success");
+  // **
+  function removeTextareaPlaceholder() {
+    const isEmpty = isTextareaEmpty();
+    if (isEmpty || this.querySelector("a")) {
+      textarea.classList.add("leave-review__textarea--active");
+      return;
+    }
+    textarea.classList.remove("leave-review__textarea--active");
   }
-}
 
-// **
-function verifyEmailInput() {
-  if (emailInput.value.match(regExp)) {
-    addSuccessClass(emailInput);
+  // **
+  function isTextareaEmpty() {
+    const regExp = /(<a.+<\/a>)/i;
+    let textareaText = textarea.innerHTML.trim();
+    const regExpResult = textareaText.match(regExp);
+    if (regExpResult) {
+      textareaText = textareaText.replace(regExpResult[0], "");
+    }
+    return textareaText.length;
   }
-}
 
-// **
-function verifyTextInput() {
-  if (textInput.value.length > 0) {
-    addSuccessClass(textInput);
+  // **
+  function verifyTextarea() {
+    const isEmpty = isTextareaEmpty();
+    if (isEmpty) {
+      addSuccessClass(textarea);
+    }
   }
-}
 
-// ***
-function checkAndSendForm(e) {
-  e.preventDefault();
-  if (textInput.value.length === 0) {
-    addWarningClass(textInput);
+  // **
+  function verifySelectInput() {
+    if (selected.innerText !== "Choose rating") {
+      const selectWrapper = selected.closest(".custom-select__outer-wrapper");
+      selectWrapper.classList.remove("custom-select__outer-wrapper--warning");
+      selectWrapper.classList.add("custom-select__outer-wrapper--success");
+    }
   }
-  if (!emailInput.value.match(regExp)) {
-    addWarningClass(emailInput);
+
+  // **
+  function verifyEmailInput() {
+    if (emailInput.value.match(regExp)) {
+      addSuccessClass(emailInput);
+    }
   }
-  const isEmpty = isTextareaEmpty();
-  if (!isEmpty) {
-    addWarningClass(textarea);
+
+  // **
+  function verifyTextInput() {
+    if (textInput.value.length > 0) {
+      addSuccessClass(textInput);
+    }
   }
-  if (selected.innerText === "Choose rating") {
-    const selectWrapper = selected.closest(".custom-select__outer-wrapper");
-    selectWrapper.classList.remove("custom-select__outer-wrapper--success");
-    selectWrapper.classList.add("custom-select__outer-wrapper--warning");
+
+  // ***
+  function checkAndSendForm(e) {
+    e.preventDefault();
+    if (textInput.value.length === 0) {
+      addWarningClass(textInput);
+    }
+    if (!emailInput.value.match(regExp)) {
+      addWarningClass(emailInput);
+    }
+    const isEmpty = isTextareaEmpty();
+    if (!isEmpty) {
+      addWarningClass(textarea);
+    }
+    if (selected.innerText === "Choose rating") {
+      const selectWrapper = selected.closest(".custom-select__outer-wrapper");
+      selectWrapper.classList.remove("custom-select__outer-wrapper--success");
+      selectWrapper.classList.add("custom-select__outer-wrapper--warning");
+    }
   }
+
+  // L(s)
+  // **
+  _vars_js__WEBPACK_IMPORTED_MODULE_0__.$leaveReviewSubmit.addEventListener("click", checkAndSendForm);
+
+  // **
+  textInput.addEventListener("blur", verifyTextInput);
+
+  // **
+  emailInput.addEventListener("blur", verifyEmailInput);
+
+  // **
+  select.addEventListener("blur", verifySelectInput);
+
+  // **
+  textarea.addEventListener("blur", verifyTextarea);
+
+  // **
+  textarea.addEventListener("input", removeTextareaPlaceholder);
+
+  // ==== CHECK HIDE LEAVE-REVIEW ==== //
+  // **
+  function resetForm() {
+    textarea.classList.remove("leave-review__textarea--active");
+    textarea.innerHTML = "";
+    textInput.value = "";
+    emailInput.value = "";
+    removeWarningSuccessClasses(textarea);
+    removeWarningSuccessClasses(textInput);
+    removeWarningSuccessClasses(emailInput);
+    const firstSelectChild = _vars_js__WEBPACK_IMPORTED_MODULE_0__.$leaveReview.querySelector(".leave-review__sort-list").firstElementChild;
+    firstSelectChild.click();
+    firstSelectChild.click();
+    const selectWrapper = select.closest(".custom-select__outer-wrapper");
+    selectWrapper.classList.remove("custom-select__outer-wrapper--success", "custom-select__outer-wrapper--warning");
+    _vars_js__WEBPACK_IMPORTED_MODULE_0__.$downloadingFiles.innerHTML = "";
+    _vars_js__WEBPACK_IMPORTED_MODULE_0__.$downloadingFiles.closest(".download__files-wrapper").classList.remove("download__files-wrapper--show");
+  }
+
+  // ***
+  function hideLeaveReview() {
+    _vars_js__WEBPACK_IMPORTED_MODULE_0__.$leaveReview.classList.remove("leave-review--show");
+    document.body.classList.remove("overflow-hidden");
+    resetForm();
+  }
+
+  // ***
+  function showLeaveReview() {
+    _vars_js__WEBPACK_IMPORTED_MODULE_0__.$leaveReview.classList.add("leave-review--show");
+    document.body.classList.add("overflow-hidden");
+  }
+
+  // L(s)
+  // ** 
+  _vars_js__WEBPACK_IMPORTED_MODULE_0__.$leaveReviewBtn.addEventListener("click", showLeaveReview);
+
+  // **
+  _vars_js__WEBPACK_IMPORTED_MODULE_0__.$leaveReviewClose.addEventListener("click", hideLeaveReview);
 }
-
-// L(s)
-// **
-_vars_js__WEBPACK_IMPORTED_MODULE_0__.$leaveReviewSubmit.addEventListener("click", checkAndSendForm);
-
-// **
-textInput.addEventListener("blur", verifyTextInput);
-
-// **
-emailInput.addEventListener("blur", verifyEmailInput);
-
-// **
-select.addEventListener("blur", verifySelectInput);
-
-// **
-textarea.addEventListener("blur", verifyTextarea);
-
-// **
-textarea.addEventListener("input", removeTextareaPlaceholder);
-
-// ==== CHECK HIDE LEAVE-REVIEW ==== //
-// **
-function resetForm() {
-  textarea.classList.remove("leave-review__textarea--active");
-  textarea.innerHTML = "";
-  textInput.value = "";
-  emailInput.value = "";
-  removeWarningSuccessClasses(textarea);
-  removeWarningSuccessClasses(textInput);
-  removeWarningSuccessClasses(emailInput);
-  const firstSelectChild = _vars_js__WEBPACK_IMPORTED_MODULE_0__.$leaveReview.querySelector(".leave-review__sort-list").firstElementChild;
-  firstSelectChild.click();
-  firstSelectChild.click();
-  const selectWrapper = select.closest(".custom-select__outer-wrapper");
-  selectWrapper.classList.remove("custom-select__outer-wrapper--success", "custom-select__outer-wrapper--warning");
-  _vars_js__WEBPACK_IMPORTED_MODULE_0__.$downloadingFiles.innerHTML = "";
-  _vars_js__WEBPACK_IMPORTED_MODULE_0__.$downloadingFiles.closest(".download__files-wrapper").classList.remove("download__files-wrapper--show");
-}
-
-// ***
-function hideLeaveReview() {
-  _vars_js__WEBPACK_IMPORTED_MODULE_0__.$leaveReview.classList.remove("leave-review--show");
-  document.body.classList.remove("overflow-hidden");
-  resetForm();
-}
-
-// ***
-function showLeaveReview() {
-  _vars_js__WEBPACK_IMPORTED_MODULE_0__.$leaveReview.classList.add("leave-review--show");
-  document.body.classList.add("overflow-hidden");
-}
-
-// L(s)
-// ** 
-_vars_js__WEBPACK_IMPORTED_MODULE_0__.$leaveReviewBtn.addEventListener("click", showLeaveReview);
-
-// **
-_vars_js__WEBPACK_IMPORTED_MODULE_0__.$leaveReviewClose.addEventListener("click", hideLeaveReview);
 
 /***/ }),
 
@@ -4722,8 +4738,7 @@ function insertColorHTML() {
       <span class="choice-product__color-data">
          ${color}
        </span>
-     </div>
-      `;
+     </div>`;
   } else {
     priceHTML = "";
   }
@@ -4737,7 +4752,7 @@ function insertPriceHTML(price) {
   if (oldPrice) {
     priceHTML = `
         <!-- Price -->
-        <div class="product__prices">
+        <div class="product__prices choice-product__prices">
           <span class="product__price product__price--red choice-product__price">
             ${price}
           </span>
@@ -4766,28 +4781,26 @@ function insertCartProducts() {
   let liTags = "";
   cartArray.forEach((el, idx) => {
     liTags += `
-    <li class="cart-choice__item" data-vendor="${el.vendor}" data-cartIdx="${idx}">
+    <li class="cart-choice__item checkout__products-item" data-vendor="${el.vendor}" data-cartIdx="${idx}">
     <article class="cart-choice__product choice-product">
   
       <!-- Image -->
       <img src="${editImageSrc(el.imageSrc)}" alt="Product-image." class="choice-product__image">
   
-      <!-- Content -->
-      <div class="choice-product__content">
-  
-        <!-- Title -->
-        <h6 class="choice-product__title">
-          ${el.title}
-        </h6>
-  
-        <!-- Color -->
-        ${insertColorHTML(el.color)}
-  
-        <!-- Size -->
-        ${insertSizeHTML(el.size)}
-  
-        <!-- Info -->
-        <div class="choice-product__info">
+      <!-- Text -->
+        <div class="choice-product__text">
+
+          <!-- Title -->
+          <h6 class="choice-product__title">
+            ${el.title}
+          </h6>
+    
+          <!-- Color -->
+          ${insertColorHTML(el.color)}
+    
+          <!-- Size -->
+          ${insertSizeHTML(el.size)}
+        </div>
   
           <!-- Input-number -->
           <div class="input-number choice-product__input-number">
@@ -4804,20 +4817,18 @@ function insertCartProducts() {
           </div>
 
         ${insertPriceHTML(el.price, el.oldPrice)}
-        </div>
-
-        <!-- Favorite -->
-        <button class="product__favorite product__favorite--cart" aria-label="Add to favorite.">
-          <svg xmlns='http://www.w3.org/2000/svg' aria-hidden="true">
-            <use href='./img/sprite.svg#heart-full'></use>
-          </svg>
-        </button>
-      </div>
   
       <!-- Button delete -->
-      <button class="choice-product__delete" aria-label="Delete this product from the cart.">
+      <button type="button" class="choice-product__delete btn btn--outline" aria-label="Delete this product from the cart.">
         <svg xmlns='http://www.w3.org/2000/svg' aria-hidden='true'>
           <use href='./img/sprite.svg#bin' aria-hidden='true'></use>
+        </svg>
+      </button>
+
+      <!-- Favorite -->
+      <button type="button" class="choice-product__favorite product__favorite product__favorite--cart" aria-label="Add to favorite.">
+        <svg xmlns='http://www.w3.org/2000/svg' aria-hidden="true">
+          <use href='./img/sprite.svg#heart-full'></use>
         </svg>
       </button>
     </article>
@@ -4825,6 +4836,10 @@ function insertCartProducts() {
   });
   _vars_js__WEBPACK_IMPORTED_MODULE_1__.$cartChoiceList.innerHTML = "";
   _vars_js__WEBPACK_IMPORTED_MODULE_1__.$cartChoiceList.insertAdjacentHTML("afterbegin", liTags);
+  if (_vars_js__WEBPACK_IMPORTED_MODULE_1__.$checkoutProductsList) {
+    _vars_js__WEBPACK_IMPORTED_MODULE_1__.$checkoutProductsList.innerHTML = "";
+    _vars_js__WEBPACK_IMPORTED_MODULE_1__.$checkoutProductsList.insertAdjacentHTML("afterbegin", liTags);
+  }
   addDeletingProduct();
   addNumberInputListeners();
   addFavoriteBtnListeners();
@@ -5145,70 +5160,71 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _vars_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../vars.js */ "./src/js/vars.js");
 
 let siblingBtn;
-
-// ==== LIKE - DISLIKE BUTTONS ==== //
-// F(s)
-// **
-function decreaseCount(btn) {
-  const btnCount = btn.lastElementChild;
-  const btnCountText = btnCount.innerText;
-  btnCount.innerText = btnCountText - 1;
-  btn.classList.remove("review__message-btn--active");
-}
-
-// **
-function increaseCount(btn) {
-  const btnCount = btn.lastElementChild;
-  const btnCountText = btnCount.innerText;
-  btnCount.innerText = +btnCountText + 1;
-  btn.classList.add("review__message-btn--active");
-}
-
-// ***
-function assessReview() {
-  if (this.classList.contains("review__message-btn--active")) {
-    decreaseCount(this);
-    return;
+if (_vars_js__WEBPACK_IMPORTED_MODULE_0__.$leaveReview) {
+  // ==== LIKE - DISLIKE BUTTONS ==== //
+  // F(s)
+  // **
+  function decreaseCount(btn) {
+    const btnCount = btn.lastElementChild;
+    const btnCountText = btnCount.innerText;
+    btnCount.innerText = btnCountText - 1;
+    btn.classList.remove("review__message-btn--active");
   }
-  increaseCount(this);
-  if (this.classList.contains("review__message-btn--like")) {
-    siblingBtn = this.nextElementSibling;
-  } else {
-    siblingBtn = this.previousElementSibling;
+
+  // **
+  function increaseCount(btn) {
+    const btnCount = btn.lastElementChild;
+    const btnCountText = btnCount.innerText;
+    btnCount.innerText = +btnCountText + 1;
+    btn.classList.add("review__message-btn--active");
   }
-  if (siblingBtn.classList.contains("review__message-btn--active")) {
-    decreaseCount(siblingBtn);
+
+  // ***
+  function assessReview() {
+    if (this.classList.contains("review__message-btn--active")) {
+      decreaseCount(this);
+      return;
+    }
+    increaseCount(this);
+    if (this.classList.contains("review__message-btn--like")) {
+      siblingBtn = this.nextElementSibling;
+    } else {
+      siblingBtn = this.previousElementSibling;
+    }
+    if (siblingBtn.classList.contains("review__message-btn--active")) {
+      decreaseCount(siblingBtn);
+    }
   }
+
+  // L(s)
+  _vars_js__WEBPACK_IMPORTED_MODULE_0__.$reviewAssessBtns.forEach(el => {
+    el.addEventListener("click", assessReview);
+  });
+
+  // ==== REPLY BUTTON ==== //
+  const textarea = _vars_js__WEBPACK_IMPORTED_MODULE_0__.$leaveReview.querySelector(".leave-review__textarea");
+
+  // F(s)
+  // **
+  function replyOnReview() {
+    _vars_js__WEBPACK_IMPORTED_MODULE_0__.$leaveReviewBtn.click();
+    textarea.classList.add("leave-review__textarea--active");
+    textarea.innerHTML = "";
+    const review = this.closest(".review__box");
+    const reviewUserName = review.querySelector(".review__user-name").innerText;
+    const reviewLink = document.createElement("a");
+    reviewLink.setAttribute("contenteditable", "false");
+    reviewLink.className = "leave-review__textarea-link";
+    reviewLink.innerText = "@" + reviewUserName;
+    textarea.appendChild(reviewLink);
+    textarea.insertAdjacentHTML("beforeend", " ");
+  }
+
+  // L(s)
+  _vars_js__WEBPACK_IMPORTED_MODULE_0__.$replyBtns.forEach(el => {
+    el.addEventListener("click", replyOnReview);
+  });
 }
-
-// L(s)
-_vars_js__WEBPACK_IMPORTED_MODULE_0__.$reviewAssessBtns.forEach(el => {
-  el.addEventListener("click", assessReview);
-});
-
-// ==== REPLY BUTTON ==== //
-const textarea = _vars_js__WEBPACK_IMPORTED_MODULE_0__.$leaveReview.querySelector(".leave-review__textarea");
-
-// F(s)
-// **
-function replyOnReview() {
-  _vars_js__WEBPACK_IMPORTED_MODULE_0__.$leaveReviewBtn.click();
-  textarea.classList.add("leave-review__textarea--active");
-  textarea.innerHTML = "";
-  const review = this.closest(".review__box");
-  const reviewUserName = review.querySelector(".review__user-name").innerText;
-  const reviewLink = document.createElement("a");
-  reviewLink.setAttribute("contenteditable", "false");
-  reviewLink.className = "leave-review__textarea-link";
-  reviewLink.innerText = "@" + reviewUserName;
-  textarea.appendChild(reviewLink);
-  textarea.insertAdjacentHTML("beforeend", " ");
-}
-
-// L(s)
-_vars_js__WEBPACK_IMPORTED_MODULE_0__.$replyBtns.forEach(el => {
-  el.addEventListener("click", replyOnReview);
-});
 
 /***/ }),
 
@@ -6090,6 +6106,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "$cartClose": () => (/* binding */ $cartClose),
 /* harmony export */   "$catalog": () => (/* binding */ $catalog),
 /* harmony export */   "$chartClose": () => (/* binding */ $chartClose),
+/* harmony export */   "$checkoutProductsList": () => (/* binding */ $checkoutProductsList),
 /* harmony export */   "$counters": () => (/* binding */ $counters),
 /* harmony export */   "$customCheckboxes": () => (/* binding */ $customCheckboxes),
 /* harmony export */   "$customSelects": () => (/* binding */ $customSelects),
@@ -6262,6 +6279,9 @@ const $downloadAreaDescr = $leaveReview?.querySelector(".download__area-descr");
 const $downloadBtn = $leaveReview?.querySelector(".download__area-btn");
 const $fileInput = $leaveReview?.querySelector(".download__area-btn-native");
 const $downloadingFiles = $leaveReview?.querySelector(".download__files");
+
+// Checkout
+const $checkoutProductsList = document.querySelector(".checkout__products-list");
 
 // Media
 const $mdq767 = window.matchMedia("(max-width: 767px)");
@@ -27216,9 +27236,11 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _components_leave_review_js__WEBPACK_IMPORTED_MODULE_26__ = __webpack_require__(/*! ./components/leave-review.js */ "./src/js/components/leave-review.js");
 /* harmony import */ var _components_download_js__WEBPACK_IMPORTED_MODULE_27__ = __webpack_require__(/*! ./components/download.js */ "./src/js/components/download.js");
 /* harmony import */ var _components_review_message_tooltips_js__WEBPACK_IMPORTED_MODULE_28__ = __webpack_require__(/*! ./components/review-message-tooltips.js */ "./src/js/components/review-message-tooltips.js");
-/* harmony import */ var _components_$swipers_js__WEBPACK_IMPORTED_MODULE_29__ = __webpack_require__(/*! ./components/$swipers.js */ "./src/js/components/$swipers.js");
-/* harmony import */ var _components_$overlayScrollbars_js__WEBPACK_IMPORTED_MODULE_30__ = __webpack_require__(/*! ./components/$overlayScrollbars.js */ "./src/js/components/$overlayScrollbars.js");
+/* harmony import */ var _components_checkout_js__WEBPACK_IMPORTED_MODULE_29__ = __webpack_require__(/*! ./components/checkout.js */ "./src/js/components/checkout.js");
+/* harmony import */ var _components_$swipers_js__WEBPACK_IMPORTED_MODULE_30__ = __webpack_require__(/*! ./components/$swipers.js */ "./src/js/components/$swipers.js");
+/* harmony import */ var _components_$overlayScrollbars_js__WEBPACK_IMPORTED_MODULE_31__ = __webpack_require__(/*! ./components/$overlayScrollbars.js */ "./src/js/components/$overlayScrollbars.js");
 // Components
+
 
 
 

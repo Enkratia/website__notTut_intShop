@@ -502,118 +502,10 @@
       }
 
       &__item {
-        padding-left: rem(24);
+        padding-inline: rem(24);
 
         &:not(:first-child) {
           border-top: rem(1) solid var(--gray300-color);
-        }
-      }
-
-      .choice-product {
-        display: flex;
-        align-items: flex-start;
-        padding-top: rem(17);
-        padding-bottom: rem(16);
-        width: 100%;
-
-        &__image {
-          flex-shrink: 0;
-          overflow: hidden;
-          margin-right: rem(16);
-          border-radius: rem(4);
-          width: rem(80);
-        }
-
-        &__content {
-          margin-right: rem(11);
-          width: rem(180);
-          white-space: normal;
-        }
-
-        &__title {
-          margin-bottom: rem(5);
-          width: 100%;
-          font: var(--small-bold);
-          white-space: normal;
-          color: var(--gray900-color);
-        }
-
-        &__color {
-          font: var(--extrasmall-regular);
-
-          &-title {
-            margin-right: rem(2);
-            color: var(--gray700-color);
-          }
-
-          &-data {
-            text-transform: lowercase;
-            color: var(--gray800-color);
-          }
-        }
-
-        &__size {
-          margin-bottom: rem(11);
-          font: var(--extrasmall-regular);
-
-          &-title {
-            margin-right: rem(2);
-            color: var(--gray700-color);
-          }
-
-          &-data {
-            text-transform: uppercase;
-            color: var(--gray800-color);
-          }
-        }
-
-        &__info {
-          display: flex;
-          align-items: center;
-          margin-bottom: rem(7);
-        }
-
-        &__price {
-          margin-right: rem(4);
-          font: var(--base-bold);
-        }
-
-        &__old-price {
-          font: var(--extrasmall-regular);
-        }
-
-        &__input-number {
-          margin-right: rem(16);
-          width: rem(72);
-          height: rem(36);
-        }
-
-        &__input-number-input {
-          padding-left: rem(10);
-          padding-block: 0;
-          width: 100%;
-          height: 100%;
-        }
-
-        &__btns {
-          right: rem(16);
-        }
-
-        &__delete {
-          padding: rem(1);
-
-          svg {
-            width: rem(16);
-            height: rem(16);
-            fill: var(--gray700-color);
-            transition: fill 0.3s;
-          }
-
-          &:hover {
-            svg {
-              fill: var(--gray900-color);
-            }
-          }
         }
       }
 
@@ -621,8 +513,8 @@
       &__bottom {
         display: none;
         border-top: rem(1) solid var(--gray300-color);
-        padding-left: rem(24);
         padding-top: rem(20);
+        padding-left: rem(24);
         padding-right: rem(24);
 
         &--show {

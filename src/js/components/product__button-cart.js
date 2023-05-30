@@ -125,8 +125,7 @@ function insertColorHTML(color = undefined) {
       <span class="choice-product__color-data">
          ${color}
        </span>
-     </div>
-      `;
+     </div>`;
 
   } else {
     priceHTML = "";
@@ -142,7 +141,7 @@ function insertPriceHTML(price, oldPrice = undefined) {
   if (oldPrice) {
     priceHTML = `
         <!-- Price -->
-        <div class="product__prices">
+        <div class="product__prices choice-product__prices">
           <span class="product__price product__price--red choice-product__price">
             ${price}
           </span>
@@ -175,28 +174,26 @@ function insertCartProducts() {
   cartArray.forEach((el, idx) => {
 
     liTags += `
-    <li class="cart-choice__item" data-vendor="${el.vendor}" data-cartIdx="${idx}">
+    <li class="cart-choice__item checkout__products-item" data-vendor="${el.vendor}" data-cartIdx="${idx}">
     <article class="cart-choice__product choice-product">
   
       <!-- Image -->
       <img src="${editImageSrc(el.imageSrc)}" alt="Product-image." class="choice-product__image">
   
-      <!-- Content -->
-      <div class="choice-product__content">
-  
-        <!-- Title -->
-        <h6 class="choice-product__title">
-          ${el.title}
-        </h6>
-  
-        <!-- Color -->
-        ${insertColorHTML(el.color)}
-  
-        <!-- Size -->
-        ${insertSizeHTML(el.size)}
-  
-        <!-- Info -->
-        <div class="choice-product__info">
+      <!-- Text -->
+        <div class="choice-product__text">
+
+          <!-- Title -->
+          <h6 class="choice-product__title">
+            ${el.title}
+          </h6>
+    
+          <!-- Color -->
+          ${insertColorHTML(el.color)}
+    
+          <!-- Size -->
+          ${insertSizeHTML(el.size)}
+        </div>
   
           <!-- Input-number -->
           <div class="input-number choice-product__input-number">
@@ -213,20 +210,18 @@ function insertCartProducts() {
           </div>
 
         ${insertPriceHTML(el.price, el.oldPrice)}
-        </div>
-
-        <!-- Favorite -->
-        <button class="product__favorite product__favorite--cart" aria-label="Add to favorite.">
-          <svg xmlns='http://www.w3.org/2000/svg' aria-hidden="true">
-            <use href='./img/sprite.svg#heart-full'></use>
-          </svg>
-        </button>
-      </div>
   
       <!-- Button delete -->
-      <button class="choice-product__delete" aria-label="Delete this product from the cart.">
+      <button type="button" class="choice-product__delete btn btn--outline" aria-label="Delete this product from the cart.">
         <svg xmlns='http://www.w3.org/2000/svg' aria-hidden='true'>
           <use href='./img/sprite.svg#bin' aria-hidden='true'></use>
+        </svg>
+      </button>
+
+      <!-- Favorite -->
+      <button type="button" class="choice-product__favorite product__favorite product__favorite--cart" aria-label="Add to favorite.">
+        <svg xmlns='http://www.w3.org/2000/svg' aria-hidden="true">
+          <use href='./img/sprite.svg#heart-full'></use>
         </svg>
       </button>
     </article>
@@ -235,6 +230,12 @@ function insertCartProducts() {
 
   v.$cartChoiceList.innerHTML = "";
   v.$cartChoiceList.insertAdjacentHTML("afterbegin", liTags);
+
+  if (v.$checkoutProductsList) {
+    v.$checkoutProductsList.innerHTML = "";
+    v.$checkoutProductsList.insertAdjacentHTML("afterbegin", liTags);
+  }
+
   addDeletingProduct();
   addNumberInputListeners();
   addFavoriteBtnListeners();
