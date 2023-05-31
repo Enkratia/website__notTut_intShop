@@ -6,6 +6,25 @@ let newValue;
 
 // F(s)
 // **
+function changeCartInputsValue(elem, newValue, isZeroNeeded) {
+  const cartItem = elem.closest("[data-cartIdx]");
+  const cartIdx = cartItem.getAttribute("data-cartIdx");
+
+  const cartArray = JSON.parse(localStorage.getItem("cartArray"));
+  cartArray[cartIdx].count = newValue || 0;
+  localStorage.setItem("cartArray", JSON.stringify(cartArray));
+
+  const sameInputs = document.querySelectorAll(`[data-cartIdx="${cartIdx}"] .input-number__input`);
+  sameInputs.forEach(el => {
+    if (isZeroNeeded) {
+      el.value = newValue || 0;
+    } else {
+      el.value = newValue;
+    }
+  });
+}
+
+// **
 function changeInputValue(e) {
   cb.$rechargeProductButton(this);
 
@@ -15,7 +34,7 @@ function changeInputValue(e) {
     newValue = parseInt(this.value) + 1;
 
     if (this.classList.contains("choice-product__input-number-input")) {
-      this.value = newValue || 0;
+      changeCartInputsValue(this, newValue, true);
 
     } else {
       v.$inputNumberInputs.forEach(el => {
@@ -33,7 +52,7 @@ function changeInputValue(e) {
     newValue = parseInt(this.value) - 1;
 
     if (this.classList.contains("choice-product__input-number-input")) {
-      this.value = newValue || 0;
+      changeCartInputsValue(this, newValue, true);
 
     } else {
       v.$inputNumberInputs.forEach(el => {
@@ -48,7 +67,7 @@ function changeInputValue(e) {
     newValue = this.value.replace(/\D/g, "");
 
     if (this.classList.contains("choice-product__input-number-input")) {
-      this.value = newValue;
+      changeCartInputsValue(this, newValue, false);
 
     } else {
       v.$inputNumberInputs.forEach(el => {
@@ -60,7 +79,7 @@ function changeInputValue(e) {
     newValue = this.value;
 
     if (this.classList.contains("choice-product__input-number-input")) {
-      this.value = newValue;
+      changeCartInputsValue(this, newValue, false);
 
     } else {
       v.$inputNumberInputs.forEach(el => {
@@ -80,7 +99,8 @@ function changeInputValueWithBtn() {
     newValue = parseInt(input.value) + 1;
 
     if (this.parentElement.classList.contains("choice-product__btns")) {
-      input.value = newValue || 0;
+      changeCartInputsValue(this, newValue, true);
+
 
     } else {
       v.$inputNumberInputs.forEach(el => {
@@ -93,7 +113,8 @@ function changeInputValueWithBtn() {
     newValue = parseInt(input.value) - 1;
 
     if (this.parentElement.classList.contains("choice-product__btns")) {
-      input.value = newValue || 0;
+      changeCartInputsValue(this, newValue, true);
+
 
     } else {
       v.$inputNumberInputs.forEach(el => {

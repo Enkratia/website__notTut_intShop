@@ -2972,8 +2972,53 @@ _vars_js__WEBPACK_IMPORTED_MODULE_0__.$cartClose.addEventListener("click", close
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "$calculateOrderTotal": () => (/* binding */ calculateOrderTotal)
+/* harmony export */ });
 /* harmony import */ var _vars_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../vars.js */ "./src/js/vars.js");
+/* harmony import */ var decimal_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! decimal.js */ "./node_modules/decimal.js/decimal.mjs");
 
+
+
+
+// ==== SHIPPING METHOD ==== //
+// F(s)
+// **
+function calculateOrderTotal() {
+  const regExp = /(\$)(.+)/i;
+  let allCosts = document.querySelectorAll("[data-totals]");
+  allCosts = [...allCosts].map(el => {
+    const cost = el.innerText.match(regExp);
+    return cost ? cost[2] : 0;
+  });
+  const sum = decimal_js__WEBPACK_IMPORTED_MODULE_1__.Decimal.sum(...allCosts);
+  _vars_js__WEBPACK_IMPORTED_MODULE_0__.$checkoutOrderTotalSum.innerText = "$" + sum.toFixed(2);
+}
+
+// **
+function toggleActiveClass(meth) {
+  const customRadio = meth.querySelector(".custom-radio");
+  customRadio.click();
+}
+
+// **
+function applyMethod(meth) {
+  const methodCost = meth.querySelector(".checkout__method-price").innerText;
+  const shippingCosts = _vars_js__WEBPACK_IMPORTED_MODULE_0__.$checkoutTotals.querySelector("[data-totals='shipping']");
+  shippingCosts.innerText = methodCost;
+}
+
+// ***
+function changeMethod(e) {
+  const method = e.target.closest(".checkout__method-box");
+  if (method) {
+    toggleActiveClass(method);
+    applyMethod(method);
+  }
+}
+
+// L(s)
+_vars_js__WEBPACK_IMPORTED_MODULE_0__.$checkoutMethod?.addEventListener("click", changeMethod);
 
 /***/ }),
 
@@ -3114,6 +3159,47 @@ _vars_js__WEBPACK_IMPORTED_MODULE_0__.$customCheckboxes.forEach(el => {
   const nativeCheckbox = el.querySelector(".custom-checkbox__input");
   nativeCheckbox.addEventListener("change", checkCustomCheckbox);
   el.addEventListener("keyup", checkCustomCheckboxWithKey);
+});
+
+/***/ }),
+
+/***/ "./src/js/components/custom-radio.js":
+/*!*******************************************!*\
+  !*** ./src/js/components/custom-radio.js ***!
+  \*******************************************/
+/***/ ((__unused_webpack___webpack_module__, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _vars_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../vars.js */ "./src/js/vars.js");
+/* harmony import */ var _checkout_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./checkout.js */ "./src/js/components/checkout.js");
+
+
+
+// F(s)
+// **
+function checkCustomRadioWithKey(e) {
+  if (e.key === "Enter") {
+    this.click();
+  }
+}
+
+// **
+function checkCustomRadio() {
+  const prevActiveRadio = document.querySelector(".custom-radio--checked");
+  prevActiveRadio.classList.remove("custom-radio--checked");
+  prevActiveRadio.setAttribute("aria-checked", "false");
+  const currentRadio = this.parentElement;
+  currentRadio.classList.add("custom-radio--checked");
+  currentRadio.setAttribute("aria-checked", "true");
+  _checkout_js__WEBPACK_IMPORTED_MODULE_1__.$calculateOrderTotal();
+}
+
+// L(s)
+_vars_js__WEBPACK_IMPORTED_MODULE_0__.$customRadios.forEach(el => {
+  const nativeRadio = el.querySelector("input");
+  nativeRadio.addEventListener("change", checkCustomRadio);
+  el.addEventListener("keyup", checkCustomRadioWithKey);
 });
 
 /***/ }),
@@ -3925,13 +4011,30 @@ let newValue;
 
 // F(s)
 // **
+function changeCartInputsValue(elem, newValue, isZeroNeeded) {
+  const cartItem = elem.closest("[data-cartIdx]");
+  const cartIdx = cartItem.getAttribute("data-cartIdx");
+  const cartArray = JSON.parse(localStorage.getItem("cartArray"));
+  cartArray[cartIdx].count = newValue || 0;
+  localStorage.setItem("cartArray", JSON.stringify(cartArray));
+  const sameInputs = document.querySelectorAll(`[data-cartIdx="${cartIdx}"] .input-number__input`);
+  sameInputs.forEach(el => {
+    if (isZeroNeeded) {
+      el.value = newValue || 0;
+    } else {
+      el.value = newValue;
+    }
+  });
+}
+
+// **
 function changeInputValue(e) {
   _colors_button_js__WEBPACK_IMPORTED_MODULE_1__.$rechargeProductButton(this);
   if (e.key === "PageUp" || e.key === "ArrowUp") {
     if (this.value > 998) return;
     newValue = parseInt(this.value) + 1;
     if (this.classList.contains("choice-product__input-number-input")) {
-      this.value = newValue || 0;
+      changeCartInputsValue(this, newValue, true);
     } else {
       _vars_js__WEBPACK_IMPORTED_MODULE_0__.$inputNumberInputs.forEach(el => {
         el.value = newValue || 0;
@@ -3943,7 +4046,7 @@ function changeInputValue(e) {
     if (this.value < 1 && this.value) return;
     newValue = parseInt(this.value) - 1;
     if (this.classList.contains("choice-product__input-number-input")) {
-      this.value = newValue || 0;
+      changeCartInputsValue(this, newValue, true);
     } else {
       _vars_js__WEBPACK_IMPORTED_MODULE_0__.$inputNumberInputs.forEach(el => {
         el.value = newValue || 0;
@@ -3954,7 +4057,7 @@ function changeInputValue(e) {
   if (!this.value.match(/^\d*$/)) {
     newValue = this.value.replace(/\D/g, "");
     if (this.classList.contains("choice-product__input-number-input")) {
-      this.value = newValue;
+      changeCartInputsValue(this, newValue, false);
     } else {
       _vars_js__WEBPACK_IMPORTED_MODULE_0__.$inputNumberInputs.forEach(el => {
         el.value = newValue;
@@ -3963,7 +4066,7 @@ function changeInputValue(e) {
   } else {
     newValue = this.value;
     if (this.classList.contains("choice-product__input-number-input")) {
-      this.value = newValue;
+      changeCartInputsValue(this, newValue, false);
     } else {
       _vars_js__WEBPACK_IMPORTED_MODULE_0__.$inputNumberInputs.forEach(el => {
         el.value = newValue;
@@ -3980,7 +4083,7 @@ function changeInputValueWithBtn() {
     if (input.value > 998) return;
     newValue = parseInt(input.value) + 1;
     if (this.parentElement.classList.contains("choice-product__btns")) {
-      input.value = newValue || 0;
+      changeCartInputsValue(this, newValue, true);
     } else {
       _vars_js__WEBPACK_IMPORTED_MODULE_0__.$inputNumberInputs.forEach(el => {
         el.value = newValue || 0;
@@ -3990,7 +4093,7 @@ function changeInputValueWithBtn() {
     if (input.value < 1 && input.value) return;
     newValue = parseInt(input.value) - 1;
     if (this.parentElement.classList.contains("choice-product__btns")) {
-      input.value = newValue || 0;
+      changeCartInputsValue(this, newValue, true);
     } else {
       _vars_js__WEBPACK_IMPORTED_MODULE_0__.$inputNumberInputs.forEach(el => {
         el.value = newValue || 0;
@@ -4624,7 +4727,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var decimal_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! decimal.js */ "./node_modules/decimal.js/decimal.mjs");
 /* harmony import */ var _vars_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../vars.js */ "./src/js/vars.js");
 /* harmony import */ var _input_number_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./input-number.js */ "./src/js/components/input-number.js");
-/* harmony import */ var _product_favorites_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./product__favorites.js */ "./src/js/components/product__favorites.js");
+/* harmony import */ var _checkout_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./checkout.js */ "./src/js/components/checkout.js");
 
 
 
@@ -4639,6 +4742,11 @@ let productCartBtns;
 function calculatePrice() {
   if (cartArray.length === 0) {
     _vars_js__WEBPACK_IMPORTED_MODULE_1__.$cartChoiceSubtotalSum.textContent = "$0";
+    if (_vars_js__WEBPACK_IMPORTED_MODULE_1__.$checkoutProductsCount) {
+      _vars_js__WEBPACK_IMPORTED_MODULE_1__.$checkoutProductsCount.textContent = "$0";
+      _vars_js__WEBPACK_IMPORTED_MODULE_1__.$checkoutOrderSubtotal.textContent = "—";
+      _checkout_js__WEBPACK_IMPORTED_MODULE_3__.$calculateOrderTotal();
+    }
     return;
   }
   const sumArray = cartArray.map(el => {
@@ -4647,28 +4755,24 @@ function calculatePrice() {
   });
   const sum = decimal_js__WEBPACK_IMPORTED_MODULE_0__.Decimal.sum(...sumArray);
   _vars_js__WEBPACK_IMPORTED_MODULE_1__.$cartChoiceSubtotalSum.textContent = "$" + sum.toFixed(2);
+  if (_vars_js__WEBPACK_IMPORTED_MODULE_1__.$checkoutProductsCount) {
+    _vars_js__WEBPACK_IMPORTED_MODULE_1__.$checkoutProductsCount.textContent = "$" + sum.toFixed(2);
+    _vars_js__WEBPACK_IMPORTED_MODULE_1__.$checkoutOrderSubtotal.textContent = "$" + sum.toFixed(2);
+    _checkout_js__WEBPACK_IMPORTED_MODULE_3__.$calculateOrderTotal();
+  }
 }
 
 // **
 function showHideCartBottom() {
   _vars_js__WEBPACK_IMPORTED_MODULE_1__.$cartChoiceBottom.classList.toggle("cart-choice__bottom--show", cartArray.length);
+  _vars_js__WEBPACK_IMPORTED_MODULE_1__.$checkoutProductsSubtotal?.classList.toggle("checkout__products-subtotal--show", cartArray.length);
   calculatePrice();
 }
 
 // **
-function addFavoriteBtnListeners() {
-  const productFavoriteBtns = _vars_js__WEBPACK_IMPORTED_MODULE_1__.$cartChoiceList.querySelectorAll(".product__favorite");
-  const liElements = _vars_js__WEBPACK_IMPORTED_MODULE_1__.$cartChoiceList.querySelectorAll("[data-vendor]");
-  _product_favorites_js__WEBPACK_IMPORTED_MODULE_3__.$markFavoriteProductsInit(liElements);
-  productFavoriteBtns.forEach(el => {
-    el.addEventListener("click", _product_favorites_js__WEBPACK_IMPORTED_MODULE_3__.$addToFavorite);
-  });
-}
-
-// **
 function addNumberInputListeners() {
-  const inputNumberInputs = _vars_js__WEBPACK_IMPORTED_MODULE_1__.$cartChoiceList.querySelectorAll(".input-number__input");
-  const inputNumberBtns = _vars_js__WEBPACK_IMPORTED_MODULE_1__.$cartChoiceList.querySelectorAll(".input-number__btn");
+  const inputNumberInputs = document.querySelectorAll(".choice-product .input-number__input");
+  const inputNumberBtns = document.querySelectorAll(".choice-product .input-number__btn");
   inputNumberInputs.forEach(function (el) {
     el.addEventListener("keyup", _input_number_js__WEBPACK_IMPORTED_MODULE_2__.$changeInputValue.bind(el));
   });
@@ -4679,21 +4783,22 @@ function addNumberInputListeners() {
 
 // ** 
 function addDeletingProduct() {
-  const deleteProductBtns = _vars_js__WEBPACK_IMPORTED_MODULE_1__.$cartChoiceList.querySelectorAll(".choice-product__delete");
+  const deleteProductBtns = document.querySelectorAll(".choice-product__delete");
   function deleteProduct() {
-    const cartProduct = this.closest(".cart-choice__item");
+    const cartProduct = this.closest("[data-cartIdx]");
     const cartIdx = cartProduct.getAttribute("data-cartIdx");
-    const liElems = _vars_js__WEBPACK_IMPORTED_MODULE_1__.$cartChoiceList.querySelectorAll("[data-cartIdx]");
+    const liElems = document.querySelectorAll("[data-cartIdx]");
     liElems.forEach(el => {
       const everyCartIdx = el.getAttribute("data-cartIdx");
       if (+everyCartIdx > +cartIdx) {
         el.setAttribute("data-cartIdx", everyCartIdx - 1);
+      } else if (+everyCartIdx === +cartIdx) {
+        el.remove();
       }
     });
     cartArray.splice(cartIdx, 1);
     writeTheCount();
     showHideCartBottom();
-    cartProduct.remove();
     localStorage.setItem("cartArray", JSON.stringify(cartArray));
   }
   deleteProductBtns.forEach(el => {
@@ -4781,7 +4886,7 @@ function insertCartProducts() {
   let liTags = "";
   cartArray.forEach((el, idx) => {
     liTags += `
-    <li class="cart-choice__item checkout__products-item" data-vendor="${el.vendor}" data-cartIdx="${idx}">
+    <li class="cart-choice__item" data-vendor="${el.vendor}" data-cartIdx="${idx}">
     <article class="cart-choice__product choice-product">
   
       <!-- Image -->
@@ -4808,10 +4913,10 @@ function insertCartProducts() {
               aria-label="To write the number of products on page." maxlength="3">
   
             <div class="input-number__btns choice-product__btns">
-              <button class="input-number__btn input-number__btn--small input-number__btn--upper"
+              <button type="button" class="input-number__btn input-number__btn--small input-number__btn--upper"
                 aria-label="To rise the number of products on page."></button>
   
-              <button class="input-number__btn input-number__btn--small input-number__btn--lower"
+              <button type="button" class="input-number__btn input-number__btn--small input-number__btn--lower"
                 aria-label="To reduce the number of products on page."></button>
             </div>
           </div>
@@ -4819,7 +4924,7 @@ function insertCartProducts() {
         ${insertPriceHTML(el.price, el.oldPrice)}
   
       <!-- Button delete -->
-      <button type="button" class="choice-product__delete btn btn--outline" aria-label="Delete this product from the cart.">
+      <button type="button" class="choice-product__delete" aria-label="Delete this product from the cart.">
         <svg xmlns='http://www.w3.org/2000/svg' aria-hidden='true'>
           <use href='./img/sprite.svg#bin' aria-hidden='true'></use>
         </svg>
@@ -4839,10 +4944,15 @@ function insertCartProducts() {
   if (_vars_js__WEBPACK_IMPORTED_MODULE_1__.$checkoutProductsList) {
     _vars_js__WEBPACK_IMPORTED_MODULE_1__.$checkoutProductsList.innerHTML = "";
     _vars_js__WEBPACK_IMPORTED_MODULE_1__.$checkoutProductsList.insertAdjacentHTML("afterbegin", liTags);
+    _vars_js__WEBPACK_IMPORTED_MODULE_1__.$checkoutProductsList.querySelectorAll(".choice-product__delete").forEach(el => {
+      el.classList.add("btn", "btn--outline");
+    });
+    _vars_js__WEBPACK_IMPORTED_MODULE_1__.$checkoutProductsList.querySelectorAll(".cart-choice__item").forEach(el => {
+      el.classList.remove("cart-choice__item");
+    });
   }
   addDeletingProduct();
   addNumberInputListeners();
-  addFavoriteBtnListeners();
   showHideCartBottom();
 }
 insertCartProducts();
@@ -6106,9 +6216,17 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "$cartClose": () => (/* binding */ $cartClose),
 /* harmony export */   "$catalog": () => (/* binding */ $catalog),
 /* harmony export */   "$chartClose": () => (/* binding */ $chartClose),
+/* harmony export */   "$checkoutMethod": () => (/* binding */ $checkoutMethod),
+/* harmony export */   "$checkoutOrderSubtotal": () => (/* binding */ $checkoutOrderSubtotal),
+/* harmony export */   "$checkoutOrderTotalSum": () => (/* binding */ $checkoutOrderTotalSum),
+/* harmony export */   "$checkoutProducts": () => (/* binding */ $checkoutProducts),
+/* harmony export */   "$checkoutProductsCount": () => (/* binding */ $checkoutProductsCount),
 /* harmony export */   "$checkoutProductsList": () => (/* binding */ $checkoutProductsList),
+/* harmony export */   "$checkoutProductsSubtotal": () => (/* binding */ $checkoutProductsSubtotal),
+/* harmony export */   "$checkoutTotals": () => (/* binding */ $checkoutTotals),
 /* harmony export */   "$counters": () => (/* binding */ $counters),
 /* harmony export */   "$customCheckboxes": () => (/* binding */ $customCheckboxes),
+/* harmony export */   "$customRadios": () => (/* binding */ $customRadios),
 /* harmony export */   "$customSelects": () => (/* binding */ $customSelects),
 /* harmony export */   "$downloadArea": () => (/* binding */ $downloadArea),
 /* harmony export */   "$downloadAreaDescr": () => (/* binding */ $downloadAreaDescr),
@@ -6178,8 +6296,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "$toolbarSortSelects": () => (/* binding */ $toolbarSortSelects),
 /* harmony export */   "$topNavBtn": () => (/* binding */ $topNavBtn)
 /* harmony export */ });
-// *** Common *** //
+// Common //
 const $toolPags = document.querySelectorAll(".tool-pag");
+const $customRadios = document.querySelectorAll(".custom-radio");
 
 // Header
 const $headerTopContainer = document.querySelector("#header-top-container");
@@ -6281,7 +6400,18 @@ const $fileInput = $leaveReview?.querySelector(".download__area-btn-native");
 const $downloadingFiles = $leaveReview?.querySelector(".download__files");
 
 // Checkout
-const $checkoutProductsList = document.querySelector(".checkout__products-list");
+const $checkoutProducts = document.querySelector(".checkout__products");
+const $checkoutProductsList = $checkoutProducts?.querySelector(".checkout__products-list");
+const $checkoutProductsSubtotal = $checkoutProducts?.querySelector(".checkout__products-subtotal");
+const $checkoutProductsCount = $checkoutProducts?.querySelector(".checkout__products-subtotal-count");
+
+// **
+const $checkoutMethod = document.querySelector(".checkout__method");
+const $checkoutTotals = document.querySelector(".checkout__totals");
+
+//**
+const $checkoutOrderTotalSum = document.querySelector(".checkout__totals-total-sum");
+const $checkoutOrderSubtotal = document.querySelector("[data-totals='subtotal']");
 
 // Media
 const $mdq767 = window.matchMedia("(max-width: 767px)");
@@ -27237,9 +27367,11 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _components_download_js__WEBPACK_IMPORTED_MODULE_27__ = __webpack_require__(/*! ./components/download.js */ "./src/js/components/download.js");
 /* harmony import */ var _components_review_message_tooltips_js__WEBPACK_IMPORTED_MODULE_28__ = __webpack_require__(/*! ./components/review-message-tooltips.js */ "./src/js/components/review-message-tooltips.js");
 /* harmony import */ var _components_checkout_js__WEBPACK_IMPORTED_MODULE_29__ = __webpack_require__(/*! ./components/checkout.js */ "./src/js/components/checkout.js");
-/* harmony import */ var _components_$swipers_js__WEBPACK_IMPORTED_MODULE_30__ = __webpack_require__(/*! ./components/$swipers.js */ "./src/js/components/$swipers.js");
-/* harmony import */ var _components_$overlayScrollbars_js__WEBPACK_IMPORTED_MODULE_31__ = __webpack_require__(/*! ./components/$overlayScrollbars.js */ "./src/js/components/$overlayScrollbars.js");
+/* harmony import */ var _components_custom_radio_js__WEBPACK_IMPORTED_MODULE_30__ = __webpack_require__(/*! ./components/custom-radio.js */ "./src/js/components/custom-radio.js");
+/* harmony import */ var _components_$swipers_js__WEBPACK_IMPORTED_MODULE_31__ = __webpack_require__(/*! ./components/$swipers.js */ "./src/js/components/$swipers.js");
+/* harmony import */ var _components_$overlayScrollbars_js__WEBPACK_IMPORTED_MODULE_32__ = __webpack_require__(/*! ./components/$overlayScrollbars.js */ "./src/js/components/$overlayScrollbars.js");
 // Components
+
 
 
 

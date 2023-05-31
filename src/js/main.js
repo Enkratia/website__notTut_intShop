@@ -29,6 +29,7 @@ import "./components/leave-review.js";
 import "./components/download.js";
 import "./components/review-message-tooltips.js";
 import "./components/checkout.js";
+import "./components/custom-radio.js";
 
 
 // Components multiple in one

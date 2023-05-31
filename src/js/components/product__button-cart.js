@@ -1,7 +1,7 @@
 import { Decimal } from 'decimal.js';
 import * as v from "../vars.js";
 import * as inum from "./input-number.js";
-import * as prof from "./product__favorites.js";
+import * as che from "./checkout.js";
 
 export { clickOnCart as $clickOnCart }
 
@@ -14,6 +14,13 @@ let productCartBtns;
 function calculatePrice() {
   if (cartArray.length === 0) {
     v.$cartChoiceSubtotalSum.textContent = "$0";
+
+    if (v.$checkoutProductsCount) {
+      v.$checkoutProductsCount.textContent = "$0";
+      v.$checkoutOrderSubtotal.textContent = "—";
+      che.$calculateOrderTotal();
+    }
+
     return;
   }
 
@@ -24,29 +31,25 @@ function calculatePrice() {
 
   const sum = Decimal.sum(...sumArray);
   v.$cartChoiceSubtotalSum.textContent = "$" + sum.toFixed(2);
+
+  if (v.$checkoutProductsCount) {
+    v.$checkoutProductsCount.textContent = "$" + sum.toFixed(2);
+    v.$checkoutOrderSubtotal.textContent = "$" + sum.toFixed(2);
+    che.$calculateOrderTotal();
+  }
 }
 
 // **
 function showHideCartBottom() {
   v.$cartChoiceBottom.classList.toggle("cart-choice__bottom--show", cartArray.length);
+  v.$checkoutProductsSubtotal?.classList.toggle("checkout__products-subtotal--show", cartArray.length);
   calculatePrice();
 }
 
 // **
-function addFavoriteBtnListeners() {
-  const productFavoriteBtns = v.$cartChoiceList.querySelectorAll(".product__favorite");
-  const liElements = v.$cartChoiceList.querySelectorAll("[data-vendor]");
-  prof.$markFavoriteProductsInit(liElements);
-
-  productFavoriteBtns.forEach(el => {
-    el.addEventListener("click", prof.$addToFavorite);
-  });
-}
-
-// **
 function addNumberInputListeners() {
-  const inputNumberInputs = v.$cartChoiceList.querySelectorAll(".input-number__input");
-  const inputNumberBtns = v.$cartChoiceList.querySelectorAll(".input-number__btn");
+  const inputNumberInputs = document.querySelectorAll(".choice-product .input-number__input");
+  const inputNumberBtns = document.querySelectorAll(".choice-product .input-number__btn");
 
   inputNumberInputs.forEach(function (el) {
     el.addEventListener("keyup", inum.$changeInputValue.bind(el));
@@ -59,24 +62,26 @@ function addNumberInputListeners() {
 
 // ** 
 function addDeletingProduct() {
-  const deleteProductBtns = v.$cartChoiceList.querySelectorAll(".choice-product__delete");
+  const deleteProductBtns = document.querySelectorAll(".choice-product__delete");
 
   function deleteProduct() {
-    const cartProduct = this.closest(".cart-choice__item");
+    const cartProduct = this.closest("[data-cartIdx]");
     const cartIdx = cartProduct.getAttribute("data-cartIdx");
 
-    const liElems = v.$cartChoiceList.querySelectorAll("[data-cartIdx]");
+    const liElems = document.querySelectorAll("[data-cartIdx]");
     liElems.forEach(el => {
       const everyCartIdx = el.getAttribute("data-cartIdx");
       if (+everyCartIdx > +cartIdx) {
         el.setAttribute("data-cartIdx", everyCartIdx - 1);
+
+      } else if (+everyCartIdx === +cartIdx) {
+        el.remove();
       }
     });
 
     cartArray.splice(cartIdx, 1);
     writeTheCount();
     showHideCartBottom();
-    cartProduct.remove();
     localStorage.setItem("cartArray", JSON.stringify(cartArray));
   }
 
@@ -174,7 +179,7 @@ function insertCartProducts() {
   cartArray.forEach((el, idx) => {
 
     liTags += `
-    <li class="cart-choice__item checkout__products-item" data-vendor="${el.vendor}" data-cartIdx="${idx}">
+    <li class="cart-choice__item" data-vendor="${el.vendor}" data-cartIdx="${idx}">
     <article class="cart-choice__product choice-product">
   
       <!-- Image -->
@@ -201,10 +206,10 @@ function insertCartProducts() {
               aria-label="To write the number of products on page." maxlength="3">
   
             <div class="input-number__btns choice-product__btns">
-              <button class="input-number__btn input-number__btn--small input-number__btn--upper"
+              <button type="button" class="input-number__btn input-number__btn--small input-number__btn--upper"
                 aria-label="To rise the number of products on page."></button>
   
-              <button class="input-number__btn input-number__btn--small input-number__btn--lower"
+              <button type="button" class="input-number__btn input-number__btn--small input-number__btn--lower"
                 aria-label="To reduce the number of products on page."></button>
             </div>
           </div>
@@ -212,7 +217,7 @@ function insertCartProducts() {
         ${insertPriceHTML(el.price, el.oldPrice)}
   
       <!-- Button delete -->
-      <button type="button" class="choice-product__delete btn btn--outline" aria-label="Delete this product from the cart.">
+      <button type="button" class="choice-product__delete" aria-label="Delete this product from the cart.">
         <svg xmlns='http://www.w3.org/2000/svg' aria-hidden='true'>
           <use href='./img/sprite.svg#bin' aria-hidden='true'></use>
         </svg>
@@ -234,11 +239,18 @@ function insertCartProducts() {
   if (v.$checkoutProductsList) {
     v.$checkoutProductsList.innerHTML = "";
     v.$checkoutProductsList.insertAdjacentHTML("afterbegin", liTags);
+
+    v.$checkoutProductsList.querySelectorAll(".choice-product__delete").forEach(el => {
+      el.classList.add("btn", "btn--outline");
+    });
+
+    v.$checkoutProductsList.querySelectorAll(".cart-choice__item").forEach(el => {
+      el.classList.remove("cart-choice__item");
+    });
   }
 
   addDeletingProduct();
   addNumberInputListeners();
-  addFavoriteBtnListeners();
   showHideCartBottom();
 }
 insertCartProducts();

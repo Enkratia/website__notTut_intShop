@@ -1190,7 +1190,7 @@
       <!-- Checkout list -->
       <ul class="checkout__list">
 
-        <!-- Checkout item1 -->
+        <!-- Checkout item1(Item review) -->
         <li class="checkout__list-item">
           <h4 class="checkout__list-title">
             1. Item Review
@@ -1199,7 +1199,310 @@
           <!-- Checkout products -->
           <div class="checkout__products">
             <ul class="checkout__products-list"></ul>
+
+            <span class="checkout__products-subtotal">
+              Subtotal:
+
+              <span class="checkout__products-subtotal-count"></span>
+            </span>
           </div>
+        </li>
+
+        <!-- Checkout item2(billing) -->
+        <li class="checkout__list-item">
+          <h4 class="checkout__list-title">
+            2. Shipping & Billing Address
+          </h4>
+
+          <!-- Checkout billing -->
+          <div class="checkout__billing">
+
+            <!-- Fields -->
+            <div class="checkout__billing-fields">
+
+              <!-- Field1 -->
+              <div class="checkout__billing-field">
+                <label for="checkout__billing-first-name" class="checkout__billing-label">
+                  First Name
+                </label>
+
+                <input type="text" class="checkout__billing-input input" id="checkout__billing-first-name"
+                  name="checkout__billing-first-name" placeholder="Your first name">
+              </div>
+
+              <!-- Field2 -->
+              <div class="checkout__billing-field">
+                <label for="checkout__billing-last-name" class="checkout__billing-label">
+                  Last Name
+                </label>
+
+                <input type="text" class="checkout__billing-input input" id="checkout__billing-last-name"
+                  name="checkout__billing-last-name" placeholder="Your last name">
+              </div>
+
+              <!-- Field3 -->
+              <div class="checkout__billing-field">
+                <label for="checkout__billing-email" class="checkout__billing-label">
+                  Email
+                </label>
+
+                <input type="email" class="checkout__billing-input input" id="checkout__billing-email"
+                  name="checkout__billing-email" placeholder="Your working email">
+              </div>
+
+              <!-- Field4 -->
+              <div class="checkout__billing-field">
+                <label for="checkout__billing-phone" class="checkout__billing-label">
+                  Phone
+                </label>
+
+                <input type="text" class="checkout__billing-input input" id="checkout__billing-phone"
+                  name="checkout__billing-phone" placeholder="Your phone number">
+              </div>
+
+              <!-- Field5 -->
+              <div class="checkout__billing-field">
+                <label for="" class="checkout__billing-label">
+                  Country
+                </label>
+
+                <div class="custom-select__outer-wrapper checkout__billing-select-outer-wrapper">
+                  <div class="custom-select custom-select--light checkout__billing-sort-select" role="listbox"
+                    tabindex="0">
+                    <input type="hidden" class="checkout__billing-select-hidden" name="checkout-billing-select-hidden">
+
+                    <div class="custom-select__head custom-select__head--light checkout__billing-sort-head">
+                      <span class="custom-select__selected checkout__billing-sort-selected">
+                        Choose your country
+                      </span>
+
+                      <svg class="custom-select__icon" xmlns='http://www.w3.org/2000/svg'>
+                        <use href='./img/sprite.svg#angle-down'></use>
+                      </svg>
+                    </div>
+
+                    <div class="custom-select__inner-wrapper checkout__billing-sort-wrapper">
+                      <ul class="custom-select__list checkout__billing-sort-list" data-overlayscrollbars-initialize>
+                        <li class="custom-select__item custom-select__item--active checkout__billing-sort-item">
+                          Choose your country
+                        </li>
+
+                        <li class="custom-select__item checkout__billing-sort-item">
+                          Russia
+                        </li>
+
+                        <li class="custom-select__item checkout__billing-sort-item">
+                          Nepal
+                        </li>
+
+                        <li class="custom-select__item checkout__billing-sort-item">
+                          Peru
+                        </li>
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Field6 -->
+              <div class="checkout__billing-field">
+                <label for="" class="checkout__billing-label">
+                  City
+                </label>
+
+                <div class="custom-select__outer-wrapper checkout__billing-select-outer-wrapper">
+                  <div class="custom-select custom-select--light checkout__billing-sort-select" role="listbox"
+                    tabindex="0">
+                    <input type="hidden" class="checkout__billing-select-hidden" name="checkout-billing-select-hidden">
+
+                    <div class="custom-select__head custom-select__head--light checkout__billing-sort-head">
+                      <span class="custom-select__selected checkout__billing-sort-selected">
+                        Choose your city
+                      </span>
+
+                      <svg class="custom-select__icon" xmlns='http://www.w3.org/2000/svg'>
+                        <use href='./img/sprite.svg#angle-down'></use>
+                      </svg>
+                    </div>
+
+                    <div class="custom-select__inner-wrapper checkout__billing-sort-wrapper">
+                      <ul class="custom-select__list checkout__billing-sort-list" data-overlayscrollbars-initialize>
+                        <li class="custom-select__item custom-select__item--active checkout__billing-sort-item">
+                          Choose your city
+                        </li>
+
+                        <li class="custom-select__item checkout__billing-sort-item">
+                          Moscow
+                        </li>
+
+                        <li class="custom-select__item checkout__billing-sort-item">
+                          Delhi
+                        </li>
+
+                        <li class="custom-select__item checkout__billing-sort-item">
+                          Beijing
+                        </li>
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Field7 -->
+              <div class="checkout__billing-field">
+                <label for="checkout__billing-address" class="checkout__billing-label">
+                  Address
+                </label>
+
+                <input type="text" class="checkout__billing-input input" id="checkout__billing-address"
+                  name="checkout__billing-address" placeholder="Your address">
+              </div>
+
+              <!-- Field8 -->
+              <div class="checkout__billing-field">
+                <label for="checkout__billing-zip" class="checkout__billing-label">
+                  ZIP Code
+                </label>
+
+                <input type="text" class="checkout__billing-input input" id="checkout__billing-zip"
+                  name="checkout__billing-zip" placeholder="Your ZIP code">
+              </div>
+            </div>
+
+            <!-- Checking -->
+            <label class="checkout__billing-checking">
+              <label class="checkout__billing-checkbox custom-checkbox custom-checkbox--checked" tabindex="0"
+                role="checkbox" aria-checked="true">
+                <svg xmlns='http://www.w3.org/2000/svg'>
+                  <use href='./img/sprite.svg#check'></use>
+                </svg>
+
+                <input type="hidden" name="checkout-billing-checkbox" value="0">
+                <input type="checkbox" class="custom-checkbox__input" name="checkout-billing-checkbox" value="1"
+                  checked>
+              </label>
+
+              <span class="checkout__billing-checktext">
+                Billing and Shipping details are the same
+              </span>
+            </label>
+          </div>
+        </li>
+
+        <!-- Checkout item3(Method) -->
+        <li class="checkout__list-item">
+          <h4 class="checkout__list-title">
+            3. Shipping Method
+          </h4>
+
+          <!-- Checkout billing -->
+          <ul class="checkout__method">
+
+            <!-- Box1 -->
+            <li class="checkout__method-box">
+              <label class="checkout__method-radio custom-radio custom-radio--checked" role="radiogroup" tabindex="0" aria-checked="checked">
+                <input type="radio" name="checkout-method-radio" hidden checked>
+              </label>
+
+              <div class="checkout__method-info">
+                <span class="checkout__method-destination">
+                  Courier to your address
+                </span>
+
+                <span class="checkout__method-date">
+                  Estimated date: September 9
+                </span>
+              </div>
+
+              <span class="checkout__method-price">
+                $25.00
+              </span>
+            </li>
+
+            <!-- Box2 -->
+            <li class="checkout__method-box">
+              <label class="checkout__method-radio custom-radio" role="radiogroup" tabindex="0" aria-checked="false">
+                <input type="radio" name="checkout-method-radio" hidden>
+              </label>
+
+              <div class="checkout__method-info">
+                <span class="checkout__method-destination">
+                  Pick up from store
+                </span>
+
+                <span class="checkout__method-date">
+                  Pick up on September 8 from 12:00
+                </span>
+              </div>
+
+              <span class="checkout__method-price">
+                Free
+              </span>
+            </li>
+
+            <!-- Box3 -->
+            <li class="checkout__method-box">
+              <label class="checkout__method-radio custom-radio" role="radiogroup" tabindex="0" aria-checked="false">
+                <input type="radio" name="checkout-method-radio" hidden>
+              </label>
+
+              <div class="checkout__method-info">
+                <span class="checkout__method-destination">
+                  UPS Ground Shipping
+                </span>
+
+                <span class="checkout__method-date">
+                  Up to one week
+                </span>
+              </div>
+
+              <span class="checkout__method-price">
+                $10.00
+              </span>
+            </li>
+
+            <!-- Box4 -->
+            <li class="checkout__method-box">
+              <label class="checkout__method-radio custom-radio" role="radiogroup" tabindex="0" aria-checked="false">
+                <input type="radio" name="checkout-method-radio" hidden>
+              </label>
+
+              <div class="checkout__method-info">
+                <span class="checkout__method-destination">
+                  Pick up at Createx Locker
+                </span>
+
+                <span class="checkout__method-date">
+                  Pick up on September 8 from 12:00
+                </span>
+              </div>
+
+              <span class="checkout__method-price">
+                $8.50
+              </span>
+            </li>
+
+            <!-- Box5 -->
+            <li class="checkout__method-box">
+              <label class="checkout__method-radio custom-radio" role="radiogroup" tabindex="0" aria-checked="false">
+                <input type="radio" name="checkout-method-radio" hidden>
+              </label>
+
+              <div class="checkout__method-info">
+                <span class="checkout__method-destination">
+                  Createx Global Export
+                </span>
+
+                <span class="checkout__method-date">
+                  3-4 days
+                </span>
+              </div>
+
+              <span class="checkout__method-price">
+                $15.00
+              </span>
+            </li>
+          </ul>
         </li>
       </ul>
 
@@ -1236,8 +1539,8 @@
               Subtotal:
             </span>
 
-            <span class="checkout__totals-sum">
-              $198.65
+            <span class="checkout__totals-sum" data-totals="subtotal">
+              —
             </span>
           </li>
 
@@ -1246,7 +1549,7 @@
               Shipping costs:
             </span>
 
-            <span class="checkout__totals-sum">
+            <span class="checkout__totals-sum" data-totals="shipping">
               $25.00
             </span>
           </li>
@@ -1256,7 +1559,7 @@
               Discount:
             </span>
 
-            <span class="checkout__totals-sum">
+            <span class="checkout__totals-sum" data-totals="discount">
               —
             </span>
           </li>
@@ -1266,8 +1569,8 @@
               Estimated sales tax:
             </span>
 
-            <span class="checkout__totals-sum">
-              $6.35
+            <span class="checkout__totals-sum" data-totals="tax">
+              —
             </span>
           </li>
         </ul>
@@ -1278,7 +1581,7 @@
           </span>
 
           <span class="checkout__totals-total-sum">
-            $230.00
+            —
           </span>
         </div>
       </div>
