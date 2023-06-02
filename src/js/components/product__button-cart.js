@@ -14,7 +14,7 @@ let productCartBtns;
 function calculateCheckoutPrice(array, summ = undefined) {
   v.$checkoutProductsCount.textContent = summ ? "$" + summ.toFixed(2) : "—";
   v.$checkoutOrderSubtotal.textContent = summ ? "$" + summ.toFixed(2) : "—";
-  
+
   che.$calculateDiscount(array);
   che.$calculateOrderTotal();
 }
@@ -45,9 +45,13 @@ function calculatePrice() {
 }
 
 // **
-function showHideCartBottom() {
-  v.$cartChoiceBottom.classList.toggle("cart-choice__bottom--show", cartArray.length);
-  v.$checkoutProducts?.classList.toggle("checkout__products--show", cartArray.length);
+function toggleCheckoutBtn() {
+  v.$cartCheckoutBtn.classList.toggle("btn--disabled", !cartArray.length);
+
+  if (v.$checkoutCompleteBtn) {
+    v.$checkoutProducts.classList.toggle("checkout__products--show", cartArray.length);
+    che.$toggleCompleteBtn();
+  }
   calculatePrice();
 }
 
@@ -86,7 +90,7 @@ function addDeletingProduct() {
 
     cartArray.splice(cartIdx, 1);
     writeTheCount();
-    showHideCartBottom();
+    toggleCheckoutBtn();
     localStorage.setItem("cartArray", JSON.stringify(cartArray));
   }
 
@@ -256,7 +260,7 @@ function insertCartProducts() {
 
   addDeletingProduct();
   addNumberInputListeners();
-  showHideCartBottom();
+  toggleCheckoutBtn();
 }
 insertCartProducts();
 
@@ -408,7 +412,7 @@ setTimeout(() => { // Wait swiper js
 window.addEventListener("resize", () => {
   setTimeout(() => { // Wait swiper js
     productCartBtns = document.querySelectorAll(".swiper-wrapper .product__button-cart"); // не убирать в vars
-  
+
     productCartBtns.forEach(el => {
       el.addEventListener("click", addToCart);
     });

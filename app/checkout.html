@@ -1152,7 +1152,7 @@
   </div>
 </section>
   <section class="checkout">
-  <form class="checkout__container container">
+  <form class="checkout__container container container--40">
 
     <!-- Left -->
     <div class="checkout__left">
@@ -1222,42 +1222,50 @@
 
               <!-- Field1 -->
               <div class="checkout__billing-field">
-                <label for="checkout__billing-first-name" class="checkout__billing-label">
+                <label for="checkout-billing-first-name" class="checkout__billing-label">
                   First Name
                 </label>
 
-                <input type="text" class="checkout__billing-input input" id="checkout__billing-first-name"
-                  name="checkout__billing-first-name" placeholder="Your first name">
+                <div class="input-wrapper">
+                  <input type="text" class="checkout__billing-input input" id="checkout-billing-first-name"
+                    name="checkout-billing-first-name" placeholder="Your first name">
+                </div>
               </div>
 
               <!-- Field2 -->
               <div class="checkout__billing-field">
-                <label for="checkout__billing-last-name" class="checkout__billing-label">
+                <label for="checkout-billing-last-name" class="checkout__billing-label">
                   Last Name
                 </label>
 
-                <input type="text" class="checkout__billing-input input" id="checkout__billing-last-name"
-                  name="checkout__billing-last-name" placeholder="Your last name">
+                <div class="input-wrapper">
+                  <input type="text" class="checkout__billing-input input" id="checkout-billing-last-name"
+                    name="checkout-billing-last-name" placeholder="Your last name">
+                </div>
               </div>
 
               <!-- Field3 -->
               <div class="checkout__billing-field">
-                <label for="checkout__billing-email" class="checkout__billing-label">
+                <label for="checkout-billing-email" class="checkout__billing-label">
                   Email
                 </label>
 
-                <input type="email" class="checkout__billing-input input" id="checkout__billing-email"
-                  name="checkout__billing-email" placeholder="Your working email">
+                <div class="input-wrapper">
+                  <input type="text" class="checkout__billing-input input" id="checkout-billing-email"
+                    name="checkout-billing-email" placeholder="Your working email">
+                </div>
               </div>
 
               <!-- Field4 -->
               <div class="checkout__billing-field">
-                <label for="checkout__billing-phone" class="checkout__billing-label">
+                <label for="checkout-billing-phone" class="checkout__billing-label">
                   Phone
                 </label>
 
-                <input type="text" class="checkout__billing-input input" id="checkout__billing-phone"
-                  name="checkout__billing-phone" placeholder="Your phone number">
+                <div class="input-wrapper">
+                  <input type="text" class="checkout__billing-input input" id="checkout-billing-phone"
+                    name="checkout-billing-phone" placeholder="Your phone number">
+                </div>
               </div>
 
               <!-- Field5 -->
@@ -1350,22 +1358,26 @@
 
               <!-- Field7 -->
               <div class="checkout__billing-field">
-                <label for="checkout__billing-address" class="checkout__billing-label">
+                <label for="checkout-billing-address" class="checkout__billing-label">
                   Address
                 </label>
 
-                <input type="text" class="checkout__billing-input input" id="checkout__billing-address"
-                  name="checkout__billing-address" placeholder="Your address">
+                <div class="input-wrapper">
+                  <input type="text" class="checkout__billing-input input" id="checkout-billing-address"
+                    name="checkout-billing-address" placeholder="Your address">
+                </div>
               </div>
 
               <!-- Field8 -->
               <div class="checkout__billing-field">
-                <label for="checkout__billing-zip" class="checkout__billing-label">
+                <label for="checkout-billing-zip" class="checkout__billing-label">
                   ZIP Code
                 </label>
 
-                <input type="text" class="checkout__billing-input input" id="checkout__billing-zip"
-                  name="checkout__billing-zip" placeholder="Your ZIP code">
+                <div class="input-wrapper">
+                  <input type="text" class="checkout__billing-input input" id="checkout-billing-zip"
+                    name="checkout-billing-zip" placeholder="Your ZIP code">
+                </div>
               </div>
             </div>
 
@@ -1540,25 +1552,25 @@
                     <label for="checkout-payment-number" class="checkout__payment-label">
                       Card number
                     </label>
-  
+
                     <input type="text" class="checkout__payment-input input" id="checkout-payment-number"
                       name="checkout-payment-number" placeholder="0000 0000 0000 0000">
                   </div>
-  
+
                   <div class="checkout__payment-field">
                     <label for="checkout-payment-date" class="checkout__payment-label">
                       Expiry date
                     </label>
-  
+
                     <input type="text" class="checkout__payment-input input" id="checkout-payment-date"
                       name="checkout-payment-date" placeholder="mm/yy">
                   </div>
-  
+
                   <div class="checkout__payment-field">
                     <label for="checkout-payment-cvc" class="checkout__payment-label">
                       CVC
                     </label>
-  
+
                     <input type="password" class="checkout__payment-input input" id="checkout-payment-cvc"
                       name="checkout-payment-cvc" placeholder="000" maxlength="3">
                   </div>
@@ -1587,7 +1599,7 @@
                 <div class="checkout__payment-bottom-wrapper">
                   <a href="#" class="checkout__payment-btn checkout__payment-btn--regular"
                     aria-label="Pay with Paypal."></a>
-  
+
                   <a href="#" class="checkout__payment-btn checkout__payment-btn--credit"
                     aria-label="Pay with Paypal Credit."></a>
                 </div>
@@ -1619,97 +1631,306 @@
             </li>
           </ul>
         </li>
+
+        <!-- Checkout item5(Additional) -->
+        <li class="checkout__list-item">
+          <h4 class="checkout__list-title">
+            5. Additional Information (Optional)
+          </h4>
+
+          <label for="checkout-additional-textarea" class="checkout__additional-label">
+            Order notes
+          </label>
+
+          <textarea class="checkout__additional-textarea input" name="checkout-additional-textarea"
+            id="checkout-additional-textarea"
+            placeholder="Notes about your order, e.g. special noted for delivery."></textarea>
+        </li>
       </ul>
     </div>
 
     <!-- Right -->
     <div class="checkout__right">
 
-      <!-- Promo -->
-      <div class="checkout__promo">
-        <label class="checkout__promo-label" for="checkout-promo-input">
-          Apply a promo code
-        </label>
+      <!-- Content -->
+      <div class="checkout__right-wrapper">
 
-        <div class="checkout__promo-field">
-          <input type="text" class="checkout__promo-input input" name="checkout-promo-input" id="checkout-promo-input"
-            placeholder="Enter promo code">
+        <!-- Promo -->
+        <div class="checkout__promo">
+          <label class="checkout__promo-label" for="checkout-promo-input">
+            Apply a promo code
+          </label>
 
-          <button type="button" class="checkout__promo-btn btn btn--lg">
-            Apply
-          </button>
+          <div class="checkout__promo-field">
+            <input type="text" class="checkout__promo-input input" name="checkout-promo-input" id="checkout-promo-input"
+              placeholder="Enter promo code">
+
+            <button type="button" class="checkout__promo-btn btn btn--lg">
+              Apply
+            </button>
+          </div>
         </div>
-      </div>
 
-      <!-- Totals -->
-      <div class="checkout__totals">
-        <h4 class="checkout__totals-title">
-          Order totals
-        </h4>
+        <!-- Totals -->
+        <div class="checkout__totals">
+          <h4 class="checkout__totals-title">
+            Order totals
+          </h4>
 
-        <ul class="checkout__totals-info">
-          <li class="checkout__totals-item checkout__totals-item--subtotal">
-            <span class="checkout__totals-name">
-              Subtotal:
+          <ul class="checkout__totals-info">
+            <li class="checkout__totals-item checkout__totals-item--subtotal">
+              <span class="checkout__totals-name">
+                Subtotal:
+              </span>
+
+              <span class="checkout__totals-sum" data-totals="subtotal">
+                —
+              </span>
+            </li>
+
+            <li class="checkout__totals-item">
+              <span class="checkout__totals-name">
+                Shipping costs:
+              </span>
+
+              <span class="checkout__totals-sum" data-totals="shipping">
+                $25.00
+              </span>
+            </li>
+
+            <li class="checkout__totals-item">
+              <span class="checkout__totals-name">
+                Discount:
+              </span>
+
+              <span class="checkout__totals-sum" data-totals="discount">
+                —
+              </span>
+            </li>
+
+            <li class="checkout__totals-item">
+              <span class="checkout__totals-name">
+                Estimated sales tax:
+              </span>
+
+              <span class="checkout__totals-sum" data-totals="tax">
+                —
+              </span>
+            </li>
+          </ul>
+
+          <div class="checkout__totals-total">
+            <span class="checkout__totals-total-name">
+              Order total:
             </span>
 
-            <span class="checkout__totals-sum" data-totals="subtotal">
+            <span class="checkout__totals-total-sum">
               —
             </span>
-          </li>
-
-          <li class="checkout__totals-item">
-            <span class="checkout__totals-name">
-              Shipping costs:
-            </span>
-
-            <span class="checkout__totals-sum" data-totals="shipping">
-              $25.00
-            </span>
-          </li>
-
-          <li class="checkout__totals-item">
-            <span class="checkout__totals-name">
-              Discount:
-            </span>
-
-            <span class="checkout__totals-sum" data-totals="discount">
-              —
-            </span>
-          </li>
-
-          <li class="checkout__totals-item">
-            <span class="checkout__totals-name">
-              Estimated sales tax:
-            </span>
-
-            <span class="checkout__totals-sum" data-totals="tax">
-              —
-            </span>
-          </li>
-        </ul>
-
-        <div class="checkout__totals-total">
-          <span class="checkout__totals-total-name">
-            Order total:
-          </span>
-
-          <span class="checkout__totals-total-sum">
-            —
-          </span>
+          </div>
         </div>
-      </div>
 
-      <!-- Complete -->
-      <button type="submit" class="checkout__complete btn btn--lg">
-        Complete order
-      </button>
+        <!-- Complete -->
+        <button type="submit" class="checkout__complete btn btn--lg btn--disabled">
+          Complete order
+        </button>
+      </div>
     </div>
   </form>
 </section>
+  <section class="footer">
+  <div class="footer__container container">
 
+    <!-- Footer main -->
+    <div class="footer__main">
 
+      <!-- Links1 -->
+      <div class="footer__links">
+        <h6 class="footer__title">
+          HELP
+        </h6>
+
+        <ul class="footer__list">
+          <li class="footer__item">
+            <a href="#" class="footer__link">
+              Delivery & returns
+            </a>
+          </li>
+
+          <li class="footer__item">
+            <a href="#" class="footer__link">
+              FAQ
+            </a>
+          </li>
+
+          <li class="footer__item">
+            <a href="#" class="footer__link">
+              Track order
+            </a>
+          </li>
+
+          <li class="footer__item">
+            <a href="#" class="footer__link">
+              Contacts
+            </a>
+          </li>
+
+          <li class="footer__item">
+            <a href="#" class="footer__link">
+              Blog
+            </a>
+          </li>
+        </ul>
+      </div>
+
+      <!-- Links2 -->
+      <div class="footer__links">
+        <h6 class="footer__title">
+          Shop
+        </h6>
+
+        <ul class="footer__list">
+          <li class="footer__item">
+            <a href="#" class="footer__link">
+              New arrivals
+            </a>
+          </li>
+
+          <li class="footer__item">
+            <a href="#" class="footer__link">
+              Trending now
+            </a>
+          </li>
+
+          <li class="footer__item">
+            <a href="#" class="footer__link">
+              Sales
+            </a>
+          </li>
+
+          <li class="footer__item">
+            <a href="#" class="footer__link">
+              Brands
+            </a>
+          </li>
+        </ul>
+      </div>
+
+      <!-- Communication -->
+      <div class="footer__communication">
+        <h6 class="footer__title">
+          Get in touch
+        </h6>
+
+        <div class="footer__contacts">
+          <div class="footer__contact">
+            <span class="footer__contact-title">
+              Call:
+            </span>
   
+            <a href="tel:+4055550128" class="footer__contact-data">
+              (405) 555-0128
+            </a>
+          </div>
+  
+          <div class="footer__contact">
+            <span class="footer__contact-title">
+              Email:
+            </span>
+  
+            <a href="mailto:hello@createx.com" class="footer__contact-data">
+              hello@createx.com
+            </a>
+          </div>
+        </div>
+
+        <ul class="footer__social social">
+          <li class="social__item">
+            <a href="#" target="_blank" class="social__link" aria-label="Go to our facebook page.">
+              <svg xmlns='http://www.w3.org/2000/svg' aria-hidden="true">
+                <use href='./img/sprite.svg#facebook' aria-hidden="true"></use>
+              </svg>
+            </a>
+          </li>
+
+          <li class="social__item">
+            <a href="#" target="_blank" class="social__link" aria-label="Go to our instagram page.">
+              <svg xmlns='http://www.w3.org/2000/svg' aria-hidden="true">
+                <use href='./img/sprite.svg#instagram' aria-hidden="true"></use>
+              </svg>
+            </a>
+          </li>
+
+          <li class="social__item">
+            <a href="#" target="_blank" class="social__link" aria-label="Go to our twitter page.">
+              <svg xmlns='http://www.w3.org/2000/svg' aria-hidden="true">
+                <use href='./img/sprite.svg#twitter' aria-hidden="true"></use>
+              </svg>
+            </a>
+          </li>
+
+          <li class="social__item">
+            <a href="#" target="_blank" class="social__link" aria-label="Go to our youtube page.">
+              <svg xmlns='http://www.w3.org/2000/svg' aria-hidden="true">
+                <use href='./img/sprite.svg#youtube' aria-hidden="true"></use>
+              </svg>
+            </a>
+          </li>
+
+          <li class="social__item">
+            <a href="#" target="_blank" class="social__link" aria-label="Go to our pinterest page.">
+              <svg xmlns='http://www.w3.org/2000/svg' aria-hidden="true">
+                <use href='./img/sprite.svg#pinterest' aria-hidden="true"></use>
+              </svg>
+            </a>
+          </li>
+        </ul>
+      </div>
+
+      <!-- Apps -->
+      <div class="footer__apps">
+        <h6 class="footer__title footer__title--margin">
+          Download our app
+        </h6>
+
+        <div class="footer__btns">
+          <a href="#" class="footer__button btn-app btn-app--apple">
+            <span class="btn-app__subtitle">
+              Download on the
+            </span>
+  
+            <span class="btn-app__title">
+              App Store
+            </span>
+          </a>
+  
+          <a href="#" class="footer__button btn-app btn-app--google">
+            <span class="btn-app__subtitle btn-app__subtitle--google">
+              Get it on
+            </span>
+  
+            <span class="btn-app__title btn-app__title--google">
+              Google Play
+            </span>
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+    <!-- Footer copyright -->
+    <div class="footer__copyright">
+      <small class="footer__copyright-text container">
+        &#169; All rights reserved. Made with 
+
+        <svg xmlns='http://www.w3.org/2000/svg'>
+          <use href='./img/sprite.svg#heart'></use>
+        </svg>
+
+        by Createx Studio
+      </small>
+    </div>
+</section> 
 
   <a class="scroll-top" aria-label="Scroll to top.">
     <svg xmlns='http://www.w3.org/2000/svg' aria-hidden="true">

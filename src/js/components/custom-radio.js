@@ -29,7 +29,7 @@ function checkCustomRadio() {
     toggleActiveClass(prevCustomRadio, currentCustomRadio);
 
   } else if (currentCustomRadio.classList.contains("checkout__method-radio")) {
-    prevCustomRadio = document.querySelector(".checkout__mehtod-radio.custom-radio--checked");
+    prevCustomRadio = document.querySelector(".checkout__method-radio.custom-radio--checked");
     toggleActiveClass(prevCustomRadio, currentCustomRadio);
 
     che.$calculateOrderTotal();

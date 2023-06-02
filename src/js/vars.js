@@ -26,6 +26,8 @@ export const $cartChoiceList = $headerMainContainer.querySelector(".cart-choice_
 export const $cartChoiceTitleCount = $headerMainContainer.querySelector(".cart-choice__title-count");
 export const $cartChoiceBottom = $headerMainContainer.querySelector(".cart-choice__bottom");
 export const $cartChoiceSubtotalSum = $headerMainContainer.querySelector(".cart-choice__subtotal-sum");
+export const $cartCheckoutBtn = $headerMainContainer.querySelector(".cart-choice__checkout");
+
 
 // Special-offers
 export const $marketingSlider = document.querySelector("#marketing-slider");
@@ -115,8 +117,7 @@ export const $checkoutTotals = document.querySelector(".checkout__totals");
 export const $checkoutOrderTotalSum = document.querySelector(".checkout__totals-total-sum");
 export const $checkoutOrderSubtotal = document.querySelector("[data-totals='subtotal']");
 export const $checkoutOrderDiscount = document.querySelector("[data-totals='discount']");
-
-
+export const $checkoutCompleteBtn = document.querySelector(".checkout__complete");
 
 
 // Media

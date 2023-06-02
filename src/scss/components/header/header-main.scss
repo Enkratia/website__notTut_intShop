@@ -511,15 +511,16 @@
 
       // Bottom
       &__bottom {
-        display: none;
+        // display: none;
+        display: block;
         border-top: rem(1) solid var(--gray300-color);
         padding-top: rem(20);
         padding-left: rem(24);
         padding-right: rem(24);
 
-        &--show {
-          display: block;
-        }
+        // &--show {
+        //   display: block;
+        // }
       }
 
       &__subtotal {

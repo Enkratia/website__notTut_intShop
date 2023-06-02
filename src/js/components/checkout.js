@@ -1,7 +1,57 @@
 import * as v from "../vars.js";
+import * as lr from "./leave-review.js";
 import { Decimal } from 'decimal.js';
 
-export { calculateOrderTotal as $calculateOrderTotal, calculateDiscount as $calculateDiscount}
+export {
+  calculateOrderTotal as $calculateOrderTotal,
+  calculateDiscount as $calculateDiscount,
+  isBillingReady as $isBillingReady,
+  toggleCompleteBtn as $toggleCompleteBtn
+}
+
+// ==== BILLING ==== //
+const checkoutBilling = document.querySelector(".checkout__billing");
+const textInputs = checkoutBilling?.querySelectorAll("input.input");
+const selects = checkoutBilling?.querySelectorAll(".custom-select");
+
+// F(s)
+// **
+function toggleCompleteBtn() {
+  const isCartFull = v.$cartChoiceList.children.length;
+  v.$checkoutCompleteBtn.classList.toggle("btn--disabled", !isBillingReady() || !isCartFull);
+}
+
+// **
+function isBillingReady() {
+  const isInputsFilled = [...textInputs].every(el => {
+    return el.value.length !== 0;
+  });
+
+  const isSelectsSelected = [...selects].every(el => {
+    return el.classList.contains("custom-select--chosen");
+  });
+
+  if (isInputsFilled && isSelectsSelected) return true;
+
+  return false;
+}
+
+// L(s)
+if (checkoutBilling) {
+
+  // **
+  textInputs.forEach(el => {
+    el.addEventListener("blur", lr.$verifyTextInput.bind(el));
+    el.addEventListener("blur", toggleCompleteBtn);
+  });
+
+  // **
+  selects.forEach(el => {
+    el.addEventListener("blur", lr.$verifySelect.bind(el));
+    el.addEventListener("blur", toggleCompleteBtn);
+  });
+}
+
 
 // ==== METHOD ==== //
 // F(s)
@@ -28,8 +78,8 @@ function calculateDiscount(array) {
 // **
 function calculateOrderTotal() {
   const regExp = /(\$)(.+)/i;
-  let allCosts = document.querySelectorAll("[data-totals]");
-  
+  let allCosts = document.querySelectorAll("[data-totals]:not([data-totals='discount'])");
+
   allCosts = [...allCosts].map(el => {
     const cost = el.innerText.match(regExp);
     return cost ? cost[2] : 0;
@@ -64,4 +114,62 @@ function changeMethod(e) {
 
 // L(s)
 v.$checkoutMethod?.addEventListener("click", changeMethod);
+
+
+// ==== PAYMENT ==== //
+const paymentTops = document.querySelectorAll(".checkout__payment-top");
+
+// F(s)
+// **
+function hidePayment() {
+  const prevPaymentTop = document.querySelector(".checkout__payment-top--show");
+
+  if (prevPaymentTop) {
+    const prevPaymentBottom = prevPaymentTop.nextElementSibling;
+
+    prevPaymentTop.classList.remove("checkout__payment-top--show");
+    prevPaymentBottom.style.height = "";
+  }
+}
+
+// **
+function showPaymentMethodInit() {
+  const activePaymentMethod = document.querySelector(".checkout__payment-top--init");
+  activePaymentMethod.click();
+}
+
+// **
+function showPayment() {
+  if (this.classList.contains("checkout__payment-top--show")) return;
+  hidePayment();
+
+  this.classList.add("checkout__payment-top--show");
+
+  const nativeRadio = this.querySelector("input");
+  nativeRadio.dispatchEvent(new Event("change"));
+
+  const paymentBottom = this.nextElementSibling;
+  const paymentBottomHeight = paymentBottom.scrollHeight;
+  paymentBottom.style.height = paymentBottomHeight + "px";
+}
+
+// L(s)
+if (paymentTops[0]) {
+  paymentTops.forEach(el => {
+    el.addEventListener("click", showPayment);
+  });
+
+  showPaymentMethodInit();
+}
+
+// ==== COMPLETE ORDER BUTTON ==== //
+// F(s)
+function checkCheckoutForm(e) {
+  e.preventDefault();
+  lr.$checkForm(e, textInputs, selects);
+}
+
+// L(s)
+v.$checkoutCompleteBtn?.addEventListener("click", checkCheckoutForm);
+
 

@@ -78,10 +78,12 @@ function changeSelectValue(e, selected, thisSelect) {
   if (e.target.classList.contains("custom-select__item")) {
     selected.textContent = e.target.textContent;
     rearrangeClass(e.target, thisSelect);
-    cb.$rechargeProductButton(e.target);
-
     highlightChosen(thisSelect);
-    toggleActiveClassInCard(e.target);
+
+    if (v.$productCard) {
+      toggleActiveClassInCard(e.target);
+      cb.$rechargeProductButton(e.target);
+    }
   }
 }
 
@@ -141,8 +143,14 @@ function selectWithKeyboard(e) {
     this.classList.remove("custom-select--open");
   }
 
+  highlightChosen(this);
+
   this.addEventListener("blur", closeSelect.bind(this), { once: true });
-  cb.$rechargeProductButton(e.target);
+  
+  if (v.$productCard) {
+    toggleActiveClassInCard(e.target);
+    cb.$rechargeProductButton(e.target);
+  }
 }
 
 // L(s)

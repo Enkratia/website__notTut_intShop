@@ -30,7 +30,6 @@ import "./components/download.js";
 import "./components/review-message-tooltips.js";
 import "./components/checkout.js";
 import "./components/custom-radio.js";
-import "./components/checkout__payment.js";
 
 
 // Components multiple in one
@@ -41,10 +40,16 @@ import "./components/$overlayScrollbars.js";
 // Input mask
 import IMask from "imask";
 const cardNumber = document.getElementById("checkout-payment-number");
-const cardDate = document.getElementById("checkout-payment-date");
 
-const cardMask = IMask(cardNumber, {mask: "0000 0000 0000 0000"});
-const dateMask = IMask(cardDate, {mask: "00/00"});
+if (cardNumber) {
+  const cardDate = document.getElementById("checkout-payment-date");
+  const phoneNumber = document.getElementById("checkout-billing-phone");
+  
+  const cardMask = IMask(cardNumber, {mask: "0000 0000 0000 0000"});
+  const dateMask = IMask(cardDate, {mask: "00/00"});
+  const phoneMask = IMask(phoneNumber, {mask: "(000) 000-0000"});
+}
+
 
 
 // Scroll-top
