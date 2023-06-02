@@ -105,16 +105,16 @@ export const $downloadingFiles = $leaveReview?.querySelector(".download__files")
 // Checkout
 export const $checkoutProducts = document.querySelector(".checkout__products");
 export const $checkoutProductsList = $checkoutProducts?.querySelector(".checkout__products-list");
-export const $checkoutProductsSubtotal = $checkoutProducts?.querySelector(".checkout__products-subtotal");
 export const $checkoutProductsCount = $checkoutProducts?.querySelector(".checkout__products-subtotal-count");
 
 // **
 export const $checkoutMethod = document.querySelector(".checkout__method");
 export const $checkoutTotals = document.querySelector(".checkout__totals");
 
-//**
+// **
 export const $checkoutOrderTotalSum = document.querySelector(".checkout__totals-total-sum");
 export const $checkoutOrderSubtotal = document.querySelector("[data-totals='subtotal']");
+export const $checkoutOrderDiscount = document.querySelector("[data-totals='discount']");
 
 
 

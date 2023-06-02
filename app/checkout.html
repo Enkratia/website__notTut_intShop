@@ -1395,12 +1395,13 @@
             3. Shipping Method
           </h4>
 
-          <!-- Checkout billing -->
+          <!-- Checkout method -->
           <ul class="checkout__method">
 
             <!-- Box1 -->
             <li class="checkout__method-box">
-              <label class="checkout__method-radio custom-radio custom-radio--checked" role="radiogroup" tabindex="0" aria-checked="checked">
+              <label class="checkout__method-radio custom-radio custom-radio--checked" role="radiogroup" tabindex="0"
+                aria-checked="true">
                 <input type="radio" name="checkout-method-radio" hidden checked>
               </label>
 
@@ -1504,8 +1505,121 @@
             </li>
           </ul>
         </li>
-      </ul>
 
+        <!-- Checkout item4(Payment) -->
+        <li class="checkout__list-item">
+          <h4 class="checkout__list-title">
+            4. Payment Method
+          </h4>
+
+          <!-- Checkout payment -->
+          <ul class="checkout__payment">
+
+            <!-- Box1(Credit card) -->
+            <li class="checkout__payment-box">
+
+              <!-- Box top -->
+              <div class="checkout__payment-top checkout__payment-top--init">
+                <label class="checkout__payment-radio custom-radio custom-radio--checked" role="radiogroup" tabindex="0"
+                  aria-checked="true">
+                  <input type="radio" name="checkout-payment-radio" hidden checked>
+                </label>
+
+                <span class="checkout__payment-name">
+                  Credit card
+                </span>
+
+                <div class="checkout__payment-icon checkout__payment-icon--visa" aria-hidden="true"></div>
+                <div class="checkout__payment-icon checkout__payment-icon--mastercard" aria-hidden="true"></div>
+              </div>
+
+              <!-- Box bottom -->
+              <div class="checkout__payment-bottom">
+                <div class="checkout__payment-bottom-wrapper">
+                  <div class="checkout__payment-field">
+                    <label for="checkout-payment-number" class="checkout__payment-label">
+                      Card number
+                    </label>
+  
+                    <input type="text" class="checkout__payment-input input" id="checkout-payment-number"
+                      name="checkout-payment-number" placeholder="0000 0000 0000 0000">
+                  </div>
+  
+                  <div class="checkout__payment-field">
+                    <label for="checkout-payment-date" class="checkout__payment-label">
+                      Expiry date
+                    </label>
+  
+                    <input type="text" class="checkout__payment-input input" id="checkout-payment-date"
+                      name="checkout-payment-date" placeholder="mm/yy">
+                  </div>
+  
+                  <div class="checkout__payment-field">
+                    <label for="checkout-payment-cvc" class="checkout__payment-label">
+                      CVC
+                    </label>
+  
+                    <input type="password" class="checkout__payment-input input" id="checkout-payment-cvc"
+                      name="checkout-payment-cvc" placeholder="000" maxlength="3">
+                  </div>
+                </div>
+              </div>
+            </li>
+
+            <!-- Box2(PayPal) -->
+            <li class="checkout__payment-box">
+
+              <!-- Box top -->
+              <div class="checkout__payment-top">
+                <label class="checkout__payment-radio custom-radio" role="radiogroup" tabindex="0" aria-checked="false">
+                  <input type="radio" name="checkout-payment-radio" hidden>
+                </label>
+
+                <span class="checkout__payment-name">
+                  PayPal
+                </span>
+
+                <div class="checkout__payment-icon checkout__payment-icon--paypal" aria-hidden="true"></div>
+              </div>
+
+              <!-- Box bottom -->
+              <div class="checkout__payment-bottom checkout__payment-bottom--pt24">
+                <div class="checkout__payment-bottom-wrapper">
+                  <a href="#" class="checkout__payment-btn checkout__payment-btn--regular"
+                    aria-label="Pay with Paypal."></a>
+  
+                  <a href="#" class="checkout__payment-btn checkout__payment-btn--credit"
+                    aria-label="Pay with Paypal Credit."></a>
+                </div>
+              </div>
+            </li>
+
+            <!-- Box3(Cash) -->
+            <li class="checkout__payment-box">
+
+              <!-- Box top -->
+              <div class="checkout__payment-top">
+                <label class="checkout__payment-radio custom-radio" role="radiogroup" tabindex="0" aria-checked="false">
+                  <input type="radio" name="checkout-payment-radio" hidden>
+                </label>
+
+                <span class="checkout__payment-name">
+                  Cash on delivery
+                </span>
+              </div>
+
+              <!-- Box bottom -->
+              <div class="checkout__payment-bottom">
+                <div class="checkout__payment-bottom-wrapper">
+                  <span class="checkout__payment-cash">
+                    You have selected to pay with cash upon delivery.
+                  </span>
+                </div>
+              </div>
+            </li>
+          </ul>
+        </li>
+      </ul>
     </div>
 
     <!-- Right -->

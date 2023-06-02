@@ -1,25 +1,39 @@
 import * as v from "../vars.js";
 import * as che from "./checkout.js";
 
+let prevCustomRadio;
+
 // F(s)
 // **
 function checkCustomRadioWithKey(e) {
   if(e.key === "Enter") {
-    this.click();
+    this.dispatchEvent(new Event("change"));
   }
 }
 
 // **
-function checkCustomRadio() {
-  const prevActiveRadio = document.querySelector(".custom-radio--checked");
-  prevActiveRadio.classList.remove("custom-radio--checked");
-  prevActiveRadio.setAttribute("aria-checked", "false");
-  
-  const currentRadio = this.parentElement;
-  currentRadio.classList.add("custom-radio--checked");
-  currentRadio.setAttribute("aria-checked", "true");
+function toggleActiveClass(prev, current) {
+  prev.classList.remove("custom-radio--checked");
+  prev.setAttribute("aria-checked", "false");
 
-  che.$calculateOrderTotal();
+  current.classList.add("custom-radio--checked");
+  current.setAttribute("aria-checked", "true");
+}
+
+// **
+function checkCustomRadio() {
+  const currentCustomRadio = this.closest(".custom-radio");
+  
+  if (currentCustomRadio.classList.contains("checkout__payment-radio")) {
+    prevCustomRadio = document.querySelector(".checkout__payment-radio.custom-radio--checked");
+    toggleActiveClass(prevCustomRadio, currentCustomRadio);
+
+  } else if (currentCustomRadio.classList.contains("checkout__method-radio")) {
+    prevCustomRadio = document.querySelector(".checkout__mehtod-radio.custom-radio--checked");
+    toggleActiveClass(prevCustomRadio, currentCustomRadio);
+
+    che.$calculateOrderTotal();
+  }
 }
 
 // L(s)

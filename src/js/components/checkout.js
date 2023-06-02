@@ -1,10 +1,30 @@
 import * as v from "../vars.js";
 import { Decimal } from 'decimal.js';
 
-export { calculateOrderTotal as $calculateOrderTotal}
+export { calculateOrderTotal as $calculateOrderTotal, calculateDiscount as $calculateDiscount}
 
-// ==== SHIPPING METHOD ==== //
+// ==== METHOD ==== //
 // F(s)
+// **
+function calculateDiscount(array) {
+  let discountArray = [];
+
+  array.forEach(el => {
+    if (el.oldPrice) {
+      const discount = el.oldPrice.replace("$", "") - el.price.replace("$", "");
+      discountArray.push(discount);
+    }
+  });
+
+  if (discountArray.length === 0) {
+    v.$checkoutOrderDiscount.innerText = "—";
+    return;
+  }
+
+  const discountSum = Decimal.sum(...discountArray);
+  v.$checkoutOrderDiscount.innerText = "$" + discountSum.toFixed(2);
+}
+
 // **
 function calculateOrderTotal() {
   const regExp = /(\$)(.+)/i;
@@ -20,14 +40,14 @@ function calculateOrderTotal() {
 }
 
 // **
-function toggleActiveClass(meth) {
-  const customRadio = meth.querySelector(".custom-radio");
+function toggleActiveClass(met) {
+  const customRadio = met.querySelector(".custom-radio");
   customRadio.click();
 }
 
 // **
-function applyMethod(meth) {
-  const methodCost = meth.querySelector(".checkout__method-price").innerText;
+function applyMethod(met) {
+  const methodCost = met.querySelector(".checkout__method-price").innerText;
   const shippingCosts = v.$checkoutTotals.querySelector("[data-totals='shipping']");
   shippingCosts.innerText = methodCost;
 }

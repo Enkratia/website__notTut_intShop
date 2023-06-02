@@ -11,14 +11,21 @@ let productCartBtns;
 
 // F(s)
 // **
+function calculateCheckoutPrice(array, summ = undefined) {
+  v.$checkoutProductsCount.textContent = summ ? "$" + summ.toFixed(2) : "—";
+  v.$checkoutOrderSubtotal.textContent = summ ? "$" + summ.toFixed(2) : "—";
+  
+  che.$calculateDiscount(array);
+  che.$calculateOrderTotal();
+}
+
+// **
 function calculatePrice() {
   if (cartArray.length === 0) {
     v.$cartChoiceSubtotalSum.textContent = "$0";
 
     if (v.$checkoutProductsCount) {
-      v.$checkoutProductsCount.textContent = "$0";
-      v.$checkoutOrderSubtotal.textContent = "—";
-      che.$calculateOrderTotal();
+      calculateCheckoutPrice(cartArray);
     }
 
     return;
@@ -33,16 +40,14 @@ function calculatePrice() {
   v.$cartChoiceSubtotalSum.textContent = "$" + sum.toFixed(2);
 
   if (v.$checkoutProductsCount) {
-    v.$checkoutProductsCount.textContent = "$" + sum.toFixed(2);
-    v.$checkoutOrderSubtotal.textContent = "$" + sum.toFixed(2);
-    che.$calculateOrderTotal();
+    calculateCheckoutPrice(cartArray, sum);
   }
 }
 
 // **
 function showHideCartBottom() {
   v.$cartChoiceBottom.classList.toggle("cart-choice__bottom--show", cartArray.length);
-  v.$checkoutProductsSubtotal?.classList.toggle("checkout__products-subtotal--show", cartArray.length);
+  v.$checkoutProducts?.classList.toggle("checkout__products--show", cartArray.length);
   calculatePrice();
 }
 
