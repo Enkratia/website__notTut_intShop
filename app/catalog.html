@@ -12,7 +12,6 @@
 <body class="body">
 
   <header class="header" id="header">
-
   <div class="header-top header__top">
   <div class="header-top__container container" id="header-top-container">
     <div class="header-top__available available">
@@ -127,7 +126,7 @@
       <button class="login__btn">
         Log in
       </button>
-
+      
       <button class="login__btn">
         Register
       </button>
@@ -1067,6 +1066,7 @@
     </button>
   </div>
 </div>
+
   
 </header>
   <section class="special-offers special-offers__bot">
@@ -4965,6 +4965,136 @@
       </small>
     </div>
 </section> 
+
+  <div class="header__log log">
+  <div class="log__wrapper">
+    <div class="log__content">
+
+      <!-- Top -->
+      <div class="log__top">
+
+        <!-- Title -->
+        <h3 class="log__title">
+          Sign in
+        </h3>
+
+        <!-- Subtitle -->
+        <p class="log__subtitle">
+          Sign in to your account using email and password provided during registration.
+        </p>
+
+        <!-- Field1 -->
+        <div class="log__field">
+          <label for="log-in-email" class="log__label">
+            Email
+          </label>
+
+          <input type="text" class="log__input input" id="log-in-email" name="log-in-email"
+            placeholder="Your working email">
+        </div>
+
+        <!-- Field2 -->
+        <div class="log__field">
+          <label for="log-in-password" class="log__label">
+            Password
+          </label>
+
+          <div class="input-wrapper">
+            <input type="password" class="log__input input" id="log-in-password" name="log-in-password"
+              placeholder="&#183;&#183;&#183;&#183;&#183;&#183;&#183;&#183;&#183;&#183;&#183;&#183;&#183;">
+
+            <button class="log__show" aria-label="Show entered password.">
+              <svg xmlns='http://www.w3.org/2000/svg' aria-hidden='true'>
+                <use href='./img/sprite.svg#eye' aria-hidden='true'></use>
+              </svg>
+            </button>
+          </div>
+        </div>
+
+        <!-- Remembering -->
+        <div class="log__remembering">
+          <label class="log__remembering-keep">
+            <label class="log__remembering-checkbox custom-checkbox custom-checkbox--checked" tabindex="0"
+              role="checkbox" aria-checked="true">
+              <svg xmlns='http://www.w3.org/2000/svg'>
+                <use href='./img/sprite.svg#check'></use>
+              </svg>
+
+              <input type="hidden" name="subscribe-agreement-checkbox" value="0">
+              <input type="checkbox" class="custom-checkbox__input" name="log-in-checkbox" value="1" checked>
+            </label>
+
+            <span class="log__remembering-checktext">
+              Keep me signed in
+            </span>
+          </label>
+
+          <a href="#" class="log__remembering-forgot">
+            Forgot password?
+          </a>
+        </div>
+
+        <!-- Sign in button -->
+        <button class="log__button btn btn--mid">
+          Sign in
+        </button>
+
+        <!-- Switcher -->
+        <div class="log__switcher">
+          <span class="log__switcher-descr">
+            Don't have an account?
+          </span>
+
+          <a href="#" class="log__switcher-link">
+            Sign up
+          </a>
+        </div>
+      </div>
+
+      <!-- Divider -->
+      <p class="log__divider">
+        Or sign in with
+      </p>
+
+      <!-- Bottom -->
+      <div class="log__bottom">
+        <ul class="log__social social">
+          <li class="social__item">
+            <a href="#" target="_blank" class="social__link social__link--light" aria-label="Sign in with facebook.">
+              <svg xmlns='http://www.w3.org/2000/svg' aria-hidden="true">
+                <use href='./img/sprite.svg#facebook' aria-hidden="true"></use>
+              </svg>
+            </a>
+          </li>
+
+          <li class="social__item">
+            <a href="#" target="_blank" class="social__link social__link--light" aria-label="Sign in with google.">
+              <svg xmlns='http://www.w3.org/2000/svg' aria-hidden="true">
+                <use href='./img/sprite.svg#google' aria-hidden="true"></use>
+              </svg>
+            </a>
+          </li>
+
+          <li class="social__item">
+            <a href="#" target="_blank" class="social__link social__link--light" aria-label="Sign in with twitter.">
+              <svg xmlns='http://www.w3.org/2000/svg' aria-hidden="true">
+                <use href='./img/sprite.svg#twitter' aria-hidden="true"></use>
+              </svg>
+            </a>
+          </li>
+
+          <li class="social__item">
+            <a href="#" target="_blank" class="social__link social__link--light" aria-label="Sign in with linkedin.">
+              <svg xmlns='http://www.w3.org/2000/svg' aria-hidden="true">
+                <use href='./img/sprite.svg#linkedin' aria-hidden="true"></use>
+              </svg>
+            </a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
 
   <a class="scroll-top" aria-label="Scroll to top.">
     <svg xmlns='http://www.w3.org/2000/svg' aria-hidden="true">

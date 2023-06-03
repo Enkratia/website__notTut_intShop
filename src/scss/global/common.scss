@@ -1077,6 +1077,22 @@
         fill: var(--primary-color);
       }
     }
+
+    &--light {
+      background-color: var(--gray300-color);
+
+      svg {
+        fill: var(--gray700-color);
+      }
+
+      &:hover {
+        background-color: var(--primary01-color);
+
+        svg {
+          fill: var(--primary-color);
+        }
+      }
+    }
   }
 }
 

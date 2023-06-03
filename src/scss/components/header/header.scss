@@ -6,4 +6,165 @@
   top: 0;
   z-index: var(--z-fixed);
   width: 100%;
+
+  &__log {
+  }
+}
+
+.log {
+  position: fixed;
+  left: 0;
+  top: 0;
+  z-index: var(--z-modal);
+  
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: calc(100vh - (100vh - 100%));
+  background-color: var(--overlay-color);
+
+  &__wrapper {
+    display: inline-block;
+    overflow-y: auto;
+    width: 100%;
+    max-height: 100vh;
+    text-align: center;
+  }
+
+  &__content {
+    display: inline-block;
+    border: rem(1) solid var(--gray300-color);
+    border-radius: rem(4);
+    max-width: rem(486);
+    background-color: var(--white-color);
+  }
+
+  &__top {
+    padding: rem(47);
+    padding-bottom: rem(24);
+  }
+
+  &__title {
+    margin-bottom: rem(24);
+    font: var(--h3-font);
+    text-align: center;
+    color: var(--gray900-color);
+  }
+
+  &__subtitle {
+    margin-bottom: rem(24);
+    font: var(--small-regular);
+    letter-spacing: rem(0.1);
+    text-align: center;
+    color: var(--gray700-color);
+  }
+
+  // Field
+  &__field {
+    margin-bottom: rem(20);
+  }
+
+  &__label {
+    display: inline-block;
+    margin-bottom: rem(7);
+    font: var(--small-regular);
+    color: var(--gray800-color);
+  }
+
+  &__input {
+    padding-inline: rem(13);
+    width: 100%;
+
+    &-wrapper {
+      position: relative;
+    }
+
+    &[type="password"]::placeholder {
+      font-size: rem(30);
+      letter-spacing: rem(-0.2);
+      color: var(--gray800-color);
+      transform: translateY(rem(5));
+    }
+  }
+
+  &__show {
+    position: absolute;
+    right: rem(14);
+    top: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: rem(2);
+    transform: translateY(-50%);
+
+    svg {
+      width: rem(16);
+      height: rem(16);
+      fill: var(--gray800-color);
+    }
+  }
+
+  // Remembering
+  &__remembering {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: rem(24);
+    font: var(--small-regular);
+
+    &-keep {
+      display: flex;
+      align-items: center;
+    }
+
+    &-checkbox {
+      margin-right: rem(13);
+    }
+
+    &-checktext {
+      color: var(--gray800-color);
+    }
+
+    &-forgot {
+      color: var(--primary-color);
+    }
+  }
+
+  // Button
+  &__button {
+    margin-bottom: rem(24);
+    width: 100%;
+  }
+
+  // Switcher
+  &__switcher {
+    font: var(--small-regular);
+
+    &-descr {
+      color: var(--gray800-color);
+    }
+
+    &-link {
+      color: var(--primary-color);
+    }
+  }
+
+  // Divider
+  &__divider {
+    margin-bottom: rem(16);
+    border-top: rem(1) solid var(--gray300-color);
+    padding-top: rem(23);
+    font: var(--small-regular);
+    text-align: center;
+    color: var(--gray700-color);
+  }
+
+  // Bottom
+  &__bottom {
+    display: flex;
+    justify-content: center;
+    padding: rem(47);
+    padding-top: 0;
+  }
 }
