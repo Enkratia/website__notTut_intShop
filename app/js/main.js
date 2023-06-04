@@ -7083,10 +7083,23 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
+// ==== SIGN IN BUTTON ==== //
+// F(s)
+function signIn(e) {
+  e.preventDefault();
+  _vars_js__WEBPACK_IMPORTED_MODULE_0__.$loginBtnIn.click();
+}
+
+// L(s)
+_vars_js__WEBPACK_IMPORTED_MODULE_0__.$checkoutSignIn?.addEventListener("click", signIn);
+
 // ==== BILLING ==== //
 const checkoutBilling = document.querySelector(".checkout__billing");
-const textInputs = checkoutBilling?.querySelectorAll("input.input");
+const textInputs = checkoutBilling?.querySelectorAll(".input[type='text']:not(#checkout-billing-phone)");
+const emailInput = checkoutBilling?.querySelector(".input[type='email']");
+const phoneInput = checkoutBilling?.querySelector("#checkout-billing-phone");
 const selects = checkoutBilling?.querySelectorAll(".custom-select");
+const regExp = /^\S+@\S+\.\S+$/;
 
 // F(s)
 // **
@@ -7097,13 +7110,15 @@ function toggleCompleteBtn() {
 
 // **
 function isBillingReady() {
-  const isInputsFilled = [...textInputs].every(el => {
+  const isTextFilled = [...textInputs].every(el => {
     return el.value.length !== 0;
   });
   const isSelectsSelected = [...selects].every(el => {
     return el.classList.contains("custom-select--chosen");
   });
-  if (isInputsFilled && isSelectsSelected) return true;
+  const isEmailFilled = emailInput.value.match(regExp);
+  const isPhoneFilled = phoneInput.value.length === 14;
+  if (isTextFilled && isEmailFilled && isPhoneFilled && isSelectsSelected) return true;
   return false;
 }
 
@@ -7120,6 +7135,14 @@ if (checkoutBilling) {
     el.addEventListener("blur", _leave_review_js__WEBPACK_IMPORTED_MODULE_1__.$verifySelect.bind(el));
     el.addEventListener("blur", toggleCompleteBtn);
   });
+
+  // **
+  emailInput.addEventListener("blur", _leave_review_js__WEBPACK_IMPORTED_MODULE_1__.$verifyEmailInput.bind(emailInput));
+  emailInput.addEventListener("blur", toggleCompleteBtn);
+
+  // **
+  phoneInput.addEventListener("blur", _leave_review_js__WEBPACK_IMPORTED_MODULE_1__.$verifyPhone.bind(phoneInput));
+  phoneInput.addEventListener("blur", toggleCompleteBtn);
 }
 
 // ==== METHOD ==== //
@@ -7222,7 +7245,7 @@ if (paymentTops[0]) {
 // F(s)
 function checkCheckoutForm(e) {
   e.preventDefault();
-  _leave_review_js__WEBPACK_IMPORTED_MODULE_1__.$checkForm(e, textInputs, selects);
+  _leave_review_js__WEBPACK_IMPORTED_MODULE_1__.$checkForm(e, textInputs, selects, emailInput, phoneInput);
 }
 
 // L(s)
@@ -8350,15 +8373,21 @@ _vars_js__WEBPACK_IMPORTED_MODULE_0__.$inputNumberBtns.forEach(el => {
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "$checkForm": () => (/* binding */ checkForm),
+/* harmony export */   "$verifyEmailInput": () => (/* binding */ verifyEmailInput),
+/* harmony export */   "$verifyMatchPassword": () => (/* binding */ verifyMatchPassword),
+/* harmony export */   "$verifyPassword": () => (/* binding */ verifyPassword),
+/* harmony export */   "$verifyPhone": () => (/* binding */ verifyPhone),
 /* harmony export */   "$verifySelect": () => (/* binding */ verifySelect),
 /* harmony export */   "$verifyTextInput": () => (/* binding */ verifyTextInput)
 /* harmony export */ });
 /* harmony import */ var _vars_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../vars.js */ "./src/js/vars.js");
 
 
-const textInputs = _vars_js__WEBPACK_IMPORTED_MODULE_0__.$leaveReview?.querySelectorAll("input.input");
+const textInputs = _vars_js__WEBPACK_IMPORTED_MODULE_0__.$leaveReview?.querySelectorAll(".input[type='text']");
 const selects = _vars_js__WEBPACK_IMPORTED_MODULE_0__.$leaveReview?.querySelectorAll(".leave-review__sort-select");
 const textarea = _vars_js__WEBPACK_IMPORTED_MODULE_0__.$leaveReview?.querySelector(".leave-review__textarea");
+const emailInput = _vars_js__WEBPACK_IMPORTED_MODULE_0__.$leaveReview?.querySelector(".input[type='email']");
+const regExp = /^\S+@\S+\.\S+$/;
 
 // ==== CHECK LEAVE-REVIEW VALIDITY | TEXTAREA PLACEHOLDER ==== //
 // F(s)
@@ -8398,6 +8427,37 @@ function isTextareaEmpty() {
     textareaText = textareaText.replace(regExpResult[0], "");
   }
   return textareaText.length;
+}
+
+// ** (For: export + checkForm)
+function verifyPhone() {
+  if (this.value.length === 14) {
+    addSuccessClass(this);
+  }
+}
+
+// ** (For: export + checkForm)
+function verifyPassword() {
+  if (this.value.length > 5) {
+    addSuccessClass(this);
+  }
+}
+
+// ** (For: export + checkForm)
+function verifyMatchPassword(passwords) {
+  if (passwords[0].value.length > 5) {
+    addSuccessClass(passwords[0]);
+  }
+  if (passwords[0].value.length > 5 && passwords[0].value === passwords[1].value) {
+    addSuccessClass(passwords[1]);
+  }
+}
+
+// **
+function verifyEmailInput() {
+  if (this.value.match(regExp)) {
+    addSuccessClass(this);
+  }
 }
 
 // **
@@ -8445,18 +8505,40 @@ function resetForm() {
 }
 
 // ***
-function checkForm(e, inputsAll, selectsAll) {
+function checkForm(e, text, select, email, phone, passwords) {
   e.preventDefault();
-  inputsAll.forEach(el => {
+  text?.forEach(el => {
     if (el.value.length === 0) {
       addWarningClass(el);
     }
   });
-  selectsAll.forEach(el => {
+  select?.forEach(el => {
     if (!el.classList.contains("custom-select--chosen")) {
       const selectWrapper = el.closest(".custom-select__outer-wrapper");
       selectWrapper.classList.remove("custom-select__outer-wrapper--success");
       selectWrapper.classList.add("custom-select__outer-wrapper--warning");
+    }
+  });
+  if (email && !email.value.match(regExp)) {
+    addWarningClass(email);
+  }
+  if (phone && phone.value.length !== 14) {
+    addWarningClass(phone);
+  }
+  passwords?.forEach((el, idx) => {
+    if (passwords.length === 1) {
+      if (el.value.length < 6) {
+        addWarningClass(el);
+      }
+    } else {
+      if (idx === 0 && el.value.length < 6) {
+        removeWarningSuccessClasses(el);
+        addWarningClass(el);
+      }
+      if (idx === 1 && passwords[0].value !== passwords[1].value) {
+        removeWarningSuccessClasses(el);
+        addWarningClass(el);
+      }
     }
   });
   if (_vars_js__WEBPACK_IMPORTED_MODULE_0__.$leaveReview) {
@@ -8480,13 +8562,16 @@ if (_vars_js__WEBPACK_IMPORTED_MODULE_0__.$leaveReview) {
   });
 
   // **
+  emailInput.addEventListener("blur", verifyEmailInput);
+
+  // **
   textarea.addEventListener("blur", verifyTextarea);
 
   // **
   textarea.addEventListener("input", removeTextareaPlaceholder);
 
   // **
-  _vars_js__WEBPACK_IMPORTED_MODULE_0__.$leaveReviewSubmit.addEventListener("click", e => checkForm(e, textInputs, selects));
+  _vars_js__WEBPACK_IMPORTED_MODULE_0__.$leaveReviewSubmit.addEventListener("click", e => checkForm(e, textInputs, selects, emailInput));
 }
 
 // ==== CHECK HIDE LEAVE-REVIEW ==== //
@@ -8524,8 +8609,134 @@ if (_vars_js__WEBPACK_IMPORTED_MODULE_0__.$leaveReview) {
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _vars_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../vars.js */ "./src/js/vars.js");
+/* harmony import */ var _leave_review_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./leave-review.js */ "./src/js/components/leave-review.js");
 
 
+
+// ==== SHOW / HIDE LOG MODAL ==== //
+// F(s)
+// **
+function resetLogModal(modal) {
+  const inputs = modal.querySelectorAll(".input");
+  const successClasses = modal.querySelectorAll(".input-wrapper--success");
+  const warningClasses = modal.querySelectorAll(".input-wrapper--warning");
+  const showPasswordBtns = modal.querySelectorAll(".log__show");
+  const checkbox = modal.querySelector(".custom-checkbox");
+  inputs.forEach(el => {
+    el.value = "";
+  });
+  successClasses.forEach(el => {
+    el.classList.remove("input-wrapper--success");
+  });
+  warningClasses.forEach(el => {
+    el.classList.remove("input-wrapper--warning");
+  });
+  showPasswordBtns.forEach(el => {
+    if (el.classList.contains("log__show--active")) {
+      el.click();
+    }
+  });
+  if (!checkbox.classList.contains("custom-checkbox--checked")) {
+    checkbox.click();
+  }
+}
+
+// **
+function hideLogModal() {
+  const logModal = this.closest(".log");
+  logModal.classList.remove("log--show");
+  document.body.classList.remove("overflow-hidden");
+  resetLogModal(logModal);
+}
+
+// **
+function showLogRegisterModal() {
+  _vars_js__WEBPACK_IMPORTED_MODULE_0__.$logRegisterModal.classList.add("log--show");
+  document.body.classList.add("overflow-hidden");
+}
+
+// **
+function showLogInModal() {
+  _vars_js__WEBPACK_IMPORTED_MODULE_0__.$logInModal.classList.add("log--show");
+  document.body.classList.add("overflow-hidden");
+}
+
+// L(s)
+// **
+_vars_js__WEBPACK_IMPORTED_MODULE_0__.$loginBtnIn.addEventListener("click", showLogInModal);
+
+// **
+_vars_js__WEBPACK_IMPORTED_MODULE_0__.$loginBtnRegister.addEventListener("click", showLogRegisterModal);
+
+// **
+_vars_js__WEBPACK_IMPORTED_MODULE_0__.$logClose.forEach(el => {
+  el.addEventListener("click", hideLogModal);
+});
+
+// ==== VERIFY LOG-IN MODAL FORM ==== //
+const logInEmail = _vars_js__WEBPACK_IMPORTED_MODULE_0__.$logInModal.querySelector("#log-in-email");
+const logInPasswords = _vars_js__WEBPACK_IMPORTED_MODULE_0__.$logInModal.querySelectorAll("#log-in-password");
+const logInBtn = _vars_js__WEBPACK_IMPORTED_MODULE_0__.$logInModal.querySelector(".log__button");
+
+// F(s)
+// **
+function showPassword() {
+  const input = this.previousElementSibling;
+  this.classList.toggle("log__show--active");
+  if (this.classList.contains("log__show--active")) {
+    input.setAttribute("type", "text");
+  } else {
+    input.setAttribute("type", "password");
+  }
+}
+
+// L(s)
+// **
+logInEmail.addEventListener("blur", _leave_review_js__WEBPACK_IMPORTED_MODULE_1__.$verifyEmailInput);
+
+// **
+logInPasswords.forEach(el => {
+  el.addEventListener("blur", _leave_review_js__WEBPACK_IMPORTED_MODULE_1__.$verifyPassword);
+});
+
+// **
+logInBtn.addEventListener("click", e => {
+  _leave_review_js__WEBPACK_IMPORTED_MODULE_1__.$checkForm(e, null, null, logInEmail, null, logInPasswords);
+});
+
+// **
+_vars_js__WEBPACK_IMPORTED_MODULE_0__.$showPasswordBtns.forEach(el => {
+  el.addEventListener("click", showPassword);
+});
+
+// ==== VERIFY LOG-REGISTER MODAL FORM ==== //
+const logRegNames = _vars_js__WEBPACK_IMPORTED_MODULE_0__.$logRegisterModal.querySelectorAll("#log-register-name");
+const logRegEmail = _vars_js__WEBPACK_IMPORTED_MODULE_0__.$logRegisterModal.querySelector("#log-register-email");
+const logRegPasswords = _vars_js__WEBPACK_IMPORTED_MODULE_0__.$logRegisterModal.querySelectorAll(".input--password");
+const logRegBtn = _vars_js__WEBPACK_IMPORTED_MODULE_0__.$logRegisterModal.querySelector(".log__button");
+
+// L(s)
+// **
+logRegNames.forEach(el => {
+  el.addEventListener("blur", _leave_review_js__WEBPACK_IMPORTED_MODULE_1__.$verifyTextInput);
+});
+
+// **
+logRegEmail.addEventListener("blur", _leave_review_js__WEBPACK_IMPORTED_MODULE_1__.$verifyEmailInput);
+
+// **
+logRegPasswords.forEach(el => {
+  el.addEventListener("blur", function () {
+    _leave_review_js__WEBPACK_IMPORTED_MODULE_1__.$verifyMatchPassword(logRegPasswords);
+  });
+});
+
+// **
+logRegBtn.addEventListener("click", e => {
+  _leave_review_js__WEBPACK_IMPORTED_MODULE_1__.$checkForm(e, logRegNames, null, logRegEmail, null, logRegPasswords);
+});
+
+// ==== TRANSFER LOGIN ELEMENT (FOR TABLET) ==== //
 // F(s)
 function replaceLogin() {
   if (_vars_js__WEBPACK_IMPORTED_MODULE_0__.$mdq991.matches) {
@@ -10463,6 +10674,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "$checkoutProducts": () => (/* binding */ $checkoutProducts),
 /* harmony export */   "$checkoutProductsCount": () => (/* binding */ $checkoutProductsCount),
 /* harmony export */   "$checkoutProductsList": () => (/* binding */ $checkoutProductsList),
+/* harmony export */   "$checkoutSignIn": () => (/* binding */ $checkoutSignIn),
 /* harmony export */   "$checkoutTotals": () => (/* binding */ $checkoutTotals),
 /* harmony export */   "$counters": () => (/* binding */ $counters),
 /* harmony export */   "$customCheckboxes": () => (/* binding */ $customCheckboxes),
@@ -10477,6 +10689,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "$filterSliderRange": () => (/* binding */ $filterSliderRange),
 /* harmony export */   "$filterWrapper": () => (/* binding */ $filterWrapper),
 /* harmony export */   "$filterWrapperInner": () => (/* binding */ $filterWrapperInner),
+/* harmony export */   "$header": () => (/* binding */ $header),
 /* harmony export */   "$headerCartCount": () => (/* binding */ $headerCartCount),
 /* harmony export */   "$headerFavoriteCount": () => (/* binding */ $headerFavoriteCount),
 /* harmony export */   "$headerMainContainer": () => (/* binding */ $headerMainContainer),
@@ -10492,7 +10705,11 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "$leaveReviewBtn": () => (/* binding */ $leaveReviewBtn),
 /* harmony export */   "$leaveReviewClose": () => (/* binding */ $leaveReviewClose),
 /* harmony export */   "$leaveReviewSubmit": () => (/* binding */ $leaveReviewSubmit),
-/* harmony export */   "$login": () => (/* binding */ $login),
+/* harmony export */   "$logClose": () => (/* binding */ $logClose),
+/* harmony export */   "$logInModal": () => (/* binding */ $logInModal),
+/* harmony export */   "$logRegisterModal": () => (/* binding */ $logRegisterModal),
+/* harmony export */   "$loginBtnIn": () => (/* binding */ $loginBtnIn),
+/* harmony export */   "$loginBtnRegister": () => (/* binding */ $loginBtnRegister),
 /* harmony export */   "$looks": () => (/* binding */ $looks),
 /* harmony export */   "$marketingSlider": () => (/* binding */ $marketingSlider),
 /* harmony export */   "$marketingSliderItems": () => (/* binding */ $marketingSliderItems),
@@ -10521,6 +10738,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "$saleProducts": () => (/* binding */ $saleProducts),
 /* harmony export */   "$saleSlider": () => (/* binding */ $saleSlider),
 /* harmony export */   "$searchForm": () => (/* binding */ $searchForm),
+/* harmony export */   "$showPasswordBtns": () => (/* binding */ $showPasswordBtns),
 /* harmony export */   "$sidebarFilterLists": () => (/* binding */ $sidebarFilterLists),
 /* harmony export */   "$sidebarFilterTops": () => (/* binding */ $sidebarFilterTops),
 /* harmony export */   "$sidebarFiltersApplyBtn": () => (/* binding */ $sidebarFiltersApplyBtn),
@@ -10539,12 +10757,18 @@ __webpack_require__.r(__webpack_exports__);
 // Common //
 const $toolPags = document.querySelectorAll(".tool-pag");
 const $customRadios = document.querySelectorAll(".custom-radio");
+const $customSelects = document.querySelectorAll(".custom-select");
 
 // Header
-const $headerTopContainer = document.querySelector("#header-top-container");
-const $topNavBtn = document.querySelector("#top-nav-button");
-const $customSelects = document.querySelectorAll(".custom-select");
-const $login = document.querySelector("#login");
+const $header = document.querySelector("#header");
+const $headerTopContainer = $header.querySelector("#header-top-container");
+const $topNavBtn = $headerTopContainer.querySelector("#top-nav-button");
+const $loginBtnIn = $headerTopContainer.querySelector("#login-btn-in");
+const $loginBtnRegister = $headerTopContainer.querySelector("#login-btn-register");
+const $logInModal = $header.querySelector("#log-in");
+const $logRegisterModal = $header.querySelector("#log-register");
+const $logClose = $header.querySelectorAll(".log__close");
+const $showPasswordBtns = $header.querySelectorAll(".log__show");
 
 // **
 const $headerMainContainer = document.querySelector("#header-main-container");
@@ -10646,6 +10870,7 @@ const $checkoutProductsList = $checkoutProducts?.querySelector(".checkout__produ
 const $checkoutProductsCount = $checkoutProducts?.querySelector(".checkout__products-subtotal-count");
 
 // **
+const $checkoutSignIn = document.querySelector(".checkout .head__bottom-btn");
 const $checkoutMethod = document.querySelector(".checkout__method");
 const $checkoutTotals = document.querySelector(".checkout__totals");
 

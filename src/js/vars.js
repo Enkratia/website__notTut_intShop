@@ -2,12 +2,19 @@
 // Common //
 export const $toolPags = document.querySelectorAll(".tool-pag");
 export const $customRadios = document.querySelectorAll(".custom-radio");
+export const $customSelects = document.querySelectorAll(".custom-select");
 
 // Header
-export const $headerTopContainer = document.querySelector("#header-top-container");
-export const $topNavBtn = document.querySelector("#top-nav-button");
-export const $customSelects = document.querySelectorAll(".custom-select");
-export const $login = document.querySelector("#login");
+export const $header = document.querySelector("#header");
+export const $headerTopContainer = $header.querySelector("#header-top-container");
+export const $topNavBtn = $headerTopContainer.querySelector("#top-nav-button");
+export const $loginBtnIn = $headerTopContainer.querySelector("#login-btn-in");
+export const $loginBtnRegister = $headerTopContainer.querySelector("#login-btn-register");
+export const $logInModal = $header.querySelector("#log-in");
+export const $logRegisterModal = $header.querySelector("#log-register");
+export const $logClose = $header.querySelectorAll(".log__close");
+export const $showPasswordBtns = $header.querySelectorAll(".log__show");
+
 
 // **
 export const $headerMainContainer = document.querySelector("#header-main-container");
@@ -110,6 +117,7 @@ export const $checkoutProductsList = $checkoutProducts?.querySelector(".checkout
 export const $checkoutProductsCount = $checkoutProducts?.querySelector(".checkout__products-subtotal-count");
 
 // **
+export const $checkoutSignIn = document.querySelector(".checkout .head__bottom-btn");
 export const $checkoutMethod = document.querySelector(".checkout__method");
 export const $checkoutTotals = document.querySelector(".checkout__totals");
 

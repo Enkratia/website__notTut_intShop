@@ -123,11 +123,11 @@
     </div>
 
     <div class="header-top__login login" id="login">
-      <button class="login__btn">
+      <button class="login__btn" id="login-btn-in">
         Log in
       </button>
       
-      <button class="login__btn">
+      <button class="login__btn" id="login-btn-register">
         Register
       </button>
 
@@ -1067,7 +1067,301 @@
   </div>
 </div>
 
-  
+  <!-- Log in -->
+<form class="header__log log" id="log-in">
+  <div class="log__wrapper">
+    <div class="log__content">
+
+      <!-- Top -->
+      <div class="log__top">
+
+        <!-- Title -->
+        <h3 class="log__title">
+          Sign in
+        </h3>
+
+        <!-- Subtitle -->
+        <p class="log__subtitle">
+          Sign in to your account using email and password provided during registration.
+        </p>
+
+        <!-- Field1 -->
+        <div class="log__field">
+          <label for="log-in-email" class="log__label">
+            Email
+          </label>
+
+          <div class="input-wrapper" data-validity="email">
+            <input type="email" class="log__input input" id="log-in-email" name="log-in-email"
+              placeholder="Your working email">
+          </div>
+        </div>
+
+        <!-- Field2 -->
+        <div class="log__field">
+          <label for="log-in-password" class="log__label">
+            Password
+          </label>
+
+          <div class="input-wrapper" data-validity="pass-length">
+            <input type="password" class="log__input input input--password" id="log-in-password" name="log-in-password"
+              placeholder="&#183;&#183;&#183;&#183;&#183;&#183;&#183;&#183;&#183;&#183;&#183;&#183;&#183;">
+
+            <button type="button" class="log__show" aria-label="Show entered password."></button>
+          </div>
+        </div>
+
+        <!-- Remembering -->
+        <div class="log__remembering">
+          <label class="log__remembering-keep">
+            <label class="log__remembering-checkbox custom-checkbox custom-checkbox--checked" tabindex="0"
+              role="checkbox" aria-checked="true">
+              <svg xmlns='http://www.w3.org/2000/svg'>
+                <use href='./img/sprite.svg#check'></use>
+              </svg>
+
+              <input type="hidden" name="log-in-checkbox" value="0">
+              <input type="checkbox" class="custom-checkbox__input" name="log-in-checkbox" value="1" checked>
+            </label>
+
+            <span class="log__remembering-checktext">
+              Keep me signed in
+            </span>
+          </label>
+
+          <a href="#" class="log__remembering-forgot">
+            Forgot password?
+          </a>
+        </div>
+
+        <!-- Sign in button -->
+        <button class="log__button btn btn--mid">
+          Sign in
+        </button>
+
+        <!-- Switcher -->
+        <div class="log__switcher">
+          <span class="log__switcher-descr">
+            Don't have an account?
+          </span>
+
+          <a href="#" class="log__switcher-link">
+            Sign up
+          </a>
+        </div>
+      </div>
+
+      <!-- Divider -->
+      <p class="log__divider">
+        Or sign in with
+      </p>
+
+      <!-- Bottom -->
+      <div class="log__bottom">
+        <ul class="log__social social">
+          <li class="social__item">
+            <a href="#" target="_blank" class="social__link social__link--light" aria-label="Sign in with facebook.">
+              <svg xmlns='http://www.w3.org/2000/svg' aria-hidden="true">
+                <use href='./img/sprite.svg#facebook' aria-hidden="true"></use>
+              </svg>
+            </a>
+          </li>
+
+          <li class="social__item">
+            <a href="#" target="_blank" class="social__link social__link--light" aria-label="Sign in with google.">
+              <svg xmlns='http://www.w3.org/2000/svg' aria-hidden="true">
+                <use href='./img/sprite.svg#google' aria-hidden="true"></use>
+              </svg>
+            </a>
+          </li>
+
+          <li class="social__item">
+            <a href="#" target="_blank" class="social__link social__link--light" aria-label="Sign in with twitter.">
+              <svg xmlns='http://www.w3.org/2000/svg' aria-hidden="true">
+                <use href='./img/sprite.svg#twitter' aria-hidden="true"></use>
+              </svg>
+            </a>
+          </li>
+
+          <li class="social__item">
+            <a href="#" target="_blank" class="social__link social__link--light" aria-label="Sign in with linkedin.">
+              <svg xmlns='http://www.w3.org/2000/svg' aria-hidden="true">
+                <use href='./img/sprite.svg#linkedin' aria-hidden="true"></use>
+              </svg>
+            </a>
+          </li>
+        </ul>
+      </div>
+
+      <!-- Close -->
+      <button type="button" class="log__close" aria-label="Close this modal window.">
+        <svg xmlns='http://www.w3.org/2000/svg' aria-hidden='true'>
+          <use href='./img/sprite.svg#cross' aria-hidden='true'></use>
+        </svg>
+      </button>
+    </div>
+  </div>
+</form>
+
+<!-- Log register -->
+<form class="header__log log" id="log-register">
+  <div class="log__wrapper">
+    <div class="log__content">
+
+      <!-- Top -->
+      <div class="log__top">
+
+        <!-- Title -->
+        <h3 class="log__title">
+          Sign up
+        </h3>
+
+        <!-- Subtitle -->
+        <p class="log__subtitle">
+          Registration takes less than a minute but gives you full control over your orders.
+        </p>
+
+        <!-- Field1 -->
+        <div class="log__field">
+          <label for="log-register-name" class="log__label">
+            Full Name
+          </label>
+
+          <div class="input-wrapper">
+            <input type="text" class="log__input input" id="log-register-name" name="log-register-name"
+              placeholder="Your full name">
+          </div>
+        </div>
+
+        <!-- Field2 -->
+        <div class="log__field">
+          <label for="log-register-email" class="log__label">
+            Email
+          </label>
+
+          <div class="input-wrapper" data-validity="email">
+            <input type="email" class="log__input input" id="log-register-email" name="log-register-email"
+              placeholder="Your working email">
+          </div>
+        </div>
+
+        <!-- Field3 -->
+        <div class="log__field">
+          <label for="log-register-password" class="log__label">
+            Password
+          </label>
+
+          <div class="input-wrapper" data-validity="pass-length">
+            <input type="password" class="log__input input input--password" id="log-register-password"
+              name="log-register-password"
+              placeholder="&#183;&#183;&#183;&#183;&#183;&#183;&#183;&#183;&#183;&#183;&#183;&#183;&#183;">
+
+            <button type="button" class="log__show" aria-label="Show entered password."></button>
+          </div>
+        </div>
+
+        <!-- Field4 -->
+        <div class="log__field">
+          <label for="log-register-confirm-password" class="log__label">
+            Confirm Password
+          </label>
+
+          <div class="input-wrapper" data-validity="pass-confirm">
+            <input type="password" class="log__input input input--password" id="log-register-confirm-password"
+              name="log-register-password"
+              placeholder="&#183;&#183;&#183;&#183;&#183;&#183;&#183;&#183;&#183;&#183;&#183;&#183;&#183;">
+
+            <button type="button" class="log__show" aria-label="Show entered password."></button>
+          </div>
+        </div>
+
+        <!-- Remembering -->
+        <div class="log__remembering">
+          <label class="log__remembering-keep">
+            <label class="log__remembering-checkbox custom-checkbox custom-checkbox--checked" tabindex="0"
+              role="checkbox" aria-checked="true">
+              <svg xmlns='http://www.w3.org/2000/svg'>
+                <use href='./img/sprite.svg#check'></use>
+              </svg>
+
+              <input type="hidden" name="log-register-checkbox" value="0">
+              <input type="checkbox" class="custom-checkbox__input" name="log-register-checkbox" value="1" checked>
+            </label>
+
+            <span class="log__remembering-checktext">
+              Remember me
+            </span>
+          </label>
+        </div>
+
+        <!-- Sign in button -->
+        <button class="log__button btn btn--mid">
+          Sign up
+        </button>
+
+        <!-- Switcher -->
+        <div class="log__switcher">
+          <span class="log__switcher-descr">
+            Already have an account?
+          </span>
+
+          <a href="#" class="log__switcher-link">
+            Sign in
+          </a>
+        </div>
+      </div>
+
+      <!-- Divider -->
+      <p class="log__divider">
+        Or sign in with
+      </p>
+
+      <!-- Bottom -->
+      <div class="log__bottom">
+        <ul class="log__social social">
+          <li class="social__item">
+            <a href="#" target="_blank" class="social__link social__link--light" aria-label="Sign in with facebook.">
+              <svg xmlns='http://www.w3.org/2000/svg' aria-hidden="true">
+                <use href='./img/sprite.svg#facebook' aria-hidden="true"></use>
+              </svg>
+            </a>
+          </li>
+
+          <li class="social__item">
+            <a href="#" target="_blank" class="social__link social__link--light" aria-label="Sign in with google.">
+              <svg xmlns='http://www.w3.org/2000/svg' aria-hidden="true">
+                <use href='./img/sprite.svg#google' aria-hidden="true"></use>
+              </svg>
+            </a>
+          </li>
+
+          <li class="social__item">
+            <a href="#" target="_blank" class="social__link social__link--light" aria-label="Sign in with twitter.">
+              <svg xmlns='http://www.w3.org/2000/svg' aria-hidden="true">
+                <use href='./img/sprite.svg#twitter' aria-hidden="true"></use>
+              </svg>
+            </a>
+          </li>
+
+          <li class="social__item">
+            <a href="#" target="_blank" class="social__link social__link--light" aria-label="Sign in with linkedin.">
+              <svg xmlns='http://www.w3.org/2000/svg' aria-hidden="true">
+                <use href='./img/sprite.svg#linkedin' aria-hidden="true"></use>
+              </svg>
+            </a>
+          </li>
+        </ul>
+      </div>
+
+      <!-- Close -->
+      <button type="button" class="log__close" aria-label="Close this modal window.">
+        <svg xmlns='http://www.w3.org/2000/svg' aria-hidden='true'>
+          <use href='./img/sprite.svg#cross' aria-hidden='true'></use>
+        </svg>
+      </button>
+    </div>
+  </div>
+</form>
 </header>
   <section class="special-offers special-offers__bot">
   <div class="special-offers__container container">
@@ -1250,8 +1544,8 @@
                   Email
                 </label>
 
-                <div class="input-wrapper">
-                  <input type="text" class="checkout__billing-input input" id="checkout-billing-email"
+                <div class="input-wrapper" data-validty="email">
+                  <input type="email" class="checkout__billing-input input" id="checkout-billing-email"
                     name="checkout-billing-email" placeholder="Your working email">
                 </div>
               </div>

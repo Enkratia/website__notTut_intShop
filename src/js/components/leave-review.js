@@ -3,12 +3,19 @@ import * as v from "../vars.js";
 export {
   verifySelect as $verifySelect,
   verifyTextInput as $verifyTextInput,
-  checkForm as $checkForm
+  checkForm as $checkForm,
+  verifyEmailInput as $verifyEmailInput,
+  verifyPhone as $verifyPhone,
+  verifyPassword as $verifyPassword,
+  verifyMatchPassword as $verifyMatchPassword
 }
 
-const textInputs = v.$leaveReview?.querySelectorAll("input.input");
+const textInputs = v.$leaveReview?.querySelectorAll(".input[type='text']");
 const selects = v.$leaveReview?.querySelectorAll(".leave-review__sort-select");
 const textarea = v.$leaveReview?.querySelector(".leave-review__textarea");
+const emailInput = v.$leaveReview?.querySelector(".input[type='email']");
+
+const regExp = /^\S+@\S+\.\S+$/;
 
 // ==== CHECK LEAVE-REVIEW VALIDITY | TEXTAREA PLACEHOLDER ==== //
 // F(s)
@@ -52,6 +59,38 @@ function isTextareaEmpty() {
   }
 
   return textareaText.length;
+}
+
+// ** (For: export + checkForm)
+function verifyPhone() {
+  if (this.value.length === 14) {
+    addSuccessClass(this);
+  }
+}
+
+// ** (For: export + checkForm)
+function verifyPassword() {
+  if (this.value.length > 5) {
+    addSuccessClass(this);
+  }
+}
+
+// ** (For: export + checkForm)
+function verifyMatchPassword(passwords) {
+  if (passwords[0].value.length > 5) {
+    addSuccessClass(passwords[0]);
+  }
+
+  if (passwords[0].value.length > 5 && passwords[0].value === passwords[1].value) {
+    addSuccessClass(passwords[1]);
+  }
+}
+
+// **
+function verifyEmailInput() {
+  if (this.value.match(regExp)) {
+    addSuccessClass(this);
+  }
 }
 
 // **
@@ -105,16 +144,16 @@ function resetForm() {
 }
 
 // ***
-function checkForm(e, inputsAll, selectsAll) {
+function checkForm(e, text, select, email, phone, passwords) {
   e.preventDefault();
 
-  inputsAll.forEach(el => {
+  text?.forEach(el => {
     if (el.value.length === 0) {
       addWarningClass(el);
     }
   });
 
-  selectsAll.forEach(el => {
+  select?.forEach(el => {
     if (!el.classList.contains("custom-select--chosen")) {
       const selectWrapper = el.closest(".custom-select__outer-wrapper");
       selectWrapper.classList.remove("custom-select__outer-wrapper--success");
@@ -122,6 +161,32 @@ function checkForm(e, inputsAll, selectsAll) {
     }
   });
 
+  if (email && !email.value.match(regExp)) {
+    addWarningClass(email);
+  }
+
+  if (phone && phone.value.length !== 14) {
+    addWarningClass(phone);
+  }
+
+  passwords?.forEach((el, idx) => {
+    if (passwords.length === 1) {
+      if (el.value.length < 6) {
+        addWarningClass(el);
+      }
+
+    } else {
+      if (idx === 0 && el.value.length < 6) {
+        removeWarningSuccessClasses(el);
+        addWarningClass(el);
+      }
+      
+      if (idx === 1 &&  passwords[0].value !== passwords[1].value) {
+        removeWarningSuccessClasses(el);
+        addWarningClass(el);
+      }
+    }
+  });
 
   if (v.$leaveReview) {
     const isEmpty = isTextareaEmpty();
@@ -134,7 +199,7 @@ function checkForm(e, inputsAll, selectsAll) {
 
 // L(s)
 if (v.$leaveReview) {
-  
+
   // **
   textInputs.forEach(el => {
     el.addEventListener("blur", verifyTextInput);
@@ -146,16 +211,17 @@ if (v.$leaveReview) {
   });
 
   // **
+  emailInput.addEventListener("blur", verifyEmailInput);
+
+  // **
   textarea.addEventListener("blur", verifyTextarea);
 
   // **
   textarea.addEventListener("input", removeTextareaPlaceholder);
 
   // **
-  v.$leaveReviewSubmit.addEventListener("click", (e) => checkForm(e, textInputs, selects));
+  v.$leaveReviewSubmit.addEventListener("click", (e) => checkForm(e, textInputs, selects, emailInput));
 }
-
-
 
 // ==== CHECK HIDE LEAVE-REVIEW ==== //
 // F(s)
@@ -175,7 +241,7 @@ function showLeaveReview() {
 
 // L(s)
 if (v.$leaveReview) {
-  
+
   // ** 
   v.$leaveReviewBtn.addEventListener("click", showLeaveReview);
 

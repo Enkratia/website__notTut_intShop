@@ -9,10 +9,25 @@ export {
   toggleCompleteBtn as $toggleCompleteBtn
 }
 
+// ==== SIGN IN BUTTON ==== //
+// F(s)
+function signIn(e) {
+  e.preventDefault();
+  v.$loginBtnIn.click();
+}
+
+// L(s)
+v.$checkoutSignIn?.addEventListener("click", signIn);
+
+
 // ==== BILLING ==== //
 const checkoutBilling = document.querySelector(".checkout__billing");
-const textInputs = checkoutBilling?.querySelectorAll("input.input");
+const textInputs = checkoutBilling?.querySelectorAll(".input[type='text']:not(#checkout-billing-phone)");
+const emailInput = checkoutBilling?.querySelector(".input[type='email']");
+const phoneInput = checkoutBilling?.querySelector("#checkout-billing-phone");
 const selects = checkoutBilling?.querySelectorAll(".custom-select");
+
+const regExp = /^\S+@\S+\.\S+$/;
 
 // F(s)
 // **
@@ -23,7 +38,7 @@ function toggleCompleteBtn() {
 
 // **
 function isBillingReady() {
-  const isInputsFilled = [...textInputs].every(el => {
+  const isTextFilled = [...textInputs].every(el => {
     return el.value.length !== 0;
   });
 
@@ -31,7 +46,11 @@ function isBillingReady() {
     return el.classList.contains("custom-select--chosen");
   });
 
-  if (isInputsFilled && isSelectsSelected) return true;
+  const isEmailFilled = emailInput.value.match(regExp);
+
+  const isPhoneFilled = phoneInput.value.length === 14;
+  
+  if (isTextFilled && isEmailFilled && isPhoneFilled && isSelectsSelected) return true;
 
   return false;
 }
@@ -50,6 +69,14 @@ if (checkoutBilling) {
     el.addEventListener("blur", lr.$verifySelect.bind(el));
     el.addEventListener("blur", toggleCompleteBtn);
   });
+
+  // **
+  emailInput.addEventListener("blur", lr.$verifyEmailInput.bind(emailInput));
+  emailInput.addEventListener("blur", toggleCompleteBtn);
+
+  // **
+  phoneInput.addEventListener("blur", lr.$verifyPhone.bind(phoneInput));
+  phoneInput.addEventListener("blur", toggleCompleteBtn);
 }
 
 
@@ -166,7 +193,7 @@ if (paymentTops[0]) {
 // F(s)
 function checkCheckoutForm(e) {
   e.preventDefault();
-  lr.$checkForm(e, textInputs, selects);
+  lr.$checkForm(e, textInputs, selects, emailInput, phoneInput);
 }
 
 // L(s)

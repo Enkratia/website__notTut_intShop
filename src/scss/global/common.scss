@@ -123,6 +123,32 @@
       .input {
         border-color: var(--danger-color);
       }
+
+      &[data-validity="email"] {
+        &::before {
+          content: "Email must contain «@» and «.»";
+        }
+      }
+
+      &[data-validity="pass-length"] {
+        &::before {
+          content: "Password must contain at least 6 characters.";
+        }
+
+        &::after {
+          content: none;
+        }
+      }
+
+      &[data-validity="pass-confirm"] {
+        &::before {
+          content: "Passwords do not match.";
+        }
+
+        &::after {
+          content: none;
+        }
+      }
     }
 
     &--success {
@@ -142,6 +168,21 @@
       .input {
         border-color: var(--success-color);
       }
+
+      &[data-validity^="pass-"] {
+        &::after {
+          content: none;
+        }
+      }
+    }
+  }
+
+  &--password {
+    &::placeholder {
+      font-size: rem(30);
+      letter-spacing: rem(-0.2);
+      color: var(--gray800-color);
+      transform: translateY(rem(5));
     }
   }
 

@@ -1,3 +1,4 @@
+@charset "UTF-8";
 @font-face {
   src: url("../fonts/Lato-Black.woff2") format("woff2");
   font-family: "Lato";
@@ -2114,6 +2115,9 @@ button {
   --pink-color: #ffc0cb;
   --malachite-color: #1fdf58;
   --dandelion-color: #f2ea2b;
+  --primary-filter: invert(28%) sepia(11%) saturate(5606%) hue-rotate(143deg) brightness(97%) contrast(82%);
+  --gray800-filter: invert(24%) sepia(4%) saturate(1974%) hue-rotate(191deg) brightness(97%) contrast(87%);
+  --success-filter: invert(79%) sepia(37%) saturate(5566%) hue-rotate(118deg) brightness(91%) contrast(98%);
   --h1-font: 900 2.875rem / 130% "Lato", sans-serif;
   --h2-font: 900 2rem / 130% "Lato", sans-serif;
   --h3-font: 700 1.75rem / 150% "Lato", sans-serif;
@@ -2460,6 +2464,21 @@ button {
 .input-wrapper--warning .input {
   border-color: var(--danger-color);
 }
+.input-wrapper--warning[data-validity=email]::before {
+  content: "Email must contain «@» and «.»";
+}
+.input-wrapper--warning[data-validity=pass-length]::before {
+  content: "Password must contain at least 6 characters.";
+}
+.input-wrapper--warning[data-validity=pass-length]::after {
+  content: none;
+}
+.input-wrapper--warning[data-validity=pass-confirm]::before {
+  content: "Passwords do not match.";
+}
+.input-wrapper--warning[data-validity=pass-confirm]::after {
+  content: none;
+}
 .input-wrapper--success::before {
   content: "Looks good!";
   color: var(--success-color);
@@ -2473,6 +2492,44 @@ button {
 }
 .input-wrapper--success .input {
   border-color: var(--success-color);
+}
+.input-wrapper--success[data-validity^=pass-]::after {
+  content: none;
+}
+.input--password::-webkit-input-placeholder {
+  font-size: 1.875rem;
+  letter-spacing: -0.0125rem;
+  color: var(--gray800-color);
+  -webkit-transform: translateY(0.3125rem);
+  transform: translateY(0.3125rem);
+}
+.input--password::-moz-placeholder {
+  font-size: 1.875rem;
+  letter-spacing: -0.0125rem;
+  color: var(--gray800-color);
+  transform: translateY(0.3125rem);
+}
+.input--password:-ms-input-placeholder {
+  font-size: 1.875rem;
+  letter-spacing: -0.0125rem;
+  color: var(--gray800-color);
+  -ms-transform: translateY(0.3125rem);
+  transform: translateY(0.3125rem);
+}
+.input--password::-ms-input-placeholder {
+  font-size: 1.875rem;
+  letter-spacing: -0.0125rem;
+  color: var(--gray800-color);
+  -ms-transform: translateY(0.3125rem);
+  transform: translateY(0.3125rem);
+}
+.input--password::placeholder {
+  font-size: 1.875rem;
+  letter-spacing: -0.0125rem;
+  color: var(--gray800-color);
+  -webkit-transform: translateY(0.3125rem);
+  -ms-transform: translateY(0.3125rem);
+  transform: translateY(0.3125rem);
 }
 .input:focus {
   border-color: var(--input-hover-color);
@@ -4017,11 +4074,14 @@ button {
   z-index: var(--z-fixed);
   width: 100%;
 }
-.log {
+.header__log {
   position: fixed;
   left: 0;
   top: 0;
   z-index: var(--z-modal);
+}
+
+.log {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -4034,15 +4094,22 @@ button {
   width: 100%;
   height: calc(100vh - (100vh - 100%));
   background-color: var(--overlay-color);
+  opacity: 0;
+  visibility: hidden;
+  -webkit-transition: all 0.3s;
+  -o-transition: all 0.3s;
+  transition: all 0.3s;
 }
 .log__wrapper {
-  display: inline-block;
   overflow-y: auto;
+  padding-block: 0.625rem;
+  padding-inline: 0.5625rem;
   width: 100%;
-  max-height: 100vh;
+  max-height: 100%;
   text-align: center;
 }
 .log__content {
+  position: relative;
   display: inline-block;
   border: 0.0625rem solid var(--gray300-color);
   border-radius: 0.25rem;
@@ -4068,6 +4135,7 @@ button {
 }
 .log__field {
   margin-bottom: 1.25rem;
+  text-align: initial;
 }
 .log__label {
   display: inline-block;
@@ -4081,41 +4149,6 @@ button {
 }
 .log__input-wrapper {
   position: relative;
-}
-.log__input[type=password]::-webkit-input-placeholder {
-  font-size: 1.875rem;
-  letter-spacing: -0.0125rem;
-  color: var(--gray800-color);
-  -webkit-transform: translateY(0.3125rem);
-  transform: translateY(0.3125rem);
-}
-.log__input[type=password]::-moz-placeholder {
-  font-size: 1.875rem;
-  letter-spacing: -0.0125rem;
-  color: var(--gray800-color);
-  transform: translateY(0.3125rem);
-}
-.log__input[type=password]:-ms-input-placeholder {
-  font-size: 1.875rem;
-  letter-spacing: -0.0125rem;
-  color: var(--gray800-color);
-  -ms-transform: translateY(0.3125rem);
-  transform: translateY(0.3125rem);
-}
-.log__input[type=password]::-ms-input-placeholder {
-  font-size: 1.875rem;
-  letter-spacing: -0.0125rem;
-  color: var(--gray800-color);
-  -ms-transform: translateY(0.3125rem);
-  transform: translateY(0.3125rem);
-}
-.log__input[type=password]::placeholder {
-  font-size: 1.875rem;
-  letter-spacing: -0.0125rem;
-  color: var(--gray800-color);
-  -webkit-transform: translateY(0.3125rem);
-  -ms-transform: translateY(0.3125rem);
-  transform: translateY(0.3125rem);
 }
 .log__show {
   position: absolute;
@@ -4135,10 +4168,27 @@ button {
   -ms-transform: translateY(-50%);
   transform: translateY(-50%);
 }
-.log__show svg {
+.log__show::before {
+  content: "";
   width: 1rem;
   height: 1rem;
-  fill: var(--gray800-color);
+  background-image: url("../img/eye.svg");
+  background-position: center;
+  background-repeat: no-repeat;
+  -webkit-filter: var(--gray800-filter);
+  filter: var(--gray800-filter);
+  -webkit-transition: -webkit-filter 0.3s;
+  transition: -webkit-filter 0.3s;
+  -o-transition: filter 0.3s;
+  transition: filter 0.3s;
+  transition: filter 0.3s, -webkit-filter 0.3s;
+}
+.log__show:hover::before {
+  -webkit-filter: var(--primary-filter);
+  filter: var(--primary-filter);
+}
+.log__show--active::before {
+  background-image: url("../img/eye-closed.svg");
 }
 .log__remembering {
   display: -webkit-box;
@@ -4176,6 +4226,7 @@ button {
 }
 .log__switcher {
   font: var(--small-regular);
+  text-align: initial;
 }
 .log__switcher-descr {
   color: var(--gray800-color);
@@ -4200,6 +4251,28 @@ button {
   justify-content: center;
   padding: 2.9375rem;
   padding-top: 0;
+}
+.log__close {
+  position: absolute;
+  right: 1.25rem;
+  top: 1.25rem;
+  z-index: var(--z-up);
+  padding: 0.125rem;
+}
+.log__close svg {
+  width: 1.625rem;
+  height: 1.625rem;
+  fill: var(--gray700-color);
+  -webkit-transition: fill 0.3s;
+  -o-transition: fill 0.3s;
+  transition: fill 0.3s;
+}
+.log__close:hover svg {
+  fill: var(--gray800-color);
+}
+.log--show {
+  opacity: 1;
+  visibility: visible;
 }
 
 .header-top {
