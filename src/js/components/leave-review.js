@@ -146,7 +146,7 @@ function resetForm() {
 // ***
 function checkForm(e, text, select, email, phone, passwords) {
   e.preventDefault();
-
+  
   text?.forEach(el => {
     if (el.value.length === 0) {
       addWarningClass(el);

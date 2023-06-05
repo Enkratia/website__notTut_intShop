@@ -1,0 +1,175 @@
+@use "../util/" as *;
+
+.my-profile {
+  padding-top: rem(40);
+  padding-bottom: rem(180);
+
+  &__container {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+  }
+
+  // Content
+  .profile-content {
+    max-width: rem(810);
+
+    // Top
+    &__top {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: rem(40);
+      width: 100%;
+    }
+
+    &__title {
+      font: var(--h2-font);
+      color: var(--gray900-color);
+    }
+
+    &__delete {
+      display: inline-flex;
+      align-items: center;
+      font: var(--base-bold);
+      color: var(--danger-color);
+
+      svg {
+        margin-right: rem(7);
+        width: rem(20);
+        height: rem(20);
+        fill: currentcolor;
+      }
+    }
+
+    // Form
+    &__form {
+      display: flex;
+      flex-wrap: wrap;
+      width: 100%;
+    }
+
+    &__field {
+      width: calc(50% - rem(15));
+
+      &:not(:nth-last-child(-n+2)) {
+        margin-bottom: rem(23.5);
+      }
+
+      &:nth-last-child(-n+2) {
+        margin-bottom: rem(48);
+      }
+
+      &:nth-child(odd) {
+        margin-right: rem(30);
+      }
+
+      @include bp-down("576") {
+        width: 100%;
+
+        &:not(:last-child) {
+          margin-bottom: rem(24);
+        }
+
+        &:nth-child(odd) {
+          margin-right: 0;
+        }
+      }
+    }
+
+    &__label {
+      display: inline-block;
+      margin-bottom: rem(9);
+      font: var(--base-regular);
+      color: var(--gray800-color);
+    }
+
+    &__input {
+      display: block;
+      width: 100%;
+      height: rem(52);
+      font: var(--base-regular);
+
+      &::placeholder {
+        font: inherit;
+      }
+    }
+
+    &__select-outer-wrapper {
+      width: 100%;
+    }
+
+    &__sort {
+      display: flex;
+      align-items: center;
+
+      &-select {
+        width: 100%;
+      }
+
+      &-head {
+        justify-content: space-between;
+        padding-top: rem(13);
+        padding-right: rem(15);
+        padding-bottom: rem(15);
+        padding-left: rem(12);
+        font: var(--base-regular);
+        color: var(--gray600-color);
+
+        svg {
+          position: relative;
+          top: rem(2.5);
+          width: rem(19);
+          height: rem(9);
+          fill: var(--gray800-color);
+        }
+
+        &:hover {
+          color: var(--gray800--color);
+        }
+      }
+
+      &-item {
+        font: var(--base-regular);
+      }
+
+      &-wrapper {
+        width: 100%;
+      }
+    }
+
+    &__show {
+      position: absolute;
+      right: rem(15);
+      top: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: rem(2);
+      transform: translateY(-50%);
+
+      &::before {
+        content: "";
+        width: rem(18);
+        height: rem(18);
+        background-image: url("../img/eye.svg");
+        background-position: center;
+        background-repeat: no-repeat;
+        filter: var(--gray800-filter);
+        transition: filter 0.3s;
+      }
+
+      &:hover {
+        &::before {
+          filter: var(--primary-filter);
+        }
+      }
+
+      &--active {
+        &::before {
+          background-image: url("../img/eye-closed.svg");
+        }
+      }
+    }
+  }
+}

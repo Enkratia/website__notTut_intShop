@@ -7211,6 +7211,7 @@ function hidePayment() {
   if (prevPaymentTop) {
     const prevPaymentBottom = prevPaymentTop.nextElementSibling;
     prevPaymentTop.classList.remove("checkout__payment-top--show");
+    prevPaymentTop.setAttribute("aria-expanded", "false");
     prevPaymentBottom.style.height = "";
   }
 }
@@ -7226,6 +7227,7 @@ function showPayment() {
   if (this.classList.contains("checkout__payment-top--show")) return;
   hidePayment();
   this.classList.add("checkout__payment-top--show");
+  this.setAttribute("aria-expanded", "true");
   const nativeRadio = this.querySelector("input");
   nativeRadio.dispatchEvent(new Event("change"));
   const paymentBottom = this.nextElementSibling;
@@ -8608,8 +8610,12 @@ if (_vars_js__WEBPACK_IMPORTED_MODULE_0__.$leaveReview) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "$showPassword": () => (/* binding */ showPassword)
+/* harmony export */ });
 /* harmony import */ var _vars_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../vars.js */ "./src/js/vars.js");
 /* harmony import */ var _leave_review_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./leave-review.js */ "./src/js/components/leave-review.js");
+
 
 
 
@@ -8989,6 +8995,111 @@ window.addEventListener("resize", () => {
     });
   }, 50);
 });
+
+/***/ }),
+
+/***/ "./src/js/components/my-profile.js":
+/*!*****************************************!*\
+  !*** ./src/js/components/my-profile.js ***!
+  \*****************************************/
+/***/ ((__unused_webpack___webpack_module__, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _vars_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../vars.js */ "./src/js/vars.js");
+/* harmony import */ var _leave_review_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./leave-review.js */ "./src/js/components/leave-review.js");
+
+
+const myProfileSection = document.querySelector("#my-profile");
+const showPasswordBtns = myProfileSection.querySelectorAll(".profile-content__show");
+const profileSelectLists = myProfileSection.querySelectorAll(".custom-select__list");
+const country = "USA";
+const city = "New Jersey";
+
+// ==== SHOW PASSWORD / INIT SELECTS ==== //
+// F(s)
+// **
+function initSelects(country, city) {
+  const countrySelectList = profileSelectLists[0].children;
+  const countrySelectListArray = [...countrySelectList];
+  const citySelectList = profileSelectLists[1].children;
+  const citySelectListArray = [...citySelectList];
+  for (let i = 0; i < countrySelectList.length; i++) {
+    if (countrySelectListArray[i].innerText === country) {
+      countrySelectListArray[i].click();
+      countrySelectListArray[i].click();
+      break;
+    }
+  }
+  for (let i = 0; i < citySelectList.length; i++) {
+    if (citySelectListArray[i].innerText === city) {
+      citySelectListArray[i].click();
+      citySelectListArray[i].click();
+      break;
+    }
+  }
+}
+initSelects(country, city);
+
+// **
+function showPassword() {
+  const input = this.previousElementSibling;
+  this.classList.toggle("profile-content__show--active");
+  if (this.classList.contains("profile-content__show--active")) {
+    input.setAttribute("type", "text");
+  } else {
+    input.setAttribute("type", "password");
+  }
+}
+
+// L(s)
+// **
+showPasswordBtns.forEach(el => {
+  el.addEventListener("click", showPassword);
+});
+
+// ==== CHECK PROFILE FORM ==== //
+const textInputs = myProfileSection.querySelectorAll(".input[type='text']:not(#profile-form-phone)");
+const passwords = myProfileSection.querySelectorAll(".input--password");
+const selects = myProfileSection.querySelectorAll(".custom-select");
+const email = myProfileSection.querySelector("#profile-form-email");
+const phone = myProfileSection.querySelector("#profile-form-phone");
+const saveChangesBtn = myProfileSection.querySelector(".profile-content__btn");
+
+// F(s)
+function checkProfileForm(e) {
+  e.preventDefault();
+  if (passwords[0].value.trim() || passwords[1].value.trim()) {
+    _leave_review_js__WEBPACK_IMPORTED_MODULE_1__.$checkForm(e, textInputs, selects, email, phone, passwords);
+  } else {
+    _leave_review_js__WEBPACK_IMPORTED_MODULE_1__.$checkForm(e, textInputs, selects, email, phone, null);
+  }
+}
+
+// L(s)
+// **
+textInputs.forEach(el => {
+  el.addEventListener("blur", _leave_review_js__WEBPACK_IMPORTED_MODULE_1__.$verifyTextInput);
+});
+
+// **
+passwords.forEach(el => {
+  el.addEventListener("blur", () => _leave_review_js__WEBPACK_IMPORTED_MODULE_1__.$verifyMatchPassword(passwords));
+});
+
+// **
+selects.forEach(el => {
+  el.addEventListener("blur", _leave_review_js__WEBPACK_IMPORTED_MODULE_1__.$verifySelect);
+});
+
+// **
+email.addEventListener("blur", _leave_review_js__WEBPACK_IMPORTED_MODULE_1__.$verifyEmailInput);
+
+// **
+phone.addEventListener("blur", _leave_review_js__WEBPACK_IMPORTED_MODULE_1__.$verifyPhone);
+
+// **
+saveChangesBtn.addEventListener("click", checkProfileForm);
 
 /***/ }),
 
@@ -10026,9 +10137,13 @@ __webpack_require__.r(__webpack_exports__);
 
 // F(s)
 function showTabContent() {
+  if (!this || !this.classList.contains("tab")) return;
   const tabs = this.closest(".product-card__tabs");
-  tabs.querySelector(".tab--active").classList.remove("tab--active");
+  const prevTab = tabs.querySelector(".tab--active");
+  prevTab.classList.remove("tab--active");
+  prevTab.setAttribute("aria-selected", "false");
   this.classList.add("tab--active");
+  this.setAttribute("aria-selected", "true");
 }
 
 // L(s)
@@ -31835,10 +31950,12 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _components_review_message_tooltips_js__WEBPACK_IMPORTED_MODULE_28__ = __webpack_require__(/*! ./components/review-message-tooltips.js */ "./src/js/components/review-message-tooltips.js");
 /* harmony import */ var _components_checkout_js__WEBPACK_IMPORTED_MODULE_29__ = __webpack_require__(/*! ./components/checkout.js */ "./src/js/components/checkout.js");
 /* harmony import */ var _components_custom_radio_js__WEBPACK_IMPORTED_MODULE_30__ = __webpack_require__(/*! ./components/custom-radio.js */ "./src/js/components/custom-radio.js");
-/* harmony import */ var _components_$swipers_js__WEBPACK_IMPORTED_MODULE_31__ = __webpack_require__(/*! ./components/$swipers.js */ "./src/js/components/$swipers.js");
-/* harmony import */ var _components_$overlayScrollbars_js__WEBPACK_IMPORTED_MODULE_32__ = __webpack_require__(/*! ./components/$overlayScrollbars.js */ "./src/js/components/$overlayScrollbars.js");
-/* harmony import */ var imask__WEBPACK_IMPORTED_MODULE_33__ = __webpack_require__(/*! imask */ "./node_modules/imask/esm/index.js");
+/* harmony import */ var _components_my_profile_js__WEBPACK_IMPORTED_MODULE_31__ = __webpack_require__(/*! ./components/my-profile.js */ "./src/js/components/my-profile.js");
+/* harmony import */ var _components_$swipers_js__WEBPACK_IMPORTED_MODULE_32__ = __webpack_require__(/*! ./components/$swipers.js */ "./src/js/components/$swipers.js");
+/* harmony import */ var _components_$overlayScrollbars_js__WEBPACK_IMPORTED_MODULE_33__ = __webpack_require__(/*! ./components/$overlayScrollbars.js */ "./src/js/components/$overlayScrollbars.js");
+/* harmony import */ var imask__WEBPACK_IMPORTED_MODULE_34__ = __webpack_require__(/*! imask */ "./node_modules/imask/esm/index.js");
 // Components
+
 
 
 
@@ -31881,16 +31998,22 @@ const cardNumber = document.getElementById("checkout-payment-number");
 if (cardNumber) {
   const cardDate = document.getElementById("checkout-payment-date");
   const phoneNumber = document.getElementById("checkout-billing-phone");
-  const cardMask = (0,imask__WEBPACK_IMPORTED_MODULE_33__["default"])(cardNumber, {
+  const cardMask = (0,imask__WEBPACK_IMPORTED_MODULE_34__["default"])(cardNumber, {
     mask: "0000 0000 0000 0000"
   });
-  const dateMask = (0,imask__WEBPACK_IMPORTED_MODULE_33__["default"])(cardDate, {
+  const dateMask = (0,imask__WEBPACK_IMPORTED_MODULE_34__["default"])(cardDate, {
     mask: "00/00"
   });
-  const phoneMask = (0,imask__WEBPACK_IMPORTED_MODULE_33__["default"])(phoneNumber, {
+  const phoneMask = (0,imask__WEBPACK_IMPORTED_MODULE_34__["default"])(phoneNumber, {
     mask: "(000) 000-0000"
   });
 }
+
+// === My profile === //
+const profilePhoneNumber = document.getElementById("profile-form-phone");
+const profilePhoneMask = (0,imask__WEBPACK_IMPORTED_MODULE_34__["default"])(profilePhoneNumber, {
+  mask: "(000) 000-0000"
+});
 
 // Scroll-top
 const scrollTop = document.querySelector(".scroll-top");

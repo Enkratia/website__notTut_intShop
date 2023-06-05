@@ -32,3 +32,7 @@
 // Components checkout
 @forward "./components/breadcrumbs-checkout";
 @forward "./components/checkout";
+
+// Components account (all pages)
+@forward "./components/breadcrumbs-my-profile";
+@forward "./components/my-profile";

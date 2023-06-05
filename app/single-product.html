@@ -1476,30 +1476,36 @@
 
     <!-- Tabs -->
     <div class="product-card__tabs-wrapper">
-      <div class="product-card__tabs" data-overlayscrollbars-initialize>
-        <label for="general-info" class="product-card__tab tab tab--active" role="button" tabindex="0">
-          General info
-        </label>
+      <ul class="product-card__tabs" role="tablist" data-overlayscrollbars-initialize>
+        <li class="product-card__tabs-item" role="presentation">
+          <label for="general-info" class="product-card__tab tab tab--active" role="tab" aria-selected="true">
+            General info
+          </label>
+        </li>
 
-        <label for="product-details" class="product-card__tab tab" role="button" tabindex="0">
-          Product details
-        </label>
+        <li class="product-card__tabs-item" role="presentation">
+          <label for="product-details" class="product-card__tab tab" role="tab" aria-selected="false">
+            Product details
+          </label>
+        </li>
 
-        <label for="product-card-reviews" class="product-card__tab tab" role="button" tabindex="0">
-          Reviews
+        <li class="product-card__tabs-item" role="presentation">
+          <label for="product-card-reviews" class="product-card__tab tab" role="tab" aria-selected="false">
+            Reviews
 
-          <span class="tab__count">
-            12
-          </span>
-        </label>
-      </div>
+            <span class="tab__count">
+              12
+            </span>
+          </label>
+        </li>
+      </ul>
     </div>
 
     <!-- General info -->
     <div class="product-card__general-wrapper">
       <input type="radio" name="product-card-main-tab" id="general-info" hidden checked>
 
-      <div class="product-card__general">
+      <div class="product-card__general" id="general-info" role="tabpanel">
 
         <!-- Left -->
         <div class="product-card__left">
@@ -1922,13 +1928,14 @@
           </div>
         </div>
       </div>
+
     </div>
 
     <!-- Product details -->
     <div class="product-card__details-wrapper">
       <input type="radio" name="product-card-main-tab" id="product-details" hidden>
 
-      <div class="product-card__details details">
+      <div class="product-card__details details" id="product-details" role="tabpanel">
 
         <!-- Left -->
         <div class="details__left">
@@ -2196,7 +2203,7 @@
     <div class="product-card__reviews-wrapper">
       <input type="radio" name="product-card-main-tab" id="product-card-reviews" hidden>
 
-      <div class="product-card__reviews-content reviews-content">
+      <div class="product-card__reviews-content reviews-content" id="product-card-reviews" role="tabpanel">
 
         <!-- Left -->
         <div class="reviews-content__left">

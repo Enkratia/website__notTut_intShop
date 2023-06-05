@@ -1,0 +1,314 @@
+<section class="my-profile" id="my-profile">
+  <div class="my-profile__container container">
+
+    <!-- Account menu -->
+    <div class="my-profile__account-menu account-menu">
+      <div class="account-menu__top">
+        <h5 class="account-menu__name">
+          Annette Black
+        </h5>
+  
+        <p class="account-menu__email">
+          annetteb@example.com
+        </p>
+      </div>
+
+      <!-- Links -->
+      <ul class="account-menu__links">
+
+        <!-- Item1 -->
+        <li class="account-menu__item">
+          <a href="#" class="account-menu__link account-menu__link--active">
+            <svg xmlns='http://www.w3.org/2000/svg' aria-hidden='true'>
+              <use href='./img/sprite.svg#person' aria-hidden='true'></use>
+            </svg>
+
+            <span class="account-menu__link-name">
+              My profile
+            </span>
+          </a>
+        </li>
+
+        <!-- Item2 -->
+        <li class="account-menu__item">
+          <a href="#" class="account-menu__link">
+            <svg xmlns='http://www.w3.org/2000/svg' aria-hidden='true'>
+              <use href='./img/sprite.svg#wallet-2' aria-hidden='true'></use>
+            </svg>
+
+            <span class="account-menu__link-name">
+              My orders
+            </span>
+          </a>
+        </li>
+
+        <!-- Item3 -->
+        <li class="account-menu__item">
+          <a href="#" class="account-menu__link">
+            <svg xmlns='http://www.w3.org/2000/svg' aria-hidden='true'>
+              <use href='./img/sprite.svg#heart' aria-hidden='true'></use>
+            </svg>
+
+            <span class="account-menu__link-name">
+              Wishlist
+            </span>
+
+            <span class="account-menu__link-count" aria-label="Number of products in wishlist.">
+              2
+            </span>
+          </a>
+        </li>
+
+        <!-- Item4 -->
+        <li class="account-menu__item">
+          <a href="#" class="account-menu__link">
+            <svg xmlns='http://www.w3.org/2000/svg' aria-hidden='true'>
+              <use href='./img/sprite.svg#eye' aria-hidden='true'></use>
+            </svg>
+
+            <span class="account-menu__link-name">
+              Recently viewed
+            </span>
+          </a>
+        </li>
+
+        <!-- Item5 -->
+        <li class="account-menu__item">
+          <a href="#" class="account-menu__link">
+            <svg xmlns='http://www.w3.org/2000/svg' aria-hidden='true'>
+              <use href='./img/sprite.svg#star' aria-hidden='true'></use>
+            </svg>
+
+            <span class="account-menu__link-name">
+              My reviews
+            </span>
+          </a>
+        </li>
+
+        <!-- Item6 -->
+        <li class="account-menu__item">
+          <a href="#" class="account-menu__link">
+            <svg xmlns='http://www.w3.org/2000/svg' aria-hidden='true'>
+              <use href='./img/sprite.svg#logout' aria-hidden='true'></use>
+            </svg>
+
+            <span class="account-menu__link-name">
+              Sign out
+            </span>
+          </a>
+        </li>
+      </ul>
+    </div>
+
+    <!-- Content -->
+    <div class="my-profile__content profile-content">
+      <div class="profile-content__top">
+        <h2 class="profile-content__title">
+          My profile
+        </h2>
+
+        <button class="profile-content__delete">
+          <svg xmlns='http://www.w3.org/2000/svg' aria-hidden='true'>
+            <use href='./img/sprite.svg#bin' aria-hidden='true'></use>
+          </svg>
+
+          Delete account
+        </button>
+      </div>
+
+      <!-- Form -->
+      <form class="profile-content__form">
+
+        <!-- Field1 -->
+        <div class="profile-content__field">
+          <label for="profile-form-first-name" class="profile-content__label">
+            First name
+          </label>
+
+          <div class="input-wrapper">
+            <input type="text" class="profile-content__input input" id="profile-form-first-name"
+              name="profile-form-first-name" placeholder="Your first name" value="Annette">
+          </div>
+        </div>
+
+        <!-- Field2 -->
+        <div class="profile-content__field">
+          <label for="profile-form-last-name" class="profile-content__label">
+            Last name
+          </label>
+
+          <div class="input-wrapper">
+            <input type="text" class="profile-content__input input" id="profile-form-last-name"
+              name="profile-form-last-name" placeholder="Your last name" value="Black">
+          </div>
+        </div>
+
+        <!-- Field3 -->
+        <div class="profile-content__field">
+          <label for="profile-form-email" class="profile-content__label">
+            Email
+          </label>
+
+          <div class="input-wrapper" data-validity="email">
+            <input type="email" class="profile-content__input input" id="profile-form-email" name="profile-form-email"
+              placeholder="Your working email" value="annetteb@example.com">
+          </div>
+        </div>
+
+        <!-- Field4 -->
+        <div class="profile-content__field">
+          <label for="profile-form-phone" class="profile-content__label">
+            Phone
+          </label>
+
+          <div class="input-wrapper">
+            <input type="text" class="profile-content__input input" id="profile-form-phone" name="profile-form-phone"
+              placeholder="Your phone number" value="(629) 555-0129">
+          </div>
+        </div>
+
+        <!-- Field5 -->
+        <div class="profile-content__field">
+          <label for="profile-form-password" class="profile-content__label">
+            New Password
+          </label>
+
+          <div class="input-wrapper" data-validity="pass-length">
+            <input type="password" class="profile-content__input input input--password" id="profile-form-password"
+              name="profile-form-password">
+
+            <button type="button" class="profile-content__show" aria-label="Show entered password."></button>
+          </div>
+        </div>
+
+        <!-- Field6 -->
+        <div class="profile-content__field">
+          <label for="profile-form-confirm-password" class="profile-content__label">
+            Confirm Password
+          </label>
+
+          <div class="input-wrapper" data-validity="pass-confirm">
+            <input type="password" class="profile-content__input input input--password" id="profile-form-confirm-password"
+              name="profile-form-confirm-password">
+
+            <button type="button" class="profile-content__show" aria-label="Show entered password."></button>
+          </div>
+        </div>
+
+        <!-- Field7 -->
+        <div class="profile-content__field">
+          <label for="" class="profile-content__label">
+            Country
+          </label>
+
+          <div class="custom-select__outer-wrapper profile-content__select-outer-wrapper">
+            <div class="custom-select custom-select--light profile-content__sort-select" role="listbox" tabindex="0">
+              <input type="hidden" class="profile-content-select-hidden" name="profile-form-select-hidden">
+
+              <div class="custom-select__head custom-select__head--light profile-content__sort-head">
+                <span class="custom-select__selected profile-content__sort-selected">
+                  Choose your country
+                </span>
+
+                <svg class="custom-select__icon" xmlns='http://www.w3.org/2000/svg'>
+                  <use href='./img/sprite.svg#angle-down'></use>
+                </svg>
+              </div>
+
+              <div class="custom-select__inner-wrapper profile-content__sort-wrapper">
+                <ul class="custom-select__list profile-content__sort-list" data-overlayscrollbars-initialize>
+                  <li class="custom-select__item custom-select__item--active profile-content__sort-item">
+                    Choose your country
+                  </li>
+
+                  <li class="custom-select__item profile-content__sort-item">
+                    Russia
+                  </li>
+
+                  <li class="custom-select__item profile-content__sort-item">
+                    Nepal
+                  </li>
+
+                  <li class="custom-select__item profile-content__sort-item">
+                    USA
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Field8 -->
+        <div class="profile-content__field">
+          <label for="" class="profile-content__label">
+            City
+          </label>
+
+          <div class="custom-select__outer-wrapper profile-content__select-outer-wrapper">
+            <div class="custom-select custom-select--light profile-content__sort-select" role="listbox" tabindex="0">
+              <input type="hidden" class="profile-content-select-hidden" name="profile-form-select-hidden">
+
+              <div class="custom-select__head custom-select__head--light profile-content__sort-head">
+                <span class="custom-select__selected profile-content__sort-selected">
+                  Choose your city
+                </span>
+
+                <svg class="custom-select__icon" xmlns='http://www.w3.org/2000/svg'>
+                  <use href='./img/sprite.svg#angle-down'></use>
+                </svg>
+              </div>
+
+              <div class="custom-select__inner-wrapper profile-content__sort-wrapper">
+                <ul class="custom-select__list profile-content__sort-list" data-overlayscrollbars-initialize>
+                  <li class="custom-select__item custom-select__item--active profile-content__sort-item">
+                    Choose your city
+                  </li>
+
+                  <li class="custom-select__item profile-content__sort-item">
+                    Moscow
+                  </li>
+
+                  <li class="custom-select__item profile-content__sort-item">
+                    Delhi
+                  </li>
+
+                  <li class="custom-select__item profile-content__sort-item">
+                    New Jersey
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Field9 -->
+        <div class="profile-content__field">
+          <label for="profile-form-address" class="profile-content__label">
+            Address
+          </label>
+
+          <div class="input-wrapper">
+            <input type="text" class="profile-content__input input" id="profile-form-address" name="profile-form-address"
+              placeholder="Your address" value="2464 Royal Ln. Mesa, New Jersey">
+          </div>
+        </div>
+
+        <!-- Field10 -->
+        <div class="profile-content__field">
+          <label for="profile-form-zip" class="profile-content__label">
+            ZIP Code
+          </label>
+
+          <div class="input-wrapper">
+            <input type="text" class="profile-content__input input" id="profile-form-zip" name="profile-form-zip"
+              placeholder="Your ZIP code" value="45463">
+          </div>
+        </div>
+
+        <button class="profile-content__btn btn btn--lg">
+          Save changes
+        </button>
+      </form>
+    </div>
+  </div>
+</section>

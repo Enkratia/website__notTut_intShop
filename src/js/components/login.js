@@ -1,6 +1,8 @@
 import * as v from "../vars.js";
 import * as lr from "./leave-review.js";
 
+export { showPassword as $showPassword}
+
 // ==== SHOW / HIDE LOG MODAL ==== //
 // F(s)
 // **

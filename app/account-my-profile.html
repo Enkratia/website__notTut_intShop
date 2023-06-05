@@ -6,7 +6,7 @@
   <meta name='viewport' content='width=device-width, initial-scale=1.0'>
   <script src='js/main.js' defer></script>
   <link rel='stylesheet' href='css/main.css'>
-  <title>Checkout</title>
+  <title>My profile</title>
 </head>
 
 <body class="body">
@@ -1421,616 +1421,350 @@
     </div>
   </div>
 </section>
-  <section class="breadcrumbs-checkout">
-  <div class="breadcrumbs-checkout__container container">
+  <section class="breadcrumbs-my-profile">
+  <div class="breadcrumbs-my-profile__container container">
 
     <!-- Breadcrumbs list -->
-    <ul class="breadcrumbs-checkout__list">
+    <ul class="breadcrumbs-my-profile__list">
 
       <!-- Item1 -->
-      <li class="breadcrumbs-checkout__item">
-        <a href="#" class="breadcrumbs-checkout__link">
-          <svg xmlns='http://www.w3.org/2000/svg' aria-hidden="true">
-            <use href='./img/sprite.svg#home' aria-hidden="true"></use>
+      <li class="breadcrumbs-my-profile__item">
+        <a href="#" class="breadcrumbs-my-profile__link">
+          <svg xmlns='http://www.w3.org/2000/svg'>
+            <use href='./img/sprite.svg#home'></use>
           </svg>
         </a>
       </li>
 
       <!-- Item2 -->
-      <li class="breadcrumbs-checkout__item">
-        <a href="#" class="breadcrumbs-checkout__link">
-          Checkout
+      <li class="breadcrumbs-my-profile__item">
+        <a href="#" class="breadcrumbs__link">
+          Account
+        </a>
+      </li>
+
+      <!-- Item3 -->
+      <li class="breadcrumbs-my-profile__item">
+        <a href="#" class="breadcrumbs__link">
+          My profile
         </a>
       </li>
     </ul>
   </div>
 </section>
-  <section class="checkout">
-  <form class="checkout__container container container--40">
+  <section class="my-profile" id="my-profile">
+  <div class="my-profile__container container">
 
-    <!-- Left -->
-    <div class="checkout__left">
-
-      <!-- Checkout head -->
-      <div class="checkout__head head">
-
-        <!-- Checkout header-top -->
-        <div class="head__top">
-          <h1 class="head__top-title section-title">
-            Checkout
-          </h1>
-
-          <a href="#" class="head__top-back">
-            Back to shopping
-          </a>
-        </div>
-
-        <!-- Checkout header-bottom -->
-        <div class="head__bottom">
-          <svg xmlns='http://www.w3.org/2000/svg' aria-hidden='true'>
-            <use href='./img/sprite.svg#person' aria-hidden='true'></use>
-          </svg>
-
-          <span class="head__bottom-text">
-            Already have an account?
-
-            <button class="head__bottom-btn">Sign in</button>
-
-            for faster checkout experience
-          </span>
-        </div>
+    <!-- Account menu -->
+    <div class="my-profile__account-menu account-menu">
+      <div class="account-menu__top">
+        <h5 class="account-menu__name">
+          Annette Black
+        </h5>
+  
+        <p class="account-menu__email">
+          annetteb@example.com
+        </p>
       </div>
 
-      <!-- Checkout list -->
-      <ul class="checkout__list">
+      <!-- Links -->
+      <ul class="account-menu__links">
 
-        <!-- Checkout item1(Item review) -->
-        <li class="checkout__list-item">
-          <h4 class="checkout__list-title">
-            1. Item Review
-          </h4>
+        <!-- Item1 -->
+        <li class="account-menu__item">
+          <a href="#" class="account-menu__link account-menu__link--active">
+            <svg xmlns='http://www.w3.org/2000/svg' aria-hidden='true'>
+              <use href='./img/sprite.svg#person' aria-hidden='true'></use>
+            </svg>
 
-          <!-- Checkout products -->
-          <div class="checkout__products">
-            <ul class="checkout__products-list"></ul>
-
-            <span class="checkout__products-subtotal">
-              Subtotal:
-
-              <span class="checkout__products-subtotal-count"></span>
+            <span class="account-menu__link-name">
+              My profile
             </span>
-          </div>
+          </a>
         </li>
 
-        <!-- Checkout item2(billing) -->
-        <li class="checkout__list-item">
-          <h4 class="checkout__list-title">
-            2. Shipping & Billing Address
-          </h4>
+        <!-- Item2 -->
+        <li class="account-menu__item">
+          <a href="#" class="account-menu__link">
+            <svg xmlns='http://www.w3.org/2000/svg' aria-hidden='true'>
+              <use href='./img/sprite.svg#wallet-2' aria-hidden='true'></use>
+            </svg>
 
-          <!-- Checkout billing -->
-          <div class="checkout__billing">
-
-            <!-- Fields -->
-            <div class="checkout__billing-fields">
-
-              <!-- Field1 -->
-              <div class="checkout__billing-field">
-                <label for="checkout-billing-first-name" class="checkout__billing-label">
-                  First Name
-                </label>
-
-                <div class="input-wrapper">
-                  <input type="text" class="checkout__billing-input input" id="checkout-billing-first-name"
-                    name="checkout-billing-first-name" placeholder="Your first name">
-                </div>
-              </div>
-
-              <!-- Field2 -->
-              <div class="checkout__billing-field">
-                <label for="checkout-billing-last-name" class="checkout__billing-label">
-                  Last Name
-                </label>
-
-                <div class="input-wrapper">
-                  <input type="text" class="checkout__billing-input input" id="checkout-billing-last-name"
-                    name="checkout-billing-last-name" placeholder="Your last name">
-                </div>
-              </div>
-
-              <!-- Field3 -->
-              <div class="checkout__billing-field">
-                <label for="checkout-billing-email" class="checkout__billing-label">
-                  Email
-                </label>
-
-                <div class="input-wrapper" data-validty="email">
-                  <input type="email" class="checkout__billing-input input" id="checkout-billing-email"
-                    name="checkout-billing-email" placeholder="Your working email">
-                </div>
-              </div>
-
-              <!-- Field4 -->
-              <div class="checkout__billing-field">
-                <label for="checkout-billing-phone" class="checkout__billing-label">
-                  Phone
-                </label>
-
-                <div class="input-wrapper">
-                  <input type="text" class="checkout__billing-input input" id="checkout-billing-phone"
-                    name="checkout-billing-phone" placeholder="Your phone number">
-                </div>
-              </div>
-
-              <!-- Field5 -->
-              <div class="checkout__billing-field">
-                <label for="" class="checkout__billing-label">
-                  Country
-                </label>
-
-                <div class="custom-select__outer-wrapper checkout__billing-select-outer-wrapper">
-                  <div class="custom-select custom-select--light checkout__billing-sort-select" role="listbox"
-                    tabindex="0">
-                    <input type="hidden" class="checkout__billing-select-hidden" name="checkout-billing-select-hidden">
-
-                    <div class="custom-select__head custom-select__head--light checkout__billing-sort-head">
-                      <span class="custom-select__selected checkout__billing-sort-selected">
-                        Choose your country
-                      </span>
-
-                      <svg class="custom-select__icon" xmlns='http://www.w3.org/2000/svg'>
-                        <use href='./img/sprite.svg#angle-down'></use>
-                      </svg>
-                    </div>
-
-                    <div class="custom-select__inner-wrapper checkout__billing-sort-wrapper">
-                      <ul class="custom-select__list checkout__billing-sort-list" data-overlayscrollbars-initialize>
-                        <li class="custom-select__item custom-select__item--active checkout__billing-sort-item">
-                          Choose your country
-                        </li>
-
-                        <li class="custom-select__item checkout__billing-sort-item">
-                          Russia
-                        </li>
-
-                        <li class="custom-select__item checkout__billing-sort-item">
-                          Nepal
-                        </li>
-
-                        <li class="custom-select__item checkout__billing-sort-item">
-                          Peru
-                        </li>
-                      </ul>
-                    </div>
-                  </div>
-                </div>
-              </div>
-
-              <!-- Field6 -->
-              <div class="checkout__billing-field">
-                <label for="" class="checkout__billing-label">
-                  City
-                </label>
-
-                <div class="custom-select__outer-wrapper checkout__billing-select-outer-wrapper">
-                  <div class="custom-select custom-select--light checkout__billing-sort-select" role="listbox"
-                    tabindex="0">
-                    <input type="hidden" class="checkout__billing-select-hidden" name="checkout-billing-select-hidden">
-
-                    <div class="custom-select__head custom-select__head--light checkout__billing-sort-head">
-                      <span class="custom-select__selected checkout__billing-sort-selected">
-                        Choose your city
-                      </span>
-
-                      <svg class="custom-select__icon" xmlns='http://www.w3.org/2000/svg'>
-                        <use href='./img/sprite.svg#angle-down'></use>
-                      </svg>
-                    </div>
-
-                    <div class="custom-select__inner-wrapper checkout__billing-sort-wrapper">
-                      <ul class="custom-select__list checkout__billing-sort-list" data-overlayscrollbars-initialize>
-                        <li class="custom-select__item custom-select__item--active checkout__billing-sort-item">
-                          Choose your city
-                        </li>
-
-                        <li class="custom-select__item checkout__billing-sort-item">
-                          Moscow
-                        </li>
-
-                        <li class="custom-select__item checkout__billing-sort-item">
-                          Delhi
-                        </li>
-
-                        <li class="custom-select__item checkout__billing-sort-item">
-                          Beijing
-                        </li>
-                      </ul>
-                    </div>
-                  </div>
-                </div>
-              </div>
-
-              <!-- Field7 -->
-              <div class="checkout__billing-field">
-                <label for="checkout-billing-address" class="checkout__billing-label">
-                  Address
-                </label>
-
-                <div class="input-wrapper">
-                  <input type="text" class="checkout__billing-input input" id="checkout-billing-address"
-                    name="checkout-billing-address" placeholder="Your address">
-                </div>
-              </div>
-
-              <!-- Field8 -->
-              <div class="checkout__billing-field">
-                <label for="checkout-billing-zip" class="checkout__billing-label">
-                  ZIP Code
-                </label>
-
-                <div class="input-wrapper">
-                  <input type="text" class="checkout__billing-input input" id="checkout-billing-zip"
-                    name="checkout-billing-zip" placeholder="Your ZIP code">
-                </div>
-              </div>
-            </div>
-
-            <!-- Checking -->
-            <label class="checkout__billing-checking">
-              <label class="checkout__billing-checkbox custom-checkbox custom-checkbox--checked" tabindex="0"
-                role="checkbox" aria-checked="true">
-                <svg xmlns='http://www.w3.org/2000/svg'>
-                  <use href='./img/sprite.svg#check'></use>
-                </svg>
-
-                <input type="hidden" name="checkout-billing-checkbox" value="0">
-                <input type="checkbox" class="custom-checkbox__input" name="checkout-billing-checkbox" value="1"
-                  checked>
-              </label>
-
-              <span class="checkout__billing-checktext">
-                Billing and Shipping details are the same
-              </span>
-            </label>
-          </div>
+            <span class="account-menu__link-name">
+              My orders
+            </span>
+          </a>
         </li>
 
-        <!-- Checkout item3(Method) -->
-        <li class="checkout__list-item">
-          <h4 class="checkout__list-title">
-            3. Shipping Method
-          </h4>
+        <!-- Item3 -->
+        <li class="account-menu__item">
+          <a href="#" class="account-menu__link">
+            <svg xmlns='http://www.w3.org/2000/svg' aria-hidden='true'>
+              <use href='./img/sprite.svg#heart' aria-hidden='true'></use>
+            </svg>
 
-          <!-- Checkout method -->
-          <ul class="checkout__method">
+            <span class="account-menu__link-name">
+              Wishlist
+            </span>
 
-            <!-- Box1 -->
-            <li class="checkout__method-box">
-              <label class="checkout__method-radio custom-radio custom-radio--checked" role="radiogroup" tabindex="0"
-                aria-checked="true">
-                <input type="radio" name="checkout-method-radio" hidden checked>
-              </label>
-
-              <div class="checkout__method-info">
-                <span class="checkout__method-destination">
-                  Courier to your address
-                </span>
-
-                <span class="checkout__method-date">
-                  Estimated date: September 9
-                </span>
-              </div>
-
-              <span class="checkout__method-price">
-                $25.00
-              </span>
-            </li>
-
-            <!-- Box2 -->
-            <li class="checkout__method-box">
-              <label class="checkout__method-radio custom-radio" role="radiogroup" tabindex="0" aria-checked="false">
-                <input type="radio" name="checkout-method-radio" hidden>
-              </label>
-
-              <div class="checkout__method-info">
-                <span class="checkout__method-destination">
-                  Pick up from store
-                </span>
-
-                <span class="checkout__method-date">
-                  Pick up on September 8 from 12:00
-                </span>
-              </div>
-
-              <span class="checkout__method-price">
-                Free
-              </span>
-            </li>
-
-            <!-- Box3 -->
-            <li class="checkout__method-box">
-              <label class="checkout__method-radio custom-radio" role="radiogroup" tabindex="0" aria-checked="false">
-                <input type="radio" name="checkout-method-radio" hidden>
-              </label>
-
-              <div class="checkout__method-info">
-                <span class="checkout__method-destination">
-                  UPS Ground Shipping
-                </span>
-
-                <span class="checkout__method-date">
-                  Up to one week
-                </span>
-              </div>
-
-              <span class="checkout__method-price">
-                $10.00
-              </span>
-            </li>
-
-            <!-- Box4 -->
-            <li class="checkout__method-box">
-              <label class="checkout__method-radio custom-radio" role="radiogroup" tabindex="0" aria-checked="false">
-                <input type="radio" name="checkout-method-radio" hidden>
-              </label>
-
-              <div class="checkout__method-info">
-                <span class="checkout__method-destination">
-                  Pick up at Createx Locker
-                </span>
-
-                <span class="checkout__method-date">
-                  Pick up on September 8 from 12:00
-                </span>
-              </div>
-
-              <span class="checkout__method-price">
-                $8.50
-              </span>
-            </li>
-
-            <!-- Box5 -->
-            <li class="checkout__method-box">
-              <label class="checkout__method-radio custom-radio" role="radiogroup" tabindex="0" aria-checked="false">
-                <input type="radio" name="checkout-method-radio" hidden>
-              </label>
-
-              <div class="checkout__method-info">
-                <span class="checkout__method-destination">
-                  Createx Global Export
-                </span>
-
-                <span class="checkout__method-date">
-                  3-4 days
-                </span>
-              </div>
-
-              <span class="checkout__method-price">
-                $15.00
-              </span>
-            </li>
-          </ul>
+            <span class="account-menu__link-count" aria-label="Number of products in wishlist.">
+              2
+            </span>
+          </a>
         </li>
 
-        <!-- Checkout item4(Payment) -->
-        <li class="checkout__list-item">
-          <h4 class="checkout__list-title">
-            4. Payment Method
-          </h4>
+        <!-- Item4 -->
+        <li class="account-menu__item">
+          <a href="#" class="account-menu__link">
+            <svg xmlns='http://www.w3.org/2000/svg' aria-hidden='true'>
+              <use href='./img/sprite.svg#eye' aria-hidden='true'></use>
+            </svg>
 
-          <!-- Checkout payment -->
-          <ul class="checkout__payment">
-
-            <!-- Box1(Credit card) -->
-            <li class="checkout__payment-box">
-
-              <!-- Box top -->
-              <button type="button" class="checkout__payment-top checkout__payment-top--init" aria-expanded="true" aria-controls="checkout-payment-bottom-1">
-                <label class="checkout__payment-radio custom-radio custom-radio--checked" role="radiogroup" tabindex="0"
-                  aria-checked="true">
-                  <input type="radio" name="checkout-payment-radio" hidden checked>
-                </label>
-
-                <span class="checkout__payment-name">
-                  Credit card
-                </span>
-
-                <div class="checkout__payment-icon checkout__payment-icon--visa" aria-hidden="true"></div>
-                <div class="checkout__payment-icon checkout__payment-icon--mastercard" aria-hidden="true"></div>
-              </button>
-
-              <!-- Box bottom -->
-              <div class="checkout__payment-bottom" id="checkout-payment-bottom-1">
-                <div class="checkout__payment-bottom-wrapper">
-                  <div class="checkout__payment-field">
-                    <label for="checkout-payment-number" class="checkout__payment-label">
-                      Card number
-                    </label>
-
-                    <input type="text" class="checkout__payment-input input" id="checkout-payment-number"
-                      name="checkout-payment-number" placeholder="0000 0000 0000 0000">
-                  </div>
-
-                  <div class="checkout__payment-field">
-                    <label for="checkout-payment-date" class="checkout__payment-label">
-                      Expiry date
-                    </label>
-
-                    <input type="text" class="checkout__payment-input input" id="checkout-payment-date"
-                      name="checkout-payment-date" placeholder="mm/yy">
-                  </div>
-
-                  <div class="checkout__payment-field">
-                    <label for="checkout-payment-cvc" class="checkout__payment-label">
-                      CVC
-                    </label>
-
-                    <input type="password" class="checkout__payment-input input" id="checkout-payment-cvc"
-                      name="checkout-payment-cvc" placeholder="000" maxlength="3">
-                  </div>
-                </div>
-              </div>
-            </li>
-
-            <!-- Box2(PayPal) -->
-            <li class="checkout__payment-box">
-
-              <!-- Box top -->
-              <button type="button" class="checkout__payment-top" aria-expanded="false" aria-controls="checkout-payment-bottom-2">
-                <label class="checkout__payment-radio custom-radio" role="radiogroup" tabindex="0" aria-checked="false">
-                  <input type="radio" name="checkout-payment-radio" hidden>
-                </label>
-
-                <span class="checkout__payment-name">
-                  PayPal
-                </span>
-
-                <div class="checkout__payment-icon checkout__payment-icon--paypal" aria-hidden="true"></div>
-              </button>
-
-              <!-- Box bottom -->
-              <div class="checkout__payment-bottom checkout__payment-bottom--pt24" id="checkout-payment-bottom-2">
-                <div class="checkout__payment-bottom-wrapper">
-                  <a href="#" class="checkout__payment-btn checkout__payment-btn--regular"
-                    aria-label="Pay with Paypal."></a>
-
-                  <a href="#" class="checkout__payment-btn checkout__payment-btn--credit"
-                    aria-label="Pay with Paypal Credit."></a>
-                </div>
-              </div>
-            </li>
-
-            <!-- Box3(Cash) -->
-            <li class="checkout__payment-box">
-
-              <!-- Box top -->
-              <button type="button" class="checkout__payment-top" aria-expanded="false" aria-controls="checkout-payment-bottom-3">
-                <label class="checkout__payment-radio custom-radio" role="radiogroup" tabindex="0" aria-checked="false">
-                  <input type="radio" name="checkout-payment-radio" hidden>
-                </label>
-
-                <span class="checkout__payment-name">
-                  Cash on delivery
-                </span>
-              </button>
-
-              <!-- Box bottom -->
-              <div class="checkout__payment-bottom" id="checkout-payment-bottom-3">
-                <div class="checkout__payment-bottom-wrapper">
-                  <span class="checkout__payment-cash">
-                    You have selected to pay with cash upon delivery.
-                  </span>
-                </div>
-              </div>
-            </li>
-          </ul>
+            <span class="account-menu__link-name">
+              Recently viewed
+            </span>
+          </a>
         </li>
 
-        <!-- Checkout item5(Additional) -->
-        <li class="checkout__list-item">
-          <h4 class="checkout__list-title">
-            5. Additional Information (Optional)
-          </h4>
+        <!-- Item5 -->
+        <li class="account-menu__item">
+          <a href="#" class="account-menu__link">
+            <svg xmlns='http://www.w3.org/2000/svg' aria-hidden='true'>
+              <use href='./img/sprite.svg#star' aria-hidden='true'></use>
+            </svg>
 
-          <label for="checkout-additional-textarea" class="checkout__additional-label">
-            Order notes
-          </label>
+            <span class="account-menu__link-name">
+              My reviews
+            </span>
+          </a>
+        </li>
 
-          <textarea class="checkout__additional-textarea input" name="checkout-additional-textarea"
-            id="checkout-additional-textarea"
-            placeholder="Notes about your order, e.g. special noted for delivery."></textarea>
+        <!-- Item6 -->
+        <li class="account-menu__item">
+          <a href="#" class="account-menu__link">
+            <svg xmlns='http://www.w3.org/2000/svg' aria-hidden='true'>
+              <use href='./img/sprite.svg#logout' aria-hidden='true'></use>
+            </svg>
+
+            <span class="account-menu__link-name">
+              Sign out
+            </span>
+          </a>
         </li>
       </ul>
     </div>
 
-    <!-- Right -->
-    <div class="checkout__right">
+    <!-- Content -->
+    <div class="my-profile__content profile-content">
+      <div class="profile-content__top">
+        <h2 class="profile-content__title">
+          My profile
+        </h2>
 
-      <!-- Content -->
-      <div class="checkout__right-wrapper">
+        <button class="profile-content__delete">
+          <svg xmlns='http://www.w3.org/2000/svg' aria-hidden='true'>
+            <use href='./img/sprite.svg#bin' aria-hidden='true'></use>
+          </svg>
 
-        <!-- Promo -->
-        <div class="checkout__promo">
-          <label class="checkout__promo-label" for="checkout-promo-input">
-            Apply a promo code
-          </label>
-
-          <div class="checkout__promo-field">
-            <input type="text" class="checkout__promo-input input" name="checkout-promo-input" id="checkout-promo-input"
-              placeholder="Enter promo code">
-
-            <button type="button" class="checkout__promo-btn btn btn--lg">
-              Apply
-            </button>
-          </div>
-        </div>
-
-        <!-- Totals -->
-        <div class="checkout__totals">
-          <h4 class="checkout__totals-title">
-            Order totals
-          </h4>
-
-          <ul class="checkout__totals-info">
-            <li class="checkout__totals-item checkout__totals-item--subtotal">
-              <span class="checkout__totals-name">
-                Subtotal:
-              </span>
-
-              <span class="checkout__totals-sum" data-totals="subtotal">
-                —
-              </span>
-            </li>
-
-            <li class="checkout__totals-item">
-              <span class="checkout__totals-name">
-                Shipping costs:
-              </span>
-
-              <span class="checkout__totals-sum" data-totals="shipping">
-                $25.00
-              </span>
-            </li>
-
-            <li class="checkout__totals-item">
-              <span class="checkout__totals-name">
-                Discount:
-              </span>
-
-              <span class="checkout__totals-sum" data-totals="discount">
-                —
-              </span>
-            </li>
-
-            <li class="checkout__totals-item">
-              <span class="checkout__totals-name">
-                Estimated sales tax:
-              </span>
-
-              <span class="checkout__totals-sum" data-totals="tax">
-                —
-              </span>
-            </li>
-          </ul>
-
-          <div class="checkout__totals-total">
-            <span class="checkout__totals-total-name">
-              Order total:
-            </span>
-
-            <span class="checkout__totals-total-sum">
-              —
-            </span>
-          </div>
-        </div>
-
-        <!-- Complete -->
-        <button type="submit" class="checkout__complete btn btn--lg btn--disabled">
-          Complete order
+          Delete account
         </button>
       </div>
+
+      <!-- Form -->
+      <form class="profile-content__form">
+
+        <!-- Field1 -->
+        <div class="profile-content__field">
+          <label for="profile-form-first-name" class="profile-content__label">
+            First name
+          </label>
+
+          <div class="input-wrapper">
+            <input type="text" class="profile-content__input input" id="profile-form-first-name"
+              name="profile-form-first-name" placeholder="Your first name" value="Annette">
+          </div>
+        </div>
+
+        <!-- Field2 -->
+        <div class="profile-content__field">
+          <label for="profile-form-last-name" class="profile-content__label">
+            Last name
+          </label>
+
+          <div class="input-wrapper">
+            <input type="text" class="profile-content__input input" id="profile-form-last-name"
+              name="profile-form-last-name" placeholder="Your last name" value="Black">
+          </div>
+        </div>
+
+        <!-- Field3 -->
+        <div class="profile-content__field">
+          <label for="profile-form-email" class="profile-content__label">
+            Email
+          </label>
+
+          <div class="input-wrapper" data-validity="email">
+            <input type="email" class="profile-content__input input" id="profile-form-email" name="profile-form-email"
+              placeholder="Your working email" value="annetteb@example.com">
+          </div>
+        </div>
+
+        <!-- Field4 -->
+        <div class="profile-content__field">
+          <label for="profile-form-phone" class="profile-content__label">
+            Phone
+          </label>
+
+          <div class="input-wrapper">
+            <input type="text" class="profile-content__input input" id="profile-form-phone" name="profile-form-phone"
+              placeholder="Your phone number" value="(629) 555-0129">
+          </div>
+        </div>
+
+        <!-- Field5 -->
+        <div class="profile-content__field">
+          <label for="profile-form-password" class="profile-content__label">
+            New Password
+          </label>
+
+          <div class="input-wrapper" data-validity="pass-length">
+            <input type="password" class="profile-content__input input input--password" id="profile-form-password"
+              name="profile-form-password">
+
+            <button type="button" class="profile-content__show" aria-label="Show entered password."></button>
+          </div>
+        </div>
+
+        <!-- Field6 -->
+        <div class="profile-content__field">
+          <label for="profile-form-confirm-password" class="profile-content__label">
+            Confirm Password
+          </label>
+
+          <div class="input-wrapper" data-validity="pass-confirm">
+            <input type="password" class="profile-content__input input input--password" id="profile-form-confirm-password"
+              name="profile-form-confirm-password">
+
+            <button type="button" class="profile-content__show" aria-label="Show entered password."></button>
+          </div>
+        </div>
+
+        <!-- Field7 -->
+        <div class="profile-content__field">
+          <label for="" class="profile-content__label">
+            Country
+          </label>
+
+          <div class="custom-select__outer-wrapper profile-content__select-outer-wrapper">
+            <div class="custom-select custom-select--light profile-content__sort-select" role="listbox" tabindex="0">
+              <input type="hidden" class="profile-content-select-hidden" name="profile-form-select-hidden">
+
+              <div class="custom-select__head custom-select__head--light profile-content__sort-head">
+                <span class="custom-select__selected profile-content__sort-selected">
+                  Choose your country
+                </span>
+
+                <svg class="custom-select__icon" xmlns='http://www.w3.org/2000/svg'>
+                  <use href='./img/sprite.svg#angle-down'></use>
+                </svg>
+              </div>
+
+              <div class="custom-select__inner-wrapper profile-content__sort-wrapper">
+                <ul class="custom-select__list profile-content__sort-list" data-overlayscrollbars-initialize>
+                  <li class="custom-select__item custom-select__item--active profile-content__sort-item">
+                    Choose your country
+                  </li>
+
+                  <li class="custom-select__item profile-content__sort-item">
+                    Russia
+                  </li>
+
+                  <li class="custom-select__item profile-content__sort-item">
+                    Nepal
+                  </li>
+
+                  <li class="custom-select__item profile-content__sort-item">
+                    USA
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Field8 -->
+        <div class="profile-content__field">
+          <label for="" class="profile-content__label">
+            City
+          </label>
+
+          <div class="custom-select__outer-wrapper profile-content__select-outer-wrapper">
+            <div class="custom-select custom-select--light profile-content__sort-select" role="listbox" tabindex="0">
+              <input type="hidden" class="profile-content-select-hidden" name="profile-form-select-hidden">
+
+              <div class="custom-select__head custom-select__head--light profile-content__sort-head">
+                <span class="custom-select__selected profile-content__sort-selected">
+                  Choose your city
+                </span>
+
+                <svg class="custom-select__icon" xmlns='http://www.w3.org/2000/svg'>
+                  <use href='./img/sprite.svg#angle-down'></use>
+                </svg>
+              </div>
+
+              <div class="custom-select__inner-wrapper profile-content__sort-wrapper">
+                <ul class="custom-select__list profile-content__sort-list" data-overlayscrollbars-initialize>
+                  <li class="custom-select__item custom-select__item--active profile-content__sort-item">
+                    Choose your city
+                  </li>
+
+                  <li class="custom-select__item profile-content__sort-item">
+                    Moscow
+                  </li>
+
+                  <li class="custom-select__item profile-content__sort-item">
+                    Delhi
+                  </li>
+
+                  <li class="custom-select__item profile-content__sort-item">
+                    New Jersey
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Field9 -->
+        <div class="profile-content__field">
+          <label for="profile-form-address" class="profile-content__label">
+            Address
+          </label>
+
+          <div class="input-wrapper">
+            <input type="text" class="profile-content__input input" id="profile-form-address" name="profile-form-address"
+              placeholder="Your address" value="2464 Royal Ln. Mesa, New Jersey">
+          </div>
+        </div>
+
+        <!-- Field10 -->
+        <div class="profile-content__field">
+          <label for="profile-form-zip" class="profile-content__label">
+            ZIP Code
+          </label>
+
+          <div class="input-wrapper">
+            <input type="text" class="profile-content__input input" id="profile-form-zip" name="profile-form-zip"
+              placeholder="Your ZIP code" value="45463">
+          </div>
+        </div>
+
+        <button class="profile-content__btn btn btn--lg">
+          Save changes
+        </button>
+      </form>
     </div>
-  </form>
+  </div>
 </section>
   <section class="footer">
   <div class="footer__container container">

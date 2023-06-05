@@ -378,7 +378,7 @@
             <li class="checkout__payment-box">
 
               <!-- Box top -->
-              <div class="checkout__payment-top checkout__payment-top--init">
+              <button type="button" class="checkout__payment-top checkout__payment-top--init" aria-expanded="true" aria-controls="checkout-payment-bottom-1">
                 <label class="checkout__payment-radio custom-radio custom-radio--checked" role="radiogroup" tabindex="0"
                   aria-checked="true">
                   <input type="radio" name="checkout-payment-radio" hidden checked>
@@ -390,10 +390,10 @@
 
                 <div class="checkout__payment-icon checkout__payment-icon--visa" aria-hidden="true"></div>
                 <div class="checkout__payment-icon checkout__payment-icon--mastercard" aria-hidden="true"></div>
-              </div>
+              </button>
 
               <!-- Box bottom -->
-              <div class="checkout__payment-bottom">
+              <div class="checkout__payment-bottom" id="checkout-payment-bottom-1">
                 <div class="checkout__payment-bottom-wrapper">
                   <div class="checkout__payment-field">
                     <label for="checkout-payment-number" class="checkout__payment-label">
@@ -429,7 +429,7 @@
             <li class="checkout__payment-box">
 
               <!-- Box top -->
-              <div class="checkout__payment-top">
+              <button type="button" class="checkout__payment-top" aria-expanded="false" aria-controls="checkout-payment-bottom-2">
                 <label class="checkout__payment-radio custom-radio" role="radiogroup" tabindex="0" aria-checked="false">
                   <input type="radio" name="checkout-payment-radio" hidden>
                 </label>
@@ -439,10 +439,10 @@
                 </span>
 
                 <div class="checkout__payment-icon checkout__payment-icon--paypal" aria-hidden="true"></div>
-              </div>
+              </button>
 
               <!-- Box bottom -->
-              <div class="checkout__payment-bottom checkout__payment-bottom--pt24">
+              <div class="checkout__payment-bottom checkout__payment-bottom--pt24" id="checkout-payment-bottom-2">
                 <div class="checkout__payment-bottom-wrapper">
                   <a href="#" class="checkout__payment-btn checkout__payment-btn--regular"
                     aria-label="Pay with Paypal."></a>
@@ -457,7 +457,7 @@
             <li class="checkout__payment-box">
 
               <!-- Box top -->
-              <div class="checkout__payment-top">
+              <button type="button" class="checkout__payment-top" aria-expanded="false" aria-controls="checkout-payment-bottom-3">
                 <label class="checkout__payment-radio custom-radio" role="radiogroup" tabindex="0" aria-checked="false">
                   <input type="radio" name="checkout-payment-radio" hidden>
                 </label>
@@ -465,10 +465,10 @@
                 <span class="checkout__payment-name">
                   Cash on delivery
                 </span>
-              </div>
+              </button>
 
               <!-- Box bottom -->
-              <div class="checkout__payment-bottom">
+              <div class="checkout__payment-bottom" id="checkout-payment-bottom-3">
                 <div class="checkout__payment-bottom-wrapper">
                   <span class="checkout__payment-cash">
                     You have selected to pay with cash upon delivery.

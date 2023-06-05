@@ -178,6 +178,8 @@
   }
 
   &--password {
+    padding-right: rem(48);
+
     &::placeholder {
       font-size: rem(30);
       letter-spacing: rem(-0.2);
@@ -1702,6 +1704,77 @@
 
     &::before {
       background-color: var(--primary-color);
+    }
+  }
+}
+
+.account-menu {
+  border: rem(1) solid var(--gray300-color);
+  border-radius: rem(4);
+  width: 100%;
+  max-width: rem(285);
+  box-shadow: var(--small-shadow);
+
+  // Top
+  &__top {
+    padding: rem(20);
+  }
+
+  &__name {
+    margin-bottom: rem(1);
+    font: var(--lead-bold);
+    color: var(--gray800-color);
+  }
+
+  &__email {
+    font: var(--base-regular);
+    color: var(--gray700-color);
+  }
+
+  // Links
+  &__link {
+    display: flex;
+    align-items: center;
+    border-top: rem(1) solid var(--gray300-color);
+    padding-top: rem(11);
+    padding-bottom: rem(12.5);
+    padding-inline: rem(19);
+    font: var(--base-regular);
+    color: var(--gray800-color);
+    transition: color 0.3s, background-color 0.3s;
+
+    svg {
+      margin-right: rem(9);
+      width: rem(20);
+      height: rem(20);
+      fill: currentcolor;
+    }
+
+    &-count {
+      margin-left: auto;
+      border-radius: rem(4);
+      padding-top: rem(1);
+      padding-bottom: rem(1);
+      padding-inline: rem(8);
+      font: var(--extrasmall-bold);
+      color: var(--white-color);
+      background-color: var(--warning-color);
+    }
+
+    &:hover {
+      color: var(--primary-color);
+    }
+
+    &--active {
+      border-color: var(--primary-color);
+      color: var(--white-color);
+      background-color: var(--primary-color);
+
+      &:hover {
+        border-color: var(--primary-color);
+        color: var(--white-color);
+        background-color: var(--primary-hover-color);
+      }
     }
   }
 }

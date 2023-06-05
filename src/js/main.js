@@ -30,6 +30,8 @@ import "./components/download.js";
 import "./components/review-message-tooltips.js";
 import "./components/checkout.js";
 import "./components/custom-radio.js";
+import "./components/my-profile.js";
+
 
 
 // Components multiple in one
@@ -49,6 +51,10 @@ if (cardNumber) {
   const dateMask = IMask(cardDate, {mask: "00/00"});
   const phoneMask = IMask(phoneNumber, {mask: "(000) 000-0000"});
 }
+
+// === My profile === //
+const profilePhoneNumber = document.getElementById("profile-form-phone");
+const profilePhoneMask = IMask(profilePhoneNumber, {mask: "(000) 000-0000"});
 
 
 

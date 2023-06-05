@@ -155,6 +155,8 @@ function hidePayment() {
     const prevPaymentBottom = prevPaymentTop.nextElementSibling;
 
     prevPaymentTop.classList.remove("checkout__payment-top--show");
+    prevPaymentTop.setAttribute("aria-expanded", "false");
+
     prevPaymentBottom.style.height = "";
   }
 }
@@ -171,6 +173,7 @@ function showPayment() {
   hidePayment();
 
   this.classList.add("checkout__payment-top--show");
+  this.setAttribute("aria-expanded", "true");
 
   const nativeRadio = this.querySelector("input");
   nativeRadio.dispatchEvent(new Event("change"));
