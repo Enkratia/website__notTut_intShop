@@ -44,7 +44,10 @@ function closeSelect() {
 // **
 function rearrangeClass(el, list) {
   list.querySelector(".custom-select__item--active").classList.remove("custom-select__item--active");
-  return el.classList.add("custom-select__item--active");
+  list.querySelector("[aria-selected='true']").setAttribute("aria-selected", "false");
+
+  el.classList.add("custom-select__item--active");
+  el.setAttribute("aria-selected", "true");
 }
 
 // **
@@ -61,8 +64,11 @@ function changeSelectValue(e, selected, thisSelect) {
 
       // Rearrange class
       el.querySelector(".custom-select__item--active").classList.remove("custom-select__item--active");
+      el.querySelector("[aria-selected='true']").setAttribute("aria-selected", "false");
+
       const toolbarSortListChildren = el.querySelector(".toolbar__sort-list").children;
       toolbarSortListChildren[thisSortItemIdx].classList.add("custom-select__item--active");
+      toolbarSortListChildren[thisSortItemIdx].setAttribute("aria-selected", "true");
 
       // Change text in selected
       const toolbarSortSelected = el.querySelector(".toolbar__sort-selected");

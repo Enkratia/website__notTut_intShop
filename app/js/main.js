@@ -7498,7 +7498,9 @@ function closeSelect() {
 // **
 function rearrangeClass(el, list) {
   list.querySelector(".custom-select__item--active").classList.remove("custom-select__item--active");
-  return el.classList.add("custom-select__item--active");
+  list.querySelector("[aria-selected='true']").setAttribute("aria-selected", "false");
+  el.classList.add("custom-select__item--active");
+  el.setAttribute("aria-selected", "true");
 }
 
 // **
@@ -7511,8 +7513,10 @@ function changeSelectValue(e, selected, thisSelect) {
     _vars_js__WEBPACK_IMPORTED_MODULE_0__.$toolbarSortSelects.forEach(el => {
       // Rearrange class
       el.querySelector(".custom-select__item--active").classList.remove("custom-select__item--active");
+      el.querySelector("[aria-selected='true']").setAttribute("aria-selected", "false");
       const toolbarSortListChildren = el.querySelector(".toolbar__sort-list").children;
       toolbarSortListChildren[thisSortItemIdx].classList.add("custom-select__item--active");
+      toolbarSortListChildren[thisSortItemIdx].setAttribute("aria-selected", "true");
 
       // Change text in selected
       const toolbarSortSelected = el.querySelector(".toolbar__sort-selected");
@@ -8998,6 +9002,57 @@ window.addEventListener("resize", () => {
 
 /***/ }),
 
+/***/ "./src/js/components/my-orders.js":
+/*!****************************************!*\
+  !*** ./src/js/components/my-orders.js ***!
+  \****************************************/
+/***/ ((__unused_webpack___webpack_module__, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+const myOrderHeads = document.querySelectorAll(".orders-content__head");
+// F(s)
+// **
+function hideOrder() {
+  const prevOrderHead = document.querySelector(".orders-content__head--show");
+  if (prevOrderHead) {
+    const prevOrderProducts = prevOrderHead.nextElementSibling;
+    prevOrderHead.classList.remove("orders-content__head--show");
+    prevOrderHead.setAttribute("aria-expanded", "false");
+    prevOrderProducts.style.height = "";
+  }
+}
+
+// **
+function showOrderInit() {
+  const activePaymentMethod = document.querySelector(".orders-content__head--init");
+  activePaymentMethod.click();
+}
+
+// **
+function showOrder() {
+  if (this.classList.contains("orders-content__head--show")) {
+    hideOrder();
+    return;
+  }
+  hideOrder();
+  this.classList.add("orders-content__head--show");
+  this.setAttribute("aria-expanded", "true");
+  const orderProducts = this.nextElementSibling;
+  const orderProductsHeight = orderProducts.scrollHeight;
+  orderProducts.style.height = orderProductsHeight + "px";
+}
+
+// L(s)
+if (myOrderHeads[0]) {
+  myOrderHeads.forEach(el => {
+    el.addEventListener("click", showOrder);
+  });
+  showOrderInit();
+}
+
+/***/ }),
+
 /***/ "./src/js/components/my-profile.js":
 /*!*****************************************!*\
   !*** ./src/js/components/my-profile.js ***!
@@ -9006,100 +9061,100 @@ window.addEventListener("resize", () => {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _vars_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../vars.js */ "./src/js/vars.js");
-/* harmony import */ var _leave_review_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./leave-review.js */ "./src/js/components/leave-review.js");
-
+/* harmony import */ var _leave_review_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./leave-review.js */ "./src/js/components/leave-review.js");
 
 const myProfileSection = document.querySelector("#my-profile");
-const showPasswordBtns = myProfileSection.querySelectorAll(".profile-content__show");
-const profileSelectLists = myProfileSection.querySelectorAll(".custom-select__list");
-const country = "USA";
-const city = "New Jersey";
+if (myProfileSection) {
+  const showPasswordBtns = myProfileSection.querySelectorAll(".profile-content__show");
+  const profileSelectLists = myProfileSection.querySelectorAll(".custom-select__list");
+  const country = "USA";
+  const city = "New Jersey";
 
-// ==== SHOW PASSWORD / INIT SELECTS ==== //
-// F(s)
-// **
-function initSelects(country, city) {
-  const countrySelectList = profileSelectLists[0].children;
-  const countrySelectListArray = [...countrySelectList];
-  const citySelectList = profileSelectLists[1].children;
-  const citySelectListArray = [...citySelectList];
-  for (let i = 0; i < countrySelectList.length; i++) {
-    if (countrySelectListArray[i].innerText === country) {
-      countrySelectListArray[i].click();
-      countrySelectListArray[i].click();
-      break;
+  // ==== SHOW PASSWORD / INIT SELECTS ==== //
+  // F(s)
+  // **
+  function initSelects(country, city) {
+    const countrySelectList = profileSelectLists[0].children;
+    const countrySelectListArray = [...countrySelectList];
+    const citySelectList = profileSelectLists[1].children;
+    const citySelectListArray = [...citySelectList];
+    for (let i = 0; i < countrySelectList.length; i++) {
+      if (countrySelectListArray[i].innerText === country) {
+        countrySelectListArray[i].click();
+        countrySelectListArray[i].click();
+        break;
+      }
+    }
+    for (let i = 0; i < citySelectList.length; i++) {
+      if (citySelectListArray[i].innerText === city) {
+        citySelectListArray[i].click();
+        citySelectListArray[i].click();
+        break;
+      }
     }
   }
-  for (let i = 0; i < citySelectList.length; i++) {
-    if (citySelectListArray[i].innerText === city) {
-      citySelectListArray[i].click();
-      citySelectListArray[i].click();
-      break;
+  initSelects(country, city);
+
+  // **
+  function showPassword() {
+    const input = this.previousElementSibling;
+    this.classList.toggle("profile-content__show--active");
+    if (this.classList.contains("profile-content__show--active")) {
+      input.setAttribute("type", "text");
+    } else {
+      input.setAttribute("type", "password");
     }
   }
-}
-initSelects(country, city);
 
-// **
-function showPassword() {
-  const input = this.previousElementSibling;
-  this.classList.toggle("profile-content__show--active");
-  if (this.classList.contains("profile-content__show--active")) {
-    input.setAttribute("type", "text");
-  } else {
-    input.setAttribute("type", "password");
+  // L(s)
+  // **
+  showPasswordBtns.forEach(el => {
+    el.addEventListener("click", showPassword);
+  });
+
+  // ==== CHECK PROFILE FORM ==== //
+  const textInputs = myProfileSection.querySelectorAll(".input[type='text']:not(#profile-form-phone)");
+  const passwords = myProfileSection.querySelectorAll(".input--password");
+  const selects = myProfileSection.querySelectorAll(".custom-select");
+  const email = myProfileSection.querySelector("#profile-form-email");
+  const phone = myProfileSection.querySelector("#profile-form-phone");
+  const saveChangesBtn = myProfileSection.querySelector(".profile-content__btn");
+
+  // F(s)
+  function checkProfileForm(e) {
+    e.preventDefault();
+    if (passwords[0].value.trim() || passwords[1].value.trim()) {
+      _leave_review_js__WEBPACK_IMPORTED_MODULE_0__.$checkForm(e, textInputs, selects, email, phone, passwords);
+    } else {
+      _leave_review_js__WEBPACK_IMPORTED_MODULE_0__.$checkForm(e, textInputs, selects, email, phone, null);
+    }
   }
+
+  // L(s)
+  // **
+  textInputs.forEach(el => {
+    el.addEventListener("blur", _leave_review_js__WEBPACK_IMPORTED_MODULE_0__.$verifyTextInput);
+  });
+
+  // **
+  passwords.forEach(el => {
+    el.addEventListener("blur", () => _leave_review_js__WEBPACK_IMPORTED_MODULE_0__.$verifyMatchPassword(passwords));
+  });
+
+  // **
+  selects.forEach(el => {
+    el.addEventListener("blur", _leave_review_js__WEBPACK_IMPORTED_MODULE_0__.$verifySelect);
+  });
+
+  // **
+  email.addEventListener("blur", _leave_review_js__WEBPACK_IMPORTED_MODULE_0__.$verifyEmailInput);
+
+  // **
+  phone.addEventListener("blur", _leave_review_js__WEBPACK_IMPORTED_MODULE_0__.$verifyPhone);
+
+  // **
+  saveChangesBtn.addEventListener("click", checkProfileForm);
 }
-
-// L(s)
-// **
-showPasswordBtns.forEach(el => {
-  el.addEventListener("click", showPassword);
-});
-
-// ==== CHECK PROFILE FORM ==== //
-const textInputs = myProfileSection.querySelectorAll(".input[type='text']:not(#profile-form-phone)");
-const passwords = myProfileSection.querySelectorAll(".input--password");
-const selects = myProfileSection.querySelectorAll(".custom-select");
-const email = myProfileSection.querySelector("#profile-form-email");
-const phone = myProfileSection.querySelector("#profile-form-phone");
-const saveChangesBtn = myProfileSection.querySelector(".profile-content__btn");
-
-// F(s)
-function checkProfileForm(e) {
-  e.preventDefault();
-  if (passwords[0].value.trim() || passwords[1].value.trim()) {
-    _leave_review_js__WEBPACK_IMPORTED_MODULE_1__.$checkForm(e, textInputs, selects, email, phone, passwords);
-  } else {
-    _leave_review_js__WEBPACK_IMPORTED_MODULE_1__.$checkForm(e, textInputs, selects, email, phone, null);
-  }
-}
-
-// L(s)
-// **
-textInputs.forEach(el => {
-  el.addEventListener("blur", _leave_review_js__WEBPACK_IMPORTED_MODULE_1__.$verifyTextInput);
-});
-
-// **
-passwords.forEach(el => {
-  el.addEventListener("blur", () => _leave_review_js__WEBPACK_IMPORTED_MODULE_1__.$verifyMatchPassword(passwords));
-});
-
-// **
-selects.forEach(el => {
-  el.addEventListener("blur", _leave_review_js__WEBPACK_IMPORTED_MODULE_1__.$verifySelect);
-});
-
-// **
-email.addEventListener("blur", _leave_review_js__WEBPACK_IMPORTED_MODULE_1__.$verifyEmailInput);
-
-// **
-phone.addEventListener("blur", _leave_review_js__WEBPACK_IMPORTED_MODULE_1__.$verifyPhone);
-
-// **
-saveChangesBtn.addEventListener("click", checkProfileForm);
 
 /***/ }),
 
@@ -9280,6 +9335,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _vars_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../vars.js */ "./src/js/vars.js");
 /* harmony import */ var _input_number_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./input-number.js */ "./src/js/components/input-number.js");
 /* harmony import */ var _checkout_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./checkout.js */ "./src/js/components/checkout.js");
+/* harmony import */ var _product_favorites_js__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./product__favorites.js */ "./src/js/components/product__favorites.js");
+
 
 
 
@@ -9327,6 +9384,16 @@ function toggleCheckoutBtn() {
     _checkout_js__WEBPACK_IMPORTED_MODULE_3__.$toggleCompleteBtn();
   }
   calculatePrice();
+}
+
+// **
+function addFavoriteBtnListeners() {
+  const favoriteBtns = _vars_js__WEBPACK_IMPORTED_MODULE_1__.$cartChoiceList.querySelectorAll(".choice-product__favorite");
+  const favoriteProducts = _vars_js__WEBPACK_IMPORTED_MODULE_1__.$cartChoiceList.children;
+  favoriteBtns.forEach(el => {
+    el.addEventListener("click", _product_favorites_js__WEBPACK_IMPORTED_MODULE_4__.$addToFavorite);
+  });
+  _product_favorites_js__WEBPACK_IMPORTED_MODULE_4__.$markFavoriteProductsInit(favoriteProducts);
 }
 
 // **
@@ -9381,8 +9448,7 @@ function insertSizeHTML() {
       <span class="choice-product__size-data">
         ${size}
       </span>
-    </div>
-      `;
+    </div>`;
   } else {
     priceHTML = "";
   }
@@ -9513,6 +9579,7 @@ function insertCartProducts() {
   }
   addDeletingProduct();
   addNumberInputListeners();
+  addFavoriteBtnListeners();
   toggleCheckoutBtn();
 }
 insertCartProducts();
@@ -9684,29 +9751,32 @@ function toggleActiveClass(elem) {
 
 // **
 function markFavoriteProduct(elem, elemVendorCode) {
-  const swiperWrapper = elem.closest(".swiper-wrapper");
-  if (swiperWrapper) {
-    // Check for swiper parent
-    const products = swiperWrapper.querySelectorAll("[data-vendor]");
-    products.forEach(el => {
-      const productsVendorCode = el.getAttribute("data-vendor");
-      if (elemVendorCode === productsVendorCode) {
-        toggleActiveClass(el);
-      }
-    });
-  } else {
-    const sameProducts = document.querySelectorAll(`[data-vendor="${elemVendorCode}"]`);
-    sameProducts.forEach(el => {
-      toggleActiveClass(el);
-    });
-  }
+  // const swiperWrapper = elem.closest(".swiper-wrapper");
+
+  // if (swiperWrapper) { // Check for swiper parent
+  //   const products = swiperWrapper.querySelectorAll("[data-vendor]");
+
+  //   products.forEach(el => {
+  //     const productsVendorCode = el.getAttribute("data-vendor");
+
+  //     if (elemVendorCode === productsVendorCode) {
+  //       toggleActiveClass(el)
+  //     }
+  //   });
+
+  // } else {
+  const sameProducts = document.querySelectorAll(`[data-vendor="${elemVendorCode}"]`);
+  sameProducts.forEach(el => {
+    toggleActiveClass(el);
+  });
+  // }
 }
 
 // ***
 function markFavoriteProductsInit() {
   let cartLiElements = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : undefined;
   const favoriteProducts = cartLiElements ?? document.querySelectorAll("[data-vendor]");
-  favoriteProducts.forEach(el => {
+  [...favoriteProducts].forEach(el => {
     const vendorCode = el.getAttribute("data-vendor");
     if (favoriteArray.includes(vendorCode)) {
       toggleActiveClass(el);
@@ -10823,6 +10893,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "$logClose": () => (/* binding */ $logClose),
 /* harmony export */   "$logInModal": () => (/* binding */ $logInModal),
 /* harmony export */   "$logRegisterModal": () => (/* binding */ $logRegisterModal),
+/* harmony export */   "$login": () => (/* binding */ $login),
 /* harmony export */   "$loginBtnIn": () => (/* binding */ $loginBtnIn),
 /* harmony export */   "$loginBtnRegister": () => (/* binding */ $loginBtnRegister),
 /* harmony export */   "$looks": () => (/* binding */ $looks),
@@ -10878,6 +10949,7 @@ const $customSelects = document.querySelectorAll(".custom-select");
 const $header = document.querySelector("#header");
 const $headerTopContainer = $header.querySelector("#header-top-container");
 const $topNavBtn = $headerTopContainer.querySelector("#top-nav-button");
+const $login = $headerTopContainer.querySelector("#login");
 const $loginBtnIn = $headerTopContainer.querySelector("#login-btn-in");
 const $loginBtnRegister = $headerTopContainer.querySelector("#login-btn-register");
 const $logInModal = $header.querySelector("#log-in");
@@ -31951,10 +32023,12 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _components_checkout_js__WEBPACK_IMPORTED_MODULE_29__ = __webpack_require__(/*! ./components/checkout.js */ "./src/js/components/checkout.js");
 /* harmony import */ var _components_custom_radio_js__WEBPACK_IMPORTED_MODULE_30__ = __webpack_require__(/*! ./components/custom-radio.js */ "./src/js/components/custom-radio.js");
 /* harmony import */ var _components_my_profile_js__WEBPACK_IMPORTED_MODULE_31__ = __webpack_require__(/*! ./components/my-profile.js */ "./src/js/components/my-profile.js");
-/* harmony import */ var _components_$swipers_js__WEBPACK_IMPORTED_MODULE_32__ = __webpack_require__(/*! ./components/$swipers.js */ "./src/js/components/$swipers.js");
-/* harmony import */ var _components_$overlayScrollbars_js__WEBPACK_IMPORTED_MODULE_33__ = __webpack_require__(/*! ./components/$overlayScrollbars.js */ "./src/js/components/$overlayScrollbars.js");
-/* harmony import */ var imask__WEBPACK_IMPORTED_MODULE_34__ = __webpack_require__(/*! imask */ "./node_modules/imask/esm/index.js");
+/* harmony import */ var _components_my_orders_js__WEBPACK_IMPORTED_MODULE_32__ = __webpack_require__(/*! ./components/my-orders.js */ "./src/js/components/my-orders.js");
+/* harmony import */ var _components_$swipers_js__WEBPACK_IMPORTED_MODULE_33__ = __webpack_require__(/*! ./components/$swipers.js */ "./src/js/components/$swipers.js");
+/* harmony import */ var _components_$overlayScrollbars_js__WEBPACK_IMPORTED_MODULE_34__ = __webpack_require__(/*! ./components/$overlayScrollbars.js */ "./src/js/components/$overlayScrollbars.js");
+/* harmony import */ var imask__WEBPACK_IMPORTED_MODULE_35__ = __webpack_require__(/*! imask */ "./node_modules/imask/esm/index.js");
 // Components
+
 
 
 
@@ -31998,22 +32072,24 @@ const cardNumber = document.getElementById("checkout-payment-number");
 if (cardNumber) {
   const cardDate = document.getElementById("checkout-payment-date");
   const phoneNumber = document.getElementById("checkout-billing-phone");
-  const cardMask = (0,imask__WEBPACK_IMPORTED_MODULE_34__["default"])(cardNumber, {
+  const cardMask = (0,imask__WEBPACK_IMPORTED_MODULE_35__["default"])(cardNumber, {
     mask: "0000 0000 0000 0000"
   });
-  const dateMask = (0,imask__WEBPACK_IMPORTED_MODULE_34__["default"])(cardDate, {
+  const dateMask = (0,imask__WEBPACK_IMPORTED_MODULE_35__["default"])(cardDate, {
     mask: "00/00"
   });
-  const phoneMask = (0,imask__WEBPACK_IMPORTED_MODULE_34__["default"])(phoneNumber, {
+  const phoneMask = (0,imask__WEBPACK_IMPORTED_MODULE_35__["default"])(phoneNumber, {
     mask: "(000) 000-0000"
   });
 }
 
 // === My profile === //
 const profilePhoneNumber = document.getElementById("profile-form-phone");
-const profilePhoneMask = (0,imask__WEBPACK_IMPORTED_MODULE_34__["default"])(profilePhoneNumber, {
-  mask: "(000) 000-0000"
-});
+if (profilePhoneNumber) {
+  const profilePhoneMask = (0,imask__WEBPACK_IMPORTED_MODULE_35__["default"])(profilePhoneNumber, {
+    mask: "(000) 000-0000"
+  });
+}
 
 // Scroll-top
 const scrollTop = document.querySelector(".scroll-top");

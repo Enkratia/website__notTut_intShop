@@ -2,6 +2,7 @@ import { Decimal } from 'decimal.js';
 import * as v from "../vars.js";
 import * as inum from "./input-number.js";
 import * as che from "./checkout.js";
+import * as pfav from "./product__favorites.js";
 
 export { clickOnCart as $clickOnCart }
 
@@ -53,6 +54,18 @@ function toggleCheckoutBtn() {
     che.$toggleCompleteBtn();
   }
   calculatePrice();
+}
+
+// **
+function addFavoriteBtnListeners() {
+  const favoriteBtns = v.$cartChoiceList.querySelectorAll(".choice-product__favorite");
+  const favoriteProducts = v.$cartChoiceList.children;
+
+  favoriteBtns.forEach(el => {
+    el.addEventListener("click", pfav.$addToFavorite);
+  });
+
+  pfav.$markFavoriteProductsInit(favoriteProducts);
 }
 
 // **
@@ -115,8 +128,7 @@ function insertSizeHTML(size = undefined) {
       <span class="choice-product__size-data">
         ${size}
       </span>
-    </div>
-      `;
+    </div>`;
 
   } else {
     priceHTML = "";
@@ -260,6 +272,7 @@ function insertCartProducts() {
 
   addDeletingProduct();
   addNumberInputListeners();
+  addFavoriteBtnListeners();
   toggleCheckoutBtn();
 }
 insertCartProducts();

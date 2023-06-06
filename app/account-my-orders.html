@@ -6,7 +6,7 @@
   <meta name='viewport' content='width=device-width, initial-scale=1.0'>
   <script src='js/main.js' defer></script>
   <link rel='stylesheet' href='css/main.css'>
-  <title>My profile</title>
+  <title>My orders</title>
 </head>
 
 <body class="body">
@@ -1421,15 +1421,15 @@
     </div>
   </div>
 </section>
-  <section class="breadcrumbs-my-profile">
-  <div class="breadcrumbs-my-profile__container container">
+  <section class="breadcrumbs-my-orders">
+  <div class="breadcrumbs-my-orders__container container">
 
     <!-- Breadcrumbs list -->
-    <ul class="breadcrumbs-my-profile__list">
+    <ul class="breadcrumbs-my-orders__list">
 
       <!-- Item1 -->
-      <li class="breadcrumbs-my-profile__item">
-        <a href="#" class="breadcrumbs-my-profile__link">
+      <li class="breadcrumbs-my-orders__item">
+        <a href="#" class="breadcrumbs-my-orders__link">
           <svg xmlns='http://www.w3.org/2000/svg'>
             <use href='./img/sprite.svg#home'></use>
           </svg>
@@ -1437,31 +1437,31 @@
       </li>
 
       <!-- Item2 -->
-      <li class="breadcrumbs-my-profile__item">
-        <a href="#" class="breadcrumbs-my-profile__link">
+      <li class="breadcrumbs-my-orders__item">
+        <a href="#" class="breadcrumbs-my-orders__link">
           Account
         </a>
       </li>
 
       <!-- Item3 -->
-      <li class="breadcrumbs-my-profile__item">
-        <a href="#" class="breadcrumbs-my-profile__link">
-          My profile
+      <li class="breadcrumbs-my-orders__item">
+        <a href="#" class="breadcrumbs-my-orders__link">
+          My orders
         </a>
       </li>
     </ul>
   </div>
 </section>
-  <section class="my-profile" id="my-profile">
-  <div class="my-profile__container container">
+  <section class="my-orders" id="my-orders">
+  <div class="my-orders__container container">
 
     <!-- Account menu -->
-    <aside class="my-profile__account-menu account-menu">
+    <aside class="my-orders__account-menu account-menu">
       <div class="account-menu__top">
         <h5 class="account-menu__name">
           Annette Black
         </h5>
-  
+
         <p class="account-menu__email">
           annetteb@example.com
         </p>
@@ -1472,7 +1472,7 @@
 
         <!-- Item1 -->
         <li class="account-menu__item">
-          <a href="#" class="account-menu__link account-menu__link--active">
+          <a href="#" class="account-menu__link">
             <svg xmlns='http://www.w3.org/2000/svg' aria-hidden='true'>
               <use href='./img/sprite.svg#person' aria-hidden='true'></use>
             </svg>
@@ -1485,7 +1485,7 @@
 
         <!-- Item2 -->
         <li class="account-menu__item">
-          <a href="#" class="account-menu__link">
+          <a href="#" class="account-menu__link account-menu__link--active">
             <svg xmlns='http://www.w3.org/2000/svg' aria-hidden='true'>
               <use href='./img/sprite.svg#wallet-2' aria-hidden='true'></use>
             </svg>
@@ -1555,214 +1555,1478 @@
     </aside>
 
     <!-- Content -->
-    <div class="my-profile__content profile-content">
-      <div class="profile-content__top">
-        <h2 class="profile-content__title">
-          My profile
+    <div class="my-orders__content orders-content">
+
+      <!-- Top -->
+      <div class="orders-content__top">
+        <h2 class="orders-content__title">
+          My orders
         </h2>
 
-        <button class="profile-content__delete">
-          <svg xmlns='http://www.w3.org/2000/svg' aria-hidden='true'>
-            <use href='./img/sprite.svg#bin' aria-hidden='true'></use>
-          </svg>
+        <div class="orders-content__sort">
+          <span class="orders-content__sort-title">
+            Sort orders
+          </span>
 
-          Delete account
-        </button>
+          <div class="custom-select custom-select--light orders-content__sort-select" role="listbox" tabindex="0">
+            <div class="custom-select__head custom-select__head--light orders-content__sort-head">
+              <span class="custom-select__selected orders-content__sort-selected">
+                All
+              </span>
+
+              <svg class="custom-select__icon" xmlns='http://www.w3.org/2000/svg'>
+                <use href='./img/sprite.svg#angle-down'></use>
+              </svg>
+            </div>
+
+            <div class="custom-select__inner-wrapper orders-content__sort-wrapper">
+              <ul class="custom-select__list orders-content__sort-list" data-overlayscrollbars-initialize>
+                <li class="custom-select__item custom-select__item--active orders-content__sort-item"
+                  aria-selected="true">
+                  All
+                </li>
+
+                <li class="custom-select__item orders-content__sort-item" aria-selected="false">
+                  Oldest
+                </li>
+
+                <li class="custom-select__item orders-content__sort-item" aria-selected="false">
+                  Newest
+                </li>
+
+                <li class="custom-select__item orders-content__sort-item" aria-selected="false">
+                  In progress
+                </li>
+
+                <li class="custom-select__item orders-content__sort-item" aria-selected="false">
+                  Delivered
+                </li>
+
+                <li class="custom-select__item orders-content__sort-item" aria-selected="false">
+                  Canceled
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
       </div>
 
-      <!-- Form -->
-      <form class="profile-content__form">
+      <!-- Orders -->
+      <ul class="orders-content__orders">
 
-        <!-- Field1 -->
-        <div class="profile-content__field">
-          <label for="profile-form-first-name" class="profile-content__label">
-            First name
-          </label>
+        <!-- Order1 -->
+        <li class="orders-content__order">
 
-          <div class="input-wrapper">
-            <input type="text" class="profile-content__input input" id="profile-form-first-name"
-              name="profile-form-first-name" placeholder="Your first name" value="Annette">
-          </div>
-        </div>
+          <!-- Head -->
+          <button class="orders-content__head" aria-expanded="false"
+            aria-controls="orders-content-products-34BV66580K92">
+            <span class="orders-content__vendor">
+              # 34BV66580K92
+            </span>
 
-        <!-- Field2 -->
-        <div class="profile-content__field">
-          <label for="profile-form-last-name" class="profile-content__label">
-            Last name
-          </label>
+            <time class="orders-content__time">
+              <svg xmlns='http://www.w3.org/2000/svg' aria-hidden='true'>
+                <use href='./img/sprite.svg#clock' aria-hidden='true'></use>
+              </svg>
 
-          <div class="input-wrapper">
-            <input type="text" class="profile-content__input input" id="profile-form-last-name"
-              name="profile-form-last-name" placeholder="Your last name" value="Black">
-          </div>
-        </div>
+              September 9, 2020
+            </time>
 
-        <!-- Field3 -->
-        <div class="profile-content__field">
-          <label for="profile-form-email" class="profile-content__label">
-            Email
-          </label>
+            <span class="orders-content__state orders-content__state--inprogress">
+              In progress
+            </span>
 
-          <div class="input-wrapper" data-validity="email">
-            <input type="email" class="profile-content__input input" id="profile-form-email" name="profile-form-email"
-              placeholder="Your working email" value="annetteb@example.com">
-          </div>
-        </div>
+            <span class="orders-content__pay">
+              $750.00
+            </span>
 
-        <!-- Field4 -->
-        <div class="profile-content__field">
-          <label for="profile-form-phone" class="profile-content__label">
-            Phone
-          </label>
+            <span class="orders-content__toggle c-toggle c-toggle--mid"></span>
+          </button>
 
-          <div class="input-wrapper">
-            <input type="text" class="profile-content__input input" id="profile-form-phone" name="profile-form-phone"
-              placeholder="Your phone number" value="(629) 555-0129">
-          </div>
-        </div>
+          <!-- Products -->
+          <div class="orders-content__products" id="orders-content-products-34BV66580K92">
 
-        <!-- Field5 -->
-        <div class="profile-content__field">
-          <label for="profile-form-password" class="profile-content__label">
-            New Password
-          </label>
+            <!-- Products list -->
+            <ul class="orders-content__products-list">
 
-          <div class="input-wrapper" data-validity="pass-length">
-            <input type="password" class="profile-content__input input input--password" id="profile-form-password"
-              name="profile-form-password">
+              <!-- Product3 -->
+              <li class="orders-content__product orders-product">
+                <!-- Image -->
+                <img src="./img/product-jeans_80w.jpg" alt="Product-image." class="orders-product__image">
 
-            <button type="button" class="profile-content__show" aria-label="Show entered password."></button>
-          </div>
-        </div>
+                <!-- Text -->
+                <div class="orders-product__text">
 
-        <!-- Field6 -->
-        <div class="profile-content__field">
-          <label for="profile-form-confirm-password" class="profile-content__label">
-            Confirm Password
-          </label>
+                  <!-- Title -->
+                  <h6 class="orders-product__title">
+                    Mid-rise slim cropped fit jeans
+                  </h6>
 
-          <div class="input-wrapper" data-validity="pass-confirm">
-            <input type="password" class="profile-content__input input input--password" id="profile-form-confirm-password"
-              name="profile-form-confirm-password">
+                  <!-- Size -->
+                  <div class="orders-product__size">
+                    <span class="orders-product__size-name">
+                      Size:
+                    </span>
 
-            <button type="button" class="profile-content__show" aria-label="Show entered password."></button>
-          </div>
-        </div>
+                    <span class="orders-product__size-data">
+                      M
+                    </span>
+                  </div>
+                </div>
 
-        <!-- Field7 -->
-        <div class="profile-content__field">
-          <label for="" class="profile-content__label">
-            Country
-          </label>
+                <!-- Price -->
+                <div class="orders-product__price">
+                  <span class="orders-product__price-name">
+                    Price:
+                  </span>
 
-          <div class="custom-select__outer-wrapper profile-content__select-outer-wrapper">
-            <div class="custom-select custom-select--light profile-content__sort-select" role="listbox" tabindex="0">
-              <input type="hidden" class="profile-content-select-hidden" name="profile-form-select-hidden">
+                  <span class="orders-product__price-data">
+                    $40.00
+                  </span>
+                </div>
 
-              <div class="custom-select__head custom-select__head--light profile-content__sort-head">
-                <span class="custom-select__selected profile-content__sort-selected">
-                  Choose your country
+                <!-- Quantity -->
+                <div class="orders-product__quantity">
+                  <span class="orders-product__quantity-name">
+                    Quantity:
+                  </span>
+
+                  <span class="orders-product__quantity-data">
+                    2
+                  </span>
+                </div>
+
+                <!-- Subtotal -->
+                <div class="orders-product__subtotal">
+                  <span class="orders-product__subtotal-name">
+                    Subtotal:
+                  </span>
+
+                  <span class="orders-product__subtotal-data">
+                    $80.00
+                  </span>
+                </div>
+              </li>
+
+              <!-- Product4 -->
+              <li class="orders-content__product orders-product">
+                <!-- Image -->
+                <img src="./img/product-shoes_80w.jpg" alt="Product-image." class="orders-product__image">
+
+                <!-- Text -->
+                <div class="orders-product__text">
+
+                  <!-- Title -->
+                  <h6 class="orders-product__title">
+                    Men fashion gray shoes
+                  </h6>
+
+                  <!-- Color -->
+                  <div class="orders-product__color">
+                    <span class="orders-product__color-name">
+                      Color:
+                    </span>
+
+                    <span class="orders-product__color-data">
+                      gray
+                    </span>
+                  </div>
+
+                  <!-- Size -->
+                  <div class="orders-product__size">
+                    <span class="orders-product__size-name">
+                      Size:
+                    </span>
+
+                    <span class="orders-product__size-data">
+                      44
+                    </span>
+                  </div>
+                </div>
+
+                <!-- Price -->
+                <div class="orders-product__price">
+                  <span class="orders-product__price-name">
+                    Price:
+                  </span>
+
+                  <span class="orders-product__price-data">
+                    $85.00
+                  </span>
+                </div>
+
+                <!-- Quantity -->
+                <div class="orders-product__quantity">
+                  <span class="orders-product__quantity-name">
+                    Quantity:
+                  </span>
+
+                  <span class="orders-product__quantity-data">
+                    1
+                  </span>
+                </div>
+
+                <!-- Subtotal -->
+                <div class="orders-product__subtotal">
+                  <span class="orders-product__subtotal-name">
+                    Subtotal:
+                  </span>
+
+                  <span class="orders-product__subtotal-data">
+                    $85.00
+                  </span>
+                </div>
+              </li>
+            </ul>
+
+            <!-- Products resume -->
+            <ul class="orders-content__products-resume products-resume">
+
+              <!-- Item1 -->
+              <li class="products-resume__item">
+                <span class="products-resume__title">
+                  Subtotal:
                 </span>
 
-                <svg class="custom-select__icon" xmlns='http://www.w3.org/2000/svg'>
-                  <use href='./img/sprite.svg#angle-down'></use>
-                </svg>
-              </div>
+                <span class="products-resume__sum">
+                  $198.65
+                </span>
+              </li>
 
-              <div class="custom-select__inner-wrapper profile-content__sort-wrapper">
-                <ul class="custom-select__list profile-content__sort-list" data-overlayscrollbars-initialize>
-                  <li class="custom-select__item custom-select__item--active profile-content__sort-item" role="option" aria-selected="true">
-                    Choose your country
-                  </li>
-
-                  <li class="custom-select__item profile-content__sort-item" role="option" aria-selected="false">
-                    Russia
-                  </li>
-
-                  <li class="custom-select__item profile-content__sort-item" role="option" aria-selected="false">
-                    Nepal
-                  </li>
-
-                  <li class="custom-select__item profile-content__sort-item" role="option" aria-selected="false">
-                    USA
-                  </li>
-                </ul>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <!-- Field8 -->
-        <div class="profile-content__field">
-          <label for="" class="profile-content__label">
-            City
-          </label>
-
-          <div class="custom-select__outer-wrapper profile-content__select-outer-wrapper">
-            <div class="custom-select custom-select--light profile-content__sort-select" role="listbox" tabindex="0">
-              <input type="hidden" class="profile-content-select-hidden" name="profile-form-select-hidden">
-
-              <div class="custom-select__head custom-select__head--light profile-content__sort-head">
-                <span class="custom-select__selected profile-content__sort-selected">
-                  Choose your city
+              <!-- Item2 -->
+              <li class="products-resume__item">
+                <span class="products-resume__title">
+                  Shipping:
                 </span>
 
-                <svg class="custom-select__icon" xmlns='http://www.w3.org/2000/svg'>
-                  <use href='./img/sprite.svg#angle-down'></use>
-                </svg>
-              </div>
+                <span class="products-resume__sum">
+                  $25.00
+                </span>
+              </li>
 
-              <div class="custom-select__inner-wrapper profile-content__sort-wrapper">
-                <ul class="custom-select__list profile-content__sort-list" data-overlayscrollbars-initialize>
-                  <li class="custom-select__item custom-select__item--active profile-content__sort-item" role="option" aria-selected="true">
-                    Choose your city
-                  </li>
+              <!-- Item3 -->
+              <li class="products-resume__item">
+                <span class="products-resume__title">
+                  Tax:
+                </span>
 
-                  <li class="custom-select__item profile-content__sort-item" role="option" aria-selected="false">
-                    Moscow
-                  </li>
+                <span class="products-resume__sum">
+                  $6.35
+                </span>
+              </li>
 
-                  <li class="custom-select__item profile-content__sort-item" role="option" aria-selected="false">
-                    Delhi
-                  </li>
+              <!-- Item4 -->
+              <li class="products-resume__item">
+                <span class="products-resume__title">
+                  Total:
+                </span>
 
-                  <li class="custom-select__item profile-content__sort-item" role="option" aria-selected="false">
-                    New Jersey
-                  </li>
-                </ul>
-              </div>
+                <span class="products-resume__sum">
+                  $230.00
+                </span>
+              </li>
+            </ul>
+
+            <!-- Products tracking -->
+            <div class="orders-content__tracking">
+              <p class="orders-content__tracking-descr">
+                You can track your order here
+              </p>
+
+              <a href="#" class="orders-content__tracking-btn btn btn--outline">
+                Order tracking
+              </a>
             </div>
           </div>
-        </div>
+        </li>
 
-        <!-- Field9 -->
-        <div class="profile-content__field">
-          <label for="profile-form-address" class="profile-content__label">
-            Address
-          </label>
+        <!-- Order2 -->
+        <li class="orders-content__order">
 
-          <div class="input-wrapper">
-            <input type="text" class="profile-content__input input" id="profile-form-address" name="profile-form-address"
-              placeholder="Your address" value="2464 Royal Ln. Mesa, New Jersey">
+          <!-- Head -->
+          <button class="orders-content__head orders-content__head--init" aria-expanded="true"
+            aria-controls="orders-content-products-50HV46580V84">
+            <span class="orders-content__vendor">
+              # 50HV46580V84
+            </span>
+
+            <time class="orders-content__time">
+              <svg xmlns='http://www.w3.org/2000/svg' aria-hidden='true'>
+                <use href='./img/sprite.svg#clock' aria-hidden='true'></use>
+              </svg>
+
+              August 29, 2020
+            </time>
+
+            <span class="orders-content__state orders-content__state--inprogress">
+              In progress
+            </span>
+
+            <span class="orders-content__pay">
+              $230.00
+            </span>
+
+            <span class="orders-content__toggle c-toggle c-toggle--mid"></span>
+          </button>
+
+          <!-- Products -->
+          <div class="orders-content__products" id="orders-content-products-50HV46580V84">
+
+            <!-- Products list -->
+            <ul class="orders-content__products-list">
+
+              <!-- Product1 -->
+              <li class="orders-content__product orders-product">
+                <!-- Image -->
+                <img src="./img/product-sweatshirt_80w.jpg" alt="Product-image." class="orders-product__image">
+
+                <!-- Text -->
+                <div class="orders-product__text">
+
+                  <!-- Title -->
+                  <h6 class="orders-product__title">
+                    Basic hooded sweatshirt in pink
+                  </h6>
+
+                  <!-- Color -->
+                  <div class="orders-product__color">
+                    <span class="orders-product__color-name">
+                      Color:
+                    </span>
+
+                    <span class="orders-product__color-data">
+                      pink
+                    </span>
+                  </div>
+
+                  <!-- Size -->
+                  <div class="orders-product__size">
+                    <span class="orders-product__size-name">
+                      Size:
+                    </span>
+
+                    <span class="orders-product__size-data">
+                      S
+                    </span>
+                  </div>
+                </div>
+
+                <!-- Price -->
+                <div class="orders-product__price">
+                  <span class="orders-product__price-name">
+                    Price:
+                  </span>
+
+                  <span class="orders-product__price-data">
+                    $15.50
+                  </span>
+                </div>
+
+                <!-- Quantity -->
+                <div class="orders-product__quantity">
+                  <span class="orders-product__quantity-name">
+                    Quantity:
+                  </span>
+
+                  <span class="orders-product__quantity-data">
+                    1
+                  </span>
+                </div>
+
+                <!-- Subtotal -->
+                <div class="orders-product__subtotal">
+                  <span class="orders-product__subtotal-name">
+                    Subtotal:
+                  </span>
+
+                  <span class="orders-product__subtotal-data">
+                    $15.50
+                  </span>
+                </div>
+              </li>
+
+              <!-- Product2 -->
+              <li class="orders-content__product orders-product">
+                <!-- Image -->
+                <img src="./img/product-cap_80w.jpg" alt="Product-image." class="orders-product__image">
+
+                <!-- Text -->
+                <div class="orders-product__text">
+
+                  <!-- Title -->
+                  <h6 class="orders-product__title">
+                    Black and white sport cap
+                  </h6>
+                </div>
+
+                <!-- Price -->
+                <div class="orders-product__price">
+                  <span class="orders-product__price-name">
+                    Price:
+                  </span>
+
+                  <span class="orders-product__price-data">
+                    $18.15
+                  </span>
+                </div>
+
+                <!-- Quantity -->
+                <div class="orders-product__quantity">
+                  <span class="orders-product__quantity-name">
+                    Quantity:
+                  </span>
+
+                  <span class="orders-product__quantity-data">
+                    1
+                  </span>
+                </div>
+
+                <!-- Subtotal -->
+                <div class="orders-product__subtotal">
+                  <span class="orders-product__subtotal-name">
+                    Subtotal:
+                  </span>
+
+                  <span class="orders-product__subtotal-data">
+                    $18.15
+                  </span>
+                </div>
+              </li>
+
+              <!-- Product3 -->
+              <li class="orders-content__product orders-product">
+                <!-- Image -->
+                <img src="./img/product-jeans_80w.jpg" alt="Product-image." class="orders-product__image">
+
+                <!-- Text -->
+                <div class="orders-product__text">
+
+                  <!-- Title -->
+                  <h6 class="orders-product__title">
+                    Mid-rise slim cropped fit jeans
+                  </h6>
+
+                  <!-- Size -->
+                  <div class="orders-product__size">
+                    <span class="orders-product__size-name">
+                      Size:
+                    </span>
+
+                    <span class="orders-product__size-data">
+                      M
+                    </span>
+                  </div>
+                </div>
+
+                <!-- Price -->
+                <div class="orders-product__price">
+                  <span class="orders-product__price-name">
+                    Price:
+                  </span>
+
+                  <span class="orders-product__price-data">
+                    $40.00
+                  </span>
+                </div>
+
+                <!-- Quantity -->
+                <div class="orders-product__quantity">
+                  <span class="orders-product__quantity-name">
+                    Quantity:
+                  </span>
+
+                  <span class="orders-product__quantity-data">
+                    2
+                  </span>
+                </div>
+
+                <!-- Subtotal -->
+                <div class="orders-product__subtotal">
+                  <span class="orders-product__subtotal-name">
+                    Subtotal:
+                  </span>
+
+                  <span class="orders-product__subtotal-data">
+                    $80.00
+                  </span>
+                </div>
+              </li>
+
+              <!-- Product4 -->
+              <li class="orders-content__product orders-product">
+                <!-- Image -->
+                <img src="./img/product-shoes_80w.jpg" alt="Product-image." class="orders-product__image">
+
+                <!-- Text -->
+                <div class="orders-product__text">
+
+                  <!-- Title -->
+                  <h6 class="orders-product__title">
+                    Men fashion gray shoes
+                  </h6>
+
+                  <!-- Color -->
+                  <div class="orders-product__color">
+                    <span class="orders-product__color-name">
+                      Color:
+                    </span>
+
+                    <span class="orders-product__color-data">
+                      gray
+                    </span>
+                  </div>
+
+                  <!-- Size -->
+                  <div class="orders-product__size">
+                    <span class="orders-product__size-name">
+                      Size:
+                    </span>
+
+                    <span class="orders-product__size-data">
+                      44
+                    </span>
+                  </div>
+                </div>
+
+                <!-- Price -->
+                <div class="orders-product__price">
+                  <span class="orders-product__price-name">
+                    Price:
+                  </span>
+
+                  <span class="orders-product__price-data">
+                    $85.00
+                  </span>
+                </div>
+
+                <!-- Quantity -->
+                <div class="orders-product__quantity">
+                  <span class="orders-product__quantity-name">
+                    Quantity:
+                  </span>
+
+                  <span class="orders-product__quantity-data">
+                    1
+                  </span>
+                </div>
+
+                <!-- Subtotal -->
+                <div class="orders-product__subtotal">
+                  <span class="orders-product__subtotal-name">
+                    Subtotal:
+                  </span>
+
+                  <span class="orders-product__subtotal-data">
+                    $85.00
+                  </span>
+                </div>
+              </li>
+            </ul>
+
+            <!-- Products resume -->
+            <ul class="orders-content__products-resume products-resume">
+
+              <!-- Item1 -->
+              <li class="products-resume__item">
+                <span class="products-resume__title">
+                  Subtotal:
+                </span>
+
+                <span class="products-resume__sum">
+                  $198.65
+                </span>
+              </li>
+
+              <!-- Item2 -->
+              <li class="products-resume__item">
+                <span class="products-resume__title">
+                  Shipping:
+                </span>
+
+                <span class="products-resume__sum">
+                  $25.00
+                </span>
+              </li>
+
+              <!-- Item3 -->
+              <li class="products-resume__item">
+                <span class="products-resume__title">
+                  Tax:
+                </span>
+
+                <span class="products-resume__sum">
+                  $6.35
+                </span>
+              </li>
+
+              <!-- Item4 -->
+              <li class="products-resume__item">
+                <span class="products-resume__title">
+                  Total:
+                </span>
+
+                <span class="products-resume__sum">
+                  $230.00
+                </span>
+              </li>
+            </ul>
+
+            <!-- Products tracking -->
+            <div class="orders-content__tracking">
+              <p class="orders-content__tracking-descr">
+                You can track your order here
+              </p>
+
+              <a href="#" class="orders-content__tracking-btn btn btn--outline">
+                Order tracking
+              </a>
+            </div>
           </div>
-        </div>
+        </li>
 
-        <!-- Field10 -->
-        <div class="profile-content__field">
-          <label for="profile-form-zip" class="profile-content__label">
-            ZIP Code
-          </label>
+        <!-- Order3 -->
+        <li class="orders-content__order">
 
-          <div class="input-wrapper">
-            <input type="text" class="profile-content__input input" id="profile-form-zip" name="profile-form-zip"
-              placeholder="Your ZIP code" value="45463">
+          <!-- Head -->
+          <button class="orders-content__head" aria-expanded="false"
+            aria-controls="orders-content-products-93BR64523J71">
+            <span class="orders-content__vendor">
+              # 93BR64523J71
+            </span>
+
+            <time class="orders-content__time">
+              <svg xmlns='http://www.w3.org/2000/svg' aria-hidden='true'>
+                <use href='./img/sprite.svg#clock' aria-hidden='true'></use>
+              </svg>
+
+              August 4, 2020
+            </time>
+
+            <span class="orders-content__state orders-content__state--delivered">
+              Delivered
+            </span>
+
+            <span class="orders-content__pay">
+              $92.40
+            </span>
+
+            <span class="orders-content__toggle c-toggle c-toggle--mid"></span>
+          </button>
+
+          <!-- Products -->
+          <div class="orders-content__products" id="orders-content-products-93BR64523J71">
+
+            <!-- Products list -->
+            <ul class="orders-content__products-list">
+
+              <!-- Product1 -->
+              <li class="orders-content__product orders-product">
+                <!-- Image -->
+                <img src="./img/product-sweatshirt_80w.jpg" alt="Product-image." class="orders-product__image">
+
+                <!-- Text -->
+                <div class="orders-product__text">
+
+                  <!-- Title -->
+                  <h6 class="orders-product__title">
+                    Basic hooded sweatshirt in pink
+                  </h6>
+
+                  <!-- Color -->
+                  <div class="orders-product__color">
+                    <span class="orders-product__color-name">
+                      Color:
+                    </span>
+
+                    <span class="orders-product__color-data">
+                      pink
+                    </span>
+                  </div>
+
+                  <!-- Size -->
+                  <div class="orders-product__size">
+                    <span class="orders-product__size-name">
+                      Size:
+                    </span>
+
+                    <span class="orders-product__size-data">
+                      S
+                    </span>
+                  </div>
+                </div>
+
+                <!-- Price -->
+                <div class="orders-product__price">
+                  <span class="orders-product__price-name">
+                    Price:
+                  </span>
+
+                  <span class="orders-product__price-data">
+                    $15.50
+                  </span>
+                </div>
+
+                <!-- Quantity -->
+                <div class="orders-product__quantity">
+                  <span class="orders-product__quantity-name">
+                    Quantity:
+                  </span>
+
+                  <span class="orders-product__quantity-data">
+                    1
+                  </span>
+                </div>
+
+                <!-- Subtotal -->
+                <div class="orders-product__subtotal">
+                  <span class="orders-product__subtotal-name">
+                    Subtotal:
+                  </span>
+
+                  <span class="orders-product__subtotal-data">
+                    $15.50
+                  </span>
+                </div>
+              </li>
+
+              <!-- Product2 -->
+              <li class="orders-content__product orders-product">
+                <!-- Image -->
+                <img src="./img/product-cap_80w.jpg" alt="Product-image." class="orders-product__image">
+
+                <!-- Text -->
+                <div class="orders-product__text">
+
+                  <!-- Title -->
+                  <h6 class="orders-product__title">
+                    Black and white sport cap
+                  </h6>
+                </div>
+
+                <!-- Price -->
+                <div class="orders-product__price">
+                  <span class="orders-product__price-name">
+                    Price:
+                  </span>
+
+                  <span class="orders-product__price-data">
+                    $18.15
+                  </span>
+                </div>
+
+                <!-- Quantity -->
+                <div class="orders-product__quantity">
+                  <span class="orders-product__quantity-name">
+                    Quantity:
+                  </span>
+
+                  <span class="orders-product__quantity-data">
+                    1
+                  </span>
+                </div>
+
+                <!-- Subtotal -->
+                <div class="orders-product__subtotal">
+                  <span class="orders-product__subtotal-name">
+                    Subtotal:
+                  </span>
+
+                  <span class="orders-product__subtotal-data">
+                    $18.15
+                  </span>
+                </div>
+              </li>
+            </ul>
+
+            <!-- Products resume -->
+            <ul class="orders-content__products-resume products-resume">
+
+              <!-- Item1 -->
+              <li class="products-resume__item">
+                <span class="products-resume__title">
+                  Subtotal:
+                </span>
+
+                <span class="products-resume__sum">
+                  $198.65
+                </span>
+              </li>
+
+              <!-- Item2 -->
+              <li class="products-resume__item">
+                <span class="products-resume__title">
+                  Shipping:
+                </span>
+
+                <span class="products-resume__sum">
+                  $25.00
+                </span>
+              </li>
+
+              <!-- Item3 -->
+              <li class="products-resume__item">
+                <span class="products-resume__title">
+                  Tax:
+                </span>
+
+                <span class="products-resume__sum">
+                  $6.35
+                </span>
+              </li>
+
+              <!-- Item4 -->
+              <li class="products-resume__item">
+                <span class="products-resume__title">
+                  Total:
+                </span>
+
+                <span class="products-resume__sum">
+                  $230.00
+                </span>
+              </li>
+            </ul>
+
+            <!-- Products tracking -->
+            <div class="orders-content__tracking">
+              <p class="orders-content__tracking-descr">
+                You can track your order here
+              </p>
+
+              <a href="#" class="orders-content__tracking-btn btn btn--outline">
+                Order tracking
+              </a>
+            </div>
           </div>
-        </div>
+        </li>
 
-        <button class="profile-content__btn btn btn--lg">
-          Save changes
-        </button>
-      </form>
+        <!-- Order4 -->
+        <li class="orders-content__order">
+
+          <!-- Head -->
+          <button class="orders-content__head" aria-expanded="false"
+            aria-controls="orders-content-products-66TU12580L11">
+            <span class="orders-content__vendor">
+              # 66TU12580L11
+            </span>
+
+            <time class="orders-content__time">
+              <svg xmlns='http://www.w3.org/2000/svg' aria-hidden='true'>
+                <use href='./img/sprite.svg#clock' aria-hidden='true'></use>
+              </svg>
+
+              July 27, 2020
+            </time>
+
+            <span class="orders-content__state orders-content__state--canceled">
+              Canceled
+            </span>
+
+            <span class="orders-content__pay">
+              $102.95
+            </span>
+
+            <span class="orders-content__toggle c-toggle c-toggle--mid"></span>
+          </button>
+
+          <!-- Products -->
+          <div class="orders-content__products" id="orders-content-products-66TU12580L11">
+
+            <!-- Products list -->
+            <ul class="orders-content__products-list">
+
+              <!-- Product1 -->
+              <li class="orders-content__product orders-product">
+                <!-- Image -->
+                <img src="./img/product-sweatshirt_80w.jpg" alt="Product-image." class="orders-product__image">
+
+                <!-- Text -->
+                <div class="orders-product__text">
+
+                  <!-- Title -->
+                  <h6 class="orders-product__title">
+                    Basic hooded sweatshirt in pink
+                  </h6>
+
+                  <!-- Color -->
+                  <div class="orders-product__color">
+                    <span class="orders-product__color-name">
+                      Color:
+                    </span>
+
+                    <span class="orders-product__color-data">
+                      pink
+                    </span>
+                  </div>
+
+                  <!-- Size -->
+                  <div class="orders-product__size">
+                    <span class="orders-product__size-name">
+                      Size:
+                    </span>
+
+                    <span class="orders-product__size-data">
+                      S
+                    </span>
+                  </div>
+                </div>
+
+                <!-- Price -->
+                <div class="orders-product__price">
+                  <span class="orders-product__price-name">
+                    Price:
+                  </span>
+
+                  <span class="orders-product__price-data">
+                    $15.50
+                  </span>
+                </div>
+
+                <!-- Quantity -->
+                <div class="orders-product__quantity">
+                  <span class="orders-product__quantity-name">
+                    Quantity:
+                  </span>
+
+                  <span class="orders-product__quantity-data">
+                    1
+                  </span>
+                </div>
+
+                <!-- Subtotal -->
+                <div class="orders-product__subtotal">
+                  <span class="orders-product__subtotal-name">
+                    Subtotal:
+                  </span>
+
+                  <span class="orders-product__subtotal-data">
+                    $15.50
+                  </span>
+                </div>
+              </li>
+
+              <!-- Product4 -->
+              <li class="orders-content__product orders-product">
+                <!-- Image -->
+                <img src="./img/product-shoes_80w.jpg" alt="Product-image." class="orders-product__image">
+
+                <!-- Text -->
+                <div class="orders-product__text">
+
+                  <!-- Title -->
+                  <h6 class="orders-product__title">
+                    Men fashion gray shoes
+                  </h6>
+
+                  <!-- Color -->
+                  <div class="orders-product__color">
+                    <span class="orders-product__color-name">
+                      Color:
+                    </span>
+
+                    <span class="orders-product__color-data">
+                      gray
+                    </span>
+                  </div>
+
+                  <!-- Size -->
+                  <div class="orders-product__size">
+                    <span class="orders-product__size-name">
+                      Size:
+                    </span>
+
+                    <span class="orders-product__size-data">
+                      44
+                    </span>
+                  </div>
+                </div>
+
+                <!-- Price -->
+                <div class="orders-product__price">
+                  <span class="orders-product__price-name">
+                    Price:
+                  </span>
+
+                  <span class="orders-product__price-data">
+                    $85.00
+                  </span>
+                </div>
+
+                <!-- Quantity -->
+                <div class="orders-product__quantity">
+                  <span class="orders-product__quantity-name">
+                    Quantity:
+                  </span>
+
+                  <span class="orders-product__quantity-data">
+                    1
+                  </span>
+                </div>
+
+                <!-- Subtotal -->
+                <div class="orders-product__subtotal">
+                  <span class="orders-product__subtotal-name">
+                    Subtotal:
+                  </span>
+
+                  <span class="orders-product__subtotal-data">
+                    $85.00
+                  </span>
+                </div>
+              </li>
+            </ul>
+
+            <!-- Products resume -->
+            <ul class="orders-content__products-resume products-resume">
+
+              <!-- Item1 -->
+              <li class="products-resume__item">
+                <span class="products-resume__title">
+                  Subtotal:
+                </span>
+
+                <span class="products-resume__sum">
+                  $198.65
+                </span>
+              </li>
+
+              <!-- Item2 -->
+              <li class="products-resume__item">
+                <span class="products-resume__title">
+                  Shipping:
+                </span>
+
+                <span class="products-resume__sum">
+                  $25.00
+                </span>
+              </li>
+
+              <!-- Item3 -->
+              <li class="products-resume__item">
+                <span class="products-resume__title">
+                  Tax:
+                </span>
+
+                <span class="products-resume__sum">
+                  $6.35
+                </span>
+              </li>
+
+              <!-- Item4 -->
+              <li class="products-resume__item">
+                <span class="products-resume__title">
+                  Total:
+                </span>
+
+                <span class="products-resume__sum">
+                  $230.00
+                </span>
+              </li>
+            </ul>
+
+            <!-- Products tracking -->
+            <div class="orders-content__tracking">
+              <p class="orders-content__tracking-descr">
+                You can track your order here
+              </p>
+
+              <a href="#" class="orders-content__tracking-btn btn btn--outline">
+                Order tracking
+              </a>
+            </div>
+          </div>
+        </li>
+
+        <!-- Order5 -->
+        <li class="orders-content__order">
+
+          <!-- Head -->
+          <button class="orders-content__head" aria-expanded="false"
+            aria-controls="orders-content-products-12WE95534P90">
+            <span class="orders-content__vendor">
+              # 12WE95534P90
+            </span>
+
+            <time class="orders-content__time">
+              <svg xmlns='http://www.w3.org/2000/svg' aria-hidden='true'>
+                <use href='./img/sprite.svg#clock' aria-hidden='true'></use>
+              </svg>
+
+              July 12, 2020
+            </time>
+
+            <span class="orders-content__state orders-content__state--delivered">
+              Delivered
+            </span>
+
+            <span class="orders-content__pay">
+              $267.00
+            </span>
+
+            <span class="orders-content__toggle c-toggle c-toggle--mid"></span>
+          </button>
+
+          <!-- Products -->
+          <div class="orders-content__products" id="orders-content-products-12WE95534P90">
+
+            <!-- Products list -->
+            <ul class="orders-content__products-list">
+
+              <!-- Product1 -->
+              <li class="orders-content__product orders-product">
+                <!-- Image -->
+                <img src="./img/product-sweatshirt_80w.jpg" alt="Product-image." class="orders-product__image">
+
+                <!-- Text -->
+                <div class="orders-product__text">
+
+                  <!-- Title -->
+                  <h6 class="orders-product__title">
+                    Basic hooded sweatshirt in pink
+                  </h6>
+
+                  <!-- Color -->
+                  <div class="orders-product__color">
+                    <span class="orders-product__color-name">
+                      Color:
+                    </span>
+
+                    <span class="orders-product__color-data">
+                      pink
+                    </span>
+                  </div>
+
+                  <!-- Size -->
+                  <div class="orders-product__size">
+                    <span class="orders-product__size-name">
+                      Size:
+                    </span>
+
+                    <span class="orders-product__size-data">
+                      S
+                    </span>
+                  </div>
+                </div>
+
+                <!-- Price -->
+                <div class="orders-product__price">
+                  <span class="orders-product__price-name">
+                    Price:
+                  </span>
+
+                  <span class="orders-product__price-data">
+                    $15.50
+                  </span>
+                </div>
+
+                <!-- Quantity -->
+                <div class="orders-product__quantity">
+                  <span class="orders-product__quantity-name">
+                    Quantity:
+                  </span>
+
+                  <span class="orders-product__quantity-data">
+                    1
+                  </span>
+                </div>
+
+                <!-- Subtotal -->
+                <div class="orders-product__subtotal">
+                  <span class="orders-product__subtotal-name">
+                    Subtotal:
+                  </span>
+
+                  <span class="orders-product__subtotal-data">
+                    $15.50
+                  </span>
+                </div>
+              </li>
+            </ul>
+
+            <!-- Products resume -->
+            <ul class="orders-content__products-resume products-resume">
+
+              <!-- Item1 -->
+              <li class="products-resume__item">
+                <span class="products-resume__title">
+                  Subtotal:
+                </span>
+
+                <span class="products-resume__sum">
+                  $198.65
+                </span>
+              </li>
+
+              <!-- Item2 -->
+              <li class="products-resume__item">
+                <span class="products-resume__title">
+                  Shipping:
+                </span>
+
+                <span class="products-resume__sum">
+                  $25.00
+                </span>
+              </li>
+
+              <!-- Item3 -->
+              <li class="products-resume__item">
+                <span class="products-resume__title">
+                  Tax:
+                </span>
+
+                <span class="products-resume__sum">
+                  $6.35
+                </span>
+              </li>
+
+              <!-- Item4 -->
+              <li class="products-resume__item">
+                <span class="products-resume__title">
+                  Total:
+                </span>
+
+                <span class="products-resume__sum">
+                  $230.00
+                </span>
+              </li>
+            </ul>
+
+            <!-- Products tracking -->
+            <div class="orders-content__tracking">
+              <p class="orders-content__tracking-descr">
+                You can track your order here
+              </p>
+
+              <a href="#" class="orders-content__tracking-btn btn btn--outline">
+                Order tracking
+              </a>
+            </div>
+          </div>
+        </li>
+
+        <!-- Order6 -->
+        <li class="orders-content__order">
+
+          <!-- Head -->
+          <button class="orders-content__head" aria-expanded="false"
+            aria-controls="orders-content-products-47IK678871Y45">
+            <span class="orders-content__vendor">
+              # 47IK678871Y45
+            </span>
+
+            <time class="orders-content__time">
+              <svg xmlns='http://www.w3.org/2000/svg' aria-hidden='true'>
+                <use href='./img/sprite.svg#clock' aria-hidden='true'></use>
+              </svg>
+
+              June 5, 2020
+            </time>
+
+            <span class="orders-content__state orders-content__state--delivered">
+              Delivered
+            </span>
+
+            <span class="orders-content__pay">
+              $19.50
+            </span>
+
+            <span class="orders-content__toggle c-toggle c-toggle--mid"></span>
+          </button>
+
+          <!-- Products -->
+          <div class="orders-content__products" id="orders-content-products-47IK678871Y45">
+
+            <!-- Products list -->
+            <ul class="orders-content__products-list">
+
+              <!-- Product2 -->
+              <li class="orders-content__product orders-product">
+                <!-- Image -->
+                <img src="./img/product-cap_80w.jpg" alt="Product-image." class="orders-product__image">
+
+                <!-- Text -->
+                <div class="orders-product__text">
+
+                  <!-- Title -->
+                  <h6 class="orders-product__title">
+                    Black and white sport cap
+                  </h6>
+                </div>
+
+                <!-- Price -->
+                <div class="orders-product__price">
+                  <span class="orders-product__price-name">
+                    Price:
+                  </span>
+
+                  <span class="orders-product__price-data">
+                    $18.15
+                  </span>
+                </div>
+
+                <!-- Quantity -->
+                <div class="orders-product__quantity">
+                  <span class="orders-product__quantity-name">
+                    Quantity:
+                  </span>
+
+                  <span class="orders-product__quantity-data">
+                    1
+                  </span>
+                </div>
+
+                <!-- Subtotal -->
+                <div class="orders-product__subtotal">
+                  <span class="orders-product__subtotal-name">
+                    Subtotal:
+                  </span>
+
+                  <span class="orders-product__subtotal-data">
+                    $18.15
+                  </span>
+                </div>
+              </li>
+
+              <!-- Product4 -->
+              <li class="orders-content__product orders-product">
+                <!-- Image -->
+                <img src="./img/product-shoes_80w.jpg" alt="Product-image." class="orders-product__image">
+
+                <!-- Text -->
+                <div class="orders-product__text">
+
+                  <!-- Title -->
+                  <h6 class="orders-product__title">
+                    Men fashion gray shoes
+                  </h6>
+
+                  <!-- Color -->
+                  <div class="orders-product__color">
+                    <span class="orders-product__color-name">
+                      Color:
+                    </span>
+
+                    <span class="orders-product__color-data">
+                      gray
+                    </span>
+                  </div>
+
+                  <!-- Size -->
+                  <div class="orders-product__size">
+                    <span class="orders-product__size-name">
+                      Size:
+                    </span>
+
+                    <span class="orders-product__size-data">
+                      44
+                    </span>
+                  </div>
+                </div>
+
+                <!-- Price -->
+                <div class="orders-product__price">
+                  <span class="orders-product__price-name">
+                    Price:
+                  </span>
+
+                  <span class="orders-product__price-data">
+                    $85.00
+                  </span>
+                </div>
+
+                <!-- Quantity -->
+                <div class="orders-product__quantity">
+                  <span class="orders-product__quantity-name">
+                    Quantity:
+                  </span>
+
+                  <span class="orders-product__quantity-data">
+                    1
+                  </span>
+                </div>
+
+                <!-- Subtotal -->
+                <div class="orders-product__subtotal">
+                  <span class="orders-product__subtotal-name">
+                    Subtotal:
+                  </span>
+
+                  <span class="orders-product__subtotal-data">
+                    $85.00
+                  </span>
+                </div>
+              </li>
+            </ul>
+
+            <!-- Products resume -->
+            <ul class="orders-content__products-resume products-resume">
+
+              <!-- Item1 -->
+              <li class="products-resume__item">
+                <span class="products-resume__title">
+                  Subtotal:
+                </span>
+
+                <span class="products-resume__sum">
+                  $198.65
+                </span>
+              </li>
+
+              <!-- Item2 -->
+              <li class="products-resume__item">
+                <span class="products-resume__title">
+                  Shipping:
+                </span>
+
+                <span class="products-resume__sum">
+                  $25.00
+                </span>
+              </li>
+
+              <!-- Item3 -->
+              <li class="products-resume__item">
+                <span class="products-resume__title">
+                  Tax:
+                </span>
+
+                <span class="products-resume__sum">
+                  $6.35
+                </span>
+              </li>
+
+              <!-- Item4 -->
+              <li class="products-resume__item">
+                <span class="products-resume__title">
+                  Total:
+                </span>
+
+                <span class="products-resume__sum">
+                  $230.00
+                </span>
+              </li>
+            </ul>
+
+            <!-- Products tracking -->
+            <div class="orders-content__tracking">
+              <p class="orders-content__tracking-descr">
+                You can track your order here
+              </p>
+
+              <a href="#" class="orders-content__tracking-btn btn btn--outline">
+                Order tracking
+              </a>
+            </div>
+          </div>
+        </li>
+      </ul>
+
+      <!-- More -->
+      <button class="orders-content__more">
+        <svg xmlns='http://www.w3.org/2000/svg' aria-hidden='true'>
+          <use href='./img/sprite.svg#convert' aria-hidden='true'></use>
+        </svg>
+
+        Load more
+      </button>
     </div>
   </div>
 </section>

@@ -1509,6 +1509,11 @@
     background-color: var(--primary-color);
     transform: translate(-50%, -50%);
   }
+
+  &--mid {
+    width: rem(20);
+    height: rem(20);
+  }
 }
 
 .tab {

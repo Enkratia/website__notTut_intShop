@@ -14,33 +14,33 @@ function toggleActiveClass(elem) {
 
 // **
 function markFavoriteProduct(elem, elemVendorCode) {
-  const swiperWrapper = elem.closest(".swiper-wrapper");
+  // const swiperWrapper = elem.closest(".swiper-wrapper");
 
-  if (swiperWrapper) { // Check for swiper parent
-    const products = swiperWrapper.querySelectorAll("[data-vendor]");
+  // if (swiperWrapper) { // Check for swiper parent
+  //   const products = swiperWrapper.querySelectorAll("[data-vendor]");
 
-    products.forEach(el => {
-      const productsVendorCode = el.getAttribute("data-vendor");
+  //   products.forEach(el => {
+  //     const productsVendorCode = el.getAttribute("data-vendor");
 
-      if (elemVendorCode === productsVendorCode) {
-        toggleActiveClass(el)
-      }
-    });
+  //     if (elemVendorCode === productsVendorCode) {
+  //       toggleActiveClass(el)
+  //     }
+  //   });
 
-  } else {
+  // } else {
     const sameProducts = document.querySelectorAll(`[data-vendor="${elemVendorCode}"]`);
 
     sameProducts.forEach(el => {
       toggleActiveClass(el)
     });
-  }
+  // }
 }
 
 // ***
 function markFavoriteProductsInit(cartLiElements = undefined) {
   const favoriteProducts = cartLiElements ?? document.querySelectorAll("[data-vendor]");
 
-  favoriteProducts.forEach(el => {
+  [...favoriteProducts].forEach(el => {
     const vendorCode = el.getAttribute("data-vendor");
 
     if (favoriteArray.includes(vendorCode)) {

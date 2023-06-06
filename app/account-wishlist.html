@@ -6,7 +6,7 @@
   <meta name='viewport' content='width=device-width, initial-scale=1.0'>
   <script src='js/main.js' defer></script>
   <link rel='stylesheet' href='css/main.css'>
-  <title>My profile</title>
+  <title>Wishlist</title>
 </head>
 
 <body class="body">
@@ -86,35 +86,35 @@
 
         <div class="custom-select__inner-wrapper">
           <ul class="custom-select__list" id="custom-select-list" data-overlayscrollbars-initialize>
-            <li class="custom-select__item custom-select__item--active">
+            <li class="custom-select__item custom-select__item--active" role="option" aria-selected="true">
               Eng / $
             </li>
 
-            <li class="custom-select__item">
+            <li class="custom-select__item" role="option" aria-selected="false">
               Olt / h
             </li>
 
-            <li class="custom-select__item">
+            <li class="custom-select__item" role="option" aria-selected="false">
               Iur / p
             </li>
 
-            <li class="custom-select__item">
+            <li class="custom-select__item" role="option" aria-selected="false">
               Bus / d
             </li>
 
-            <li class="custom-select__item">
+            <li class="custom-select__item" role="option" aria-selected="false">
               Olt / h
             </li>
 
-            <li class="custom-select__item">
+            <li class="custom-select__item" role="option" aria-selected="false">
               Iur / p
             </li>
 
-            <li class="custom-select__item">
+            <li class="custom-select__item" role="option" aria-selected="false">
               Bus / d
             </li>
 
-            <li class="custom-select__item">
+            <li class="custom-select__item" role="option" aria-selected="false">
               Bus / d
             </li>
           </ul>
@@ -1421,15 +1421,15 @@
     </div>
   </div>
 </section>
-  <section class="breadcrumbs">
-  <div class="breadcrumbs__container container">
+  <section class="breadcrumbs-wishlist">
+  <div class="breadcrumbs-wishlist__container container">
 
     <!-- Breadcrumbs list -->
-    <ul class="breadcrumbs__list">
+    <ul class="breadcrumbs-wishlist__list">
 
       <!-- Item1 -->
-      <li class="breadcrumbs__item">
-        <a href="#" class="breadcrumbs__link">
+      <li class="breadcrumbs-wishlist__item">
+        <a href="#" class="breadcrumbs-wishlist__link">
           <svg xmlns='http://www.w3.org/2000/svg'>
             <use href='./img/sprite.svg#home'></use>
           </svg>
@@ -1437,25 +1437,144 @@
       </li>
 
       <!-- Item2 -->
-      <li class="breadcrumbs__item">
-        <a href="#" class="breadcrumbs__link">
-          Women
+      <li class="breadcrumbs-wishlist__item">
+        <a href="#" class="breadcrumbs-wishlist__link">
+          Account
         </a>
       </li>
 
       <!-- Item3 -->
-      <li class="breadcrumbs__item">
-        <a href="#" class="breadcrumbs__link">
-          Clothes
+      <li class="breadcrumbs-wishlist__item">
+        <a href="#" class="breadcrumbs-wishlist__link">
+          My profile
         </a>
       </li>
     </ul>
-
-    <!-- Active filters (из JS) -->
   </div>
 </section>
+  <section class="wishlist" id="wishlist">
+  <div class="wishlist__container container">
 
-  
+    <!-- Account menu -->
+    <aside class="wishlist__account-menu account-menu">
+      <div class="account-menu__top">
+        <h5 class="account-menu__name">
+          Annette Black
+        </h5>
+
+        <p class="account-menu__email">
+          annetteb@example.com
+        </p>
+      </div>
+
+      <!-- Links -->
+      <ul class="account-menu__links">
+
+        <!-- Item1 -->
+        <li class="account-menu__item">
+          <a href="#" class="account-menu__link">
+            <svg xmlns='http://www.w3.org/2000/svg' aria-hidden='true'>
+              <use href='./img/sprite.svg#person' aria-hidden='true'></use>
+            </svg>
+
+            <span class="account-menu__link-name">
+              My profile
+            </span>
+          </a>
+        </li>
+
+        <!-- Item2 -->
+        <li class="account-menu__item">
+          <a href="#" class="account-menu__link">
+            <svg xmlns='http://www.w3.org/2000/svg' aria-hidden='true'>
+              <use href='./img/sprite.svg#wallet-2' aria-hidden='true'></use>
+            </svg>
+
+            <span class="account-menu__link-name">
+              My orders
+            </span>
+          </a>
+        </li>
+
+        <!-- Item3 -->
+        <li class="account-menu__item">
+          <a href="#" class="account-menu__link account-menu__link--active">
+            <svg xmlns='http://www.w3.org/2000/svg' aria-hidden='true'>
+              <use href='./img/sprite.svg#heart' aria-hidden='true'></use>
+            </svg>
+
+            <span class="account-menu__link-name">
+              Wishlist
+            </span>
+
+            <span class="account-menu__link-count" aria-label="Number of products in wishlist.">
+              2
+            </span>
+          </a>
+        </li>
+
+        <!-- Item4 -->
+        <li class="account-menu__item">
+          <a href="#" class="account-menu__link">
+            <svg xmlns='http://www.w3.org/2000/svg' aria-hidden='true'>
+              <use href='./img/sprite.svg#eye' aria-hidden='true'></use>
+            </svg>
+
+            <span class="account-menu__link-name">
+              Recently viewed
+            </span>
+          </a>
+        </li>
+
+        <!-- Item5 -->
+        <li class="account-menu__item">
+          <a href="#" class="account-menu__link">
+            <svg xmlns='http://www.w3.org/2000/svg' aria-hidden='true'>
+              <use href='./img/sprite.svg#star' aria-hidden='true'></use>
+            </svg>
+
+            <span class="account-menu__link-name">
+              My reviews
+            </span>
+          </a>
+        </li>
+
+        <!-- Item6 -->
+        <li class="account-menu__item">
+          <a href="#" class="account-menu__link">
+            <svg xmlns='http://www.w3.org/2000/svg' aria-hidden='true'>
+              <use href='./img/sprite.svg#logout' aria-hidden='true'></use>
+            </svg>
+
+            <span class="account-menu__link-name">
+              Sign out
+            </span>
+          </a>
+        </li>
+      </ul>
+    </aside>
+
+    <div class="wishlist__content">
+      <div class="wishlist__content-top">
+        <h2 class="wishlist__content-title">
+          Wishlist
+        </h2>
+
+        <button class="wishlist__content-delete">
+          <svg xmlns='http://www.w3.org/2000/svg' aria-hidden='true'>
+            <use href='./img/sprite.svg#bin' aria-hidden='true'></use>
+          </svg>
+
+          Delete All
+        </button>
+      </div>
+
+      <ul class="wishlist__content-list">
+        
+      </ul>
+    </div>
+  </div>
+</section>
   
 
   <a class="scroll-top" aria-label="Scroll to top.">

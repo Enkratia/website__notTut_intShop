@@ -8,6 +8,7 @@ export const $customSelects = document.querySelectorAll(".custom-select");
 export const $header = document.querySelector("#header");
 export const $headerTopContainer = $header.querySelector("#header-top-container");
 export const $topNavBtn = $headerTopContainer.querySelector("#top-nav-button");
+export const $login = $headerTopContainer.querySelector("#login");
 export const $loginBtnIn = $headerTopContainer.querySelector("#login-btn-in");
 export const $loginBtnRegister = $headerTopContainer.querySelector("#login-btn-register");
 export const $logInModal = $header.querySelector("#log-in");

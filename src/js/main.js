@@ -31,7 +31,7 @@ import "./components/review-message-tooltips.js";
 import "./components/checkout.js";
 import "./components/custom-radio.js";
 import "./components/my-profile.js";
-
+import "./components/my-orders.js";
 
 
 // Components multiple in one
@@ -54,7 +54,11 @@ if (cardNumber) {
 
 // === My profile === //
 const profilePhoneNumber = document.getElementById("profile-form-phone");
-const profilePhoneMask = IMask(profilePhoneNumber, {mask: "(000) 000-0000"});
+
+if (profilePhoneNumber) {
+  const profilePhoneMask = IMask(profilePhoneNumber, {mask: "(000) 000-0000"});
+}
+
 
 
 
