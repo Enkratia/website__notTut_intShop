@@ -8,11 +8,29 @@
     display: flex;
     align-items: flex-start;
     justify-content: space-between;
+
+    @include bp-down("1024") {
+      flex-direction: column;
+    }
+  }
+
+  // Account-menu
+  &__account-menu {
+    margin-right: rem(48);
+
+    @include bp-down("1024") {
+      margin-right: 0;
+      margin-bottom: rem(48);
+    }
   }
 
   // Content
   .profile-content {
     max-width: rem(810);
+
+    @include bp-down("1024") {
+      max-width: none;
+    }
 
     // Top
     &__top {
@@ -26,6 +44,10 @@
     &__title {
       font: var(--h2-font);
       color: var(--gray900-color);
+
+      @include bp-down("1325") {
+        font-size: calc(rem(20.8) + 0.84vw); // 32>24(1325>375)
+      }
     }
 
     &__delete {
@@ -171,5 +193,9 @@
         }
       }
     }
+  }
+
+  @include bp-down("1325") {
+    padding-bottom: calc(rem(12.63) + 12.63vw); // 180>60
   }
 }

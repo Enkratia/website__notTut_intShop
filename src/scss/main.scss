@@ -20,7 +20,7 @@
 @forward "./components/footer";
 
 // Components catalog
-@forward "./components/breadcrumbs";
+@forward "./components/breadcrumbs/breadcrumbs";
 @forward "./components/catalog";
 
 // Components single-product
@@ -30,13 +30,17 @@
 @forward "./components/recently-viewed";
 
 // Components checkout
-@forward "./components/breadcrumbs-checkout";
+@forward "./components/breadcrumbs/breadcrumbs-checkout";
 @forward "./components/checkout";
 
 // Components account (all pages)
-@forward "./components/breadcrumbs-my-profile";
-@forward "./components/my-profile";
-@forward "./components/breadcrumbs-my-orders";
-@forward "./components/my-orders";
-@forward "./components/breadcrumbs-wishlist";
-@forward "./components/wishlist";
+@forward "./components/breadcrumbs/breadcrumbs-my-profile";
+@forward "./components/account-my-profile";
+@forward "./components/breadcrumbs/breadcrumbs-my-orders";
+@forward "./components/account-my-orders";
+@forward "./components/breadcrumbs/breadcrumbs-wishlist";
+@forward "./components/account-wishlist";
+@forward "./components/breadcrumbs/breadcrumbs-recently-viewed";
+@forward "./components/account-recently-viewed";
+@forward "./components/breadcrumbs/breadcrumbs-my-reviews";
+@forward "./components/account-my-reviews";

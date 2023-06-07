@@ -1,0 +1,105 @@
+@use "../util/" as *;
+
+.wishlist {
+  padding-top: rem(40);
+  padding-bottom: rem(196);
+
+  &__container {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+
+    @include bp-down("1024") {
+      flex-direction: column;
+    }
+  }
+
+  // Account-menu
+  &__account-menu {
+    margin-right: rem(48);
+
+    @include bp-down("1024") {
+      margin-right: 0;
+      margin-bottom: rem(48);
+    }
+  }
+
+  // Content
+  &__content {
+    width: 100%;
+    max-width: rem(810);
+
+    @include bp-down("1024") {
+      max-width: none;
+    }
+
+    // Top
+    &-top {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: rem(40);
+      width: 100%;
+    }
+
+    &-title {
+      font: var(--h2-font);
+      color: var(--gray900-color);
+
+      @include bp-down("1325") {
+        font-size: calc(rem(20.8) + 0.84vw); // 32>24(1325>375)
+      }
+    }
+
+    &-delete {
+      display: inline-flex;
+      align-items: center;
+      font: var(--base-bold);
+      color: var(--danger-color);
+
+      svg {
+        margin-right: rem(8);
+        width: rem(20);
+        height: rem(20);
+        fill: currentcolor;
+      }
+    }
+
+    // List
+    &-list {
+      display: grid;
+      column-gap: rem(30);
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      row-gap: rem(76);
+
+      @include bp-down("1325") {
+        row-gap: calc(rem(20.21) + 4.21vw); // 76>36(1325>375)
+      }
+
+      @include bp-down("576") {
+        grid-template-columns: minmax(0, 1fr);
+      }
+    }
+
+    &-item {
+      @include bp-down("576") {
+        justify-self: center;
+        width: 100%;
+        max-width: rem(360);
+      }
+    }
+
+    &-details {
+      margin-bottom: rem(20);
+      padding-top: rem(20);
+    }
+
+    &-colors {
+      gap: rem(8);
+    }
+  }
+
+  @include bp-down("1325") {
+    padding-bottom: calc(rem(28.63) + 12.63vw); // 196>76(1325>375)
+  }
+}

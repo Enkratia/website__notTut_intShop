@@ -1,0 +1,518 @@
+<section class="account-my-reviews my-reviews" id="my-reviews">
+  <div class="my-reviews__container container container--40">
+
+    <!-- Account menu -->
+    <aside class="my-reviews__account-menu account-menu">
+      <div class="account-menu__top">
+        <h5 class="account-menu__name">
+          Annette Black
+        </h5>
+
+        <p class="account-menu__email">
+          annetteb@example.com
+        </p>
+
+        <button class="account-menu__btn btn btn--mid">
+          Account Menu
+        </button>
+      </div>
+
+      <!-- Links -->
+      <ul class="account-menu__links">
+
+        <!-- Item1 -->
+        <li class="account-menu__item">
+          <a href="/account-my-profile.html" class="account-menu__link">
+            <svg xmlns='http://www.w3.org/2000/svg' aria-hidden='true'>
+              <use href='./img/sprite.svg#person' aria-hidden='true'></use>
+            </svg>
+
+            <span class="account-menu__link-name">
+              My profile
+            </span>
+          </a>
+        </li>
+
+        <!-- Item2 -->
+        <li class="account-menu__item">
+          <a href="/account-my-orders.html" class="account-menu__link">
+            <svg xmlns='http://www.w3.org/2000/svg' aria-hidden='true'>
+              <use href='./img/sprite.svg#wallet-2' aria-hidden='true'></use>
+            </svg>
+
+            <span class="account-menu__link-name">
+              My orders
+            </span>
+          </a>
+        </li>
+
+        <!-- Item3 -->
+        <li class="account-menu__item">
+          <a href="/account-wishlist.html" class="account-menu__link">
+            <svg xmlns='http://www.w3.org/2000/svg' aria-hidden='true'>
+              <use href='./img/sprite.svg#heart' aria-hidden='true'></use>
+            </svg>
+
+            <span class="account-menu__link-name">
+              Wishlist
+            </span>
+
+            <span class="account-menu__link-count" aria-label="Number of products in wishlist.">
+              2
+            </span>
+          </a>
+        </li>
+
+        <!-- Item4 -->
+        <li class="account-menu__item">
+          <a href="/account-recently-viewed.html" class="account-menu__link">
+            <svg xmlns='http://www.w3.org/2000/svg' aria-hidden='true'>
+              <use href='./img/sprite.svg#eye' aria-hidden='true'></use>
+            </svg>
+
+            <span class="account-menu__link-name">
+              Recently viewed
+            </span>
+          </a>
+        </li>
+
+        <!-- Item5 -->
+        <li class="account-menu__item">
+          <a href="/account-my-reviews.html" class="account-menu__link account-menu__link--active">
+            <svg xmlns='http://www.w3.org/2000/svg' aria-hidden='true'>
+              <use href='./img/sprite.svg#star' aria-hidden='true'></use>
+            </svg>
+
+            <span class="account-menu__link-name">
+              My reviews
+            </span>
+          </a>
+        </li>
+
+        <!-- Item6 -->
+        <li class="account-menu__item">
+          <a href="#" class="account-menu__link">
+            <svg xmlns='http://www.w3.org/2000/svg' aria-hidden='true'>
+              <use href='./img/sprite.svg#logout' aria-hidden='true'></use>
+            </svg>
+
+            <span class="account-menu__link-name">
+              Sign out
+            </span>
+          </a>
+        </li>
+      </ul>
+    </aside>
+
+    <!-- Content -->
+    <div class="my-reviews__content reviews-data">
+
+      <!-- Top -->
+      <div class="reviews-data__top">
+        <h2 class="reviews-data__title">
+          My reviews
+        </h2>
+
+        <div class="reviews-data__sort">
+          <span class="reviews-data__sort-title">
+            Sort by
+          </span>
+
+          <div class="custom-select custom-select--light reviews-data__sort-select" role="listbox" tabindex="0">
+            <div class="custom-select__head custom-select__head--light reviews-data__sort-head">
+              <span class="custom-select__selected reviews-data__sort-selected">
+                newest
+              </span>
+
+              <svg class="custom-select__icon" xmlns='http://www.w3.org/2000/svg'>
+                <use href='./img/sprite.svg#angle-down'></use>
+              </svg>
+            </div>
+
+            <div class="custom-select__inner-wrapper reviews-data__sort-wrapper">
+              <ul class="custom-select__list reviews-data__sort-list" data-overlayscrollbars-initialize>
+                <li class="custom-select__item custom-select__item--active reviews-data__sort-item"
+                  aria-selected="true">
+                  newest
+                </li>
+
+                <li class="custom-select__item reviews-data__sort-item" aria-selected="false">
+                  oldest
+                </li>
+
+                <li class="custom-select__item reviews-data__sort-item" aria-selected="false">
+                  more likes
+                </li>
+
+                <li class="custom-select__item reviews-data__sort-item" aria-selected="false">
+                  more dislikes
+                </li>
+
+                <li class="custom-select__item reviews-data__sort-item" aria-selected="false">
+                  popular
+                </li>
+
+                <li class="custom-select__item reviews-data__sort-item" aria-selected="false">
+                  unpopular
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Reviews -->
+      <div class="reviews-data__review review">
+
+        <!-- Review1 -->
+        <div class="review__box reviews-data__box">
+
+          <!-- Reference -->
+          <div class="review__reference">
+            <p class="review__for">
+              For:
+            </p>
+
+            <a href="#" class="review__product-link">
+              Chrono watch with blue leather belt
+            </a>
+          </div>
+
+          <!-- User -->
+          <div class="review__user">
+            <span class="review__user-name">
+              Annette Black
+            </span>
+
+            <span class="review__user-date">
+              3 days ago
+            </span>
+
+            <div class="review__user-rate user-rate">
+              <svg class="user-rate__icon user-rate__icon--active" xmlns='http://www.w3.org/2000/svg'
+                aria-label="Star for rating one.">
+                <use href='./img/sprite.svg#star2'></use>
+              </svg>
+
+              <svg class="user-rate__icon user-rate__icon--active" xmlns='http://www.w3.org/2000/svg'
+                aria-label="Star for rating two.">
+                <use href='./img/sprite.svg#star2'></use>
+              </svg>
+
+              <svg class="user-rate__icon user-rate__icon--active" xmlns='http://www.w3.org/2000/svg'
+                aria-label="Star for rating three.">
+                <use href='./img/sprite.svg#star2'></use>
+              </svg>
+
+              <svg class="user-rate__icon user-rate__icon--active" xmlns='http://www.w3.org/2000/svg'
+                aria-label="Star for rating four.">
+                <use href='./img/sprite.svg#star2'></use>
+              </svg>
+
+              <svg class="user-rate__icon user-rate__icon--active" xmlns='http://www.w3.org/2000/svg'
+                aria-label="Star for rating five.">
+                <use href='./img/sprite.svg#star2'></use>
+              </svg>
+            </div>
+          </div>
+
+          <!-- Message -->
+          <div class="review__message">
+            <p class="review__message-text">
+              Vel velit pulvinar montes, sit rhoncus odio molestie. Venenatis nunc fames ut proin adipiscing sit. Etiam
+              egestas elit varius a, vestibulum bibendum nibh sociis in. Ut facilisis sit eget cum fringilla. Dapibus
+              mauris viverra est sed risus quam lacinia aliquam.
+            </p>
+
+            <div class="review__message-tooltips">
+              <div class="review__message-assessment">
+                <button class="review__message-btn review__message-btn--like" aria-label="Like this review.">
+                  <svg xmlns='http://www.w3.org/2000/svg' aria-hidden='true'>
+                    <use href='./img/sprite.svg#like' aria-hidden='true'></use>
+                  </svg>
+
+                  <span class="review__message-like-count">
+                    2
+                  </span>
+                </button>
+
+                <button class="review__message-btn review__message-btn--dislike" aria-label="Dislike this review.">
+                  <svg xmlns='http://www.w3.org/2000/svg' aria-hidden='true'>
+                    <use href='./img/sprite.svg#dislike' aria-hidden='true'></use>
+                  </svg>
+
+                  <span class="review__message-dislike-count">
+                    0
+                  </span>
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Review2 -->
+        <div class="review__box reviews-data__box">
+
+          <!-- Reference -->
+          <div class="review__reference">
+            <p class="review__for">
+              For:
+            </p>
+
+            <a href="#" class="review__product-link">
+              Modal-blend trenchcoat
+            </a>
+          </div>
+
+          <!-- User -->
+          <div class="review__user">
+            <span class="review__user-name">
+              Annette Black
+            </span>
+
+            <span class="review__user-date">
+              August 29, 2020
+            </span>
+
+            <div class="review__user-rate user-rate">
+              <svg class="user-rate__icon user-rate__icon--active" xmlns='http://www.w3.org/2000/svg'
+                aria-label="Star for rating one.">
+                <use href='./img/sprite.svg#star2'></use>
+              </svg>
+
+              <svg class="user-rate__icon user-rate__icon--active" xmlns='http://www.w3.org/2000/svg'
+                aria-label="Star for rating two.">
+                <use href='./img/sprite.svg#star2'></use>
+              </svg>
+
+              <svg class="user-rate__icon user-rate__icon--active" xmlns='http://www.w3.org/2000/svg'
+                aria-label="Star for rating three.">
+                <use href='./img/sprite.svg#star2'></use>
+              </svg>
+
+              <svg class="user-rate__icon user-rate__icon--active" xmlns='http://www.w3.org/2000/svg'
+                aria-label="Star for rating four.">
+                <use href='./img/sprite.svg#star2'></use>
+              </svg>
+
+              <svg class="user-rate__icon user-rate__icon--active" xmlns='http://www.w3.org/2000/svg'
+                aria-label="Star for rating five.">
+                <use href='./img/sprite.svg#star2'></use>
+              </svg>
+            </div>
+          </div>
+
+          <!-- Message -->
+          <div class="review__message">
+            <p class="review__message-text">
+              Amet ut augue dignissim lorem. Diam volutpat porttitor vel, pulvinar semper. Faucibus vel accumsan mi diam
+              magna. Nunc diam lorem semper rhoncus in ut. Quis risus viverra bibendum eu.
+            </p>
+
+            <div class="review__message-tooltips">
+              <div class="review__message-assessment">
+                <button class="review__message-btn review__message-btn--like" aria-label="Like this review.">
+                  <svg xmlns='http://www.w3.org/2000/svg' aria-hidden='true'>
+                    <use href='./img/sprite.svg#like' aria-hidden='true'></use>
+                  </svg>
+
+                  <span class="review__message-like-count">
+                    3
+                  </span>
+                </button>
+
+                <button class="review__message-btn review__message-btn--dislike" aria-label="Dislike this review.">
+                  <svg xmlns='http://www.w3.org/2000/svg' aria-hidden='true'>
+                    <use href='./img/sprite.svg#dislike' aria-hidden='true'></use>
+                  </svg>
+
+                  <span class="review__message-dislike-count">
+                    0
+                  </span>
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Review3 -->
+        <div class="review__box reviews-data__box">
+
+          <!-- Reference -->
+          <div class="review__reference">
+            <p class="review__for">
+              For:
+            </p>
+
+            <a href="#" class="review__product-link">
+              Denim shorts
+            </a>
+          </div>
+
+          <!-- User -->
+          <div class="review__user">
+            <span class="review__user-name">
+              Annette Black
+            </span>
+
+            <span class="review__user-date">
+              August 5, 2020
+            </span>
+
+            <div class="review__user-rate user-rate">
+              <svg class="user-rate__icon user-rate__icon--active" xmlns='http://www.w3.org/2000/svg'
+                aria-label="Star for rating one.">
+                <use href='./img/sprite.svg#star2'></use>
+              </svg>
+
+              <svg class="user-rate__icon user-rate__icon--active" xmlns='http://www.w3.org/2000/svg'
+                aria-label="Star for rating two.">
+                <use href='./img/sprite.svg#star2'></use>
+              </svg>
+
+              <svg class="user-rate__icon user-rate__icon--active" xmlns='http://www.w3.org/2000/svg'
+                aria-label="Star for rating three.">
+                <use href='./img/sprite.svg#star2'></use>
+              </svg>
+
+              <svg class="user-rate__icon user-rate__icon--active" xmlns='http://www.w3.org/2000/svg'
+                aria-label="Star for rating four.">
+                <use href='./img/sprite.svg#star2'></use>
+              </svg>
+
+              <svg class="user-rate__icon" xmlns='http://www.w3.org/2000/svg' aria-label="Star for rating five.">
+                <use href='./img/sprite.svg#star2'></use>
+              </svg>
+            </div>
+          </div>
+
+          <!-- Message -->
+          <div class="review__message">
+            <p class="review__message-text">
+              Et, enim pellentesque ut malesuada interdum. Id odio proin molestie ac tellus ornare lectus amet semper.
+              Bibendum non nulla leo pharetra, mi ultrices proin rhoncus diam.
+            </p>
+
+            <div class="review__message-tooltips">
+              <div class="review__message-assessment">
+                <button class="review__message-btn review__message-btn--like" aria-label="Like this review.">
+                  <svg xmlns='http://www.w3.org/2000/svg' aria-hidden='true'>
+                    <use href='./img/sprite.svg#like' aria-hidden='true'></use>
+                  </svg>
+
+                  <span class="review__message-like-count">
+                    0
+                  </span>
+                </button>
+
+                <button class="review__message-btn review__message-btn--dislike" aria-label="Dislike this review.">
+                  <svg xmlns='http://www.w3.org/2000/svg' aria-hidden='true'>
+                    <use href='./img/sprite.svg#dislike' aria-hidden='true'></use>
+                  </svg>
+
+                  <span class="review__message-dislike-count">
+                    0
+                  </span>
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Review4 -->
+        <div class="review__box reviews-data__box">
+
+          <!-- Reference -->
+          <div class="review__reference">
+            <p class="review__for">
+              For:
+            </p>
+
+            <a href="#" class="review__product-link">
+              Modal-blend trenchcoat
+            </a>
+          </div>
+
+          <!-- User -->
+          <div class="review__user">
+            <span class="review__user-name">
+              Annette Black
+            </span>
+
+            <span class="review__user-date">
+              July 12, 2020
+            </span>
+
+            <div class="review__user-rate user-rate">
+              <svg class="user-rate__icon user-rate__icon--active" xmlns='http://www.w3.org/2000/svg'
+                aria-label="Star for rating one.">
+                <use href='./img/sprite.svg#star2'></use>
+              </svg>
+
+              <svg class="user-rate__icon user-rate__icon--active" xmlns='http://www.w3.org/2000/svg'
+                aria-label="Star for rating two.">
+                <use href='./img/sprite.svg#star2'></use>
+              </svg>
+
+              <svg class="user-rate__icon user-rate__icon--active" xmlns='http://www.w3.org/2000/svg'
+                aria-label="Star for rating three.">
+                <use href='./img/sprite.svg#star2'></use>
+              </svg>
+
+              <svg class="user-rate__icon user-rate__icon--active" xmlns='http://www.w3.org/2000/svg'
+                aria-label="Star for rating four.">
+                <use href='./img/sprite.svg#star2'></use>
+              </svg>
+
+              <svg class="user-rate__icon user-rate__icon--active" xmlns='http://www.w3.org/2000/svg'
+                aria-label="Star for rating five.">
+                <use href='./img/sprite.svg#star2'></use>
+              </svg>
+            </div>
+          </div>
+
+          <!-- Message -->
+          <div class="review__message">
+            <p class="review__message-text">
+              Eu duis ac, faucibus et egestas morbi elementum urna in. Feugiat natoque vestibulum, augue nisi. Vulputate
+              vitae felis quis mauris morbi massa ut. Dolor in amet volutpat facilisi luctus duis mauris.
+            </p>
+
+            <div class="review__message-tooltips">
+              <div class="review__message-assessment">
+                <button class="review__message-btn review__message-btn--like" aria-label="Like this review.">
+                  <svg xmlns='http://www.w3.org/2000/svg' aria-hidden='true'>
+                    <use href='./img/sprite.svg#like' aria-hidden='true'></use>
+                  </svg>
+
+                  <span class="review__message-count">
+                    3
+                  </span>
+                </button>
+
+                <button class="review__message-btn review__message-btn--dislike" aria-label="Dislike this review.">
+                  <svg xmlns='http://www.w3.org/2000/svg' aria-hidden='true'>
+                    <use href='./img/sprite.svg#dislike' aria-hidden='true'></use>
+                  </svg>
+
+                  <span class="review__message-count">
+                    1
+                  </span>
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- More -->
+      <button class="reviews-data__more">
+        <svg xmlns='http://www.w3.org/2000/svg' aria-hidden='true'>
+          <use href='./img/sprite.svg#convert' aria-hidden='true'></use>
+        </svg>
+
+        Load more
+      </button>
+    </div>
+  </div>
+</section>

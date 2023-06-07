@@ -7010,6 +7010,34 @@ const imageModalSwiper = new swiper__WEBPACK_IMPORTED_MODULE_1__["default"]("#im
 
 /***/ }),
 
+/***/ "./src/js/components/account-menu.js":
+/*!*******************************************!*\
+  !*** ./src/js/components/account-menu.js ***!
+  \*******************************************/
+/***/ ((__unused_webpack___webpack_module__, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _vars_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../vars.js */ "./src/js/vars.js");
+
+
+// F(s)
+function showAccountMenu() {
+  this.classList.toggle("account-menu__btn--show");
+  console.log(this);
+  if (this.classList.contains("account-menu__btn--show")) {
+    const accountMenuLinksHeight = _vars_js__WEBPACK_IMPORTED_MODULE_0__.$accountMenuLinks.scrollHeight;
+    _vars_js__WEBPACK_IMPORTED_MODULE_0__.$accountMenuLinks.style.height = accountMenuLinksHeight + "px";
+    return;
+  }
+  _vars_js__WEBPACK_IMPORTED_MODULE_0__.$accountMenuLinks.style.height = "";
+}
+
+// L(s)
+_vars_js__WEBPACK_IMPORTED_MODULE_0__.$accountMenuBtn.addEventListener("click", showAccountMenu);
+
+/***/ }),
+
 /***/ "./src/js/components/cart__btn.js":
 /*!****************************************!*\
   !*** ./src/js/components/cart__btn.js ***!
@@ -9158,6 +9186,26 @@ if (myProfileSection) {
 
 /***/ }),
 
+/***/ "./src/js/components/my-reviews.js":
+/*!*****************************************!*\
+  !*** ./src/js/components/my-reviews.js ***!
+  \*****************************************/
+/***/ ((__unused_webpack___webpack_module__, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _review_message_tooltips_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./review-message-tooltips.js */ "./src/js/components/review-message-tooltips.js");
+
+const myReviews = document.querySelector("#my-reviews");
+if (myReviews) {
+  const assessmentBtns = myReviews.querySelectorAll(".review__message-btn");
+  assessmentBtns.forEach(el => {
+    el.addEventListener("click", _review_message_tooltips_js__WEBPACK_IMPORTED_MODULE_0__.$assessReview);
+  });
+}
+
+/***/ }),
+
 /***/ "./src/js/components/product-card__accordion.js":
 /*!******************************************************!*\
   !*** ./src/js/components/product-card__accordion.js ***!
@@ -9897,69 +9945,74 @@ if (progressBars[0]) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "$assessReview": () => (/* binding */ assessReview)
+/* harmony export */ });
 /* harmony import */ var _vars_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../vars.js */ "./src/js/vars.js");
 
+
 let siblingBtn;
+
+// ==== LIKE - DISLIKE BUTTONS ==== //
+// F(s)
+// **
+function decreaseCount(btn) {
+  const btnCount = btn.lastElementChild;
+  const btnCountText = btnCount.innerText;
+  btnCount.innerText = btnCountText - 1;
+  btn.classList.remove("review__message-btn--active");
+}
+
+// **
+function increaseCount(btn) {
+  const btnCount = btn.lastElementChild;
+  const btnCountText = btnCount.innerText;
+  btnCount.innerText = +btnCountText + 1;
+  btn.classList.add("review__message-btn--active");
+}
+
+// ***
+function assessReview() {
+  if (this.classList.contains("review__message-btn--active")) {
+    decreaseCount(this);
+    return;
+  }
+  increaseCount(this);
+  if (this.classList.contains("review__message-btn--like")) {
+    siblingBtn = this.nextElementSibling;
+  } else {
+    siblingBtn = this.previousElementSibling;
+  }
+  if (siblingBtn.classList.contains("review__message-btn--active")) {
+    decreaseCount(siblingBtn);
+  }
+}
 if (_vars_js__WEBPACK_IMPORTED_MODULE_0__.$leaveReview) {
-  // ==== LIKE - DISLIKE BUTTONS ==== //
-  // F(s)
-  // **
-  function decreaseCount(btn) {
-    const btnCount = btn.lastElementChild;
-    const btnCountText = btnCount.innerText;
-    btnCount.innerText = btnCountText - 1;
-    btn.classList.remove("review__message-btn--active");
-  }
-
-  // **
-  function increaseCount(btn) {
-    const btnCount = btn.lastElementChild;
-    const btnCountText = btnCount.innerText;
-    btnCount.innerText = +btnCountText + 1;
-    btn.classList.add("review__message-btn--active");
-  }
-
-  // ***
-  function assessReview() {
-    if (this.classList.contains("review__message-btn--active")) {
-      decreaseCount(this);
-      return;
-    }
-    increaseCount(this);
-    if (this.classList.contains("review__message-btn--like")) {
-      siblingBtn = this.nextElementSibling;
-    } else {
-      siblingBtn = this.previousElementSibling;
-    }
-    if (siblingBtn.classList.contains("review__message-btn--active")) {
-      decreaseCount(siblingBtn);
-    }
-  }
-
   // L(s)
   _vars_js__WEBPACK_IMPORTED_MODULE_0__.$reviewAssessBtns.forEach(el => {
     el.addEventListener("click", assessReview);
   });
+}
 
-  // ==== REPLY BUTTON ==== //
-  const textarea = _vars_js__WEBPACK_IMPORTED_MODULE_0__.$leaveReview.querySelector(".leave-review__textarea");
+// ==== REPLY BUTTON ==== //
+const textarea = _vars_js__WEBPACK_IMPORTED_MODULE_0__.$leaveReview?.querySelector(".leave-review__textarea");
 
-  // F(s)
-  // **
-  function replyOnReview() {
-    _vars_js__WEBPACK_IMPORTED_MODULE_0__.$leaveReviewBtn.click();
-    textarea.classList.add("leave-review__textarea--active");
-    textarea.innerHTML = "";
-    const review = this.closest(".review__box");
-    const reviewUserName = review.querySelector(".review__user-name").innerText;
-    const reviewLink = document.createElement("a");
-    reviewLink.setAttribute("contenteditable", "false");
-    reviewLink.className = "leave-review__textarea-link";
-    reviewLink.innerText = "@" + reviewUserName;
-    textarea.appendChild(reviewLink);
-    textarea.insertAdjacentHTML("beforeend", " ");
-  }
-
+// F(s)
+// **
+function replyOnReview() {
+  _vars_js__WEBPACK_IMPORTED_MODULE_0__.$leaveReviewBtn.click();
+  textarea.classList.add("leave-review__textarea--active");
+  textarea.innerHTML = "";
+  const review = this.closest(".review__box");
+  const reviewUserName = review.querySelector(".review__user-name").innerText;
+  const reviewLink = document.createElement("a");
+  reviewLink.setAttribute("contenteditable", "false");
+  reviewLink.className = "leave-review__textarea-link";
+  reviewLink.innerText = "@" + reviewUserName;
+  textarea.appendChild(reviewLink);
+  textarea.insertAdjacentHTML("beforeend", " ");
+}
+if (_vars_js__WEBPACK_IMPORTED_MODULE_0__.$leaveReview) {
   // L(s)
   _vars_js__WEBPACK_IMPORTED_MODULE_0__.$replyBtns.forEach(el => {
     el.addEventListener("click", replyOnReview);
@@ -10841,6 +10894,9 @@ _vars_js__WEBPACK_IMPORTED_MODULE_0__.$topNavBtn.addEventListener("click", toggl
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "$accountMenu": () => (/* binding */ $accountMenu),
+/* harmony export */   "$accountMenuBtn": () => (/* binding */ $accountMenuBtn),
+/* harmony export */   "$accountMenuLinks": () => (/* binding */ $accountMenuLinks),
 /* harmony export */   "$breadcrumbsContainer": () => (/* binding */ $breadcrumbsContainer),
 /* harmony export */   "$cartBtn": () => (/* binding */ $cartBtn),
 /* harmony export */   "$cartCheckoutBtn": () => (/* binding */ $cartCheckoutBtn),
@@ -11055,6 +11111,11 @@ const $downloadingFiles = $leaveReview?.querySelector(".download__files");
 const $checkoutProducts = document.querySelector(".checkout__products");
 const $checkoutProductsList = $checkoutProducts?.querySelector(".checkout__products-list");
 const $checkoutProductsCount = $checkoutProducts?.querySelector(".checkout__products-subtotal-count");
+
+// Account menu
+const $accountMenu = document.querySelector(".account-menu");
+const $accountMenuBtn = $accountMenu?.querySelector(".account-menu__btn");
+const $accountMenuLinks = $accountMenu?.querySelector(".account-menu__links");
 
 // **
 const $checkoutSignIn = document.querySelector(".checkout .head__bottom-btn");
@@ -32024,10 +32085,14 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _components_custom_radio_js__WEBPACK_IMPORTED_MODULE_30__ = __webpack_require__(/*! ./components/custom-radio.js */ "./src/js/components/custom-radio.js");
 /* harmony import */ var _components_my_profile_js__WEBPACK_IMPORTED_MODULE_31__ = __webpack_require__(/*! ./components/my-profile.js */ "./src/js/components/my-profile.js");
 /* harmony import */ var _components_my_orders_js__WEBPACK_IMPORTED_MODULE_32__ = __webpack_require__(/*! ./components/my-orders.js */ "./src/js/components/my-orders.js");
-/* harmony import */ var _components_$swipers_js__WEBPACK_IMPORTED_MODULE_33__ = __webpack_require__(/*! ./components/$swipers.js */ "./src/js/components/$swipers.js");
-/* harmony import */ var _components_$overlayScrollbars_js__WEBPACK_IMPORTED_MODULE_34__ = __webpack_require__(/*! ./components/$overlayScrollbars.js */ "./src/js/components/$overlayScrollbars.js");
-/* harmony import */ var imask__WEBPACK_IMPORTED_MODULE_35__ = __webpack_require__(/*! imask */ "./node_modules/imask/esm/index.js");
+/* harmony import */ var _components_my_reviews_js__WEBPACK_IMPORTED_MODULE_33__ = __webpack_require__(/*! ./components/my-reviews.js */ "./src/js/components/my-reviews.js");
+/* harmony import */ var _components_account_menu_js__WEBPACK_IMPORTED_MODULE_34__ = __webpack_require__(/*! ./components/account-menu.js */ "./src/js/components/account-menu.js");
+/* harmony import */ var _components_$swipers_js__WEBPACK_IMPORTED_MODULE_35__ = __webpack_require__(/*! ./components/$swipers.js */ "./src/js/components/$swipers.js");
+/* harmony import */ var _components_$overlayScrollbars_js__WEBPACK_IMPORTED_MODULE_36__ = __webpack_require__(/*! ./components/$overlayScrollbars.js */ "./src/js/components/$overlayScrollbars.js");
+/* harmony import */ var imask__WEBPACK_IMPORTED_MODULE_37__ = __webpack_require__(/*! imask */ "./node_modules/imask/esm/index.js");
 // Components
+
+
 
 
 
@@ -32072,13 +32137,13 @@ const cardNumber = document.getElementById("checkout-payment-number");
 if (cardNumber) {
   const cardDate = document.getElementById("checkout-payment-date");
   const phoneNumber = document.getElementById("checkout-billing-phone");
-  const cardMask = (0,imask__WEBPACK_IMPORTED_MODULE_35__["default"])(cardNumber, {
+  const cardMask = (0,imask__WEBPACK_IMPORTED_MODULE_37__["default"])(cardNumber, {
     mask: "0000 0000 0000 0000"
   });
-  const dateMask = (0,imask__WEBPACK_IMPORTED_MODULE_35__["default"])(cardDate, {
+  const dateMask = (0,imask__WEBPACK_IMPORTED_MODULE_37__["default"])(cardDate, {
     mask: "00/00"
   });
-  const phoneMask = (0,imask__WEBPACK_IMPORTED_MODULE_35__["default"])(phoneNumber, {
+  const phoneMask = (0,imask__WEBPACK_IMPORTED_MODULE_37__["default"])(phoneNumber, {
     mask: "(000) 000-0000"
   });
 }
@@ -32086,7 +32151,7 @@ if (cardNumber) {
 // === My profile === //
 const profilePhoneNumber = document.getElementById("profile-form-phone");
 if (profilePhoneNumber) {
-  const profilePhoneMask = (0,imask__WEBPACK_IMPORTED_MODULE_35__["default"])(profilePhoneNumber, {
+  const profilePhoneMask = (0,imask__WEBPACK_IMPORTED_MODULE_37__["default"])(profilePhoneNumber, {
     mask: "(000) 000-0000"
   });
 }

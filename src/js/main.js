@@ -32,6 +32,9 @@ import "./components/checkout.js";
 import "./components/custom-radio.js";
 import "./components/my-profile.js";
 import "./components/my-orders.js";
+import "./components/my-reviews.js";
+import "./components/account-menu.js";
+
 
 
 // Components multiple in one

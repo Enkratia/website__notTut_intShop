@@ -117,6 +117,12 @@ export const $checkoutProducts = document.querySelector(".checkout__products");
 export const $checkoutProductsList = $checkoutProducts?.querySelector(".checkout__products-list");
 export const $checkoutProductsCount = $checkoutProducts?.querySelector(".checkout__products-subtotal-count");
 
+// Account menu
+export const $accountMenu = document.querySelector(".account-menu");
+export const $accountMenuBtn = $accountMenu?.querySelector(".account-menu__btn");
+export const $accountMenuLinks = $accountMenu?.querySelector(".account-menu__links");
+
+
 // **
 export const $checkoutSignIn = document.querySelector(".checkout .head__bottom-btn");
 export const $checkoutMethod = document.querySelector(".checkout__method");

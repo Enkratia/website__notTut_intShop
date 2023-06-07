@@ -709,6 +709,7 @@
 
   &__bottom {
     position: relative;
+    z-index: var(--z-up);
     overflow: hidden;
     padding-bottom: rem(0);
     width: 0;
@@ -786,7 +787,7 @@
   // **
   .sizes {
     display: flex;
-    flex-basis: 70%;
+    flex-basis: calc(67% - rem(10));
     flex-wrap: wrap;
     align-items: center;
     margin-right: rem(20);
@@ -796,8 +797,8 @@
       border: 1px solid var(--gray400-color);
       border-radius: rem(4);
       padding-block: rem(2);
-      padding-inline: rem(4);
-      min-width: rem(24);
+      // padding-inline: rem(4);
+      min-width: rem(22);
       font: var(--extrasmall-regular);
       text-transform: uppercase;
       color: var(--gray800-color);
@@ -848,12 +849,12 @@
       }
 
       &--left {
-        left: 4.5%;
+        left: 2.5%;
         transform: translateY(-50%) rotate(90deg);
       }
 
       &--right {
-        right: 4.5%;
+        right: 2.5%;
         transform: translateY(-50%) rotate(-90deg);
       }
 
@@ -909,7 +910,8 @@
 .colors {
   display: flex;
   flex-wrap: wrap;
-  justify-content: flex-end;
+  flex-basis: calc(33% - rem(10));
+  // justify-content: flex-end;
   gap: rem(5.5);
 
   &__button {
@@ -1714,11 +1716,16 @@
 }
 
 .account-menu {
+  flex-shrink: 0;
   border: rem(1) solid var(--gray300-color);
   border-radius: rem(4);
   width: 100%;
   max-width: rem(285);
   box-shadow: var(--small-shadow);
+
+  @include bp-down("1024") {
+    max-width: none;
+  }
 
   // Top
   &__top {
@@ -1737,6 +1744,15 @@
   }
 
   // Links
+  &__links {
+    transition: height 0.3s ease-in-out;
+
+    @include bp-down("1024") {
+      overflow-y: hidden;
+      height: 0;
+    }
+  }
+
   &__link {
     display: flex;
     align-items: center;
@@ -1780,6 +1796,177 @@
         color: var(--white-color);
         background-color: var(--primary-hover-color);
       }
+    }
+  }
+
+  &__btn {
+    display: none;
+    margin-top: rem(25);
+    width: 100%;
+    font: var(--small-regular);
+
+    @include bp-down("1024") {
+      display: block;
+    }
+  }
+}
+
+.review {
+  &__box {
+    display: flex;
+    flex-wrap: wrap;
+
+    &:not(:last-child) {
+      border-bottom: rem(1) solid var(--gray300-color);
+      padding-bottom: rem(31);
+    }
+
+    &:not(:first-child) {
+      padding-top: rem(31);
+    }
+
+    @include bp-down("576") {
+      flex-direction: column;
+    }
+  }
+
+  // Reference
+  &__reference {
+    display: flex;
+    padding-bottom: rem(21);
+    width: 100%;
+  }
+
+  &__for {
+    margin-right: rem(8);
+    font: var(--base-regular);
+    color: var(--gray700-color);
+  }
+
+  &__product-link {
+    font: var(--base-bold);
+    color: var(--primary-color);
+  }
+
+  // User
+  &__user {
+    flex-shrink: 0;
+    margin-right: rem(30);
+    width: rem(150);
+
+    &-name {
+      display: block;
+      margin-bottom: rem(8);
+      font: var(--large-bold);
+      color: var(--gray900-color);
+    }
+
+    &-date {
+      display: block;
+      margin-bottom: rem(15);
+      font: var(--small-regular);
+      color: var(--gray700-color);
+    }
+
+    .user-rate {
+      &__icon {
+        width: rem(13);
+        height: rem(12);
+        fill: none;
+        stroke: var(--gray500-color);
+        stroke-width: 10px;
+
+        &:not(:last-child) {
+          margin-right: rem(-1.6);
+        }
+
+        &--active {
+          fill: var(--warning-color);
+          stroke: var(--warning-color);
+        }
+      }
+    }
+
+    @include bp-down("576") {
+      margin-right: 0;
+      margin-bottom: rem(20);
+      width: 100%;
+    }
+  }
+
+  // Message
+  &__message {
+    width: calc(100% - rem(180));
+
+    &-text {
+      margin-bottom: rem(16);
+      font: var(--base-regular);
+      color: var(--gray800-color);
+    }
+
+    &-link {
+      font: var(--base-bold);
+      color: var(--primary-color);
+    }
+
+    &-tooltips {
+      display: flex;
+      align-items: center;
+      font: var(--small-regular);
+      color: var(--gray700-color);
+    }
+
+    &-reply {
+      display: flex;
+      align-items: center;
+      transition: color 0.3s;
+
+      svg {
+        margin-right: rem(8);
+        width: rem(16);
+        height: rem(16);
+        fill: currentcolor;
+      }
+
+      &:hover {
+        color: var(--primary-color);
+      }
+    }
+
+    &-assessment {
+      margin-left: auto;
+
+      svg {
+        width: rem(16);
+        height: rem(16);
+      }
+    }
+
+    &-btn {
+      display: inline-flex;
+      align-items: center;
+
+      svg {
+        margin-right: rem(8);
+      }
+
+      &--like {
+        margin-right: rem(16);
+
+        svg {
+          fill: var(--success-color);
+        }
+      }
+
+      &--dislike {
+        svg {
+          fill: var(--danger-color);
+        }
+      }
+    }
+
+    @include bp-down("576") {
+      width: 100%;
     }
   }
 }

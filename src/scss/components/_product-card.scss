@@ -1173,137 +1173,26 @@
       }
     }
 
-    .review {
-      &__box {
-        display: flex;
+    // Review
+    // &__box {
+    //   @include bp-down("576") {
+    //     flex-direction: column;
+    //   }
+    // }
 
-        &:not(:last-child) {
-          border-bottom: rem(1) solid var(--gray300-color);
-          padding-bottom: rem(31);
-        }
+    // &__user {
+    //   @include bp-down("576") {
+    //     margin-right: 0;
+    //     margin-bottom: rem(20);
+    //     width: 100%;
+    //   }
+    // }
 
-        &:not(:first-child) {
-          padding-top: rem(31);
-        }
-
-        @include bp-down("576") {
-          flex-direction: column;
-        }
-      }
-
-      // User
-      &__user {
-        flex-shrink: 0;
-        margin-right: rem(30);
-        width: rem(150);
-
-        &-name {
-          display: block;
-          margin-bottom: rem(8);
-          font: var(--large-bold);
-          color: var(--gray900-color);
-        }
-
-        &-date {
-          display: block;
-          margin-bottom: rem(16);
-          font: var(--small-regular);
-          color: var(--gray700-color);
-        }
-
-        .user-rate {
-          &__icon {
-            width: rem(13);
-            height: rem(12);
-            fill: none;
-            stroke: var(--gray500-color);
-            stroke-width: 10px;
-
-            &:not(:last-child) {
-              margin-right: rem(-1.6);
-            }
-
-            &--active {
-              fill: var(--warning-color);
-              stroke: var(--warning-color);
-            }
-          }
-        }
-
-        @include bp-down("576") {
-          margin-bottom: rem(20);
-        }
-      }
-
-      // Message
-      &__message {
-        &-text {
-          margin-bottom: rem(16);
-          font: var(--base-regular);
-          color: var(--gray800-color);
-        }
-
-        &-link {
-          font: var(--base-bold);
-          color: var(--primary-color);
-        }
-
-        &-tooltips {
-          display: flex;
-          align-items: center;
-          justify-content: space-between;
-          font: var(--small-regular);
-          color: var(--gray700-color);
-        }
-
-        &-reply {
-          display: flex;
-          align-items: center;
-          transition: color 0.3s;
-
-          svg {
-            margin-right: rem(8);
-            width: rem(16);
-            height: rem(16);
-            fill: currentcolor;
-          }
-
-          &:hover {
-            color: var(--primary-color);
-          }
-        }
-
-        &-assessment {
-          svg {
-            width: rem(16);
-            height: rem(16);
-          }
-        }
-
-        &-btn {
-          display: inline-flex;
-          align-items: center;
-
-          svg {
-            margin-right: rem(8);
-          }
-
-          &--like {
-            margin-right: rem(16);
-
-            svg {
-              fill: var(--success-color);
-            }
-          }
-
-          &--dislike {
-            svg {
-              fill: var(--danger-color);
-            }
-          }
-        }
-      }
-    }
+    // &__message {
+    //   @include bp-down("576") {
+    //     width: 100%;
+    //   }
+    // }
 
     // Pagination
     &__pagination {

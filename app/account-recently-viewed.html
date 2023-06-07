@@ -6,7 +6,7 @@
   <meta name='viewport' content='width=device-width, initial-scale=1.0'>
   <script src='js/main.js' defer></script>
   <link rel='stylesheet' href='css/main.css'>
-  <title>My profile</title>
+  <title>Recently viewed</title>
 </head>
 
 <body class="body">
@@ -1421,15 +1421,15 @@
     </div>
   </div>
 </section>
-  <section class="breadcrumbs-my-profile">
-  <div class="breadcrumbs-my-profile__container container">
+  <section class="breadcrumbs-recently-viewed">
+  <div class="breadcrumbs-recently-viewed__container container">
 
     <!-- Breadcrumbs list -->
-    <ul class="breadcrumbs-my-profile__list">
+    <ul class="breadcrumbs-recently-viewed__list">
 
       <!-- Item1 -->
-      <li class="breadcrumbs-my-profile__item">
-        <a href="#" class="breadcrumbs-my-profile__link">
+      <li class="breadcrumbs-recently-viewed__item">
+        <a href="#" class="breadcrumbs-recently-viewed__link">
           <svg xmlns='http://www.w3.org/2000/svg'>
             <use href='./img/sprite.svg#home'></use>
           </svg>
@@ -1437,31 +1437,31 @@
       </li>
 
       <!-- Item2 -->
-      <li class="breadcrumbs-my-profile__item">
-        <a href="#" class="breadcrumbs-my-profile__link">
+      <li class="breadcrumbs-recently-viewed__item">
+        <a href="#" class="breadcrumbs-recently-viewed__link">
           Account
         </a>
       </li>
 
       <!-- Item3 -->
-      <li class="breadcrumbs-my-profile__item">
-        <a href="#" class="breadcrumbs-my-profile__link">
-          My profile
+      <li class="breadcrumbs-recently-viewed__item">
+        <a href="#" class="breadcrumbs-recently-viewed__link">
+          Recently viewed
         </a>
       </li>
     </ul>
   </div>
 </section>
-  <section class="account-my-profile my-profile" id="my-profile">
-  <div class="my-profile__container container container--40">
+  <section class="account-recently-viewed arv" id="account-recently-viewed">
+  <div class="arv__container container container--40">
 
     <!-- Account menu -->
-    <aside class="my-profile__account-menu account-menu">
+    <aside class="arv__account-menu account-menu">
       <div class="account-menu__top">
         <h5 class="account-menu__name">
           Annette Black
         </h5>
-  
+
         <p class="account-menu__email">
           annetteb@example.com
         </p>
@@ -1476,7 +1476,7 @@
 
         <!-- Item1 -->
         <li class="account-menu__item">
-          <a href="/account-my-profile.html" class="account-menu__link account-menu__link--active">
+          <a href="/account-my-profile.html" class="account-menu__link">
             <svg xmlns='http://www.w3.org/2000/svg' aria-hidden='true'>
               <use href='./img/sprite.svg#person' aria-hidden='true'></use>
             </svg>
@@ -1519,7 +1519,7 @@
 
         <!-- Item4 -->
         <li class="account-menu__item">
-          <a href="/account-recently-viewed.html" class="account-menu__link">
+          <a href="/account-recently-viewed.html" class="account-menu__link account-menu__link--active">
             <svg xmlns='http://www.w3.org/2000/svg' aria-hidden='true'>
               <use href='./img/sprite.svg#eye' aria-hidden='true'></use>
             </svg>
@@ -1559,214 +1559,604 @@
     </aside>
 
     <!-- Content -->
-    <div class="my-profile__content profile-content">
-      <div class="profile-content__top">
-        <h2 class="profile-content__title">
-          My profile
+    <div class="arv__content">
+
+      <!-- Top -->
+      <div class="arv__content-top">
+        <h2 class="arv__content-title">
+          Recently viewed
         </h2>
 
-        <button class="profile-content__delete">
+        <button class="arv__content-delete">
           <svg xmlns='http://www.w3.org/2000/svg' aria-hidden='true'>
             <use href='./img/sprite.svg#bin' aria-hidden='true'></use>
           </svg>
 
-          Delete account
+          Delete all
         </button>
       </div>
 
-      <!-- Form -->
-      <form class="profile-content__form">
+      <!-- List -->
+      <ul class="arv__content-list">
 
-        <!-- Field1 -->
-        <div class="profile-content__field">
-          <label for="profile-form-first-name" class="profile-content__label">
-            First name
-          </label>
+        <!-- Item1 -->
+        <li class="arv__content-item">
+          <article class="arv__content-product product product--noJs-hover" data-vendor="183264562">
 
-          <div class="input-wrapper">
-            <input type="text" class="profile-content__input input" id="profile-form-first-name"
-              name="profile-form-first-name" placeholder="Your first name" value="Annette">
-          </div>
-        </div>
+            <!-- Look -->
+            <div class="product__look">
 
-        <!-- Field2 -->
-        <div class="profile-content__field">
-          <label for="profile-form-last-name" class="profile-content__label">
-            Last name
-          </label>
+              <!-- Microslider -->
+              <div class="product__image-wrapper microslider">
 
-          <div class="input-wrapper">
-            <input type="text" class="profile-content__input input" id="profile-form-last-name"
-              name="profile-form-last-name" placeholder="Your last name" value="Black">
-          </div>
-        </div>
+                <!-- Image -->
+                <img src="./img/product-shorts-1.jpg" alt="Product image."
+                  class="product__image microslider__image product__image--main" id="microslider-image">
 
-        <!-- Field3 -->
-        <div class="profile-content__field">
-          <label for="profile-form-email" class="profile-content__label">
-            Email
-          </label>
+                <!-- Sources for images -->
+                <ul class="microslider__srcs" aria-hidden="true">
+                  <li class="microslider__src" data-src="./img/product-bag.jpg"></li>
+                  <li class="microslider__src" data-src="./img/product-bag-2.jpg"></li>
+                  <li class="microslider__src" data-src="./img/product-bag-3.jpg"></li>
+                </ul>
 
-          <div class="input-wrapper" data-validity="email">
-            <input type="email" class="profile-content__input input" id="profile-form-email" name="profile-form-email"
-              placeholder="Your working email" value="annetteb@example.com">
-          </div>
-        </div>
+                <!-- Btns for microslider -->
+                <div class="microslider__btns">
+                  <button class="microslider__button microslider__button--left"
+                    aria-label="Previous image of the product.">
+                    <svg xmlns='http://www.w3.org/2000/svg' aria-hidden="true">
+                      <use href='./img/sprite.svg#angle-down'></use>
+                    </svg>
+                  </button>
 
-        <!-- Field4 -->
-        <div class="profile-content__field">
-          <label for="profile-form-phone" class="profile-content__label">
-            Phone
-          </label>
+                  <button class="microslider__button microslider__button--right"
+                    aria-label="Next image of the product.">
+                    <svg xmlns='http://www.w3.org/2000/svg' aria-hidden="true">
+                      <use href='./img/sprite.svg#angle-down'></use>
+                    </svg>
+                  </button>
+                </div>
 
-          <div class="input-wrapper">
-            <input type="text" class="profile-content__input input" id="profile-form-phone" name="profile-form-phone"
-              placeholder="Your phone number" value="(629) 555-0129">
-          </div>
-        </div>
+                <!-- Link -->
+                <a href="#" class="product__image-link"></a>
+              </div>
 
-        <!-- Field5 -->
-        <div class="profile-content__field">
-          <label for="profile-form-password" class="profile-content__label">
-            New Password
-          </label>
+              <!-- Favorite -->
+              <button class="product__favorite" aria-label="Add to favorite.">
+                <svg xmlns='http://www.w3.org/2000/svg' aria-hidden="true">
+                  <use href='./img/sprite.svg#heart-full'></use>
+                </svg>
+              </button>
 
-          <div class="input-wrapper" data-validity="pass-length">
-            <input type="password" class="profile-content__input input input--password" id="profile-form-password"
-              name="profile-form-password">
+              <div class="product__discount">
+                -20%
+              </div>
+            </div>
 
-            <button type="button" class="profile-content__show" aria-label="Show entered password."></button>
-          </div>
-        </div>
+            <!-- Info -->
+            <div class="product__info product__info--white">
 
-        <!-- Field6 -->
-        <div class="profile-content__field">
-          <label for="profile-form-confirm-password" class="profile-content__label">
-            Confirm Password
-          </label>
+              <!-- Product name -->
+              <a href="#" class="product__name">
+                Womans jeans shorts
+              </a>
 
-          <div class="input-wrapper" data-validity="pass-confirm">
-            <input type="password" class="profile-content__input input input--password" id="profile-form-confirm-password"
-              name="profile-form-confirm-password">
-
-            <button type="button" class="profile-content__show" aria-label="Show entered password."></button>
-          </div>
-        </div>
-
-        <!-- Field7 -->
-        <div class="profile-content__field">
-          <label for="" class="profile-content__label">
-            Country
-          </label>
-
-          <div class="custom-select__outer-wrapper profile-content__select-outer-wrapper">
-            <div class="custom-select custom-select--light profile-content__sort-select" role="listbox" tabindex="0">
-              <input type="hidden" class="profile-content-select-hidden" name="profile-form-select-hidden">
-
-              <div class="custom-select__head custom-select__head--light profile-content__sort-head">
-                <span class="custom-select__selected profile-content__sort-selected">
-                  Choose your country
+              <!-- Product prices -->
+              <div class="product__prices">
+                <span class="product__price product__price--red product__price--h4">
+                  $20.00
                 </span>
 
-                <svg class="custom-select__icon" xmlns='http://www.w3.org/2000/svg'>
-                  <use href='./img/sprite.svg#angle-down'></use>
+                <span class="product__old-price">
+                  $24.00
+                </span>
+              </div>
+
+              <!-- Product bottom -->
+              <div class="product__bottom">
+                <div class="product__details arv__content-details">
+
+                  <!-- Colors -->
+                  <ul class="product__colors colors arv__content-colors">
+                    <li class="colors__item">
+                      <button class="colors__button colors__button--active" data-color="Black"
+                        aria-label="Choose black color."></button>
+                    </li>
+
+                    <li class="colors__item">
+                      <button class="colors__button" data-color="Brown" aria-label="Choose brown color."></button>
+                    </li>
+
+                    <li class="colors__item">
+                      <button class="colors__button" data-color="Blue-gray"
+                        aria-label="Choose blue-gray color."></button>
+                    </li>
+                  </ul>
+                </div>
+
+                <!-- Button-cart -->
+                <div class="product__button-wrapper">
+                  <button class="product__button-cart btn btn--mid">
+                    <svg xmlns='http://www.w3.org/2000/svg'>
+                      <use href='./img/sprite.svg#cart'></use>
+                    </svg>
+                  </button>
+                </div>
+              </div>
+            </div>
+          </article>
+        </li>
+
+        <!-- Item2 -->
+        <li class="arv__content-item">
+          <article class="arv__content-product product product--noJs-hover" data-vendor="18326456988">
+
+            <!-- Look -->
+            <div class="product__look">
+
+              <!-- Microslider -->
+              <div class="product__image-wrapper microslider">
+
+                <!-- Image -->
+                <img src="./img/product-coat.jpg" alt="Product image."
+                  class="product__image microslider__image product__image--main" id="microslider-image">
+
+                <!-- Sources for images -->
+                <ul class="microslider__srcs" aria-hidden="true">
+                  <li class="microslider__src" data-src="./img/product-bag.jpg"></li>
+                  <li class="microslider__src" data-src="./img/product-bag-2.jpg"></li>
+                  <li class="microslider__src" data-src="./img/product-bag-3.jpg"></li>
+                </ul>
+
+                <!-- Btns for microslider -->
+                <div class="microslider__btns">
+                  <button class="microslider__button microslider__button--left"
+                    aria-label="Previous image of the product.">
+                    <svg xmlns='http://www.w3.org/2000/svg' aria-hidden="true">
+                      <use href='./img/sprite.svg#angle-down'></use>
+                    </svg>
+                  </button>
+
+                  <button class="microslider__button microslider__button--right"
+                    aria-label="Next image of the product.">
+                    <svg xmlns='http://www.w3.org/2000/svg' aria-hidden="true">
+                      <use href='./img/sprite.svg#angle-down'></use>
+                    </svg>
+                  </button>
+                </div>
+
+                <!-- Link -->
+                <a href="#" class="product__image-link"></a>
+              </div>
+
+              <!-- Favorite -->
+              <button class="product__favorite" aria-label="Add to favorite.">
+                <svg xmlns='http://www.w3.org/2000/svg' aria-hidden="true">
+                  <use href='./img/sprite.svg#heart-full'></use>
+                </svg>
+              </button>
+            </div>
+
+            <!-- Info -->
+            <div class="product__info product__info--white">
+
+              <!-- Product name -->
+              <a href="#" class="product__name">
+                Check coat with colour contrast
+              </a>
+
+              <!-- Product prices -->
+              <div class="product__prices">
+                <span class="product__price product__price--red product__price--h4">
+                  $183.45
+                </span>
+              </div>
+
+              <!-- Product bottom -->
+              <div class="product__bottom">
+                <div class="product__details arv__content-details">
+
+                  <!-- Colors -->
+                  <ul class="product__colors colors arv__content-colors">
+                    <li class="colors__item">
+                      <button class="colors__button colors__button--active" data-color="Black"
+                        aria-label="Choose black color."></button>
+                    </li>
+
+                    <li class="colors__item">
+                      <button class="colors__button" data-color="Brown" aria-label="Choose brown color."></button>
+                    </li>
+
+                    <li class="colors__item">
+                      <button class="colors__button" data-color="Blue-gray"
+                        aria-label="Choose blue-gray color."></button>
+                    </li>
+                  </ul>
+                </div>
+
+                <!-- Button-cart -->
+                <div class="product__button-wrapper">
+                  <button class="product__button-cart btn btn--mid">
+                    <svg xmlns='http://www.w3.org/2000/svg'>
+                      <use href='./img/sprite.svg#cart'></use>
+                    </svg>
+                  </button>
+                </div>
+              </div>
+            </div>
+          </article>
+        </li>
+
+        <!-- Item3 -->
+        <li class="arv__content-item">
+          <article class="arv__content-product product product--noJs-hover" data-vendor="183260555">
+
+            <!-- Look -->
+            <div class="product__look">
+
+              <!-- Microslider -->
+              <div class="product__image-wrapper microslider">
+
+                <!-- Image -->
+                <img src="./img/product-shirt.jpg" alt="Product image."
+                  class="product__image microslider__image product__image--main" id="microslider-image">
+
+                <!-- Sources for images -->
+                <ul class="microslider__srcs" aria-hidden="true">
+                  <li class="microslider__src" data-src="./img/product-bag.jpg"></li>
+                  <li class="microslider__src" data-src="./img/product-bag-2.jpg"></li>
+                  <li class="microslider__src" data-src="./img/product-bag-3.jpg"></li>
+                </ul>
+
+                <!-- Btns for microslider -->
+                <div class="microslider__btns">
+                  <button class="microslider__button microslider__button--left"
+                    aria-label="Previous image of the product.">
+                    <svg xmlns='http://www.w3.org/2000/svg' aria-hidden="true">
+                      <use href='./img/sprite.svg#angle-down'></use>
+                    </svg>
+                  </button>
+
+                  <button class="microslider__button microslider__button--right"
+                    aria-label="Next image of the product.">
+                    <svg xmlns='http://www.w3.org/2000/svg' aria-hidden="true">
+                      <use href='./img/sprite.svg#angle-down'></use>
+                    </svg>
+                  </button>
+                </div>
+
+                <!-- Link -->
+                <a href="#" class="product__image-link"></a>
+              </div>
+
+              <!-- Rating -->
+              <div class="product__rating">
+                <svg class="product__rating-icon product__rating-icon--active" xmlns='http://www.w3.org/2000/svg'
+                  aria-label="Star for rating one.">
+                  <use href='./img/sprite.svg#star2'></use>
+                </svg>
+
+                <svg class="product__rating-icon product__rating-icon--active" xmlns='http://www.w3.org/2000/svg'
+                  aria-label="Star for rating two.">
+                  <use href='./img/sprite.svg#star2'></use>
+                </svg>
+
+                <svg class="product__rating-icon product__rating-icon--active" xmlns='http://www.w3.org/2000/svg'
+                  aria-label="Star for rating three.">
+                  <use href='./img/sprite.svg#star2'></use>
+                </svg>
+
+                <svg class="product__rating-icon product__rating-icon--active" xmlns='http://www.w3.org/2000/svg'
+                  aria-label="Star for rating four.">
+                  <use href='./img/sprite.svg#star2'></use>
+                </svg>
+
+                <svg class="product__rating-icon product__rating-icon--active" xmlns='http://www.w3.org/2000/svg'
+                  aria-label="Star for rating five.">
+                  <use href='./img/sprite.svg#star2'></use>
                 </svg>
               </div>
 
-              <div class="custom-select__inner-wrapper profile-content__sort-wrapper">
-                <ul class="custom-select__list profile-content__sort-list" data-overlayscrollbars-initialize>
-                  <li class="custom-select__item custom-select__item--active profile-content__sort-item" role="option" aria-selected="true">
-                    Choose your country
-                  </li>
+              <!-- Favorite -->
+              <button class="product__favorite" aria-label="Add to favorite.">
+                <svg xmlns='http://www.w3.org/2000/svg' aria-hidden="true">
+                  <use href='./img/sprite.svg#heart-full'></use>
+                </svg>
+              </button>
+            </div>
 
-                  <li class="custom-select__item profile-content__sort-item" role="option" aria-selected="false">
-                    Russia
-                  </li>
+            <!-- Info -->
+            <div class="product__info product__info--white">
 
-                  <li class="custom-select__item profile-content__sort-item" role="option" aria-selected="false">
-                    Nepal
-                  </li>
+              <!-- Product name -->
+              <a href="#" class="product__name">
+                Shirt with insertion lace trims
+              </a>
 
-                  <li class="custom-select__item profile-content__sort-item" role="option" aria-selected="false">
-                    USA
-                  </li>
-                </ul>
+              <!-- Product prices -->
+              <div class="product__prices">
+                <span class="product__price product__price--h4">
+                  $49.95
+                </span>
+              </div>
+
+              <!-- Product bottom -->
+              <div class="product__bottom arv__content-bottom">
+                <div class="product__details arv__content-details">
+
+                  <!-- Sizes -->
+                  <ul class="product__sizes sizes">
+                    <li class="sizes__item">
+                      <button class="sizes__button">
+                        36
+                      </button>
+                    </li>
+
+                    <li class="sizes__item">
+                      <button class="sizes__button sizes__button--active">
+                        37
+                      </button>
+                    </li>
+
+                    <li class="sizes__item">
+                      <button class="sizes__button">
+                        42
+                      </button>
+                    </li>
+
+                    <li class="sizes__item">
+                      <button class="sizes__button">
+                        43
+                      </button>
+                    </li>
+
+                    <li class="sizes__item">
+                      <button class="sizes__button">
+                        44
+                      </button>
+                    </li>
+
+                    <li class="sizes__item">
+                      <button class="sizes__button">
+                        45
+                      </button>
+                    </li>
+
+                    <li class="sizes__item">
+                      <button class="sizes__button">
+                        46
+                      </button>
+                    </li>
+
+                    <li class="sizes__item">
+                      <button class="sizes__button">
+                        47
+                      </button>
+                    </li>
+
+                    <li class="sizes__item">
+                      <button class="sizes__button">
+                        48
+                      </button>
+                    </li>
+                  </ul>
+
+                  <!-- Colors -->
+                  <ul class="product__colors colors arv__content-colors">
+                    <li class="colors__item">
+                      <button class="colors__button colors__button--active" data-color="Black"
+                        aria-label="Choose black color."></button>
+                    </li>
+
+                    <li class="colors__item">
+                      <button class="colors__button" data-color="Brown" aria-label="Choose brown color."></button>
+                    </li>
+
+                    <li class="colors__item">
+                      <button class="colors__button" data-color="Blue-gray"
+                        aria-label="Choose blue-gray color."></button>
+                    </li>
+                  </ul>
+                </div>
+
+                <!-- Button-cart -->
+                <div class="product__button-wrapper">
+                  <button class="product__button-cart btn btn--mid">
+                    <svg xmlns='http://www.w3.org/2000/svg'>
+                      <use href='./img/sprite.svg#cart'></use>
+                    </svg>
+                  </button>
+                </div>
               </div>
             </div>
-          </div>
-        </div>
+          </article>
+        </li>
 
-        <!-- Field8 -->
-        <div class="profile-content__field">
-          <label for="" class="profile-content__label">
-            City
-          </label>
+        <!-- Item4 -->
+        <li class="arv__content-item">
+          <article class="arv__content-product product product--noJs-hover" data-vendor="18326669952">
 
-          <div class="custom-select__outer-wrapper profile-content__select-outer-wrapper">
-            <div class="custom-select custom-select--light profile-content__sort-select" role="listbox" tabindex="0">
-              <input type="hidden" class="profile-content-select-hidden" name="profile-form-select-hidden">
+            <!-- Look -->
+            <div class="product__look">
 
-              <div class="custom-select__head custom-select__head--light profile-content__sort-head">
-                <span class="custom-select__selected profile-content__sort-selected">
-                  Choose your city
-                </span>
+              <!-- Microslider -->
+              <div class="product__image-wrapper microslider">
 
-                <svg class="custom-select__icon" xmlns='http://www.w3.org/2000/svg'>
-                  <use href='./img/sprite.svg#angle-down'></use>
+                <!-- Image -->
+                <img src="./img/product-watch.jpg" alt="Product image."
+                  class="product__image microslider__image product__image--main" id="microslider-image">
+
+                <!-- Sources for images -->
+                <ul class="microslider__srcs" aria-hidden="true">
+                  <li class="microslider__src" data-src="./img/product-bag.jpg"></li>
+                  <li class="microslider__src" data-src="./img/product-bag-2.jpg"></li>
+                  <li class="microslider__src" data-src="./img/product-bag-3.jpg"></li>
+                </ul>
+
+                <!-- Btns for microslider -->
+                <div class="microslider__btns">
+                  <button class="microslider__button microslider__button--left"
+                    aria-label="Previous image of the product.">
+                    <svg xmlns='http://www.w3.org/2000/svg' aria-hidden="true">
+                      <use href='./img/sprite.svg#angle-down'></use>
+                    </svg>
+                  </button>
+
+                  <button class="microslider__button microslider__button--right"
+                    aria-label="Next image of the product.">
+                    <svg xmlns='http://www.w3.org/2000/svg' aria-hidden="true">
+                      <use href='./img/sprite.svg#angle-down'></use>
+                    </svg>
+                  </button>
+                </div>
+
+                <!-- Link -->
+                <a href="#" class="product__image-link"></a>
+              </div>
+
+              <!-- Rating -->
+              <div class="product__rating">
+                <svg class="product__rating-icon product__rating-icon--active" xmlns='http://www.w3.org/2000/svg'
+                  aria-label="Star for rating one.">
+                  <use href='./img/sprite.svg#star2'></use>
+                </svg>
+
+                <svg class="product__rating-icon product__rating-icon--active" xmlns='http://www.w3.org/2000/svg'
+                  aria-label="Star for rating two.">
+                  <use href='./img/sprite.svg#star2'></use>
+                </svg>
+
+                <svg class="product__rating-icon product__rating-icon--active" xmlns='http://www.w3.org/2000/svg'
+                  aria-label="Star for rating three.">
+                  <use href='./img/sprite.svg#star2'></use>
+                </svg>
+
+                <svg class="product__rating-icon product__rating-icon--active" xmlns='http://www.w3.org/2000/svg'
+                  aria-label="Star for rating four.">
+                  <use href='./img/sprite.svg#star2'></use>
+                </svg>
+
+                <svg class="product__rating-icon" xmlns='http://www.w3.org/2000/svg'
+                  aria-label="Star for rating five.">
+                  <use href='./img/sprite.svg#star2'></use>
                 </svg>
               </div>
 
-              <div class="custom-select__inner-wrapper profile-content__sort-wrapper">
-                <ul class="custom-select__list profile-content__sort-list" data-overlayscrollbars-initialize>
-                  <li class="custom-select__item custom-select__item--active profile-content__sort-item" role="option" aria-selected="true">
-                    Choose your city
-                  </li>
+              <!-- Favorite -->
+              <button class="product__favorite" aria-label="Add to favorite.">
+                <svg xmlns='http://www.w3.org/2000/svg' aria-hidden="true">
+                  <use href='./img/sprite.svg#heart-full'></use>
+                </svg>
+              </button>
+            </div>
 
-                  <li class="custom-select__item profile-content__sort-item" role="option" aria-selected="false">
-                    Moscow
-                  </li>
+            <!-- Info -->
+            <div class="product__info product__info--white">
 
-                  <li class="custom-select__item profile-content__sort-item" role="option" aria-selected="false">
-                    Delhi
-                  </li>
+              <!-- Product name -->
+              <a href="#" class="product__name">
+                Chrono watch with blue leather belt
+              </a>
 
-                  <li class="custom-select__item profile-content__sort-item" role="option" aria-selected="false">
-                    New Jersey
-                  </li>
-                </ul>
+              <!-- Product prices -->
+              <div class="product__prices">
+                <span class="product__price product__price--h4">
+                  $120.60
+                </span>
+              </div>
+
+              <!-- Product bottom -->
+              <div class="product__bottom arv__content-bottom">
+                <div class="product__details arv__content-details">
+
+                  <!-- Sizes -->
+                  <ul class="product__sizes sizes">
+                    <li class="sizes__item">
+                      <button class="sizes__button">
+                        36
+                      </button>
+                    </li>
+
+                    <li class="sizes__item">
+                      <button class="sizes__button sizes__button--active">
+                        37
+                      </button>
+                    </li>
+
+                    <li class="sizes__item">
+                      <button class="sizes__button">
+                        42
+                      </button>
+                    </li>
+
+                    <li class="sizes__item">
+                      <button class="sizes__button">
+                        43
+                      </button>
+                    </li>
+
+                    <li class="sizes__item">
+                      <button class="sizes__button">
+                        44
+                      </button>
+                    </li>
+
+                    <li class="sizes__item">
+                      <button class="sizes__button">
+                        45
+                      </button>
+                    </li>
+
+                    <li class="sizes__item">
+                      <button class="sizes__button">
+                        46
+                      </button>
+                    </li>
+
+                    <li class="sizes__item">
+                      <button class="sizes__button">
+                        47
+                      </button>
+                    </li>
+
+                    <li class="sizes__item">
+                      <button class="sizes__button">
+                        48
+                      </button>
+                    </li>
+                  </ul>
+
+                  <!-- Colors -->
+                  <ul class="product__colors colors arv__content-colors">
+                    <li class="colors__item">
+                      <button class="colors__button colors__button--active" data-color="Black"
+                        aria-label="Choose black color."></button>
+                    </li>
+
+                    <li class="colors__item">
+                      <button class="colors__button" data-color="Brown" aria-label="Choose brown color."></button>
+                    </li>
+
+                    <li class="colors__item">
+                      <button class="colors__button" data-color="Blue-gray"
+                        aria-label="Choose blue-gray color."></button>
+                    </li>
+                  </ul>
+                </div>
+
+                <!-- Button-cart -->
+                <div class="product__button-wrapper">
+                  <button class="product__button-cart btn btn--mid">
+                    <svg xmlns='http://www.w3.org/2000/svg'>
+                      <use href='./img/sprite.svg#cart'></use>
+                    </svg>
+                  </button>
+                </div>
               </div>
             </div>
-          </div>
-        </div>
-
-        <!-- Field9 -->
-        <div class="profile-content__field">
-          <label for="profile-form-address" class="profile-content__label">
-            Address
-          </label>
-
-          <div class="input-wrapper">
-            <input type="text" class="profile-content__input input" id="profile-form-address" name="profile-form-address"
-              placeholder="Your address" value="2464 Royal Ln. Mesa, New Jersey">
-          </div>
-        </div>
-
-        <!-- Field10 -->
-        <div class="profile-content__field">
-          <label for="profile-form-zip" class="profile-content__label">
-            ZIP Code
-          </label>
-
-          <div class="input-wrapper">
-            <input type="text" class="profile-content__input input" id="profile-form-zip" name="profile-form-zip"
-              placeholder="Your ZIP code" value="45463">
-          </div>
-        </div>
-
-        <button class="profile-content__btn btn btn--lg">
-          Save changes
-        </button>
-      </form>
+          </article>
+        </li>
+      </ul>
     </div>
   </div>
 </section>
@@ -1962,7 +2352,7 @@
         by Createx Studio
       </small>
     </div>
-</section> 
+</section>
 
   <a class="scroll-top" aria-label="Scroll to top.">
     <svg xmlns='http://www.w3.org/2000/svg' aria-hidden="true">

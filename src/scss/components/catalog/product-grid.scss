@@ -1,6 +1,8 @@
 @use "../../util/" as *;
 
 .product-grid {
+  position: relative;
+  z-index: 0;
   display: grid;
   column-gap: rem(30);
   grid-template-columns: repeat(3, minmax(0, 1fr));

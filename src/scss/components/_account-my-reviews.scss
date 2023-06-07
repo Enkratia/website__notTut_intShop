@@ -1,0 +1,126 @@
+@use "../util/" as *;
+
+.my-reviews {
+  padding-top: rem(40);
+  padding-bottom: rem(180);
+
+  &__container {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+
+    @include bp-down("1024") {
+      flex-direction: column;
+    }
+  }
+
+  // Account-menu
+  &__account-menu {
+    margin-right: rem(48);
+
+    @include bp-down("1024") {
+      margin-right: 0;
+      margin-bottom: rem(48);
+    }
+  }
+
+  // Data
+  .reviews-data {
+    width: 100%;
+    max-width: rem(810);
+
+    @include bp-down("1024") {
+      max-width: none;
+    }
+
+    // Top
+    &__top {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: rem(38);
+
+      @include bp-down("576") {
+        margin-bottom: calc(rem(24.05) + 1.05vw); // 38>28(1325>375)
+      }
+    }
+
+    &__title {
+      font: var(--h2-font);
+      color: var(--gray900-color);
+
+      @include bp-down("1325") {
+        font-size: calc(rem(20.8) + 0.84vw); // 32>24(1325>375)
+      }
+    }
+
+    &__sort {
+      display: flex;
+      align-items: center;
+
+      &-title {
+        margin-right: rem(12);
+        font: var(--base-bold);
+        color: var(--gray800-color);
+
+        @include bp-down("576") {
+          display: none;
+        }
+      }
+
+      &-select {
+        width: rem(170);
+      }
+
+      &-head {
+        justify-content: space-between;
+        padding-right: rem(17);
+        padding-left: rem(12);
+
+        svg {
+          width: rem(11);
+          height: rem(10);
+        }
+      }
+
+      &-wrapper {
+        width: 100%;
+      }
+    }
+
+    &__box {
+      &:not(:last-child) {
+        padding-bottom: rem(26);
+      }
+
+      &:not(:first-child) {
+        padding-top: rem(27);
+      }
+    }
+
+    // More
+    &__more {
+      display: flex;
+      align-items: center;
+      margin-top: rem(58);
+      margin-inline: auto;
+      font: var(--base-bold);
+      color: var(--gray800-color);
+      transition: color 0.3s;
+
+      svg {
+        margin-right: rem(17);
+        width: rem(24);
+        height: rem(24);
+        fill: currentcolor;
+      }
+
+      &:hover {
+        color: var(--primary-color);
+      }
+    }
+  }
+
+  @include bp-down("1325") {
+    padding-bottom: calc(rem(12.63) + 12.63vw); // 180>60
+  }
+}
