@@ -244,17 +244,17 @@ if (document.querySelector("#instagram-slider")) {
   instagramSwiper.setProgress(0, 0); // (Изначально неверный порядок слайдов)
 }
 
-// BLOG SWIPER
-if (document.querySelector("#blog-slider")) {
+// POSTS SWIPER
+if (document.querySelector("#posts-slider")) {
 
-  const blogSwiper = new Swiper("#blog-slider", {
+  const postSwiper = new Swiper("#posts-slider", {
     modules: [Pagination],
     loop: true,
     enabled: true,
     slidesPerView: 1,
     spaceBetween: 20,
     pagination: {
-      el: '#blog-pagination',
+      el: '#posts-pagination',
       clickable: true,
     },
     breakpoints: {
@@ -271,13 +271,13 @@ if (document.querySelector("#blog-slider")) {
     }
   });
 
-  function resetBlogSwiper() {
+  function resetPostsSwiper() {
     if (v.$mdq768.matches) {
-      blogSwiper.setProgress(0, 0);
+      postsSwiper.setProgress(0, 0);
     }
   }
 
-  v.$mdq768.addEventListener("change", resetBlogSwiper);
+  v.$mdq768.addEventListener("change", resetPostsSwiper);
 }
 
 

@@ -14,7 +14,7 @@
 @forward "./components/cta";
 @forward "./components/services";
 @forward "./components/instagram";
-@forward "./components/blog";
+@forward "./components/posts";
 @forward "./components/brands";
 @forward "./components/subscribe";
 @forward "./components/footer";
@@ -44,3 +44,7 @@
 @forward "./components/account-recently-viewed";
 @forward "./components/breadcrumbs/breadcrumbs-my-reviews";
 @forward "./components/account-my-reviews";
+
+// Components Blog
+@forward "./components/breadcrumbs/breadcrumbs-blog";
+@forward "./components/blog";

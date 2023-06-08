@@ -1,29 +1,28 @@
 <section class="blog">
-  <div class="blog__container container">
-    <h1 class="blog__title section-title">
-      Fashion blog
-    </h1>
+  <div class="blog__container container container--40">
 
-    <div class="blog__outer-wrapper">
-      <div class="blog__slider" id="blog-slider">
-        <div class="blog__wrapper swiper-wrapper">
+    <!-- Articles -->
+    <div class="blog__articles">
 
-          <!-- Slide1 -->
-          <article class="blog__article article swiper-slide">
-            <div class="article__box">
-              <a href="#" class="article__link">
-                <img src="./img/blog-1.jpg" alt="Article image." class="article__image">
+      <!-- Title -->
+      <h1 class="blog__articles-title section-title">
+        Fashion blog
+      </h1>
+
+      <!-- List -->
+      <ul class="blog__articles-list">
+
+        <!-- Item1 -->
+        <li class="blog__articles-item">
+          <article class="blog__articles-article article">
+            <div class="article__box blog__articles-box">
+              <a href="#" class="article__link blog__articles-link">
+                <img src="./img/blog-1.jpg" alt="Article image." class="article__image blog__articles-image">
               </a>
             </div>
 
-            <div class="article__text">
-              <h5 class="article__title">
-                <a href="#" class="article__link">
-                  Bag Trends for Summer 2020
-                </a>
-              </h5>
-
-              <ul class="article__data">
+            <div class="article__text blog__articles-text">
+              <ul class="article__data blog__articles-data">
                 <li class="article__data-item">
                   <a href="#" class="article__data-link">
                     Fashion
@@ -49,29 +48,82 @@
                 </li>
               </ul>
 
-              <p class="article__first-lines">
-                Ipsum aliquet nisi, hendrerit rhoncus quam tortor, maecenas faucibus. Tincidunt aliquet sit vel,
-                venenatis  sit vel, venenatis nulla. Integer bibendum turpis convallis 
-              </p>
-            </div>
-          </article>
-
-          <!-- Slide2 -->
-          <article class="blog__article article swiper-slide">
-            <div class="article__box">
-              <a href="#" class="article__link">
-                <img src="./img/blog-2.jpg" alt="Article image." class="article__image">
-              </a>
-            </div>
-
-            <div class="article__text">
-              <h5 class="article__title">
+              <h5 class="article__title blog__articles-name">
                 <a href="#" class="article__link">
-                  Top 10 of This Season’s Hottest Sneakers
+                  Bag Trends for Summer 2020
                 </a>
               </h5>
 
-              <ul class="article__data">
+              <p class="article__first-lines">
+                Vulputate vitae pellentesque scelerisque luctus consequat mattis pellentesque dui odio. Interdum aenean
+                sit viverra amet,malesuada ornare sed gravida rhoncus, congue. Purus auctor nullam diam quis est
+                hendrerit ac euismod...
+              </p>
+            </div>
+          </article>
+        </li>
+
+        <!-- Item2 -->
+        <li class="blog__articles-item">
+          <article class="blog__articles-article article">
+            <div class="article__box blog__articles-box">
+              <a href="#" class="article__link blog__articles-link">
+                <img src="./img/blog-3.jpg" alt="Article image." class="article__image blog__articles-image">
+              </a>
+            </div>
+
+            <div class="article__text blog__articles-text">
+              <ul class="article__data blog__articles-data">
+                <li class="article__data-item">
+                  <a href="#" class="article__data-link">
+                    Celebrity style
+                  </a>
+                </li>
+
+                <li class="article__data-item">
+                  <a href="#" class="article__data-link">
+                    August 5, 2020
+                  </a>
+                </li>
+
+                <li class="article__data-item">
+                  <a href="#" class="article__data-link article__data-link--comments">
+                    <svg xmlns='http://www.w3.org/2000/svg'>
+                      <use href='./img/sprite.svg#comments'></use>
+                    </svg>
+
+                    <span class="article__data-comments">
+                      No comments
+                    </span>
+                  </a>
+                </li>
+              </ul>
+
+              <h5 class="article__title blog__articles-name">
+                <a href="#" class="article__link">
+                  Wardrobe Essentials Everyone Should Own Today
+                </a>
+              </h5>
+
+              <p class="article__first-lines">
+                Mauris tincidunt sollicitudin tristique odio eget volutpat. Fringilla viverra amet, mi interdum blandit.
+                Tellus sed morbi massa quis sed. Faucibus tincidunt magna enim ultricies fringilla at rhoncus, hac...
+              </p>
+            </div>
+          </article>
+        </li>
+
+        <!-- Item3 -->
+        <li class="blog__articles-item">
+          <article class="blog__articles-article article">
+            <div class="article__box blog__articles-box">
+              <a href="#" class="article__link blog__articles-link">
+                <img src="./img/blog-2.jpg" alt="Article image." class="article__image blog__articles-image">
+              </a>
+            </div>
+
+            <div class="article__text blog__articles-text">
+              <ul class="article__data blog__articles-data">
                 <li class="article__data-item">
                   <a href="#" class="article__data-link">
                     Lifestyle
@@ -97,22 +149,325 @@
                 </li>
               </ul>
 
+              <h5 class="article__title blog__articles-name">
+                <a href="#" class="article__link">
+                  Top 10 of This Season’s Hottest Sneakers
+                </a>
+              </h5>
+
               <p class="article__first-lines">
-                Porta habitant vitae quam interdum. Leo viverra non volutpat rhoncus placerat vitae scelerisque. Rhoncus
-                augue faucibus venenatis  sit vel, venenatis nulla. maecenas lacus
+                Sollicitudin et nec congue magna quis commodo quis luctus risus. Dolor, dignissim semper faucibus
+                quisque massa ut enim. Turpis viverra mattis semper pellentesque facilisis. Ut id eget sagittis
+                lectus...
               </p>
             </div>
           </article>
-        </div>
+        </li>
 
-        <!-- Pagination -->
-        <div class="blog__pagination flat-pagination" id="blog-pagination"></div>
+        <!-- Item4 -->
+        <li class="blog__articles-item">
+          <article class="blog__articles-article article">
+            <div class="article__box blog__articles-box">
+              <a href="#" class="article__link blog__articles-link">
+                <img src="./img/blog-4.jpg" alt="Article image." class="article__image blog__articles-image">
+              </a>
+            </div>
+
+            <div class="article__text blog__articles-text">
+              <ul class="article__data blog__articles-data">
+                <li class="article__data-item">
+                  <a href="#" class="article__data-link">
+                    Fashion
+                  </a>
+                </li>
+
+                <li class="article__data-item">
+                  <a href="#" class="article__data-link">
+                    July 2, 2020
+                  </a>
+                </li>
+
+                <li class="article__data-item">
+                  <a href="#" class="article__data-link article__data-link--comments">
+                    <svg xmlns='http://www.w3.org/2000/svg'>
+                      <use href='./img/sprite.svg#comments'></use>
+                    </svg>
+
+                    <span class="article__data-comments">
+                      2 comments
+                    </span>
+                  </a>
+                </li>
+              </ul>
+
+              <h5 class="article__title blog__articles-name">
+                <a href="#" class="article__link">
+                  Modern Accessories 2020: Why Simple Isn't Easy
+                </a>
+              </h5>
+
+              <p class="article__first-lines">
+                Tellus sed morbi massa quis sed. Faucibus tincidunt magna enim ultricies fringilla at rhoncus, hac.
+                Sollicitudin et nec congue magna quis commodo quis luctus risus. Dolor, dignissim semper faucibus
+                quisque massa ut enim...
+              </p>
+            </div>
+          </article>
+        </li>
+      </ul>
+
+      <!-- Pagination -->
+      <ul class="blog__articles-pagination tool-pag"></ul>
+
+      <!-- Pagination mini (for small devices) -->
+      <ul class="blog__articles-pagination-mini tool-pag-mini">
+        <li class="tool-pag-mini__item tool-pag-mini__item--inactive" data-toolpag="arrow-left">
+          <a href="#" class="tool-pag-mini__link" aria-label="Go to the previous page.">
+            <svg class="tool-pag-mini__arrow tool-pag__arrow--left" xmlns='http://www.w3.org/2000/svg'
+              aria-hidden="true">
+              <use href='./img/sprite.svg#arrow' aria-hidden="true"></use>
+            </svg>
+          </a>
+        </li>
+
+        <li class="tool-pag-mini__item" data-toolpag="current">
+          <a href="#" class="tool-pag__link">
+            1
+          </a>
+        </li>
+
+        <li class="tool-pag-mini__item">
+          /
+        </li>
+
+        <li class="tool-pag-mini__item" data-toolpag="total">
+          <a href="#" class="tool-pag__link">
+            10
+          </a>
+        </li>
+
+        <li class="tool-pag-mini__item" data-toolpag="arrow-right">
+          <a href="#" class="tool-pag-mini__link" aria-label="Go to the next page.">
+            <svg class="tool-pag-mini__arrow tool-pag-mini__arrow--right" xmlns='http://www.w3.org/2000/svg'
+              aria-hidden="true">
+              <use href='./img/sprite.svg#arrow' aria-hidden="true"></use>
+            </svg>
+          </a>
+        </li>
+      </ul>
+    </div>
+
+    <!-- Sidebar -->
+    <div class="blog__sidebar-wrapper">
+      <div class="blog__sidebar-wrapper-top">
+        Sidebar
+
+        <button class="blog__sidebar-wrapper-close" aria-label="Close sidebar.">
+          <svg xmlns='http://www.w3.org/2000/svg' aria-hidden='true'>
+            <use href='./img/sprite.svg#cross' aria-hidden='true'></use>
+          </svg>
+        </button>
       </div>
 
-      <!-- Button-->
-      <a href="#" class="blog__button btn btn--mid btn--outline">
-        View blog
-      </a>
+      <aside class="blog__sidebar">
+
+        <!-- Search -->
+        <form class="blog__sidebar-search blog-search">
+          <input type="text" class="blog-search__input input" placeholder="Search the blog..." name="blog-search-input">
+
+          <button class="blog-search__btn" aria-label="Search the blog.">
+            <svg xmlns='http://www.w3.org/2000/svg' aria-hidden='true'>
+              <use href='./img/sprite.svg#search' aria-hidden='true'></use>
+            </svg>
+          </button>
+        </form>
+
+        <!-- Categories -->
+        <div class="blog__sidebar-categories blog-categories">
+          <h4 class="blog-categories__title blog__sidebar-title">
+            Blog Categories
+          </h4>
+
+          <ul class="blog-categories__list">
+            <li class="blog-categories__item">
+              <button class="blog-categories__btn">
+                All
+
+                <span class="blog-categories__count">
+                  23
+                </span>
+              </button>
+            </li>
+
+            <li class="blog-categories__item">
+              <button class="blog-categories__btn">
+                Fashion
+
+                <span class="blog-categories__count">
+                  3
+                </span>
+              </button>
+            </li>
+
+            <li class="blog-categories__item">
+              <button class="blog-categories__btn">
+                Designers
+
+                <span class="blog-categories__count">
+                  7
+                </span>
+              </button>
+            </li>
+
+            <li class="blog-categories__item">
+              <button class="blog-categories__btn blog-categories__btn--active">
+                Lifestyle
+
+                <span class="blog-categories__count">
+                  4
+                </span>
+              </button>
+            </li>
+
+            <li class="blog-categories__item">
+              <button class="blog-categories__btn">
+                Celebrity style
+
+                <span class="blog-categories__count">
+                  9
+                </span>
+              </button>
+            </li>
+          </ul>
+        </div>
+
+        <!-- Featured -->
+        <div class="blog__sidebar-featured blog-featured">
+          <h4 class="blog-featured__title blog__sidebar-title">
+            Featured Posts
+          </h4>
+
+          <ul class="blog-featured__list">
+
+            <!-- Item1 -->
+            <li class="blog-featured__item">
+              <a href="#" class="blog-featured__image-link">
+                <img src="./img/blog-5.jpg" alt="Blog featured image." class="blog-featured__image">
+              </a>
+
+              <div class="blog-featured__info">
+                <time class="blog-featured__date">
+                  <svg xmlns='http://www.w3.org/2000/svg' aria-hidden='true'>
+                    <use href='./img/sprite.svg#clock' aria-hidden='true'></use>
+                  </svg>
+
+                  July 5, 2020
+                </time>
+
+                <h6 class="blog-featured__name">
+                  14 Items From End-of-Spring Sales Are Sure to Spark Joy
+                </h6>
+              </div>
+            </li>
+
+            <!-- Item2 -->
+            <li class="blog-featured__item">
+              <a href="#" class="blog-featured__image-link">
+                <img src="./img/blog-6.jpg" alt="Blog featured image." class="blog-featured__image">
+              </a>
+
+              <div class="blog-featured__info">
+                <time class="blog-featured__date">
+                  <svg xmlns='http://www.w3.org/2000/svg' aria-hidden='true'>
+                    <use href='./img/sprite.svg#clock' aria-hidden='true'></use>
+                  </svg>
+
+                  April 9, 2020
+                </time>
+
+                <h6 class="blog-featured__name">
+                  Best Fashion Instagrams of the Week
+                </h6>
+              </div>
+            </li>
+
+            <!-- Item3 -->
+            <li class="blog-featured__item">
+              <a href="#" class="blog-featured__image-link">
+                <img src="./img/blog-7.jpg" alt="Blog featured image." class="blog-featured__image">
+              </a>
+
+              <div class="blog-featured__info">
+                <time class="blog-featured__date">
+                  <svg xmlns='http://www.w3.org/2000/svg' aria-hidden='true'>
+                    <use href='./img/sprite.svg#clock' aria-hidden='true'></use>
+                  </svg>
+
+                  March 12, 2020
+                </time>
+
+                <h6 class="blog-featured__name">
+                  Top 10 Looks from the Venice Film Festival
+                </h6>
+              </div>
+            </li>
+          </ul>
+        </div>
+
+        <!-- Tags -->
+        <div class="blog__sidebar-tags blog-tags">
+          <h4 class="blog-tags__title blog__sidebar-title">
+            Tags
+          </h4>
+
+          <ul class="blog-tags__list">
+            <li class="blog-tags__item">
+              <a href="#" class="blog-tags__tag btn btn--outline">
+                #trends
+              </a>
+            </li>
+
+            <li class="blog-tags__item">
+              <a href="#" class="blog-tags__tag btn btn--outline">
+                #inspiration
+              </a>
+            </li>
+
+            <li class="blog-tags__item">
+              <a href="#" class="blog-tags__tag btn btn--outline">
+                #designers
+              </a>
+            </li>
+
+            <li class="blog-tags__item">
+              <a href="#" class="blog-tags__tag btn btn--outline">
+                #kidsfashion
+              </a>
+            </li>
+
+            <li class="blog-tags__item">
+              <a href="#" class="blog-tags__tag btn btn--outline">
+                #streetstyle
+              </a>
+            </li>
+
+            <li class="blog-tags__item">
+              <a href="#" class="blog-tags__tag btn btn--outline">
+                #models
+              </a>
+            </li>
+          </ul>
+        </div>
+      </aside>
     </div>
+
+    <!-- Sidebar button -->
+    <button class="blog__sidebar-btn btn btn--mid">
+      <svg xmlns='http://www.w3.org/2000/svg' aria-hidden='true'>
+        <use href='./img/sprite.svg#calendar' aria-hidden='true'></use>
+      </svg>
+
+      Sidebar
+    </button>
   </div>
 </section>

@@ -2,7 +2,7 @@ import * as v from "../vars.js";
 
 // ==== PAGINATION ==== //
 let page = 1;
-let totalPages = 10;
+let totalPages = 11;
 let activePag;
 let chosenPag;
 
@@ -88,7 +88,6 @@ if (v.$toolPags[0]) {
   // **
   function initPags() {
     if (!v.$mdq875.matches) {
-      console.log(document.querySelector(".tool-pag__item--active"))
       const activePag = v.$toolPags[0].querySelector(".tool-pag__item--active").dataset.toolpag;
       let diff;
 
@@ -496,6 +495,15 @@ function writePageNumber() {
   });
 }
 
+
+// **
+function writeMiniTotalPages() {
+  v.$toolPagsMini.forEach(el => {
+    const totalPagesPag = el.querySelector("[data-toolpag='total'] .tool-pag__link");
+    totalPagesPag.innerText = totalPages;
+  });
+}
+
 // **
 function initMiniPags() {
   if (v.$mdq875.matches) {
@@ -507,6 +515,8 @@ function initMiniPags() {
       page++;
       toPrevPage();
     }
+
+    writeMiniTotalPages();
   }
 }
 initMiniPags();

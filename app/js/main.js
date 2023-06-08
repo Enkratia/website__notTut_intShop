@@ -6770,16 +6770,16 @@ if (document.querySelector("#instagram-slider")) {
   instagramSwiper.setProgress(0, 0); // (Изначально неверный порядок слайдов)
 }
 
-// BLOG SWIPER
-if (document.querySelector("#blog-slider")) {
-  const blogSwiper = new swiper__WEBPACK_IMPORTED_MODULE_1__["default"]("#blog-slider", {
+// POSTS SWIPER
+if (document.querySelector("#posts-slider")) {
+  const postSwiper = new swiper__WEBPACK_IMPORTED_MODULE_1__["default"]("#posts-slider", {
     modules: [swiper__WEBPACK_IMPORTED_MODULE_1__.Pagination],
     loop: true,
     enabled: true,
     slidesPerView: 1,
     spaceBetween: 20,
     pagination: {
-      el: '#blog-pagination',
+      el: '#posts-pagination',
       clickable: true
     },
     breakpoints: {
@@ -6795,12 +6795,12 @@ if (document.querySelector("#blog-slider")) {
       }
     }
   });
-  function resetBlogSwiper() {
+  function resetPostsSwiper() {
     if (_vars_js__WEBPACK_IMPORTED_MODULE_0__.$mdq768.matches) {
-      blogSwiper.setProgress(0, 0);
+      postsSwiper.setProgress(0, 0);
     }
   }
-  _vars_js__WEBPACK_IMPORTED_MODULE_0__.$mdq768.addEventListener("change", resetBlogSwiper);
+  _vars_js__WEBPACK_IMPORTED_MODULE_0__.$mdq768.addEventListener("change", resetPostsSwiper);
 }
 
 // BRAND SWIPER
@@ -7024,7 +7024,6 @@ __webpack_require__.r(__webpack_exports__);
 // F(s)
 function showAccountMenu() {
   this.classList.toggle("account-menu__btn--show");
-  console.log(this);
   if (this.classList.contains("account-menu__btn--show")) {
     const accountMenuLinksHeight = _vars_js__WEBPACK_IMPORTED_MODULE_0__.$accountMenuLinks.scrollHeight;
     _vars_js__WEBPACK_IMPORTED_MODULE_0__.$accountMenuLinks.style.height = accountMenuLinksHeight + "px";
@@ -7034,7 +7033,7 @@ function showAccountMenu() {
 }
 
 // L(s)
-_vars_js__WEBPACK_IMPORTED_MODULE_0__.$accountMenuBtn.addEventListener("click", showAccountMenu);
+_vars_js__WEBPACK_IMPORTED_MODULE_0__.$accountMenuBtn?.addEventListener("click", showAccountMenu);
 
 /***/ }),
 
@@ -9039,15 +9038,27 @@ window.addEventListener("resize", () => {
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 const myOrderHeads = document.querySelectorAll(".orders-content__head");
+let timer;
+
 // F(s)
+// **
+function setHeight(orderProducts) {
+  const orderProductsHeight = orderProducts.scrollHeight;
+  orderProducts.style.height = orderProductsHeight + "px";
+}
+
 // **
 function hideOrder() {
   const prevOrderHead = document.querySelector(".orders-content__head--show");
   if (prevOrderHead) {
-    const prevOrderProducts = prevOrderHead.nextElementSibling;
     prevOrderHead.classList.remove("orders-content__head--show");
     prevOrderHead.setAttribute("aria-expanded", "false");
-    prevOrderProducts.style.height = "";
+    const prevOrderProducts = prevOrderHead.nextElementSibling;
+    setHeight(prevOrderProducts);
+    clearTimeout(timer);
+    setTimeout(() => {
+      prevOrderProducts.style.height = "";
+    }, 0);
   }
 }
 
@@ -9067,8 +9078,10 @@ function showOrder() {
   this.classList.add("orders-content__head--show");
   this.setAttribute("aria-expanded", "true");
   const orderProducts = this.nextElementSibling;
-  const orderProductsHeight = orderProducts.scrollHeight;
-  orderProducts.style.height = orderProductsHeight + "px";
+  setHeight(orderProducts);
+  timer = setTimeout(() => {
+    orderProducts.style.height = "auto";
+  }, 400);
 }
 
 // L(s)
@@ -10371,7 +10384,7 @@ __webpack_require__.r(__webpack_exports__);
 
 // ==== PAGINATION ==== //
 let page = 1;
-let totalPages = 10;
+let totalPages = 11;
 let activePag;
 let chosenPag;
 if (_vars_js__WEBPACK_IMPORTED_MODULE_0__.$toolPags[0]) {
@@ -10446,7 +10459,6 @@ if (_vars_js__WEBPACK_IMPORTED_MODULE_0__.$toolPags[0]) {
   // **
   function initPags() {
     if (!_vars_js__WEBPACK_IMPORTED_MODULE_0__.$mdq875.matches) {
-      console.log(document.querySelector(".tool-pag__item--active"));
       const activePag = _vars_js__WEBPACK_IMPORTED_MODULE_0__.$toolPags[0].querySelector(".tool-pag__item--active").dataset.toolpag;
       let diff;
       if (activePag > page) {
@@ -10793,6 +10805,14 @@ function writePageNumber() {
 }
 
 // **
+function writeMiniTotalPages() {
+  _vars_js__WEBPACK_IMPORTED_MODULE_0__.$toolPagsMini.forEach(el => {
+    const totalPagesPag = el.querySelector("[data-toolpag='total'] .tool-pag__link");
+    totalPagesPag.innerText = totalPages;
+  });
+}
+
+// **
 function initMiniPags() {
   if (_vars_js__WEBPACK_IMPORTED_MODULE_0__.$mdq875.matches) {
     if (page > 1) {
@@ -10802,6 +10822,7 @@ function initMiniPags() {
       page++;
       toPrevPage();
     }
+    writeMiniTotalPages();
   }
 }
 initMiniPags();

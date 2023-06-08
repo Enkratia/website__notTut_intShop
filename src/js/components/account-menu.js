@@ -3,7 +3,6 @@ import * as v from "../vars.js";
 // F(s)
 function showAccountMenu() {
   this.classList.toggle("account-menu__btn--show");
-  console.log(this)
 
   if (this.classList.contains("account-menu__btn--show")) {
     const accountMenuLinksHeight = v.$accountMenuLinks.scrollHeight;
@@ -16,4 +15,4 @@ function showAccountMenu() {
 }
 
 // L(s)
-v.$accountMenuBtn.addEventListener("click", showAccountMenu);
+v.$accountMenuBtn?.addEventListener("click", showAccountMenu);

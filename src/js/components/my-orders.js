@@ -1,16 +1,28 @@
 const myOrderHeads = document.querySelectorAll(".orders-content__head");
+let timer;
+
 // F(s)
+// **
+function setHeight(orderProducts) {
+  const orderProductsHeight = orderProducts.scrollHeight;
+  orderProducts.style.height = orderProductsHeight + "px";
+}
+
 // **
 function hideOrder() {
   const prevOrderHead = document.querySelector(".orders-content__head--show");
 
   if (prevOrderHead) {
-    const prevOrderProducts = prevOrderHead.nextElementSibling;
-
     prevOrderHead.classList.remove("orders-content__head--show");
     prevOrderHead.setAttribute("aria-expanded", "false");
+    
+    const prevOrderProducts = prevOrderHead.nextElementSibling;
+    setHeight(prevOrderProducts);
 
-    prevOrderProducts.style.height = "";
+    clearTimeout(timer);
+    setTimeout(() => {
+      prevOrderProducts.style.height = "";
+    }, 0);
   }
 }
 
@@ -33,8 +45,11 @@ function showOrder() {
   this.setAttribute("aria-expanded", "true");
 
   const orderProducts = this.nextElementSibling;
-  const orderProductsHeight = orderProducts.scrollHeight;
-  orderProducts.style.height = orderProductsHeight + "px";
+  setHeight(orderProducts);
+
+  timer = setTimeout(() => {
+    orderProducts.style.height = "auto";
+  }, 400);
 }
 
 // L(s)
