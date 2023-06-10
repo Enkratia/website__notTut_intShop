@@ -132,5 +132,28 @@ if (v.$productCard) {
 }
 
 
+// ==== BLOG SIDEBAR SCROLLBAR ==== //
+if (document.querySelector(".blog__sidebar")) {
+
+  let blogSidebarScrollbar;
+
+  function toggleBlogSidebarScrollbar() {
+    if (v.$mdq1024.matches) {
+      blogSidebarScrollbar?.destroy();
+
+    } else {
+      blogSidebarScrollbar = OverlayScrollbars(document.querySelector(".blog__sidebar"), {
+        scrollbars: {
+          theme: 'os-theme-blog-sidebar',
+        }
+      });
+    }
+  }
+  toggleBlogSidebarScrollbar();
+
+  v.$mdq1024.addEventListener("change", toggleBlogSidebarScrollbar);
+}
+
+
 
 

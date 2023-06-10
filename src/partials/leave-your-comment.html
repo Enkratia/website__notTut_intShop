@@ -1,0 +1,57 @@
+<section class="leave-your-comment" id="leave-your-comment">
+  <div class="leave-your-comment__container container container--narrow">
+    <h1 class="leave-your-comment__title section-title">
+      Leave your comment
+    </h1>
+
+    <!-- Form -->
+    <form class="leave-your-comment__form">
+
+      <!-- Fields -->
+      <div class="leave-your-comment__fields">
+
+        <!-- Field1 -->
+        <div class="leave-your-comment__field">
+          <label for="leave-your-comment-name" class="leave-your-comment__label">
+            Name*
+          </label>
+
+          <div class="input-wrapper">
+            <input type="text" class="leave-your-comment__input input" placeholder="Your name" id="leave-your-comment-name"
+              name="leave-your-comment-name">
+          </div>
+        </div>
+
+        <!-- Field2 -->
+        <div class="leave-your-comment__field">
+          <label for="leave-your-comment-email" class="leave-your-comment__label">
+            Email*
+          </label>
+
+          <div class="input-wrapper" data-validity="email">
+            <input type="email" class="leave-your-comment__input input" placeholder="Your working email" id="leave-your-comment-email"
+              name="leave-your-comment-email">
+          </div>
+        </div>
+
+        <!-- Field3 -->
+        <div class="leave-your-comment__field">
+          <label for="leave-your-comment-comment" class="leave-your-comment__label">
+            Your comment*
+          </label>
+
+          <div class="input-wrapper">
+            <input type="hidden" class="leave-your-comment__textarea-hidden" name="leave-your-comment-textarea-hidden">
+  
+            <div class="leave-your-comment__textarea custom-textarea custom-textarea--comment input" id="leave-your-comment-comment" name="leave-your-comment-comment"
+              contenteditable="true" role="textbox" data-overlayscrollbars-initialize></div>
+          </div>
+        </div>
+      </div>
+
+      <button class="leave-your-comment__submit btn btn--lg">
+        Post comment
+      </button>
+    </form>
+  </div>
+</section>

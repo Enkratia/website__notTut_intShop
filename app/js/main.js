@@ -6518,6 +6518,24 @@ if (_vars_js__WEBPACK_IMPORTED_MODULE_0__.$productCard) {
   });
 }
 
+// ==== BLOG SIDEBAR SCROLLBAR ==== //
+if (document.querySelector(".blog__sidebar")) {
+  let blogSidebarScrollbar;
+  function toggleBlogSidebarScrollbar() {
+    if (_vars_js__WEBPACK_IMPORTED_MODULE_0__.$mdq1024.matches) {
+      blogSidebarScrollbar?.destroy();
+    } else {
+      blogSidebarScrollbar = (0,overlayscrollbars__WEBPACK_IMPORTED_MODULE_1__.OverlayScrollbars)(document.querySelector(".blog__sidebar"), {
+        scrollbars: {
+          theme: 'os-theme-blog-sidebar'
+        }
+      });
+    }
+  }
+  toggleBlogSidebarScrollbar();
+  _vars_js__WEBPACK_IMPORTED_MODULE_0__.$mdq1024.addEventListener("change", toggleBlogSidebarScrollbar);
+}
+
 /***/ }),
 
 /***/ "./src/js/components/$swipers.js":
@@ -7008,6 +7026,39 @@ const imageModalSwiper = new swiper__WEBPACK_IMPORTED_MODULE_1__["default"]("#im
 });
 
 
+// RELATED- POSTS SWIPER
+if (document.querySelector("#related-posts-slider")) {
+  const relatedPostsSwiper = new swiper__WEBPACK_IMPORTED_MODULE_1__["default"]("#related-posts-slider", {
+    modules: [swiper__WEBPACK_IMPORTED_MODULE_1__.Pagination],
+    loop: true,
+    enabled: true,
+    slidesPerView: 1,
+    spaceBetween: 20,
+    pagination: {
+      el: '#related-posts-pagination',
+      clickable: true
+    },
+    breakpoints: {
+      600: {
+        enabled: false,
+        slidesPerView: 2,
+        spaceBetween: 30
+      },
+      576: {
+        enabled: false,
+        slidesPerView: 2,
+        spaceBetween: 20
+      }
+    }
+  });
+  function resetRelatedPostsSwiper() {
+    if (_vars_js__WEBPACK_IMPORTED_MODULE_0__.$mdq768.matches) {
+      relatedPostsSwiper.setProgress(0, 0);
+    }
+  }
+  _vars_js__WEBPACK_IMPORTED_MODULE_0__.$mdq768.addEventListener("change", resetRelatedPostsSwiper);
+}
+
 /***/ }),
 
 /***/ "./src/js/components/account-menu.js":
@@ -7034,6 +7085,42 @@ function showAccountMenu() {
 
 // L(s)
 _vars_js__WEBPACK_IMPORTED_MODULE_0__.$accountMenuBtn?.addEventListener("click", showAccountMenu);
+
+/***/ }),
+
+/***/ "./src/js/components/blog__sidebar.js":
+/*!********************************************!*\
+  !*** ./src/js/components/blog__sidebar.js ***!
+  \********************************************/
+/***/ ((__unused_webpack___webpack_module__, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+const blogSidebarWrapper = document.querySelector(".blog__sidebar-wrapper");
+if (blogSidebarWrapper) {
+  const blogSidebarBtn = document.querySelector(".blog__sidebar-btn");
+  const blogSidebarclose = blogSidebarWrapper.querySelector(".blog__sidebar-wrapper-close");
+
+  // F(s)
+  // **
+  function hideBlogSidebar() {
+    blogSidebarWrapper.classList.remove("blog__sidebar-wrapper--show");
+    document.body.classList.remove("overflow-hidden");
+  }
+
+  // **
+  function showBlogSidebar() {
+    blogSidebarWrapper.classList.add("blog__sidebar-wrapper--show");
+    document.body.classList.add("overflow-hidden");
+  }
+
+  // L(s)
+  // **
+  blogSidebarBtn.addEventListener("click", showBlogSidebar);
+
+  // **
+  blogSidebarclose.addEventListener("click", hideBlogSidebar);
+}
 
 /***/ }),
 
@@ -7380,6 +7467,119 @@ window.addEventListener("resize", () => {
     });
   }, 50);
 });
+
+/***/ }),
+
+/***/ "./src/js/components/contacts.js":
+/*!***************************************!*\
+  !*** ./src/js/components/contacts.js ***!
+  \***************************************/
+/***/ ((__unused_webpack___webpack_module__, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _leave_review_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./leave-review.js */ "./src/js/components/leave-review.js");
+
+const contactsSection = document.querySelector("#contacts-section");
+if (contactsSection) {
+  // ==== CONTACT US ==== //
+  const textInputs = contactsSection.querySelectorAll(".input[type='text']:not(#contact-us-phone)");
+  const textarea = contactsSection.querySelector("#contact-us-message");
+  const phoneInput = contactsSection.querySelector("#contact-us-phone");
+  const emailInput = contactsSection.querySelector(".input[type='email']");
+  const contactsSectionBtn = contactsSection.querySelector(".contact-us__submit");
+
+  // F(s)
+  function checkContactsForm(e) {
+    e.preventDefault();
+    _leave_review_js__WEBPACK_IMPORTED_MODULE_0__.$checkForm(e, [...textInputs, textarea], null, emailInput, phoneInput);
+  }
+
+  // L(s)
+  // **
+  contactsSectionBtn.addEventListener("click", checkContactsForm);
+
+  // **
+  textInputs.forEach(el => {
+    el.addEventListener("blur", _leave_review_js__WEBPACK_IMPORTED_MODULE_0__.$verifyTextInput);
+  });
+
+  // **
+  textarea.addEventListener("blur", _leave_review_js__WEBPACK_IMPORTED_MODULE_0__.$verifyTextInput);
+
+  // **
+  emailInput.addEventListener("blur", _leave_review_js__WEBPACK_IMPORTED_MODULE_0__.$verifyEmailInput);
+
+  // **
+  phoneInput.addEventListener("blur", _leave_review_js__WEBPACK_IMPORTED_MODULE_0__.$verifyPhone);
+
+  // ==== FAQ ==== //
+  const faqHeads = contactsSection.querySelectorAll(".contacts-faq__accordion-head");
+
+  // F(s)
+  function setHeight(prevBody) {
+    const faqBodyHeight = prevBody.scrollHeight;
+    prevBody.style.height = faqBodyHeight + "px";
+  }
+
+  // **
+  function hideFaqItem() {
+    const prevFaqHead = contactsSection.querySelector(".contacts-faq__accordion-head--show");
+    if (prevFaqHead) {
+      prevFaqHead.classList.remove("contacts-faq__accordion-head--show");
+      prevFaqHead.setAttribute("aria-expanded", "false");
+      const prevFaqItemBody = prevFaqHead.nextElementSibling;
+      setHeight(prevFaqItemBody);
+      setTimeout(() => {
+        prevFaqItemBody.style.height = "";
+      }, 0);
+    }
+  }
+
+  // **
+  function showFaqItem() {
+    if (this.classList.contains("contacts-faq__accordion-head--show")) {
+      hideFaqItem();
+      return;
+    }
+    hideFaqItem();
+    this.classList.add("contacts-faq__accordion-head--show");
+    this.setAttribute("aria-expanded", "true");
+    const faqItemBody = this.nextElementSibling;
+    setHeight(faqItemBody);
+  }
+
+  // L(s)
+  faqHeads.forEach(el => {
+    el.addEventListener("click", showFaqItem);
+  });
+
+  // === TABS === //
+  const contactsTabs = contactsSection.querySelectorAll(".contacts__tabs-tab");
+
+  // F(s)
+  // **
+  function hideActiveClass() {
+    const prevTab = contactsSection.querySelector(".contacts__tabs-tab--active");
+    prevTab.classList.remove("contacts__tabs-tab--active");
+    prevTab.setAttribute("aria-selected", "false");
+  }
+
+  // **
+  function showActiveClass() {
+    if (this.classList.contains("contacts__tabs-tab--active")) {
+      return;
+    }
+    hideActiveClass();
+    this.classList.add("contacts__tabs-tab--active");
+    this.setAttribute("aria-selected", "true");
+  }
+
+  // L(s)
+  contactsTabs.forEach(el => {
+    el.addEventListener("click", showActiveClass);
+  });
+}
 
 /***/ }),
 
@@ -8406,19 +8606,21 @@ _vars_js__WEBPACK_IMPORTED_MODULE_0__.$inputNumberBtns.forEach(el => {
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "$checkForm": () => (/* binding */ checkForm),
+/* harmony export */   "$removeTextareaPlaceholder": () => (/* binding */ removeTextareaPlaceholder),
 /* harmony export */   "$verifyEmailInput": () => (/* binding */ verifyEmailInput),
 /* harmony export */   "$verifyMatchPassword": () => (/* binding */ verifyMatchPassword),
 /* harmony export */   "$verifyPassword": () => (/* binding */ verifyPassword),
 /* harmony export */   "$verifyPhone": () => (/* binding */ verifyPhone),
 /* harmony export */   "$verifySelect": () => (/* binding */ verifySelect),
-/* harmony export */   "$verifyTextInput": () => (/* binding */ verifyTextInput)
+/* harmony export */   "$verifyTextInput": () => (/* binding */ verifyTextInput),
+/* harmony export */   "$verifyTextarea": () => (/* binding */ verifyTextarea)
 /* harmony export */ });
 /* harmony import */ var _vars_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../vars.js */ "./src/js/vars.js");
 
 
 const textInputs = _vars_js__WEBPACK_IMPORTED_MODULE_0__.$leaveReview?.querySelectorAll(".input[type='text']");
 const selects = _vars_js__WEBPACK_IMPORTED_MODULE_0__.$leaveReview?.querySelectorAll(".leave-review__sort-select");
-const textarea = _vars_js__WEBPACK_IMPORTED_MODULE_0__.$leaveReview?.querySelector(".leave-review__textarea");
+const textarea = _vars_js__WEBPACK_IMPORTED_MODULE_0__.$leaveReview?.querySelector(".custom-textarea");
 const emailInput = _vars_js__WEBPACK_IMPORTED_MODULE_0__.$leaveReview?.querySelector(".input[type='email']");
 const regExp = /^\S+@\S+\.\S+$/;
 
@@ -8443,18 +8645,18 @@ function addSuccessClass(elem) {
 
 // **
 function removeTextareaPlaceholder() {
-  const isEmpty = isTextareaEmpty();
+  const isEmpty = isTextareaEmpty(this);
   if (isEmpty || this.querySelector("a")) {
-    textarea.classList.add("leave-review__textarea--active");
+    this.classList.add("custom-textarea--active");
     return;
   }
-  textarea.classList.remove("leave-review__textarea--active");
+  this.classList.remove("custom-textarea--active");
 }
 
 // **
-function isTextareaEmpty() {
+function isTextareaEmpty(area) {
   const regExp = /(<a.+<\/a>)/i;
-  let textareaText = textarea.innerHTML.trim();
+  let textareaText = area.innerHTML.trim();
   const regExpResult = textareaText.match(regExp);
   if (regExpResult) {
     textareaText = textareaText.replace(regExpResult[0], "");
@@ -8495,9 +8697,9 @@ function verifyEmailInput() {
 
 // **
 function verifyTextarea() {
-  const isEmpty = isTextareaEmpty();
+  const isEmpty = isTextareaEmpty(this);
   if (isEmpty) {
-    addSuccessClass(textarea);
+    addSuccessClass(this);
   }
 }
 
@@ -8523,6 +8725,8 @@ function resetForm() {
     el.value = "";
     removeWarningSuccessClasses(el);
   });
+  emailInput.value = "";
+  removeWarningSuccessClasses(emailInput);
   selects.forEach(el => {
     const firstSelectChild = el.querySelector(".custom-select__list").firstElementChild;
     firstSelectChild.click();
@@ -8530,7 +8734,7 @@ function resetForm() {
     const selectWrapper = el.closest(".custom-select__outer-wrapper");
     selectWrapper.classList.remove("custom-select__outer-wrapper--success", "custom-select__outer-wrapper--warning");
   });
-  textarea.classList.remove("leave-review__textarea--active");
+  textarea.classList.remove("custom-textarea--active");
   textarea.innerHTML = "";
   removeWarningSuccessClasses(textarea);
   _vars_js__WEBPACK_IMPORTED_MODULE_0__.$downloadingFiles.innerHTML = "";
@@ -8538,7 +8742,7 @@ function resetForm() {
 }
 
 // ***
-function checkForm(e, text, select, email, phone, passwords) {
+function checkForm(e, text, select, email, phone, passwords, txtarea) {
   e.preventDefault();
   text?.forEach(el => {
     if (el.value.length === 0) {
@@ -8574,10 +8778,10 @@ function checkForm(e, text, select, email, phone, passwords) {
       }
     }
   });
-  if (_vars_js__WEBPACK_IMPORTED_MODULE_0__.$leaveReview) {
-    const isEmpty = isTextareaEmpty();
+  if (txtarea) {
+    const isEmpty = isTextareaEmpty(txtarea);
     if (!isEmpty) {
-      addWarningClass(textarea);
+      addWarningClass(txtarea);
     }
   }
 }
@@ -8604,7 +8808,7 @@ if (_vars_js__WEBPACK_IMPORTED_MODULE_0__.$leaveReview) {
   textarea.addEventListener("input", removeTextareaPlaceholder);
 
   // **
-  _vars_js__WEBPACK_IMPORTED_MODULE_0__.$leaveReviewSubmit.addEventListener("click", e => checkForm(e, textInputs, selects, emailInput));
+  _vars_js__WEBPACK_IMPORTED_MODULE_0__.$leaveReviewSubmit.addEventListener("click", e => checkForm(e, textInputs, selects, emailInput, null, null, textarea));
 }
 
 // ==== CHECK HIDE LEAVE-REVIEW ==== //
@@ -8629,6 +8833,49 @@ if (_vars_js__WEBPACK_IMPORTED_MODULE_0__.$leaveReview) {
 
   // **
   _vars_js__WEBPACK_IMPORTED_MODULE_0__.$leaveReviewClose.addEventListener("click", hideLeaveReview);
+}
+
+/***/ }),
+
+/***/ "./src/js/components/leave-your-comment.js":
+/*!*************************************************!*\
+  !*** ./src/js/components/leave-your-comment.js ***!
+  \*************************************************/
+/***/ ((__unused_webpack___webpack_module__, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _leave_review_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./leave-review.js */ "./src/js/components/leave-review.js");
+
+const commentSection = document.querySelector("#leave-your-comment");
+if (commentSection) {
+  const commentName = commentSection.querySelector("#leave-your-comment-name");
+  const commentEmail = commentSection.querySelector("#leave-your-comment-email");
+  const commentTextarea = commentSection.querySelector("#leave-your-comment-comment");
+  const commentSubmit = commentSection.querySelector(".leave-your-comment__submit");
+
+  // F(s)
+  // **
+  function checkCommentForm(e) {
+    e.preventDefault();
+    _leave_review_js__WEBPACK_IMPORTED_MODULE_0__.$checkForm(e, [commentName], null, commentEmail, null, null, commentTextarea);
+  }
+
+  // L(s)
+  // **
+  commentName.addEventListener("blur", _leave_review_js__WEBPACK_IMPORTED_MODULE_0__.$verifyTextInput);
+
+  // **
+  commentEmail.addEventListener("blur", _leave_review_js__WEBPACK_IMPORTED_MODULE_0__.$verifyEmailInput);
+
+  // **
+  commentTextarea.addEventListener("blur", _leave_review_js__WEBPACK_IMPORTED_MODULE_0__.$verifyTextarea);
+
+  // **
+  commentTextarea.addEventListener("input", _leave_review_js__WEBPACK_IMPORTED_MODULE_0__.$removeTextareaPlaceholder);
+
+  // **
+  commentSubmit.addEventListener("click", checkCommentForm);
 }
 
 /***/ }),
@@ -10008,27 +10255,36 @@ if (_vars_js__WEBPACK_IMPORTED_MODULE_0__.$leaveReview) {
 }
 
 // ==== REPLY BUTTON ==== //
-const textarea = _vars_js__WEBPACK_IMPORTED_MODULE_0__.$leaveReview?.querySelector(".leave-review__textarea");
+const textarea = document.querySelector(".custom-textarea");
+const replyBtns = document.querySelectorAll(".review__message-reply");
 
 // F(s)
 // **
-function replyOnReview() {
-  _vars_js__WEBPACK_IMPORTED_MODULE_0__.$leaveReviewBtn.click();
-  textarea.classList.add("leave-review__textarea--active");
+function replyOn(e) {
+  if (this.tagName === "BUTTON") {
+    _vars_js__WEBPACK_IMPORTED_MODULE_0__.$leaveReviewBtn.click();
+  } else {
+    e.preventDefault();
+    const leaveCommentSection = document.querySelector("#leave-your-comment");
+    const pageOffset = window.scrollY;
+    const sectionOffset = leaveCommentSection.getBoundingClientRect().top;
+    window.scrollTo(0, pageOffset + sectionOffset - 120);
+  }
+  textarea.classList.add("custom-textarea--active");
   textarea.innerHTML = "";
   const review = this.closest(".review__box");
   const reviewUserName = review.querySelector(".review__user-name").innerText;
   const reviewLink = document.createElement("a");
   reviewLink.setAttribute("contenteditable", "false");
-  reviewLink.className = "leave-review__textarea-link";
+  reviewLink.className = "custom-textarea__link";
   reviewLink.innerText = "@" + reviewUserName;
   textarea.appendChild(reviewLink);
   textarea.insertAdjacentHTML("beforeend", " ");
 }
-if (_vars_js__WEBPACK_IMPORTED_MODULE_0__.$leaveReview) {
+if (replyBtns[0]) {
   // L(s)
-  _vars_js__WEBPACK_IMPORTED_MODULE_0__.$replyBtns.forEach(el => {
-    el.addEventListener("click", replyOnReview);
+  replyBtns.forEach(el => {
+    el.addEventListener("click", replyOn);
   });
 }
 
@@ -32108,10 +32364,16 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _components_my_orders_js__WEBPACK_IMPORTED_MODULE_32__ = __webpack_require__(/*! ./components/my-orders.js */ "./src/js/components/my-orders.js");
 /* harmony import */ var _components_my_reviews_js__WEBPACK_IMPORTED_MODULE_33__ = __webpack_require__(/*! ./components/my-reviews.js */ "./src/js/components/my-reviews.js");
 /* harmony import */ var _components_account_menu_js__WEBPACK_IMPORTED_MODULE_34__ = __webpack_require__(/*! ./components/account-menu.js */ "./src/js/components/account-menu.js");
-/* harmony import */ var _components_$swipers_js__WEBPACK_IMPORTED_MODULE_35__ = __webpack_require__(/*! ./components/$swipers.js */ "./src/js/components/$swipers.js");
-/* harmony import */ var _components_$overlayScrollbars_js__WEBPACK_IMPORTED_MODULE_36__ = __webpack_require__(/*! ./components/$overlayScrollbars.js */ "./src/js/components/$overlayScrollbars.js");
-/* harmony import */ var imask__WEBPACK_IMPORTED_MODULE_37__ = __webpack_require__(/*! imask */ "./node_modules/imask/esm/index.js");
+/* harmony import */ var _components_blog_sidebar_js__WEBPACK_IMPORTED_MODULE_35__ = __webpack_require__(/*! ./components/blog__sidebar.js */ "./src/js/components/blog__sidebar.js");
+/* harmony import */ var _components_leave_your_comment_js__WEBPACK_IMPORTED_MODULE_36__ = __webpack_require__(/*! ./components/leave-your-comment.js */ "./src/js/components/leave-your-comment.js");
+/* harmony import */ var _components_contacts_js__WEBPACK_IMPORTED_MODULE_37__ = __webpack_require__(/*! ./components/contacts.js */ "./src/js/components/contacts.js");
+/* harmony import */ var _components_$swipers_js__WEBPACK_IMPORTED_MODULE_38__ = __webpack_require__(/*! ./components/$swipers.js */ "./src/js/components/$swipers.js");
+/* harmony import */ var _components_$overlayScrollbars_js__WEBPACK_IMPORTED_MODULE_39__ = __webpack_require__(/*! ./components/$overlayScrollbars.js */ "./src/js/components/$overlayScrollbars.js");
+/* harmony import */ var imask__WEBPACK_IMPORTED_MODULE_40__ = __webpack_require__(/*! imask */ "./node_modules/imask/esm/index.js");
 // Components
+
+
+
 
 
 
@@ -32158,13 +32420,13 @@ const cardNumber = document.getElementById("checkout-payment-number");
 if (cardNumber) {
   const cardDate = document.getElementById("checkout-payment-date");
   const phoneNumber = document.getElementById("checkout-billing-phone");
-  const cardMask = (0,imask__WEBPACK_IMPORTED_MODULE_37__["default"])(cardNumber, {
+  const cardMask = (0,imask__WEBPACK_IMPORTED_MODULE_40__["default"])(cardNumber, {
     mask: "0000 0000 0000 0000"
   });
-  const dateMask = (0,imask__WEBPACK_IMPORTED_MODULE_37__["default"])(cardDate, {
+  const dateMask = (0,imask__WEBPACK_IMPORTED_MODULE_40__["default"])(cardDate, {
     mask: "00/00"
   });
-  const phoneMask = (0,imask__WEBPACK_IMPORTED_MODULE_37__["default"])(phoneNumber, {
+  const phoneMask = (0,imask__WEBPACK_IMPORTED_MODULE_40__["default"])(phoneNumber, {
     mask: "(000) 000-0000"
   });
 }
@@ -32172,7 +32434,15 @@ if (cardNumber) {
 // === My profile === //
 const profilePhoneNumber = document.getElementById("profile-form-phone");
 if (profilePhoneNumber) {
-  const profilePhoneMask = (0,imask__WEBPACK_IMPORTED_MODULE_37__["default"])(profilePhoneNumber, {
+  const profilePhoneMask = (0,imask__WEBPACK_IMPORTED_MODULE_40__["default"])(profilePhoneNumber, {
+    mask: "(000) 000-0000"
+  });
+}
+
+// === Contacts === //
+const contactsPhoneNumber = document.getElementById("contact-us-phone");
+if (contactsPhoneNumber) {
+  const contactsPhoneMask = (0,imask__WEBPACK_IMPORTED_MODULE_40__["default"])(contactsPhoneNumber, {
     mask: "(000) 000-0000"
   });
 }

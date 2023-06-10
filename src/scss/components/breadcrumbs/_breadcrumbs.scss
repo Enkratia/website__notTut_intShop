@@ -57,6 +57,10 @@
     &:hover {
       color: var(--primary-color);
     }
+
+    &--muted {
+      color: var(--gray600-color);
+    }
   }
 
   // Active filters

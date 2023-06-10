@@ -1,0 +1,22 @@
+@use "../util/" as *;
+
+.comments {
+  padding-top: rem(120);
+
+  &__title {
+    margin-bottom: rem(59);
+  }
+
+  &__comment {
+    &-box {
+      &:not(:last-child) {
+        border-bottom: none;
+        padding-bottom: rem(30);
+      }
+    }
+
+    &-text {
+      margin-bottom: rem(17);
+    }
+  }
+}

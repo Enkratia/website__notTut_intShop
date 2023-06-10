@@ -34,6 +34,12 @@
       &:not(:last-child) {
         margin-bottom: rem(59);
       }
+
+      @include bp-down("1325") {
+        &:not(:last-child) {
+          margin-bottom: calc(rem(45.05) + 1.05vw); // 59>49(1325>375)  
+        }
+      }
     }
 
     &-link {
@@ -62,6 +68,10 @@
       @include bp-down("876") {
         display: none;
       }
+
+      @include bp-down("1325") {
+        margin-top: calc(rem(11.97) + 3.47vw); // 58>25(1325>375)  
+      }
     }
 
     &-pagination-mini {
@@ -71,29 +81,57 @@
       @include bp-down("876") {
         display: flex;
       }
+
+      @include bp-down("1325") {
+        margin-top: calc(rem(11.97) + 3.47vw); // 58>25(1325>375)  
+      }
+    }
+
+    @include bp-down("1024") {
+      margin-right: 0;
+      max-width: none;
     }
   }
 
   // Sidebar
   &__sidebar {
-    // flex-shrink: 1.1;
     padding-top: rem(7);
     width: 100%;
-    // max-width: rem(342);
     background-color: var(--white-color);
 
-    // &-wrapper {
-    //   flex-shrink: 1.1;
-    //   width: 100%;
-    //   max-width: rem(342);
+    // Wrapper (for tablet)
+    &-wrapper {
+      flex-shrink: 1.1;
+      width: 100%;
+      max-width: rem(342);
 
-    //   display: flex;
-    //   flex-direction: column;
+      &-top {
+        display: none;
+        align-items: center;
+        justify-content: space-between;
+        border-bottom: rem(1) solid var(--gray400-color);
+        padding: rem(15);
+        height: auto;
+        font: var(--lead-bold);
+        color: var(--gray900-color);
+        background-color: var(--white-color);
+      }
 
-    //   &-top {
-    //     height: 20%;
-    //   }
-    // }
+      &-close {
+        svg {
+          width: rem(20);
+          height: rem(20);
+          fill: var(--gray700-color);
+          transition: fill 0.3s;
+        }
+
+        &:hover {
+          svg {
+            fill: var(--gray900-color);
+          }
+        }
+      }
+    }
 
     &-title {
       font: var(--h4-font);
@@ -121,6 +159,12 @@
         top: 50%;
         transform: translateY(-50%);
         cursor: pointer;
+
+        &:hover {
+          svg {
+            fill: var(--primary-color);
+          }
+        }
       }
 
       svg {
@@ -128,6 +172,7 @@
         width: rem(16);
         height: rem(16);
         fill: var(--gray800-color);
+        transition: color 0.3s;
       }
     }
 
@@ -237,7 +282,7 @@
       &__name {
         font: var(--base-bold);
         color: var(--gray900-color);
-        transform: color 0.3s;
+        transition: color 0.3s;
         cursor: pointer;
 
         &:hover {
@@ -247,56 +292,31 @@
     }
 
     // Tags
-    .blog-tags {
+    &-tags {
       border-top: rem(1) solid var(--gray300-color);
       padding-top: rem(30);
-
-      &__title {
-        margin-bottom: rem(24);
-      }
-
-      &__list {
-        display: flex;
-        flex-wrap: wrap;
-        gap: rem(12);
-      }
-
-      &__tag {
-        border-color: var(--gray400-color);
-        padding-inline: rem(15);
-        height: rem(32);
-        font: var(--small-bold);
-        letter-spacing: 0;
-        color: var(--gray700-color);
-        transition: color 0.3s, background-color 0.3s, border-color 0.3s;
-
-        &:hover {
-          border-color: var(--primary-color);
-          color: var(--white-color);
-        }
-      }
     }
 
     @include bp-down("1024") {
       overflow-y: auto;
-      padding-block: rem(15);
+      padding-block: rem(20);
       padding-inline: rem(15);
       width: 100%;
       height: 100%;
 
       &-wrapper {
         position: fixed;
-        right: 0;
+        right: rem(-372);
         top: 0;
         z-index: var(--z-modal);
         display: flex;
-        flex-shrink: 1.1;
         flex-direction: column;
         border-top-left-radius: rem(4);
         border-bottom-left-radius: rem(4);
-        width: 100%;
         height: 100%;
         max-width: rem(372);
+        visibility: hidden;
+        transition: all 0.3s ease-in-out;
 
         &::before {
           content: "";
@@ -307,32 +327,21 @@
           width: 100vw;
           height: 100%;
           background-color: var(--overlay-color);
+          opacity: 0;
+          transition: all 0.3s ease-in-out;
         }
 
         &-top {
           display: flex;
-          align-items: center;
-          justify-content: space-between;
-          border-bottom: rem(1) solid var(--gray400-color);
-          padding: rem(15);
-          height: auto;
-          font: var(--lead-bold);
-          color: var(--gray900-color);
-          background-color: var(--white-color);
         }
 
-        &-close {
-          svg {
-            width: rem(20);
-            height: rem(20);
-            fill: var(--gray700-color);
-            transition: fill 0.3s;
-          }
+        // Blog sidebar-wrapper show class
+        &--show {
+          right: 0;
+          visibility: visible;
 
-          &:hover {
-            svg {
-              fill: var(--gray900-color);
-            }
+          &::before {
+            opacity: 1;
           }
         }
       }
@@ -344,6 +353,7 @@
     position: fixed;
     left: 0;
     bottom: 0;
+    z-index: var(--z-tooltip);
     display: none;
     align-items: center;
     border-bottom-right-radius: 0;
@@ -360,5 +370,40 @@
     @include bp-down("1024") {
       display: flex;
     }
+  }
+
+  // For blog sidebar
+  .os-theme-blog-sidebar {
+    --os-size: 3px;
+    --os-padding-perpendicular: 0;
+    --os-padding-axis: 0;
+
+    // **
+    --os-track-border-radius: 0;
+    --os-track-bg: var(--gray300-color);
+    --os-track-bg-hover: var(--gray300-color);
+    --os-track-bg-active: var(--gray300-color);
+    --os-track-border: none;
+    --os-track-border-hover: none;
+    --os-track-border-active: none;
+
+    // **
+    --os-handle-border-radius: 4px;
+    --os-handle-bg: var(--gray500-color);
+    --os-handle-bg-hover: var(--gray600-color);
+    --os-handle-bg-active: var(--gray700-color);
+    --os-handle-border: none;
+    --os-handle-border-hover: none;
+    --os-handle-border-active: none;
+    --os-handle-min-size: 240px;
+    --os-handle-max-size: 480px;
+    --os-handle-perpendicular-size: 100%;
+    --os-handle-perpendicular-size-hover: 100%;
+    --os-handle-perpendicular-size-active: 100%;
+    --os-handle-interactive-area-offset: 0;
+  }
+
+  @include bp-down("1325") {
+    padding-bottom: calc(rem(13.63) + 12.63vw); // 181>61(1325>375)  
   }
 }

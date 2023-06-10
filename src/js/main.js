@@ -34,12 +34,17 @@ import "./components/my-profile.js";
 import "./components/my-orders.js";
 import "./components/my-reviews.js";
 import "./components/account-menu.js";
-
+import "./components/blog__sidebar.js";
+import "./components/leave-your-comment.js";
+import "./components/contacts.js";
 
 
 // Components multiple in one
 import "./components/$swipers.js";
 import "./components/$overlayScrollbars.js";
+
+
+
 
 
 // Input mask
@@ -61,6 +66,14 @@ const profilePhoneNumber = document.getElementById("profile-form-phone");
 if (profilePhoneNumber) {
   const profilePhoneMask = IMask(profilePhoneNumber, {mask: "(000) 000-0000"});
 }
+
+// === Contacts === //
+const contactsPhoneNumber = document.getElementById("contact-us-phone");
+
+if (contactsPhoneNumber) {
+  const contactsPhoneMask = IMask(contactsPhoneNumber, {mask: "(000) 000-0000"});
+}
+
 
 
 

@@ -7,12 +7,14 @@ export {
   verifyEmailInput as $verifyEmailInput,
   verifyPhone as $verifyPhone,
   verifyPassword as $verifyPassword,
-  verifyMatchPassword as $verifyMatchPassword
+  verifyMatchPassword as $verifyMatchPassword,
+  verifyTextarea as $verifyTextarea,
+  removeTextareaPlaceholder as $removeTextareaPlaceholder,
 }
 
 const textInputs = v.$leaveReview?.querySelectorAll(".input[type='text']");
 const selects = v.$leaveReview?.querySelectorAll(".leave-review__sort-select");
-const textarea = v.$leaveReview?.querySelector(".leave-review__textarea");
+const textarea = v.$leaveReview?.querySelector(".custom-textarea");
 const emailInput = v.$leaveReview?.querySelector(".input[type='email']");
 
 const regExp = /^\S+@\S+\.\S+$/;
@@ -38,20 +40,20 @@ function addSuccessClass(elem) {
 
 // **
 function removeTextareaPlaceholder() {
-  const isEmpty = isTextareaEmpty();
+  const isEmpty = isTextareaEmpty(this);
 
   if (isEmpty || this.querySelector("a")) {
-    textarea.classList.add("leave-review__textarea--active");
+    this.classList.add("custom-textarea--active");
     return;
   }
 
-  textarea.classList.remove("leave-review__textarea--active");
+  this.classList.remove("custom-textarea--active");
 }
 
 // **
-function isTextareaEmpty() {
+function isTextareaEmpty(area) {
   const regExp = /(<a.+<\/a>)/i;
-  let textareaText = textarea.innerHTML.trim();
+  let textareaText = area.innerHTML.trim();
 
   const regExpResult = textareaText.match(regExp);
   if (regExpResult) {
@@ -95,10 +97,10 @@ function verifyEmailInput() {
 
 // **
 function verifyTextarea() {
-  const isEmpty = isTextareaEmpty();
+  const isEmpty = isTextareaEmpty(this);
 
   if (isEmpty) {
-    addSuccessClass(textarea);
+    addSuccessClass(this);
   }
 }
 
@@ -125,6 +127,9 @@ function resetForm() {
     removeWarningSuccessClasses(el);
   });
 
+  emailInput.value = "";
+  removeWarningSuccessClasses(emailInput);
+
   selects.forEach(el => {
     const firstSelectChild = el.querySelector(".custom-select__list").firstElementChild;
     firstSelectChild.click();
@@ -134,7 +139,7 @@ function resetForm() {
     selectWrapper.classList.remove("custom-select__outer-wrapper--success", "custom-select__outer-wrapper--warning");
   });
 
-  textarea.classList.remove("leave-review__textarea--active");
+  textarea.classList.remove("custom-textarea--active");
 
   textarea.innerHTML = "";
   removeWarningSuccessClasses(textarea);
@@ -144,7 +149,7 @@ function resetForm() {
 }
 
 // ***
-function checkForm(e, text, select, email, phone, passwords) {
+function checkForm(e, text, select, email, phone, passwords, txtarea) {
   e.preventDefault();
   
   text?.forEach(el => {
@@ -188,11 +193,11 @@ function checkForm(e, text, select, email, phone, passwords) {
     }
   });
 
-  if (v.$leaveReview) {
-    const isEmpty = isTextareaEmpty();
+  if (txtarea) {
+    const isEmpty = isTextareaEmpty(txtarea);
 
     if (!isEmpty) {
-      addWarningClass(textarea);
+      addWarningClass(txtarea);
     }
   }
 }
@@ -220,7 +225,7 @@ if (v.$leaveReview) {
   textarea.addEventListener("input", removeTextareaPlaceholder);
 
   // **
-  v.$leaveReviewSubmit.addEventListener("click", (e) => checkForm(e, textInputs, selects, emailInput));
+  v.$leaveReviewSubmit.addEventListener("click", (e) => checkForm(e, textInputs, selects, emailInput, null, null, textarea));
 }
 
 // ==== CHECK HIDE LEAVE-REVIEW ==== //

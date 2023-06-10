@@ -1,0 +1,585 @@
+<section class="contacts" id="contacts-section">
+  <div class="contacts__container container container--40">
+
+    <!-- Tabs -->
+    <ul class="contacts__tabs" role="tablist">
+      <li class="contacts__tabs-item" role="presentation">
+        <label for="contact-us-radio" class="contacts__tabs-tab contacts__tabs-tab--active" role="tab" aria-selected="true">
+          Contact Us
+        </label>
+      </li>
+
+      <li class="contacts__tabs-item" role="presentation">
+        <label for="outlet-stores-radio" class="contacts__tabs-tab" role="tab" aria-selected="false">
+          Outlet Stores
+        </label>
+      </li>
+
+
+      <li class="contacts__tabs-item" role="presentation">
+        <label for="contacts-faq-radio" class="contacts__tabs-tab" role="tab" aria-selected="false">
+          FAQ
+        </label>
+      </li>
+    </ul>
+
+    <!-- Content -->
+    <div class="contacts__content">
+
+      <!-- Contact us -->
+      <input type="radio" class="contacts__tab-input" id="contact-us-radio" name="contacts-tab-radio" hidden checked>
+
+      <div class="contacts__content-contact-us contact-us" role="tabpanel">
+
+        <div class="contact-us__content">
+          <h5 class="contact-us__title">
+            If you have any questions, concerns or comments, we would love to hear from you! Submit your query using any
+            of the methods below:
+          </h5>
+
+          <!-- Contacts -->
+          <ul class="contact-us__contacts">
+
+            <!-- Item1 -->
+            <li class="contact-us__contacts-item">
+              <a href="tel:+74055550128" class="contact-us__contacts-link">
+                <svg xmlns='http://www.w3.org/2000/svg' aria-hidden='true'>
+                  <use href='./img/sprite.svg#phone' aria-hidden='true'></use>
+                </svg>
+
+                (405) 555-0128
+              </a>
+            </li>
+
+            <!-- Item2 -->
+            <li class="contact-us__contacts-item">
+              <a href="mailto:email@example.org" class="contact-us__contacts-link">
+                <svg xmlns='http://www.w3.org/2000/svg' aria-hidden='true'>
+                  <use href='./img/sprite.svg#mail' aria-hidden='true'></use>
+                </svg>
+
+                Send us an email
+              </a>
+            </li>
+
+            <!-- Item3 -->
+            <li class="contact-us__contacts-item">
+              <a href="#" class="contact-us__contacts-link">
+                <svg xmlns='http://www.w3.org/2000/svg' aria-hidden='true'>
+                  <use href='./img/sprite.svg#messenger' aria-hidden='true'></use>
+                </svg>
+
+                Connect on Messenger
+              </a>
+            </li>
+
+            <!-- Item1 -->
+            <li class="contact-us__contacts-item">
+              <a href="#" class="contact-us__contacts-link">
+                <svg xmlns='http://www.w3.org/2000/svg' aria-hidden='true'>
+                  <use href='./img/sprite.svg#twitter' aria-hidden='true'></use>
+                </svg>
+
+                Tweet us
+              </a>
+            </li>
+          </ul>
+
+
+          <!-- Form -->
+          <form class="contact-us__form">
+            <h5 class="contact-us__title">
+              Or get in touch with us by completing the below form:
+            </h5>
+
+            <!-- Fields -->
+            <div class="contact-us__fields">
+
+              <!-- Field1 -->
+              <div class="contact-us__field">
+                <label for="contact-us-name" class="contact-us__label">
+                  Full Name*
+                </label>
+
+                <div class="input-wrapper">
+                  <input type="text" class="contact-us__input input" placeholder="Your full name" id="contact-us-name"
+                    name="contact-us-name">
+                </div>
+              </div>
+
+              <!-- Field2 -->
+              <div class="contact-us__field">
+                <label for="contact-us-email" class="contact-us__label">
+                  Email*
+                </label>
+
+                <div class="input-wrapper" data-validity="email">
+                  <input type="email" class="contact-us__input input" placeholder="Your working email"
+                    id="contact-us-email" name="contact-us-email">
+                </div>
+              </div>
+
+              <!-- Field3 -->
+              <div class="contact-us__field">
+                <label for="contact-us-phone" class="contact-us__label">
+                  Phone
+                </label>
+
+                <div class="input-wrapper">
+                  <input type="text" class="contact-us__input input" placeholder="Your phone number"
+                    id="contact-us-phone" name="contact-us-phone">
+                </div>
+              </div>
+
+              <!-- Field4 -->
+              <div class="contact-us__field">
+                <label for="contact-us-subject" class="contact-us__label">
+                  Subject
+                </label>
+
+                <div class="input-wrapper">
+                  <input type="text" class="contact-us__input input" placeholder="Title your message"
+                    id="contact-us-subject" name="contact-us-subject">
+                </div>
+              </div>
+
+              <!-- Field5 -->
+              <div class="contact-us__field">
+                <label for="contact-us-message" class="contact-us__label">
+                  Message*
+                </label>
+
+                <div class="input-wrapper">
+                  <textarea class="contact-us__textarea input" placeholder="Write your message here"
+                    id="contact-us-message" name="contact-us-message"></textarea>
+                </div>
+              </div>
+            </div>
+
+            <!-- Submit -->
+            <button class="contact-us__submit btn btn--lg">
+              Send message
+            </button>
+          </form>
+        </div>
+      </div>
+
+      <!-- Outlet stores -->
+      <input type="radio" class="contacts__tab-input" id="outlet-stores-radio" name="contacts-tab-radio" hidden>
+
+      <div class="contacts__content-outlet-stores outlet-stores" role="tabpanel">
+
+        <!-- Stores list -->
+        <ul class="outlet-stores__list">
+
+          <!-- Item1 -->
+          <li class="outlet-stores__item">
+            <img src="./img/contacts-1.jpg" alt="Outlet store image." class="outlet-stores__image">
+
+            <div class="outlet-stores__text">
+              <h4 class="outlet-stores__title">
+                New York, USA
+              </h4>
+
+              <!-- Stores info -->
+              <ul class="outlet-stores__info">
+
+                <!-- Item1 -->
+                <li class="outlet-stores__info-item">
+                  <a href="tel:4055550128" class="outlet-stores__info-data outlet-stores__info-data--link">
+                    <svg xmlns='http://www.w3.org/2000/svg' aria-hidden='true'>
+                      <use href='./img/sprite.svg#phone' aria-hidden='true'></use>
+                    </svg>
+
+                    (405) 555-0128
+                  </a>
+                </li>
+
+                <!-- Item2 -->
+                <li class="outlet-stores__info-item">
+                  <a href="mailto:hello@createx.com" class="outlet-stores__info-data outlet-stores__info-data--link">
+                    <svg xmlns='http://www.w3.org/2000/svg' aria-hidden='true'>
+                      <use href='./img/sprite.svg#mail' aria-hidden='true'></use>
+                    </svg>
+
+                    hello@createx.com
+                  </a>
+                </li>
+
+                <!-- Item3 -->
+                <li class="outlet-stores__info-item">
+                  <span class="outlet-stores__info-data">
+                    <svg xmlns='http://www.w3.org/2000/svg' aria-hidden='true'>
+                      <use href='./img/sprite.svg#clock' aria-hidden='true'></use>
+                    </svg>
+
+                    Daily from 9 am to 9 pm
+                  </span>
+                </li>
+
+                <!-- Item4 -->
+                <li class="outlet-stores__info-item">
+                  <a href="tel:7025550122" class="outlet-stores__info-data outlet-stores__info-data--link">
+                    <svg xmlns='http://www.w3.org/2000/svg' aria-hidden='true'>
+                      <use href='./img/sprite.svg#outline' aria-hidden='true'></use>
+                    </svg>
+
+                    <span class="outlet-stores__info-underline">
+                      20 W 29th Street New York, NY 10001
+                    </span>
+                  </a>
+                </li>
+              </ul>
+            </div>
+          </li>
+
+          <!-- Item2 -->
+          <li class="outlet-stores__item">
+            <img src="./img/contacts-2.jpg" alt="Outlet store image." class="outlet-stores__image">
+
+            <div class="outlet-stores__text">
+              <h4 class="outlet-stores__title">
+                Delaware, USA
+              </h4>
+
+              <!-- Stores info -->
+              <ul class="outlet-stores__info">
+
+                <!-- Item1 -->
+                <li class="outlet-stores__info-item">
+                  <a href="tel:8085550111" class="outlet-stores__info-data outlet-stores__info-data--link">
+                    <svg xmlns='http://www.w3.org/2000/svg' aria-hidden='true'>
+                      <use href='./img/sprite.svg#phone' aria-hidden='true'></use>
+                    </svg>
+
+                    (808) 555-0111
+                  </a>
+                </li>
+
+                <!-- Item2 -->
+                <li class="outlet-stores__info-item">
+                  <a href="mailto:delaware@createx.com" class="outlet-stores__info-data outlet-stores__info-data--link">
+                    <svg xmlns='http://www.w3.org/2000/svg' aria-hidden='true'>
+                      <use href='./img/sprite.svg#mail' aria-hidden='true'></use>
+                    </svg>
+
+                    delaware@createx.com
+                  </a>
+                </li>
+
+                <!-- Item3 -->
+                <li class="outlet-stores__info-item">
+                  <span class="outlet-stores__info-data">
+                    <svg xmlns='http://www.w3.org/2000/svg' aria-hidden='true'>
+                      <use href='./img/sprite.svg#clock' aria-hidden='true'></use>
+                    </svg>
+
+                    Daily from 10 am to 9 pm
+                  </span>
+                </li>
+
+                <!-- Item4 -->
+                <li class="outlet-stores__info-item">
+                  <a href="tel:7025550122" class="outlet-stores__info-data outlet-stores__info-data--link">
+                    <svg xmlns='http://www.w3.org/2000/svg' aria-hidden='true'>
+                      <use href='./img/sprite.svg#outline' aria-hidden='true'></use>
+                    </svg>
+
+                    <span class="outlet-stores__info-underline">
+                      6391 Elgin St. Celina, Delaware 10299
+                    </span>
+                  </a>
+                </li>
+              </ul>
+            </div>
+          </li>
+
+          <!-- Item3 -->
+          <li class="outlet-stores__item">
+            <img src="./img/contacts-3.jpg" alt="Outlet store image." class="outlet-stores__image">
+
+            <div class="outlet-stores__text">
+              <h4 class="outlet-stores__title">
+                New Jersey, USA
+              </h4>
+
+              <!-- Stores info -->
+              <ul class="outlet-stores__info">
+
+                <!-- Item1 -->
+                <li class="outlet-stores__info-item">
+                  <a href="tel:7025550122" class="outlet-stores__info-data outlet-stores__info-data--link">
+                    <svg xmlns='http://www.w3.org/2000/svg' aria-hidden='true'>
+                      <use href='./img/sprite.svg#phone' aria-hidden='true'></use>
+                    </svg>
+
+                    (702) 555-0122
+                  </a>
+                </li>
+
+                <!-- Item2 -->
+                <li class="outlet-stores__info-item">
+                  <a href="mailto:newjersey@createx.com"
+                    class="outlet-stores__info-data outlet-stores__info-data--link">
+                    <svg xmlns='http://www.w3.org/2000/svg' aria-hidden='true'>
+                      <use href='./img/sprite.svg#mail' aria-hidden='true'></use>
+                    </svg>
+
+                    newjersey@createx.com
+                  </a>
+                </li>
+
+                <!-- Item3 -->
+                <li class="outlet-stores__info-item">
+                  <span class="outlet-stores__info-data">
+                    <svg xmlns='http://www.w3.org/2000/svg' aria-hidden='true'>
+                      <use href='./img/sprite.svg#clock' aria-hidden='true'></use>
+                    </svg>
+
+                    Daily from 9 am to 8 pm
+                  </span>
+                </li>
+
+                <!-- Item4 -->
+                <li class="outlet-stores__info-item">
+                  <a href="tel:7025550122" class="outlet-stores__info-data outlet-stores__info-data--link">
+                    <svg xmlns='http://www.w3.org/2000/svg' aria-hidden='true'>
+                      <use href='./img/sprite.svg#outline' aria-hidden='true'></use>
+                    </svg>
+
+                    <span class="outlet-stores__info-underline">
+                      2464 Royal Ln. Mesa, New Jersey 45463
+                    </span>
+                  </a>
+                </li>
+              </ul>
+            </div>
+          </li>
+
+          <!-- Item4 -->
+          <li class="outlet-stores__item">
+            <img src="./img/contacts-4.jpg" alt="Outlet store image." class="outlet-stores__image">
+
+            <div class="outlet-stores__text">
+              <h4 class="outlet-stores__title">
+                Maine, USA
+              </h4>
+
+              <!-- Stores info -->
+              <ul class="outlet-stores__info">
+
+                <!-- Item1 -->
+                <li class="outlet-stores__info-item">
+                  <a href="tel:2195550114" class="outlet-stores__info-data outlet-stores__info-data--link">
+                    <svg xmlns='http://www.w3.org/2000/svg' aria-hidden='true'>
+                      <use href='./img/sprite.svg#phone' aria-hidden='true'></use>
+                    </svg>
+
+                    (219) 555-0114
+                  </a>
+                </li>
+
+                <!-- Item2 -->
+                <li class="outlet-stores__info-item">
+                  <a href="mailto:maine@createx.com" class="outlet-stores__info-data outlet-stores__info-data--link">
+                    <svg xmlns='http://www.w3.org/2000/svg' aria-hidden='true'>
+                      <use href='./img/sprite.svg#mail' aria-hidden='true'></use>
+                    </svg>
+
+                    maine@createx.com
+                  </a>
+                </li>
+
+                <!-- Item3 -->
+                <li class="outlet-stores__info-item">
+                  <span class="outlet-stores__info-data">
+                    <svg xmlns='http://www.w3.org/2000/svg' aria-hidden='true'>
+                      <use href='./img/sprite.svg#clock' aria-hidden='true'></use>
+                    </svg>
+
+                    Daily from 9 am to 9 pm
+                  </span>
+                </li>
+
+                <!-- Item4 -->
+                <li class="outlet-stores__info-item">
+                  <a href="tel:7025550122" class="outlet-stores__info-data outlet-stores__info-data--link">
+                    <svg xmlns='http://www.w3.org/2000/svg' aria-hidden='true'>
+                      <use href='./img/sprite.svg#outline' aria-hidden='true'></use>
+                    </svg>
+
+                    <span class="outlet-stores__info-underline">
+                      8502 Preston Rd. Inglewood, Maine 98380
+                    </span>
+                  </a>
+                </li>
+              </ul>
+            </div>
+          </li>
+        </ul>
+      </div>
+
+      <!-- FAQ -->
+      <input type="radio" class="contacts__tab-input" id="contacts-faq-radio" name="contacts-tab-radio" hidden>
+      
+      <div class="contacts__content-faq contacts-faq" role="tabpanel">
+
+        <ul class="contacts-faq__accordion">
+
+          <!-- Item1 -->
+          <li class="contacts-faq__accordion-item">
+            <button class="contacts-faq__accordion-head" aria-expanded="false"
+              aria-controls="contacts-accordion-body-1">
+              Do I need to register to place an order?
+
+              <span class="contacts-faq__accordion-toggle c-toggle" aria-hidden="true"></span>
+            </button>
+
+            <div class="contacts-faq__accordion-body" id="contacts-accordion-body-1">
+              <div class="contacts-faq__accordion-body-wrapper">
+                Adipiscing nunc arcu enim elit mattis eu placerat proin. Imperdiet elementum faucibus dignissim purus.
+                Fusce parturient diam magna ullamcorper morbi semper massa ac facilisis.
+              </div>
+            </div>
+          </li>
+
+          <!-- Item2 -->
+          <li class="contacts-faq__accordion-item">
+            <button class="contacts-faq__accordion-head" aria-expanded="false"
+              aria-controls="contacts-accordion-body-2">
+              What is the estimated delivery time?
+
+              <span class="contacts-faq__accordion-toggle c-toggle" aria-hidden="true"></span>
+            </button>
+
+            <div class="contacts-faq__accordion-body" id="contacts-accordion-body-2">
+              <div class="contacts-faq__accordion-body-wrapper">
+                Adipiscing nunc arcu enim elit mattis eu placerat proin. Imperdiet elementum faucibus dignissim purus.
+                Fusce parturient diam magna ullamcorper morbi semper massa ac facilisis. Lorem, ipsum dolor sit amet consectetur adipisicing elit. Impedit, dolorem.
+              </div>
+            </div>
+          </li>
+
+          <!-- Item3 -->
+          <li class="contacts-faq__accordion-item">
+            <button class="contacts-faq__accordion-head" aria-expanded="false"
+              aria-controls="contacts-accordion-body-3">
+              How can I pay for my order?
+
+              <span class="contacts-faq__accordion-toggle c-toggle" aria-hidden="true"></span>
+            </button>
+
+            <div class="contacts-faq__accordion-body" id="contacts-accordion-body-3">
+              <div class="contacts-faq__accordion-body-wrapper">
+                Adipiscing nunc arcu enim elit mattis eu placerat proin. Imperdiet elementum faucibus dignissim purus.
+                Fusce parturient diam magna ullamcorper morbi semper massa ac facilisis. Lorem ipsum dolor sit amet consectetur adipisicing elit. Temporibus culpa aliquid error nisi libero rem alias. Fuga porro possimus hic consectetur cum aliquid molestiae asperiores excepturi. Doloribus quae rerum at.
+              </div>
+            </div>
+          </li>
+
+          <!-- Item4 -->
+          <li class="contacts-faq__accordion-item">
+            <button class="contacts-faq__accordion-head" aria-expanded="false"
+              aria-controls="contacts-accordion-body-4">
+              Can I get a refund if the price has changed since I ordered it?
+
+              <span class="contacts-faq__accordion-toggle c-toggle" aria-hidden="true"></span>
+            </button>
+
+            <div class="contacts-faq__accordion-body" id="contacts-accordion-body-4">
+              <div class="contacts-faq__accordion-body-wrapper">
+                Adipiscing nunc arcu enim elit mattis eu placerat proin. Imperdiet elementum faucibus dignissim purus.
+                Fusce parturient diam magna ullamcorper morbi semper massa ac facilisis. Lorem ipsum dolor sit amet consectetur adipisicing elit. Facere debitis quae tempora consectetur dolores voluptate sed optio amet dolore vitae quas repudiandae, voluptatem consequatur eveniet est accusamus hic accusantium unde! Impedit cum autem id. Minus adipisci maxime eius sequi veritatis?
+              </div>
+            </div>
+          </li>
+
+          <!-- Item5 -->
+          <li class="contacts-faq__accordion-item">
+            <button class="contacts-faq__accordion-head" aria-expanded="false"
+              aria-controls="contacts-accordion-body-5">
+              Do you refund delivery charges if I return something?
+
+              <span class="contacts-faq__accordion-toggle c-toggle" aria-hidden="true"></span>
+            </button>
+
+            <div class="contacts-faq__accordion-body" id="contacts-accordion-body-5">
+              <div class="contacts-faq__accordion-body-wrapper">
+                Adipiscing nunc arcu enim elit mattis eu placerat proin. Imperdiet elementum faucibus dignissim purus.
+                Fusce parturient diam magna ullamcorper morbi semper massa ac facilisis.
+              </div>
+            </div>
+          </li>
+
+          <!-- Item6 -->
+          <li class="contacts-faq__accordion-item">
+            <button class="contacts-faq__accordion-head" aria-expanded="false"
+              aria-controls="contacts-accordion-body-6">
+              What documents will be provided with the order?
+
+              <span class="contacts-faq__accordion-toggle c-toggle" aria-hidden="true"></span>
+            </button>
+
+            <div class="contacts-faq__accordion-body" id="contacts-accordion-body-6">
+              <div class="contacts-faq__accordion-body-wrapper">
+                Adipiscing nunc arcu enim elit mattis eu placerat proin. Imperdiet elementum faucibus dignissim purus.
+                Fusce parturient diam magna ullamcorper morbi semper massa ac facilisis.
+              </div>
+            </div>
+          </li>
+
+          <!-- Item7 -->
+          <li class="contacts-faq__accordion-item">
+            <button class="contacts-faq__accordion-head" aria-expanded="false"
+              aria-controls="contacts-accordion-body-7">
+              Can I return the order to the courier if anything does not suit me?
+
+              <span class="contacts-faq__accordion-toggle c-toggle" aria-hidden="true"></span>
+            </button>
+
+            <div class="contacts-faq__accordion-body" id="contacts-accordion-body-7">
+              <div class="contacts-faq__accordion-body-wrapper">
+                Adipiscing nunc arcu enim elit mattis eu placerat proin. Imperdiet elementum faucibus dignissim purus.
+                Fusce parturient diam magna ullamcorper morbi semper massa ac facilisis. Lorem ipsum dolor sit amet.
+              </div>
+            </div>
+          </li>
+
+          <!-- Item8 -->
+          <li class="contacts-faq__accordion-item">
+            <button class="contacts-faq__accordion-head" aria-expanded="false"
+              aria-controls="contacts-accordion-body-8">
+              What should I do if my order hasn't been delivered yet?
+
+              <span class="contacts-faq__accordion-toggle c-toggle" aria-hidden="true"></span>
+            </button>
+
+            <div class="contacts-faq__accordion-body" id="contacts-accordion-body-8">
+              <div class="contacts-faq__accordion-body-wrapper">
+                Adipiscing nunc arcu enim elit mattis eu placerat proin. Imperdiet elementum faucibus dignissim purus.
+                Fusce parturient diam magna ullamcorper morbi semper massa ac facilisis.
+              </div>
+            </div>
+          </li>
+
+          <!-- Item9 -->
+          <li class="contacts-faq__accordion-item">
+            <button class="contacts-faq__accordion-head" aria-expanded="false"
+              aria-controls="contacts-accordion-body-9">
+              What is your Returns Policy?
+
+              <span class="contacts-faq__accordion-toggle c-toggle" aria-hidden="true"></span>
+            </button>
+
+            <div class="contacts-faq__accordion-body" id="contacts-accordion-body-9">
+              <div class="contacts-faq__accordion-body-wrapper">
+                Adipiscing nunc arcu enim elit mattis eu placerat proin. Imperdiet elementum faucibus dignissim purus.
+                Fusce parturient diam magna ullamcorper morbi semper massa ac facilisis. Lorem ipsum dolor sit.
+              </div>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>

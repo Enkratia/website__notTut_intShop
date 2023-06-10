@@ -489,3 +489,39 @@ const imageModalSwiper = new Swiper("#image-modal-slider", {
 });
 
 export {imageModalSwiper as $imageModalSwiper}
+
+// RELATED- POSTS SWIPER
+if (document.querySelector("#related-posts-slider")) {
+
+  const relatedPostsSwiper = new Swiper("#related-posts-slider", {
+    modules: [Pagination],
+    loop: true,
+    enabled: true,
+    slidesPerView: 1,
+    spaceBetween: 20,
+    pagination: {
+      el: '#related-posts-pagination',
+      clickable: true,
+    },
+    breakpoints: {
+      600: {
+        enabled: false,
+        slidesPerView: 2,
+        spaceBetween: 30,
+      },
+      576: {
+        enabled: false,
+        slidesPerView: 2,
+        spaceBetween: 20,
+      }
+    }
+  });
+
+  function resetRelatedPostsSwiper() {
+    if (v.$mdq768.matches) {
+      relatedPostsSwiper.setProgress(0, 0);
+    }
+  }
+
+  v.$mdq768.addEventListener("change", resetRelatedPostsSwiper);
+}
