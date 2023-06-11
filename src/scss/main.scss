@@ -30,23 +30,16 @@
 @forward "./components/recently-viewed";
 
 // Components checkout
-// @forward "./components/breadcrumbs/breadcrumbs-checkout";
 @forward "./components/checkout";
 
 // Components account (all pages)
-// @forward "./components/breadcrumbs/breadcrumbs-my-profile";
 @forward "./components/account-my-profile";
-// @forward "./components/breadcrumbs/breadcrumbs-my-orders";
 @forward "./components/account-my-orders";
-// @forward "./components/breadcrumbs/breadcrumbs-wishlist";
 @forward "./components/account-wishlist";
-// @forward "./components/breadcrumbs/breadcrumbs-recently-viewed";
 @forward "./components/account-recently-viewed";
-// @forward "./components/breadcrumbs/breadcrumbs-my-reviews";
 @forward "./components/account-my-reviews";
 
 // Components Blog
-// @forward "./components/breadcrumbs/breadcrumbs-blog";
 @forward "./components/blog";
 
 // Single post
@@ -57,3 +50,6 @@
 
 // Contacts
 @forward "./components/contacts";
+
+// Track order
+@forward "./components/track-order";

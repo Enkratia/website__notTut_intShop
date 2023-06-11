@@ -14,13 +14,14 @@
   // Breadcrumbs list
   &__list {
     display: flex;
+    flex-wrap: wrap;
     align-items: center;
+    gap: rem(10);
   }
 
   &__item {
     &:not(:last-child) {
       position: relative;
-      margin-right: rem(10);
       padding-right: rem(22);
 
       &::before {
@@ -44,6 +45,7 @@
     display: flex;
     align-items: center;
     font: var(--small-regular);
+    white-space: nowrap;
     color: var(--gray800-color);
     transition: color 0.3s;
 

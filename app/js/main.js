@@ -6510,12 +6510,21 @@ if (_vars_js__WEBPACK_IMPORTED_MODULE_0__.$productCard) {
   });
 
   // ==== PRODUCT CARD TABS SCROLLBAR ==== //
-  let productCardTabsScrollbar = (0,overlayscrollbars__WEBPACK_IMPORTED_MODULE_1__.OverlayScrollbars)(document.querySelector('.product-card__tabs'), {
-    paddingAbsolute: true,
-    scrollbars: {
-      theme: 'os-theme-download-files'
+  let productCardTabsScrollbar;
+  function toggleProductCardTabsScrollbar() {
+    if (_vars_js__WEBPACK_IMPORTED_MODULE_0__.$mdq576.matches) {
+      productCardTabsScrollbar?.destroy();
+    } else {
+      productCardTabsScrollbar = (0,overlayscrollbars__WEBPACK_IMPORTED_MODULE_1__.OverlayScrollbars)(document.querySelector(".product-card__tabs"), {
+        paddingAbsolute: true,
+        scrollbars: {
+          theme: "os-theme-download-files"
+        }
+      });
     }
-  });
+  }
+  toggleProductCardTabsScrollbar();
+  _vars_js__WEBPACK_IMPORTED_MODULE_0__.$mdq576.addEventListener("change", toggleProductCardTabsScrollbar);
 }
 
 // ==== BLOG SIDEBAR SCROLLBAR ==== //
@@ -7481,6 +7490,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _leave_review_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./leave-review.js */ "./src/js/components/leave-review.js");
 
 const contactsSection = document.querySelector("#contacts-section");
+let timer;
 if (contactsSection) {
   // ==== CONTACT US ==== //
   const textInputs = contactsSection.querySelectorAll(".input[type='text']:not(#contact-us-phone)");
@@ -7530,6 +7540,7 @@ if (contactsSection) {
       prevFaqHead.setAttribute("aria-expanded", "false");
       const prevFaqItemBody = prevFaqHead.nextElementSibling;
       setHeight(prevFaqItemBody);
+      clearTimeout(timer);
       setTimeout(() => {
         prevFaqItemBody.style.height = "";
       }, 0);
@@ -7547,6 +7558,9 @@ if (contactsSection) {
     this.setAttribute("aria-expanded", "true");
     const faqItemBody = this.nextElementSibling;
     setHeight(faqItemBody);
+    timer = setTimeout(() => {
+      faqItemBody.style.height = "auto";
+    }, 400);
   }
 
   // L(s)
@@ -7579,6 +7593,35 @@ if (contactsSection) {
   contactsTabs.forEach(el => {
     el.addEventListener("click", showActiveClass);
   });
+}
+
+/***/ }),
+
+/***/ "./src/js/components/currency.js":
+/*!***************************************!*\
+  !*** ./src/js/components/currency.js ***!
+  \***************************************/
+/***/ ((__unused_webpack___webpack_module__, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "$changeCurrency": () => (/* binding */ changeCurrency)
+/* harmony export */ });
+/* harmony import */ var _vars_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../vars.js */ "./src/js/vars.js");
+
+
+const currency = _vars_js__WEBPACK_IMPORTED_MODULE_0__.$headerTopContainer.querySelector(".currency");
+const currencyImage = currency.querySelector(".currency__flag");
+const regExp = /(^.+)\s\//i;
+const flags = {
+  eng: "./img/flag-usa.svg",
+  ru: "./img/flag-ru.svg",
+  eu: "./img/flag-eu.svg"
+};
+function changeCurrency(elem) {
+  const chosenCurrency = elem.innerText.match(regExp)[1];
+  currencyImage.setAttribute("src", flags[chosenCurrency.toLowerCase()]);
 }
 
 /***/ }),
@@ -7685,6 +7728,8 @@ _vars_js__WEBPACK_IMPORTED_MODULE_0__.$customRadios.forEach(el => {
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _vars_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../vars.js */ "./src/js/vars.js");
 /* harmony import */ var _colors_button_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./colors__button.js */ "./src/js/components/colors__button.js");
+/* harmony import */ var _currency_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./currency.js */ "./src/js/components/currency.js");
+
 
 
 let isOpen = false;
@@ -7761,6 +7806,8 @@ function changeSelectValue(e, selected, thisSelect) {
     if (_vars_js__WEBPACK_IMPORTED_MODULE_0__.$productCard) {
       toggleActiveClassInCard(e.target);
       _colors_button_js__WEBPACK_IMPORTED_MODULE_1__.$rechargeProductButton(e.target);
+    } else if (e.target.closest(".header-top__select")) {
+      _currency_js__WEBPACK_IMPORTED_MODULE_2__.$changeCurrency(e.target);
     }
   }
 }
@@ -7785,24 +7832,29 @@ function selectWithKeyboard(e) {
     this.classList.toggle("custom-select--open");
     isOpen = this.classList.contains("custom-select--open");
   } else if (e.key === " ") {
+    e.preventDefault();
     this.classList.add("custom-select--open");
     isOpen = this.classList.contains("custom-select--open");
   } else if (e.key === "ArrowUp" && isOpen) {
+    e.preventDefault();
     let prevSibling = selectList.querySelector(".custom-select__item--active").previousElementSibling;
     if (!prevSibling) return;
     selected.textContent = prevSibling.textContent;
     rearrangeClass(prevSibling, selectList);
   } else if (e.key === "ArrowDown" && isOpen) {
+    e.preventDefault();
     console.log(e.currentTarget);
     let nextSibling = selectList.querySelector(".custom-select__item--active").nextElementSibling;
     if (!nextSibling) return;
     selected.textContent = nextSibling.textContent;
     rearrangeClass(nextSibling, selectList);
   } else if ((e.key === "PageUp" || e.key === "Home") && isOpen) {
+    e.preventDefault();
     const firstSibling = selectList.firstElementChild;
     selected.textContent = firstSibling.textContent;
     rearrangeClass(firstSibling, selectList);
   } else if ((e.key === "PageDown" || e.key === "End") && isOpen) {
+    e.preventDefault();
     const lastSibling = selectList.lastElementChild;
     selected.textContent = lastSibling.textContent;
     rearrangeClass(lastSibling, selectList);
@@ -7816,6 +7868,8 @@ function selectWithKeyboard(e) {
   if (_vars_js__WEBPACK_IMPORTED_MODULE_0__.$productCard) {
     toggleActiveClassInCard(e.target);
     _colors_button_js__WEBPACK_IMPORTED_MODULE_1__.$rechargeProductButton(e.target);
+  } else if (e.target.closest(".header-top__select")) {
+    _currency_js__WEBPACK_IMPORTED_MODULE_2__.$changeCurrency(e.target);
   }
 }
 
@@ -8814,10 +8868,14 @@ if (_vars_js__WEBPACK_IMPORTED_MODULE_0__.$leaveReview) {
 // ==== CHECK HIDE LEAVE-REVIEW ==== //
 // F(s)
 // **
-function hideLeaveReview() {
-  _vars_js__WEBPACK_IMPORTED_MODULE_0__.$leaveReview.classList.remove("leave-review--show");
-  document.body.classList.remove("overflow-hidden");
-  resetForm();
+function hideLeaveReview(e) {
+  const isReviewContent = e.target.closest(".leave-review__content");
+  const isCloseBtn = e.target.closest(".leave-review__close");
+  if (!isReviewContent || isCloseBtn) {
+    _vars_js__WEBPACK_IMPORTED_MODULE_0__.$leaveReview.classList.remove("leave-review--show");
+    document.body.classList.remove("overflow-hidden");
+    resetForm();
+  }
 }
 
 // **
@@ -8832,7 +8890,7 @@ if (_vars_js__WEBPACK_IMPORTED_MODULE_0__.$leaveReview) {
   _vars_js__WEBPACK_IMPORTED_MODULE_0__.$leaveReviewBtn.addEventListener("click", showLeaveReview);
 
   // **
-  _vars_js__WEBPACK_IMPORTED_MODULE_0__.$leaveReviewClose.addEventListener("click", hideLeaveReview);
+  _vars_js__WEBPACK_IMPORTED_MODULE_0__.$leaveReview.addEventListener("click", hideLeaveReview);
 }
 
 /***/ }),
@@ -8926,11 +8984,14 @@ function resetLogModal(modal) {
 }
 
 // **
-function hideLogModal() {
-  const logModal = this.closest(".log");
-  logModal.classList.remove("log--show");
-  document.body.classList.remove("overflow-hidden");
-  resetLogModal(logModal);
+function hideLogModal(e) {
+  const logContent = e.target.closest(".log__content");
+  const isCloseBtn = e.target.closest(".log__close");
+  if (!logContent || isCloseBtn) {
+    this.classList.remove("log--show");
+    document.body.classList.remove("overflow-hidden");
+    resetLogModal(logModal);
+  }
 }
 
 // **
@@ -8953,7 +9014,7 @@ _vars_js__WEBPACK_IMPORTED_MODULE_0__.$loginBtnIn.addEventListener("click", show
 _vars_js__WEBPACK_IMPORTED_MODULE_0__.$loginBtnRegister.addEventListener("click", showLogRegisterModal);
 
 // **
-_vars_js__WEBPACK_IMPORTED_MODULE_0__.$logClose.forEach(el => {
+_vars_js__WEBPACK_IMPORTED_MODULE_0__.$headerLogs.forEach(el => {
   el.addEventListener("click", hideLogModal);
 });
 
@@ -9511,9 +9572,13 @@ __webpack_require__.r(__webpack_exports__);
 
 // F(s)
 // **
-function hideSizeChart() {
-  _vars_js__WEBPACK_IMPORTED_MODULE_0__.$productCardChart.classList.remove("chart--show");
-  document.body.classList.remove("overflow-hidden");
+function hideSizeChart(e) {
+  const isChartData = e.target.closest(".chart__data");
+  const isChartClose = e.target.closest(".chart__close");
+  if (!isChartData || isChartClose) {
+    this.classList.remove("chart--show");
+    document.body.classList.remove("overflow-hidden");
+  }
 }
 
 // **
@@ -9524,7 +9589,7 @@ function showSizeChart() {
 
 // L(s)
 _vars_js__WEBPACK_IMPORTED_MODULE_0__.$productCardSizeBtn?.addEventListener("click", showSizeChart);
-_vars_js__WEBPACK_IMPORTED_MODULE_0__.$chartClose?.addEventListener("click", hideSizeChart);
+_vars_js__WEBPACK_IMPORTED_MODULE_0__.$productCardChart?.addEventListener("click", hideSizeChart);
 
 /***/ }),
 
@@ -10640,7 +10705,7 @@ __webpack_require__.r(__webpack_exports__);
 
 // ==== PAGINATION ==== //
 let page = 1;
-let totalPages = 11;
+let totalPages = 10;
 let activePag;
 let chosenPag;
 if (_vars_js__WEBPACK_IMPORTED_MODULE_0__.$toolPags[0]) {
@@ -11143,21 +11208,25 @@ __webpack_require__.r(__webpack_exports__);
 
 
 // F(s)
+// **
 function toggleTopNav() {
   const topNavList = this.nextElementSibling;
   topNavList.classList.toggle("top-nav__list--show");
-  setTimeout(() => {
-    document.documentElement.addEventListener("click", hideTopNavList);
-    function hideTopNavList(e) {
-      if (!e.target.closest(".top-nav__list")) {
-        topNavList.classList.remove("top-nav__list--show");
-        document.documentElement.removeEventListener("click", hideTopNavList);
-      }
+  if (topNavList.classList.contains("top-nav__list--show")) {
+    setTimeout(() => {
+      document.documentElement.addEventListener("click", hideTopNavList);
+    }, 0);
+  }
+  function hideTopNavList(e) {
+    if (!e.target.closest(".top-nav__list")) {
+      topNavList.classList.remove("top-nav__list--show");
+      document.documentElement.removeEventListener("click", hideTopNavList);
     }
-  }, 0);
+  }
 }
 
 // L(s)
+// **
 _vars_js__WEBPACK_IMPORTED_MODULE_0__.$topNavBtn.addEventListener("click", toggleTopNav);
 
 /***/ }),
@@ -11210,6 +11279,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "$header": () => (/* binding */ $header),
 /* harmony export */   "$headerCartCount": () => (/* binding */ $headerCartCount),
 /* harmony export */   "$headerFavoriteCount": () => (/* binding */ $headerFavoriteCount),
+/* harmony export */   "$headerLogs": () => (/* binding */ $headerLogs),
 /* harmony export */   "$headerMainContainer": () => (/* binding */ $headerMainContainer),
 /* harmony export */   "$headerTopContainer": () => (/* binding */ $headerTopContainer),
 /* harmony export */   "$imageModal": () => (/* binding */ $imageModal),
@@ -11234,6 +11304,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "$marketingSliderItems": () => (/* binding */ $marketingSliderItems),
 /* harmony export */   "$mdq1024": () => (/* binding */ $mdq1024),
 /* harmony export */   "$mdq1119": () => (/* binding */ $mdq1119),
+/* harmony export */   "$mdq576": () => (/* binding */ $mdq576),
 /* harmony export */   "$mdq767": () => (/* binding */ $mdq767),
 /* harmony export */   "$mdq768": () => (/* binding */ $mdq768),
 /* harmony export */   "$mdq875": () => (/* binding */ $mdq875),
@@ -11289,6 +11360,7 @@ const $logInModal = $header.querySelector("#log-in");
 const $logRegisterModal = $header.querySelector("#log-register");
 const $logClose = $header.querySelectorAll(".log__close");
 const $showPasswordBtns = $header.querySelectorAll(".log__show");
+const $headerLogs = $header.querySelectorAll(".header__log");
 
 // **
 const $headerMainContainer = document.querySelector("#header-main-container");
@@ -11406,6 +11478,7 @@ const $checkoutOrderDiscount = document.querySelector("[data-totals='discount']"
 const $checkoutCompleteBtn = document.querySelector(".checkout__complete");
 
 // Media
+const $mdq576 = window.matchMedia("(min-width: 576px)");
 const $mdq767 = window.matchMedia("(max-width: 767px)");
 const $mdq768 = window.matchMedia("(min-width: 768px)");
 const $mdq875 = window.matchMedia("(max-width: 875px)");
@@ -32367,10 +32440,12 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _components_blog_sidebar_js__WEBPACK_IMPORTED_MODULE_35__ = __webpack_require__(/*! ./components/blog__sidebar.js */ "./src/js/components/blog__sidebar.js");
 /* harmony import */ var _components_leave_your_comment_js__WEBPACK_IMPORTED_MODULE_36__ = __webpack_require__(/*! ./components/leave-your-comment.js */ "./src/js/components/leave-your-comment.js");
 /* harmony import */ var _components_contacts_js__WEBPACK_IMPORTED_MODULE_37__ = __webpack_require__(/*! ./components/contacts.js */ "./src/js/components/contacts.js");
-/* harmony import */ var _components_$swipers_js__WEBPACK_IMPORTED_MODULE_38__ = __webpack_require__(/*! ./components/$swipers.js */ "./src/js/components/$swipers.js");
-/* harmony import */ var _components_$overlayScrollbars_js__WEBPACK_IMPORTED_MODULE_39__ = __webpack_require__(/*! ./components/$overlayScrollbars.js */ "./src/js/components/$overlayScrollbars.js");
-/* harmony import */ var imask__WEBPACK_IMPORTED_MODULE_40__ = __webpack_require__(/*! imask */ "./node_modules/imask/esm/index.js");
+/* harmony import */ var _components_currency_js__WEBPACK_IMPORTED_MODULE_38__ = __webpack_require__(/*! ./components/currency.js */ "./src/js/components/currency.js");
+/* harmony import */ var _components_$swipers_js__WEBPACK_IMPORTED_MODULE_39__ = __webpack_require__(/*! ./components/$swipers.js */ "./src/js/components/$swipers.js");
+/* harmony import */ var _components_$overlayScrollbars_js__WEBPACK_IMPORTED_MODULE_40__ = __webpack_require__(/*! ./components/$overlayScrollbars.js */ "./src/js/components/$overlayScrollbars.js");
+/* harmony import */ var imask__WEBPACK_IMPORTED_MODULE_41__ = __webpack_require__(/*! imask */ "./node_modules/imask/esm/index.js");
 // Components
+
 
 
 
@@ -32420,13 +32495,13 @@ const cardNumber = document.getElementById("checkout-payment-number");
 if (cardNumber) {
   const cardDate = document.getElementById("checkout-payment-date");
   const phoneNumber = document.getElementById("checkout-billing-phone");
-  const cardMask = (0,imask__WEBPACK_IMPORTED_MODULE_40__["default"])(cardNumber, {
+  const cardMask = (0,imask__WEBPACK_IMPORTED_MODULE_41__["default"])(cardNumber, {
     mask: "0000 0000 0000 0000"
   });
-  const dateMask = (0,imask__WEBPACK_IMPORTED_MODULE_40__["default"])(cardDate, {
+  const dateMask = (0,imask__WEBPACK_IMPORTED_MODULE_41__["default"])(cardDate, {
     mask: "00/00"
   });
-  const phoneMask = (0,imask__WEBPACK_IMPORTED_MODULE_40__["default"])(phoneNumber, {
+  const phoneMask = (0,imask__WEBPACK_IMPORTED_MODULE_41__["default"])(phoneNumber, {
     mask: "(000) 000-0000"
   });
 }
@@ -32434,7 +32509,7 @@ if (cardNumber) {
 // === My profile === //
 const profilePhoneNumber = document.getElementById("profile-form-phone");
 if (profilePhoneNumber) {
-  const profilePhoneMask = (0,imask__WEBPACK_IMPORTED_MODULE_40__["default"])(profilePhoneNumber, {
+  const profilePhoneMask = (0,imask__WEBPACK_IMPORTED_MODULE_41__["default"])(profilePhoneNumber, {
     mask: "(000) 000-0000"
   });
 }
@@ -32442,7 +32517,7 @@ if (profilePhoneNumber) {
 // === Contacts === //
 const contactsPhoneNumber = document.getElementById("contact-us-phone");
 if (contactsPhoneNumber) {
-  const contactsPhoneMask = (0,imask__WEBPACK_IMPORTED_MODULE_40__["default"])(contactsPhoneNumber, {
+  const contactsPhoneMask = (0,imask__WEBPACK_IMPORTED_MODULE_41__["default"])(contactsPhoneNumber, {
     mask: "(000) 000-0000"
   });
 }

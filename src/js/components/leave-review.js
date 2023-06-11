@@ -231,11 +231,16 @@ if (v.$leaveReview) {
 // ==== CHECK HIDE LEAVE-REVIEW ==== //
 // F(s)
 // **
-function hideLeaveReview() {
-  v.$leaveReview.classList.remove("leave-review--show");
-  document.body.classList.remove("overflow-hidden");
+function hideLeaveReview(e) {
+  const isReviewContent = e.target.closest(".leave-review__content");
+  const isCloseBtn = e.target.closest(".leave-review__close");
 
-  resetForm();
+  if (!isReviewContent || isCloseBtn) {
+    v.$leaveReview.classList.remove("leave-review--show");
+    document.body.classList.remove("overflow-hidden");
+  
+    resetForm();
+  }
 }
 
 // **
@@ -251,6 +256,6 @@ if (v.$leaveReview) {
   v.$leaveReviewBtn.addEventListener("click", showLeaveReview);
 
   // **
-  v.$leaveReviewClose.addEventListener("click", hideLeaveReview);
+  v.$leaveReview.addEventListener("click", hideLeaveReview);
 }
 

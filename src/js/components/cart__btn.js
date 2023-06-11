@@ -38,4 +38,3 @@ v.$cartBtn.addEventListener("click", openCart);
 
 // **
 v.$cartClose.addEventListener("click", closeCart);
-

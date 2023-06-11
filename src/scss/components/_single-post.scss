@@ -16,8 +16,10 @@
 
   &__bottom {
     display: flex;
+    flex-wrap: wrap;
     align-items: flex-start;
     justify-content: space-between;
+    gap: rem(25);
 
     &-data {
       margin-bottom: 0;
@@ -65,11 +67,14 @@
 
       >li {
         display: flex;
-        align-items: center;
+        align-items: flex-start;
         margin-bottom: rem(5);
 
         &::before {
           content: "";
+          position: relative;
+          top: rem(4.5);
+          flex-shrink: 0;
           margin-right: rem(16);
           width: rem(16);
           height: rem(16);
@@ -88,16 +93,22 @@
 
       &::before {
         content: "";
-        left: 0;
-        top: 0;
         flex-shrink: 0;
         margin-right: rem(30);
         width: rem(28);
         height: rem(20);
-        background-image: url("../img/braces.svg");
-        background-size: 100% 100%;
-        background-repeat: no-repeat;
-        filter: var(--primary-filter);
+        background-image: url("../img/brace.png"), url("../img/brace.png");
+        background-position: left center, right rem(1) center;
+        background-size: auto 100%, auto 100%;
+        background-repeat: no-repeat, no-repeat;
+      }
+
+      @include bp-down("1325") {
+        &::before {
+          margin-right: calc(rem(16.05) + 1.05vw); // 30>10(1325>375)
+          width: calc(rem(18.24) + 0.74vw); // 28>21(1325>375)
+          height: calc(rem(13.03) + 0.53vw); // 20>15(1325>375)
+        }
       }
     }
 
@@ -117,13 +128,19 @@
     // Post bottom
     &__bottom {
       display: flex;
+      flex-wrap: wrap;
       align-items: flex-start;
       justify-content: space-between;
       padding-top: rem(36);
+      gap: rem(20);
 
       &-title {
         margin-right: rem(12);
         margin-bottom: 0;
+      }
+
+      @include bp-down("1325") {
+        padding-top: calc(rem(11.08) + 1.58vw); // 32>17(1325>375)
       }
     }
 
@@ -153,6 +170,10 @@
         img {
           transform: scale(1.07);
         }
+      }
+
+      &:first-child {
+        margin-right: rem(15);
       }
 
       &:last-child {
@@ -205,6 +226,10 @@
         &:first-child {
           margin-right: rem(20);
         }
+
+        @include bp-down("576") {
+          display: none;
+        }
       }
     }
 
@@ -214,6 +239,10 @@
       &:first-child {
         margin-right: rem(20);
         text-align: right;
+
+        @include bp-down("576") {
+          margin-right: 0;
+        }
       }
     }
 
@@ -244,5 +273,9 @@
         color: var(--primary-color);
       }
     }
+  }
+
+  @include bp-down("1325") {
+    padding-bottom: calc(rem(85.13) + 2.63vw); // 120>95(1325>375)
   }
 }

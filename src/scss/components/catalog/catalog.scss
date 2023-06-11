@@ -142,4 +142,8 @@
       }
     }
   }
+
+  @include bp-down("1325") {
+    padding-bottom: calc(rem(30.63) + 7.83vw); // 181>60(>>375)
+  }
 }

@@ -123,12 +123,24 @@ if (v.$productCard) {
   });
 
   // ==== PRODUCT CARD TABS SCROLLBAR ==== //
-  let productCardTabsScrollbar = OverlayScrollbars(document.querySelector('.product-card__tabs'), {
-    paddingAbsolute: true,
-    scrollbars: {
-      theme: 'os-theme-download-files',
+  let productCardTabsScrollbar;
+
+  function toggleProductCardTabsScrollbar() {
+    if (v.$mdq576.matches) {
+      productCardTabsScrollbar?.destroy();
+  
+    } else {
+      productCardTabsScrollbar = OverlayScrollbars(document.querySelector(".product-card__tabs"), {
+        paddingAbsolute: true,
+        scrollbars: {
+          theme: "os-theme-download-files",
+        }
+      });
     }
-  });
+  }
+  toggleProductCardTabsScrollbar();
+  
+  v.$mdq576.addEventListener("change", toggleProductCardTabsScrollbar);
 }
 
 

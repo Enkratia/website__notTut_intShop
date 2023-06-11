@@ -308,6 +308,7 @@
     transition: opacity 0.25s;
 
     &__input {
+      padding-right: rem(42);
       width: 100%;
       height: rem(44);
 
@@ -435,6 +436,7 @@
     }
 
     .cart-choice {
+      z-index: var(--z-modal);
       border-top-left-radius: rem(4);
       border-bottom-left-radius: rem(4);
       padding-top: rem(29);

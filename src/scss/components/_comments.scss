@@ -5,6 +5,10 @@
 
   &__title {
     margin-bottom: rem(59);
+
+    @include bp-down("1325") {
+      margin-bottom: calc(rem(45.05) + 1.05vw); // 59>49(1325>375)
+    }
   }
 
   &__comment {
@@ -12,11 +16,23 @@
       &:not(:last-child) {
         border-bottom: none;
         padding-bottom: rem(30);
+
+        @include bp-down("1325") {
+          padding-bottom: calc(rem(9.08) + 1.58vw); // 30>15(>>375)
+        }
       }
+    }
+
+    &-date {
+      margin-bottom: 0;
     }
 
     &-text {
       margin-bottom: rem(17);
     }
+  }
+
+  @include bp-down("1325") {
+    padding-top: calc(rem(29.34) + 6.84vw); // 120>55(1325>375)
   }
 }

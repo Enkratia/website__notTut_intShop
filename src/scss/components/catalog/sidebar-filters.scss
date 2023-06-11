@@ -148,7 +148,7 @@
     position: absolute;
     right: rem(-75);
     top: 50%;
-    z-index: var(--z-up);
+    z-index: var(--z-postup);
     display: flex;
     align-items: center;
     border-radius: rem(4);
@@ -228,6 +228,7 @@
 
       &-input {
         padding: rem(8) rem(11);
+        padding-right: rem(34);
         width: 100%;
         font: var(--extrasmall-regular);
 
@@ -266,6 +267,7 @@
       display: flex;
       align-items: center;
       width: fit-content;
+      user-select: none;
 
       &:not(:last-child) {
         margin-bottom: rem(8);

@@ -1,6 +1,7 @@
 import * as lr from "./leave-review.js";
 
 const contactsSection = document.querySelector("#contacts-section");
+let timer;
 
 if (contactsSection) {
 
@@ -57,6 +58,7 @@ if (contactsSection) {
       const prevFaqItemBody = prevFaqHead.nextElementSibling;
       setHeight(prevFaqItemBody);
 
+      clearTimeout(timer);
       setTimeout(() => {
         prevFaqItemBody.style.height = "";
       }, 0);
@@ -77,6 +79,10 @@ if (contactsSection) {
 
     const faqItemBody = this.nextElementSibling;
     setHeight(faqItemBody);
+
+    timer = setTimeout(() => {
+      faqItemBody.style.height = "auto";
+    }, 400);
   }
 
   // L(s)

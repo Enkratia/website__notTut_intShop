@@ -37,6 +37,9 @@ import "./components/account-menu.js";
 import "./components/blog__sidebar.js";
 import "./components/leave-your-comment.js";
 import "./components/contacts.js";
+import "./components/currency.js";
+
+
 
 
 // Components multiple in one

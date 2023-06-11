@@ -15,6 +15,7 @@ export const $logInModal = $header.querySelector("#log-in");
 export const $logRegisterModal = $header.querySelector("#log-register");
 export const $logClose = $header.querySelectorAll(".log__close");
 export const $showPasswordBtns = $header.querySelectorAll(".log__show");
+export const $headerLogs = $header.querySelectorAll(".header__log");
 
 
 // **
@@ -136,6 +137,7 @@ export const $checkoutCompleteBtn = document.querySelector(".checkout__complete"
 
 
 // Media
+export const $mdq576 = window.matchMedia("(min-width: 576px)");
 export const $mdq767 = window.matchMedia("(max-width: 767px)");
 export const $mdq768 = window.matchMedia("(min-width: 768px)");
 export const $mdq875 = window.matchMedia("(max-width: 875px)");

@@ -1,5 +1,6 @@
 import * as v from "../vars.js";
 import * as cb from "./colors__button.js";
+import * as cur from "./currency.js";
 let isOpen = false;
 
 // SELECT WITH MOUSE
@@ -89,6 +90,9 @@ function changeSelectValue(e, selected, thisSelect) {
     if (v.$productCard) {
       toggleActiveClassInCard(e.target);
       cb.$rechargeProductButton(e.target);
+
+    } else if (e.target.closest(".header-top__select")) {
+      cur.$changeCurrency(e.target);
     }
   }
 }
@@ -115,10 +119,12 @@ function selectWithKeyboard(e) {
     isOpen = this.classList.contains("custom-select--open");
 
   } else if (e.key === " ") {
+    e.preventDefault();
     this.classList.add("custom-select--open");
     isOpen = this.classList.contains("custom-select--open");
 
   } else if (e.key === "ArrowUp" && isOpen) {
+    e.preventDefault();
     let prevSibling = selectList.querySelector(".custom-select__item--active").previousElementSibling;
     if (!prevSibling) return;
 
@@ -126,6 +132,7 @@ function selectWithKeyboard(e) {
     rearrangeClass(prevSibling, selectList);
 
   } else if (e.key === "ArrowDown" && isOpen) {
+    e.preventDefault();
     console.log(e.currentTarget)
     let nextSibling = selectList.querySelector(".custom-select__item--active").nextElementSibling;
     if (!nextSibling) return;
@@ -134,12 +141,14 @@ function selectWithKeyboard(e) {
     rearrangeClass(nextSibling, selectList);
 
   } else if ((e.key === "PageUp" || e.key === "Home") && isOpen) {
+    e.preventDefault();
     const firstSibling = selectList.firstElementChild;
 
     selected.textContent = firstSibling.textContent;
     rearrangeClass(firstSibling, selectList);
 
   } else if ((e.key === "PageDown" || e.key === "End") && isOpen) {
+    e.preventDefault();
     const lastSibling = selectList.lastElementChild;
 
     selected.textContent = lastSibling.textContent;
@@ -156,6 +165,9 @@ function selectWithKeyboard(e) {
   if (v.$productCard) {
     toggleActiveClassInCard(e.target);
     cb.$rechargeProductButton(e.target);
+    
+  } else if (e.target.closest(".header-top__select")) {
+    cur.$changeCurrency(e.target);
   }
 }
 

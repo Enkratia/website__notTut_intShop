@@ -1,0 +1,198 @@
+<section class="track-order">
+  <div class="track-order__container container container--40">
+
+    <!-- Form -->
+    <form class="track-order__form track-form">
+      <h1 class="track-form__title section-title">
+        Track your order
+      </h1>
+
+      <p class="track-form__descr">
+        This form allows you to search for tracking details from anywhere within Createx Tracking Service.
+      </p>
+
+      <!-- FIeld -->
+      <div class="track-form__field">
+        <label for="track-form-input" class="track-form__label">
+          Order No
+        </label>
+
+        <div class="track-form__field-wrapper">
+          <input type="text" class="track-form__input input" id="track-form-input" name="track-form-input"
+            value="# 34BV66580K92">
+
+          <button class="track-form__btn btn btn--lg">
+            Search
+          </button>
+        </div>
+      </div>
+
+      <!-- Info -->
+      <ul class="track-form__info">
+
+        <!-- Item1 -->
+        <li class="track-form__info-item">
+          <span class="track-form__info-name">
+            Order No:
+          </span>
+
+          <span class="track-form__info-data">
+            34BV66580K92
+          </span>
+        </li>
+
+        <!-- Item2 -->
+        <li class="track-form__info-item">
+          <span class="track-form__info-name">
+            Shiped via:
+          </span>
+
+          <span class="track-form__info-data">
+            UPS Ground
+          </span>
+        </li>
+
+        <!-- Item3 -->
+        <li class="track-form__info-item">
+          <span class="track-form__info-name">
+            Shipped on:
+          </span>
+
+          <span class="track-form__info-data">
+            August 29, 2020, 6:00 pm
+          </span>
+        </li>
+
+        <!-- Item4 -->
+        <li class="track-form__info-item">
+          <span class="track-form__info-name">
+            Destination
+          </span>
+
+          <span class="track-form__info-data">
+            London, United Kingdom
+          </span>
+        </li>
+
+        <!-- Item5 -->
+        <li class="track-form__info-item">
+          <span class="track-form__info-name">
+            Expected date:
+          </span>
+
+          <span class="track-form__info-data">
+            September 4, 2020
+          </span>
+        </li>
+
+        <!-- Item6 -->
+        <li class="track-form__info-item">
+          <span class="track-form__info-name">
+            Status:
+          </span>
+
+          <span class="track-form__info-data">
+            In Transit
+          </span>
+        </li>
+      </ul>
+
+      <!-- Notifier -->
+      <label class="track-form__notifier">
+        <label class="track-form__notifier-checkbox custom-checkbox custom-checkbox--checked" tabindex="0" role="checkbox" aria-checked="true">
+          <svg xmlns='http://www.w3.org/2000/svg'>
+            <use href='./img/sprite.svg#check'></use>
+          </svg>
+
+          <input type="hidden" name="track-form-checkbox" value="0">
+          <input type="checkbox" class="custom-checkbox__input" name="track-form-checkbox" value="1" checked>
+        </label>
+
+        <p class="track-form__notifier-text">
+          Notify me when order is delivered
+        </p>
+      </label>
+    </form>
+
+    <!-- Chart -->
+    <div class="track-chart__wrapper">
+      <table class="track-order__chart track-chart">
+        <thead class="track-chart__thead">
+          <tr class="track-chart__titles">
+            <th class="track-chart__title">Status</th>
+            <th class="track-chart__title">Location</th>
+            <th class="track-chart__title">Date</th>
+            <th class="track-chart__title">Time</th>
+          </tr>
+        </thead>
+  
+        <tbody class="track-chart__tbody">
+  
+          <!-- Stage1 -->
+          <tr class="track-chart__stage">
+            <td class="track-chart__info">Order Placed</td>
+            <td class="track-chart__info">New York, USA</td>
+            <td class="track-chart__info">August 29, 2020</td>
+            <td class="track-chart__info">2:00 pm</td>
+          </tr>
+  
+          <!-- Stage2 -->
+          <tr class="track-chart__stage">
+            <td class="track-chart__info">Documentation Prepared</td>
+            <td class="track-chart__info">New York, USA</td>
+            <td class="track-chart__info">August 29, 2020</td>
+            <td class="track-chart__info">3:30 pm</td>
+          </tr>
+  
+          <!-- Stage3 -->
+          <tr class="track-chart__stage">
+            <td class="track-chart__info">Booking Arranged</td>
+            <td class="track-chart__info">New York, USA</td>
+            <td class="track-chart__info">August 29, 2020</td>
+            <td class="track-chart__info">3:35 pm</td>
+          </tr>
+  
+          <!-- Stage4 -->
+          <tr class="track-chart__stage">
+            <td class="track-chart__info">Collected</td>
+            <td class="track-chart__info">New York, USA</td>
+            <td class="track-chart__info">August 29, 2020</td>
+            <td class="track-chart__info">4:00 pm</td>
+          </tr>
+  
+          <!-- Stage5 -->
+          <tr class="track-chart__stage">
+            <td class="track-chart__info">In Transit to Destination</td>
+            <td class="track-chart__info">New York, USA</td>
+            <td class="track-chart__info">August 29, 2020</td>
+            <td class="track-chart__info">6:00 pm</td>
+          </tr>
+  
+          <!-- Stage6 -->
+          <tr class="track-chart__stage track-chart__stage--muted">
+            <td class="track-chart__info">Arrived at Destination</td>
+            <td class="track-chart__info">London, United Kingdom</td>
+            <td class="track-chart__info"></td>
+            <td class="track-chart__info"></td>
+          </tr>
+  
+          <!-- Stage7 -->
+          <tr class="track-chart__stage track-chart__stage--muted">
+            <td class="track-chart__info">Out for Delivery</td>
+            <td class="track-chart__info">London, United Kingdom</td>
+            <td class="track-chart__info"></td>
+            <td class="track-chart__info"></td>
+          </tr>
+  
+          <!-- Stage8 -->
+          <tr class="track-chart__stage track-chart__stage--muted">
+            <td class="track-chart__info">Delivered</td>
+            <td class="track-chart__info">London, United Kingdom</td>
+            <td class="track-chart__info"></td>
+            <td class="track-chart__info"></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>

@@ -2,7 +2,7 @@ import * as v from "../vars.js";
 
 // ==== PAGINATION ==== //
 let page = 1;
-let totalPages = 11;
+let totalPages = 10;
 let activePag;
 let chosenPag;
 

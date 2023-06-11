@@ -1739,6 +1739,7 @@
     }
 
     &__input {
+      padding-right: rem(42);
       width: 100%;
     }
 
@@ -1968,35 +1969,9 @@
       }
     }
 
-    // &__textarea {
-      // position: relative;
-      // width: 100%;
-      // height: rem(107);
-      // white-space: pre-wrap;
-      // resize: none;
-
-      // &::before {
-        // content: "Your working email";
-        // position: absolute;
-        // left: rem(16);
-        // top: rem(11);
-        // font: var(--small-regular);
-        // color: var(--gray600-color);
-        // pointer-events: none;
-      // }
-
-      // &-link {
-        // font: var(--base-bold);
-        // color: var(--primary-color);
-        // pointer-events: none;
-      // }
-
-      // &--active {
-      //   &::before {
-      //     content: none;
-      //   }
-      // }
-    // }
+    &__textarea {
+      padding-right: rem(36);
+    }
 
     &__submit {
       width: 100%;

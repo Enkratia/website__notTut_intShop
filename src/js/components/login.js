@@ -37,13 +37,16 @@ function resetLogModal(modal) {
 }
 
 // **
-function hideLogModal() {
-  const logModal = this.closest(".log");
+function hideLogModal(e) {
+  const logContent = e.target.closest(".log__content");
+  const isCloseBtn = e.target.closest(".log__close");
 
-  logModal.classList.remove("log--show");
-  document.body.classList.remove("overflow-hidden");
-
-  resetLogModal(logModal);
+  if (!logContent || isCloseBtn) {
+    this.classList.remove("log--show");
+    document.body.classList.remove("overflow-hidden");
+  
+    resetLogModal(logModal);
+  }
 }
 
 // **
@@ -66,10 +69,9 @@ v.$loginBtnIn.addEventListener("click", showLogInModal);
 v.$loginBtnRegister.addEventListener("click", showLogRegisterModal);
 
 // **
-v.$logClose.forEach(el => {
+v.$headerLogs.forEach(el => {
   el.addEventListener("click", hideLogModal);
 });
-
 
 // ==== VERIFY LOG-IN MODAL FORM ==== //
 const logInEmail = v.$logInModal.querySelector("#log-in-email");

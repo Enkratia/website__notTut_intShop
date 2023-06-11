@@ -2,9 +2,14 @@ import * as v from "../vars.js";
 
 // F(s)
 // **
-function hideSizeChart() {
-  v.$productCardChart.classList.remove("chart--show");
-  document.body.classList.remove("overflow-hidden");
+function hideSizeChart(e) {
+  const isChartData = e.target.closest(".chart__data");
+  const isChartClose = e.target.closest(".chart__close");
+
+  if (!isChartData || isChartClose) {
+    this.classList.remove("chart--show");
+    document.body.classList.remove("overflow-hidden");
+  }
 }
 
 // **
@@ -15,4 +20,5 @@ function showSizeChart() {
 
 // L(s)
 v.$productCardSizeBtn?.addEventListener("click", showSizeChart);
-v.$chartClose?.addEventListener("click", hideSizeChart);
+
+v.$productCardChart?.addEventListener("click", hideSizeChart);

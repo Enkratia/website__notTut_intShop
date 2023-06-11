@@ -8,10 +8,6 @@
     margin-bottom: rem(47);
   }
 
-  &__form {
-
-  }
-
   // Fields
   &__fields {
     display: flex;
@@ -26,10 +22,18 @@
     &:not(:last-child) {
       margin-bottom: rem(25);
       width: calc(50% - rem(15));
+
+      @include bp-down("576") {
+        width: 100%;
+      }
     }
 
     &:first-child {
       margin-right: rem(30);
+
+      @include bp-down("576") {
+        margin-right: 0;
+      }
     }
   }
 
@@ -41,6 +45,7 @@
   }
 
   &__input {
+    padding-right: rem(42);
     width: 100%;
     height: rem(52);
     font: var(--base-regular);
@@ -51,6 +56,7 @@
   }
 
   &__textarea {
+    padding-right: rem(32);
     height: rem(100);
     font: var(--base-regular);
 
@@ -64,5 +70,14 @@
     position: relative;
     left: 50%;
     transform: translateX(-50%);
+
+    @include bp-down("576") {
+      width: 100%;
+    }
+  }
+
+  @include bp-down("1325") {
+    padding-top: calc(rem(51.26) + 5.26vw); // 121>71(>>375)
+    padding-bottom: calc(rem(35.53) + 6.53vw);  // 122>60(>>375)
   }
 }
