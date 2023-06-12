@@ -85,10 +85,6 @@
       transition: color 0.3s;
       cursor: pointer;
 
-      &:not(:last-child) {
-        // margin-right: rem(20.5);
-      }
-
       &:hover {
         color: var(--gray800-color);
       }

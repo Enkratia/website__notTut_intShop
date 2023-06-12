@@ -1,3 +1,5 @@
+import * as v from "../vars.js";
+
 let slider;
 let products;
 const marginForBoxShadow = 80; // (Тоже самое, что: window.getComputedStyle(products[0]).getPropertyValue("margin-bottom"))
@@ -25,6 +27,8 @@ if (document.querySelector(".swiper-slider")) {
   // L(s)
   // **
   function addListeners() {
+    if (!v.$mdq1024.matches) return;
+
     products = document.querySelectorAll(".swiper-wrapper .product");
 
     products.forEach(product => {
@@ -39,6 +43,7 @@ if (document.querySelector(".swiper-slider")) {
 
   // **
   window.addEventListener("resize", () => {
+
     setTimeout(() => { // (Чтобы swiper успел прогрузить свой js)
       products = document.querySelectorAll(".swiper-wrapper .product");
 
@@ -46,6 +51,8 @@ if (document.querySelector(".swiper-slider")) {
         product.removeEventListener("mouseenter", showProductBottom);
         product.removeEventListener("mouseleave", hideProductBottom);
       });
+
+      if (!v.$mdq1024.matches) return;
 
       products.forEach(product => {
         product.addEventListener("mouseenter", showProductBottom);

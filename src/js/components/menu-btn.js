@@ -51,7 +51,12 @@ function showMenu() {
   v.$searchForm.classList.toggle("search-form--show");
   v.$navList.classList.toggle("nav__list--show");
   v.$login.classList.toggle("login--show");
-  document.body.classList.toggle("overflow-hidden");
+
+  if (v.$login.classList.contains("login--show")) {
+    document.body.classList.add("overflow-hidden");
+  } else {
+    document.body.classList.remove("overflow-hidden");
+  }
 }
 
 // L(s)

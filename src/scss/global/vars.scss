@@ -61,7 +61,7 @@
 
   // Filters
   --primary-filter: invert(28%) sepia(11%) saturate(5606%) hue-rotate(143deg) brightness(97%) contrast(82%);
-  --gray800-filter: invert(24%) sepia(4%) saturate(1974%) hue-rotate(191deg) brightness(97%) contrast(87%);
+  --gray800-filter: invert(25%) sepia(22%) saturate(317%) hue-rotate(190deg) brightness(93%) contrast(91%);
   --success-filter: invert(79%) sepia(37%) saturate(5566%) hue-rotate(118deg) brightness(91%) contrast(98%);
 
   // Fonts
@@ -114,6 +114,7 @@
   --main-shadow: 0 4px 4px rgb(0 0 0 / 25%);
   --custom-shadow: 0 8px 4px 4px rgb(0 0 0 / 3%), 0 20px 20px 13px rgb(0 0 0 / 3%);
   --custom-hover-shadow: 0 8px 4px 4px rgb(0 0 0 / 3%), 0 20px 20px 13px rgb(0 0 0 / 3%), 0 20px 20px 13px rgb(0 0 0 / 3%);
+  --custom-top-shadow: 0 5px 10px rgb(0 0 0 / 15%);
 
   // Z-indexes
   --z-modal: 1000;

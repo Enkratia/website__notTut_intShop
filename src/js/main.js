@@ -40,45 +40,10 @@ import "./components/contacts.js";
 import "./components/currency.js";
 
 
-
-
 // Components multiple in one
 import "./components/$swipers.js";
 import "./components/$overlayScrollbars.js";
-
-
-
-
-
-// Input mask
-import IMask from "imask";
-const cardNumber = document.getElementById("checkout-payment-number");
-
-if (cardNumber) {
-  const cardDate = document.getElementById("checkout-payment-date");
-  const phoneNumber = document.getElementById("checkout-billing-phone");
-  
-  const cardMask = IMask(cardNumber, {mask: "0000 0000 0000 0000"});
-  const dateMask = IMask(cardDate, {mask: "00/00"});
-  const phoneMask = IMask(phoneNumber, {mask: "(000) 000-0000"});
-}
-
-// === My profile === //
-const profilePhoneNumber = document.getElementById("profile-form-phone");
-
-if (profilePhoneNumber) {
-  const profilePhoneMask = IMask(profilePhoneNumber, {mask: "(000) 000-0000"});
-}
-
-// === Contacts === //
-const contactsPhoneNumber = document.getElementById("contact-us-phone");
-
-if (contactsPhoneNumber) {
-  const contactsPhoneMask = IMask(contactsPhoneNumber, {mask: "(000) 000-0000"});
-}
-
-
-
+import "./components/$iMask.js";
 
 
 // Scroll-top

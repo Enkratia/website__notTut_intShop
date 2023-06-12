@@ -581,6 +581,16 @@
         opacity: 1;
         visibility: visible;
       }
+
+      @include bp-down("1024") {
+        &::before {
+          content: none;
+        }
+
+        &::after {
+          content: none;
+        }
+      }
     }
 
     // Favorite (rectange version)
@@ -762,6 +772,11 @@
       opacity: 1;
       visibility: visible;
       transition: box-shadow 0.3s ease-in-out opacity 0.3s;
+
+      @include bp-down("1024") {
+        opacity: 0;
+        visibility: hidden;
+      }
     }
   }
 
@@ -818,7 +833,6 @@
       border: 1px solid var(--gray400-color);
       border-radius: rem(4);
       padding-block: rem(2);
-      // padding-inline: rem(4);
       min-width: rem(22);
       font: var(--extrasmall-regular);
       text-transform: uppercase;
@@ -1459,12 +1473,6 @@
     }
 
     &--inactive {
-      // margin-left: 0;
-      // margin-right: 0;
-      // width: 0;
-      // height: 0;
-      // opacity: 0;
-      // visibility: hidden;
       display: none;
     }
 
@@ -2129,9 +2137,6 @@
 }
 
 .blog-tags {
-  // border-top: rem(1) solid var(--gray300-color);
-  // padding-top: rem(30);
-
   &__title {
     margin-bottom: rem(24);
   }

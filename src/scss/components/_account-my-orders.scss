@@ -248,7 +248,6 @@
       }
 
       &__text {
-        // min-width: rem(140);
 
         @include bp-down("678") {
           grid-column: 2 / 3;
@@ -319,7 +318,6 @@
         }
 
         @include bp-down("500") {
-          // justify-self: start;
           grid-column: 1 / 2;
           grid-row: 2 / 3;
         }
@@ -379,7 +377,6 @@
         }
 
         @include bp-down("500") {
-          // justify-self: start;
           grid-column: 4 / 5;
           grid-row: 2 / 3;
         }

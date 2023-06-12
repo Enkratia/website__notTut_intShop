@@ -38,7 +38,6 @@
   &__article {
     margin-bottom: rem(60); // Для box-shadow
     height: auto;
-    box-shadow: var(--custom-shadow);
     transition: box-shadow 0.3s;
 
     &:hover {

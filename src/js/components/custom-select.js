@@ -133,7 +133,6 @@ function selectWithKeyboard(e) {
 
   } else if (e.key === "ArrowDown" && isOpen) {
     e.preventDefault();
-    console.log(e.currentTarget)
     let nextSibling = selectList.querySelector(".custom-select__item--active").nextElementSibling;
     if (!nextSibling) return;
 

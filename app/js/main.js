@@ -6389,6 +6389,51 @@ _core_holder_js__WEBPACK_IMPORTED_MODULE_1__["default"].MaskedRegExp = MaskedReg
 
 /***/ }),
 
+/***/ "./src/js/components/$iMask.js":
+/*!*************************************!*\
+  !*** ./src/js/components/$iMask.js ***!
+  \*************************************/
+/***/ ((__unused_webpack___webpack_module__, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var imask__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! imask */ "./node_modules/imask/esm/index.js");
+
+const cardNumber = document.getElementById("checkout-payment-number");
+
+// ==== CHECKOUT ==== //
+if (cardNumber) {
+  const cardDate = document.getElementById("checkout-payment-date");
+  const phoneNumber = document.getElementById("checkout-billing-phone");
+  const cardMask = (0,imask__WEBPACK_IMPORTED_MODULE_0__["default"])(cardNumber, {
+    mask: "0000 0000 0000 0000"
+  });
+  const dateMask = (0,imask__WEBPACK_IMPORTED_MODULE_0__["default"])(cardDate, {
+    mask: "00/00"
+  });
+  const phoneMask = (0,imask__WEBPACK_IMPORTED_MODULE_0__["default"])(phoneNumber, {
+    mask: "(000) 000-0000"
+  });
+}
+
+// ==== MY PROFILE ==== //
+const profilePhoneNumber = document.getElementById("profile-form-phone");
+if (profilePhoneNumber) {
+  const profilePhoneMask = (0,imask__WEBPACK_IMPORTED_MODULE_0__["default"])(profilePhoneNumber, {
+    mask: "(000) 000-0000"
+  });
+}
+
+// ==== CONTACTS ==== //
+const contactsPhoneNumber = document.getElementById("contact-us-phone");
+if (contactsPhoneNumber) {
+  const contactsPhoneMask = (0,imask__WEBPACK_IMPORTED_MODULE_0__["default"])(contactsPhoneNumber, {
+    mask: "(000) 000-0000"
+  });
+}
+
+/***/ }),
+
 /***/ "./src/js/components/$overlayScrollbars.js":
 /*!*************************************************!*\
   !*** ./src/js/components/$overlayScrollbars.js ***!
@@ -7843,7 +7888,6 @@ function selectWithKeyboard(e) {
     rearrangeClass(prevSibling, selectList);
   } else if (e.key === "ArrowDown" && isOpen) {
     e.preventDefault();
-    console.log(e.currentTarget);
     let nextSibling = selectList.querySelector(".custom-select__item--active").nextElementSibling;
     if (!nextSibling) return;
     selected.textContent = nextSibling.textContent;
@@ -9099,6 +9143,150 @@ function returnLogin() {
 _vars_js__WEBPACK_IMPORTED_MODULE_0__.$mdq991.addEventListener("change", replaceLogin);
 _vars_js__WEBPACK_IMPORTED_MODULE_0__.$mdq992.addEventListener("change", returnLogin);
 
+// ==== SHOW AUTORIZED LOGIN (FOR ACCOUNT PAGES) ==== //
+if (_vars_js__WEBPACK_IMPORTED_MODULE_0__.$accountMenu) {
+  const userName = "Annette Black";
+  let userBtn;
+
+  //F(s)
+  // **
+  function insertWishlistCount() {
+    const wishlistCount = `    
+      <span class="login-dropdown__link-count" aria-label="Number of products in wishlist.">
+        2
+      </span>`;
+    return wishlistCount;
+  }
+
+  // **
+  function generateCode(username, page) {
+    let pagesInfo = [{
+      id: "my-profile",
+      pageName: "My profile",
+      pageLink: "/account-my-profile.html",
+      pageIcon: "./img/sprite.svg#person"
+    }, {
+      id: "my-orders",
+      pageName: "My orders",
+      pageLink: "/account-my-orders.html",
+      pageIcon: "./img/sprite.svg#wallet-2"
+    }, {
+      id: "wishlist",
+      pageName: "Wishlist",
+      pageLink: "/account-wishlist.html",
+      pageIcon: "./img/sprite.svg#heart"
+    }, {
+      id: "account-recently-viewed",
+      pageName: "Recently viewed",
+      pageLink: "/account-recently-viewed.html",
+      pageIcon: "./img/sprite.svg#eye"
+    }, {
+      id: "my-reviews",
+      pageName: "My reviews",
+      pageLink: "/account-my-reviews.html",
+      pageIcon: "./img/sprite.svg#star"
+    }, {
+      id: "",
+      pageName: "Sign out",
+      pageLink: "/index.html",
+      pageIcon: "./img/sprite.svg#logout"
+    }];
+    let finalAuthCode = "";
+    const authCodePart1 = `
+    <div class="login__dropdown login-dropdown">
+    <a class="login-dropdown__btn">
+      <span class="login-dropdown__btn-name">
+       ${username}
+      </span>
+
+      <svg xmlns='http://www.w3.org/2000/svg' aria-hidden='true'>
+        <use href='./img/sprite.svg#angle-down' aria-hidden='true'></use>
+      </svg>
+    </a>
+
+    <!-- Links -->
+    <ul class="login-dropdown__links">
+  `;
+    let authCodePart2 = "";
+    for (let i = 0; i < pagesInfo.length; i++) {
+      authCodePart2 += `
+      <!-- Item -->
+      <li class="login-dropdown__item">
+        <a href="${pagesInfo[i].pageLink}" class="login-dropdown__link ${pagesInfo[i].id === page ? 'login-dropdown__link--active' : ''}">
+          <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+            <use href="${pagesInfo[i].pageIcon}" aria-hidden="true"></use>
+          </svg>
+
+          <span class="login-dropdown__link-name">
+          ${pagesInfo[i].pageName}
+          </span>
+
+        ${i === 2 ? insertWishlistCount() : ''}
+        </a>
+      </li>
+    `;
+    }
+    const authCodePart3 = `
+    </ul>
+    </div>
+
+    <svg class="login__icon" xmlns='http://www.w3.org/2000/svg'>
+     <use href='./img/sprite.svg#person'></use>
+    </svg>
+  `;
+    finalAuthCode = authCodePart1 + authCodePart2 + authCodePart3;
+    return finalAuthCode;
+  }
+
+  // **
+  function hideLoginMenu(e) {
+    const isloginMenu = e.target.closest(".login-dropdown__links");
+    if (!isloginMenu) {
+      userBtn.classList.remove("login-dropdown__btn--show");
+      document.documentElement.removeEventListener("click", hideLoginMenu);
+    }
+  }
+
+  // **
+  function toggleLoginMenu() {
+    userBtn.classList.toggle("login-dropdown__btn--show");
+    if (userBtn.classList.contains("login-dropdown__btn--show")) {
+      setTimeout(() => {
+        document.documentElement.addEventListener("click", hideLoginMenu);
+      }, 0);
+    }
+  }
+
+  // **
+  function pasteAuthLogin() {
+    const currentPage = document.querySelector("[data-account]").getAttribute("id");
+    _vars_js__WEBPACK_IMPORTED_MODULE_0__.$login.innerHTML = "";
+    _vars_js__WEBPACK_IMPORTED_MODULE_0__.$login.insertAdjacentHTML("afterbegin", generateCode(userName, currentPage));
+    _vars_js__WEBPACK_IMPORTED_MODULE_0__.$login.classList.add("login--authorized");
+    userBtn = _vars_js__WEBPACK_IMPORTED_MODULE_0__.$login.querySelector(".login-dropdown__btn");
+    userBtn.addEventListener("click", toggleLoginMenu);
+  }
+  pasteAuthLogin();
+
+  // === MAKE LOGIN AS LINK FOR TABLET/MOBILE === //
+  // F(s)
+  // **
+  function makeLoginBtnAsLink() {
+    const accountBtn = _vars_js__WEBPACK_IMPORTED_MODULE_0__.$header.querySelector(".login-dropdown__btn");
+    if (_vars_js__WEBPACK_IMPORTED_MODULE_0__.$mdq992.matches) {
+      accountBtn.removeAttribute("href");
+      accountBtn.setAttribute("role", "button");
+      accountBtn.setAttribute("tabindex", 0);
+    } else {
+      accountBtn.setAttribute("href", "/account-my-profile.html");
+      accountBtn.removeAttribute("role");
+      accountBtn.removeAttribute("tabindex");
+    }
+  }
+  makeLoginBtnAsLink();
+  _vars_js__WEBPACK_IMPORTED_MODULE_0__.$mdq992.addEventListener("change", makeLoginBtnAsLink);
+}
+
 /***/ }),
 
 /***/ "./src/js/components/megamenu.js":
@@ -9230,7 +9418,11 @@ function showMenu() {
   _vars_js__WEBPACK_IMPORTED_MODULE_0__.$searchForm.classList.toggle("search-form--show");
   _vars_js__WEBPACK_IMPORTED_MODULE_0__.$navList.classList.toggle("nav__list--show");
   _vars_js__WEBPACK_IMPORTED_MODULE_0__.$login.classList.toggle("login--show");
-  document.body.classList.toggle("overflow-hidden");
+  if (_vars_js__WEBPACK_IMPORTED_MODULE_0__.$login.classList.contains("login--show")) {
+    document.body.classList.add("overflow-hidden");
+  } else {
+    document.body.classList.remove("overflow-hidden");
+  }
 }
 
 // L(s)
@@ -9638,6 +9830,8 @@ if (_vars_js__WEBPACK_IMPORTED_MODULE_0__.$pcmSwiper) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _vars_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../vars.js */ "./src/js/vars.js");
+
 let slider;
 let products;
 const marginForBoxShadow = 80; // (Тоже самое, что: window.getComputedStyle(products[0]).getPropertyValue("margin-bottom"))
@@ -9663,6 +9857,7 @@ if (document.querySelector(".swiper-slider")) {
   // L(s)
   // **
   function addListeners() {
+    if (!_vars_js__WEBPACK_IMPORTED_MODULE_0__.$mdq1024.matches) return;
     products = document.querySelectorAll(".swiper-wrapper .product");
     products.forEach(product => {
       product.addEventListener("mouseenter", showProductBottom);
@@ -9683,6 +9878,7 @@ if (document.querySelector(".swiper-slider")) {
         product.removeEventListener("mouseenter", showProductBottom);
         product.removeEventListener("mouseleave", hideProductBottom);
       });
+      if (!_vars_js__WEBPACK_IMPORTED_MODULE_0__.$mdq1024.matches) return;
       products.forEach(product => {
         product.addEventListener("mouseenter", showProductBottom);
         product.addEventListener("mouseleave", hideProductBottom);
@@ -10831,7 +11027,6 @@ if (_vars_js__WEBPACK_IMPORTED_MODULE_0__.$toolPags[0]) {
   // **
   function destroyRightDots(el) {
     const dotsRight = el.querySelector(`[data-toolpag='dots-right']`);
-    console.log("hello");
     if (!dotsRight) return;
     dotsRight.querySelector(".tool-pag__link").textContent = `${totalPages - 1}`;
     dotsRight.setAttribute("data-toolpag", `${totalPages - 1}`);
@@ -32443,7 +32638,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _components_currency_js__WEBPACK_IMPORTED_MODULE_38__ = __webpack_require__(/*! ./components/currency.js */ "./src/js/components/currency.js");
 /* harmony import */ var _components_$swipers_js__WEBPACK_IMPORTED_MODULE_39__ = __webpack_require__(/*! ./components/$swipers.js */ "./src/js/components/$swipers.js");
 /* harmony import */ var _components_$overlayScrollbars_js__WEBPACK_IMPORTED_MODULE_40__ = __webpack_require__(/*! ./components/$overlayScrollbars.js */ "./src/js/components/$overlayScrollbars.js");
-/* harmony import */ var imask__WEBPACK_IMPORTED_MODULE_41__ = __webpack_require__(/*! imask */ "./node_modules/imask/esm/index.js");
+/* harmony import */ var _components_$iMask_js__WEBPACK_IMPORTED_MODULE_41__ = __webpack_require__(/*! ./components/$iMask.js */ "./src/js/components/$iMask.js");
 // Components
 
 
@@ -32489,38 +32684,6 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-// Input mask
-
-const cardNumber = document.getElementById("checkout-payment-number");
-if (cardNumber) {
-  const cardDate = document.getElementById("checkout-payment-date");
-  const phoneNumber = document.getElementById("checkout-billing-phone");
-  const cardMask = (0,imask__WEBPACK_IMPORTED_MODULE_41__["default"])(cardNumber, {
-    mask: "0000 0000 0000 0000"
-  });
-  const dateMask = (0,imask__WEBPACK_IMPORTED_MODULE_41__["default"])(cardDate, {
-    mask: "00/00"
-  });
-  const phoneMask = (0,imask__WEBPACK_IMPORTED_MODULE_41__["default"])(phoneNumber, {
-    mask: "(000) 000-0000"
-  });
-}
-
-// === My profile === //
-const profilePhoneNumber = document.getElementById("profile-form-phone");
-if (profilePhoneNumber) {
-  const profilePhoneMask = (0,imask__WEBPACK_IMPORTED_MODULE_41__["default"])(profilePhoneNumber, {
-    mask: "(000) 000-0000"
-  });
-}
-
-// === Contacts === //
-const contactsPhoneNumber = document.getElementById("contact-us-phone");
-if (contactsPhoneNumber) {
-  const contactsPhoneMask = (0,imask__WEBPACK_IMPORTED_MODULE_41__["default"])(contactsPhoneNumber, {
-    mask: "(000) 000-0000"
-  });
-}
 
 // Scroll-top
 const scrollTop = document.querySelector(".scroll-top");

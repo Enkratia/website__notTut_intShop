@@ -1,0 +1,214 @@
+@use "../../util/" as *;
+
+.login {
+  position: relative;
+  display: flex;
+  align-items: center;
+  color: inherit;
+  transition: opacity 0.3s;
+
+  &::before {
+    content: "/";
+    position: absolute;
+    left: 61px;
+    top: 47%;
+    transform: translateY(-50%);
+  }
+
+  &__icon {
+    order: -1;
+    margin-right: rem(9.5);
+    width: rem(13);
+    height: rem(14);
+    fill: currentcolor;
+    transition: fill 0.3s ease;
+  }
+
+  &__btn {
+    transition: color 0.3s ease;
+    user-select: none;
+
+    &:hover {
+      color: var(--white-color);
+
+      &::after {
+        color: var(--graywhite-color);
+        pointer-events: none;
+      }
+    }
+
+    &:hover~.login__icon {
+      fill: var(--white-color);
+    }
+
+    &:first-child {
+      margin-right: rem(10);
+    }
+  }
+
+  // Dropdown
+  .login-dropdown {
+    position: relative;
+
+    &__btn {
+      display: inline-flex;
+      align-items: center;
+      transition: color 0.3s;
+
+      &-name {
+        margin-right: rem(6);
+      }
+
+      svg {
+        width: rem(8);
+        height: rem(8);
+        fill: currentcolor;
+        transition: transform 0.15s;
+      }
+
+      @include bp-down("992") {
+        svg {
+          display: none;
+        }
+      }
+
+      &--show {
+        svg {
+          transform: rotate(180deg);
+        }
+
+        +.login-dropdown__links {
+          opacity: 1;
+          visibility: visible;
+        }
+
+        @include bp-down("992") {
+          +.login-dropdown__links {
+            opacity: 0;
+            visibility: hidden;
+          }
+        }
+      }
+    }
+
+    &__links {
+      position: absolute;
+      right: 0;
+      top: calc(100% + rem(7));
+      z-index: var(--z-tooltip);
+      border: rem(1) solid var(--gray300-color);
+      border-radius: rem(4);
+      padding-block: rem(15);
+      padding-inline: rem(20);
+      box-shadow: var(--custom-top-shadow);
+      background-color: var(--white-color);
+      opacity: 0;
+      visibility: hidden;
+    }
+
+    &__item {
+      &:not(:last-child) {
+        margin-bottom: rem(8);
+      }
+    }
+
+    &__link {
+      display: flex;
+      align-items: center;
+      color: var(--gray800-color);
+      transition: color 0.3s;
+
+      svg {
+        margin-right: rem(8);
+        width: rem(16);
+        height: rem(16);
+        fill: currentcolor;
+      }
+
+      &-count {
+        margin-left: auto;
+        border-radius: rem(4);
+        padding-top: rem(1);
+        padding-bottom: rem(1);
+        padding-inline: rem(8);
+        font: var(--extrasmall-bold);
+        color: var(--white-color);
+        background-color: var(--warning-color);
+      }
+
+      &:hover {
+        color: var(--primary-color);
+      }
+
+      &--active {
+        color: var(--primary-color);
+      }
+    }
+
+    &:hover {
+      .login-dropdown__btn {
+        color: var(--white-color);
+      }
+
+      ~svg {
+        fill: var(--white-color);
+      }
+
+      @include bp-down("992") {
+        .login-dropdown__btn {
+          color: var(--primary-color);
+        }
+
+        ~svg {
+          fill: var(--primary-color);
+        }
+      }
+    }
+  }
+
+  @include bp-down("992") {
+    width: 0;
+    height: 0;
+    font: var(--base-bold);
+    color: var(--gray800-color);
+    opacity: 0;
+    visibility: hidden;
+
+    &::before {
+      left: 71px;
+      top: 47%;
+    }
+
+    &__icon {
+      width: rem(15);
+      height: rem(15);
+    }
+
+    &__btn {
+      &:hover {
+        color: var(--primary-color);
+      }
+
+      &:hover~.login__icon {
+        fill: var(--primary-color);
+      }
+
+      &:first-child {
+        margin-right: rem(15);
+      }
+    }
+  }
+
+  &--show {
+    width: 100%;
+    height: 100%;
+    opacity: 1;
+    visibility: visible;
+  }
+
+  &--authorized {
+    &::before {
+      content: none;
+    }
+  }
+}

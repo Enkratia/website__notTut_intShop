@@ -26,7 +26,7 @@
     transition: left 0.3s linear;
 
     &-inner {
-      overflow: visible; // ?
+      overflow: visible;
       height: 100%;
     }
 
@@ -199,7 +199,6 @@
 
     &:nth-last-child(2) {
       overflow: hidden;
-      // animation: overflow-bottom 0.3s ease forwards;
     }
 
     &__top {

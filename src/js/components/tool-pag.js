@@ -145,7 +145,7 @@ if (v.$toolPags[0]) {
   // **
   function destroyRightDots(el) {
     const dotsRight = el.querySelector(`[data-toolpag='dots-right']`);
-    console.log("hello")
+    
     if (!dotsRight) return;
 
     dotsRight.querySelector(".tool-pag__link").textContent = `${totalPages - 1}`;

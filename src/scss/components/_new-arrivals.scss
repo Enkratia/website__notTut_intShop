@@ -54,6 +54,11 @@
     &:hover {
       margin-bottom: rem(80); // For box-shadow
       box-shadow: var(--product-shadow);
+
+      @include bp-down("1024") {
+        margin-bottom: auto; // For box-shadow
+        box-shadow: none;
+      }
     }
   }
 

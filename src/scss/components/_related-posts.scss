@@ -1,7 +1,6 @@
 @use "../util/" as *;
 
 .related-posts {
-  // padding-top: calc(rem(51.65) + 3.56vw); // 120>65
   padding-top: rem(81);
   padding-bottom: rem(78);
   background-color: var(--gray200-color);
@@ -46,7 +45,6 @@
   &__article {
     margin-bottom: rem(60); // Для box-shadow
     height: auto;
-    box-shadow: var(--custom-shadow);
     transition: box-shadow 0.3s;
 
     &:hover {
